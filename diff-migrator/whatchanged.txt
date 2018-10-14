@@ -1,0 +1,2 @@
+global/hc.constants.js
+widget/Global SEO/js/hc.global.SEO.js
