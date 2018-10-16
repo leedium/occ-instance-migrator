@@ -1,5 +1,5 @@
 const {spawnSync, exec, spawn} = require('child_process');
-const fs = require("fs");
+const fs = require("fs-extra");
 const readline = require('readline');
 const path = require("path");
 const url = require("url");
@@ -133,26 +133,34 @@ function getDiffs () {
 function processDiffs () {
     return new Promise((resolve) => {
         const transferPathArrayTemp = [];
+        let counter = 0;
         const rl = readline.createInterface({
             input: fs.createReadStream(DIFF_FILE_PATH)
         });
         rl.on('line', (line) => {
             const pathArray = line.split('/');
+
             let path;
             if (pathArray.length === 2) {
                 // path = (`${pathArray[0]}/`);
                 path = (`${pathArray[0]}/`);
             } else if (pathArray.length > 2) {
-                path = (`${pathArray.slice(0, 2).join('/')}`);
-            }
+                if (pathArray[1] === "Web Content") {
+                    path = (`${pathArray.slice(0, 4).join('/')}`);
+                } else {
+                    path = (`${pathArray.slice(0, 2).join('/')}`);
+                }
 
+            }
             if (!transferPathArrayTemp[path]) {
+                counter += 1;
                 transferPathArrayTemp[`${path}`] = true;
                 transferPaths.push(path);
+                // console.log(counter, path)
             }
         });
         rl.on('close', () => {
-            // console.log(transferPathArrayTemp)
+            //console.log(transferPathArrayTemp)
             resolve();
         });
     })
@@ -160,12 +168,20 @@ function processDiffs () {
 
 async function transfer () {
     process.chdir(gitPath);
-    return await Promise.all(
-        transferPaths.reduce((acc, path) => {
-            acc.push(transferFile(path))
-            return acc;
-        }, [])
-    )
+    const counter = 0;
+    const load = function (count) {
+        transferFile(transferPaths[count])
+            .then(res => {
+                count += 1;
+                if (count <= transferPaths.length - 1) {
+                    load(count);
+                } else {
+                    console.log('migration complete');
+                    resolve()
+                }
+            })
+    }
+    load(counter)
 }
 
 function transferFile (path) {
@@ -189,13 +205,56 @@ function transferFile (path) {
     })
 }
 
+function transferAll () {
+    process.chdir('./tmp');
+    return new Promise((resolve) => {
+        console.log(`transferring ...`)
+        const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', DCU_SERVER_TARGET, '-k', API_KEY_TARGET], {
+            env: Object.assign({}, process.env, {
+                'CC_APPLICATION_KEY': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkMzIyNGJjOC1iZjljLTRhNWMtYjFhNi05MjIwYzI3NzQ1MWUiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NzEwMzExNTYsImlhdCI6MTUzOTQ5NTE1Nn0=.d8gGlYAtIZeVqE0vftJJ3qCKdDQjtHiMSiqA3CFfLdc='
+            })
+        });
+        ls1.stdout.on('data', (chunk) => {
+            console.log(chunk.toString('utf-8'));
+        });
+        ls1.stderr.on('data', (chunk) => {
+            console.log('Error:', chunk.toString());
+        });
+        ls1.on('close', (code) => {
+            console.log(`... ${path} target updated`);
+            resolve();
+        });
+    })
+}
+
+
+function makeTmpFolder () {
+    return new Promise((resolve) => {
+        fs.ensureDirSync('./tmp/.ccc');
+        fs.copySync(`../.ccc`,`./tmp/.ccc`);
+        transferPaths.map((path) => {
+            const fa = path.split('/');
+            const f = fa.slice(0, fa.length ).join('/');
+            fs.ensureDirSync(`./tmp/${f}`);
+
+            console.log(f,`../${path}`)
+            try{
+                fs.copySync(`../${path}`,`./tmp/${f}`);
+            }catch(err){
+                // console.log(err)
+            }
+        });
+        resolve();
+    });
+}
+
 
 async function start () {
     try {
         // await checkoutBranch('master');
         // await deleteBranch('deploy');
         // await deleteBranch('test');
-        await grabTarget();
+        // await grabTarget();
         // await addAll();
         // await commit();
         // await createBranch('deploy');
@@ -206,8 +265,11 @@ async function start () {
         // await checkoutBranch('deploy');
         // await mergeBranch('test');
         // await getDiffs('test');
-        // await processDiffs();
+        await processDiffs();
+        await makeTmpFolder();
+        await transferAll();
         // await transfer();
+
     }
     catch (err) {
         console.log(err)

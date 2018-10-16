@@ -1,0 +1,905 @@
+element/Cash Credit Payment Options/element.js
+element/Cash Credit Payment Options/element.template
+element/Collection Nav Hamburger Button/element.js
+element/Collection Nav Hamburger Button/element.template
+element/Collection Navigation Hamburger Button/element.js
+element/Collection Navigation Hamburger Button/element.template
+element/Company Logo/element.template
+element/Company Name/element.template
+element/Contact Login (for Managed Accounts) (Deprecated)/element.template
+element/Contact Login (for Managed Accounts)/element.template
+element/Content Block Image/element.js
+element/Content Block Image/element.template
+element/Editorial Link/element.js
+element/Editorial Link/element.template
+element/Footer Links cc-link/element.js
+element/Footer Links cc-link/element.template
+element/Full Product Details/element.template
+element/HC- PDP Variant Options/element.js
+element/HC- PDP Variant Options/element.template
+element/Hero Banner Image Size (XS, S, M, L)/element.js
+element/Hero Banner Image Size (XS, S, M, L)/element.template
+element/Homechoice - Header - Welcome/element.js
+element/Homechoice - Header - Welcome/element.template
+element/Homechoice Header Dropdown Minicart/element.js
+element/Homechoice Header Dropdown Minicart/element.template
+element/Homechoice Social Sharing/element.js
+element/Homechoice Social Sharing/element.template
+element/Image/element.template
+element/Login Registration (Deprecated)/element.template
+element/Login Registration Credit SAML SSO/element.js
+element/Login Registration Credit SAML SSO/element.template
+element/Login Registration Credit v1 (depreciated)/element.js
+element/Login Registration Credit v1 (depreciated)/element.template
+element/Login Registration/element.template
+element/Min Max Pricing Values/element.js
+element/Min Max Pricing Values/element.template
+element/Mobile Nav Menu/element.js
+element/Mobile Nav Menu/element.template
+element/Product Badges/element.js
+element/Product Badges/element.template
+element/Product Details Add To Cart Button with Method Overrides/element.js
+element/Product Details Add To Cart Button with Method Overrides/element.template
+element/Product Details Promo Text/element.js
+element/Product Details Promo Text/element.template
+element/Product Details Property/element.js
+element/Product Details Property/element.template
+element/Product ID/element.template
+element/Product Offer/element.js
+element/Product Offer/element.template
+element/Product Quick View/element.template
+element/Rich Text/element.template
+element/SAML Login Registration/element.template
+element/Search/element.template
+element/Secondary Nav Links/element.js
+element/Secondary Nav Links/element.template
+element/Shipping Methods/element.template
+element/Text/element.template
+element/Variant Options Listing/element.js
+element/Variant Options Listing/element.template
+element/Variant Options With Dispatch/element.js
+element/Variant Options With Dispatch/element.template
+element/Volume Pricing/element.template
+global/hc.cart.dynamicproperties.app.js
+global/hc.constants.js
+global/hc.ui.functions.js
+global/hc.ui.paymentViewModel.js
+global/hc51degrees.js
+global/profile.checkout.controller.js
+global/profile.registration.controller.js
+global/profile.update.controller.js
+snippets/en/snippets.json
+stack/Popup Stack/instances/Popup Stack/stack-variables.less
+stack/Popup Stack/instances/Popup Stack/stack.less
+theme/Dark Theme/additionalStyles.less
+theme/Dark Theme/styles.less
+theme/Dark Theme/variables.less
+theme/HomeChoice Demo/additionalStyles.less
+theme/HomeChoice Demo/styles.less
+theme/HomeChoice Demo/variables.less
+theme/HomeChoice Theme/additionalStyles.less
+theme/HomeChoice Theme/styles.less
+theme/HomeChoice Theme/variables.less
+theme/Mono Theme/additionalStyles.less
+theme/Mono Theme/styles.less
+theme/Mono Theme/variables.less
+widget/Asset Details/instances/Asset Details Widget/display.template
+widget/Asset Details/instances/Asset Details Widget/locales/en/ns.assetdetails.json
+widget/Asset Details/instances/Asset Details Widget/widget.less
+widget/Asset Details/instances/Asset Details Widget/widgetInstanceMetadata.json
+widget/Breadcrumb/element/Breadcrumb Links/element.template
+widget/Breadcrumb/instances/No Search Results Breadcrumb v3/display.template
+widget/Breadcrumb/instances/No Search Results Breadcrumb v3/locales/en/ns.breadcrumb.json
+widget/Breadcrumb/instances/No Search Results Breadcrumb v3/widget.less
+widget/Breadcrumb/instances/No Search Results Breadcrumb v3/widgetInstanceMetadata.json
+widget/Breadcrumb/instances/Product Details Breadcrumb/display.template
+widget/Breadcrumb/instances/Product Details Breadcrumb/locales/en/ns.breadcrumb.json
+widget/Breadcrumb/instances/Product Details Breadcrumb/widget.less
+widget/Breadcrumb/instances/Product Details Breadcrumb/widgetInstanceMetadata.json
+widget/Breadcrumb/instances/Product Listing Breadcrumb v3/display.template
+widget/Breadcrumb/instances/Product Listing Breadcrumb v3/locales/en/ns.breadcrumb.json
+widget/Breadcrumb/instances/Product Listing Breadcrumb v3/widget.less
+widget/Breadcrumb/instances/Product Listing Breadcrumb v3/widgetInstanceMetadata.json
+widget/Breadcrumb/instances/Product Listing Breadcrumb/display.template
+widget/Breadcrumb/instances/Product Listing Breadcrumb/locales/en/ns.breadcrumb.json
+widget/Breadcrumb/instances/Product Listing Breadcrumb/widget.less
+widget/Breadcrumb/instances/Product Listing Breadcrumb/widgetInstanceMetadata.json
+widget/Breadcrumb/versions/1/element/Breadcrumb Links/element.template
+widget/Cart Dynamic Properties Global/instances/Cart Dynamic Properties Global/widget.less
+widget/Cart Dynamic Properties Global/instances/Cart Dynamic Properties Global/widgetInstanceMetadata.json
+widget/Cart Shipping/instances/Cart Shipping (copy)/display.template
+widget/Cart Shipping/instances/Cart Shipping (copy)/locales/en/ns.cartshippingdetails.json
+widget/Cart Shipping/instances/Cart Shipping (copy)/widget.less
+widget/Cart Shipping/instances/Cart Shipping (copy)/widgetInstanceMetadata.json
+widget/Cart Shipping/instances/Cart Shipping/display.template
+widget/Cart Shipping/instances/Cart Shipping/locales/en/ns.cartshippingdetails.json
+widget/Cart Shipping/instances/Cart Shipping/widget.less
+widget/Cart Shipping/instances/Cart Shipping/widgetInstanceMetadata.json
+widget/Cart Shipping/versions/6/element/Shipping Address/element.template
+widget/Cart Shipping/versions/6/element/Shipping Options/element.template
+widget/Cart Shipping/versions/6/element/Shipping Title/element.template
+widget/Cart Summary/instances/Cart Summary - Latest/display.template
+widget/Cart Summary/instances/Cart Summary - Latest/locales/en/ns.checkoutcartsummary.json
+widget/Cart Summary/instances/Cart Summary - Latest/widget.less
+widget/Cart Summary/instances/Cart Summary - Latest/widgetInstanceMetadata.json
+widget/Cart Summary/instances/Cart Summary 18A/display.template
+widget/Cart Summary/instances/Cart Summary 18A/locales/en/ns.checkoutcartsummary.json
+widget/Cart Summary/instances/Cart Summary 18A/widget.less
+widget/Cart Summary/instances/Cart Summary 18A/widgetInstanceMetadata.json
+widget/Cart Summary/instances/Cart Summary Widget - v7/display.template
+widget/Cart Summary/instances/Cart Summary Widget - v7/locales/en/ns.checkoutcartsummary.json
+widget/Cart Summary/instances/Cart Summary Widget - v7/widget.less
+widget/Cart Summary/instances/Cart Summary Widget - v7/widgetInstanceMetadata.json
+widget/Cart Summary/instances/Cart Summary Widget/display.template
+widget/Cart Summary/instances/Cart Summary Widget/locales/en/ns.checkoutcartsummary.json
+widget/Cart Summary/instances/Cart Summary Widget/widget.less
+widget/Cart Summary/instances/Cart Summary Widget/widgetInstanceMetadata.json
+widget/Checkout - Information Panel Widget/instances/Checkout Info Panel/display.template
+widget/Checkout - Information Panel Widget/instances/Checkout Info Panel/locales/en/ns.checkoutinfopanel.json
+widget/Checkout - Information Panel Widget/instances/Checkout Info Panel/widget.less
+widget/Checkout - Information Panel Widget/instances/Checkout Info Panel/widgetInstanceMetadata.json
+widget/Checkout Cart Order Summary - Terms/instances/New Checkout Summary - Terms/display.template
+widget/Checkout Cart Order Summary - Terms/instances/New Checkout Summary - Terms/locales/en/ns.checkoutcartsummary_v7-terms.json
+widget/Checkout Cart Order Summary - Terms/instances/New Checkout Summary - Terms/widget.less
+widget/Checkout Cart Order Summary - Terms/instances/New Checkout Summary - Terms/widgetInstanceMetadata.json
+widget/Checkout Cart Order Summary - Terms/js/checkout-cart-summary.js
+widget/Checkout Cart Order Summary - Terms/widget.less
+widget/Child Collection List Widget/instances/hc.child.categories/display.template
+widget/Child Collection List Widget/instances/hc.child.categories/widget.less
+widget/Collection Navigation/instances/Collection Navigation Widget/display.template
+widget/Collection Navigation/instances/Collection Navigation Widget/locales/en/ns.megamenu.json
+widget/Collection Navigation/instances/Collection Navigation Widget/widget.less
+widget/Collection Navigation/instances/Collection Navigation Widget/widgetInstanceMetadata.json
+widget/Collection/element/Collection Carousel/element.template
+widget/Collection/instances/JW Collection/display.template
+widget/Collection/instances/JW Collection/locales/en/ns.collection.json
+widget/Collection/instances/JW Collection/widget.less
+widget/Collection/instances/JW Collection/widgetInstanceMetadata.json
+widget/Contact Me - Call Back Request/instances/Contact Me - Request Call Back/display.template
+widget/Contact Me - Call Back Request/instances/Contact Me - Request Call Back/widget.less
+widget/Contact Me - Call Back Request/instances/Contact Me - Request Call Back/widgetInstanceMetadata.json
+widget/Contact Me - Email Us/instances/Contact Me - Email Us/display.template
+widget/Contact Me - Email Us/instances/Contact Me - Email Us/widget.less
+widget/Contact Me - Email Us/instances/Contact Me - Email Us/widgetInstanceMetadata.json
+widget/Custom Customer Profile Widget/instances/My Account - Profile/display.template
+widget/Custom Customer Profile Widget/instances/My Account - Profile/locales/en/ns.customcustomerprofile.json
+widget/Custom Customer Profile Widget/instances/My Account - Profile/widget.less
+widget/Custom Customer Profile Widget/instances/My Account - Profile/widgetInstanceMetadata.json
+widget/Custom Promotion Widget/instances/Custom Promotions - Checkout/display.template
+widget/Custom Promotion Widget/instances/Custom Promotions - Checkout/locales/en/ns.custompromotion.json
+widget/Custom Promotion Widget/instances/Custom Promotions - Checkout/widget.less
+widget/Custom Promotion Widget/instances/Custom Promotions - Checkout/widgetInstanceMetadata.json
+widget/Customer Address Book/instances/Customer Address Book - Latest/display.template
+widget/Customer Address Book/instances/Customer Address Book - Latest/locales/en/ns.checkoutaddressbook.json
+widget/Customer Address Book/instances/Customer Address Book - Latest/widget.less
+widget/Customer Address Book/instances/Customer Address Book - Latest/widgetInstanceMetadata.json
+widget/Customer Address Book/instances/Customer Address Book - v13/display.template
+widget/Customer Address Book/instances/Customer Address Book - v13/locales/en/ns.checkoutaddressbook.json
+widget/Customer Address Book/instances/Customer Address Book - v13/widget.less
+widget/Customer Address Book/instances/Customer Address Book - v13/widgetInstanceMetadata.json
+widget/Customer Address Book/instances/Customer Address Book/display.template
+widget/Customer Address Book/instances/Customer Address Book/locales/en/ns.checkoutaddressbook.json
+widget/Customer Address Book/instances/Customer Address Book/widget.less
+widget/Customer Address Book/instances/Customer Address Book/widgetInstanceMetadata.json
+widget/Customer Profile/instances/Customer Profile Widget/display.template
+widget/Customer Profile/instances/Customer Profile Widget/locales/en/ns.customerprofile.json
+widget/Customer Profile/instances/Customer Profile Widget/widget.less
+widget/Customer Profile/instances/Customer Profile Widget/widgetInstanceMetadata.json
+widget/CyberSource Payment Authorization/instances/CyberSource Payment Authorization Widget - Latest/display.template
+widget/CyberSource Payment Authorization/instances/CyberSource Payment Authorization Widget - Latest/locales/en/ns.cybersourcepaymentauthorization.json
+widget/CyberSource Payment Authorization/instances/CyberSource Payment Authorization Widget - Latest/widget.less
+widget/CyberSource Payment Authorization/instances/CyberSource Payment Authorization Widget - Latest/widgetInstanceMetadata.json
+widget/Footer/instances/Footer Widget (copy)/display.template
+widget/Footer/instances/Footer Widget (copy)/locales/en/ns.footer.json
+widget/Footer/instances/Footer Widget (copy)/widget.less
+widget/Footer/instances/Footer Widget (copy)/widgetInstanceMetadata.json
+widget/Footer/instances/Footer Widget/display.template
+widget/Footer/instances/Footer Widget/locales/en/ns.footer.json
+widget/Footer/instances/Footer Widget/widget.less
+widget/Footer/instances/Footer Widget/widgetInstanceMetadata.json
+widget/Gift Card/instances/Gift Card - Latest/display.template
+widget/Gift Card/instances/Gift Card - Latest/locales/en/ns.giftcard.json
+widget/Gift Card/instances/Gift Card - Latest/widget.less
+widget/Gift Card/instances/Gift Card - Latest/widgetInstanceMetadata.json
+widget/Gift Card/instances/Gift Card Widget/display.template
+widget/Gift Card/instances/Gift Card Widget/locales/en/ns.giftcard.json
+widget/Gift Card/instances/Gift Card Widget/widget.less
+widget/Gift Card/instances/Gift Card Widget/widgetInstanceMetadata.json
+widget/Gift Card/versions/2/element/Gift Card Fields/element.template
+widget/Gift Card/versions/4/element/Gift Card Fields/element.template
+widget/Global SEO/instances/Global SEO/widget.less
+widget/Global SEO/instances/Global SEO/widgetInstanceMetadata.json
+widget/Header/element/Cart Link/element.template
+widget/Header/element/Currency/element.template
+widget/Header/element/Language/element.template
+widget/Header/element/Links/element.template
+widget/Header/element/Logo/element.template
+widget/Header/instances/Header - Basic - Latest/display.template
+widget/Header/instances/Header - Basic - Latest/locales/en/ns.headerwidget.json
+widget/Header/instances/Header - Basic - Latest/widget.less
+widget/Header/instances/Header - Basic - Latest/widgetInstanceMetadata.json
+widget/Header/instances/Header - Basic Minimal/display.template
+widget/Header/instances/Header - Basic Minimal/locales/en/ns.headerwidget.json
+widget/Header/instances/Header - Basic Minimal/widget.less
+widget/Header/instances/Header - Basic Minimal/widgetInstanceMetadata.json
+widget/Header/instances/Header - Basic Widget/display.template
+widget/Header/instances/Header - Basic Widget/locales/en/ns.headerwidget.json
+widget/Header/instances/Header - Basic Widget/widget.less
+widget/Header/instances/Header - Basic Widget/widgetInstanceMetadata.json
+widget/Header/instances/Header Widget - SSO - Marcelo/display.template
+widget/Header/instances/Header Widget - SSO - Marcelo/locales/en/ns.headerwidget.json
+widget/Header/instances/Header Widget - SSO - Marcelo/widget.less
+widget/Header/instances/Header Widget - SSO - Marcelo/widgetInstanceMetadata.json
+widget/Header/instances/Header Widget SSO/display.template
+widget/Header/instances/Header Widget SSO/locales/en/ns.headerwidget.json
+widget/Header/instances/Header Widget SSO/widget.less
+widget/Header/instances/Header Widget SSO/widgetInstanceMetadata.json
+widget/Header/instances/Header Widget v10/display.template
+widget/Header/instances/Header Widget v10/locales/en/ns.headerwidget.json
+widget/Header/instances/Header Widget v10/widget.less
+widget/Header/instances/Header Widget v10/widgetInstanceMetadata.json
+widget/Header/instances/Header Widget/display.template
+widget/Header/instances/Header Widget/locales/en/ns.headerwidget.json
+widget/Header/instances/Header Widget/widget.less
+widget/Header/instances/Header Widget/widgetInstanceMetadata.json
+widget/Header/instances/Header v9/display.template
+widget/Header/instances/Header v9/locales/en/ns.headerwidget.json
+widget/Header/instances/Header v9/widget.less
+widget/Header/instances/Header v9/widgetInstanceMetadata.json
+widget/Header/instances/OOTB Login Register Links/display.template
+widget/Header/instances/OOTB Login Register Links/locales/en/ns.headerwidget.json
+widget/Header/instances/OOTB Login Register Links/widget.less
+widget/Header/instances/OOTB Login Register Links/widgetInstanceMetadata.json
+widget/Header/versions/4/element/Cart Link/element.template
+widget/Header/versions/4/element/Currency/element.template
+widget/Header/versions/4/element/Language/element.template
+widget/Header/versions/4/element/Links/element.template
+widget/Header/versions/4/element/Logo/element.template
+widget/Header/versions/8/element/Cart Link/element.template
+widget/Header/versions/8/element/Currency/element.template
+widget/Header/versions/8/element/Language/element.template
+widget/Header/versions/8/element/Links/element.template
+widget/Header/versions/8/element/Logo/element.template
+widget/Header/versions/9/element/Cart Link/element.template
+widget/Header/versions/9/element/Currency/element.template
+widget/Header/versions/9/element/Language/element.template
+widget/Header/versions/9/element/Links/element.template
+widget/Header/versions/9/element/Logo/element.template
+widget/HomeChoice Email Sign Up Widget/element/Email Sign Up/element.template
+widget/HomeChoice Email Sign Up Widget/element/Social Media Icons/element.template
+widget/HomeChoice Email Sign Up Widget/instances/HC. Email Signup/display.template
+widget/HomeChoice Email Sign Up Widget/instances/HC. Email Signup/locales/en/ns.signupwidget.json
+widget/HomeChoice Email Sign Up Widget/instances/HC. Email Signup/widget.less
+widget/HomeChoice Email Sign Up Widget/instances/HC. Email Signup/widgetInstanceMetadata.json
+widget/HomeChoice Sign Up Widget/element/Email Sign Up/element.template
+widget/HomeChoice Sign Up Widget/element/Social Media Icons/element.template
+widget/Homechoice - Blocking Overcommit/instances/HC Blocking Overcommit/display.template
+widget/Homechoice - Blocking Overcommit/instances/HC Blocking Overcommit/widget.less
+widget/Homechoice - Blocking Overcommit/instances/HC Blocking Overcommit/widgetInstanceMetadata.json
+widget/Homechoice - Catalogue Quick Order/instances/Homechoice - Catalogue Quick Order (In dev)/display.template
+widget/Homechoice - Catalogue Quick Order/instances/Homechoice - Catalogue Quick Order (In dev)/widget.less
+widget/Homechoice - Catalogue Quick Order/instances/Homechoice - Catalogue Quick Order (In dev)/widgetInstanceMetadata.json
+widget/Homechoice - Catalogue Quick Order/js/homechoice-cataloguequickorder.js
+widget/Homechoice - Collection More Info/instances/Collection Info/display.template
+widget/Homechoice - Collection More Info/instances/Collection Info/locales/en/ns.hccollectionmoreinfo.json
+widget/Homechoice - Collection More Info/instances/Collection Info/widget.less
+widget/Homechoice - Collection More Info/instances/Collection Info/widgetInstanceMetadata.json
+widget/Homechoice - Collection Skinny Banner/instances/Colelction Skinny Banner/display.template
+widget/Homechoice - Collection Skinny Banner/instances/Colelction Skinny Banner/locales/en/ns.hccollectionskinnybanner.json
+widget/Homechoice - Collection Skinny Banner/instances/Colelction Skinny Banner/widget.less
+widget/Homechoice - Collection Skinny Banner/instances/Colelction Skinny Banner/widgetInstanceMetadata.json
+widget/Homechoice - Collection Skinny Banner/js/collectionSkinnyBanner.js
+widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory6/display.template
+widget/Homechoice - Content Block Vertical/config/configMetadata.json
+widget/Homechoice - Content Block Vertical/config/locales/en.json
+widget/Homechoice - Content Block Vertical/js/main.js
+widget/Homechoice - Device Detection/instances/HC Device Detection/display.template
+widget/Homechoice - Device Detection/instances/HC Device Detection/locales/en/ns.hcdevicedetection.json
+widget/Homechoice - Device Detection/instances/HC Device Detection/widget.less
+widget/Homechoice - Device Detection/instances/HC Device Detection/widgetInstanceMetadata.json
+widget/Homechoice - Document Collection - ArticlePage/instances/Document Collection - Article/display.template
+widget/Homechoice - Document Collection - ArticlePage/instances/Document Collection - Article/locales/en/ns.hcdocumentcollectionarticlepage.json
+widget/Homechoice - Document Collection - ArticlePage/instances/Document Collection - Article/widget.less
+widget/Homechoice - Document Collection - ArticlePage/instances/Document Collection - Article/widgetInstanceMetadata.json
+widget/Homechoice - Document Collection - Progress/instances/Document Collection - Progress/display.template
+widget/Homechoice - Document Collection - Progress/instances/Document Collection - Progress/locales/en/ns.hcdocumentcollectionprogress.json
+widget/Homechoice - Document Collection - Progress/instances/Document Collection - Progress/widget.less
+widget/Homechoice - Document Collection - Progress/instances/Document Collection - Progress/widgetInstanceMetadata.json
+widget/Homechoice - Document Collection - Thank You/instances/Document Collection - Thank You/display.template
+widget/Homechoice - Document Collection - Thank You/instances/Document Collection - Thank You/locales/en/ns.hcdocumentcollectionthankyou.json
+widget/Homechoice - Document Collection - Thank You/instances/Document Collection - Thank You/widgetInstanceMetadata.json
+widget/Homechoice - My Orders - Details/instances/Order Details Widget/display.template
+widget/Homechoice - My Orders - Details/instances/Order Details Widget/locales/en/ns.accountorderdetailsnew.json
+widget/Homechoice - My Orders - Details/instances/Order Details Widget/widget.less
+widget/Homechoice - My Orders - Details/instances/Order Details Widget/widgetInstanceMetadata.json
+widget/Homechoice - PDP Shared Content/instances/PDP Shared Content/display.template
+widget/Homechoice - PDP Shared Content/instances/PDP Shared Content/locales/en/ns.hcpdpsharedcontent.json
+widget/Homechoice - PDP Shared Content/instances/PDP Shared Content/widget.less
+widget/Homechoice - PDP Shared Content/instances/PDP Shared Content/widgetInstanceMetadata.json
+widget/Homechoice - Quick Order Banner/instances/HC Quick Order Banner/display.template
+widget/Homechoice - Quick Order Banner/instances/HC Quick Order Banner/locales/en/ns.hcquickorderbanner.json
+widget/Homechoice - Quick Order Banner/instances/HC Quick Order Banner/widget.less
+widget/Homechoice - Quick Order Banner/instances/HC Quick Order Banner/widgetInstanceMetadata.json
+widget/Homechoice - Skinny Banner/instances/HP Skinny Banner/display.template
+widget/Homechoice - Skinny Banner/instances/HP Skinny Banner/locales/en/ns.hcskinnybanner.json
+widget/Homechoice - Skinny Banner/instances/HP Skinny Banner/widget.less
+widget/Homechoice - Skinny Banner/instances/HP Skinny Banner/widgetInstanceMetadata.json
+widget/Homechoice Collection Navigation (Mobile Enhanced)/instances/hc.CollectionNavigation (Mobile Enhanced)/widget.less
+widget/Homechoice Footer/instances/hc footer fix/display.template
+widget/Homechoice Footer/instances/hc.footer.widget.working/display.template
+widget/Login - Checkout/instances/Login - Checkout - v5/display.template
+widget/Login - Checkout/instances/Login - Checkout - v5/locales/en/ns.checkoutregistration.json
+widget/Login - Checkout/instances/Login - Checkout - v5/widget.less
+widget/Login - Checkout/instances/Login - Checkout - v5/widgetInstanceMetadata.json
+widget/Login - Checkout/instances/Login - Checkout/display.template
+widget/Login - Checkout/instances/Login - Checkout/locales/en/ns.checkoutregistration.json
+widget/Login - Checkout/instances/Login - Checkout/widget.less
+widget/Login - Checkout/instances/Login - Checkout/widgetInstanceMetadata.json
+widget/Login - Checkout/instances/Login Checkout - Latest/display.template
+widget/Login - Checkout/instances/Login Checkout - Latest/locales/en/ns.checkoutregistration.json
+widget/Login - Checkout/instances/Login Checkout - Latest/widget.less
+widget/Login - Checkout/instances/Login Checkout - Latest/widgetInstanceMetadata.json
+widget/MyGate Payer Authorization/instances/MyGate Payer Authorization/display.template
+widget/MyGate Payer Authorization/instances/MyGate Payer Authorization/locales/en/ns.mygatepaymentauthorization.json
+widget/MyGate Payer Authorization/instances/MyGate Payer Authorization/widget.less
+widget/MyGate Payer Authorization/instances/MyGate Payer Authorization/widgetInstanceMetadata.json
+widget/MyGate Payment UI/instances/MyGate Payment UI/widget.less
+widget/MyGate Payment UI/instances/MyGate Payment UI/widgetInstanceMetadata.json
+widget/No Search Results/instances/No Search Results Widget/display.template
+widget/No Search Results/instances/No Search Results Widget/locales/en/ns.nosearchresults.json
+widget/No Search Results/instances/No Search Results Widget/widget.less
+widget/No Search Results/instances/No Search Results Widget/widgetInstanceMetadata.json
+widget/Notifications/element/Notifications Message Box/element.template
+widget/Notifications/instances/Notification Widget - latest/display.template
+widget/Notifications/instances/Notification Widget - latest/widget.less
+widget/Notifications/instances/Notification Widget - latest/widgetInstanceMetadata.json
+widget/Notifications/instances/Notifications Widget/display.template
+widget/Notifications/instances/Notifications Widget/widget.less
+widget/Notifications/instances/Notifications Widget/widgetInstanceMetadata.json
+widget/Order Confirmation Summary Terms/instances/Order Confirmation Summary Terms - Linear/display.template
+widget/Order Confirmation Summary Terms/instances/Order Confirmation Summary Terms - Linear/locales/en/ns.confirmationsummaryterms.json
+widget/Order Confirmation Summary Terms/instances/Order Confirmation Summary Terms - Linear/widget.less
+widget/Order Confirmation Summary Terms/instances/Order Confirmation Summary Terms - Linear/widgetInstanceMetadata.json
+widget/Order Confirmation Summary Terms/instances/Order Confirmation Summary Terms/display.template
+widget/Order Confirmation Summary Terms/instances/Order Confirmation Summary Terms/locales/en/ns.confirmationsummaryterms.json
+widget/Order Confirmation Summary Terms/instances/Order Confirmation Summary Terms/widget.less
+widget/Order Confirmation Summary Terms/instances/Order Confirmation Summary Terms/widgetInstanceMetadata.json
+widget/Order Confirmation Summary Terms/js/confirmationSummaryTerms.js
+widget/Order Confirmation Summary/instances/Order Confirmation Summary Widget/display.template
+widget/Order Confirmation Summary/instances/Order Confirmation Summary Widget/locales/en/ns.confirmationsummary.json
+widget/Order Confirmation Summary/instances/Order Confirmation Summary Widget/widget.less
+widget/Order Confirmation Summary/instances/Order Confirmation Summary Widget/widgetInstanceMetadata.json
+widget/Order Confirmation/instances/Order Confirmation - Linear - Address only/display.template
+widget/Order Confirmation/instances/Order Confirmation - Linear - Address only/locales/en/ns.checkoutconfirmation.json
+widget/Order Confirmation/instances/Order Confirmation - Linear - Address only/widget.less
+widget/Order Confirmation/instances/Order Confirmation - Linear - Address only/widgetInstanceMetadata.json
+widget/Order Confirmation/instances/Order Confirmation - Linear - Message and Order No/display.template
+widget/Order Confirmation/instances/Order Confirmation - Linear - Message and Order No/locales/en/ns.checkoutconfirmation.json
+widget/Order Confirmation/instances/Order Confirmation - Linear - Message and Order No/widget.less
+widget/Order Confirmation/instances/Order Confirmation - Linear - Message and Order No/widgetInstanceMetadata.json
+widget/Order Confirmation/instances/Order Confirmation - Linear - Your Order/display.template
+widget/Order Confirmation/instances/Order Confirmation - Linear - Your Order/locales/en/ns.checkoutconfirmation.json
+widget/Order Confirmation/instances/Order Confirmation - Linear - Your Order/widget.less
+widget/Order Confirmation/instances/Order Confirmation - Linear - Your Order/widgetInstanceMetadata.json
+widget/Order Confirmation/instances/Order Confirmation - Thank You Message/display.template
+widget/Order Confirmation/instances/Order Confirmation - Thank You Message/locales/en/ns.checkoutconfirmation.json
+widget/Order Confirmation/instances/Order Confirmation - Thank You Message/widget.less
+widget/Order Confirmation/instances/Order Confirmation - Thank You Message/widgetInstanceMetadata.json
+widget/Order Confirmation/instances/Order Confirmation - Your Order/display.template
+widget/Order Confirmation/instances/Order Confirmation - Your Order/locales/en/ns.checkoutconfirmation.json
+widget/Order Confirmation/instances/Order Confirmation - Your Order/widget.less
+widget/Order Confirmation/instances/Order Confirmation - Your Order/widgetInstanceMetadata.json
+widget/Order Confirmation/instances/Order Confirmation Address Only/display.template
+widget/Order Confirmation/instances/Order Confirmation Address Only/locales/en/ns.checkoutconfirmation.json
+widget/Order Confirmation/instances/Order Confirmation Address Only/widget.less
+widget/Order Confirmation/instances/Order Confirmation Address Only/widgetInstanceMetadata.json
+widget/Order Confirmation/instances/Order Confirmation David Lee Test/display.template
+widget/Order Confirmation/instances/Order Confirmation David Lee Test/locales/en/ns.checkoutconfirmation.json
+widget/Order Confirmation/instances/Order Confirmation David Lee Test/widget.less
+widget/Order Confirmation/instances/Order Confirmation David Lee Test/widgetInstanceMetadata.json
+widget/Order Confirmation/instances/Order Confirmation Widget!/display.template
+widget/Order Confirmation/instances/Order Confirmation Widget!/locales/en/ns.checkoutconfirmation.json
+widget/Order Confirmation/instances/Order Confirmation Widget!/widget.less
+widget/Order Confirmation/instances/Order Confirmation Widget!/widgetInstanceMetadata.json
+widget/Order Confirmation/instances/Order Confirmation Widget/display.template
+widget/Order Confirmation/instances/Order Confirmation Widget/locales/en/ns.checkoutconfirmation.json
+widget/Order Confirmation/instances/Order Confirmation Widget/widget.less
+widget/Order Confirmation/instances/Order Confirmation Widget/widgetInstanceMetadata.json
+widget/Order Confirmation/instances/Order Confirmation version 7/display.template
+widget/Order Confirmation/instances/Order Confirmation version 7/locales/en/ns.checkoutconfirmation.json
+widget/Order Confirmation/instances/Order Confirmation version 7/widget.less
+widget/Order Confirmation/instances/Order Confirmation version 7/widgetInstanceMetadata.json
+widget/Order Details with Additional Info/instances/Order Details with Additional Info Widget/display.template
+widget/Order Details with Additional Info/instances/Order Details with Additional Info Widget/locales/en/ns.accountorderdetails.json
+widget/Order Details with Additional Info/instances/Order Details with Additional Info Widget/widget.less
+widget/Order Details with Additional Info/instances/Order Details with Additional Info Widget/widgetInstanceMetadata.json
+widget/Order History/instances/Order History Widget - v7/display.template
+widget/Order History/instances/Order History Widget - v7/locales/en/ns.orderhistorywidget.json
+widget/Order History/instances/Order History Widget - v7/widget.less
+widget/Order History/instances/Order History Widget - v7/widgetInstanceMetadata.json
+widget/Order Summary - Checkout/instances/Order Summary - Checkout - Latest/display.template
+widget/Order Summary - Checkout/instances/Order Summary - Checkout - Latest/locales/en/ns.checkoutordersummary.json
+widget/Order Summary - Checkout/instances/Order Summary - Checkout - Latest/widget.less
+widget/Order Summary - Checkout/instances/Order Summary - Checkout - Latest/widgetInstanceMetadata.json
+widget/Order Summary - Checkout/instances/Order Summary - Checkout/display.template
+widget/Order Summary - Checkout/instances/Order Summary - Checkout/locales/en/ns.checkoutordersummary.json
+widget/Order Summary - Checkout/instances/Order Summary - Checkout/widget.less
+widget/Order Summary - Checkout/instances/Order Summary - Checkout/widgetInstanceMetadata.json
+widget/Order Summary - Checkout/instances/Order Summary Checkout - v13/display.template
+widget/Order Summary - Checkout/instances/Order Summary Checkout - v13/locales/en/ns.checkoutordersummary.json
+widget/Order Summary - Checkout/instances/Order Summary Checkout - v13/widget.less
+widget/Order Summary - Checkout/instances/Order Summary Checkout - v13/widgetInstanceMetadata.json
+widget/Order Summary - Checkout/instances/Order Summary Checkout 18A/display.template
+widget/Order Summary - Checkout/instances/Order Summary Checkout 18A/locales/en/ns.checkoutordersummary.json
+widget/Order Summary - Checkout/instances/Order Summary Checkout 18A/widget.less
+widget/Order Summary - Checkout/instances/Order Summary Checkout 18A/widgetInstanceMetadata.json
+widget/Order Summary/instances/Order Summary Widget (copy)/display.template
+widget/Order Summary/instances/Order Summary Widget (copy)/locales/en/ns.ordersummary.json
+widget/Order Summary/instances/Order Summary Widget (copy)/widget.less
+widget/Order Summary/instances/Order Summary Widget (copy)/widgetInstanceMetadata.json
+widget/Order Summary/instances/Order Summary Widget/display.template
+widget/Order Summary/instances/Order Summary Widget/locales/en/ns.ordersummary.json
+widget/Order Summary/instances/Order Summary Widget/widget.less
+widget/Order Summary/instances/Order Summary Widget/widgetInstanceMetadata.json
+widget/Overlayed Guided Navigation/instances/Overlay Guided Navigation/display.template
+widget/Overlayed Guided Navigation/instances/Overlay Guided Navigation/locales/en/ns.overlayedguidednavigation.json
+widget/Overlayed Guided Navigation/instances/Overlay Guided Navigation/widget.less
+widget/Overlayed Guided Navigation/instances/Overlay Guided Navigation/widgetInstanceMetadata.json
+widget/Overlayed Guided Navigation/instances/Overlayed Guided Navigation Widget/display.template
+widget/Overlayed Guided Navigation/instances/Overlayed Guided Navigation Widget/locales/en/ns.overlayedguidednavigation.json
+widget/Overlayed Guided Navigation/instances/Overlayed Guided Navigation Widget/widget.less
+widget/Overlayed Guided Navigation/instances/Overlayed Guided Navigation Widget/widgetInstanceMetadata.json
+widget/Page Not Found/instances/Page Not Found Widget/display.template
+widget/Page Not Found/instances/Page Not Found Widget/locales/en/ns.404widget.json
+widget/Page Not Found/instances/Page Not Found Widget/widget.less
+widget/Page Not Found/instances/Page Not Found Widget/widgetInstanceMetadata.json
+widget/Payment Details/instances/Payment Details - Latest/display.template
+widget/Payment Details/instances/Payment Details - Latest/locales/en/ns.checkoutpaymentdetails.json
+widget/Payment Details/instances/Payment Details - Latest/widget.less
+widget/Payment Details/instances/Payment Details - Latest/widgetInstanceMetadata.json
+widget/Payment Details/instances/Payment Details - v10/display.template
+widget/Payment Details/instances/Payment Details - v10/locales/en/ns.checkoutpaymentdetails.json
+widget/Payment Details/instances/Payment Details - v10/widget.less
+widget/Payment Details/instances/Payment Details - v10/widgetInstanceMetadata.json
+widget/Payment Details/instances/Payment Details/display.template
+widget/Payment Details/instances/Payment Details/locales/en/ns.checkoutpaymentdetails.json
+widget/Payment Details/instances/Payment Details/widget.less
+widget/Payment Details/instances/Payment Details/widgetInstanceMetadata.json
+widget/Payment Gateway Options/instances/Payment Gateway/display.template
+widget/Payment Gateway Options/instances/Payment Gateway/locales/en/ns.paymentgatewayoptions.json
+widget/Payment Gateway Options/instances/Payment Gateway/widget.less
+widget/Payment Gateway Options/instances/Payment Gateway/widgetInstanceMetadata.json
+widget/Payment Gateway Options/versions/4/element/Cash Payment/element.template
+widget/Payment Gateway Options/versions/4/element/Invoice Payment/element.template
+widget/Payment Gateway Options/versions/4/element/PayU Payment Gateway/element.template
+widget/Product Details Breadcrumb Custom/instances/New Product Details Breadcrumb/display.template
+widget/Product Details Breadcrumb Custom/instances/New Product Details Breadcrumb/locales/en/ns.breadcrumb_custom.json
+widget/Product Details Breadcrumb Custom/instances/New Product Details Breadcrumb/widget.less
+widget/Product Details Breadcrumb Custom/instances/New Product Details Breadcrumb/widgetInstanceMetadata.json
+widget/Product Details/instances/Bedding Product Details Widget/display.template
+widget/Product Details/instances/Bedding Product Details Widget/locales/en/ns.productdetails.json
+widget/Product Details/instances/Bedding Product Details Widget/widget.less
+widget/Product Details/instances/Bedding Product Details Widget/widgetInstanceMetadata.json
+widget/Product Details/instances/Product Details V7 (mobile)/display.template
+widget/Product Details/instances/Product Details V7 (mobile)/locales/en/ns.productdetails.json
+widget/Product Details/instances/Product Details V7 (mobile)/widget.less
+widget/Product Details/instances/Product Details V7 (mobile)/widgetInstanceMetadata.json
+widget/Product Details/instances/Product Details V7/display.template
+widget/Product Details/instances/Product Details V7/locales/en/ns.productdetails.json
+widget/Product Details/instances/Product Details V7/widget.less
+widget/Product Details/instances/Product Details V7/widgetInstanceMetadata.json
+widget/Product Details/instances/Product Details v8 ( OCC v 18A)/display.template
+widget/Product Details/instances/Product Details v8 ( OCC v 18A)/locales/en/ns.productdetails.json
+widget/Product Details/instances/Product Details v8 ( OCC v 18A)/widget.less
+widget/Product Details/instances/Product Details v8 ( OCC v 18A)/widgetInstanceMetadata.json
+widget/Product Details/instances/Product Quick View/display.template
+widget/Product Details/instances/Product Quick View/locales/en/ns.productdetails.json
+widget/Product Details/instances/Product Quick View/widget.less
+widget/Product Details/instances/Product Quick View/widgetInstanceMetadata.json
+widget/Product Details/versions/3/element/Add to Cart Button/element.template
+widget/Product Details/versions/3/element/Add to Wish List Button/element.template
+widget/Product Details/versions/3/element/Alternate Image Selector/element.template
+widget/Product Details/versions/3/element/Back/element.template
+widget/Product Details/versions/3/element/Customize Button/element.template
+widget/Product Details/versions/3/element/Description/element.template
+widget/Product Details/versions/3/element/Entered Text/element.template
+widget/Product Details/versions/3/element/In Stock Message/element.template
+widget/Product Details/versions/3/element/Long Description/element.template
+widget/Product Details/versions/3/element/Name/element.template
+widget/Product Details/versions/3/element/Out Of Stock Message/element.template
+widget/Product Details/versions/3/element/Product Image/element.template
+widget/Product Details/versions/3/element/Product Quantity/element.template
+widget/Product Details/versions/3/element/Shipping Surcharge/element.template
+widget/Product Details/versions/3/element/Social Sharing 2/element.template
+widget/Product Details/versions/3/element/Social Sharing/element.template
+widget/Product Details/versions/3/element/Variant Options/element.template
+widget/Product Details/versions/7/element/Add to Cart Button/element.template
+widget/Product Details/versions/7/element/Add to Wish List Button/element.template
+widget/Product Details/versions/7/element/Alternate Image Selector/element.template
+widget/Product Details/versions/7/element/Back/element.template
+widget/Product Details/versions/7/element/BackOrder Message/element.template
+widget/Product Details/versions/7/element/Customize Button/element.template
+widget/Product Details/versions/7/element/Description/element.template
+widget/Product Details/versions/7/element/Entered Text/element.template
+widget/Product Details/versions/7/element/In Stock Message/element.template
+widget/Product Details/versions/7/element/Long Description/element.template
+widget/Product Details/versions/7/element/Name/element.template
+widget/Product Details/versions/7/element/Out Of Stock Message/element.template
+widget/Product Details/versions/7/element/PreOrder Message/element.template
+widget/Product Details/versions/7/element/Product Image/element.template
+widget/Product Details/versions/7/element/Product Quantity/element.template
+widget/Product Details/versions/7/element/Shipping Surcharge/element.template
+widget/Product Details/versions/7/element/Social Sharing 2/element.template
+widget/Product Details/versions/7/element/Social Sharing/element.template
+widget/Product Details/versions/7/element/Variant Options/element.template
+widget/Product Details/versions/8/element/Add to Cart Button/element.template
+widget/Product Details/versions/8/element/Add to Wish List Button/element.template
+widget/Product Details/versions/8/element/Alternate Image Selector/element.template
+widget/Product Details/versions/8/element/Back/element.template
+widget/Product Details/versions/8/element/BackOrder Message/element.template
+widget/Product Details/versions/8/element/Customize Button/element.template
+widget/Product Details/versions/8/element/Description/element.template
+widget/Product Details/versions/8/element/Entered Text/element.template
+widget/Product Details/versions/8/element/In Stock Message/element.template
+widget/Product Details/versions/8/element/Long Description/element.template
+widget/Product Details/versions/8/element/Name/element.template
+widget/Product Details/versions/8/element/Out Of Stock Message/element.template
+widget/Product Details/versions/8/element/PreOrder Message/element.template
+widget/Product Details/versions/8/element/Product Image/element.template
+widget/Product Details/versions/8/element/Product Quantity/element.template
+widget/Product Details/versions/8/element/Shipping Surcharge/element.template
+widget/Product Details/versions/8/element/Social Sharing 2/element.template
+widget/Product Details/versions/8/element/Social Sharing/element.template
+widget/Product Details/versions/8/element/Variant Options/element.template
+widget/Product Details/versions/9/element/Add to Cart Button/element.template
+widget/Product Details/versions/9/element/Add to Wish List Button/element.template
+widget/Product Details/versions/9/element/Alternate Image Selector/element.template
+widget/Product Details/versions/9/element/Back/element.template
+widget/Product Details/versions/9/element/BackOrder Message/element.template
+widget/Product Details/versions/9/element/Customize Button/element.template
+widget/Product Details/versions/9/element/Description/element.template
+widget/Product Details/versions/9/element/Entered Text/element.template
+widget/Product Details/versions/9/element/In Stock Message/element.template
+widget/Product Details/versions/9/element/Long Description/element.template
+widget/Product Details/versions/9/element/Name/element.template
+widget/Product Details/versions/9/element/Out Of Stock Message/element.template
+widget/Product Details/versions/9/element/PreOrder Message/element.template
+widget/Product Details/versions/9/element/Product Image/element.template
+widget/Product Details/versions/9/element/Product Quantity/element.template
+widget/Product Details/versions/9/element/Shipping Surcharge/element.template
+widget/Product Details/versions/9/element/Social Sharing 2/element.template
+widget/Product Details/versions/9/element/Social Sharing/element.template
+widget/Product Details/versions/9/element/Variant Options/element.template
+widget/Product Listing Widget v9/instances/Product Listing ver.9/display.template
+widget/Product Listing Widget v9/instances/Product Listing ver.9/locales/en/ns.customproductlisting_v9.json
+widget/Product Listing Widget v9/instances/Product Listing ver.9/widget.less
+widget/Product Listing Widget v9/instances/Product Listing ver.9/widgetInstanceMetadata.json
+widget/Product Listing/instances/HomeChoice Search Results Widget/display.template
+widget/Product Listing/instances/HomeChoice Search Results Widget/locales/en/ns.productlisting.json
+widget/Product Listing/instances/HomeChoice Search Results Widget/widget.less
+widget/Product Listing/instances/HomeChoice Search Results Widget/widgetInstanceMetadata.json
+widget/Product Listing/instances/Product Listing 18A/display.template
+widget/Product Listing/instances/Product Listing 18A/locales/en/ns.productlisting.json
+widget/Product Listing/instances/Product Listing 18A/widget.less
+widget/Product Listing/instances/Product Listing 18A/widgetInstanceMetadata.json
+widget/Product Listing/instances/Product Listing Widget v9/display.template
+widget/Product Listing/instances/Product Listing Widget v9/locales/en/ns.productlisting.json
+widget/Product Listing/instances/Product Listing Widget v9/widget.less
+widget/Product Listing/instances/Product Listing Widget v9/widgetInstanceMetadata.json
+widget/Product Listing/instances/Product Listing Widget/display.template
+widget/Product Listing/instances/Product Listing Widget/locales/en/ns.productlisting.json
+widget/Product Listing/instances/Product Listing Widget/widget.less
+widget/Product Listing/instances/Product Listing Widget/widgetInstanceMetadata.json
+widget/Product Recommendations/versions/4/element/Recommendations Carousel/element.template
+widget/Product Recommendations/versions/4/element/Recommendations Title/element.template
+widget/Product Social Meta Tags/instances/Product Social Meta Tags/display.template
+widget/Product Social Meta Tags/instances/Product Social Meta Tags/locales/en/ns.productsocialmetatags.json
+widget/Product Social Meta Tags/instances/Product Social Meta Tags/widget.less
+widget/Product Social Meta Tags/instances/Product Social Meta Tags/widgetInstanceMetadata.json
+widget/Profile - Bank Payment Widget/instances/Bank Payment/display.template
+widget/Profile - Bank Payment Widget/instances/Bank Payment/widget.less
+widget/Profile - Bank Payment Widget/instances/Bank Payment/widgetInstanceMetadata.json
+widget/Profile - Bank Payment Widget/js/profileBankPayment.js
+widget/Profile - Card Payment Widget/display.template
+widget/Profile - Card Payment Widget/instances/Card Payment/display.template
+widget/Profile - Card Payment Widget/instances/Card Payment/locales/en/ns.profilecardpayment.json
+widget/Profile - Card Payment Widget/instances/Card Payment/widget.less
+widget/Profile - Card Payment Widget/instances/Card Payment/widgetInstanceMetadata.json
+widget/Profile - Card Payment Widget/js/profileCardPayment.js
+widget/Profile - Cash Payment Buttons Widget/instances/Cash Payment Buttons/display.template
+widget/Profile - Cash Payment Buttons Widget/instances/Cash Payment Buttons/widget.less
+widget/Profile - Cash Payment Buttons Widget/instances/Cash Payment Buttons/widgetInstanceMetadata.json
+widget/Profile - Cash Payment Buttons Widget/js/profileCashPaymentButtons.js
+widget/Profile - Checkout Buttons Widget/instances/Checkout Buttons/display.template
+widget/Profile - Checkout Buttons Widget/instances/Checkout Buttons/locales/en/ns.profilecheckoutbuttons.json
+widget/Profile - Checkout Buttons Widget/instances/Checkout Buttons/widget.less
+widget/Profile - Checkout Buttons Widget/instances/Checkout Buttons/widgetInstanceMetadata.json
+widget/Profile - Checkout Buttons Widget/js/profileCheckoutButtons.js
+widget/Profile - Checkout Summary/instances/Cart Summary with Shipping/display.template
+widget/Profile - Checkout Summary/instances/Cart Summary with Shipping/locales/en/ns.checkoutsummary.json
+widget/Profile - Checkout Summary/instances/Cart Summary with Shipping/widget.less
+widget/Profile - Checkout Summary/instances/Cart Summary with Shipping/widgetInstanceMetadata.json
+widget/Profile - Checkout Summary/js/checkoutSummary.js
+widget/Profile - Checkout Summary/locales/en/ns.checkoutsummary.json
+widget/Profile - Delivery Address Widget/instances/Delivery Address (copy)/display.template
+widget/Profile - Delivery Address Widget/instances/Delivery Address (copy)/locales/en/ns.profiledeliveryaddress.json
+widget/Profile - Delivery Address Widget/instances/Delivery Address (copy)/widget.less
+widget/Profile - Delivery Address Widget/instances/Delivery Address (copy)/widgetInstanceMetadata.json
+widget/Profile - Delivery Address Widget/instances/Delivery Address/display.template
+widget/Profile - Delivery Address Widget/instances/Delivery Address/locales/en/ns.profiledeliveryaddress.json
+widget/Profile - Delivery Address Widget/instances/Delivery Address/widget.less
+widget/Profile - Delivery Address Widget/instances/Delivery Address/widgetInstanceMetadata.json
+widget/Profile - Employment Details Widget/instances/Employment Details (copy)/display.template
+widget/Profile - Employment Details Widget/instances/Employment Details (copy)/locales/en/ns.profileemploymentdetails.json
+widget/Profile - Employment Details Widget/instances/Employment Details (copy)/widget.less
+widget/Profile - Employment Details Widget/instances/Employment Details (copy)/widgetInstanceMetadata.json
+widget/Profile - Employment Details Widget/instances/Employment Details - Reg Copy/display.template
+widget/Profile - Employment Details Widget/instances/Employment Details - Reg Copy/locales/en/ns.profileemploymentdetails.json
+widget/Profile - Employment Details Widget/instances/Employment Details - Reg Copy/widget.less
+widget/Profile - Employment Details Widget/instances/Employment Details - Reg Copy/widgetInstanceMetadata.json
+widget/Profile - Employment Details Widget/instances/Employment Details/display.template
+widget/Profile - Employment Details Widget/instances/Employment Details/locales/en/ns.profileemploymentdetails.json
+widget/Profile - Employment Details Widget/instances/Employment Details/widget.less
+widget/Profile - Employment Details Widget/instances/Employment Details/widgetInstanceMetadata.json
+widget/Profile - Employment Details Widget/js/profileEmploymentDetails.js
+widget/Profile - Order Summary Checkout/instances/Order Summary - Checkout v13/display.template
+widget/Profile - Order Summary Checkout/instances/Order Summary - Checkout v13/locales/en/ns.ordersummarycheckout.json
+widget/Profile - Order Summary Checkout/instances/Order Summary - Checkout v13/widget.less
+widget/Profile - Order Summary Checkout/instances/Order Summary - Checkout v13/widgetInstanceMetadata.json
+widget/Profile - Order Summary Checkout/js/checkout-order-summary.js
+widget/Profile - Order Summary Checkout/locales/en/ns.ordersummarycheckout.json
+widget/Profile - Place Order Button/display.template
+widget/Profile - Place Order Button/instances/Profile - Checkout Place Order/display.template
+widget/Profile - Place Order Button/instances/Profile - Checkout Place Order/widget.less
+widget/Profile - Place Order Button/instances/Profile - Checkout Place Order/widgetInstanceMetadata.json
+widget/Profile - Place Order Button/js/profile-placeorderbutton.js
+widget/Profile - Place Order Button/widget.less
+widget/Profile - Place Order Button/widgetMetadata.json
+widget/Profile - Progress Widget/instances/Progress/display.template
+widget/Profile - Progress Widget/instances/Progress/locales/en/ns.profilenavprogress.json
+widget/Profile - Progress Widget/instances/Progress/widget.less
+widget/Profile - Progress Widget/instances/Progress/widgetInstanceMetadata.json
+widget/Profile - Thank You Widget/instances/Profile - Thank You Widget/display.template
+widget/Profile - Thank You Widget/instances/Profile - Thank You Widget/locales/en/ns.profilethankyou.json
+widget/Profile - Thank You Widget/instances/Profile - Thank You Widget/widget.less
+widget/Profile - Thank You Widget/instances/Profile - Thank You Widget/widgetInstanceMetadata.json
+widget/Profile Update Controller/instances/Profile Update Controller/widget.less
+widget/Profile Update Controller/instances/Profile Update Controller/widgetInstanceMetadata.json
+widget/Profile Update Controller/js/profileupdatecontroller.js
+widget/Promotion Widget Cart Page/instances/Custom Promotions (Checkout)/display.template
+widget/Promotion Widget Cart Page/instances/Custom Promotions (Checkout)/locales/en/ns.promotioncart.json
+widget/Promotion Widget Cart Page/instances/Custom Promotions (Checkout)/widget.less
+widget/Promotion Widget Cart Page/instances/Custom Promotions (Checkout)/widgetInstanceMetadata.json
+widget/Promotion Widget Cart Page/instances/Custom Promotions/display.template
+widget/Promotion Widget Cart Page/instances/Custom Promotions/locales/en/ns.promotioncart.json
+widget/Promotion Widget Cart Page/instances/Custom Promotions/widget.less
+widget/Promotion Widget Cart Page/instances/Custom Promotions/widgetInstanceMetadata.json
+widget/Promotion Widget Cart Page/instances/Promotions - v1/display.template
+widget/Promotion Widget Cart Page/instances/Promotions - v1/locales/en/ns.promotioncart.json
+widget/Promotion Widget Cart Page/instances/Promotions - v1/widget.less
+widget/Promotion Widget Cart Page/instances/Promotions - v1/widgetInstanceMetadata.json
+widget/Promotion Widget Cart Page/js/promotionCart.js
+widget/Promotion/instances/Promotion Widget Cart Page/display.template
+widget/Promotion/instances/Promotion Widget Cart Page/locales/en/ns.promotion.json
+widget/Promotion/instances/Promotion Widget Cart Page/widget.less
+widget/Promotion/instances/Promotion Widget Cart Page/widgetInstanceMetadata.json
+widget/Related Products/versions/3/element/Related Products Carousel/element.template
+widget/Related Products/versions/3/element/Related Products Title/element.template
+widget/Shopping Cart Order Summary - Terms/instances/Cart Summary/display.template
+widget/Shopping Cart Order Summary - Terms/instances/Cart Summary/locales/en/ns.ordersummary_terms.json
+widget/Shopping Cart Order Summary - Terms/instances/Cart Summary/widget.less
+widget/Shopping Cart Order Summary - Terms/instances/Cart Summary/widgetInstanceMetadata.json
+widget/Shopping Cart Order Summary - Terms/js/orderSummary_Terms.js
+widget/Shopping Cart Widget - Terms - V6/instances/CartItems/display.template
+widget/Shopping Cart Widget - Terms - V6/instances/CartItems/locales/en/ns.shoppingcartsummary_v7-terms.json
+widget/Shopping Cart Widget - Terms - V6/instances/CartItems/widget.less
+widget/Shopping Cart Widget - Terms - V6/instances/CartItems/widgetInstanceMetadata.json
+widget/Shopping Cart Widget - Terms - V6/js/shopping-cart-summary.js
+widget/Utility Widget/instances/Grey Block/display.template
+widget/Utility Widget/instances/Grey Block/widget.less
+widget/Utility Widget/instances/Grey Block/widgetInstanceMetadata.json
+widget/VSG Commerce Google Tag Manager Integration/js/googleTagManager.js
+widget/Web Content/instances/BOTSWANA/display.template
+widget/Web Content/instances/BOTSWANA/widget.less
+widget/Web Content/instances/BOTSWANA/widgetInstanceMetadata.json
+widget/Web Content/instances/Bank Text/display.template
+widget/Web Content/instances/Bank Text/widget.less
+widget/Web Content/instances/Bank Text/widgetInstanceMetadata.json
+widget/Web Content/instances/Bathroom Section Title/display.template
+widget/Web Content/instances/Bathroom Section Title/widget.less
+widget/Web Content/instances/Bathroom Section Title/widgetInstanceMetadata.json
+widget/Web Content/instances/Become a Affiliate/display.template
+widget/Web Content/instances/Become a Affiliate/widget.less
+widget/Web Content/instances/Become a Affiliate/widgetInstanceMetadata.json
+widget/Web Content/instances/Bedroom Section Title/display.template
+widget/Web Content/instances/Bedroom Section Title/widget.less
+widget/Web Content/instances/Bedroom Section Title/widgetInstanceMetadata.json
+widget/Web Content/instances/Brands template/display.template
+widget/Web Content/instances/Brands template/widget.less
+widget/Web Content/instances/Brands template/widgetInstanceMetadata.json
+widget/Web Content/instances/Bulelani Test/display.template
+widget/Web Content/instances/Bulelani Test/widget.less
+widget/Web Content/instances/Bulelani Test/widgetInstanceMetadata.json
+widget/Web Content/instances/Card Text/display.template
+widget/Web Content/instances/Card Text/widget.less
+widget/Web Content/instances/Card Text/widgetInstanceMetadata.json
+widget/Web Content/instances/CheckOut Important Information/display.template
+widget/Web Content/instances/CheckOut Important Information/widget.less
+widget/Web Content/instances/CheckOut Important Information/widgetInstanceMetadata.json
+widget/Web Content/instances/Contact Info/display.template
+widget/Web Content/instances/Contact Info/widget.less
+widget/Web Content/instances/Contact Info/widgetInstanceMetadata.json
+widget/Web Content/instances/Contact Me Options/display.template
+widget/Web Content/instances/Contact Me Options/widget.less
+widget/Web Content/instances/Contact Me Options/widgetInstanceMetadata.json
+widget/Web Content/instances/Credit ImgText/display.template
+widget/Web Content/instances/Credit ImgText/widget.less
+widget/Web Content/instances/Credit ImgText/widgetInstanceMetadata.json
+widget/Web Content/instances/Credit Text/display.template
+widget/Web Content/instances/Credit Text/widget.less
+widget/Web Content/instances/Credit Text/widgetInstanceMetadata.json
+widget/Web Content/instances/Dining Room Section Title/display.template
+widget/Web Content/instances/Dining Room Section Title/widget.less
+widget/Web Content/instances/Dining Room Section Title/widgetInstanceMetadata.json
+widget/Web Content/instances/Earn at HC/display.template
+widget/Web Content/instances/Earn at HC/widget.less
+widget/Web Content/instances/Earn at HC/widgetInstanceMetadata.json
+widget/Web Content/instances/Easy Pay Credit/display.template
+widget/Web Content/instances/Easy Pay Credit/widget.less
+widget/Web Content/instances/Easy Pay Credit/widgetInstanceMetadata.json
+widget/Web Content/instances/Easy Terms Page/display.template
+widget/Web Content/instances/Easy Terms Page/widget.less
+widget/Web Content/instances/Easy Terms Page/widgetInstanceMetadata.json
+widget/Web Content/instances/FAQ Banner/display.template
+widget/Web Content/instances/FAQ Banner/widget.less
+widget/Web Content/instances/FAQ Banner/widgetInstanceMetadata.json
+widget/Web Content/instances/Footer - Minimal/display.template
+widget/Web Content/instances/Footer - Minimal/widget.less
+widget/Web Content/instances/Footer - Minimal/widgetInstanceMetadata.json
+widget/Web Content/instances/Free Delivery - Skinny Banner/display.template
+widget/Web Content/instances/Free Delivery - Skinny Banner/widget.less
+widget/Web Content/instances/Free Delivery - Skinny Banner/widgetInstanceMetadata.json
+widget/Web Content/instances/Get it on credit/display.template
+widget/Web Content/instances/Get it on credit/widget.less
+widget/Web Content/instances/Get it on credit/widgetInstanceMetadata.json
+widget/Web Content/instances/Help You/display.template
+widget/Web Content/instances/Help You/widget.less
+widget/Web Content/instances/Help You/widgetInstanceMetadata.json
+widget/Web Content/instances/How to pay/display.template
+widget/Web Content/instances/How to pay/widget.less
+widget/Web Content/instances/How to pay/widgetInstanceMetadata.json
+widget/Web Content/instances/Kids Bedroom Section Title/display.template
+widget/Web Content/instances/Kids Bedroom Section Title/widget.less
+widget/Web Content/instances/Kids Bedroom Section Title/widgetInstanceMetadata.json
+widget/Web Content/instances/Kitchen-Laundry Section Title (copy)/display.template
+widget/Web Content/instances/Kitchen-Laundry Section Title (copy)/widget.less
+widget/Web Content/instances/Kitchen-Laundry Section Title (copy)/widgetInstanceMetadata.json
+widget/Web Content/instances/Login Register Note/display.template
+widget/Web Content/instances/Login Register Note/widget.less
+widget/Web Content/instances/Login Register Note/widgetInstanceMetadata.json
+widget/Web Content/instances/Lounge Section Title/display.template
+widget/Web Content/instances/Lounge Section Title/widget.less
+widget/Web Content/instances/Lounge Section Title/widgetInstanceMetadata.json
+widget/Web Content/instances/Manage account/display.template
+widget/Web Content/instances/Manage account/widget.less
+widget/Web Content/instances/Manage account/widgetInstanceMetadata.json
+widget/Web Content/instances/NAMIBIA/display.template
+widget/Web Content/instances/NAMIBIA/widget.less
+widget/Web Content/instances/NAMIBIA/widgetInstanceMetadata.json
+widget/Web Content/instances/Online Shopping/display.template
+widget/Web Content/instances/Online Shopping/widget.less
+widget/Web Content/instances/Online Shopping/widgetInstanceMetadata.json
+widget/Web Content/instances/Online Text/display.template
+widget/Web Content/instances/Online Text/widget.less
+widget/Web Content/instances/Online Text/widgetInstanceMetadata.json
+widget/Web Content/instances/Payment Tips/display.template
+widget/Web Content/instances/Payment Tips/widget.less
+widget/Web Content/instances/Payment Tips/widgetInstanceMetadata.json
+widget/Web Content/instances/Payment types/display.template
+widget/Web Content/instances/Payment types/widget.less
+widget/Web Content/instances/Payment types/widgetInstanceMetadata.json
+widget/Web Content/instances/Post text/display.template
+widget/Web Content/instances/Post text/widget.less
+widget/Web Content/instances/Post text/widgetInstanceMetadata.json
+widget/Web Content/instances/Room Tile - Bathroom/display.template
+widget/Web Content/instances/Room Tile - Bathroom/widget.less
+widget/Web Content/instances/Room Tile - Bathroom/widgetInstanceMetadata.json
+widget/Web Content/instances/Room Tile - Bedroom/display.template
+widget/Web Content/instances/Room Tile - Bedroom/widget.less
+widget/Web Content/instances/Room Tile - Bedroom/widgetInstanceMetadata.json
+widget/Web Content/instances/Room Tile - Dining/display.template
+widget/Web Content/instances/Room Tile - Dining/widget.less
+widget/Web Content/instances/Room Tile - Dining/widgetInstanceMetadata.json
+widget/Web Content/instances/Room Tile - Kids/display.template
+widget/Web Content/instances/Room Tile - Kids/widget.less
+widget/Web Content/instances/Room Tile - Kids/widgetInstanceMetadata.json
+widget/Web Content/instances/Room Tile - Kitchen&Laundry/display.template
+widget/Web Content/instances/Room Tile - Kitchen&Laundry/widget.less
+widget/Web Content/instances/Room Tile - Kitchen&Laundry/widgetInstanceMetadata.json
+widget/Web Content/instances/Room Tile - KitchenLaundry/display.template
+widget/Web Content/instances/Room Tile - KitchenLaundry/widget.less
+widget/Web Content/instances/Room Tile - KitchenLaundry/widgetInstanceMetadata.json
+widget/Web Content/instances/Room Tile - Lounge/display.template
+widget/Web Content/instances/Room Tile - Lounge/widget.less
+widget/Web Content/instances/Room Tile - Lounge/widgetInstanceMetadata.json
+widget/Web Content/instances/Section Title/display.template
+widget/Web Content/instances/Section Title/widget.less
+widget/Web Content/instances/Section Title/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByBathroomBanner/display.template
+widget/Web Content/instances/ShopByBathroomBanner/widget.less
+widget/Web Content/instances/ShopByBathroomBanner/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByBathroomBedroom (1-1)/display.template
+widget/Web Content/instances/ShopByBathroomBedroom (1-1)/widget.less
+widget/Web Content/instances/ShopByBathroomBedroom (1-1)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByBedroom (1-1) (copy)/display.template
+widget/Web Content/instances/ShopByBedroom (1-1) (copy)/widget.less
+widget/Web Content/instances/ShopByBedroom (1-1) (copy)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByBedroom (1-1)/display.template
+widget/Web Content/instances/ShopByBedroom (1-1)/widget.less
+widget/Web Content/instances/ShopByBedroom (1-1)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByBedroom (1-2)/display.template
+widget/Web Content/instances/ShopByBedroom (1-2)/widget.less
+widget/Web Content/instances/ShopByBedroom (1-2)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByBedroom (4-4)/display.template
+widget/Web Content/instances/ShopByBedroom (4-4)/widget.less
+widget/Web Content/instances/ShopByBedroom (4-4)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByBedroomBanner/display.template
+widget/Web Content/instances/ShopByBedroomBanner/widget.less
+widget/Web Content/instances/ShopByBedroomBanner/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByDiningRoomBanner/display.template
+widget/Web Content/instances/ShopByDiningRoomBanner/widget.less
+widget/Web Content/instances/ShopByDiningRoomBanner/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByDiningroom (1-1)/display.template
+widget/Web Content/instances/ShopByDiningroom (1-1)/widget.less
+widget/Web Content/instances/ShopByDiningroom (1-1)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByDiningroom (1-1-1)/display.template
+widget/Web Content/instances/ShopByDiningroom (1-1-1)/widget.less
+widget/Web Content/instances/ShopByDiningroom (1-1-1)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByKidsBedroom (1-1)/display.template
+widget/Web Content/instances/ShopByKidsBedroom (1-1)/widget.less
+widget/Web Content/instances/ShopByKidsBedroom (1-1)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByKidsRoom (1-2)/display.template
+widget/Web Content/instances/ShopByKidsRoom (1-2)/widget.less
+widget/Web Content/instances/ShopByKidsRoom (1-2)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByKidsRoomBanner/display.template
+widget/Web Content/instances/ShopByKidsRoomBanner/widget.less
+widget/Web Content/instances/ShopByKidsRoomBanner/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByKitchen-Laundry (1-1)/display.template
+widget/Web Content/instances/ShopByKitchen-Laundry (1-1)/widget.less
+widget/Web Content/instances/ShopByKitchen-Laundry (1-1)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByKitchen-Laundry (1-2)/display.template
+widget/Web Content/instances/ShopByKitchen-Laundry (1-2)/widget.less
+widget/Web Content/instances/ShopByKitchen-Laundry (1-2)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByKitchen-LaundryBanner/display.template
+widget/Web Content/instances/ShopByKitchen-LaundryBanner/widget.less
+widget/Web Content/instances/ShopByKitchen-LaundryBanner/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByKitchen-Laundryroom (1-1-1)/display.template
+widget/Web Content/instances/ShopByKitchen-Laundryroom (1-1-1)/widget.less
+widget/Web Content/instances/ShopByKitchen-Laundryroom (1-1-1)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByLoungeBanner/display.template
+widget/Web Content/instances/ShopByLoungeBanner/widget.less
+widget/Web Content/instances/ShopByLoungeBanner/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByLoungeroom (1-1) (copy)/display.template
+widget/Web Content/instances/ShopByLoungeroom (1-1) (copy)/widget.less
+widget/Web Content/instances/ShopByLoungeroom (1-1) (copy)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByLoungeroom (1-1)/display.template
+widget/Web Content/instances/ShopByLoungeroom (1-1)/widget.less
+widget/Web Content/instances/ShopByLoungeroom (1-1)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByLoungeroom (1-1-1)/display.template
+widget/Web Content/instances/ShopByLoungeroom (1-1-1)/widget.less
+widget/Web Content/instances/ShopByLoungeroom (1-1-1)/widgetInstanceMetadata.json
+widget/Web Content/instances/ShopByRoomBanner/display.template
+widget/Web Content/instances/ShopByRoomBanner/widget.less
+widget/Web Content/instances/ShopByRoomBanner/widgetInstanceMetadata.json
+widget/Web Content/instances/Text/display.template
+widget/Web Content/instances/Text/widget.less
+widget/Web Content/instances/fashion range/display.template
+widget/Web Content/instances/shop by room - content seperator/widgetInstanceMetadata.json
+widget/Web Content/instances/shop now/widget.less
+widget/Web Content/instances/shop now/widgetInstanceMetadata.json
+widget/Web Content/instances/shop-by-room/display.template
+widget/Web Content/instances/shop-by-room/widgetInstanceMetadata.json
+widget/Web Content/instances/testing/display.template
+widget/Web Content/instances/testing/widget.less
+widget/Web Content/instances/testing/widgetInstanceMetadata.json
+widget/Wish List Welcome/element/Wish List Welcome Text/element.template
