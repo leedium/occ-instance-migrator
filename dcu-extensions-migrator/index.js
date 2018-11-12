@@ -1,29 +1,48 @@
-const {spawnSync, exec, spawn} = require('child_process');
+/*
+ * Copyright (c) 2018 LEEDIUM.
+ * This file is subject to the terms and conditions
+ * defined in file 'LICENSE.txt', which is part of this
+ * source code package.
+ */
+
+/**
+ * @project occ-instance-migrator
+ * @file index.js
+ * @company LEEDIUM
+ * @createdBy davidlee
+ * @contact david@leedium.com
+ * @dateCreated 12/11/2018
+ * @description This tool helps transfer only changed files across instances
+ *              using git and Oracle's DCU tools
+ **/
+
+const {spawn} = require('child_process');
 const fs = require("fs-extra");
 const readline = require('readline');
-const path = require("path");
-const url = require("url");
 const argv = require('yargs').argv;
 const git = require('simple-git');
 
 const config = require('./config');
 
-const DIFF_FILE_PATH = './whatchanged.txt';
-
-// const DCU_SERVER_SOURCE = "https://ccadmin-test-zbba.oracleoutsourcing.com";
-// const API_KEY_SOURCE = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlOWM0YzZjNC1mNTVkLTQ3ZmQtYmZkYy1lZmEyOWYxZjllZGEiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NTM5MTg3NTMsImlhdCI6MTUyMjM4Mjc1M30=.g4Ws3V9PYZGnF/bIxtSLWeOBtHTbzVWjliEyS+Jb7oo=";
 
 const {gitPath} = argv;
-const diffArray = [];
 const transferPaths = [];
 const pathsToBeRemoved = [];
 
-// todo: move .sh files to js task
-
-function grabTarget () {
+/**
+ * Grabs the target(Source Copied From) dcu source
+ * @returns {Promise<any>}
+ */
+function grabTarget() {
+    process.chdir(gitPath);
     return new Promise((resolve) => {
-        console.log('GRABBING TARGET (currently deployed)')
-        const ls1 = spawn('./dcu_grab_target.sh');
+        console.log('GRABBING TARGET (currently deployed)');
+        const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerTarget], {
+            env: Object.assign({}, process.env, {
+                'CC_APPLICATION_KEY': config.apiKeyTarget
+            })
+        });
+        // const ls1 = spawn('./dcu_grab_target.sh');
         ls1.stdout.on('data', (chunk) => {
             console.log(chunk.toString('utf-8'))
         });
@@ -34,10 +53,19 @@ function grabTarget () {
     })
 }
 
-function grabSource () {
+/**
+ * Grabs the Source(Source Copied To) dcu source
+ * @returns {Promise<any>}
+ */
+function grabSource() {
     return new Promise((resolve) => {
-        console.log('GRABBING SOURCE (latest changes)')
-        const ls1 = spawn('./dcu_grab_source.sh');
+        console.log('GRABBING SOURCE (latest changes)');
+        const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerSource], {
+            env: Object.assign({}, process.env, {
+                'CC_APPLICATION_KEY': config.apiKeySource
+            })
+        });
+        // const ls1 = spawn('./dcu_grab_source.sh');
         ls1.stdout.on('data', (chunk) => {
             console.log(chunk.toString('utf-8'));
         });
@@ -48,74 +76,111 @@ function grabSource () {
     });
 }
 
-function addAll () {
-    return new Promise((resolve) => {
-        console.log('staging...')
-        git(gitPath).raw(['add', '.'], () => {
-            setTimeout(() => {
-                resolve()
-            }, config.task_delay)
-        })
-    })
-
-}
-
-function commit () {
-    return new Promise((resolve) => {
-        console.log('committing...')
-        git(gitPath).raw(['commit', '-m', 'committing latest changes'], () => {
-            setTimeout(() => {
-                resolve()
-            }, config.task_delay)
-        })
-    });
-}
-
-function checkoutBranch (name, callback) {
+/**
+ * Performs a git checkout
+ * @param name
+ * @param callback
+ * @returns {Promise<any>}
+ */
+function checkoutBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`checkoutBranch:${name}`)
         git(gitPath).raw(['checkout', name], () => {
             setTimeout(() => {
                 resolve()
-            }, config.task_delay)
+            }, config.taskDelay)
         })
     })
 }
 
-function createBranch (name, callback) {
-    return new Promise((resolve) => {
-        console.log(`createBranch:${name}`)
-        git(gitPath).raw(['checkout', '-B', name], () => {
-            setTimeout(() => {
-                resolve()
-            }, config.task_delay)
-        })
-    })
-}
-
-function mergeBranch (name, callback) {
+/**
+ * Performes a get merge and forces THEIRS if any conflicts arise
+ * @param name
+ * @param callback
+ * @returns {Promise<any>}
+ */
+function mergeBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`mergeBranch:,${name} into target`)
         git(gitPath).raw(['merge', name, '-X', 'theirs'], () => {
             setTimeout(() => {
                 resolve()
-            }, config.task_delay)
+            }, config.taskDelay)
         })
     })
 }
 
-function deleteBranch (name, callback) {
+/**
+ * Performes a git add. Add all files
+ * @returns {Promise<any>}
+ */
+function addAll() {
+    return new Promise((resolve) => {
+        console.log('staging...')
+        git(gitPath).raw(['add', '.'], () => {
+            setTimeout(() => {
+                resolve()
+            }, config.taskDelay)
+        })
+    })
+
+}
+
+/**
+ * Performs a git commit
+ * @returns {Promise<any>}
+ */
+function commit() {
+    return new Promise((resolve) => {
+        console.log('committing...')
+        git(gitPath).raw(['commit', '-m', 'committing latest changes'], () => {
+            setTimeout(() => {
+                resolve()
+            }, config.taskDelay)
+        })
+    });
+}
+
+/**
+ * Deletes a git branch
+ * @param name
+ * @param callback
+ * @returns {Promise<any>}
+ */
+function deleteBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`deleteLocalBranch:,${name}`)
         git(gitPath).raw(['branch', '-D', name], () => {
             setTimeout(() => {
                 resolve()
-            }, config.task_delay)
+            }, config.taskDelay)
         })
     })
 }
 
-function getDiffs () {
+/**
+ * Creates a git branch, if it preexits then it is reset -B
+ * @param name
+ * @param callback
+ * @returns {Promise<any>}
+ */
+function createBranch(name, callback) {
+    return new Promise((resolve) => {
+        console.log(`createBranch:${name}`)
+        git(gitPath).raw(['checkout', '-B', name], () => {
+            setTimeout(() => {
+                resolve()
+            }, config.taskDelay)
+        })
+    })
+}
+
+/**
+ * Creates list of files that have been modified.
+ * Results are piped to whatchanged.txt
+ * @returns {Promise<any>}
+ */
+function getDiffs() {
     return new Promise((resolve) => {
         console.log('formulating diffs')
         const ls1 = spawn('./diffs.sh');
@@ -129,13 +194,18 @@ function getDiffs () {
     })
 }
 
-function processDiffs () {
+/**
+ * whatchanged.txt is read and the results filtered by files that
+ * have been updated and added.
+ * @returns {Promise<any>}
+ */
+function processDiffs() {
     return new Promise((resolve) => {
         const transferPathArrayTemp = [];
         const deletePathArrayTemp = [];
         let counter = 0;
         const rl = readline.createInterface({
-            input: fs.createReadStream(DIFF_FILE_PATH)
+            input: fs.createReadStream(config.diffFilePath)
         });
         rl.on('line', (line) => {
             const infoArray = line.split('\t');
@@ -144,90 +214,88 @@ function processDiffs () {
             const pathArray = pathString.split('/');
 
 
-                let path;
-                let pathDelete;
-                if (pathArray.length === 2) {
-                    // path = (`${pathArray[0]}/`);
-                    path = (`${pathArray[0]}/`);
-                } else if (pathArray.length > 2) {
-                    if (pathArray[1] === "Web Content") {
-                        pathDelete = path = (`${pathArray.slice(0, 4).join('/')}`);
-                    } else {
-                        path = (`${pathArray.slice(0, 2).join('/')}`);
-                        pathDelete  = (`${pathArray.slice(0, 4).join('/')}`);
+            let path;
+            let pathDelete;
+            if (pathArray.length === 2) {
+                // path = (`${pathArray[0]}/`);
+                path = (`${pathArray[0]}/`);
+            } else if (pathArray.length > 2) {
+                if (pathArray[1] === "Web Content") {
+                    pathDelete = path = (`${pathArray.slice(0, 4).join('/')}`);
+                } else {
+                    path = (`${pathArray.slice(0, 2).join('/')}`);
+                    pathDelete = (`${pathArray.slice(0, 4).join('/')}`);
 
-                    }
                 }
+            }
 
-                if(modType !== "D" && modType.indexOf('R') < 0) {
-                    if (!transferPathArrayTemp[path]) {
-                        counter += 1;
-                        transferPathArrayTemp[`${path}`] = true;
-                        // console.log(path, modType)
-                        transferPaths.push(path);
-                        // console.log(counter, path)
-                    }
-                }else{
-                    if(!deletePathArrayTemp[pathDelete]) {
-                        pathsToBeRemoved.push(pathDelete);
-                        deletePathArrayTemp[`${pathDelete}`] = true;
-                    }
+            if (modType !== "D" && modType.indexOf('R') < 0) {
+                if (!transferPathArrayTemp[path]) {
+                    counter += 1;
+                    transferPathArrayTemp[`${path}`] = true;
+                    console.log(path, modType)
+                    transferPaths.push(path);
+                    // console.log(counter, path)
                 }
+            } else {
+                if (!deletePathArrayTemp[pathDelete]) {
+                    pathsToBeRemoved.push(pathDelete);
+                    deletePathArrayTemp[pathDelete] = true;
+                }
+            }
         });
         rl.on('close', () => {
             // console.log(transferPathArrayTemp)
-            console.log(pathsToBeRemoved);
             resolve();
         });
     })
 }
 
-async function transfer () {
-    process.chdir(gitPath);
-    const counter = 0;
-    const load = function (count) {
-        transferFile(transferPaths[count])
-            .then(res => {
-                count += 1;
-                if (count <= transferPaths.length - 1) {
-                    load(count);
-                } else {
-                    console.log('migration complete');
-                    resolve()
-                }
-            })
-    }
-    load(counter)
-}
-
-function transferFile (path) {
+function makeTmpFolder() {
     return new Promise((resolve) => {
-        console.log(`transferring ${path} ...`)
-        const ls1 = spawn(`dcu`, ['--transferAll', path, '--node', config.dcu_server_target, '-k', config.api_key_target], {
-            env: Object.assign({}, process.env, {
-                'CC_APPLICATION_KEY': config.api_key_target
-            })
+        fs.ensureDirSync('./tmp/.ccc');
+        fs.copySync(`../.ccc`, `./tmp/.ccc`);
+
+        console.log(pathsToBeRemoved)
+
+        deleteFilePath(pathsToBeRemoved.map( path => `./tmp/${path}`));
+        deleteFilePath(pathsToBeRemoved.map( path => `./tmp/.ccc/${path}`));
+
+        transferPaths.map((path) => {
+            const fa = path.split('/');
+            const f = fa.slice(0, fa.length).join('/');
+            fs.ensureDirSync(`./tmp/${f}`);
+
+            console.log(f, `../${path}`)
+            try {
+                fs.copySync(`../${path}`, `./tmp/${f}`);
+            } catch (err) {
+                // console.log(err)
+            }
         });
-        ls1.stdout.on('data', (chunk) => {
-            console.log(chunk.toString('utf-8'));
-        });
-        ls1.stderr.on('data', (chunk) => {
-            console.log('Error:', chunk.toString());
-        });
-        ls1.on('close', (code) => {
-            console.log(`... ${path} target updated`);
-            resolve();
-        });
-    })
+        resolve();
+    });
 }
 
-function transferAll () {
+/**
+ * Removes paths specified in Array
+ * @param pathsToBeRemoved - Array
+ */
+function deleteFilePath(pathsToBeRemoved) {
+    console.log('Removing...', pathsToBeRemoved)
+    pathsToBeRemoved.map((item) => {
+        fs.removeSync(item);
+    });
+}
+
+
+function transferAll() {
     process.chdir('./tmp');
     return new Promise((resolve) => {
         console.log(`transferring ...`)
-        const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', config.dcu_server_target, '-k', config.api_key_target], {
+        const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', config.dcuServerTarget, '-k', config.apiKeyTarget], {
             env: Object.assign({}, process.env, {
-                'CC_APPLICATION_KEY': config.api_key_target
+                'CC_APPLICATION_KEY': config.apiKeyTarget
             })
         });
         ls1.stdout.on('data', (chunk) => {
@@ -244,54 +312,36 @@ function transferAll () {
 }
 
 
-function makeTmpFolder () {
-    return new Promise((resolve) => {
-        fs.ensureDirSync('./tmp/.ccc');
-        fs.copySync(`../.ccc`,`./tmp/.ccc`);
-
-        //remove folders that are not needed
-        pathsToBeRemoved.map((item)=>{
-            fs.removeSync(`./tmp/${item}`);
-        });
-
-        transferPaths.map((path) => {
-            const fa = path.split('/');
-            const f = fa.slice(0, fa.length ).join('/');
-            fs.ensureDirSync(`./tmp/${f}`);
-
-            console.log(f,`../${path}`)
-            try{
-                fs.copySync(`../${path}`,`./tmp/${f}`);
-            }catch(err){
-                // console.log(err)
-            }
-        });
-        resolve();
-    });
-}
-
-
-async function start () {
+async function start() {
     try {
-        await checkoutBranch('master');
-        await deleteBranch('deploy');
-        await deleteBranch('test');
-        await grabTarget();
-        await addAll();
-        await commit();
-        await createBranch('deploy');
-        await createBranch('test');
-        await grabSource()
-        await addAll();
-        await commit();
-        await checkoutBranch('deploy');
-        await mergeBranch('test');
-        await getDiffs('test');
-        await processDiffs();
-        await makeTmpFolder();
-        await transferAll();
-        // await transfer();
-
+        // await checkoutBranch('master');
+        // await deleteBranch('deploy');
+        // await deleteBranch('test');
+        // await grabTarget();
+        // await addAll();
+        // await commit();
+        // await createBranch('deploy');
+        // await createBranch('test');
+        // await grabSource()
+        // await addAll();
+        // await commit();
+        // await checkoutBranch('deploy');
+        // await mergeBranch('test');
+        // await getDiffs('test');
+        // await processDiffs();
+        // await makeTmpFolder();
+        // await transferAll();
+        deleteFilePath([
+            './tmp',
+            '../.ccc',
+            '../element',
+            '../global',
+            '../snippets',
+            '../stack',
+            '../theme',
+            '../widget',
+        ])
+        // await commit();
     }
     catch (err) {
         console.log(err)
@@ -300,32 +350,5 @@ async function start () {
 
 start();
 
-
-// const ls1 = spawnSync('../migrate.sh');
-//
-// // console.log( `stderr: ${ls1.stderr.toString()}` );
-// console.log( `stdout: ${ls1.stdout.toString()}` );
-
-
-// const rl = readline.createInterface({
-//     input: fs.createReadStream(diffFile)
-// });
-// rl.on('line', (line) => {
-//     const pathArray = line.split('/');
-//     let path;
-//     if(pathArray.length === 2){
-//         path = (`${pathArray[1]}/`);
-//     }else if(pathArray.length > 2) {
-//         path = (`${pathArray.slice(1,2).join('/')}`);
-//     }
-//
-//     if(!diffArrayCheck.has(path)) {
-//         diffArrayCheck.add(`${path}`);
-//     }
-// });
-// rl.on('close', () => {
-//     console.log('done');
-//     processDiffs();
-// });
 
 

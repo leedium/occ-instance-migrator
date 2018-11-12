@@ -1,8 +1,8 @@
 {
-   "task_delay" : 3000,
-   "diff_file_path" : "./whatchanged.txt",
-   "dcu_server_source" : "{SOURCE SERVER}",
-   "api_key_source" : "{SOURCE SERVER KEY}",
-   "dcu_server_target" : "{TARGET SERVER (SERVER BEING UPDATED)}",
-   "api_key_target" : "{TARGET SERVER KEY}"
+   "taskDelay": 3000,
+   "diffFilePath": "./whatchanged.txt",
+   "dcuServerSource": "{SOURCE SERVER}",
+   "apiKeySource": "{SOURCE SERVER KEY}",
+   "dcuServerTarget": "{TARGET SERVER (SERVER BEING UPDATED)}",
+   "apiKeyTarget": "{TARGET SERVER KEY}"
 }
