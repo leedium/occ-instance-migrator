@@ -1,0 +1,88 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "200164": {
+    "font": {"styles": {
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-align": "center",
+      "text-decoration": "none"
+    }},
+    "id": "200164",
+    "padding": {
+      "paddingBottom": "10",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "10"
+    }
+  },
+  "900010": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "center"},
+    "id": "900010",
+    "image": {
+      "altText": "Applicances",
+      "altTextId": "1000008",
+      "isProductImage": false,
+      "link": "/appliances/appliances",
+      "src": "/file/v2540591024104595861/general/Appliances.jpg",
+      "titleText": "Applicances",
+      "titleTextId": "1000009",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "900011": {
+    "font": {"styles": {
+      "display": "block",
+      "text-align": "center"
+    }},
+    "id": "900011",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "900023": {
+    "font": {"styles": {
+      "color": "#000000",
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-align": "center",
+      "text-decoration": "none"
+    }},
+    "id": "900023",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: generic-text -->
+<h3 data-bind="element: 'generic-text',id: '900023'"></h3>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->

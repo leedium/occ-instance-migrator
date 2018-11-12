@@ -1,0 +1,13 @@
+<!-- ko with: user -->
+  <div data-bind="visible: !$parent.space().showSpace() == true" class="col-md-12">
+    <div class="swm-welcome-title" data-bind="widgetLocaleText: 'welcomePageTitle'"></div>
+    <div class="swm-welcome-subtitle" data-bind="widgetLocaleText: 'welcomePageSubtitle'"></div>
+    <div class="swm-welcome-bulletlist">
+      <ul>
+        <li data-bind="widgetLocaleText: 'welcomePageBulletText1'"></li>
+        <li data-bind="widgetLocaleText: 'welcomePageBulletText2'"></li>
+        <li data-bind="widgetLocaleText: 'welcomePageBulletText3'"></li>
+      </ul>
+    </div>
+  </div>
+<!-- /ko -->

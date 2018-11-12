@@ -1,0 +1,343 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1100001": {
+    "id": "1100001",
+    "richText": {
+      "content": "${occ:localizedWebContent('m120001')}",
+      "sourceMedia": "m120001"
+    }
+  },
+  "1100002": {
+    "id": "1100002",
+    "richText": {
+      "content": "${occ:localizedWebContent('m120003')}",
+      "sourceMedia": "m120003"
+    }
+  },
+  "1100003": {
+    "id": "1100003",
+    "richText": {
+      "content": "${occ:localizedWebContent('m120005')}",
+      "sourceMedia": "m120005"
+    }
+  },
+  "1100004": {
+    "id": "1100004",
+    "richText": {
+      "content": "${occ:localizedWebContent('m120007')}",
+      "sourceMedia": "m120007"
+    }
+  },
+  "1100005": {
+    "id": "1100005",
+    "richText": {
+      "content": "${occ:localizedWebContent('m120009')}",
+      "sourceMedia": "m120009"
+    }
+  },
+  "1100006": {
+    "id": "1100006",
+    "richText": {
+      "content": "${occ:localizedWebContent('m120011')}",
+      "sourceMedia": "m120011"
+    }
+  },
+  "1100007": {
+    "id": "1100007",
+    "richText": {
+      "content": "${occ:localizedWebContent('m120013')}",
+      "sourceMedia": "m120013"
+    }
+  },
+  "1100008": {
+    "id": "1100008",
+    "richText": {
+      "content": "${occ:localizedWebContent('m120015')}",
+      "sourceMedia": "m120015"
+    }
+  },
+  "1100009": {
+    "id": "1100009",
+    "richText": {
+      "content": "${occ:localizedWebContent('m120017')}",
+      "sourceMedia": "m120017"
+    }
+  },
+  "1100010": {
+    "id": "1100010",
+    "richText": {
+      "content": "${occ:localizedWebContent('m120019')}",
+      "sourceMedia": "m120019"
+    }
+  },
+  "1100012": {
+    "font": {"styles": {"display": "block"}},
+    "id": "1100012"
+  },
+  "1100013": {
+    "font": {"styles": {"display": "block"}},
+    "id": "1100013"
+  },
+  "1100014": {
+    "font": {"styles": {"display": "block"}},
+    "id": "1100014"
+  },
+  "1100015": {
+    "font": {"styles": {"display": "block"}},
+    "id": "1100015"
+  }
+}} -->
+<!-- /ko -->
+
+<!-- ko if: loaded -->
+<div class="templateRegion" id="cc-product-details" data-oc-id="cc-product-details">
+  <!-- ko if: product -->
+  
+  <div data-bind="onRender: function(){setTimeout(function(){window.scrollTo(0,0);}, 100);}">
+
+  </div>
+
+<!-- ko if: product().hc_productSkinny -->
+  <div class="RectangleYellow" data-bind="text:product().hc_productSkinny">
+    THIS MONTH ONLY: BUY ANY BEDDING &amp; GET A FREE SHAWL WORTH R399
+  </div>
+<!-- /ko -->
+  
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-0-0">
+
+      <!-- oc section: product-back-link -->
+      <div data-bind="element: 'product-back-link'" class="back-link"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-badges -->
+      <div data-bind="element: 'product-badges'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-image -->
+      <div data-bind="element: 'product-image'" class="text-center" style="
+    border: 1px solid #d8d8d8;
+"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-image-carousel -->
+      <div data-bind="element: 'product-image-carousel'"></div>
+      <!-- /oc -->
+
+    </div>
+
+    
+<div class="oc-panel col-md-6 SingleProd" data-oc-id="panel-0-1">
+
+  <!-- oc section: product-title -->
+  <h1 data-bind="element: 'product-title'"></h1>
+  <!-- /oc -->
+
+  <div class="ProductFromMin" >
+    From
+    <span class="ProductFrom" data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + product().hc_maxPrice()">R450</span>
+    or
+    <span class="ProductMin" data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + product().hc_MinPrice() + ' p/m'">R150 p/m</span>
+  </div>
+
+  <!-- o c section: ProductId - ->
+  <div data-bind="element: 'ProductId'"></div>
+  <!- - /o c -->
+ 
+  <!-- ko if: product().hc_productOffer -->
+  <div class="product-details--product-id">Product Code: <span data-bind="text: $data.getSelectedSku($data.variantOptionsArray).hc_orderCode"></span></div>
+  <!-- /ko -->
+  
+
+<!-- ko if: product().hc_productOffer -->
+  <div class="marketingSpecial" data-bind="text:product().hc_productOffer">
+    3 rooms for 1 low price
+  </div>
+<!-- /ko -->
+
+
+  <!-- oc section: product-description -->
+  <div data-bind="element: 'product-description'"></div>
+  <!-- /oc -->
+
+  <!-- oc section: ProductOffer -->
+  <div data-bind="element: 'ProductOffer'"></div>
+  <!-- /oc -->
+
+  <!-- oc section: hcProductDetailsVariantOptions -->
+  <div data-bind="element: 'hcProductDetailsVariantOptions'"></div>
+  <!-- /oc -->
+
+
+  <!-- <div style="background:yellow; color: red;">
+    This is a test:
+    <div data-bind="text: $data.allOptionsSelected(), onRender: function(){setTimeout(function(){console.log('I am here: ', $data );}, 10000);}">
+    </div>
+  </div> -->
+  <!-- ko if: $data.availabilityDate() -->
+    <!-- ko if: Math.floor(
+        (Date.UTC(new Date($data.availabilityDate()).getFullYear(), 
+        new Date($data.availabilityDate()).getMonth(), 
+        new Date($data.availabilityDate()).getDate()) 
+        - 
+        Date.UTC(new Date().getFullYear(), 
+        new Date().getMonth(), 
+        new Date().getDate())) 
+        / (1000 * 60 * 60 * 24)) < 14 -->
+        <div 
+        style="
+        font-size: 11px;
+      color: #000;
+      letter-spacing: 0;
+      line-height: 18.2px;
+      display: inline-block;
+      padding: 0 0 0 20px;
+      margin: 10px 0 10px 0;"
+        > Awaiting Stock, delivery to you within 2 weeks
+        </div>  
+      <!-- /ko -->
+
+      
+    <!-- ko if: Math.floor(
+        (Date.UTC(new Date($data.availabilityDate()).getFullYear(), 
+        new Date($data.availabilityDate()).getMonth(), 
+        new Date($data.availabilityDate()).getDate()) 
+        - 
+        Date.UTC(new Date().getFullYear(), 
+        new Date().getMonth(), 
+        new Date().getDate())) 
+        / (1000 * 60 * 60 * 24)) >= 14 -->
+        <div 
+        style="
+        font-size: 11px;
+      color: #000;
+      letter-spacing: 0;
+      line-height: 18.2px;
+      display: inline-block;
+      padding: 0 0 0 20px;
+      margin: 10px 0 10px 0;"
+        data-bind="text: 'Awaiting Stock, delivery to you in ' + 
+        Math.floor(
+          (Date.UTC(new Date($data.availabilityDate()).getFullYear(), 
+          new Date($data.availabilityDate()).getMonth(), 
+          new Date($data.availabilityDate()).getDate()) 
+          - 
+          Date.UTC(new Date().getFullYear(), 
+          new Date().getMonth(), 
+          new Date().getDate())) 
+          / (1000 * 60 * 60 * 24 * 7)) + ' weeks'">
+        </div>  
+      <!-- /ko -->
+
+      
+
+
+  <!-- /ko -->
+  <!-- ko if: $data.allOptionsSelected() -->
+    <!-- ko ifnot: $data.availabilityDate() -->
+      <!-- oc section: product-stock-availability -->
+      <div data-bind="if: (showStockStatus() &amp;&amp; stockStatus() &amp;&amp; stockState()==='IN_STOCK')" data-oc-id="product-in-stock">
+        <div data-bind="element: 'product-in-stock-message',id: '1100012'"></div>
+
+      </div>
+
+      <div data-bind="if: (showStockStatus() &amp;&amp; !stockStatus() )" data-oc-id="product-out-of-stock">
+        <div data-bind="element: 'product-out-of-stock-message',id: '1100013'"></div>
+
+      </div>
+
+      <div data-bind="if: (showStockStatus() &amp;&amp; stockStatus() &amp;&amp; stockState()==='PREORDERABLE')" data-oc-id="product-preorder">
+        <div data-bind="element: 'product-preorder-message',id: '1100014'"></div>
+
+      </div>
+
+      <div data-bind="if: (showStockStatus() &amp;&amp; stockStatus()&amp;&amp; stockState()==='BACKORDERABLE' )" data-oc-id="product-backorder">
+        <div data-bind="element: 'product-backorder-message',id: '1100015'"></div>
+
+      </div>
+      <!-- /oc -->
+    <!-- /ko -->
+  <!-- /ko -->
+
+  <div style="position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f5f2f2;
+border-top: 1px solid #d8d8d8;">
+
+  <!-- ko if: $data.allOptionsSelected() -->
+<!-- oc section: productDetailsCreditOptions -->
+<div data-bind="element: 'productDetailsCreditOptions'"></div>
+<!-- /oc -->
+  <!-- /ko -->
+
+<!-- oc section: productDetailsAddToCartWithOptions -->
+<div data-bind="element: 'productDetailsAddToCartWithOptions'"></div>
+<!-- /oc -->
+
+<!-- oc section: product-add-to-space -->
+<div data-bind="element: 'product-add-to-space'"></div>
+<!-- /oc -->
+
+<!-- oc section: productDetailsSocialSharing -->
+<div data-bind="element: 'productDetailsSocialSharing'"></div>
+<!-- /oc -->
+  </div>
+  
+
+
+
+</div>
+
+
+  </div>
+<hr />
+  <div class="row">
+    <div class="col-md-6">
+
+      <!-- oc section: product-long-description -->
+      <div style="padding: 10px">
+        <div style="color: #ed2282; font-weight: bold; font-size:16px;">
+          Reasons to buy
+        </div>
+        <div style="padding: 0px 10px" data-bind="element: 'product-long-description'"></div>
+      </div>
+      <!-- /oc -->
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12 product-property-mobile-container" data-oc-id="panel-1-0">
+
+      <!-- oc section: productDetailsProperty2 -->
+      <div data-bind="element: 'productDetailsProperty2',id: '1100006'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+      <div data-bind="element: 'productDetailsProperty2',id: '1100007'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+      <div data-bind="element: 'productDetailsProperty2',id: '1100008'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+      <div data-bind="element: 'productDetailsProperty2',id: '1100009'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+      <div data-bind="element: 'productDetailsProperty2',id: '1100010'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+
+  <!-- /ko -->
+</div>
+<!-- /ko -->

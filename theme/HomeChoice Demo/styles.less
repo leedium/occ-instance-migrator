@@ -1,0 +1,295 @@
+/******************************************************************************
+    MIXINS
+******************************************************************************/
+.background-styles (@BackgroundColor, @BackgroundImageURL, @BackgroundImageRepeat, @BackgroundImagePosition,
+                    @BackgroundColorTop, @BackgroundColorBottom, @BackgroundImageAttachment) {
+
+
+  background: -moz-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, @BackgroundColorTop), color-stop(100%, @BackgroundColorBottom));
+  background: -webkit-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: -o-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: -ms-linear-gradient(top, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  background: linear-gradient(to bottom, @BackgroundColorTop 0%, @BackgroundColorBottom 100%);
+  filter:~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{BackgroundColorTop}', endColorstr='@{BackgroundColorBottom}', GradientType=0)";
+}
+
+/******************************************************************************
+    GENERAL STYLES
+******************************************************************************/
+html {
+  font-size: @SiteFontSize;
+}
+
+body {
+
+  background: @SiteBackgroundColor @SiteBackgroundImageURL @SiteBackgroundImagePosition @SiteBackgroundImageRepeat;
+
+  .SiteBackground() when (@SiteBackgroundUseGradient) {
+    .background-styles (@SiteBackgroundColor, @SiteBackgroundImageURL, @SiteBackgroundImageRepeat, @SiteBackgroundImagePosition,
+                        @SiteBackgroundColorTop, @SiteBackgroundColorBottom, @SiteBackgroundImageAttachment);
+  }
+  .SiteBackground;
+
+  background-attachment: @SiteBackgroundImageAttachment;
+}
+
+html[dir="rtl"] body {
+  text-align: right;
+}
+
+#page {
+  background-color:     @SitePageBackgroundColor;
+
+  // Moved from the 'body' section as they were affecting non-page
+  // elements, (e.g. Preview Bar), with the exception of font-size
+  // which drives *rem values.
+  color:                @TextColor;
+  font-family:          @SiteFontFamily;
+  font-size:            1rem;
+  font-style:           @SiteFontStyle;
+  font-weight:          @SiteFontWeight;
+  line-height:          @SiteLineHeight;
+  text-align:           @SiteTextAlign;
+  text-decoration:      @SiteTextDecoration;
+}
+
+/******************************************************************************
+    LINK STYLES
+******************************************************************************/
+
+a:link    {color:@LinkColor;}         /* unvisited link */
+a:visited {color:@LinkVisitedColor;}  /* visited link */
+a:hover   {color:@LinkHoverColor;}    /* mouse over link */
+
+/******************************************************************************
+    TYPOGRAPHY STYLES
+******************************************************************************/
+
+#page {
+  h1 {
+
+    color: @H1TextColor;
+    line-height: @H1LineHeight;
+    font-family: @H1FontFamily;
+    font-size: @H1FontSize;
+    font-weight: @H1FontWeight;
+    font-style: @H1FontStyle;
+    text-align: @H1TextAlign;
+    text-decoration: @H1TextDecoration;
+
+  }
+
+  h2 {
+
+    color: @H2TextColor;
+    font-family: @H2FontFamily;
+    font-size: @H2FontSize;
+    font-style: @H2FontStyle;
+    font-weight: @H2FontWeight;
+    line-height: @H2LineHeight;
+    text-align: @H2TextAlign;
+    text-decoration: @H2TextDecoration;
+
+  }
+
+  h3 {
+
+    color: @H3TextColor;
+    font-family: @H3FontFamily;
+    font-size: @H3FontSize;
+    font-style: @H3FontStyle;
+    font-weight: @H3FontWeight;
+    line-height: @H3LineHeight;
+    text-align: @H3TextAlign;
+    text-decoration: @H3TextDecoration;
+
+  }
+
+  h4 {
+
+    color: @H4TextColor;
+    font-family: @H4FontFamily;
+    font-size: @H4FontSize;
+    font-style: @H4FontStyle;
+    font-weight: @H4FontWeight;
+    line-height: @H4LineHeight;
+    text-align: @H4TextAlign;
+    text-decoration: @H4TextDecoration;
+  }
+
+  h5 {
+    color: @H5TextColor;
+    font-family: @H5FontFamily;
+    font-size: @H5FontSize;
+    font-style: @H5FontStyle;
+    font-weight: @H5FontWeight;
+    line-height: @H5LineHeight;
+    text-align: @H5TextAlign;
+    text-decoration: @H5TextDecoration;
+  }
+
+  h6 {
+    color: @H6TextColor;
+    font-family: @H6FontFamily;
+    font-size: @H6FontSize;
+    font-style: @H6FontStyle;
+    font-weight: @H6FontWeight;
+    line-height: @H6LineHeight;
+    text-align: @H6TextAlign;
+    text-decoration: @H6TextDecoration;
+  }
+
+  p {
+    color: @ParagraphTextColor;
+    font-family: @ParagraphFontFamily;
+    font-size: @ParagraphFontSize;
+    font-style: @ParagraphFontStyle;
+    font-weight: @ParagraphFontWeight;
+    line-height: @ParagraphLineHeight;
+    text-align: @ParagraphTextAlign;
+    text-decoration: @ParagraphTextDecoration;
+  }
+}
+
+/******************************************************************************
+    BUTTON STYLES
+******************************************************************************/
+.ccButton(@ButtonBackgroundColor, @ButtonBorderRadius, @ButtonTextColor, @ButtonFontFamily, @ButtonFontWeight,
+          @ButtonFontStyle, @ButtonTextDecoration, @ButtonUseGradient, @ButtonSize) {
+
+  .btn;
+
+  background-color: @ButtonBackgroundColor;
+
+  white-space: normal;
+
+  .ButtonBackground() when (@ButtonUseGradient) {
+    background-image: -moz-linear-gradient(top,@ButtonBackgroundColor, darken(@ButtonBackgroundColor, 10%));
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(@ButtonBackgroundColor),to(darken(@ButtonBackgroundColor, 10%)));
+    background-image: -webkit-linear-gradient(top,@ButtonBackgroundColor,darken(@ButtonBackgroundColor, 10%));
+    background-image: -o-linear-gradient(top,@ButtonBackgroundColor,darken(@ButtonBackgroundColor, 10%));
+    background-image: linear-gradient(to bottom,@ButtonBackgroundColor,darken(@ButtonBackgroundColor, 10%));
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@ButtonBackgroundColor', endColorstr='darken(@ButtonBackgroundColor, 10%)', GradientType=0);
+  }
+  .ButtonBackground;
+
+  border:           1px solid darken(@ButtonBackgroundColor, 15%);
+
+  color:            @ButtonTextColor;
+
+  font-family:      @ButtonFontFamily;
+  font-style:       @ButtonFontStyle;
+  font-weight:      @ButtonFontWeight;
+  text-decoration:  @ButtonTextDecoration;
+
+  &:hover, &:focus {
+    background-color: darken(@ButtonBackgroundColor, 10%);
+
+    color:            @ButtonTextColor;
+
+    font-family:      @ButtonFontFamily;
+    font-style:       @ButtonFontStyle;
+    font-weight:      @ButtonFontWeight;
+    text-decoration:  @ButtonTextDecoration;
+  }
+
+  &:disabled:hover, &.disabled:hover, &.disabled:focus {
+    background-color: @ButtonBackgroundColor;
+    background-image: none;
+  }
+
+  &:link {
+    color: @ButtonTextColor;
+    font-style: @ButtonFontStyle;
+    text-decoration: @ButtonTextDecoration;
+  }
+  &:visited {
+    color: @ButtonTextColor;
+    font-style: @ButtonFontStyle;
+    text-decoration: @ButtonTextDecoration;
+  }
+  &:hover {
+    background-color: darken(@ButtonBackgroundColor, 10%);
+    color: @ButtonTextColor;
+    font-style: @ButtonFontStyle;
+    text-decoration: @ButtonTextDecoration;
+  }
+
+  .ButtonSize() when (@ButtonSize = extraSmall) {
+    .btn-xs;
+  }
+  .ButtonSize;
+
+  .ButtonSize() when (@ButtonSize = small) {
+    .btn-sm;
+  }
+  .ButtonSize;
+
+  .ButtonSize() when (@ButtonSize = large) {
+    .btn-lg;
+  }
+  .ButtonSize;
+
+  border-radius:    @ButtonBorderRadius;
+}
+
+// Primary buttons
+.cc-button-primary {
+  .ccButton(@ButtonPrimaryBackgroundColor, @ButtonPrimaryBorderRadius, @ButtonPrimaryTextColor, @ButtonPrimaryFontFamily, @ButtonPrimaryFontWeight,
+      @ButtonPrimaryFontStyle, @ButtonPrimaryTextDecoration, @ButtonPrimaryUseGradient, @ButtonPrimarySize);
+}
+
+// Secondary buttons
+.cc-button-secondary {
+  .ccButton(@ButtonSecondaryBackgroundColor, @ButtonSecondaryBorderRadius, @ButtonSecondaryTextColor, @ButtonSecondaryFontFamily, @ButtonSecondaryFontWeight,
+      @ButtonSecondaryFontStyle, @ButtonSecondaryTextDecoration, @ButtonSecondaryUseGradient, @ButtonSecondarySize);
+}
+
+/******************************************************************************
+    HEADER STYLES
+******************************************************************************/
+
+#region-header #siteHead {
+
+  background: @HeaderBackgroundColor @HeaderBackgroundImageURL @HeaderBackgroundImagePosition @HeaderBackgroundImageRepeat;
+  background-attachment: @HeaderBackgroundImageAttachment;
+
+  .HeaderBackground() when (@HeaderBackgroundUseGradient) {
+    .background-styles (@HeaderBackgroundColor, @HeaderBackgroundImageURL, @HeaderBackgroundImageRepeat, @HeaderBackgroundImagePosition,
+        @HeaderBackgroundColorTop, @HeaderBackgroundColorBottom, @HeaderBackgroundImageAttachment);
+  }
+  .HeaderBackground;
+}
+
+.header-background {
+  background: @HeaderTopBackgroundColor @HeaderTopBackgroundImageURL @HeaderTopBackgroundImagePosition @HeaderTopBackgroundImageRepeat;
+  background-attachment: @HeaderTopBackgroundImageAttachment;
+
+  .HeaderTopBackground() when (@HeaderTopBackgroundUseGradient) {
+    .background-styles (@HeaderTopBackgroundColor, @HeaderTopBackgroundImageURL, @HeaderTopBackgroundImageRepeat, @HeaderTopBackgroundImagePosition,
+        @HeaderTopBackgroundColorTop, @HeaderTopBackgroundColorBottom, @HeaderTopBackgroundImageAttachment);
+  }
+  .HeaderTopBackground;
+}
+
+
+/******************************************************************************
+    FOOTER STYLES
+******************************************************************************/
+
+footer.footer {
+  background: @FooterBackgroundColor;
+  background-position:@FooterBackgroundImagePosition;
+  background-repeat: @FooterBackgroundImageRepeat;
+  background-image: @FooterBackgroundImageURL;
+  background-attachment: @FooterBackgroundImageAttachment;
+  border-top-color: @FooterBorderTopColor;
+
+  .FooterBackground() when (@FooterBackgroundUseGradient) {
+    .background-styles (@FooterBackgroundColor, @FooterBackgroundImageURL, @FooterBackgroundImageRepeat, @FooterBackgroundImagePosition,
+        @FooterBackgroundColorTop, @FooterBackgroundColorBottom, @FooterBackgroundImageAttachment);
+  }
+  .FooterBackground;
+}

@@ -6,15 +6,12 @@ const url = require("url");
 const argv = require('yargs').argv;
 const git = require('simple-git');
 
-const TASK_DELAY = 3000;
+const config = require('./config');
+
 const DIFF_FILE_PATH = './whatchanged.txt';
 
-const DCU_SERVER_SOURCE = "https://ccadmin-test-zbba.oracleoutsourcing.com";
-const API_KEY_SOURCE = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlOWM0YzZjNC1mNTVkLTQ3ZmQtYmZkYy1lZmEyOWYxZjllZGEiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NTM5MTg3NTMsImlhdCI6MTUyMjM4Mjc1M30=.g4Ws3V9PYZGnF/bIxtSLWeOBtHTbzVWjliEyS+Jb7oo=";
-
-const DCU_SERVER_TARGET = "https://ccadmin-stage-zbba.oracleoutsourcing.com";
-const API_KEY_TARGET = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkMzIyNGJjOC1iZjljLTRhNWMtYjFhNi05MjIwYzI3NzQ1MWUiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NzEwMzExNTYsImlhdCI6MTUzOTQ5NTE1Nn0=.d8gGlYAtIZeVqE0vftJJ3qCKdDQjtHiMSiqA3CFfLdc=";
-
+// const DCU_SERVER_SOURCE = "https://ccadmin-test-zbba.oracleoutsourcing.com";
+// const API_KEY_SOURCE = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlOWM0YzZjNC1mNTVkLTQ3ZmQtYmZkYy1lZmEyOWYxZjllZGEiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NTM5MTg3NTMsImlhdCI6MTUyMjM4Mjc1M30=.g4Ws3V9PYZGnF/bIxtSLWeOBtHTbzVWjliEyS+Jb7oo=";
 
 const {gitPath} = argv;
 const diffArray = [];
@@ -55,7 +52,7 @@ function addAll () {
         git(gitPath).raw(['add', '.'], () => {
             setTimeout(() => {
                 resolve()
-            }, TASK_DELAY)
+            }, config.task_delay)
         })
     })
 
@@ -67,7 +64,7 @@ function commit () {
         git(gitPath).raw(['commit', '-m', 'committing latest changes'], () => {
             setTimeout(() => {
                 resolve()
-            }, TASK_DELAY)
+            }, config.task_delay)
         })
     });
 }
@@ -78,7 +75,7 @@ function checkoutBranch (name, callback) {
         git(gitPath).raw(['checkout', name], () => {
             setTimeout(() => {
                 resolve()
-            }, TASK_DELAY)
+            }, config.task_delay)
         })
     })
 }
@@ -89,7 +86,7 @@ function createBranch (name, callback) {
         git(gitPath).raw(['checkout', '-B', name], () => {
             setTimeout(() => {
                 resolve()
-            }, TASK_DELAY)
+            }, config.task_delay)
         })
     })
 }
@@ -100,7 +97,7 @@ function mergeBranch (name, callback) {
         git(gitPath).raw(['merge', name, '-X', 'theirs'], () => {
             setTimeout(() => {
                 resolve()
-            }, TASK_DELAY)
+            }, config.task_delay)
         })
     })
 }
@@ -111,7 +108,7 @@ function deleteBranch (name, callback) {
         git(gitPath).raw(['branch', '-D', name], () => {
             setTimeout(() => {
                 resolve()
-            }, TASK_DELAY)
+            }, config.task_delay)
         })
     })
 }
@@ -187,7 +184,7 @@ async function transfer () {
 function transferFile (path) {
     return new Promise((resolve) => {
         console.log(`transferring ${path} ...`)
-        const ls1 = spawn(`dcu`, ['--transferAll', path, '--node', DCU_SERVER_TARGET, '-k', API_KEY_TARGET], {
+        const ls1 = spawn(`dcu`, ['--transferAll', path, '--node', config.dcu_server_target, '-k', config.api_key_target], {
             env: Object.assign({}, process.env, {
                 'CC_APPLICATION_KEY': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkMzIyNGJjOC1iZjljLTRhNWMtYjFhNi05MjIwYzI3NzQ1MWUiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NzEwMzExNTYsImlhdCI6MTUzOTQ5NTE1Nn0=.d8gGlYAtIZeVqE0vftJJ3qCKdDQjtHiMSiqA3CFfLdc='
             })
@@ -209,7 +206,7 @@ function transferAll () {
     process.chdir('./tmp');
     return new Promise((resolve) => {
         console.log(`transferring ...`)
-        const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', DCU_SERVER_TARGET, '-k', API_KEY_TARGET], {
+        const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', config.dcu_server_target, '-k', config.api_key_target], {
             env: Object.assign({}, process.env, {
                 'CC_APPLICATION_KEY': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkMzIyNGJjOC1iZjljLTRhNWMtYjFhNi05MjIwYzI3NzQ1MWUiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NzEwMzExNTYsImlhdCI6MTUzOTQ5NTE1Nn0=.d8gGlYAtIZeVqE0vftJJ3qCKdDQjtHiMSiqA3CFfLdc='
             })
@@ -251,23 +248,23 @@ function makeTmpFolder () {
 
 async function start () {
     try {
-        await checkoutBranch('master');
-        await deleteBranch('deploy');
-        await deleteBranch('test');
-        await grabTarget();
+        // await checkoutBranch('master');
+        // await deleteBranch('deploy');
+        // await deleteBranch('test');
+        // await grabTarget();
         await addAll();
-        await commit();
-        await createBranch('deploy');
-        await createBranch('test');
-        await grabSource()
-        await addAll();
-        await commit();
-        await checkoutBranch('deploy');
-        await mergeBranch('test');
-        await getDiffs('test');
-        await processDiffs();
-        await makeTmpFolder();
-        await transferAll();
+        // await commit();
+        // await createBranch('deploy');
+        // await createBranch('test');
+        // await grabSource()
+        // await addAll();
+        // await commit();
+        // await checkoutBranch('deploy');
+        // await mergeBranch('test');
+        // await getDiffs('test');
+        // await processDiffs();
+        // await makeTmpFolder();
+        // await transferAll();
         // await transfer();
 
     }

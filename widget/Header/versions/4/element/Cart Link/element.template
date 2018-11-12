@@ -1,0 +1,155 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('header-dropdown-minicart') -->
+<div class="row">
+  <h2 class="label-hidden" data-bind="widgetLocaleText : 'shoppingCartHeader'"></h2>
+  <div class="col-xs-12 hidden-xs" id="dropdowncart">
+    <div class="pull-right">
+      <h3 class="label-hidden" data-bind="widgetLocaleText : 'cartOperationsText'"></h2>
+      <div class="heading">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <a data-bind="visible: cart().allItems().length > 0 , click: toggleDropDownCart, widgetLocaleText: {attr: 'aria-label', value: 'miniShoppingCartTitle'}, event: {keydown: $data.keypressHandler}" href="#" id="CC-header-cart-total" data-original-title="Shopping Cart" class="cc-cartlink-anchor">
+          <span data-bind="text: cartLinkText"></span>
+        </a>
+        <a data-bind="visible: cart().allItems().length == 0, ccLink: 'cart', widgetLocaleText: {attr: 'aria-label', value: 'miniShoppingCartTitle'}" class="cart" id="CC-header-cart-empty" data-original-title="Shopping Cart" class="cc-cartlink-anchor">
+          <span data-bind="text: cartLinkText"></span>
+        </a>
+      </div>
+    <div class="content" data-bind="visible: cartVisible()">
+      <h4 data-bind="widgetLocaleText : 'cartHeading'"></h4>
+      
+      <!-- ko with: $data['elements']['header-dropdown-minicart'] -->
+      <div class="text-center scroll" data-bind="visible: $parent.cart().allItems().length > $parent.miniCartNumberOfItems(),
+          css: {scrollDivActive: (currentSection() > 1)}">
+        <a id="CC-headerShoppingCart-scrollUp" class="linkTag" href="#" data-bind="disabled: {condition: (currentSection() == 1),
+          click: $parent.miniCartScrollUp}, inTabFlow: (currentSection() != 1), widgetLocaleText : {value:'miniShoppingCartScrollUp', attr:'aria-label'}">
+          <i data-bind="css: {scrollInactive: (currentSection() == 1)}" id="scrollUpIcon" class="fa fa-caret-up scrollActive" aria-label="Scroll Up"></i>
+        </a>
+      </div>
+      <table class="table dropdowncartItems items" data-bind="widgetLocaleText:{value:'minicartText',attr:'summary'}, style: {minHeight: ((currentSection() > 1) ? (dropdowncartItemsHeight()) : ''), height: ((currentSection() > 1) ? (dropdowncartItemsHeight()) : ''), display:'block'}">
+        <thead>
+          <tr>
+            <th class="firstColumn col-sm-3" scope="col" data-bind="widgetLocaleText : 'itemText'"></th>
+            <th class="col-sm-5" scope="col"><div class="sr-only" data-bind="widgetLocaleText : 'itemNameText'"></div></th>
+            <th class="col-sm-1" scope="col" data-bind="widgetLocaleText: 'quantityText'"></th>
+            <th class="col-sm-2" scope="col" data-bind="widgetLocaleText : 'itemTotalText'"></th>
+            <th class="col-sm-1" scope="col"><div class="sr-only" data-bind="widgetLocaleText : 'removeItemText'"></div></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ko foreach: displayedMiniCartItems -->
+          <!--ko ifnot: ($data.isPlaceHolderItem) -->
+          <tr class="item">
+            <td class="firstColumn col-sm-3 image" data-bind="with: productData" role="presentation">
+               <a data-bind="ccLink : $data, attr: {id: 'CC-header-dropdown-minicart-image-'+id+$parent.catRefId}" 
+                 onclick="$('#dropdowncart').removeClass('active');">
+                 <img class="imageSize" data-bind="productVariantImageSource:
+                   {src: $data, imageType: 'thumb',
+                    errorSrc: '/img/no-image.jpg',
+                    alt: displayName,
+                    errorAlt: 'Missing Product Image'}"></img>
+               </a>
+             </td>
+             <td data-bind="with: productData" class="col-sm-5 name">
+             <a data-bind="ccLink : $data, attr: {id: 'CC-header-dropdown-minicart-productName-'+id+$parent.catRefId}"
+                 onclick="$('#dropdowncart').removeClass('active');">
+               </a>
+               <div class="optionsText">
+                 <!-- ko foreach: $parent.selectedOptions -->
+                   <small>
+                     <!-- ko if: $data.optionValue -->
+                       <span class="cc-text-overflow" data-bind="text : $parents[1].optionText($index()), attr: { id: 'CC-header-cart-productOptions-' + $parents[1].productId + $parents[1].catRefId + $parents[1].removeSpaces($data.optionValue)}"></span>
+                     <!-- /ko -->
+                   </small>
+                 <!-- /ko -->
+               </div>
+             </td>
+             <td class="col-sm-1">
+             <span class="sr-only">Quantity: </span></span><span data-bind="ccNumber: quantity" class="qty"></span>
+             </td>
+             <td class="col-sm-2">
+               <span class="sr-only">Cost: </span><span data-bind="currency: {price: itemTotal(), currencyObj: $parents[1].site().selectedPriceListGroup().currency}"></span>
+             </td>
+             <td class="col-sm-1 shiftRight">
+               <a href="#" data-bind="click: $parents[1].handleRemoveFromCart">
+                 <img class="removeFromCartIcon" src="/img/remove.png" width="16" height="16"
+                    data-bind="widgetLocaleText: {attr: 'alt', value: 'buttonRemoveItem'}"/>
+               </a>
+             </td>
+             <th class="firstColumn" scope="col"><div class="sr-only" data-bind="widgetLocaleText : 'itemDetailsText'"></div></th>
+          </tr>
+          <!-- /ko -->
+
+          <!-- ko if: ($data.isPlaceHolderItem) -->
+          <tr class="item">
+            <td class="firstColumn col-sm-3" role="presentation">
+              <i class="fa fa-gift giftIcon" data-bind="attr:{id: 'CC-header-dropdown-minicart-placeHolderImage-'+$index() }"></i>
+            </td>
+            <td class="col-sm-5 name">
+              <span data-bind="text: displayName"></span>
+            </td>
+            <td class="col-sm-1">
+              <span class="sr-only">Quantity: </span></span><span data-bind="ccNumber: quantity" class="qty"></span>
+            </td>
+            <td class="col-sm-2">
+              <span class="sr-only">Cost: </span><span data-bind="currency: {price: itemTotal, currencyObj: $parents[1].site().selectedPriceListGroup().currency}"></span>
+            </td>
+            <td class="col-sm-1 shiftRight">
+              <a href="#" data-bind="click: $parents[1].handlePlaceHolderRemove">
+                <img class="removeFromCartIcon" src="/img/remove.png" width="16" height="16"
+                    data-bind="widgetLocaleText: {attr: 'alt', value: 'buttonRemoveItem'}"/>
+              </a>
+            </td>
+          </tr>
+          <!-- /ko -->
+          <!-- /ko -->
+        </tbody>
+      </table>
+
+        <div class="text-center scroll" data-bind="visible: $parent.cart().allItems().length > $parent.miniCartNumberOfItems(),
+            css: {scrollDivActive: (currentSection() < totalSections())}">
+          <a id="CC-headerShoppingCart-scrollDown" class="linkTag" href="#" data-bind="disabled: {condition: (currentSection() == totalSections()),
+            click: $parent.miniCartScrollDown}, inTabFlow: (currentSection() != totalSections()), widgetLocaleText : {value:'miniShoppingCartScrollDown', attr:'aria-label'}">
+            <i data-bind="css: {scrollInactive: (currentSection() == totalSections())}" id="scrollDownIcon" class="fa fa-caret-down scrollActive" aria-label="Scroll Down"></i>
+          </a>
+        </div>
+        <div class="gwpQualifiedMessage text-center" data-bind="visible: gwpQualifiedMessage(), text: gwpQualifiedMessage()"></div>
+      <!-- /ko -->
+        <table class="total" data-bind="widgetLocaleText: {attr: 'summary', value: 'totalTableSummary'}" summary="Shopping cart totals.">
+          <tbody>
+            <tr>
+              <th scope="row" class="right"><b><span data-bind="widgetLocaleText:'totalTableTotal'">Total:</span></b></th>
+              <td class="right"><span data-bind="currency: {price: cart().subTotal(), currencyObj: $data.site().selectedPriceListGroup().currency}"></span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="checkout">
+          <a data-bind="disabled: {condition : cart().allItems().length == 0, link: 'cart'}, click: hideDropDownCart" id="CC-headerShoppingCart-Edit" class="cc-button-primary" role="button">
+            <span data-bind="widgetLocaleText: 'buttonEditCart'">Edit Cart</span>
+          </a>
+          <a data-bind="click: handleDropDownCheckout, ccNavigation: 'prevent', disabled: {condition : cart().allItems().length == 0, link: 'checkout'} ,
+              event: {keydown: $data.keypressHandler}" id="CC-headerShoppingCart-Checkout" class="cc-button-primary" role="button">
+            <span data-bind="widgetLocaleText: 'buttonCheckout'">Checkout</span>
+          </a>
+        </div>
+        <a id="closecart" class="close" data-dismiss="item"
+          onClick="$('#dropdowncart').removeClass('active');">
+          ×
+        </a>
+      </div>
+      <a
+        data-bind="click: handleValidateCart, ccNavigation: 'prevent', disabled: {condition: cart().allItems().length == 0, link : 'checkout'}, inTabFlow: cart().allItems().length != 0, attr: { 'aria-disabled': cart().allItems().length == 0 ? 'true' : 'false'}"
+        id="CC-header-checkout" class="cc-button-primary" role="button">
+        <span id="CC-headerCheckout" data-bind="widgetLocaleText: 'buttonCheckout'"></span>
+      </a>
+    </div>
+  </div>
+  <div class="col-xs-12 visible-xs">
+    <h2 class="label-hidden" data-bind="widgetLocaleText : 'shoppingCartHeader'"></h2>
+    <div class="pull-right cc-cartlink-xs">
+      <span class="glyphicon glyphicon-shopping-cart"></span>
+      <a data-bind="ccLink: 'cart', widgetLocaleText: {attr: 'aria-label', value: 'miniShoppingCartTitle'}" class="cc-cartlink-anchor" data-original-title="Shopping Cart">
+        <span data-bind="text: cartLinkText"></span>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- /ko -->

@@ -1,0 +1,34 @@
+<div class="sse-endpoint-tester row">
+    <div class="sse-endpoint-tester__container">
+         <form data-bind="submit: onSubmit">
+        <div class="col-sm-6">
+           
+                <ul>
+                    <li><label><input type="radio" name="method" value="GET" data-bind="checked: method" /> GET</label></li>
+                    <li><label><input type="radio" name="method" value="POST" data-bind="checked: method" /> POST</label></li>
+                    <li><label><input type="radio" name="method" value="PUT" data-bind="checked: method" /> PUT</label></li>
+                    <li><label><input type="radio" name="method" value="DELETE" data-bind="checked: method" /> DELETE</label></li>
+                </ul>
+                <div>
+                    <input type="text" style="width: 100%;" data-bind="textInput: ssePath" placeholder="sse path ex: /hc/version" />
+                </div>
+
+        </div>
+        <div class="col-sm-6">
+            <div>
+                <textarea  style="width: 100%; height:170px;" data-bind="textInput: sseData" placeholder="json data body" ></textarea>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <button type="submit">Send</button> 
+        </div>
+        </form>
+    </div>
+   
+</div>
+<div>
+    <br/><br/>
+    <h4>Response:</h4>
+    <pre><code id="responseOutput"></code></pre>
+</div>
+

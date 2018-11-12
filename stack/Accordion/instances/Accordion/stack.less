@@ -1,0 +1,28 @@
+#accordionTabs-re1500026 {
+  #accordionTabs-vars-re1500026 > .loadVariables();
+.accordionTabs {
+  a { 
+    text-decoration:none;
+    
+    .tab-name { 
+      text-align: @stepNameAlignment;
+      background-color: @activeBackgroundColor;
+      color: @activeTextColor;
+      padding: 10px 15px;
+    }
+
+  }
+  
+  a.collapsed {
+    .tab-name { 
+      background-color: @inactiveBackgroundColor;
+      color: @inactiveTextColor;
+    }
+
+  }
+  
+  .panel-heading {
+    padding: 0px;
+  }
+}
+}

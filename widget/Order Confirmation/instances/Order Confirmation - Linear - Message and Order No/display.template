@@ -1,0 +1,55 @@
+<div id="orderConfirmation">
+  <!-- ko if: confirmation -->
+  <!-- ko with: confirmation -->
+  <!-- ko setContextVariable:{name:'widgetViewModel',value:$parent} -->
+
+  <p data-bind="text: $parent.orderNumberMsg()" class="order-number"></p>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="well">
+        <!-- ko if: ($parent.isPendingApproval) -->
+        <span data-bind="text: $parent.thankyouMsg"></span><br />
+        <span data-bind="text: $data.approvalSystemMessages[0]"></span>
+        <span data-bind="widgetLocaleText: 'approvalPendingMsg'"></span><br />
+        <!-- ko if: ($parent.needsPayment) -->
+        <span data-bind="widgetLocaleText: 'AfterapprovalPendingMsg'"></span><br />
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko ifnot: ($parent.isPendingApproval) -->
+        <!-- ko if: ($parent.isPending) -->
+        <span data-bind="widgetLocaleText: 'pendingMsg'"></span><br />
+        <!-- /ko -->
+        <!-- ko ifnot: ($parent.isPending) -->
+        <!-- <span data-bind="text: $parent.thankyouMsg"></span><br /> -->
+        <!-- <span data-bind="widgetLocaleText: 'processingMsg'"></span><br /> -->
+
+        <b>What's next:</b>
+
+        <ol>
+          <li>You will receive an email shortly confirming your order.</li>
+        <!-- ko ifnot: ($data.payments[0].paymentMethod == "creditCard") -->
+          <li>You make the payment.</li>
+        <!-- /ko -->
+          <li>When your order is dispatched, we will send you an SMS notification.</li>
+        </ol>
+
+        <!-- /ko -->
+        <!-- /ko -->
+        <br />
+      </div>
+
+      <p>
+        Should you have any questions, do not hesitate to contact our customer care team.
+      </p>
+
+    </div>
+  </div>
+
+<!-- /ko -->
+<!-- /ko -->
+<!-- /ko -->
+<!-- ko ifnot: confirmation -->
+<span data-bind="widgetLocaleText: 'orderDoesNotExist'"></span>
+<!-- /ko -->
+</div>

@@ -1,0 +1,7 @@
+<div class="hc-footer--follow-us">
+    <ul class="hc-footer--follow-us--link-list">
+        <li><a href="https://www.facebook.com/homechoice" rel="noopener noreferrer" target="_blank"><span>facebook</span><i aria-hidden="true" class="fa fa-facebook-official">&nbsp;</i></a></li>
+        <li><a href="https://www.youtube.com/user/HomeChoiceTV" rel="noopener noreferrer" target="_blank"><span>youtube</span><i aria-hidden="true" class="fa fa-youtube-play">&nbsp;</i></a></li>
+        <li><a href="https://www.instagram.com/homechoice.co.za/?hl=en" rel="noopener noreferrer" target="_blank"><span>instagram</span><i aria-hidden="true" class="fa fa-instagram">&nbsp;</i></a></li>
+    </ul>
+</div>

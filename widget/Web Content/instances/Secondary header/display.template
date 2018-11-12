@@ -1,0 +1,35 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "300243": {"id": "300243"},
+  "300244": {
+    "font": {"styles": {
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-align": "center",
+      "text-decoration": "none"
+    }},
+    "id": "300244",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "55"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: generic-text -->
+<h1 data-bind="element: 'generic-text',id: '300244'"></h1>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->

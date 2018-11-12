@@ -1,0 +1,7 @@
+<div class="col-md-12">
+  <div class="pull-left cc-backlink" id="CC-product-back-link" data-bind="visible: backLinkActive">
+    <a data-bind="click: $parent.goBack, widgetLocaleText: {value: 'backLinkAltText', attr: 'aria-label'}" href="#">
+    <span id="CC-prodDetails-backlink" data-bind="widgetLocaleText: 'backLinkText'"></span>
+    </a>
+  </div>
+</div>

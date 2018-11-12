@@ -1,0 +1,104 @@
+<div class="document-collection-thankyou">
+  
+  <!-- ko if: isTerms() -->
+    <!-- ko if: isDocCollect() -->
+      <h1 class="DEA"><span></span>Send us your documents to receive your order</h1>
+      <div class="ThankYou-red">
+          <div>Before we can deliver your order, we need you to send us your <b>latest 3 months bank statements</b>  OR  <b>3 months pay slips</b></div>
+
+          <div class="PadLock"><b>This is confidential and will not be shared with anyone,</b> and is only used to confirm your income and your credit limit. We will only ask you for this information once, and future orders will be fast and easy.</div>
+      </div>
+
+      <!-- Band radio goes here -->
+
+      <div class="ThankYou-BankBlock ">
+        <h2><b>Next step:</b> Tell us who you bank with</h2>
+        <div class="ThankYou-BankBlock-Inner">
+          
+          <div class="col-md-12 product-details-credit-options">
+            <ul class=" product-details-credit-options--list clearfix">
+    
+                <li>
+                    <input id="absa" value="absa" data-bind="checked: termsBank, click:termsBankClick" style="margin: 15px 0 0;"
+                           type="radio" name="termsBank">
+                    <label for="absa">
+                        <img style="height:40px;" src="/ccstore/v1/images/?source=/file/general/logo_ABSA_radio.png"> ABSA
+                    </label>
+                </li>
+    
+                <li>
+                    <input id="nedbank" value="nedbank" data-bind="checked: termsBank, click:termsBankClick" style="margin: 15px 0 0;"
+                           type="radio" name="termsBank">
+                    <label for="nedbank">
+                        <img style="height:40px;" src="/ccstore/v1/images/?source=/file/general/logo_Nedbank_radio.png"> NEDBANK
+                    </label>
+                </li>
+    
+                <li>
+                    <input id="standard" value="standard" data-bind="checked: termsBank, click:termsBankClick" style="margin: 15px 0 0;"
+                           type="radio" name="termsBank">
+                    <label for="standard">
+                        <img style="height:40px;" src="/ccstore/v1/images/?source=/file/general/logo_StandardBank_radio.png"> STANDARD BANK
+                    </label>
+                </li>
+                
+                <li>
+                    <input id="other" value="other" data-bind="checked: termsBank, click:termsBankClick" style="margin: 15px 0 0;"
+                           type="radio" name="termsBank">
+                    <label for="other">
+                        <img style="height:40px;" src="/ccstore/v1/images/?source=/file/general/logo_Other_radio.png"> OTHER BANK
+                    </label>
+                </li>
+                
+                <li>
+                    <input id="no" value="no" data-bind="checked: termsBank, click:termsBankClick" style="margin: 15px 0 0;"
+                           type="radio" name="termsBank">
+                    <label for="no">
+                        <img style="height:40px;" src="/ccstore/v1/images/?source=/file/general/logo_Other_radio.png"> NO BANK ACCOUNT
+                    </label>
+                </li>
+    
+            </ul>
+    
+        </div>
+
+
+            <!-- ko if: showError() -->
+            <div style="color:red">
+                Please select a bank to continue
+            </div>
+            <!--  /ko -->
+
+
+
+          <div class="ThankYou-BankBlock-Button">
+            <!-- ko ifnot: termsBankClickDisabled() -->
+              <a data-bind="click: SaveBankAndContinue" class="cc-button-primary btn-checkout col-xs-12" href="#" tabindex="0">
+                <span >CONTINUE</span>
+              </a>
+            <!--  /ko -->
+            <!-- ko if: termsBankClickDisabled() -->
+              <a data-bind="click: SaveBankShowError" class="cc-button-primary btn-checkout col-xs-12" tabindex="0">
+                <span >CONTINUE</span>
+              </a>
+            <!--  /ko -->
+          </div>
+        </div>
+      </div>
+
+    <!--  /ko -->
+    <!-- ko ifnot: isDocCollect() -->
+      <h1><span></span> Thank you, we have received your order!</h1>
+      <div class="ThankYou-green">
+          Once your order is ready for delivery, you will receive an SMS or email notification as soon as your parcel has left our warehouse.
+      </div>
+    <!--  /ko -->
+  <!--  /ko -->
+  <!-- ko ifnot: isTerms() -->
+      <h1><span></span> Thank you, we have received your order!</h1>
+      <div class="ThankYou-green">
+          Once your order is ready for delivery, you will receive an SMS or email notification as soon as your parcel has left our warehouse.
+      </div>
+  <!--  /ko -->
+
+</div>

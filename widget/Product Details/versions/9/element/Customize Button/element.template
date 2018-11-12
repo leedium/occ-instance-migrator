@@ -1,0 +1,28 @@
+<!-- ko if: initialized() && $data.hasOwnProperty('product-configure') -->
+<!-- ko with: $data['product-configure'] -->
+<!-- ko if: $parent.product().isConfigurable() && $parent.site().extensionSiteSettings && $parent.site().extensionSiteSettings.CPQConfigurationSettings && $parent.site().extensionSiteSettings.CPQConfigurationSettings.enabled -->
+  <br/>
+  <div  id="CC-prodDetails-configure" data-bind="inTabFlow:(validateConfigurable($parent))" data-toggle="modal">
+    <button id="cc-prodDetailsConfigure" data-bind="disabled: {condition: !validateConfigurable($parent), click: handleConfigure.bind($data,$parent)}" class="cc-button-secondary">
+      <span id="cc-prodDetails-configure" data-bind="widgetLocaleText:'configureText'"></span>
+    </button>
+  </div> 
+    
+    
+  <!--CPQ Modal -->
+  <div class="modal fade" id="cc-cpqmodalpane" tabindex="-1" role="dialog">
+    <div class="modal-dialog cc-config-modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <iframe id='cc-cpqConfiguration-frame' class="configFrame" data-bind="attr : { src : $parent.absoluteUrl('/templates/cpq-config.html') }" ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+<!-- /ko -->
+<!-- /ko -->
+<!-- /ko -->
