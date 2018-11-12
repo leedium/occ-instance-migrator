@@ -1,5 +1,5 @@
 {
-  "name": "occ-dev-tools",
+  "name": "occ-instance-migrator",
   "version": "1.0.0",
   "description": "Tools to help with Oracle Commerce Cloud Solutions",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leedium/occ-tools.git"
+    "url": "git+https://github.com/leedium/occ-instance-migrator.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leedium/occ-dev-tools/issues"
+    "url": "https://github.com/leedium/occ-instance-migrator/issues"
   },
-  "homepage": "https://github.com/leedium/occ-dev-tools#readme",
+  "homepage": "https://github.com/leedium/occ-instance-migrator#readme",
   "dependencies": {
     "fs-extra": "^7.0.0",
     "simple-git": "^1.105.0",
