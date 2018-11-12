@@ -1,7 +1,0 @@
-{
-  "resources": {
-    "searchBreadcrumb": "Search Results \"__searchTerm__\"",
-    "breadcrumbDelimiter": ">",
-    "homeLinkText": "Home"
-  }
-}
