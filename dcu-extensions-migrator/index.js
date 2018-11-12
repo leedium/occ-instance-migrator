@@ -17,8 +17,7 @@ const {gitPath} = argv;
 const diffArray = [];
 const transferPaths = [];
 
-console.log(gitPath)
-
+// todo: move .sh files to js task
 
 function grabTarget () {
     return new Promise((resolve) => {
@@ -188,7 +187,7 @@ function transferFile (path) {
         console.log(`transferring ${path} ...`)
         const ls1 = spawn(`dcu`, ['--transferAll', path, '--node', config.dcu_server_target, '-k', config.api_key_target], {
             env: Object.assign({}, process.env, {
-                'CC_APPLICATION_KEY': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkMzIyNGJjOC1iZjljLTRhNWMtYjFhNi05MjIwYzI3NzQ1MWUiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NzEwMzExNTYsImlhdCI6MTUzOTQ5NTE1Nn0=.d8gGlYAtIZeVqE0vftJJ3qCKdDQjtHiMSiqA3CFfLdc='
+                'CC_APPLICATION_KEY': config.api_key_target
             })
         });
         ls1.stdout.on('data', (chunk) => {
@@ -210,7 +209,7 @@ function transferAll () {
         console.log(`transferring ...`)
         const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', config.dcu_server_target, '-k', config.api_key_target], {
             env: Object.assign({}, process.env, {
-                'CC_APPLICATION_KEY': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkMzIyNGJjOC1iZjljLTRhNWMtYjFhNi05MjIwYzI3NzQ1MWUiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NzEwMzExNTYsImlhdCI6MTUzOTQ5NTE1Nn0=.d8gGlYAtIZeVqE0vftJJ3qCKdDQjtHiMSiqA3CFfLdc='
+                'CC_APPLICATION_KEY': config.api_key_target
             })
         });
         ls1.stdout.on('data', (chunk) => {
