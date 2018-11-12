@@ -7,13 +7,13 @@ const argv = require('yargs').argv;
 const git = require('simple-git');
 
 const TASK_DELAY = 3000;
-const DIFF_FILE_PATH = './whatchanged.txt'
+const DIFF_FILE_PATH = './whatchanged.txt';
 
-const DCU_SERVER_SOURCE = "https://ccadmin-test-zbba.oracleoutsourcing.com"
-const API_KEY_SOURCE = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlOWM0YzZjNC1mNTVkLTQ3ZmQtYmZkYy1lZmEyOWYxZjllZGEiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NTM5MTg3NTMsImlhdCI6MTUyMjM4Mjc1M30=.g4Ws3V9PYZGnF/bIxtSLWeOBtHTbzVWjliEyS+Jb7oo="
+const DCU_SERVER_SOURCE = "https://ccadmin-test-zbba.oracleoutsourcing.com";
+const API_KEY_SOURCE = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlOWM0YzZjNC1mNTVkLTQ3ZmQtYmZkYy1lZmEyOWYxZjllZGEiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NTM5MTg3NTMsImlhdCI6MTUyMjM4Mjc1M30=.g4Ws3V9PYZGnF/bIxtSLWeOBtHTbzVWjliEyS+Jb7oo=";
 
-const DCU_SERVER_TARGET = "https://ccadmin-stage-zbba.oracleoutsourcing.com"
-const API_KEY_TARGET = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkMzIyNGJjOC1iZjljLTRhNWMtYjFhNi05MjIwYzI3NzQ1MWUiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NzEwMzExNTYsImlhdCI6MTUzOTQ5NTE1Nn0=.d8gGlYAtIZeVqE0vftJJ3qCKdDQjtHiMSiqA3CFfLdc="
+const DCU_SERVER_TARGET = "https://ccadmin-stage-zbba.oracleoutsourcing.com";
+const API_KEY_TARGET = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkMzIyNGJjOC1iZjljLTRhNWMtYjFhNi05MjIwYzI3NzQ1MWUiLCJpc3MiOiJhcHBsaWNhdGlvbkF1dGgiLCJleHAiOjE1NzEwMzExNTYsImlhdCI6MTUzOTQ5NTE1Nn0=.d8gGlYAtIZeVqE0vftJJ3qCKdDQjtHiMSiqA3CFfLdc=";
 
 
 const {gitPath} = argv;
@@ -251,20 +251,20 @@ function makeTmpFolder () {
 
 async function start () {
     try {
-        // await checkoutBranch('master');
-        // await deleteBranch('deploy');
-        // await deleteBranch('test');
-        // await grabTarget();
-        // await addAll();
-        // await commit();
-        // await createBranch('deploy');
-        // await createBranch('test');
-        // await grabSource()
-        // await addAll();
-        // await commit();
-        // await checkoutBranch('deploy');
-        // await mergeBranch('test');
-        // await getDiffs('test');
+        await checkoutBranch('master');
+        await deleteBranch('deploy');
+        await deleteBranch('test');
+        await grabTarget();
+        await addAll();
+        await commit();
+        await createBranch('deploy');
+        await createBranch('test');
+        await grabSource()
+        await addAll();
+        await commit();
+        await checkoutBranch('deploy');
+        await mergeBranch('test');
+        await getDiffs('test');
         await processDiffs();
         await makeTmpFolder();
         await transferAll();
