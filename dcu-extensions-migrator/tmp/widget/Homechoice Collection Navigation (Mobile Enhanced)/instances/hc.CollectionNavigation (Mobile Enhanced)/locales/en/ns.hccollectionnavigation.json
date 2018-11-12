@@ -1,0 +1,17 @@
+{
+  "resources": {
+    "mobileNavBtnText": "Navigation",
+    "categoryHeader": "Category Navigation Menu",
+    "txtLabel5": "5",
+    "txtLabel4": "4",
+    "noSubCategoriesText": "__displayName__ has No Sub Categories",
+    "signOut": "SIGN OUT",
+    "menu": "Menu",
+    "signIn": "LOGIN OR REGISTER",
+    "txtLabel3": "3",
+    "txtLabel2": "2",
+    "txtLabel1": "1",
+    "myAccount": "My Account",
+    "categoryNavScreenReaderText": "__displayName__ has __categoryLength__ Sub Categories"
+  }
+}

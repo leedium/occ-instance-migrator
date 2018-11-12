@@ -1,0 +1,56 @@
+<div id="prodDetails-imgCarousel" class="carousel slide hidden-sm hidden-xs" data-bind="visible: product().primaryFullImageURL && (product().thumbImageURLs().length > 1) , carouselSwipe" data-interval="false" >
+  <!-- ko if: imgGroups() && (imgGroups().length > 1) -->
+  <a class="left carousel-control" href="#prodDetails-imgCarousel" data-slide="prev" data-bind="event: {keyup: handleCarouselArrows}, widgetLocaleText:{value:'previousImageText',attr:'title'}">
+    <div class="cc-left-arrow"></div>
+  </a>
+  <!-- /ko -->
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <!-- ko foreach: imgGroups -->
+    <div class="item" data-bind="css: {'active': $index()==0}, foreach: $data">
+      <!-- ko if: $parents[1].imgMetadata && ($parents[1].imgMetadata.length>0) -->
+      <div class="col-md-3 thumbnail-container">
+        <a tabindex="0" class="thumbnail" data-bind="click: function(data,event){ $parents[1].loadImageToMain(data, event,($parentContext.$index() * 4) + $index());},
+                                          event: {keyup: function(data, event){$parents[1].handleCycleImages(data, event, $index(), $parentContext.$index());}},
+                                          attr: {id: 'carouselLink'+(($parentContext.$index() * 4) + $index())},
+                                          css: {'active' : $parents[1].activeImgIndex() == ($parentContext.$index() * 4) + $index()}"
+               href="#">
+          <img data-bind="attr: {src: $data, id: 'carouselImg'+(($parentContext.$index() * 4) + $index()),
+            alt: $parents[1].imgMetadata[(($parentContext.$index() * 4) + $index())].altText ? $parents[1].imgMetadata[(($parentContext.$index() * 4) + $index())].altText : $parents[1].product().displayName(),
+            title: $parents[1].imgMetadata[(($parentContext.$index() * 4) + $index())].titleText ? $parents[1].imgMetadata[(($parentContext.$index() * 4) + $index())].titleText : $parents[1].product().displayName()}" 
+            onError="this.onError=null;this.src='/img/no-image.jpg';">
+        </a>
+      </div>
+      <!-- /ko -->
+      <!-- ko if : !($parents[1].imgMetadata && $parents[1].imgMetadata.length>0)-->
+       <div class="col-md-3 thumbnail-container">
+        <a tabindex="0" class="thumbnail" data-bind="click: function(data,event){ $parents[1].loadImageToMain(data, event,($parentContext.$index() * 4) + $index());},
+                                          event: {keyup: function(data, event){$parents[1].handleCycleImages(data, event, $index(), $parentContext.$index());}},
+                                          attr: {id: 'carouselLink'+(($parentContext.$index() * 4) + $index())},
+                                          css: {'active' : $parents[1].activeImgIndex() == ($parentContext.$index() * 4) + $index()}"
+               href="#">
+          <img data-bind="attr: {src: $data, id: 'carouselImg'+(($parentContext.$index() * 4) + $index()),
+            alt: ($parents[1].product().product.productImagesMetadata[$index()] && $parents[1].product().product.productImagesMetadata[$index()].altText) ? $parents[1].product().product.productImagesMetadata[$index()].altText : $parents[1].product().displayName(),
+            title: ($parents[1].product().product.productImagesMetadata[$index()] && $parents[1].product().product.productImagesMetadata[$index()].titleText) ? $parents[1].product().product.productImagesMetadata[$index()].titleText : $parents[1].product().displayName()}" 
+            onError="this.onError=null;this.src='/img/no-image.jpg';">
+        </a>
+      </div>
+      <!-- /ko -->
+    </div>
+    <!-- /ko -->
+  </div>
+  <!-- ko if: imgGroups().length > 1 -->
+  <div class="row hidden-md hidden-lg">
+    <ol class="carousel-indicators" data-bind="foreach: imgGroups" title="product images">
+      <li data-target="#prodDetails-imgCarousel" data-bind="css: {'active': $index()==0}, attr: {'data-slide-to': $index}"></li>
+    </ol>
+  </div>
+  <!-- /ko -->
+
+  <!-- Controls -->
+  <!-- ko if: imgGroups().length > 1 -->
+  <a class="right carousel-control" href="#prodDetails-imgCarousel" data-slide="next" data-bind="event: {keyup: handleCarouselArrows}, widgetLocaleText:{value:'nextImageText',attr:'title'}">
+    <div class="cc-right-arrow"></div>
+  </a>
+  <!-- /ko -->
+</div>

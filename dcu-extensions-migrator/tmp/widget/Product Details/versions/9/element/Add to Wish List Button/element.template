@@ -1,0 +1,32 @@
+ <!-- ko if: showSWM  -->
+  <br><br>
+  <div class="btn-group swm-add-to-wishlist-selector">
+    <button id="cc-prodDetailsAddToSpaceSelector" data-backdrop="static" data-bind="disabled: {condition: !validateAddToSpace() || disableAddToSpace}, click: isAddToSpaceClicked() == false && addToSpaceClick" class="btn cc-button-secondary">
+      <!-- ko ifnot: isAddToSpaceClicked -->
+        <span id="CC-prodDetails-addToSpaceSelector" data-bind="widgetLocaleText:'socialAddToSpaceText'"></span>
+      <!-- /ko -->
+      <!-- ko if: isAddToSpaceClicked -->
+        <span id="CC-prodDetails-addedToSpaceSelector" data-bind="widgetLocaleText:'socialAddedToSpaceText'"></span>
+      <!-- /ko -->
+    </button>
+    <!-- ko if: $data.user().loggedIn() -->
+        <button id="cc-prodDetailsAddToSpaceDropdown" class="btn cc-button-secondary dropdown-toggle" data-backdrop="static" data-toggle="dropdown" 
+          data-bind="disabled: {condition: !validateAddToSpace() || disableAddToSpace}, click: $data.openAddToWishlistDropdownSelector.bind($data)">
+          <span class="caret"></span>
+          <span class="sr-only" data-bind="widgetLocaleText:'socialAddToSpaceText'"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="cc-prodDetailsAddToSpaceDropdown">
+          <li role="presentation" class="dropdown-header" data-bind="widgetLocaleText: 'mySpacesGroupText'"></li>
+          <!-- ko foreach : {data : $data.spaceOptionsGrpMySpacesArr, as : 'mySpaces'} -->
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="text: mySpaces.spaceNameFull, click: $parent.addToSpaceSelect.bind($parent, mySpaces.spaceid)"></a></li>
+          <!-- /ko -->
+          <li role="presentation" class="dropdown-header" data-bind="visible: spaceOptionsGrpJoinedSpacesArr().length > 0, widgetLocaleText: 'joinedSpacesGroupText'"></li>
+          <!-- ko foreach : {data : $data.spaceOptionsGrpJoinedSpacesArr, as : 'joinedSpaces'} -->
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="text: joinedSpaces.spaceNameFormatted, click: $parent.addToSpaceSelect.bind($parent, joinedSpaces.spaceid)"></a></li>
+          <!-- /ko -->
+          <li role="presentation" class="divider"></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="" data-bind="widgetLocaleText: 'createNewSpaceOptText', click: addToSpaceSelectorClick"></a></li>
+        </ul>
+	  <!-- /ko -->
+  </div>
+<!-- /ko -->

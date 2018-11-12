@@ -1,2 +1,107 @@
-dcu-extensions-migrator/index.js
-dcu-extensions-migrator/package.json
+element/Footer Links cc-link/element.js
+element/Footer Links cc-link/element.template
+element/Login Registration Credit SAML SSO/element.js
+element/Login Registration Credit SAML SSO/element.template
+element/Product Delivery Restrictions/element.js
+element/Product Delivery Restrictions/element.template
+element/Secondary Nav Links/element.template
+element/Variant Options Listing/element.js
+element/Variant Options Listing/element.template
+global/hc.ui.functions.js
+stack/Accordion/instances/Accordion/stack.less
+stack/Popup Stack/instances/Popup Stack/stack.less
+theme/HomeChoice Demo/additionalStyles.less
+theme/HomeChoice Demo/styles.less
+theme/HomeChoice Theme/styles.less
+theme/Mono Theme/styles.less
+widget/Breadcrumb/element/Breadcrumb Links/element.template
+widget/Breadcrumb/instances/Product Listing Breadcrumb v4/display.template
+widget/Breadcrumb/instances/Product Listing Breadcrumb v4/locales/en/ns.breadcrumb.json
+widget/Breadcrumb/instances/Product Listing Breadcrumb v4/widget.less
+widget/Breadcrumb/instances/Product Listing Breadcrumb v4/widgetInstanceMetadata.json
+widget/Breadcrumb/instances/Search Results Breadcrumb v4/display.template
+widget/Breadcrumb/instances/Search Results Breadcrumb v4/locales/en/ns.breadcrumb.json
+widget/Breadcrumb/instances/Search Results Breadcrumb v4/widget.less
+widget/Breadcrumb/instances/Search Results Breadcrumb v4/widgetInstanceMetadata.json
+widget/Breadcrumb/module/js/extendbreadcrumb_v3.js
+widget/Breadcrumb/module/js/extendbreadcrumb_v4.js
+widget/Checkout Cart Order Summary - Terms/config/configMetadata.json
+widget/Child Collection List Widget/config/configMetadata.json
+widget/Contact Me - Call Back Request/instances/Contact Me - Request Call Back/display.template
+widget/Contact Me - Call Back Request/instances/Contact Me - Request Call Back/widget.less
+widget/Contact Me - Call Back Request/js/requestCallBack.js
+widget/Custom Customer Profile Widget/instances/My Account - Profile/display.template
+widget/Custom Customer Profile Widget/instances/My Account - Profile/widget.less
+widget/Custom Customer Profile Widget/js/customCustomerProfile.js
+widget/Global SEO/js/hc.global.SEO.js
+widget/HomeChoice Email Sign Up Widget/config/configMetadata.json
+widget/HomeChoice Sign Up Widget/config/configMetadata.json
+widget/Homechoice - Contact Us/display.template
+widget/Homechoice - Contact Us/instances/Contact Us/display.template
+widget/Homechoice - Contact Us/instances/Contact Us/locales/en/ns.hccontactus.json
+widget/Homechoice - Contact Us/instances/Contact Us/widget.less
+widget/Homechoice - Contact Us/instances/Contact Us/widgetInstanceMetadata.json
+widget/Homechoice - Contact Us/js/hcContactUs.js
+widget/Homechoice - Contact Us/locales/en/ns.hccontactus.json
+widget/Homechoice - Contact Us/widget.less
+widget/Homechoice - Contact Us/widgetMetadata.json
+widget/Homechoice - Document Collection - Thank You/instances/Document Collection - Thank You/display.template
+widget/Homechoice - Document Collection - Thank You/js/hcDocumentCollectionThankYou.js
+widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/display.template
+widget/Homechoice - Quick Order Banner/js/main.js
+widget/Homechoice Collection Navigation (Mobile Enhanced)/config/configMetadata.json
+widget/Homechoice Footer/config/configMetadata.json
+widget/Order Confirmation/instances/Order Confirmation - Linear - Message and Order No/display.template
+widget/Product Details/instances/Product Details v8 ( OCC v 18A)/display.template
+widget/Product Listing Widget v9/config/configMetadata.json
+widget/Product Listing/instances/HomeChoice Search Results Widget v13/display.template
+widget/Product Listing/instances/HomeChoice Search Results Widget v13/locales/en/ns.productlisting.json
+widget/Product Listing/instances/HomeChoice Search Results Widget v13/widget.less
+widget/Product Listing/instances/HomeChoice Search Results Widget v13/widgetInstanceMetadata.json
+widget/Product Listing/instances/Product Listing Widget - v13/display.template
+widget/Product Listing/instances/Product Listing Widget - v13/locales/en/ns.productlisting.json
+widget/Product Listing/instances/Product Listing Widget - v13/widget.less
+widget/Product Listing/instances/Product Listing Widget - v13/widgetInstanceMetadata.json
+widget/Profile - Checkout Buttons Widget/js/profileCheckoutButtons.js
+widget/Profile - Order Summary Checkout/js/checkout-order-summary.js
+widget/Request a Catalogue Form/display.template
+widget/Request a Catalogue Form/instances/Request a Catalogue - Form/display.template
+widget/Request a Catalogue Form/instances/Request a Catalogue - Form/locales/en/ns.requestcatalogueform.json
+widget/Request a Catalogue Form/instances/Request a Catalogue - Form/widget.less
+widget/Request a Catalogue Form/instances/Request a Catalogue - Form/widgetInstanceMetadata.json
+widget/Request a Catalogue Form/js/requestCatalogueForm.js
+widget/Request a Catalogue Form/locales/en/ns.requestcatalogueform.json
+widget/Request a Catalogue Form/widget.less
+widget/Request a Catalogue Form/widgetMetadata.json
+widget/SSE Endpoint tester/instances/hc.sse.endpoint.tester/display.template
+widget/SSE Endpoint tester/js/sseendpointtester_1.js
+widget/Web Content/instances/Call Me Lady/display.template
+widget/Web Content/instances/Call Me Lady/widget.less
+widget/Web Content/instances/Call Me Lady/widgetInstanceMetadata.json
+widget/Web Content/instances/Childrens bedding - shop by room/display.template
+widget/Web Content/instances/Childrens bedding - shop by room/widgetInstanceMetadata.json
+widget/Web Content/instances/Page Title/display.template
+widget/Web Content/instances/Page Title/widget.less
+widget/Web Content/instances/Page Title/widgetInstanceMetadata.json
+widget/Web Content/instances/Request a Catalogue - Digital Catalogues/display.template
+widget/Web Content/instances/Request a Catalogue - Digital Catalogues/widget.less
+widget/Web Content/instances/Request a Catalogue - Digital Catalogues/widgetInstanceMetadata.json
+widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/display.template
+widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/widget.less
+widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/widgetInstanceMetadata.json
+widget/Web Content/instances/Request a Catalogue - Why Order/display.template
+widget/Web Content/instances/Request a Catalogue - Why Order/widget.less
+widget/Web Content/instances/Request a Catalogue - Why Order/widgetInstanceMetadata.json
+widget/Web Content/instances/contact us/widget.less
+widget/Web Content/instances/contact us/widgetInstanceMetadata.json
+widget/Web Content/instances/our contact details/display.template
+widget/Web Content/instances/our contact details/widget.less
+widget/Web Content/instances/our contact details/widgetInstanceMetadata.json
+widget/Web Content/instances/request-catalogue/widget.less
+widget/Web Content/instances/request-catalogue/widgetInstanceMetadata.json
+widget/Web Content/instances/shop by room - content seperator/display.template
+widget/Web Content/instances/shop by room - content seperator/widget.less
+widget/Web Content/instances/shop by room - content seperator/widgetInstanceMetadata.json
+widget/Web Content/instances/shop-by-room/display.template
+widget/Web Content/instances/shop-by-room/widget.less
+widget/Web Content/instances/shop-by-room/widgetInstanceMetadata.json

@@ -1,0 +1,18 @@
+<div id="CC-profileCheckoutButtons">
+    <div id="CC-checkoutOrderSummary-placeOrder" class="checkout row" data-bind="visible: user().loggedIn() && isRegistrationComplete() && isCheckoutCardValid">
+        <button data-bind="click: nextButtonClick, css: nextButtonCss" class="cc-button-primary col-xs-12">
+            <span data-bind="text:nextButton"></span>
+        </button>
+        <span data-bind="text:cartData"></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h4>paymentVM.displayJSON</h4>
+        <span data-bind="text:paymentVM.displayJSON()"></span>
+    </div>
+    <div class="col-xs-12">
+        <h4>cashModel().customProperties</h4>
+        <span data-bind="text:cashModel().customProperties"></span>
+    </div>
+</div>

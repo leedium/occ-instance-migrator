@@ -1,0 +1,8 @@
+{
+  "resources": {
+    "collectionFieldsRequiredHelpText": "Enter list of comma separated fields to include in the response.",
+    "collectionIdHelpText": "Enter only alphanumeric characters, including - and _, to set the Collection ID",
+    "collectionIdTextLabel": "Collection ID",
+    "collectionFieldsRequiredLabel": "Fields"
+  }
+}

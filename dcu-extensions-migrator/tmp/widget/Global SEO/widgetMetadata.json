@@ -1,0 +1,22 @@
+{
+  "imports": [
+    "product",
+    "category",
+    "home",
+    "order",
+    "payment",
+    "confirmation",
+    "orderDetails",
+    "user"
+  ],
+  "translations": [
+    {
+      "name": "Global SEO",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}
