@@ -17,6 +17,8 @@ const {gitPath} = argv;
 const diffArray = [];
 const transferPaths = [];
 
+console.log(gitPath)
+
 
 function grabTarget () {
     return new Promise((resolve) => {
@@ -248,23 +250,23 @@ function makeTmpFolder () {
 
 async function start () {
     try {
-        // await checkoutBranch('master');
-        // await deleteBranch('deploy');
-        // await deleteBranch('test');
-        // await grabTarget();
+        await checkoutBranch('master');
+        await deleteBranch('deploy');
+        await deleteBranch('test');
+        await grabTarget();
         await addAll();
-        // await commit();
-        // await createBranch('deploy');
-        // await createBranch('test');
-        // await grabSource()
-        // await addAll();
-        // await commit();
-        // await checkoutBranch('deploy');
-        // await mergeBranch('test');
-        // await getDiffs('test');
-        // await processDiffs();
-        // await makeTmpFolder();
-        // await transferAll();
+        await commit();
+        await createBranch('deploy');
+        await createBranch('test');
+        await grabSource()
+        await addAll();
+        await commit();
+        await checkoutBranch('deploy');
+        await mergeBranch('test');
+        await getDiffs('test');
+        await processDiffs();
+        await makeTmpFolder();
+        await transferAll();
         // await transfer();
 
     }
