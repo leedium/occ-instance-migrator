@@ -1,107 +1,108 @@
-element/Footer Links cc-link/element.js
-element/Footer Links cc-link/element.template
-element/Login Registration Credit SAML SSO/element.js
-element/Login Registration Credit SAML SSO/element.template
-element/Product Delivery Restrictions/element.js
-element/Product Delivery Restrictions/element.template
-element/Secondary Nav Links/element.template
-element/Variant Options Listing/element.js
-element/Variant Options Listing/element.template
-global/hc.ui.functions.js
-stack/Accordion/instances/Accordion/stack.less
-stack/Popup Stack/instances/Popup Stack/stack.less
-theme/HomeChoice Demo/additionalStyles.less
-theme/HomeChoice Demo/styles.less
-theme/HomeChoice Theme/styles.less
-theme/Mono Theme/styles.less
-widget/Breadcrumb/element/Breadcrumb Links/element.template
-widget/Breadcrumb/instances/Product Listing Breadcrumb v4/display.template
-widget/Breadcrumb/instances/Product Listing Breadcrumb v4/locales/en/ns.breadcrumb.json
-widget/Breadcrumb/instances/Product Listing Breadcrumb v4/widget.less
-widget/Breadcrumb/instances/Product Listing Breadcrumb v4/widgetInstanceMetadata.json
-widget/Breadcrumb/instances/Search Results Breadcrumb v4/display.template
-widget/Breadcrumb/instances/Search Results Breadcrumb v4/locales/en/ns.breadcrumb.json
-widget/Breadcrumb/instances/Search Results Breadcrumb v4/widget.less
-widget/Breadcrumb/instances/Search Results Breadcrumb v4/widgetInstanceMetadata.json
-widget/Breadcrumb/module/js/extendbreadcrumb_v3.js
-widget/Breadcrumb/module/js/extendbreadcrumb_v4.js
-widget/Checkout Cart Order Summary - Terms/config/configMetadata.json
-widget/Child Collection List Widget/config/configMetadata.json
-widget/Contact Me - Call Back Request/instances/Contact Me - Request Call Back/display.template
-widget/Contact Me - Call Back Request/instances/Contact Me - Request Call Back/widget.less
-widget/Contact Me - Call Back Request/js/requestCallBack.js
-widget/Custom Customer Profile Widget/instances/My Account - Profile/display.template
-widget/Custom Customer Profile Widget/instances/My Account - Profile/widget.less
-widget/Custom Customer Profile Widget/js/customCustomerProfile.js
-widget/Global SEO/js/hc.global.SEO.js
-widget/HomeChoice Email Sign Up Widget/config/configMetadata.json
-widget/HomeChoice Sign Up Widget/config/configMetadata.json
-widget/Homechoice - Contact Us/display.template
-widget/Homechoice - Contact Us/instances/Contact Us/display.template
-widget/Homechoice - Contact Us/instances/Contact Us/locales/en/ns.hccontactus.json
-widget/Homechoice - Contact Us/instances/Contact Us/widget.less
-widget/Homechoice - Contact Us/instances/Contact Us/widgetInstanceMetadata.json
-widget/Homechoice - Contact Us/js/hcContactUs.js
-widget/Homechoice - Contact Us/locales/en/ns.hccontactus.json
-widget/Homechoice - Contact Us/widget.less
-widget/Homechoice - Contact Us/widgetMetadata.json
-widget/Homechoice - Document Collection - Thank You/instances/Document Collection - Thank You/display.template
-widget/Homechoice - Document Collection - Thank You/js/hcDocumentCollectionThankYou.js
-widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/display.template
-widget/Homechoice - Quick Order Banner/js/main.js
-widget/Homechoice Collection Navigation (Mobile Enhanced)/config/configMetadata.json
-widget/Homechoice Footer/config/configMetadata.json
-widget/Order Confirmation/instances/Order Confirmation - Linear - Message and Order No/display.template
-widget/Product Details/instances/Product Details v8 ( OCC v 18A)/display.template
-widget/Product Listing Widget v9/config/configMetadata.json
-widget/Product Listing/instances/HomeChoice Search Results Widget v13/display.template
-widget/Product Listing/instances/HomeChoice Search Results Widget v13/locales/en/ns.productlisting.json
-widget/Product Listing/instances/HomeChoice Search Results Widget v13/widget.less
-widget/Product Listing/instances/HomeChoice Search Results Widget v13/widgetInstanceMetadata.json
-widget/Product Listing/instances/Product Listing Widget - v13/display.template
-widget/Product Listing/instances/Product Listing Widget - v13/locales/en/ns.productlisting.json
-widget/Product Listing/instances/Product Listing Widget - v13/widget.less
-widget/Product Listing/instances/Product Listing Widget - v13/widgetInstanceMetadata.json
-widget/Profile - Checkout Buttons Widget/js/profileCheckoutButtons.js
-widget/Profile - Order Summary Checkout/js/checkout-order-summary.js
-widget/Request a Catalogue Form/display.template
-widget/Request a Catalogue Form/instances/Request a Catalogue - Form/display.template
-widget/Request a Catalogue Form/instances/Request a Catalogue - Form/locales/en/ns.requestcatalogueform.json
-widget/Request a Catalogue Form/instances/Request a Catalogue - Form/widget.less
-widget/Request a Catalogue Form/instances/Request a Catalogue - Form/widgetInstanceMetadata.json
-widget/Request a Catalogue Form/js/requestCatalogueForm.js
-widget/Request a Catalogue Form/locales/en/ns.requestcatalogueform.json
-widget/Request a Catalogue Form/widget.less
-widget/Request a Catalogue Form/widgetMetadata.json
-widget/SSE Endpoint tester/instances/hc.sse.endpoint.tester/display.template
-widget/SSE Endpoint tester/js/sseendpointtester_1.js
-widget/Web Content/instances/Call Me Lady/display.template
-widget/Web Content/instances/Call Me Lady/widget.less
-widget/Web Content/instances/Call Me Lady/widgetInstanceMetadata.json
-widget/Web Content/instances/Childrens bedding - shop by room/display.template
-widget/Web Content/instances/Childrens bedding - shop by room/widgetInstanceMetadata.json
-widget/Web Content/instances/Page Title/display.template
-widget/Web Content/instances/Page Title/widget.less
-widget/Web Content/instances/Page Title/widgetInstanceMetadata.json
-widget/Web Content/instances/Request a Catalogue - Digital Catalogues/display.template
-widget/Web Content/instances/Request a Catalogue - Digital Catalogues/widget.less
-widget/Web Content/instances/Request a Catalogue - Digital Catalogues/widgetInstanceMetadata.json
-widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/display.template
-widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/widget.less
-widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/widgetInstanceMetadata.json
-widget/Web Content/instances/Request a Catalogue - Why Order/display.template
-widget/Web Content/instances/Request a Catalogue - Why Order/widget.less
-widget/Web Content/instances/Request a Catalogue - Why Order/widgetInstanceMetadata.json
-widget/Web Content/instances/contact us/widget.less
-widget/Web Content/instances/contact us/widgetInstanceMetadata.json
-widget/Web Content/instances/our contact details/display.template
-widget/Web Content/instances/our contact details/widget.less
-widget/Web Content/instances/our contact details/widgetInstanceMetadata.json
-widget/Web Content/instances/request-catalogue/widget.less
-widget/Web Content/instances/request-catalogue/widgetInstanceMetadata.json
-widget/Web Content/instances/shop by room - content seperator/display.template
-widget/Web Content/instances/shop by room - content seperator/widget.less
-widget/Web Content/instances/shop by room - content seperator/widgetInstanceMetadata.json
-widget/Web Content/instances/shop-by-room/display.template
-widget/Web Content/instances/shop-by-room/widget.less
-widget/Web Content/instances/shop-by-room/widgetInstanceMetadata.json
+:000000 100644 0000000 48af8da A	element/Footer Links cc-link/element.js
+:000000 100644 0000000 662c314 A	element/Footer Links cc-link/element.template
+:100644 100644 6c9fac1 6a1339c M	element/Login Registration Credit SAML SSO/element.js
+:100644 100644 e5667e7 8e7a97c M	element/Login Registration Credit SAML SSO/element.template
+:000000 100644 0000000 ad5e091 A	element/Product Delivery Restrictions/element.js
+:000000 100644 0000000 e3dbce6 A	element/Product Delivery Restrictions/element.template
+:100644 100644 f7577a3 358f656 M	element/Secondary Nav Links/element.template
+:100644 100644 637991e eb39465 M	element/Variant Options Listing/element.js
+:100644 100644 73c6e8d 791072d M	element/Variant Options Listing/element.template
+:100644 100644 71ab780 894867d M	global/hc.ui.functions.js
+:100644 100644 911b050 7077430 M	stack/Accordion/instances/Accordion/stack.less
+:100644 100644 6ce2d40 71fbf29 M	stack/Popup Stack/instances/Popup Stack/stack-variables.less
+:100644 100644 db80131 6f40c08 M	stack/Popup Stack/instances/Popup Stack/stack.less
+:100644 100644 0a04d46 83267dd M	theme/HomeChoice Demo/additionalStyles.less
+:100644 100644 392e53e 36731d4 M	theme/HomeChoice Demo/styles.less
+:100644 100644 392e53e 36731d4 M	theme/HomeChoice Theme/styles.less
+:100644 100644 392e53e 36731d4 M	theme/Mono Theme/styles.less
+:000000 100644 0000000 c03f2a8 A	widget/Breadcrumb/element/Breadcrumb Links/element.template
+:100644 100644 554ad03 554ad03 R100	widget/Breadcrumb/instances/Product Listing Breadcrumb v3/display.template	widget/Breadcrumb/instances/Product Listing Breadcrumb v4/display.template
+:100644 100644 59673a8 59673a8 R100	widget/Breadcrumb/instances/Product Listing Breadcrumb v3/locales/en/ns.breadcrumb.json	widget/Breadcrumb/instances/Product Listing Breadcrumb v4/locales/en/ns.breadcrumb.json
+:100644 100644 b9e34e3 b9e34e3 R100	widget/Breadcrumb/instances/Product Listing Breadcrumb v3/widget.less	widget/Breadcrumb/instances/Product Listing Breadcrumb v4/widget.less
+:100644 100644 74f609d d92ae8d R069	widget/Breadcrumb/instances/Product Listing Breadcrumb v3/widgetInstanceMetadata.json	widget/Breadcrumb/instances/Product Listing Breadcrumb v4/widgetInstanceMetadata.json
+:100644 100644 554ad03 554ad03 R100	widget/Breadcrumb/instances/Search Results Breadcrumb v3/display.template	widget/Breadcrumb/instances/Search Results Breadcrumb v4/display.template
+:100644 100644 59673a8 59673a8 R100	widget/Breadcrumb/instances/Search Results Breadcrumb v3/locales/en/ns.breadcrumb.json	widget/Breadcrumb/instances/Search Results Breadcrumb v4/locales/en/ns.breadcrumb.json
+:100644 100644 b9e34e3 b9e34e3 R100	widget/Breadcrumb/instances/Search Results Breadcrumb v3/widget.less	widget/Breadcrumb/instances/Search Results Breadcrumb v4/widget.less
+:100644 100644 3972782 8331d32 R070	widget/Breadcrumb/instances/Search Results Breadcrumb v3/widgetInstanceMetadata.json	widget/Breadcrumb/instances/Search Results Breadcrumb v4/widgetInstanceMetadata.json
+:000000 100644 0000000 f2af75f A	widget/Breadcrumb/module/js/extendbreadcrumb_v3.js
+:000000 100644 0000000 13af172 A	widget/Breadcrumb/module/js/extendbreadcrumb_v4.js
+:100644 100644 11ce9fc 3fdeb11 M	widget/Checkout Cart Order Summary - Terms/config/configMetadata.json
+:100644 100644 8e7b58e d173bfe M	widget/Child Collection List Widget/config/configMetadata.json
+:100644 100644 8c5b2ac ff44a5e M	widget/Contact Me - Call Back Request/instances/Contact Me - Request Call Back/display.template
+:100644 100644 d8e4587 0a89788 M	widget/Contact Me - Call Back Request/instances/Contact Me - Request Call Back/widget.less
+:100644 100644 3bb618c 9666ce7 M	widget/Contact Me - Call Back Request/js/requestCallBack.js
+:100644 100644 0c504a0 e97d3b4 M	widget/Custom Customer Profile Widget/instances/My Account - Profile/display.template
+:100644 100644 5e964d2 ec51906 M	widget/Custom Customer Profile Widget/instances/My Account - Profile/widget.less
+:100644 100644 bfcff2b 14710e2 M	widget/Custom Customer Profile Widget/js/customCustomerProfile.js
+:100644 100644 de1221e 2fdd87b M	widget/Global SEO/js/hc.global.SEO.js
+:100644 100644 66c08bb a539d2c M	widget/HomeChoice Email Sign Up Widget/config/configMetadata.json
+:100644 100644 5df1716 7ab4278 M	widget/HomeChoice Sign Up Widget/config/configMetadata.json
+:000000 100644 0000000 d6aa6e6 A	widget/Homechoice - Contact Us/display.template
+:000000 100644 0000000 0ddf66e A	widget/Homechoice - Contact Us/instances/Contact Us/display.template
+:000000 100644 0000000 7283ab9 A	widget/Homechoice - Contact Us/instances/Contact Us/locales/en/ns.hccontactus.json
+:000000 100644 0000000 456dac7 A	widget/Homechoice - Contact Us/instances/Contact Us/widget.less
+:000000 100644 0000000 a6f1808 A	widget/Homechoice - Contact Us/instances/Contact Us/widgetInstanceMetadata.json
+:000000 100644 0000000 70becef A	widget/Homechoice - Contact Us/js/hcContactUs.js
+:000000 100644 0000000 7283ab9 A	widget/Homechoice - Contact Us/locales/en/ns.hccontactus.json
+:000000 100644 0000000 6ca9df8 A	widget/Homechoice - Contact Us/widget.less
+:000000 100644 0000000 7e59280 A	widget/Homechoice - Contact Us/widgetMetadata.json
+:100644 100644 520d972 5220784 M	widget/Homechoice - Document Collection - Thank You/instances/Document Collection - Thank You/display.template
+:100644 100644 ff1fc0c 99ddb05 M	widget/Homechoice - Document Collection - Thank You/js/hcDocumentCollectionThankYou.js
+:100644 100644 4b760c9 449ba23 M	widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/display.template
+:100644 100644 99a1f6c 2b9525b M	widget/Homechoice - Quick Order Banner/js/main.js
+:100644 100644 127ba6b 7245e2e M	widget/Homechoice Collection Navigation (Mobile Enhanced)/config/configMetadata.json
+:100644 100644 f7cf51b 4360705 M	widget/Homechoice Footer/config/configMetadata.json
+:100644 100644 2967e75 64da56b M	widget/Order Confirmation/instances/Order Confirmation - Linear - Message and Order No/display.template
+:100644 100644 ec2fc4a ff3014e M	widget/Product Details/instances/Product Details v8 ( OCC v 18A)/display.template
+:100644 100644 d4ddcc0 a644568 M	widget/Product Listing Widget v9/config/configMetadata.json
+:000000 100644 0000000 44aec37 A	widget/Product Listing/instances/HomeChoice Search Results Widget v13/display.template
+:000000 100644 0000000 7c18cf6 A	widget/Product Listing/instances/HomeChoice Search Results Widget v13/locales/en/ns.productlisting.json
+:100644 100644 25ac475 cc0b90d R088	widget/Product Listing/instances/Product Listing 18A/widget.less	widget/Product Listing/instances/HomeChoice Search Results Widget v13/widget.less
+:100644 100644 710fab8 89efeeb R068	widget/Product Listing/instances/Product Listing 18A/widgetInstanceMetadata.json	widget/Product Listing/instances/HomeChoice Search Results Widget v13/widgetInstanceMetadata.json
+:100644 100644 9dcf442 44aec37 R068	widget/Product Listing/instances/Product Listing 18A/display.template	widget/Product Listing/instances/Product Listing Widget - v13/display.template
+:100644 100644 4d329e9 7c18cf6 R082	widget/Product Listing/instances/Product Listing 18A/locales/en/ns.productlisting.json	widget/Product Listing/instances/Product Listing Widget - v13/locales/en/ns.productlisting.json
+:000000 100644 0000000 cc0b90d A	widget/Product Listing/instances/Product Listing Widget - v13/widget.less
+:000000 100644 0000000 dc6e810 A	widget/Product Listing/instances/Product Listing Widget - v13/widgetInstanceMetadata.json
+:100644 100644 f96251a 7e400e7 M	widget/Profile - Checkout Buttons Widget/js/profileCheckoutButtons.js
+:100644 100644 95548dd ff15f75 M	widget/Profile - Order Summary Checkout/js/checkout-order-summary.js
+:000000 100644 0000000 486b013 A	widget/Request a Catalogue Form/display.template
+:000000 100644 0000000 e4c7bf8 A	widget/Request a Catalogue Form/instances/Request a Catalogue - Form/display.template
+:000000 100644 0000000 2dd7b38 A	widget/Request a Catalogue Form/instances/Request a Catalogue - Form/locales/en/ns.requestcatalogueform.json
+:000000 100644 0000000 f5474b4 A	widget/Request a Catalogue Form/instances/Request a Catalogue - Form/widget.less
+:000000 100644 0000000 057470f A	widget/Request a Catalogue Form/instances/Request a Catalogue - Form/widgetInstanceMetadata.json
+:000000 100644 0000000 b7c6490 A	widget/Request a Catalogue Form/js/requestCatalogueForm.js
+:000000 100644 0000000 a3fff6a A	widget/Request a Catalogue Form/locales/en/ns.requestcatalogueform.json
+:000000 100644 0000000 13a6983 A	widget/Request a Catalogue Form/widget.less
+:000000 100644 0000000 f4da798 A	widget/Request a Catalogue Form/widgetMetadata.json
+:100644 100644 c687f00 af620e3 M	widget/SSE Endpoint tester/instances/hc.sse.endpoint.tester/display.template
+:100644 100644 cad46ee 9747d95 M	widget/SSE Endpoint tester/js/sseendpointtester_1.js
+:000000 100644 0000000 456fa8b A	widget/Web Content/instances/Call Me Lady/display.template
+:000000 100644 0000000 35f352d A	widget/Web Content/instances/Call Me Lady/widget.less
+:000000 100644 0000000 af11d89 A	widget/Web Content/instances/Call Me Lady/widgetInstanceMetadata.json
+:100644 000000 91e2ff1 0000000 D	widget/Web Content/instances/Childrens bedding - shop by room/display.template
+:100644 000000 5666a98 0000000 D	widget/Web Content/instances/Childrens bedding - shop by room/widgetInstanceMetadata.json
+:000000 100644 0000000 f50ac51 A	widget/Web Content/instances/Page Title/display.template
+:100644 100644 b03a77b b03a77b R100	widget/Web Content/instances/Childrens bedding - shop by room/widget.less	widget/Web Content/instances/Page Title/widget.less
+:000000 100644 0000000 efc5a41 A	widget/Web Content/instances/Page Title/widgetInstanceMetadata.json
+:000000 100644 0000000 0fdc25b A	widget/Web Content/instances/Request a Catalogue - Digital Catalogues/display.template
+:000000 100644 0000000 3ca0592 A	widget/Web Content/instances/Request a Catalogue - Digital Catalogues/widget.less
+:000000 100644 0000000 ead3f22 A	widget/Web Content/instances/Request a Catalogue - Digital Catalogues/widgetInstanceMetadata.json
+:100644 100644 7110404 bc5aef8 R060	widget/Web Content/instances/request-catalogue/display.template	widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/display.template
+:000000 100644 0000000 581652d A	widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/widget.less
+:000000 100644 0000000 e64a8b8 A	widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/widgetInstanceMetadata.json
+:100644 100644 282280a 7d14027 R066	widget/Web Content/instances/contact us/display.template	widget/Web Content/instances/Request a Catalogue - Why Order/display.template
+:000000 100644 0000000 92374a0 A	widget/Web Content/instances/Request a Catalogue - Why Order/widget.less
+:000000 100644 0000000 2e9f68f A	widget/Web Content/instances/Request a Catalogue - Why Order/widgetInstanceMetadata.json
+:100644 000000 b03a77b 0000000 D	widget/Web Content/instances/contact us/widget.less
+:100644 000000 aa13824 0000000 D	widget/Web Content/instances/contact us/widgetInstanceMetadata.json
+:000000 100644 0000000 39f6c7e A	widget/Web Content/instances/our contact details/display.template
+:000000 100644 0000000 3a98ce1 A	widget/Web Content/instances/our contact details/widget.less
+:000000 100644 0000000 17c360e A	widget/Web Content/instances/our contact details/widgetInstanceMetadata.json
+:100644 000000 b03a77b 0000000 D	widget/Web Content/instances/request-catalogue/widget.less
+:100644 000000 6aaf038 0000000 D	widget/Web Content/instances/request-catalogue/widgetInstanceMetadata.json
+:100644 000000 89e9632 0000000 D	widget/Web Content/instances/shop by room - content seperator/display.template
+:100644 000000 b03a77b 0000000 D	widget/Web Content/instances/shop by room - content seperator/widget.less
+:100644 000000 3ad7217 0000000 D	widget/Web Content/instances/shop by room - content seperator/widgetInstanceMetadata.json
+:100644 000000 d181c0f 0000000 D	widget/Web Content/instances/shop-by-room/display.template
+:100644 000000 b03a77b 0000000 D	widget/Web Content/instances/shop-by-room/widget.less
+:100644 000000 9ab9caf 0000000 D	widget/Web Content/instances/shop-by-room/widgetInstanceMetadata.json

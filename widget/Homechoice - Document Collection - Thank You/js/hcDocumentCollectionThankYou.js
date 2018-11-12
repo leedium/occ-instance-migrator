@@ -13,6 +13,19 @@ define(['knockout', 'jquery', 'pubsub', 'notifier', 'ccConstants', 'ccRestClient
              */
             isInited: false,
             isTerms: ko.observable(true),
+            
+            isCreditCard: ko.observable(false),
+            isEFT: ko.observable(false),
+            isDEP: ko.observable(false),
+            PersonNo: ko.observable(''),
+
+            bank_absa: ko.observable(false),
+            bank_fnb: ko.observable(false),
+            bank_standard: ko.observable(false),
+            bank_other: ko.observable(false),
+
+            OrderId: ko.observable(false),
+
             isDocCollect: ko.observable(false),
             termsBank: ko.observable(''),
             termsBankClickDisabled: ko.observable(true),
@@ -109,6 +122,9 @@ define(['knockout', 'jquery', 'pubsub', 'notifier', 'ccConstants', 'ccRestClient
             
             widget.paymentVM.isThankYou(true);
             widget.paymentVM.isThankTerms(false);
+
+            widget.OrderId(widget.cart().contextData.page.confirmation.id.replace('o',''));
+
             //widget.paymentVM.isCollectDocs(true);
             if(widget.isTerms())
             {
@@ -122,6 +138,42 @@ define(['knockout', 'jquery', 'pubsub', 'notifier', 'ccConstants', 'ccRestClient
             }else
             {
                 widget.paymentVM.isCollectDocs(false);
+
+                widget.isCreditCard(false);
+                widget.isEFT(false);
+                widget.isDEP(false);
+
+                for (var i = 0; i < widget.cart().contextData.page.confirmation.dynamicProperties.length; i++) {
+                    var ConfDP =  widget.cart().contextData.page.confirmation.dynamicProperties[i];
+                    if(ConfDP.id == "hcPersonNo")
+                    {
+                        //won't work on ccadmin, only in ccstore.
+                        if(ConfDP.value != undefined){
+                            if((ConfDP.value + "").indexOf("Credit Card") >= 0){
+                                widget.isCreditCard(true);
+                            } else if((ConfDP.value + "").indexOf("eft") >= 0){
+                                widget.isEFT(true);
+                            } else {
+                                widget.isDEP(true);
+                            }
+                            widget.PersonNo((ConfDP.value + "").split('|')[2]);
+
+                            if((ConfDP.value + "").indexOf("bank_absa") >= 0){
+                                widget.bank_absa(true);
+                            } else if((ConfDP.value + "").indexOf("bank_fnb") >= 0){
+                                widget.bank_fnb(true);
+                            } else if((ConfDP.value + "").indexOf("bank_standard") >= 0){
+                                widget.bank_standard(true);
+                            } else {
+                                widget.bank_other(true);
+                            }                          
+                               
+                        }
+                        break; //Break out once found.
+                    }
+                }
+
+
             }
             
 

@@ -241,9 +241,15 @@ define(
                         for (var i = 0; i < widget.user().dynamicProperties().length; i++) {
                             var element = widget.user().dynamicProperties()[i];
                             if (element.id() === "customerGroup") {
-                                if (element.value() != null) {
-                                    if (element.value() === 4) {
-                                        customerGroup = "showdocs"
+                                if(element.value() != undefined){
+                                    if(element.value() == 4){
+                                        customerGroup = "showdocs";
+                                    }
+                                    if(element.value() == 5){
+                                        if(widget.user().contactShippingAddress.country == "ZA")
+                                        {
+                                            customerGroup = "showdocs";
+                                        }
                                     }
                                 }
                                 break;

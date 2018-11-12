@@ -16,6 +16,7 @@ const DIFF_FILE_PATH = './whatchanged.txt';
 const {gitPath} = argv;
 const diffArray = [];
 const transferPaths = [];
+const pathsToBeRemoved = [];
 
 // todo: move .sh files to js task
 
@@ -131,34 +132,51 @@ function getDiffs () {
 function processDiffs () {
     return new Promise((resolve) => {
         const transferPathArrayTemp = [];
+        const deletePathArrayTemp = [];
         let counter = 0;
         const rl = readline.createInterface({
             input: fs.createReadStream(DIFF_FILE_PATH)
         });
         rl.on('line', (line) => {
-            const pathArray = line.split('/');
+            const infoArray = line.split('\t');
+            const pathString = infoArray[1];
+            const modType = infoArray[0].split(' ')[4];
+            const pathArray = pathString.split('/');
 
-            let path;
-            if (pathArray.length === 2) {
-                // path = (`${pathArray[0]}/`);
-                path = (`${pathArray[0]}/`);
-            } else if (pathArray.length > 2) {
-                if (pathArray[1] === "Web Content") {
-                    path = (`${pathArray.slice(0, 4).join('/')}`);
-                } else {
-                    path = (`${pathArray.slice(0, 2).join('/')}`);
+
+                let path;
+                let pathDelete;
+                if (pathArray.length === 2) {
+                    // path = (`${pathArray[0]}/`);
+                    path = (`${pathArray[0]}/`);
+                } else if (pathArray.length > 2) {
+                    if (pathArray[1] === "Web Content") {
+                        pathDelete = path = (`${pathArray.slice(0, 4).join('/')}`);
+                    } else {
+                        path = (`${pathArray.slice(0, 2).join('/')}`);
+                        pathDelete  = (`${pathArray.slice(0, 4).join('/')}`);
+
+                    }
                 }
 
-            }
-            if (!transferPathArrayTemp[path]) {
-                counter += 1;
-                transferPathArrayTemp[`${path}`] = true;
-                transferPaths.push(path);
-                // console.log(counter, path)
-            }
+                if(modType !== "D" && modType.indexOf('R') < 0) {
+                    if (!transferPathArrayTemp[path]) {
+                        counter += 1;
+                        transferPathArrayTemp[`${path}`] = true;
+                        // console.log(path, modType)
+                        transferPaths.push(path);
+                        // console.log(counter, path)
+                    }
+                }else{
+                    if(!deletePathArrayTemp[pathDelete]) {
+                        pathsToBeRemoved.push(pathDelete);
+                        deletePathArrayTemp[`${pathDelete}`] = true;
+                    }
+                }
         });
         rl.on('close', () => {
-            //console.log(transferPathArrayTemp)
+            // console.log(transferPathArrayTemp)
+            console.log(pathsToBeRemoved);
             resolve();
         });
     })
@@ -219,7 +237,7 @@ function transferAll () {
             console.log('Error:', chunk.toString());
         });
         ls1.on('close', (code) => {
-            console.log(`... ${path} target updated`);
+            console.log(`... target updated`);
             resolve();
         });
     })
@@ -230,6 +248,12 @@ function makeTmpFolder () {
     return new Promise((resolve) => {
         fs.ensureDirSync('./tmp/.ccc');
         fs.copySync(`../.ccc`,`./tmp/.ccc`);
+
+        //remove folders that are not needed
+        pathsToBeRemoved.map((item)=>{
+            fs.removeSync(`./tmp/${item}`);
+        });
+
         transferPaths.map((path) => {
             const fa = path.split('/');
             const f = fa.slice(0, fa.length ).join('/');

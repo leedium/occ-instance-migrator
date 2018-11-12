@@ -5,6 +5,6 @@
   <a data-bind="ccLink: 'profile'" href="/profile">How much can I spend</a>
   <a data-bind="ccLink: 'request-catalogue'" href="/request-catalogue">Request a catalogue</a>
   <a data-bind="ccLink: 'help-faqs'" href="/help-faqs">FAQ&rsquo;s</a>
-  <a data-bind="ccLink: 'contact-me'" href="/contact-me">Call me back</a>
+  <a data-bind="ccLink: 'contactMe'" href="/contactMe">Call me back</a>
   <a href="tel: 0861999635">Call: 0861 999 635</a>
 </p>

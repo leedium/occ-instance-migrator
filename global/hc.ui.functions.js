@@ -17,6 +17,88 @@ define(
         'use strict';
 
 
+
+    var curDown = false,
+        oldYPos = 0,
+        oldXPos = 0,
+        curYPos = 0,
+        curXPos = 0;
+    $(window).mousemove(function(m){
+        if(curDown === true){
+            $('.modal-dialog').css({'top': (oldYPos + m.pageY - curYPos), 'left': (oldXPos + m.pageX - curXPos)})
+        }
+    });
+  
+    $(document).on('mousedown', '.modal-header', function(m){
+        curDown = true;
+        curYPos = m.pageY;
+        curXPos = m.pageX;
+        oldYPos = parseInt($('.modal-dialog').css('top').replace('px', ''));
+        oldXPos = parseInt($('.modal-dialog').css('left').replace('px', ''));
+    });
+    
+    $(window).mouseup(function(){
+        curDown = false;
+    });
+
+
+
+
+
+// a key map of allowed keys
+var allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down',
+    65: 'a',
+    66: 'b'
+};
+
+// the 'official' Konami Code sequence
+var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+
+// a variable to remember the 'position' the user has reached so far.
+var konamiCodePosition = 0;
+
+// add keydown event listener
+document.addEventListener('keydown', function (e) {
+    // get the value of the key code from the key map
+    var key = allowedKeys[e.keyCode];
+    // get the value of the required key from the konami code
+    var requiredKey = konamiCode[konamiCodePosition];
+
+    // compare the key with the required key
+    if (key == requiredKey) {
+
+        // move to the next key in the konami code sequence
+        konamiCodePosition++;
+
+        // if the last key is reached, activate cheats
+        if (konamiCodePosition == konamiCode.length) {
+            activateCheats();
+            konamiCodePosition = 0;
+        }
+    } else {
+        konamiCodePosition = 0;
+    }
+});
+
+var KonamiTime;
+function activateCheats() {
+    $(document).ready(function () {
+        $('body').addClass("konami")
+        setTimeout(function () { 
+            $('body').removeClass('konami');
+        }, 1050);
+    });
+}
+
+
+
+
+
+
         //Detect Opera Mini, and show a message.
         // var isOpera = (
         //     window.opera |

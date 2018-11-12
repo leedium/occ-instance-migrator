@@ -1,5 +1,8 @@
 
 window.dataLayer = window.dataLayer || [];
+//Donald Archer
+
+
                     
 define(
     ['jquery', 'knockout', 'pubsub', 'ccLogger', 'ccRestClient', 'ccConstants'],
@@ -287,6 +290,8 @@ define(
                             var theSearch = '';
                             var theRes = [];
                             var theFilter = [];
+                            if($('#cc-product-listing-title').length>0){
+
                             var tempArr = $('#cc-product-listing-title').html().split('"');
                             if(tempArr.length > 1) theSearch = tempArr[1];
 
@@ -320,6 +325,7 @@ define(
                                     'searchType': 'Full Search'
                                 });
                              }
+                            }
 
                         },1000);
                     }

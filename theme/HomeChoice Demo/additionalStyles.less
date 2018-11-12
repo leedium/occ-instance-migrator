@@ -9188,6 +9188,35 @@ collection-title{
     width: 40px;
     position: relative;
 }
+
+
+
+
+h1.ThankYou-blue{
+    background-color: #cde8f5;
+    color:#3971a1 !important;
+    border: solid 1px #3971a1;
+    border-bottom:none;
+}
+div.ThankYou-blue{
+    word-break: break-word;
+    text-align: center;
+    clear: both;
+    font-size: 18px !important;
+    color: #3971a1;
+    border: solid 1px #3971a1;
+    background: #fff;
+    border-radius: 0;
+    padding: 20px 30px;
+}
+.document-collection-thankyou h1.ThankYou-blue span::before{
+    color: #3971a1 !important;
+    border-color: #3971a1 !important;
+}
+
+
+
+
 @media (max-width:580px){
     .document-collection-thankyou h1 span {
         display: none;
@@ -9736,3 +9765,227 @@ div [data-bind="element: 'login-registration-v2'"] {
     
 }
 }
+
+
+
+.DeliverRestrictions{
+    font-size: 12px;
+    font-weight: normal;
+    color: #288de5;
+
+    background: #cde8f5;
+    border: solid 1px #3971a1;
+    border-radius: 5px;
+    padding: 10px 10px;
+    line-height: 18px;
+}
+.DeliverRestrictionsHead{
+    font-size: 12px;
+    color: #288de5;
+    font-weight: bold;
+}
+.DeliverRestrictions a{
+    color: #288de5 !important;
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+#CC-customerProfile-title,
+#CC-customerProfile > hr, 
+#CC-customerProfile > br,
+#CC-customerProfile-password-details{
+    display:none;
+}
+
+
+.modal-header {
+    cursor: move;
+}
+
+
+.konami #page {
+    animation: shake 1s linear;
+}
+//.konami .widget .widget {
+//    animation: shake2 1s linear;
+//}
+
+
+@-webkit-keyframes spin-left {
+    100% {
+        -webkit-transform: rotate(-360deg);
+        -moz-transform: rotate(-360deg);
+        -ms-transform: rotate(-360deg);
+        -o-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+    }
+}
+@-webkit-keyframes spin-right {
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes shake {
+    20%, 40%, 60%, 80%, 100% {
+        -webkit-transform-origin: top center;
+        -moz-transform-origin: top center;
+        -ms-transform-origin: top center;
+        -o-transform-origin: top center;
+        transform-origin: top center;
+    }
+
+    20% {
+        -webkit-transform: rotate(15deg);
+        -moz-transform: rotate(15deg);
+        -ms-transform: rotate(15deg);
+        -o-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+
+    40% {
+        -webkit-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(-5deg);
+        -moz-transform: rotate(-5deg);
+        -ms-transform: rotate(-5deg);
+        -o-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+@-webkit-keyframes shake2 {
+    20%, 40%, 60%, 80%, 100% {
+        -webkit-transform-origin: top center;
+        -moz-transform-origin: top center;
+        -ms-transform-origin: top center;
+        -o-transform-origin: top center;
+        transform-origin: top center;
+    }
+
+    20% {
+        -webkit-transform: rotate(-15deg);
+        -moz-transform: rotate(-15deg);
+        -ms-transform: rotate(-15deg);
+        -o-transform: rotate(-15deg);
+        transform: rotate(-15deg);
+    }
+
+    40% {
+        -webkit-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+
+    60% {
+        -webkit-transform: rotate(-5deg);
+        -moz-transform: rotate(-5deg);
+        -ms-transform: rotate(-5deg);
+        -o-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+a#CC-guidedNavigation-seeMoreOrLessForRefinement {
+    color: black;
+}
+
+//Remove Gutter Start
+//This will contain all removal of gutter and fixes for the pages affected.
+#main {
+     max-width: none;
+}
+
+@media screen and (min-width: 992px){
+    #main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+.hc-static-hero-banner--media-image-container{
+    width:100%;
+}
+.hc-hero-banner-carousel .carousel-inner > .row.item > div{
+    padding:0;
+    width: initial;
+}
+.hc-hero-banner-carousel .carousel-inner > .row.item{
+    margin: 0 !important;
+}
+
+.hc-TopBrands img {
+    display:block;
+    margin:auto;
+}
+#product-grid .cc-product-item{
+    max-width: 211px !important;
+}
+#product-grid .cc-item-detail{
+    margin: 0 !important;
+}
+
+@media screen and (min-width: 992px)
+{
+    #cc-product-details.templateRegion>.row>div:nth-child(2) {
+        max-width: 506px;
+    }
+}
+
+div#CC-product-back-link {
+    margin-left: 20px;
+}
+
+.hc-content-block__1-row>.row>div {
+    left: 0px; 
+    top: 0px; 
+}
+
+#productListing_v3-wi800004 #CC-productListing #product-list.cc-list-tab.active .product-item
+{
+    margin-right: 0px;
+}
+//Remove Gutter End

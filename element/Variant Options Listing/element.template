@@ -1,6 +1,6 @@
 <!-- ko if: initialized() && $data.elements.hasOwnProperty('product-variants-listing') -->
 
-<div class="pdp-variant-options-listing" data-bind="onRender: $data.elements['product-variants-listing'].autoSelect()">
+<div class="pdp-variant-options-listing" data-bind="onRender: $parent.elements['product-variants-listing'].autoSelect()">
     <!-- <h5 class="pdp-variant-options-listing--list-count" data-bind="text: '(' + $parent.elements[$elementInstance.type].allItems().length + ' items)' "></h5>
  -->
 
@@ -45,6 +45,20 @@
                     </div>
                 </div>
                             <!-- /ko -->
+
+   <!-- ko if: $parent.elements['product-variants-listing'].isAppropriateProduct -->
+            <br>
+            <div class="DeliverRestrictions">
+                <div class="DeliverRestrictionsHead">
+                    This is a special delivery item:
+                </div>
+                <div data-bind="attr:{id: 'SKUitem-' + $data.repositoryId()}, onRender: $parent.elements['product-variants-listing'].GetCustomMessage($data.repositoryId())">
+                    
+                </div>
+            </div> 
+    <!-- /ko -->
+
+
 
 
         </div>
@@ -195,3 +209,138 @@
       </div>
     </div>
   </div>
+
+
+
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('product-variants-listing') -->
+
+  <div class="modal fade" id="modalShippingPOP" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="color:#000; font-weight: bold;font-size: 18px;">Check Shipping Address</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -20px;">
+                <span aria-hidden="true" style="color:#000">X</span>
+              </button>
+            </div>
+            <div style="padding:20px;">
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            
+
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-scountry" >Delivery country</label>
+                                    <div class="control">
+                                        <select class="col-md-12 form-control" name="sCountry" id="CC-checkoutAddressBook-scountry" aria-required="true" 
+                                            data-bind="enable: $data.elements['product-variants-listing'].ShippingCountries().length, 
+                                                options: $data.elements['product-variants-listing'].ShippingCountries, 
+                                                optionsText: 'country',
+                                                optionsValue: 'code', 
+                                                value: $data.elements['product-variants-listing'].selectedCountry
+                                                        ">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-scountry" >Province/Region</label>
+                                    <div class="control">
+                                        <select class="col-md-12 form-control" name="sState" id="CC-checkoutAddressBook-sstate" aria-required="true" 
+                                            data-bind="enable: $data.elements['product-variants-listing'].ShippingCountryRegion().length, 
+                                            options: $data.elements['product-variants-listing'].ShippingCountryRegion(), 
+                                            optionsText: 'Region',
+                                            optionsValue: 'code',
+                                            value: $data.elements['product-variants-listing'].selectedRegion">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-saddress1" >Street Address </label>
+                                    <div class="control">
+                                        <input type="text" autocomplete="off" class="col-md-12 form-control" 
+                                        name="sAddressLine1" id="CC-checkoutAddressBook-saddress1" aria-required="true"
+                                            data-bind="value: $data.elements['product-variants-listing'].addressLine1Text" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-saddress2" >Street Address Line 2</label>
+                                    <div class="control">
+                                        <input type="text" autocomplete="off" class="col-md-12 form-control" 
+                                        name="sAddressLine2" id="CC-checkoutAddressBook-saddress2" 
+                                        data-bind="value: $data.elements['product-variants-listing'].addressLine2Text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-scity" >Suburb &amp; City/Town</label>
+                                    <div class="control" style="position:relative;">
+                                        <input type="text" autocomplete="off" class="col-md-12 form-control" 
+                                        name="sCity" id="CC-checkoutAddressBook-scity" aria-required="true" 
+                                        data-bind="value: $data.elements['product-variants-listing'].cityText"
+                                            required="required">
+                                    </div>
+                            
+                                    <div class="DistrictResults">
+                                        <ul>
+                            
+                                        </ul>
+                            
+                                    </div>
+                            
+                            
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-szipcode" >Postcode</label>
+                                    <div class="control">
+                                        <input type="text" autocomplete="off" class="col-md-12 form-control" 
+                                        name="sZip" id="CC-checkoutAddressBook-szipcode" aria-required="true" 
+                                        data-bind="value: $data.elements['product-variants-listing'].zipCodeText"
+                                            required="required">
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+
+                                    <button class="cc-button-primary" id="cc-checkout-add-address"
+                                        data-bind="click: function(obj1,obj2,obj3){$data.elements['product-variants-listing'].testNewAddress(obj1,obj2,obj3)}">
+                                        Check Address
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        
+                            
+
+                        </div>
+                        <div class="form-group col-sm-6" data-bind="html: $data.elements['product-variants-listing'].testResults"  style="
+                        padding: 30px 20px 30px 10px;
+                        text-align: center;">
+                            
+                        </div>
+                    </div>
+
+
+
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- /ko -->
+      

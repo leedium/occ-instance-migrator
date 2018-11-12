@@ -10,13 +10,12 @@ define(
         'pubsub',
         'CCi18n',
         'ccConstants',
-        'ccRestClient',
         'navigation',
         'ccLogger',
         'storageApi',
         'spinner',
-        'ccResourceLoader!global/hc.constants'
-
+        'ccResourceLoader!global/hc.constants',
+        'ccRestClient'
     ],
 
     //-------------------------------------------------------------------
@@ -29,15 +28,14 @@ define(
               pubsub,
               CCi18n,
               CCConstants,
-              ccRestClient,
               navigation,
               ccLogger,
               storageApi,
               spinner,
-              hcConstants
+              hcConstants,
+              ccRestClient
     ) {
         "use strict";
-
         var OCC_TEST_PREVIEW_HOST = 'ccadmin-test-zbba.oracleoutsourcing.com';
         var OCC_TEST_STOREFRONT_HOST = 'ccstore-test-zbba.oracleoutsourcing.com';
         var OCC_STAGE_PREVIEW_HOST = 'ccadmin-stage-zbba.oracleoutsourcing.com';
@@ -91,7 +89,6 @@ define(
                     return ssoHash.test.preview;
             }
         };
-
 
         var getDynamicProfileValue = function (arr, key) {
             return arr.reduce(function (a, b) {

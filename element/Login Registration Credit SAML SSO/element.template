@@ -13,7 +13,7 @@
             <!-- ko if: !loggedIn() -->
             <span>
                 <a href="#CC-headermodalpane" id="CC-loginHeader-login" data-original-title="login"
-              data-bind="click:function(data, event) { handleSamlLogin.bind(data, $parent, event)() }, widgetLocaleText: {attr: 'innerText', value: 'loginLinkText'}">Sign
+                   data-bind="click:function(data, event) { handleSamlLogin.bind(data, $parent, event)() }, widgetLocaleText: {attr: 'innerText', value: 'loginLinkText'}">Sign
                 in</a>
             </span>
             <!-- /ko -->
@@ -37,9 +37,9 @@
             <a href="#CC-headermodalpane" id="CC-loginHeader-registration" data-original-title="createAccount"
                data-bind="click:function(data, event) { $parent.elements['login-registration'].handleSamlRegistration.bind(data, $parent, event)() }, widgetLocaleText: {attr: 'innerText', value: 'createAccountText'}">Register</a>
             <!-- ko if: $parent.hasOwnProperty('links') && $parent.links().hasOwnProperty('wishlist') -->
-             <a id="CC-loginHeader-wishlist-anonymous" data-original-title="wishlist"
-                 data-bind="widgetLocaleText: {attr: 'innerText', value: 'wishlist'}, ccLink: 'wishlist'"
-                 href="/wishlist">My wishlist</a>
+            <a id="CC-loginHeader-wishlist-anonymous" data-original-title="wishlist"
+               data-bind="widgetLocaleText: {attr: 'innerText', value: 'wishlist'}, ccLink: 'wishlist'"
+               href="/wishlist">My wishlist</a>
             <!-- /ko -->
         </div>
     </div>

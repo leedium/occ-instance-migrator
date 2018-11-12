@@ -14,6 +14,8 @@ define(
   function (ko, pubsub, navigation, Address, notifier, CCConstants, CCPasswordValidator, CCi18n, swmRestClient, CCRestClient, cartDynamicPropertiesApp, hcUIFunctions) {
 
     "use strict";
+    var self;
+    var _widget;
 
     return {
 
@@ -37,7 +39,38 @@ define(
       hcLastPaymentDate: ko.observable(''),
       hcLastPaymentCash: ko.observable(''),
       hcLastPaymentCashDate: ko.observable(''),
+      handleRequestStatementMessage: ko.observable(''),
+      handleRequestSettlementLetterMessage: ko.observable(''),
+      handleRequestSettlementLetterDisabled: ko.observable(false),
+      handleRequestStatementDisabled: ko.observable(false),
 
+      EditEmail: ko.observable('Init'),
+      EditMobile: ko.observable('Init'),
+      DoEditDisabled: ko.observable(false),
+      DoEditMessage: ko.observable(''),
+
+      
+      DoEditInit: function() {
+        _widget.DoEditDisabled(false);
+        _widget.DoEditMessage('');
+      },
+      DoEdit: function() {
+        console.log('%cDoEdit', 'color:orange; font-size:20px;',_widget.EditEmail(), _widget.EditMobile()  );
+        _widget.DoEditMessage('<div style="margin-top: 27px;" class="DynamicRequest">Processing</div>');
+        _widget.DoEditDisabled(true);
+
+        //do SSE Call here:
+        setTimeout(function(){
+          _widget.DoEditMessage('<div style="margin-top: 27px;" class="DynamicRequest">Confirming Changes</div>');
+          setTimeout(function(){
+            _widget.DoEditMessage('<div style="margin-top: 27px;" class="DynamicRequestFail">Details Updated</div>');
+            setTimeout(function(){
+              $('#modalEditDetails').modal('hide');
+            }, 2000);
+          }, 2000);
+        }, 2000);
+      },
+      
       toShortFormat: function(date) {
 
         var month_names =["Jan","Feb","Mar",
@@ -174,6 +207,27 @@ define(
 
       },
 
+      handleRequestStatement : function (btn){
+        _widget.handleRequestStatementMessage('<div class="DynamicRequest">Processing...</div>');
+        _widget.handleRequestStatementDisabled(true);
+
+        //do SSE Call here:
+        setTimeout(function(){
+          _widget.handleRequestStatementMessage('<div class="DynamicRequestFail">Statement Request Failed</div>');
+          _widget.handleRequestStatementDisabled(false);
+        }, 2000);
+      },
+      handleRequestSettlementLetter : function (){
+        _widget.handleRequestSettlementLetterMessage('<div class="DynamicRequest">Processing...</div>');
+        _widget.handleRequestSettlementLetterDisabled(true);
+
+        //do SSE Call here:
+        setTimeout(function(){
+          _widget.handleRequestSettlementLetterMessage('<div class="DynamicRequestSuccess">Settlement Letter Successful</div>');
+          _widget.handleRequestSettlementLetterDisabled(false);
+        }, 5000);
+      },
+
       handleSignout: function (context) {
         if(context.user().loggedIn()){
             if (context.user().isUserProfileEdited()) {
@@ -188,13 +242,24 @@ define(
             context.elements[elementName].scrollToTop();
 
         }
-    },
+      },
 
       beforeAppear: function (page) {
          // Every time the user goes to the profile page,
          // it should fetch the data again and refresh it.
         var widget = this;
         this.AccountInfo(widget);
+
+
+        _widget.EditEmail(_widget.user().email());
+        _widget.EditMobile('');
+        for (var index = 0; index < widget.user().dynamicProperties().length; index++) {
+          var element = widget.user().dynamicProperties()[index];
+          if(element.id() == "mobileTelephoneNumber"){
+            _widget.EditMobile(element.value());
+          }
+        }
+        
 
         widget.user().ignoreEmailValidation(false);
         // Checks whether the user is logged in or not
@@ -215,7 +280,8 @@ define(
       },
 
       onLoad: function(widget) {
-        var self = this;
+        self = this;
+        _widget = widget;
 
 
         $(document).on('click','.DistrictResultsP ul li', function(){

@@ -217,7 +217,28 @@ define(
                     var EmailProp = "Credit Card";
                     this.order().errorFlag = false;
                     notifier.clearError("checkoutOrderSummary");
-                    widget.cart().dynamicProperties()[0].value(EmailProp);
+
+                    var TempProp;
+                    for (var i = 0; i < widget.user().dynamicProperties().length; i++) {
+                        var hcPersonNo = widget.user().dynamicProperties()[i];
+                        if (hcPersonNo.id() == "hcPersonNo") {
+                            TempProp = hcPersonNo;
+                            if (hcPersonNo.value() == undefined) {
+                                EmailProp = EmailProp + "|Contact us for your reference";
+                            } else {
+                                EmailProp = EmailProp + "|" + hcPersonNo.value();
+                            }
+                            break;
+                        }
+                    }
+                    
+                    //widget.cart().dynamicProperties()[0].value(EmailProp);
+                    for (var i = 0; i < widget.cart().dynamicProperties().length; i++) {
+                        var hcPersonNo = widget.cart().dynamicProperties()[i];
+                        if (hcPersonNo.id() == "hcPersonNo") {
+                            widget.cart().dynamicProperties()[i].value(EmailProp);
+                        }
+                    }
                     widget.order().paymentDetails().isCardPaymentDisabled(false);
                     widget.cart().clearAllUnpricedErrorsAndSaveCart();
                     if (this.cart().currentOrderState() == CCConstants.PENDING_PAYMENTS || this.cart().currentOrderState() == CCConstants.PENDING_PAYMENT_TEMPLATE) {
@@ -270,9 +291,30 @@ define(
                         for (var i = 0; i < widget.user().dynamicProperties().length; i++) {
                             var element = widget.user().dynamicProperties()[i];
                             if (element.id() === "customerGroup") {
-                                if (element.value() != null) {
-                                    if (element.value() === 4) {
-                                        customerGroup = "showdocs"
+                                // if (element.value() != null) {
+                                //     if (element.value() === 4) {
+                                //         customerGroup = "showdocs"
+                                //     }
+                                // }
+                                if(element.value() != undefined){
+                                    if(element.value() == 4){
+                                        customerGroup = "showdocs";
+                                    }
+                                    if(element.value() == 5){
+                                        var T = $('#CC-checkoutAddressBook-scountry');
+                                        if (T.length> 0){
+                                            if(T.val() == "ZA"){
+                                                customerGroup = "showdocs";
+                                            }
+                                        }
+                                        else{
+                                            if(widget.user().contactShippingAddress != undefined){
+                                                if(widget.user().contactShippingAddress.country == "ZA")
+                                                {
+                                                    customerGroup = "showdocs";
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                                 break;
@@ -1005,7 +1047,7 @@ define(
                                 $('.checkout-cash-flow-important-information').hide();
                                 $('.checkout-terms-flow-important-information').show();
                             }
-                            $('.main-checkout-important-information').show();
+                                $('.main-checkout-important-information').show();
                         }
                     }, 1000);
 

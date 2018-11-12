@@ -32,18 +32,7 @@ body {
   .SiteBackground;
 
   background-attachment: @SiteBackgroundImageAttachment;
-}
 
-html[dir="rtl"] body {
-  text-align: right;
-}
-
-#page {
-  background-color:     @SitePageBackgroundColor;
-
-  // Moved from the 'body' section as they were affecting non-page
-  // elements, (e.g. Preview Bar), with the exception of font-size
-  // which drives *rem values.
   color:                @TextColor;
   font-family:          @SiteFontFamily;
   font-size:            1rem;
@@ -52,6 +41,14 @@ html[dir="rtl"] body {
   line-height:          @SiteLineHeight;
   text-align:           @SiteTextAlign;
   text-decoration:      @SiteTextDecoration;
+}
+
+html[dir="rtl"] body {
+  text-align: right;
+}
+
+#page {
+  background-color:     @SitePageBackgroundColor;
 }
 
 /******************************************************************************
@@ -66,90 +63,88 @@ a:hover   {color:@LinkHoverColor;}    /* mouse over link */
     TYPOGRAPHY STYLES
 ******************************************************************************/
 
-#page {
-  h1 {
+h1 {
 
-    color: @H1TextColor;
-    line-height: @H1LineHeight;
-    font-family: @H1FontFamily;
-    font-size: @H1FontSize;
-    font-weight: @H1FontWeight;
-    font-style: @H1FontStyle;
-    text-align: @H1TextAlign;
-    text-decoration: @H1TextDecoration;
+  color: @H1TextColor;
+  line-height: @H1LineHeight;
+  font-family: @H1FontFamily;
+  font-size: @H1FontSize;
+  font-weight: @H1FontWeight;
+  font-style: @H1FontStyle;
+  text-align: @H1TextAlign;
+  text-decoration: @H1TextDecoration;
 
-  }
+}
 
-  h2 {
+h2 {
 
-    color: @H2TextColor;
-    font-family: @H2FontFamily;
-    font-size: @H2FontSize;
-    font-style: @H2FontStyle;
-    font-weight: @H2FontWeight;
-    line-height: @H2LineHeight;
-    text-align: @H2TextAlign;
-    text-decoration: @H2TextDecoration;
+  color: @H2TextColor;
+  font-family: @H2FontFamily;
+  font-size: @H2FontSize;
+  font-style: @H2FontStyle;
+  font-weight: @H2FontWeight;
+  line-height: @H2LineHeight;
+  text-align: @H2TextAlign;
+  text-decoration: @H2TextDecoration;
 
-  }
+}
 
-  h3 {
+h3 {
 
-    color: @H3TextColor;
-    font-family: @H3FontFamily;
-    font-size: @H3FontSize;
-    font-style: @H3FontStyle;
-    font-weight: @H3FontWeight;
-    line-height: @H3LineHeight;
-    text-align: @H3TextAlign;
-    text-decoration: @H3TextDecoration;
+  color: @H3TextColor;
+  font-family: @H3FontFamily;
+  font-size: @H3FontSize;
+  font-style: @H3FontStyle;
+  font-weight: @H3FontWeight;
+  line-height: @H3LineHeight;
+  text-align: @H3TextAlign;
+  text-decoration: @H3TextDecoration;
 
-  }
+}
 
-  h4 {
+h4 {
 
-    color: @H4TextColor;
-    font-family: @H4FontFamily;
-    font-size: @H4FontSize;
-    font-style: @H4FontStyle;
-    font-weight: @H4FontWeight;
-    line-height: @H4LineHeight;
-    text-align: @H4TextAlign;
-    text-decoration: @H4TextDecoration;
-  }
+  color: @H4TextColor;
+  font-family: @H4FontFamily;
+  font-size: @H4FontSize;
+  font-style: @H4FontStyle;
+  font-weight: @H4FontWeight;
+  line-height: @H4LineHeight;
+  text-align: @H4TextAlign;
+  text-decoration: @H4TextDecoration;
+}
 
-  h5 {
-    color: @H5TextColor;
-    font-family: @H5FontFamily;
-    font-size: @H5FontSize;
-    font-style: @H5FontStyle;
-    font-weight: @H5FontWeight;
-    line-height: @H5LineHeight;
-    text-align: @H5TextAlign;
-    text-decoration: @H5TextDecoration;
-  }
+h5 {
+  color: @H5TextColor;
+  font-family: @H5FontFamily;
+  font-size: @H5FontSize;
+  font-style: @H5FontStyle;
+  font-weight: @H5FontWeight;
+  line-height: @H5LineHeight;
+  text-align: @H5TextAlign;
+  text-decoration: @H5TextDecoration;
+}
 
-  h6 {
-    color: @H6TextColor;
-    font-family: @H6FontFamily;
-    font-size: @H6FontSize;
-    font-style: @H6FontStyle;
-    font-weight: @H6FontWeight;
-    line-height: @H6LineHeight;
-    text-align: @H6TextAlign;
-    text-decoration: @H6TextDecoration;
-  }
+h6 {
+  color: @H6TextColor;
+  font-family: @H6FontFamily;
+  font-size: @H6FontSize;
+  font-style: @H6FontStyle;
+  font-weight: @H6FontWeight;
+  line-height: @H6LineHeight;
+  text-align: @H6TextAlign;
+  text-decoration: @H6TextDecoration;
+}
 
-  p {
-    color: @ParagraphTextColor;
-    font-family: @ParagraphFontFamily;
-    font-size: @ParagraphFontSize;
-    font-style: @ParagraphFontStyle;
-    font-weight: @ParagraphFontWeight;
-    line-height: @ParagraphLineHeight;
-    text-align: @ParagraphTextAlign;
-    text-decoration: @ParagraphTextDecoration;
-  }
+p {
+  color: @ParagraphTextColor;
+  font-family: @ParagraphFontFamily;
+  font-size: @ParagraphFontSize;
+  font-style: @ParagraphFontStyle;
+  font-weight: @ParagraphFontWeight;
+  line-height: @ParagraphLineHeight;
+  text-align: @ParagraphTextAlign;
+  text-decoration: @ParagraphTextDecoration;
 }
 
 /******************************************************************************

@@ -26,6 +26,7 @@ define(
             ssePath: ko.observable(''),
             sseData: ko.observable(''),
             method: ko.observable(''),
+            fileUploadName: ko.observable(''),
             onLoad : function(widget) {
                 widget.onSubmit = function(e) {
                     console.log(widget.sseData(), widget.sseData(), widget.method())
@@ -33,7 +34,8 @@ define(
                     var options = {
                         method: widget.method(),
                         headers: {
-                            'content-type': 'application/json'
+                            'content-type': 'application/json',
+                            'hc-env': ccRestClient.previewMode
                         }
                     }
                     
@@ -55,6 +57,30 @@ define(
                     request('/ccstorex/custom/v1' + widget.ssePath(), options);
                     // request('https://hc.leedium.com/v1' + widget.ssePath(), options);
                 };
+                /**
+                 * THIS DOCUMENT LOADDER WILL NOT WORK UNTIL multipart/form-data
+                 * is supported
+                 **/
+                widget.fileUploadSubmit = function(e,w) {
+                    var formData = new FormData(e);
+                    console.log(formData.entries(),e,w)
+                    $.ajax({
+                        type: 'POST',
+                        // url: '/ccstorex/custom/v1/hc/utility/documentUpload',
+                        url: 'https://hc.leedium.com/v1/hc/test',
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data : formData,
+                        success: function(result){
+                            console.log(result);
+                        },
+                        error: function(err){
+                            console.log(err);
+                        }
+                    })
+                    
+                }
             }
         }
     }

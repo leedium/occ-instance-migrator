@@ -1,16 +1,16 @@
 function CheckQuickBanner() {
-    var MaxW = $('.QuickOrderButton').parents('main').width();
-    var MarginLeft = ($('.QuickOrderButton').parents('#main').css('marginLeft'));
-    var w = $(window).width();
-    if(w > 768){
-        if (w < 993) {
-            if (MarginLeft != undefined) {
-                MarginLeft = parseInt(MarginLeft.replace('px', '')) + 15 + 'px';
-            }
-        }
-        $('.QuickOrderButton').width(MaxW);
-        $('.QuickOrderButton').css('marginLeft', '-' + MarginLeft);
-    }
+    //var MaxW = $('.QuickOrderButton').parents('main').width();
+    //var MarginLeft = ($('.QuickOrderButton').parents('#main').css('marginLeft'));
+    //var w = $(window).width();
+    //if(w > 768){
+    //    if (w < 993) {
+    //        if (MarginLeft != undefined) {
+                //MarginLeft = parseInt(MarginLeft.replace('px', '')) + 15 + 'px';
+   //         }
+    //    }
+        //$('.QuickOrderButton').width(MaxW);
+        //$('.QuickOrderButton').css('marginLeft', '-' + MarginLeft);
+    //}
 }
 
 define(['knockout', 'jquery', 'ccStoreConfiguration'],
