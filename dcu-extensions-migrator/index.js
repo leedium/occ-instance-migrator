@@ -382,6 +382,7 @@ function plsuTransferAll() {
 }
 
 async function clean() {
+    console.log(process.cwd())
     await deleteFilePath([
         './tmp',
         '../.ccc',
