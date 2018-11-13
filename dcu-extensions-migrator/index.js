@@ -382,7 +382,6 @@ function plsuTransferAll() {
 }
 
 async function clean() {
-    console.log(process.cwd())
     await deleteFilePath([
         './tmp',
         '../.ccc',
@@ -432,7 +431,10 @@ async function extensionsTransfer() {
  * @returns {Promise<void>}
  */
 async function start() {
-    process.chdir(gitPath)
+    console.log(process.cwd())
+    process.chdir(gitPath);
+    console.log(process.cwd())
+
     try {
         if (plsu) {
             if (all) {
