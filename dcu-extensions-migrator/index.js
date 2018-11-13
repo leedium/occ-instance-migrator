@@ -242,7 +242,7 @@ function processDiffs() {
                     counter += 1;
                     transferPathArrayTemp[`${path}`] = true;
                     console.log(path, modType);
-                    if(path.indexOf('dcu-extensions-migrator') < 0){
+                    if (path.indexOf('dcu-extensions-migrator') < 0) {
                         transferPaths.push(path);
                     }
                 }
@@ -285,10 +285,15 @@ function makeTmpFolder() {
  * @param pathsToBeRemoved - Array
  */
 function deleteFilePath(pathsToBeRemoved) {
-    console.log('Removing...', pathsToBeRemoved);
-    pathsToBeRemoved.map((item) => {
-        fs.removeSync(item);
-    });
+    return new Promise(resolve => {
+        console.log('Removing...', pathsToBeRemoved);
+        pathsToBeRemoved.map((item) => {
+            fs.removeSync(item);
+        });
+        setTimeout(() => {
+            resolve()
+        }, config.taskDelay);
+    })
 }
 
 /**
@@ -371,7 +376,7 @@ function plsuTransferAll() {
 }
 
 async function clean() {
-    deleteFilePath([
+    await deleteFilePath([
         './tmp',
         '../.ccc',
         '../element',
@@ -393,7 +398,7 @@ async function extensionsTransfer() {
     if (typeof gitPath === 'undefined') {
         throw new Error('--gitPath is not defined');
     }
-    clean();
+    await clean();
     // await checkoutBranch('master');
     // await deleteBranch('deploy');
     // await deleteBranch('test');
@@ -411,7 +416,7 @@ async function extensionsTransfer() {
     // await processDiffs();
     // await makeTmpFolder();
     // await transferAll();
-    // clean();
+    // await clean();
 }
 
 /**
