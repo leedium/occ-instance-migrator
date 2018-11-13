@@ -30,6 +30,8 @@ const git = require('simple-git');
 
 const config = require('./config');
 
+const DCU_FOLDER_TEMP = './dcu-extensions-migrator/tmp/';
+
 const {gitPath, dcu, plsu, all, layoutName} = argv;
 const transferPaths = [];
 const pathsToBeRemoved = [];
@@ -190,7 +192,7 @@ function getDiffs() {
 
     return new Promise((resolve) => {
         console.log('formulating diffs');
-        const ls1 = spawn('./diffs.sh');
+        const ls1 = spawn('./dcu-extensions-migrator/diffs.sh');
         ls1.stdout.on('data', (chunk) => {
             console.log(chunk.toString('utf-8'));
         });
@@ -260,11 +262,13 @@ function processDiffs() {
 
 function makeTmpFolder() {
     return new Promise((resolve) => {
-        fs.ensureDirSync('./tmp/.ccc');
-        fs.copySync(`../.ccc`, `./tmp/.ccc`);
-        console.log(pathsToBeRemoved);
-        deleteFilePath(pathsToBeRemoved.map(path => `./tmp/${path}`));
-        deleteFilePath(pathsToBeRemoved.map(path => `./tmp/.ccc/${path}`));
+        fs.ensureDirSync(`${DCU_FOLDER_TEMP}.ccc`);
+        fs.copySync(`./.ccc`, `${DCU_FOLDER_TEMP}.ccc`);
+        deleteFilePath(pathsToBeRemoved.map(path => `${DCU_FOLDER_TEMP}${path}`));
+        deleteFilePath(pathsToBeRemoved.map(path => `${DCU_FOLDER_TEMP}.ccc/${path}`));
+
+        console.log('transferPaths',transferPaths);
+
         transferPaths.map((path) => {
             const fa = path.split('/');
             const f = fa.slice(0, fa.length).join('/');
@@ -397,28 +401,20 @@ async function extensionsTransfer() {
     if (typeof gitPath === 'undefined') {
         throw new Error('--gitPath is not defined');
     }
-    await clean();
-    await checkoutBranch('master');
-    await deleteBranch('deploy');
-    await deleteBranch('test');
-    await grabTarget();
+    // await clean();
+    // await checkoutBranch('master');
+    // await deleteBranch('deploy');
+    // await deleteBranch('test');
+    // await grabTarget();
     await addAll();
     await commit();
-    console.log(process.cwd())
-    await createBranch('deploy');
-    console.log(process.cwd())
-    await createBranch('test');
-    console.log(process.cwd())
-    await grabSource();
-    console.log(process.cwd())
-    await addAll();
-    console.log(process.cwd())
-    await commit();
-    console.log(process.cwd())
-    await checkoutBranch('deploy');
-    console.log(process.cwd())
-    await mergeBranch('test');
-    console.log(process.cwd())
+    // await createBranch('deploy');
+    // await createBranch('test');
+    // await grabSource();
+    // await addAll();
+    // await commit();
+    // await checkoutBranch('deploy');
+    // await mergeBranch('test');
     // await getDiffs();
     // await processDiffs();
     // await makeTmpFolder();
