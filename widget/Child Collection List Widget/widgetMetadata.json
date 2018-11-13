@@ -1,0 +1,22 @@
+{
+  "imports": [
+    "category",
+    "categoryId"
+  ],
+  "translations": [
+    {
+      "name": "Child Collection List Widget",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "pageTypes": [
+    "category"
+  ],
+  "config": {
+    "collectionId": "",
+    "fields": ""
+  }
+}

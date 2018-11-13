@@ -1,0 +1,163 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "2300009": {
+    "id": "2300009",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m260448')}",
+      "sourceMedia": "m260448"
+    }
+  },
+  "2300010": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "center"},
+    "id": "2300010",
+    "image": {
+      "altText": "October Bedding Catalogue",
+      "altTextId": "2600325",
+      "isProductImage": false,
+      "link": "https://view.publitas.com/homechoice/october-bedding-digital-catalogue/",
+      "src": "/file/v7573015212125684745/general/catalogue-oct-bedding.png",
+      "titleText": "October Bedding Catalogue",
+      "titleTextId": "2600326",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "2300011": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "center"},
+    "id": "2300011",
+    "image": {
+      "altText": "October Fashion Catalogue",
+      "altTextId": "2600327",
+      "isProductImage": false,
+      "link": "https://view.publitas.com/homechoice/october-fashion-digital-catalogue/",
+      "src": "/file/v7560248392041804473/general/catalogue-oct-fashion.png",
+      "titleText": "October Fashion Catalogue",
+      "titleTextId": "2600328",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "2300012": {
+    "id": "2300012",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m260450')}",
+      "sourceMedia": "m260450"
+    }
+  },
+  "2300013": {
+    "id": "2300013",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m260452')}",
+      "sourceMedia": "m260452"
+    }
+  },
+  "2300021": {
+    "id": "2300021",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m260462')}",
+      "sourceMedia": "m260462"
+    }
+  },
+  "2300022": {
+    "id": "2300022",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m260464')}",
+      "sourceMedia": "m260464"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '2300009'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-1-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '2300021'"></span>
+
+      <!-- /oc -->
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '2300012'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-1-1">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '2300022'"></span>
+
+      <!-- /oc -->
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '2300013'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->

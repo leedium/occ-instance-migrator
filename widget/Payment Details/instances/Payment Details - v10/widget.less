@@ -1,0 +1,97 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+/* -------------------------------------------------- */
+/*  Checkout Payment Details
+/* -------------------------------------------------- */
+#checkoutPaymentDetails {
+
+  fieldset {
+    margin-bottom: 36px;
+  }
+
+  legend { 
+    color: inherit; 
+    margin-bottom: 10px
+  }
+
+  .paypalText {
+    font-size: 11px; 
+    font-family: Arial, Verdana;
+  }
+
+  .text-error {
+    margin-bottom: 2px;
+  }
+
+  .paymentimages {
+    padding-top: 4px; 
+    cursor:pointer; 
+    outline: none;
+
+    img {
+      opacity: 0.4;
+      margin-top: 4px;
+      margin-bottom: 4px; 
+    }
+
+    img:hover {
+      opacity: 1; 
+      -webkit-box-shadow: 0 0 6px #bbb;
+         -moz-box-shadow: 0 0 6px #bbb;
+              box-shadow: 0 0 6px #bbb;
+    }
+
+    &.selectedCard { 
+      img {
+        opacity: 1;
+      }
+    }
+  }
+
+  /* small text needs to be darker for a11y */
+  small { 
+    color:  #005580;
+
+    &.cvvPopover { 
+      cursor: help;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+    }
+  }
+
+  button.close {
+    font-size: @fontSizeLarge; 
+    color:  #005580; 
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+
+    &:hover {
+      opacity: 1.0;
+      filter: alpha(opacity=100);
+    }
+
+  }
+
+  #CC-checkoutPaymentDetails-cardCVV-whatsthis {
+    color: @LinkColor;
+    &:hover {
+      color: @LinkHoverColor;
+    }
+
+    &.visible-phone { 
+      text-align: right; 
+    }
+  }
+
+  .popover {
+    width: 100%;
+  }
+  #CC-checkoutPaymentDetails-header {
+    font-weight: bold;
+	margin-bottom: 10px
+  }
+}
+
+}

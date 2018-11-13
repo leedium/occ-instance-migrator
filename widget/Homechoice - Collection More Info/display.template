@@ -1,0 +1,7 @@
+<!--<pre style="display: none;" data-bind="text: console.log('BOOM!', $data)"></pre>-->
+<!-- ko if: $data.Collection_MoreInfo != '' -->
+  <div class="CustomCategoryMoreInfo">
+      <h1 data-bind="html: $data.Collection_Title"></h1>
+      <div data-bind="html: $data.Collection_MoreInfo"></div>
+  </div>
+<!-- /ko -->

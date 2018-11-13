@@ -1,0 +1,23 @@
+{
+  "imports": [
+    "category",
+    "product",
+    "user"
+  ],
+  "translations": [
+    {
+      "name": "Product Details Breadcrumb Custom",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "pageTypes": [
+    "product",
+    "category",
+    "searchResults",
+    "noSearchResults"
+  ],
+  "config": {}
+}

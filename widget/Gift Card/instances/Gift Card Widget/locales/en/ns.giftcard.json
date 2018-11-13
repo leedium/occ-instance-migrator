@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "displayGiftCardDetailsText": "Pay with Gift Card",
+    "giftCardLabelText": "Pay with Gift Card",
+    "giftCardPinText": "Gift Card PIN",
+    "duplicateGiftcardErrMsg": "Gift card already applied.",
+    "paymentMethodNotAvilable": "(This payment option cannot be used for scheduled orders.)",
+    "giftCardApplyingText": "Applying Gift Card",
+    "giftCardNumberText": "Gift Card Number",
+    "giftCardApplyText": "Apply Gift Card"
+  }
+}

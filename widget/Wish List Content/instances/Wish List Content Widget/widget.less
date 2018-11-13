@@ -1,0 +1,435 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+/* BEGIN : Space Content color variable declarations*/
+@swm-content-dark-gray-color : #696969;
+@swm-content-replies-bgcolor : #f5f5f5;
+@swm-content-well-bgcolor : #ebf6fb;
+/* END : Space Content color variable declarations*/
+
+/* WIDGET ID */
+#SWM-space-content {
+  p {
+    margin: 0px;
+  }
+  
+  .swm-content-product-title{
+    font-weight:bold; 
+    display: inline-block; 
+    padding: 10px 0 5px 0;
+    @media (max-width: @screen-xs-max) {
+      display: initial;
+    } 
+  }
+  .swm-content-product-price{font-weight: bold; }
+  .swm-content-product-sale-price{color: #E50000; font-weight: bold; padding-bottom: 4px;}
+  .swm-content-product-list-price, .swm-content-product-savings, .swm-content-product-price-change {
+    color: @swm-content-dark-gray-color;
+    font-weight: normal;
+  }
+  .swm-content-product-option-name{font-weight: bold; }
+  .swm-content-creator{color: @swm-content-dark-gray-color; font-weight: normal; }
+  .swm-content-timestamp{color: @swm-content-dark-gray-color; font-weight: normal; }
+  .swm-topmargin5{margin-top: 5px;}
+  .swm-topmargin10{margin-top: 10px; }
+  .swm-bottommargin10{margin-bottom: 10px; }
+  .swm-toplevel-post{padding-left: 28px; }
+  .swm-replylevel-post{padding-left: 28px; }
+  .swm-toppadding20{padding-top: 20px; }
+  .swm-max-width{width: 100%; }
+  .swm-valign-top{vertical-align: top;}
+  
+  .swm-12col-left-btn {
+    .pull-left();
+    width: 49%; 
+  }
+  .swm-12col-right-btn {
+    .pull-right();
+    width: 49%; 
+  }
+  
+  
+  .swm-display-none{display: none; }
+  .swm-comments-toggle {
+    margin-top: 10px;
+    padding-right: 15px;
+  }
+  
+  .swm-content-product-label-onsale {
+    border-radius: 0.25em;
+    color: @white;
+    background-color: #E50000;
+    margin-left: 10px;
+    padding: 2px 4px;
+    font-size: 70%;
+    font-weight: bold;
+    vertical-align: baseline;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  
+  .swm-content-comment{
+    padding-right: 15px; 
+    word-wrap: break-word; 
+    white-space: pre-wrap;
+  }
+  
+  .swm-content-reply-pane {
+    padding: 0px 0px 0px 50px; 
+    .swm-content-control {
+      position: absolute;
+      right: 25px;
+      z-index: 100; 
+    }
+    @media (max-width: @screen-xs-max) {
+      padding: 0px;
+    } 
+  }
+  
+  .swm-xs-pull-right {
+    @media (max-width: @screen-xs-max) {
+      .pull-right;
+    }
+  }
+  
+  .swm-content-row-container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .swm-content-row {
+    margin-top: 5px; 
+    margin-bottom: 5px;
+    border: 1px solid darken(@swm-content-replies-bgcolor, 7%);
+    border-radius: 4px;
+    padding: 10px 10px 0px;
+  }
+  
+  .swm-content-reply-row {
+    .swm-content-row;
+    background-color: @swm-content-replies-bgcolor;
+    border: 0px;
+  }
+  
+  .swm-list-tab {border-radius: 0 0 4px 4px;}
+  
+  .swm-product-img { 
+    padding-left: 5px;
+    padding-bottom: 10px;
+  }
+  
+  .swm-comment-textarea-wrap {
+    padding-right: 5px;
+    .thumbnail > img {
+      height : 50px;
+    }  
+  }
+  
+  .swm-content-noLongerMember {
+    width: 50px;
+    position: relative;
+    height: 50px;
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    @media (max-width: @screen-xs-max) {
+      width: 40px;
+      height: 40px;
+    }
+    .swm-fa-ban-position {
+      position: absolute;
+      top: 4px;
+      font-size: 3em;
+      left: 7px;
+      right: 7px;
+      bottom: 4px;
+      
+      @media (max-width: @screen-xs-max) {
+        position: absolute;
+        top: 0;
+        left: 2px;
+      }
+    }  
+  }
+  
+  /* Large size responsive profile images 80 x 80*/
+  .swm-profile-image-large {
+    margin-left: 5px;
+    margin-right: 10px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    float: left;    
+    @media (min-width: @screen-sm-min) {
+      width : 90px;
+      height: 90px;
+      float: none;
+      margin-right: 0px;
+    }
+  }
+  
+  .swm-profile-image-large > img {
+    width: auto;
+    height: auto;
+    max-width: 40px;
+    max-height: 40px;
+    @media (min-width: @screen-sm-min) {
+      max-width: 80px;
+      max-height: 80px;
+    }
+  }
+  
+  .swm-profile-noLongerMember {
+    margin-left: 5px;
+    margin-right: 10px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    float: left;
+    @media (min-width: @screen-sm-min) {
+      width: 60px;
+      height: 60px;
+      float: none;
+      margin-right: 0px;
+    }
+  }
+  
+  /* Standard size responsive profile images 50 x 50*/
+  .swm-profile-image {
+    margin-left: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    @media (min-width: @screen-sm-min) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  
+  .swm-profile-image > img {
+    width: auto;
+    height: auto;
+    max-width: 40px;
+    max-height: 40px;
+    @media (min-width: @screen-sm-min) {
+      max-width: 50px;
+      max-height: 50px;
+    }
+  }
+  
+  /* Adjust bootstrap margins in the following viewports to make room for responsive profile images */
+  .swm-padding-reset {
+    @media (max-width: @screen-xs-max) {
+      padding-left : 3px;
+      padding-right : 3px;
+    }
+    @media (min-width: @screen-md-min) {
+      padding-left : 0px;
+      padding-right : 0px;
+    }
+  }
+    
+  /* Override placeholder text color for ALL swm-comment-textarea */
+  .swm-comment-textarea {
+    .placeholder(@grayLight);
+    &::-moz-placeholder {
+      color: @grayLight; /* firefox 19+ */
+    }
+    resize: vertical;
+    
+  }
+  .swm-comment-textarea.placeholder { 
+      color: @grayLight; 
+  }
+  
+  /* Override thumbnail margin for top-level comment posts */
+  .swm-comment-thumbnail {
+    margin-bottom: 0px;
+  }
+  
+  .swm-comment-textarea-inline {
+    .swm-comment-textarea();
+    width: 100%;
+    @media (min-width: @screen-sm-min) {
+     display: inline-block;
+     vertical-align: bottom;
+     width: 80%;
+     margin-right: 30px;    
+    }    
+  }
+      
+  /* Override certain styles from default bootstrap dropdown */
+  .swm-dropdown {
+    right:0;
+    left:auto;
+    top:0;
+    margin-top:18px;
+    min-width:0px;
+    text-align: left;
+  }
+  
+  /* Sort Selection group */
+  .swm-content-orderBy-control-group {
+    @media (min-width: @screen-sm-min) {
+      .pull-right();
+    }
+  }  
+  .swm-content-results-text {
+    margin: 5px 0px;
+    font-weight: bold;
+  }
+  
+  /* Styles for the delete confirmation modal (based on those for CC found in their notifications.less) */
+  .swm-priority-modal-dialog {
+    @media (min-width: @screen-sm-min) {
+      width: 400px;
+    }
+  }
+  .swm-confirm-modal-dialog {
+    @media (min-width: @screen-sm-min) {
+      width: 425px;
+    }
+  }
+  
+  .swm-confirm-body {
+    padding: 10px;
+  }
+  .swm-confirm-title {
+    margin-top: 0px;
+    font-weight: bold;
+    line-height: 150%;
+    font-size: 22px;
+    padding-left: 40px;
+    margin-bottom: 5px;
+  }
+  .swm-confirm-modal-content .swm-confirm-title {
+    background: transparent url(/img/icons-32x32/icon-alert-alt-32x32.png) no-repeat 0 0;
+  }
+  .swm-confirm-message {
+    line-height: 14px;
+    padding-left: 40px;
+  }
+  .swm-confirm-actions {
+    margin: 10px 5px 5px;
+    text-align: right;
+  }
+  .swm-confirm-actions BUTTON {
+    margin: 0px 0px 0px 10px;
+  }
+  
+  .swm-content-well {
+    background-color: @swm-content-well-bgcolor;
+  }
+  
+  .swm-content-well-heading {
+    font-weight : bold;
+    margin-bottom: 14px;
+  }
+  .swm-product-quantity {
+    width: 44px !important;
+    display: inline-block;
+  }
+  .swm-product-priority {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  .swm-product-priority select {
+    width: 150px;
+  }
+  .swm-no-bold {
+    font-weight: normal;
+  }
+  .swm-content-control {
+    position: absolute;
+    right: 25px;
+    z-index: 100;
+    .swm-dropdown-caret {
+      &:focus {
+        /* For accessibility */
+        outline: thin dotted;
+        outline-offset:1px;
+      } 
+    }
+  }
+  .swm-alert {
+    color: red;
+  }
+  .swm-cursor-default {
+    cursor:default; 
+  }
+  .swm-textarea-noresize {
+    resize: none !important;
+  }
+  .swm-space-selector {
+    .dropdown-header {
+      font-size: @SiteFontSize;
+      font-weight: bold;
+      color: @SiteTextColor;
+      padding: 3px 10px;
+    }
+    .dropdown-menu > li > a {
+      padding: 3px 25px;
+      .text-overflow();
+    }
+    ul.dropdown-menu {
+      max-width : 270px;
+    }
+  }
+  
+  // ----------------------------------------------------------------------------
+	// ** FONT-AWESOME MIXIN **
+	// 
+	// Mixin to insert FA icons via css rather than in the dom.
+	// Use case: Icons with a text label, using fa icons will insert icons with an empty i tag and span tag with text as the label, which is not ideal for Accessibility. 
+	//    Use this mixin to resolve this case. In the dom you can just insert a span tag with text and the class utilizing this mixin
+	// USAGE: In your custom class, reference .swm-fa-icon-mixin() followed by content : "font-awesome-code", see font-awesome variables.less for reference.
+	// ----------------------------------------------------------------------------
+	.swm-fa-icon-mixin() {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    color: #a0a0a0;
+    vertical-align: bottom;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;  
+  }
+  
+  // --- Private icons
+  .swm-space-private:before {
+    .swm-fa-icon-mixin();
+    content: "\f023";
+  }
+  .swm-space-private-form-label:after {
+    .swm-fa-icon-mixin();
+    vertical-align: middle;
+    content: "\f023";
+  }
+  
+  // --- Shared icons
+  .swm-space-shared:before {
+    .swm-fa-icon-mixin();
+    content: "\f09c";
+  }
+  .swm-space-shared-form-label:after {
+    .swm-fa-icon-mixin();
+    vertical-align: middle;
+    content: "\f09c";
+  }
+  
+  // --- Group icons
+  .swm-space-group:before {
+    .swm-fa-icon-mixin();
+    content: "\f0c0";
+  }
+  .swm-space-group-form-label:after {
+    .swm-fa-icon-mixin();
+    vertical-align: middle;
+    content: "\f0c0";
+  }
+  
+  /* custom class to modify default bootstrap modal-body */
+  .swm-modal-body-scroll {
+   overflow-y: auto;
+  }
+}
+}

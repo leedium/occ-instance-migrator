@@ -1,0 +1,58 @@
+    
+#CC-profileTermsPayment {
+        .bankingDetails input {
+            display:block!important;
+            margin-left:0px!important;
+        }
+        
+        
+        .terms-options {
+            
+           
+            
+            &--list {
+                list-style: none;
+                width: 100%;
+                padding: 0;
+                list-style-type: none;
+                margin: 0px 0 20px 0;
+                li{
+                     label {
+                        font-weight: normal;
+                        cursor: pointer;
+                        
+                        &:before {
+                            content: "";
+                            width: 23px;
+                            height: 23px;
+                            display: inline-block;
+                            border: 1px solid;
+                            border-radius: 20px;
+                            position: relative;
+                            top: 5px;
+                            margin: 0 5px 0 0;
+                        }
+                    }
+                    
+                     input[type="radio"]{
+                         margin: 7px;
+                         // display:none;
+                         position: absolute;
+                         left: -10000px;
+                       
+                       
+                       &:checked + label:before {
+                           border: solid 6px #136FB1;
+                            background:white !important;
+                       }
+                       
+                    }
+                }
+            }
+        }
+
+        
+
+
+}
+

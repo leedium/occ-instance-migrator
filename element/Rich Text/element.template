@@ -1,0 +1,6 @@
+<!-- ko with: $elementInstance -->
+  <!-- ko if: ($data.hasOwnProperty('config') && $data.id !== 'id') -->
+  <div class="cc-rich-text" data-bind="style: {paddingTop: config.padding.paddingTop + 'px', paddingBottom: config.padding.paddingBottom + 'px', paddingLeft: config.padding.paddingLeft + 'px', paddingRight: config.padding.paddingRight + 'px'}, html: config.richText.content">
+  </div>
+  <!-- /ko -->
+<!-- /ko -->

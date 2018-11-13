@@ -1,0 +1,19 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "HomeChoice Sign Up Widget",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "defaultLayout": "homechoiceSignUp_v1_lyt1",
+  "config": {
+    "endpointUrl": "https://www.pages03.net/homechoice/hcWebsite_Signup/Website_Signup?Email=$EMAIL_ADDRESS&formSourceName=StandardForm&sp_exp=yes&NameSource_Campaign=Website_Signup",
+    "titleColour": "white",
+    "widgetBackgroundColour": "transparent"
+  }
+}

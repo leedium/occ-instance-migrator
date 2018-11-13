@@ -1,0 +1,16 @@
+<!-- ko if: $data.showWidget() -->
+<div id="SWM-canvas-js-widget">
+  <!-- ko if: $data.fromFBNotification() -->
+    <h3 data-bind="widgetLocaleText: 'headingText'"></h3>
+    <ul>
+      <li data-bind="widgetLocaleText: 'bulletText'"></li>
+    </ul>
+    <p data-bind="widgetLocaleText: 'introText'"></p>
+  <!-- /ko -->
+  <!-- ko ifnot: $data.fromFBNotification() -->
+    <h3 data-bind="widgetLocaleText: 'portalLogoAltText'"></h3>
+    <p data-bind="widgetLocaleText: 'portalIntroText1'"></p>
+    <p data-bind="widgetLocaleText: 'protalIntroText2'"></p>
+  <!-- /ko -->
+</div>
+<!-- /ko -->

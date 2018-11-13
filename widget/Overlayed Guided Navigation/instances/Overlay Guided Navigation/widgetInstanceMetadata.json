@@ -1,0 +1,7 @@
+{
+  "configuration": {
+    "maxRefinementCount": "10",
+    "maxDimensionCount": "10"
+  },
+  "displayName": "Overlay Guided Navigation"
+}

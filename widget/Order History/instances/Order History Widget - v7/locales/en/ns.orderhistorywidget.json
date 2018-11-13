@@ -1,0 +1,19 @@
+{
+  "resources": {
+    "NoItemDisplayMessage": "No Items to display.",
+    "historyHeaderOrderTotal": "Order Total",
+    "showText": "Show Order Status",
+    "historyHeaderOrderDate": "Order Date",
+    "historyHeaderOrderNumber": "Order Number",
+    "historyHeaderOrderStatus": "Order Status",
+    "copyToCart": "Copy Order",
+    "orderDetails": "Details",
+    "listingHeaderScheduledOrderId": "Schedule ID",
+    "placeOrderModalMessage": "Your shopping cart contains other products. If you proceed, the products in this selected order will be merged with those in your cart.",
+    "historyHeaderOrderDetails": "Order Details",
+    "backToMyAccount": "<< Back to My Account",
+    "orderHistoryText": "Order History",
+    "buttonOk": "Ok",
+    "myAccount": "My Account"
+  }
+}

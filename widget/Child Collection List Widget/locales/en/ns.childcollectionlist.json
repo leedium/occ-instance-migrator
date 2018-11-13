@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "wasText": "Was",
+    "salePriceText": "Sale price",
+    "onSaleText": "Sale",
+    "previousImageText": "Previous Images",
+    "listPriceText": "List price",
+    "nextImageText": "Next Images"
+  }
+}

@@ -1,0 +1,192 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+    #profileEmploymentDetails_v1 {
+        
+        #CC-profileEmploymentDetails {
+            // background-color: red; 
+        }
+    
+    }
+
+.affordability-Padding-bototm{
+    padding-bottom:50px;
+}
+
+ @media (max-width: 991px) {
+     
+    .affordability-Padding-bototm{
+        padding-bottom:0px;
+    }
+ }
+ 
+ 
+ 
+.rand-before{
+    position:relative;
+    
+}
+.rand-before:before{
+    content: 'R';
+    position: absolute;
+    z-index: 99;
+    bottom: 9px;
+    left: -13px;
+    display: block;
+    font-weight: bold;
+}
+
+
+.rand-before a{
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+}
+
+h2.expenses-header {
+    font-family: Roboto;
+    font-size: 28px;
+    font-weight: bold !important;
+    font-style: normal !important;
+    font-stretch: normal !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    color: #000000 !important;
+    margin-top: -15px;
+}
+
+
+.form-group.qualify-credit {
+    margin-top: 60px;
+}
+
+.profile-registration{
+    @profileRegGrey: #d7dae0;
+    color: #000;
+    
+   
+    &--employment-details {
+        .form-group {
+            .text-danger{
+                // display: none;   
+            }
+            
+            // input.invalid + .text-danger {
+                // display: block; 
+            // }
+            
+            
+             @media (max-width: 768px) {
+
+.radio-inline{
+    width: 100%;
+    margin-left: 0;
+}
+    }
+            
+        }
+    }  
+        
+    
+    &--help-tout{
+        h6 {
+            font-weight: bold;
+            font-size: 14px;
+            text-indent: 15px; 
+        }
+        &--contact{
+            border: 1px solid @profileRegGrey;
+            padding: 10px 20px;
+            
+            ul {
+                list-style: none;
+                padding: 0;
+                li{
+                    padding: 20px 0;
+                    border-bottom: 1px solid @profileRegGrey;
+                    &:last-child{
+                        border-bottom: 0;
+                    }
+                    
+                }
+            }
+            a{
+                display: block;
+                color:currentColor;
+                span{
+                    display: block;
+                    &:first-child{
+                          font-family: Roboto;
+                          font-size: 18px;
+                          font-weight: bold;
+                          font-style: normal;
+                          font-stretch: normal;
+                          line-height: normal;
+                          letter-spacing: normal;
+                          color: #ed2282;        
+                    }
+                    &:last-child {
+                        text-indent: 33px;
+                    }
+                }
+            }
+        }
+        
+        &--item {
+            &:before {
+                font-family: FontAwesome;
+                top: 9px;
+                font-size: 30px;
+                display: inline-block;
+                float: left;
+                padding: 0 8px 0 0;
+            }
+            
+            &__whatsapp {
+                &:before {
+                    content: "\f232";
+                }
+            }
+            
+            &__phone {
+                &:before {
+                    content: "\f10b";
+                    font-size: 60px;
+                    position: relative;
+                    padding-right: 10px;
+                    top: 14px;
+                }
+                
+            }
+            
+            &__email {
+                &:before {
+                    content: "\f003";
+                    font-size: 40px;
+                    position: relative;
+                    top: 5px;
+                    left: -1px;
+                }
+                
+            }
+            
+            
+        }
+        
+        
+    }   
+    
+    &--employment-details--header {
+        margin-bottom: 40px;
+        
+
+
+        h4{
+             font-size: 18px;
+            font-weight: bold;
+        }
+        p {
+            background: #e1e1e1;
+            padding: 15px 20px;
+        }
+       
+    }
+}
+}

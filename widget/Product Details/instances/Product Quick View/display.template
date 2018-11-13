@@ -1,0 +1,109 @@
+<!--
+ /**
+  *
+  * Product Details Widget Template
+  *
+  */
+-->
+<!-- ko if: loaded -->
+<div class="templateRegion" id="cc-product-details" data-oc-id="cc-product-details">
+<!-- ko if: product -->
+
+  <!-- oc layout: panels -->
+  <div class="row">
+    <div class="oc-panel panel-1 col-md-6" data-oc-id="panel-1">
+
+      <!-- oc section: product-back-link -->
+        <div data-bind="element: 'product-back-link'" class="back-link"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-image -->
+        <div data-bind="element: 'product-image'" class="text-center"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-image-carousel -->
+        <div data-bind="element: 'product-image-carousel'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel panel-2 col-md-6" data-oc-id="panel-2">
+
+      <!-- oc section: product-title -->
+        <h1 data-bind="element: 'product-title'"></h1>
+      <!-- /oc -->
+
+      <!-- oc section: product-price -->
+
+        <div data-bind="if: !priceRange() && (!salePrice || salePrice() === null)"
+            data-oc-id="product-list-price-only" role="alert">
+          <span data-bind="element: 'product-list-price'"></span>
+        </div>
+
+        <div data-bind="if: !priceRange() && (salePrice && salePrice() !== null)"
+            data-oc-id="product-on-sale" role="alert">
+          <span data-bind="element: 'product-sale-price'"></span>
+        </div>
+
+        <div data-bind="if: priceRange()" data-oc-id="product-price-varies" role="alert">
+          <span data-bind="element: 'product-price-range'"></span>
+        </div>
+      <!-- /oc -->
+      
+      <!-- oc section: product-shipping-surcharge -->
+        <div data-bind="if: shippingSurcharge()">
+          <span data-bind="element: 'product-shipping-surcharge'"></span>
+        </div>
+      <!-- /oc -->
+     
+      <!-- oc section: product-description -->
+        <div data-bind="element: 'product-description'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-variants -->
+        <div data-bind="element: 'product-variants'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-quantity -->
+        <div data-bind="element: 'product-quantity'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-long-description -->
+        <div data-bind="element: 'product-long-description'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-stock-availability -->
+        <div data-bind="if: (showStockStatus() && !stockStatus() )" data-oc-id="product-out-of-stock">
+          <div data-bind="element: 'product-out-of-stock-message'"></div>
+        </div>
+          <div data-bind="if: (showStockStatus() && stockStatus() && stockState()==='IN_STOCK')" data-oc-id="product-in-stock">
+            <div data-bind="element: 'product-in-stock-message'"></div>
+          </div>
+         <div data-bind="if: (showStockStatus() && stockStatus() && stockState()==='PREORDERABLE')" data-oc-id="product-preorder">
+            <div data-bind="element: 'product-preorder-message'"></div>
+          </div>
+          <div data-bind="if: (showStockStatus() && stockStatus() && stockState()==='BACKORDERABLE')" data-oc-id="product-backorder">
+            <div data-bind="element: 'product-backorder-message'"></div>
+        </div>
+      <!-- /oc -->
+
+      <!-- oc section: product-add-to-cart -->
+        <div data-bind="element: 'product-add-to-cart'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-add-to-space -->
+        <div data-bind="element: 'product-add-to-space'"></div>
+      <!-- /oc -->
+      
+      <!-- oc section: product-social-sharing -->
+        <div data-bind="element: 'product-social-sharing'"></div>
+      <!-- /oc -->
+
+    </div>
+  </div>
+  <!-- /oc -->
+
+<!-- /ko -->
+</div>
+<!-- /ko -->
