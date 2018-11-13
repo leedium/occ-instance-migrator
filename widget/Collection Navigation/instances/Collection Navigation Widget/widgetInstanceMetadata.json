@@ -1,0 +1,9 @@
+{
+  "configuration": {
+    "maxNoOfElements": "10",
+    "catalogId": "cloudCatalog",
+    "fields": "",
+    "rootCategoryId": "rootCategory"
+  },
+  "displayName": "Collection Navigation Widget"
+}

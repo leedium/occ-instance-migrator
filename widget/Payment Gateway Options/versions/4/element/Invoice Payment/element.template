@@ -1,0 +1,41 @@
+<!-- ko if: initialized() && $data.hasOwnProperty('invoicePayment') -->
+  <!-- ko if: invoicePayment.isInvoicePaymentEnabled() && !order().isPaypalVerified()-->
+    <div id="invoicePayment" data-oc-id="panel-invoicePayment" class="oc-panel">
+      <!-- ko if: (order().showSchedule() && !order().paymentDetails().isInvoiceEnabledForScheduledOrder()) -->
+        <span id="CC-invoicePayment-paymentAvailablability" data-bind="widgetLocaleText: 'paymentMethodNotAvilable'"></span><br>
+      <!-- /ko -->
+    
+      <div id="CC-invoicePayment-checkboxFileds">
+        <div id="CC-invoicePayment-checkboxFileds-conatiner">
+          <div class="form-group col-sm-5 checkbox">
+            <label for="CC-invoicePayment-displayInvoicePayment">
+              <input type="checkbox" name="invoicePaymentDetails"
+              id="CC-invoicePayment-displayInvoicePayment" class="checkbox"
+              data-bind="checked: order().isInvoicePayment,
+              disable: order().isPaymentsDisabled() || cart().items().length == 0 || order().amountRemaining() == 0 || order().isCashPayment() ||
+                       (order().showSchedule() && !order().paymentDetails().isInvoiceEnabledForScheduledOrder()) || (order().approvalRequired() && !order().paymentDetails().isInvoiceEnabledForApproval())">
+              <span data-bind="widgetLocaleText:'invoicePaymentMsg'"></span>
+            </label>
+          </div>
+          <!-- ko if: order().isInvoicePayment --> 
+            <div class="form-group col-sm-7">
+            <fieldset data-bind="disable: order().isPaymentsDisabled()">
+              <!--  ko with: order -->
+                <div class="control">
+                  <label class="control-label inline" for="CC-paymentDetails-purchaseOrderNumber"
+                    data-bind="widgetLocaleText: 'purchaseOrderNumberMsg'"></label>
+                  <div class="control">
+                     <input type="text" class="form-control" name="purchaseOrderNumber" id="CC-paymentDetails-purchaseOrderNumber"
+                     data-bind="validatableValue: poNumber, widgetLocaleText : {value:'purchaseOrderNumberMsg', attr:'placeholder'}">
+                  </div>
+                </div>
+                <span class="text-danger" id="CC-InvoicePayment-poNumber-error" data-bind="validationMessage: poNumber" role="alert"></span>
+              <!-- /ko -->
+            </fieldset>
+            </div>
+          <!-- /ko -->
+        </div>
+      </div>
+    </div>
+  <!-- /ko -->
+<!-- /ko -->

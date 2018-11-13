@@ -1,0 +1,11 @@
+<div id="CC-giftCardDetails" data-oc-id="giftCard">
+  <!-- oc layout: panels -->
+  <div class="row">
+    <div data-oc-id="panel-giftCard" class="oc-panel">
+      <!-- oc section: gift-card-fields -->
+      <div data-bind="element: 'gift-card-fields'"></div>
+      <!-- /oc -->
+    </div>
+  </div>
+  <!-- /oc -->
+</div>

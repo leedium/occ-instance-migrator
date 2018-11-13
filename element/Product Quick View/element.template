@@ -1,0 +1,8 @@
+<!-- Quick View Element -->
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('product-quickview') && $data.elements['product-quickview'].quickViewEnabled($parents) -->
+  <div class="quick-view hidden-xs hidden-sm">
+    <p data-bind="click: $data.elements['product-quickview'].handleQuickViewClick.bind($product, $popupId, $parents[1]), 
+	                attr: { title: $product.displayName },
+		              widgetLocaleText: 'quickViewText'" class="cc-product-quickview"></p>
+  </div>
+<!-- /ko -->

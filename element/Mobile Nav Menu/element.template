@@ -1,0 +1,52 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('hcCollectionNavigationMobileMenu') -->
+<nav data-bind="css:{'hc-collection-navigation-mobile-menu__show' : $data.elements['hcCollectionNavigationMobileMenu'].isMenuVisible(), 'hc-collection-navigation-mobile-menu__collections-menu-open' : $data.elements['hcCollectionNavigationMobileMenu'].menuStateCollection(), 'hc-collection-navigation-mobile-menu__account-menu-open' : $data.elements['hcCollectionNavigationMobileMenu'].menuStateAccount() }"
+     class="hc-collection-navigation-mobile-menu navbar hidden-md hidden-lg" id="cc-mobile-menubar" role="navigation">
+    <div id="hcCollectionNavigationMobileMenuContainer" class="hc-collection-navigation-mobile-menu--container">
+        <div id="hcCollectionNavigationMobileMenuMainView" class="hc-collection-navigation-mobile-menu--main-view">
+            <div class="hc-collection-navigation-mobile-menu--main-view--account-btn" data-bind="visible: $data.user().loggedIn()">
+                <button data-bind="click:$data.elements['hcCollectionNavigationMobileMenu'].handleShowAccount"
+                        class="hc-collection-navigation-mobile-menu--nav-button hc-collection-navigation-mobile-menu--nav-button__account hc-collection-navigation-mobile-menu--nav-button__next"><span
+                        data-bind="widgetLocaleText:'myAccount'"></span></button>
+            </div>
+            <div data-bind="click:$data.elements['hcCollectionNavigationMobileMenu'].handleMenuAction,html:$elementInstance.config.richText.content"></div>
+            <button data-bind="click:$data.elements['hcCollectionNavigationMobileMenu'].handleSignout"
+                    class="cc-button-primary"><span data-bind="widgetLocaleText: $data.user().loggedIn() ? 'signOut' : 'signIn'"></span></button>
+        </div>
+        <div id="hcCollectionNavigationMobileMenuCollectionView" class="hc-collection-navigation-mobile-menu--collection-view">
+            <div>
+                <button data-bind="click: $data.elements['hcCollectionNavigationMobileMenu'].handleReturnToMainMenu"
+                        class="hc-collection-navigation-mobile-menu--nav-button hc-collection-navigation-mobile-menu--nav-button__back"><span
+                        data-bind="text: $data.elements['hcCollectionNavigationMobileMenu'].collectionButtonTitle"></span>
+                </button>
+            </div>
+            <ul data-bind="foreach: $data.elements['hcCollectionNavigationMobileMenu'].collectionItems">
+                <li><a class="hc-collection-navigation-mobile-menu--link"
+                       data-bind="ccLink:{route: $data.route, displayName: $data.displayName}"></a></li>
+            </ul>
+        </div>
+        <div id="hcCollectionNavigationMobileMenuAccountView" data-bind="visible: $data.user().loggedIn()" class="hc-collection-navigation-mobile-menu--account-view">
+            <div>
+                <button data-bind="click:$data.elements['hcCollectionNavigationMobileMenu'].handleReturnToMainMenu"
+                        class="hc-collection-navigation-mobile-menu--nav-button hc-collection-navigation-mobile-menu--nav-button__account__back"><span
+                        data-bind="text: $data.user().firstName() + ' ' + $data.user().lastName()"></span></button>
+            </div>
+            <ul>
+                <li><a class="hc-collection-navigation-mobile-menu--link"
+                       data-bind="ccLink:{route: '/profile', displayName:'Edit My Details'}"></a></li>
+                <li><a class="hc-collection-navigation-mobile-menu--link"
+                       data-bind="ccLink:{route: '/register', displayName:'Update Credit Details'}"></a></li>
+                <li><a class="hc-collection-navigation-mobile-menu--link"
+                       data-bind="ccLink:{route: '/wishlist', displayName:'My Wishlist'}"></a></li>
+                <li><a class="hc-collection-navigation-mobile-menu--link"
+                       data-bind="ccLink:{route: '/orderHistory', displayName:'Shopping History'}"></a></li>
+                <li><a class="hc-collection-navigation-mobile-menu--link" href="#">Track My Order</a></li>
+                <li><a class="hc-collection-navigation-mobile-menu--link" href="#">Account Settings</a></li>
+            </ul>
+            <button data-bind="click: $data.elements['hcCollectionNavigationMobileMenu'].handleSignout"
+                    class="cc-button-primary"><span data-bind="widgetLocaleText: $data.user().loggedIn() ? 'signOut' : 'signIn'"></span></button>
+        </div>
+    </div>
+</nav>
+
+<!-- /ko -->
+

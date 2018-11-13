@@ -41,7 +41,7 @@ const pathsToBeRemoved = [];
 function grabTarget() {
     process.chdir(gitPath);
     return new Promise((resolve) => {
-        console.log('GRABBING TARGET (currently deployed)');
+        console.log('GRABBING TARGET (currently deployed stable)');
         const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerTarget], {
             env: Object.assign({}, process.env, {
                 'CC_APPLICATION_KEY': config.apiKeyTarget
@@ -62,6 +62,7 @@ function grabTarget() {
  * @returns {Promise<any>}
  */
 function grabSource() {
+    process.chdir(gitPath);
     return new Promise((resolve) => {
         console.log('GRABBING SOURCE (latest changes)');
         const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerSource], {
@@ -290,7 +291,7 @@ function deleteFilePath(pathsToBeRemoved) {
  * @returns {Promise<any>}
  */
 function transferAll() {
-    process.chdir('./tmp');
+    // process.chdir('./tmp');
     return new Promise((resolve) => {
         console.log(`Transferring all extensions start...`);
         const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', config.dcuServerTarget, '-k', config.apiKeyTarget], {
@@ -364,6 +365,19 @@ function plsuTransferAll() {
     });
 }
 
+function clean() {
+    deleteFilePath([
+        './tmp',
+        '../.ccc',
+        '../element',
+        '../global',
+        '../snippets',
+        '../stack',
+        '../theme',
+        '../widget',
+    ]);
+}
+
 /**
  * Executes extesion tasks
  * @returns {Promise<void>}
@@ -372,6 +386,7 @@ async function extensionsTransfer() {
     if (typeof gitPath === 'undefined') {
         throw new Error('--gitPath is not defined');
     }
+
     // await checkoutBranch('master');
     // await deleteBranch('deploy');
     // await deleteBranch('test');
@@ -389,16 +404,7 @@ async function extensionsTransfer() {
     // await processDiffs();
     // await makeTmpFolder();
     // await transferAll();
-    // deleteFilePath([
-    //     './tmp',
-    //     '../.ccc',
-    //     '../element',
-    //     '../global',
-    //     '../snippets',
-    //     '../stack',
-    //     '../theme',
-    //     '../widget',
-    // ]);
+    // clean();
 }
 
 /**

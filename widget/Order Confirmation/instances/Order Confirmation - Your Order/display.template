@@ -1,0 +1,117 @@
+<div id="orderConfirmation">
+  <!-- ko if: confirmation -->
+  <!-- ko with: confirmation -->
+  <!-- ko setContextVariable:{name:'widgetViewModel',value:$parent} -->
+  <div class="row">
+    <div class="col-xs-12 order-confirmation-order">
+      <h3 data-bind="widgetLocaleText: 'yourOrderText'"></h3>
+      <!--<div data-bind="attr: { summary: $parent.yourOrderText }" id="order-info">-->
+        <!-- ko with: shoppingCart -->
+        
+        <div data-bind="foreach: items">
+          <div class="item">
+            <div class="row" scope="row">
+              <div class="col-sm-5 col-xs-5 productImg">
+
+                <!-- <div data-bind="onRender: function(){console.log('(TEST) Id...', $data);}"></div> -->
+
+                <!--<div data-bind="onRender: getTermName($data.productId, $parent)"></div>-->
+
+                <!-- ko if:  hc.getProductBadgesByProdId-->
+                  <div data-bind="onRender: hc.getProductBadgesByProdId($data.productId, $element)"></div>
+                <!-- /ko -->
+
+                <img class="img-responsive" data-bind="onRender: hc.updateProductImage($data.productId, $element)" />
+            </div>
+
+            <div class="col-sm-7 col-xs-7 product-info">
+              <span data-bind="text: displayName" class="name"></span>
+              <!-- ko foreach: variant -->
+              <div>
+               <!-- ko if: $data.optionValue -->
+               <!-- ko if: $data.optionValue !== 'No Size' -->
+               <small>
+                 <span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+                 optionValue: $data.optionValue}}"></span>
+               </small>
+               <!-- /ko -->
+               <!-- /ko -->
+             </div>
+             <!-- /ko -->
+             <!-- ko if: $data.childItems -->
+             <div class="hidden-xs" data-bind="attr: { id: 'CC-confirmation-productConfigurationDetails-' + productId + catRefId + $index()}">
+              <small>
+                <a data-bind="widgetLocaleText:'configurationDetails', attr: { href: '#CC-confirmation-configDetails-' + productId + catRefId + $index()}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a>
+                <div data-bind="attr: { id: 'CC-confirmation-configDetails-' + productId + catRefId + $index()}" class="collapse">
+                  <ul data-bind="foreach: $data.childItems">
+                    <li><span data-bind="text: displayName"></span> -x<span data-bind="text: quantity"></span></li>
+                  </ul>
+                </div>
+              </small>
+            </div>
+            <!-- /ko -->
+
+            <div class="payment"> Payment:
+              <!-- <span data-bind="text: $parents[1].priceListGroup.currency.symbol + price" class="payment-price"></span> -->
+            
+
+                <!-- ko if: $data.hasOwnProperty('dynamicProperties') -->
+                  <!-- ko foreach: dynamicProperties -->
+                         <!-- ko if: $data.id == "hcTermsCharge" -->
+                               <!-- ko if: $data.value != null -->
+                                 R <span data-bind="text: $data.value"></span> x
+                               <!-- /ko -->
+                               <!-- ko if: $data.value == null -->
+
+                                     <!-- ko foreach: $parents[0].detailedItemPriceInfo -->
+                                     R <span data-bind="text: detailedUnitPrice" ></span>
+                                     <!-- /ko -->
+
+                               <!-- /ko -->
+                         <!-- /ko -->
+                         <!-- ko if: $data.id == "hcTermsDuration" -->
+                               <!-- ko if: $data.value != null -->
+                                 <span data-bind="text: $data.value"></span>
+                               <!-- /ko -->
+                         <!-- /ko -->
+                   <!-- /ko -->
+                   <!-- /ko -->
+            </div>
+            
+            <div class="qty"> Qty:
+              <span data-bind="ccNumber: quantity">2</span>
+            </div>
+          </div>
+
+          <!-- <div class="col-xs-12 col-md-12">
+            <div class="order-confirmation-page--line-item">
+              <div class="order-confirmation-page--line-item--container">
+
+
+      <!- - ko if: hc_productOffer - ->
+                <span class="order-confirmation-page--line-item--offer-title" data-bind="text: hc_productOffer">SPECIAL OFFER</span>
+      <!- - /ko - ->          
+      <!- - ko if:hc_productSkinny - ->
+                <span class="order-confirmation-page--line-item--offer-desc" data-bind="text: hc_productSkinny">Get a FREE Shawl with your bedding</span>
+      <!- - /ko - ->
+              
+              </div>
+            </div>
+          </div> -->
+          
+        </div>
+      </div>
+      <!-- /ko -->
+    </div>
+    <!-- /ko -->
+    <!--</div>-->
+  </div>
+</div>
+
+<!-- /ko -->
+<!-- /ko -->
+<!-- /ko -->
+<!-- ko ifnot: confirmation -->
+<span data-bind="widgetLocaleText: 'orderDoesNotExist'"></span>
+<!-- /ko -->
+</div>

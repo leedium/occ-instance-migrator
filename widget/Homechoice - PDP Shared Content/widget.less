@@ -1,0 +1,81 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+    .hc-PDPSharedContent {
+        border: 1px solid #d8d8d8;
+        padding: 0px;
+        font-size: 12px;
+       line-height: initial;
+    }
+    
+    .phpSharedHeader {
+        background: #d8d8d8;
+        padding: 10px;
+    }
+    .phpSharedAccord {
+        padding: 10px 10px 0px 10px;
+        list-style: none;
+    }
+    .phpSharedAccord img{
+        width: 100%;
+    }
+    .phpSharedAccord > li > div{
+        position: relative;
+        padding: 10px;
+        background: #d8d8d8;
+        margin-bottom: 4px;
+        cursor: pointer;
+        width: 100%;
+        padding-right: 30px;
+    }
+    .phpSharedAccord > li > div:after{
+        content: "\e080";
+        font-size: 23px;
+        font-family: 'Glyphicons Halflings';
+        display: inline-block;
+        position: absolute;
+        color: #9b9b9b;
+        right: 10px;
+        top: 0px;
+        -webkit-transition: all .5s linear;
+        -moz-transition: all .5s linear;
+        -o-transition: all .5s linear;
+        transition: all .5s linear;
+    }
+    .phpSharedAccord li.active > div:after{
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    .phpSharedAccord > li > ul{
+        display:none;
+        
+        list-style: none;
+        padding: 5px 5px 15px 5px;
+    }
+   
+    .phpSharedRight{
+        text-align: center;
+        padding: 10px 30px 10px 0px;
+    }
+    .phpSharedRight img{
+      max-width: 140px;
+      margin: auto;
+      display:block;
+    }
+    .phpSharedAccord a:active, 
+    .phpSharedAccord a:hover, 
+    .phpSharedAccord a:focus, 
+    .phpSharedRight a:active, 
+    .phpSharedRight a:hover, 
+    .phpSharedRight a:focus
+    {
+        color: #000 !important;
+    }
+    @media (max-width:991px){
+        .phpSharedRight{
+            display:none;
+        }
+    }
+}
+
+

@@ -1,0 +1,14 @@
+{
+  "configuration": {
+    "requiredLinks": [
+      "home",
+      "aboutUs",
+      "returns",
+      "shipping",
+      "contactUs",
+      "privacy",
+      "wishlist"
+    ]
+  },
+  "displayName": "Footer Widget"
+}

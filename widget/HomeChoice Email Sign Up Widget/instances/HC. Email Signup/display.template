@@ -1,0 +1,17 @@
+<div class="hc-sign-up" data-bind="style: { backgroundColor: widgetBackgroundColour }">
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: sign-up -->
+            <div data-bind="element: 'sign-up'">
+            </div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>

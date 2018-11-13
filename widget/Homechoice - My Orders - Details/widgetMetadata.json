@@ -1,0 +1,17 @@
+{
+  "imports": [
+    "orderDetails",
+    "shippingCountries"
+  ],
+  "translations": [
+    {
+      "name": "Homechoice - My Orders - Details",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "config": {}
+}

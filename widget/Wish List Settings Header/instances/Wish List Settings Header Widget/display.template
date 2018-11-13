@@ -1,0 +1,17 @@
+<!-- ko if: ( $data.user().loggedIn() || $data.user().isUserSessionExpired() ) -->
+<div id="SWM-settingsHeader-section" data-bind="visible: $data.showWidget()">
+  <div class="row">
+    <div class="col-xs-12 col-sm-7">
+    <div id="SWM-spaceSettingsHeader-title" data-bind="widgetLocaleText:'spaceSettingsHeaderHeadingText'">
+     </div>
+    </div>
+    
+    <!-- Begin Back to MyAccount Button -->
+
+    <div class="visible-xs col-xs-12">
+      <a data-bind="text : backToMyAcctTxt(), ccLink: 'profile'" href="#"></a>
+    </div>
+    <!-- END Back to MyAccount Button -->
+  </div>
+</div>
+<!-- /ko -->
