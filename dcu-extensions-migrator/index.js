@@ -31,6 +31,7 @@ const git = require('simple-git');
 const config = require('./config');
 
 const DCU_FOLDER_TEMP = './dcu-extensions-migrator/tmp/';
+
 const SOURCE_BRANCH = 'source';
 const TARGET_BRANCH = 'target';
 
@@ -157,7 +158,7 @@ function commit() {
  * @param callback
  * @returns {Promise<any>}
  */
-function deleteBranch(name, callback) {
+function deleteBranch(name) {
     return new Promise((resolve) => {
         console.log(`deleteLocalBranch:,${name}`);
         git('.').raw(['branch', '-D', name], () => {
@@ -174,7 +175,7 @@ function deleteBranch(name, callback) {
  * @param callback
  * @returns {Promise<any>}
  */
-function createBranch(name, callback) {
+function createBranch(name) {
     return new Promise((resolve) => {
         console.log(`createBranch:${name}`);
         git('.').raw(['checkout', '-B', name], () => {
@@ -404,14 +405,14 @@ async function extensionsTransfer() {
         throw new Error('--gitPath is not defined');
     }
     await clean();
-    await checkoutBranch('master');
-    await deleteBranch(SOURCE_BRANCH);
-    await deleteBranch(TARGET_BRANCH);
-    await grabTarget();
-    await addAll();
-    await commit();
-    await createBranch(SOURCE_BRANCH);
-    await createBranch(TARGET_BRANCH);
+    // await checkoutBranch('master');
+    // await deleteBranch(SOURCE_BRANCH);
+    // await deleteBranch(TARGET_BRANCH);
+    // await grabTarget();
+    // await addAll();
+    // await commit();
+    // await createBranch(SOURCE_BRANCH);
+    // await createBranch(TARGET_BRANCH);
     // await grabSource();
     // await addAll();
     // await commit();
