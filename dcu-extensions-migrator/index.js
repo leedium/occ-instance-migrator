@@ -52,7 +52,9 @@ function grabTarget() {
         });
         ls1.on('close', () => {
             console.log('...created target branch...');
-            resolve();
+            setTimeout(() => {
+                resolve()
+            }, config.taskDelay);
         });
     })
 }
@@ -62,7 +64,7 @@ function grabTarget() {
  * @returns {Promise<any>}
  */
 function grabSource() {
-    process.chdir(gitPath);
+    // process.chdir(gitPath);
     return new Promise((resolve) => {
         console.log('GRABBING SOURCE (latest changes)');
         const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerSource], {
@@ -75,7 +77,9 @@ function grabSource() {
         });
         ls1.on('close', () => {
             console.log('...create source branch...');
-            resolve();
+            setTimeout(() => {
+                resolve()
+            }, config.taskDelay)
         });
     });
 }
@@ -238,8 +242,9 @@ function processDiffs() {
                     counter += 1;
                     transferPathArrayTemp[`${path}`] = true;
                     console.log(path, modType);
-                    transferPaths.push(path);
-                    // console.log(counter, path)
+                    if(path.indexOf('dcu-extensions-migrator') < 0){
+                        transferPaths.push(path);
+                    }
                 }
             } else {
                 if (!deletePathArrayTemp[pathDelete]) {
@@ -291,7 +296,7 @@ function deleteFilePath(pathsToBeRemoved) {
  * @returns {Promise<any>}
  */
 function transferAll() {
-    // process.chdir('./tmp');
+    process.chdir('./tmp');
     return new Promise((resolve) => {
         console.log(`Transferring all extensions start...`);
         const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', config.dcuServerTarget, '-k', config.apiKeyTarget], {
@@ -386,20 +391,20 @@ async function extensionsTransfer() {
     if (typeof gitPath === 'undefined') {
         throw new Error('--gitPath is not defined');
     }
-
-    // await checkoutBranch('master');
-    // await deleteBranch('deploy');
-    // await deleteBranch('test');
-    // await grabTarget();
+    clean();
+    await checkoutBranch('master');
+    await deleteBranch('deploy');
+    await deleteBranch('test');
+    await grabTarget();
     await addAll();
-    // await commit();
-    // await createBranch('deploy');
-    // await createBranch('test');
-    // await grabSource();
-    // await addAll();
-    // await commit();
-    // await checkoutBranch('deploy');
-    // await mergeBranch('test');
+    await commit();
+    await createBranch('deploy');
+    await createBranch('test');
+    await grabSource();
+    await addAll();
+    await commit();
+    await checkoutBranch('deploy');
+    await mergeBranch('test');
     // await getDiffs('test');
     // await processDiffs();
     // await makeTmpFolder();
