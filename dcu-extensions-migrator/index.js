@@ -392,9 +392,9 @@ async function clean() {
         '../theme',
         '../widget',
     ]);
+    await checkoutBranch('master');
     await addAll();
     await commit();
-    await checkoutBranch('master');
     await deleteBranch(SOURCE_BRANCH);
     await deleteBranch(TARGET_BRANCH);
 }
