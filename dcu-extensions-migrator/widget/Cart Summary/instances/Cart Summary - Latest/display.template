@@ -1,0 +1,133 @@
+<div id="checkoutCartSummary" class="hidden-xs">
+  <div class="checkout-cart-summary">
+    <h3 data-bind="widgetLocaleText: 'cartSummaryText'"></h3>
+	 <!-- ko if: !(cart().currentOrderState() == "PENDING_PAYMENT" || cart().currentOrderState() == "PENDING_PAYMENT_TEMPLATE") -->
+    <span id="cartSummaryItemLimitText" class="bottom-padding" data-bind="visible: ((cart().items().length + cart().placeHolderItems().length) > noOfItemsToDisplay()),
+        widgetLocaleText: {value:'cartSummaryItemLimitText', attr:'innerText', params: {noOfItems: noOfItemsToDisplay()}}"></span>
+    <!-- ko foreach: cart().allItems() -->
+    <!-- ko if: $index() < $parent.noOfItemsToDisplay() -->
+    <!-- ko if: !($data.isPlaceHolderItem) -->
+    <div data-bind="with: productData" class="row">
+      <div class="col-sm-3 productImg">
+        <img class="img-responsive" data-bind="productVariantImageSource:
+                            {src: $data, imageType: 'thumb',
+                             alt: displayName,
+                             errorSrc: '/img/no-image.jpg',
+                             errorAlt: 'Missing Product Image'
+                             },
+                             attr:{id: 'CC-checkoutCartSummary-itemImage-'+id+$parent.catRefId}"></img>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-md-8 col-sm-12">
+            <span
+               data-bind="attr : { id: 'CC-checkoutCartSummary-itemDisplayName-'+id+$parent.catRefId}, text: displayName"
+               class="checkout-cart-summary-product-description">
+            </span>
+            <div>
+              <small>
+                <span data-bind="widgetLocaleText: 'quantityText'"></span>
+                <span data-bind="attr : { id: 'CC-checkoutCartSummary-itemQuantity-'+id+$parent.catRefId}, ccNumber: $parent.quantity"></span>
+              </small>
+            </div>
+            <!-- ko if: $parent.availabilityDate() != null && $parent.stockState() != 'IN_STOCK' -->
+            <div>
+              <small>
+                <span data-bind="widgetLocaleText: 'availabilityDateText'"></span>
+                <span data-bind="attr : { id: 'CC-checkoutCartSummary-availabilityDate-'+id+$parent.catRefId}, ccDate: {date: $parent.availabilityDate()}"></span>
+              </small>
+            </div>
+            <!-- /ko -->
+          </div>
+          <div class="col-md-4 col-sm-12 checkout-cart-summary-product-price">
+            <span 
+              data-bind="attr : { id: 'CC-checkoutCartSummary-itemPrice-'+id+$parent.catRefId}, currency: {price: $parent.itemTotal(), currencyObj: $parents[1].site().selectedPriceListGroup().currency}" class="pull-right-text">
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: $data.isPlaceHolderItem -->
+      <div class="row">
+        <div class="col-sm-3">
+          <i class="fa fa-gift giftIcon" data-bind="attr:{id: 'CC-checkoutCartSummary-placeHolderImage-'+$index() }"></i>
+        </div>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-md-8 col-sm-12">
+              <span data-bind="attr : { id: 'CC-checkoutCartSummary-placeHolderDisplayName-'+$index()}, text: displayName"
+               class="checkout-cart-summary-product-description">
+              </span>
+              <div>
+                <small>
+                  <span data-bind="widgetLocaleText: 'quantityText'"></span>
+                  <span data-bind="attr : { id: 'CC-checkoutCartSummary-placeHolderQuantity-'+$index}, ccNumber: quantity"></span>
+                </small>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-12 checkout-cart-summary-product-price">
+              <span class="pull-right-text" data-bind="attr : { id: 'CC-checkoutCartSummary-placeHolderPrice-'+$index()},
+                  currency: {price: itemTotal, currencyObj: $parents[0].site().selectedPriceListGroup().currency}">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+
+   <div class="row">
+     <div class="col-sm-6 pull-left CC-checkoutCartSummary-showAllLink" data-bind="if: ((cart().items().length + cart().placeHolderItems().length) > noOfItemsToDisplay())">
+       <span>
+         <a id="CC-checkoutCartSummary-showAll" data-bind="ccLink : 'cart', widgetLocaleText : {value:'seeAllProducts', attr:'aria-label'}"><span data-bind="widgetLocaleText: 'showAll'"></span></a>
+       </span>
+     </div>
+     <!--  ko if: $data.isCartEditable() -->
+     <div class="col-sm-6">
+       <a id="CC-checkoutCartSummary-editCart" data-bind="ccLink : 'cart', widgetLocaleText : {value:'editCartText', attr:'aria-label'}" class="cc-button-primary pull-right" tabindex="0"><span data-bind="widgetLocaleText: 'buttonEditCartSummary'"></span></a>
+     </div>
+     <!-- /ko -->
+   </div>
+   <!-- /ko -->
+   	<!-- ko if: (cart().currentOrderState() == "PENDING_PAYMENT" || cart().currentOrderState() == "PENDING_PAYMENT_TEMPLATE") -->
+	  <!--  <span id="cartSummaryItemLimitText" class="bottom-padding" data-bind="visible: ((cart().orderItems().length) > noOfItemsToDisplay()),
+        widgetLocaleText: {value:'cartSummaryItemLimitText', attr:'innerText', params: {noOfItems: noOfItemsToDisplay()}}"></span> -->
+	<!-- ko foreach: cart().orderItems() -->
+    <div class="row">
+      <div class="col-sm-3 productImg">
+        <img class="img-responsive" data-bind="productVariantImageSource:
+                            {src: $data, imageType: 'thumb',
+                             alt: displayName,
+                             errorSrc: '/img/no-image.jpg',
+                             errorAlt: 'Missing Product Image'
+                             },
+                             attr:{id: 'CC-checkoutCartSummary-itemImage-'+id+catRefId}"></img>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-md-8 col-sm-12">
+            <span
+               data-bind="attr : { id: 'CC-checkoutCartSummary-itemDisplayName-'+id+catRefId}, text: displayName"
+               class="checkout-cart-summary-product-description">
+            </span>
+            <div>
+              <small>
+                <span data-bind="widgetLocaleText: 'quantityText'"></span>
+                <span data-bind="attr : { id: 'CC-checkoutCartSummary-itemQuantity-'+id+catRefId}, ccNumber: quantity"></span>
+              </small>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 checkout-cart-summary-product-price">
+            <span 
+              data-bind="attr : { id: 'CC-checkoutCartSummary-itemPrice-'+id+catRefId}, currency: {price: rawTotalPrice, currencyObj: $parent.cart().orderCurrency}" class="pull-right-text">
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /ko -->
+	<!-- /ko -->
+  </div>
+</div>

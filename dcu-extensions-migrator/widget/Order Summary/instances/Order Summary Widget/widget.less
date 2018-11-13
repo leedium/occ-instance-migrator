@@ -1,0 +1,85 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+/* -------------------------------------------------- */
+/*  Order Summary
+/* -------------------------------------------------- */
+#orderSummary {
+  
+  margin-top:40px;
+  
+  .ordersummary {
+    min-height: 20px;
+    padding: 6px 0;
+    margin-bottom: 20px;
+    h3 {
+      font-size: @fontSizeLarge;
+      margin-top: 0;
+      padding-top: 0;
+      line-height: @baseLineHeight;
+    }
+    .ordertotal{
+      font-size:@fontSizeLarge;
+      font-weight: bold;
+      margin-top: 5px;
+      border-top: 2px solid @grayLighter;
+      padding-top: 5px;
+      .ordertotalextax, .includingtaxtext {
+        font-size: @baseFontSize;
+        padding-bottom: 10px;
+      }
+    }
+    .changeShipping{
+      margin-top: -6px;
+    }
+    .shippingOptions{
+      background-color: @grayLighter;
+      padding: 8px;
+      font-size: @fontSizeMini;
+      word-break: break-all;
+      legend {
+        font-size: @fontSizeLarge;
+        line-height: 1.6em;
+        margin-bottom:4px;
+        color: #6f6f6f;
+        white-space: normal;
+      }
+      label {
+        clear: both;
+      }
+    }
+  }
+  .salesTax, .shippingCost, .shippingDiscount, .shippingSurcharge {
+    margin-top:12px;
+  }
+  .paymentoptions, .checkout, .paypalCheckout{
+    margin: 0 0 24px 0;
+  }
+  .paymentoptions h3 {
+    font-size: @fontSizeLarge;
+  }
+  .paymentoptions a, .paymentimages, .paypalCheckout {
+     text-align:center;
+  }
+  .collapse {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height 0.35s ease;
+       -moz-transition: height 0.35s ease;
+         -o-transition: height 0.35s ease;
+            transition: height 0.35s ease;
+  }
+  .collapse.in {
+    height: auto;
+  }
+  #CC-orderSummary-checkout {
+    a {
+      .btn-lg;
+      border-radius: @ButtonPrimaryBorderRadius;
+      span {
+        color: @ButtonPrimaryTextColor;
+      }
+    }
+  }
+}
+
+}

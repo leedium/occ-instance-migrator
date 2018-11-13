@@ -1,0 +1,125 @@
+<div id="orderConfirmation">
+  <!-- ko if: confirmation -->
+  <!-- ko with: confirmation -->
+  <!-- ko setContextVariable:{name:'widgetViewModel',value:$parent} -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="ThankYouYourDetails" style="
+        font-size: 16px;
+        font-weight: bold;
+        color: #000000;
+        background-color: #e1e1e1;
+        padding: 12px 20px;
+        margin-top: 20px;
+      ">Your details</div>
+    </div>
+  </div>
+  <div class="row">
+
+      <div class="col-md-6" >
+          <div class="DelAddContainer" style="
+            padding:27px 20px;
+    
+          ">
+    
+            <div class="deliveryHeader" style="
+              font-size: 16px;
+              color: #000000;
+              font-weight:bold;
+            ">Delivery address:</div>
+            <div class="deliverAddress" style="
+              font-size: 14px;
+              padding-bottom:15px;
+              color: #000000;
+            ">
+              <!-- ko with: shippingAddress -->
+                <span data-bind="text: address1"></span>,<br />
+                <!-- ko if: address2 -->
+                <span data-bind="text: address2"></span>,<br />
+                <!-- /ko -->
+                <span data-bind="text: $parents[1].getStateDisplayName(country, state)"></span>,<br />
+                <span data-bind="text: $parents[1].getCountryDisplayName(country)"></span>,<br />
+                <span data-bind="text: postalCode"></span><br />
+              <!-- /ko -->
+            </div>
+            <div class="delAddMessage" style="
+              font-size: 11px;
+              font-style: italic;
+              padding-top:15px;
+              color: #3971a1;
+            ">
+                This is the address where your parcel will be delivered.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" >
+            <div class="DelAddContainer" style="
+              padding:27px 20px;
+      
+            ">
+      
+              <div class="deliveryHeader" style="
+                font-size: 16px;
+                color: #000000;
+                font-weight:bold;
+              ">Billing address:</div>
+              <div class="deliverAddress" style="
+                font-size: 14px;
+                padding-bottom:15px;
+                color: #000000;
+              ">
+                <!-- ko with: billingAddress -->
+                  <span data-bind="text: address1"></span>,<br />
+                  <!-- ko if: address2 -->
+                  <span data-bind="text: address2"></span>,<br />
+                  <!-- /ko -->
+                  <span data-bind="text: $parents[1].getStateDisplayName(country, state)"></span>,<br />
+                  <span data-bind="text: $parents[1].getCountryDisplayName(country)"></span>,<br />
+                  <span data-bind="text: postalCode"></span><br />
+                <!-- /ko -->
+              </div>
+            </div>
+          </div>
+
+
+  </div>
+
+<hr>
+
+
+<div style="
+    max-width: 800px;
+    padding: 25px;
+    background-color: #ed2282;
+    margin: 40px auto auto;
+  ">
+    <div style="
+      padding-left: 60px;
+      color: #ffffff;
+      font-size: 16px;
+      position:relative;
+    ">
+    <i class="fa fa-comments" style="
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: white;
+      font-size: 42px;
+    "></i>
+
+        If you have any questions about your order, contact our customer support team on:<br>
+        <a href="tel:0861999635"><b>0861 999 635</b></a> 
+        or outside SA: 
+        <a href="tel:+27216801300"><b>+27 21 680 1300</b></a> 
+        or email: 
+        <a href="mailto:contact@homechoice.co.za"><b>contact@homechoice.co.za</b></a>
+    </div>
+</div>
+
+
+  <!-- /ko -->
+  <!-- /ko -->
+  <!-- /ko -->
+</div>

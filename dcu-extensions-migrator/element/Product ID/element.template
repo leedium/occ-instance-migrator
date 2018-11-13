@@ -1,0 +1,5 @@
+
+<!-- k o if: ($data.product().childSKUs()[0].hc_orderCode) - ->
+	<div class="product-details--product-id">Product Code: <span data-bind="text: $data.product().childSKUs()[0].hc_orderCode"></span></div>
+<!- - /k o -->
+<!-- skuProperties["hc_orderCode"] -->

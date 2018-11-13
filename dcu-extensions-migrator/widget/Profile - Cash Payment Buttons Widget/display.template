@@ -1,0 +1,25 @@
+<div id="CC-profileCashPaymentButtons" style="display:none;">
+
+    <h1>Payment Details</h1>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="radio">
+                    <label>
+                        <input type="radio" data-bind="checked: cashPaymentType, click: cashPaymentTypeClick" value="card" name="cashPaymentType">Credit / Cheque / Debit Card</label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" data-bind="checked: cashPaymentType, click: cashPaymentTypeClick" value="eft" name="cashPaymentType">EFT (Electronic Fund Transfer)</label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" data-bind="checked: cashPaymentType, click: cashPaymentTypeClick" value="bank" name="cashPaymentType">Deposit To Bank</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

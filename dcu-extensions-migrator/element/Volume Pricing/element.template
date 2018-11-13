@@ -1,0 +1,45 @@
+<!-- ko if: initialized() &&
+    $data.elements.hasOwnProperty('volume-pricing') &&
+    $data['elements']['volume-pricing'].levels().length > 0 -->
+
+  <div class="row">
+    <div class="col-sm-6">
+      <table class="table table-striped table-bordered"
+             data-bind="widgetLocaleText:{ value:'volumePriceTableSummaryText',attr:'summary' }">
+        <thead>
+          <tr>
+            <th data-bind="widgetLocaleText:'quantityText'" scope="col"></th>
+            <th data-bind="widgetLocaleText:'priceText'" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: $data['elements']['volume-pricing'].levels">
+          <tr aria-atomic="true" aria-live="polite">
+
+            <!-- ko if: $index() === ($parent['elements']['volume-pricing'].levels().length - 1) -->
+              <th scope="row" data-bind="widgetLocaleText: {
+                value: 'volumePriceQuantityGreater',
+                attr:'innerText',
+                params: { min: levelMinimum }}">
+              </th>
+            <!-- /ko -->
+
+            <!-- ko if: $index() !== ($parent['elements']['volume-pricing'].levels().length - 1) -->
+              <th scope="row" data-bind="widgetLocaleText: {
+                value: 'volumePriceQuantitySeparator',
+                attr:'innerText',
+                params: { min: levelMinimum, max: levelMaximum }}">
+              </th>
+            <!-- /ko -->
+
+            <td data-bind="currency: {price: price,
+                currencyObj: $parent.site().selectedPriceListGroup().currency,
+                nullReplace: '0.00',
+                prependNull: true}">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<!-- /ko -->

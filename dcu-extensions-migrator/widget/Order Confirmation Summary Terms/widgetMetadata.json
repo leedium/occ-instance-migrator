@@ -1,0 +1,20 @@
+{
+  "imports": [
+    "confirmation",
+    "order",
+    "payment",
+    "shippingmethods",
+    "paymentauthorization"
+  ],
+  "translations": [
+    {
+      "name": "Order Confirmation Summary Terms",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "config": {}
+}

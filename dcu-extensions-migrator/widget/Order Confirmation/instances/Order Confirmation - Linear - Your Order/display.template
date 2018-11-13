@@ -1,0 +1,130 @@
+<div id="orderConfirmation" style="min-height: auto;margin:30px 0;">
+    <!-- ko if: confirmation -->
+    <!-- ko with: confirmation -->
+    <!-- ko setContextVariable:{name:'widgetViewModel',value:$parent} -->
+    <div class="row">
+      <div class="col-xs-12 order-confirmation-order">
+        
+
+
+          <div class="row">
+              <div class="col-xs-12">
+                <div class="ThankYouYourDetails" style="
+                  font-size: 16px;
+                  font-weight: bold;
+                  color: #000000;
+                  background-color: #e1e1e1;
+                  padding: 12px 20px;
+                ">Your order
+                <span style="float: right;">Price</span>
+              </div>
+              </div>
+            </div>
+
+
+
+          <!-- ko with: shoppingCart -->
+          
+          <div data-bind="foreach: items">
+            <div class="item" style="
+              border-bottom: 1px solid #eee;
+              margin: 10px 0 15px;
+              padding-bottom: 20px;
+            ">
+              <div class="row" scope="row">
+                <div class="col-md-12">
+                  <table style="width:100%">
+                    <tr>
+                      <td style="width: 138px;">
+<!-- ko if:  hc.getProductBadgesByProdId-->
+<div data-bind="onRender: hc.getProductBadgesByProdId($data.productId, $element)" style="position: absolute;"></div>
+<!-- /ko -->
+
+<img class="img-responsive" data-bind="onRender: hc.updateProductImage($data.productId, $element)" />
+                      </td>
+                      <td>
+
+                        <div style="padding-left: 20px;">
+                            <div class="col-md-6 product-info">
+                                <span style="font-weight:bold;font-size: 14px;" data-bind="text: displayName" class="name"></span>
+                                <!-- ko foreach: variant -->
+                                <div>
+                                 <!-- ko if: $data.optionValue -->
+                                 <!-- ko if: $data.optionValue !== 'No Size' -->
+                                 <small style="font-weight: normal;font-size: 14px;">
+                                   <b><span data-bind="text: $data.optionName"></span></b>: <span data-bind="text: $data.optionValue"></span>
+                                 </small>
+                                 <!-- /ko -->
+                                 <!-- /ko -->
+                               </div>
+                               <!-- /ko -->
+                               <!-- ko if: $data.childItems -->
+                               <div class="hidden-xs" data-bind="attr: { id: 'CC-confirmation-productConfigurationDetails-' + productId + catRefId + $index()}">
+                                <small>
+                                  <a data-bind="widgetLocaleText:'configurationDetails', attr: { href: '#CC-confirmation-configDetails-' + productId + catRefId + $index()}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a>
+                                  <div data-bind="attr: { id: 'CC-confirmation-configDetails-' + productId + catRefId + $index()}" class="collapse">
+                                    <ul data-bind="foreach: $data.childItems">
+                                      <li><span data-bind="text: displayName"></span> -x<span data-bind="text: quantity"></span></li>
+                                    </ul>
+                                  </div>
+                                </small>
+                              </div>
+                              <!-- /ko -->
+                  
+                              <div class="qty"> Qty:
+                                <span data-bind="ccNumber: quantity"  style="font-weight: normal;">2</span>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <div class="payment" style="text-align:right"> 
+                                        <!-- <span data-bind="text: $parents[1].priceListGroup.currency.symbol + price" class="payment-price"></span> -->
+                                      
+                          
+                                          <!-- ko if: $data.hasOwnProperty('dynamicProperties') -->
+                                            <!-- ko foreach: dynamicProperties -->
+                                                   <!-- ko if: $data.id == "hcTermsCharge" -->
+                                                         <!-- ko if: $data.value != null -->
+                                                           R <span data-bind="text: $data.value"></span> x
+                                                         <!-- /ko -->
+                                                         <!-- ko if: $data.value == null -->
+                          
+                                                               <!-- ko foreach: $parents[0].detailedItemPriceInfo -->
+                                                               R <span data-bind="text: detailedUnitPrice" ></span>
+                                                               <!-- /ko -->
+                          
+                                                         <!-- /ko -->
+                                                   <!-- /ko -->
+                                                   <!-- ko if: $data.id == "hcTermsDuration" -->
+                                                         <!-- ko if: $data.value != null -->
+                                                           <span data-bind="text: $data.value"></span>
+                                                         <!-- /ko -->
+                                                   <!-- /ko -->
+                                             <!-- /ko -->
+                                             <!-- /ko -->
+                                      </div>
+                                      
+                                  
+                            </div>
+                        </div>
+
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+          </div>
+        </div>
+        <!-- /ko -->
+      </div>
+      <!-- /ko -->
+    </div>
+  </div>
+  
+  <!-- /ko -->
+  <!-- /ko -->
+  <!-- /ko -->
+  <!-- ko ifnot: confirmation -->
+  <span data-bind="widgetLocaleText: 'orderDoesNotExist'"></span>
+  <!-- /ko -->
+  </div>
+  

@@ -1,0 +1,17 @@
+<div id="cc-prodDetails-shipping-surcharge-element">
+  <span data-bind="widgetLocaleText: resources().shippingSurchargeLabel"></span>
+    <span id="cc-prodDetails-shipping-surcharge"
+        data-bind="currency: {price: shippingSurcharge(),
+                              currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}">
+  </span>
+  
+  <small id="CC-shippingSurcharge-whatsThis" class="shippingSurchargePopover" 
+            data-bind="widgetLocaleText: resources().shippingSurchargeWhatsThis, event:{mouseover:shippingSurchargeMouseOver, focus:shippingSurchargeMouseOver},
+             attr: {'aria-label':resources().shippingSurchargeWhatsThis}" 
+          data-toggle="popover" data-placement="right" tabindex="0">
+  </small>
+  <div id="cc-shippingSurcharge-details" class="a11y">
+            <h3 data-bind="widgetLocaleText: resources().shippingSurchargePopupTitle"></h3>
+            <div data-bind="widgetLocaleText: resources().shippingSurchargePopupText">
+   </div>
+</div>

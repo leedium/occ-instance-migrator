@@ -1,0 +1,87 @@
+{
+  "widgetDescriptorName": "productListing",
+  "properties": [
+    {
+      "defaultValue": true,
+      "name": "shouldUseStyleBased",
+      "id": "shouldUseStyleBased",
+      "helpTextResourceId": "shouldUseStyleBasedHelpText",
+      "labelResourceId": "shouldUseStyleBasedTextLabel",
+      "type": "booleanType"
+    },
+    {
+      "defaultValue": false,
+      "name": "isScrollEnabled",
+      "id": "isScrollEnabled",
+      "helpTextResourceId": "shouldUseScrollableCollectionHelpText",
+      "labelResourceId": "shouldUseScrollableCollectionTextLabel",
+      "type": "booleanType"
+    },
+    {
+      "defaultValue": false,
+      "name": "isViewModelCacheEnabled",
+      "id": "isViewModelCacheEnabled",
+      "helpTextResourceId": "shouldUseViewModelCachingHelpText",
+      "labelResourceId": "shouldUseViewModelCachingTextLabel",
+      "type": "booleanType"
+    },
+    {
+      "defaultValue": "3",
+      "name": "viewModelCacheLimit",
+      "id": "viewModelCacheLimit",
+      "helpTextResourceId": "viewModelCacheLimitHelpText",
+      "labelResourceId": "viewModelCacheLimitTextLabel",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": "product",
+      "name": "tag",
+      "options": [
+        {
+          "id": "product",
+          "labelResourceId": "productLabel",
+          "value": "product"
+        },
+        {
+          "id": "search",
+          "labelResourceId": "searchLabel",
+          "value": "search"
+        }
+      ],
+      "id": "listType",
+      "helpTextResourceId": "listTypeHelpText",
+      "labelResourceId": "listTypeTextLabel",
+      "type": "optionType",
+      "required": true
+    },
+    {
+      "defaultValue": "",
+      "name": "fields",
+      "pattern": "^[a-zA-Z0-9-_,.()]+$",
+      "id": "fields",
+      "helpTextResourceId": "productListingFieldsRequiredHelpText",
+      "labelResourceId": "productListingFieldsRequiredLabel",
+      "type": "stringType",
+      "maxLength": 5000,
+      "required": false
+    },
+    {
+      "defaultValue": "12",
+      "name": "fields",
+      "id": "productsPerPage",
+      "helpTextResourceId": "productsPerPageRequiredHelpText",
+      "labelResourceId": "productsPerPageRequiredLabel",
+      "type": "stringType",
+      "required": true
+    },
+    {
+      "defaultValue": "60",
+      "name": "fields",
+      "id": "blockSize",
+      "helpTextResourceId": "blockSizeRequiredHelpText",
+      "labelResourceId": "blockSizeRequiredLabel",
+      "type": "stringType",
+      "required": true
+    }
+  ]
+}
