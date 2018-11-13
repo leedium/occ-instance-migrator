@@ -1,0 +1,94 @@
+@progressColorDisabled: #D7DAE0;
+@progressColorEnabled: limegreen;
+
+#CC-profileCheckoutProgress {
+
+	padding-top:10px;
+	padding-bottom: 30px;
+	
+    h1 {
+        border-bottom: 1px solid @progressColorDisabled;
+        padding-bottom: 13px;
+    }
+	
+}
+
+.new-progress-bar {
+   // display: none;
+    color: @progressColorDisabled;
+    // margin-bottom: 50px;
+    // margin-top: 20px;
+    
+    // Change by Bulelani
+    
+    margin: 20px 20px 50px 0px;
+    padding: 0;
+    
+    &--item {
+        h5{
+            text-align: center;
+            font-size: 12px;
+        }
+        > div {
+            background-color: @progressColorDisabled;
+            width: 100%;
+            height:8px;
+        }
+        
+        &__25 {
+          .new-progress-bar__percent-complete-100 &,
+          .new-progress-bar__percent-complete-75 &,
+          .new-progress-bar__percent-complete-50 &,
+          .new-progress-bar__percent-complete-25 & {
+               color: @progressColorEnabled;
+               > div{
+                   background-color: @progressColorEnabled;
+               }
+          }
+        }
+        &__50 {
+          .new-progress-bar__percent-complete-100 &,
+          .new-progress-bar__percent-complete-75 &,
+          .new-progress-bar__percent-complete-50 & {
+               color: @progressColorEnabled;
+               > div{
+                   background-color: @progressColorEnabled;
+               }
+          }
+        }
+        &__75 {
+          .new-progress-bar__percent-complete-100 &,
+          .new-progress-bar__percent-complete-75 &{
+               color: @progressColorEnabled;
+               > div{
+                   background-color: @progressColorEnabled;
+               }
+          }
+        }
+        &__100 {
+          .new-progress-bar__percent-complete-100 {
+               color: @progressColorEnabled;
+               > div{
+                   background-color: @progressColorEnabled;
+               }
+          }
+        }
+        &__0{
+          .new-progress-bar__percent-complete-100 &,
+          .new-progress-bar__percent-complete-75 &,
+          .new-progress-bar__percent-complete-50 &,
+          .new-progress-bar__percent-complete-25 & {
+               color: @progressColorDisabled;
+               > div{
+                   background-color: @progressColorDisabled;
+               }
+          } 
+        }
+        
+        @media screen and (max-width: @screen-xs) {
+            padding: 3px;
+        }
+    }
+}
+
+

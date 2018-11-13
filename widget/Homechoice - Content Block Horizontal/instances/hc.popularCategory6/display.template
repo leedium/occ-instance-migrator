@@ -1,0 +1,62 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1000062": {
+    "id": "1000062",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m110038')}",
+      "sourceMedia": "m110038"
+    }
+  },
+  "1000063": {
+    "id": "1000063",
+    "image": {
+      "altText": "What's new",
+      "altTextId": "1100055",
+      "isProductImage": false,
+      "link": "https://www.homechoice.co.za/",
+      "src": "/file/v6675576723952251241/general/Whats new.png",
+      "titleText": "What's new",
+      "titleTextId": "1100056",
+      "zoomEnabled": false
+    }
+  },
+  "2000003": {
+    "id": "2000003",
+    "image": {
+      "altText": "What's New",
+      "altTextId": "2300024",
+      "isProductImage": false,
+      "link": "https://www.homechoice.co.za/",
+      "src": "/file/v6675576723952251241/general/Whats new.png",
+      "titleText": "What's New",
+      "titleTextId": "2300025",
+      "zoomEnabled": false
+    }
+  }
+}} --><!-- /ko -->
+
+<div data-bind="css: cssClasses()" class="hc-content-block popularCat hc-content-block__1-row" data-oc-id="hc-content-block">
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: contentBlockImage -->
+<div data-bind="element: 'contentBlockImage',id: '1000063'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1000062'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>

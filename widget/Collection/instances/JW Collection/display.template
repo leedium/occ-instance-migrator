@@ -1,0 +1,9 @@
+<div id="cc-collection" data-oc-id="cc-collection">
+  <!-- oc layout: panels -->
+  <div id="cc-collection-panel" data-oc-id="cc-collection-panel">
+    <!-- oc section: collection-carousel -->
+      <div data-bind="element: 'collection-carousel', visible: isCollectionVisible()"></div>
+    <!-- /oc -->
+  </div>
+  <!-- /oc -->
+</div>

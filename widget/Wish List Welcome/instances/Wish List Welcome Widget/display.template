@@ -1,0 +1,27 @@
+<div class="SWM-welcome" data-oc-id="spaceWelcomeWidget">
+  <!-- ko if: $data.isLoggedIn() == false -->
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: welcome-text -->
+            <div data-bind="element: 'welcome-text'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: welcome-login-account -->
+<div data-oc-id="welcome-buttons">
+<span data-bind="element: 'login-button',id: '100012'"></span>
+
+<span data-bind="element: 'registration-button'"></span>
+
+</div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+  <!-- /ko -->
+</div>

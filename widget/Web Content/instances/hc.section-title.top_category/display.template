@@ -1,0 +1,55 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1000128": {
+    "font": {"styles": {
+      "color": "#333333",
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "line-height": "150%",
+      "text-align": "center",
+      "text-decoration": "none"
+    }},
+    "id": "1000128",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "200162": {
+    "font": {"styles": {
+      "color": "#000000",
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "line-height": "150%",
+      "text-align": "center",
+      "text-decoration": "none"
+    }},
+    "id": "200162",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "300020": {"id": "300020"}
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: generic-text -->
+<h3 data-bind="element: 'generic-text',id: '1000128'"></h3>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->

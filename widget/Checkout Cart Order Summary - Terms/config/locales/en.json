@@ -1,0 +1,6 @@
+{
+  "resources": {
+    "checkoutCartSummaryItemsToDisplayHelpText": "Enter the maximum number of items you want to display in the Cart Summary.",
+    "checkoutCartSummaryItemsToDisplayLabel": "Maximum items in cart summary"
+  }
+}

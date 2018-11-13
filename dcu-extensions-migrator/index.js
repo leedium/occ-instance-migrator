@@ -138,10 +138,10 @@ function addAll(path) {
  * Performs a git commit
  * @returns {Promise<any>}
  */
-function commit() {
+function commit(path) {
     return new Promise((resolve) => {
         console.log('commit...');
-        git(gitPath).raw(['commit', '-m', 'committing latest changes'], () => {
+        git(path).raw(['commit', '-m', 'committing latest changes'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -399,7 +399,7 @@ async function extensionsTransfer() {
     await deleteBranch('test');
     await grabTarget();
     await addAll('.');
-    await commit();
+    await commit('.');
     // await createBranch('deploy');
     // await createBranch('test');
     // await grabSource();

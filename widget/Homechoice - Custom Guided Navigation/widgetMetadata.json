@@ -1,0 +1,23 @@
+{
+  "imports": [
+    "category",
+    "categoryId"
+  ],
+  "translations": [
+    {
+      "name": "Homechoice - Custom Guided Navigation",
+      "language": "en"
+    }
+  ],
+  "jsEditable": false,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "pageTypes": [
+    "category",
+    "searchResults"
+  ],
+  "config": {
+    "maxDimensionCount": "10",
+    "maxRefinementCount": "10"
+  }
+}

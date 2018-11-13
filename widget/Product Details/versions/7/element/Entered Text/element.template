@@ -1,0 +1,1 @@
+<span data-bind="widgetLocaleText:{custom: $elementInstance.textId, value: 'customTextNotFound', attr:'innerText'}"></span>

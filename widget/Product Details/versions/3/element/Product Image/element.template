@@ -1,0 +1,51 @@
+<div class= "cc-image-area">
+  <div id="image-viewer" data-bind="visible: product().primaryFullImageURL">
+
+    <!-- Desktop and tablet views -->
+    <!-- ko ifnot: isMobile -->
+    <div class="cc-viewer-pane hidden-xs hidden-sm">
+      
+      <div id="cc-image-viewer" data-bind="imageZoom: {
+        magnifierPercent: 0.35,
+        magnifierEnabled: false,
+        smallImageUrl: product().mediumImageURLs()[activeImgIndex()],
+        fullImageUrl: product().fullImageURLs()[activeImgIndex()],
+        imageMetadataDefault: {alttext: product().displayName(), title:product().displayName()},
+        imageMetadatas: product().product.productImagesMetadata,
+        index: activeImgIndex,
+        spinnerDelay: 200,
+        smallImageUrls: product().mediumImageURLs,
+        fullImageUrls: product().fullImageURLs,
+        errorImageUrl: '/img/no-image.jpg'}">
+        <img class="ccz-small img-responsive" data-bind="productImageSource: {src:product, imageType: 'medium', alt:product().displayName(), errorSrc:'/img/no-image.jpg', errorAlt:'No Image Found'}"></img>
+      </div>
+    </div>
+    <!-- /ko -->
+   
+    <!-- Mobile views -->
+    <!-- ko if: isMobile -->
+    <div  data-bind="carouselSwipe" class="carousel slide visible-xs visible-sm" id="prodDetails-mobileCarousel">
+      <div class="carousel-inner">          
+        <!-- ko foreach: product().fullImageURLs -->
+        <div class="item" data-bind="css: {'active': $index() == 0}">
+          <img class="img-responsive center-block" data-bind="imageSource: {src: $data + '&height=300&width=300', alt: $parent.displayName, errorSrc: '/img/no-image.jpg', errorAlt:'No Image Found'}" align="middle">
+          <!-- Updated removed!!! 
+          <a class="cc-viewer-pane" href="#" onclick="return false">
+            <div data-bind="attr: {id: 'cc-carousel-img-viewer-'+$index()}"></div>
+          </a>
+          -->
+        </div>
+        <!-- /ko -->
+      </div>
+      <!-- ko if: product().thumbImageURLs && (product().thumbImageURLs().length > 1) -->
+        <div class="row-fluid">
+          <ol class="carousel-indicators" data-bind="foreach: product().fullImageURLs">
+            <li data-target="#prodDetails-mobileCarousel" data-bind="css: {'active': $index() == 0}, attr: {'data-slide-to': $index}"></li>
+          </ol>
+        </div>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->    
+    
+  </div>
+</div>

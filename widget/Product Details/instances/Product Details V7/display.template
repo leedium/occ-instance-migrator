@@ -1,0 +1,265 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "900158": {
+    "id": "900158",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100219')}",
+      "sourceMedia": "m100219"
+    }
+  },
+  "900159": {
+    "id": "900159",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100221')}",
+      "sourceMedia": "m100221"
+    }
+  },
+  "900160": {
+    "id": "900160",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100223')}",
+      "sourceMedia": "m100223"
+    }
+  },
+  "900161": {
+    "id": "900161",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100225')}",
+      "sourceMedia": "m100225"
+    }
+  },
+  "900162": {
+    "id": "900162",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100227')}",
+      "sourceMedia": "m100227"
+    }
+  },
+  "900194": {
+    "id": "900194",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m100269')}",
+      "sourceMedia": "m100269"
+    }
+  },
+  "900202": {
+    "id": "900202",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100282')}",
+      "sourceMedia": "m100282"
+    }
+  },
+  "900203": {
+    "id": "900203",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100284')}",
+      "sourceMedia": "m100284"
+    }
+  },
+  "900204": {
+    "id": "900204",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100286')}",
+      "sourceMedia": "m100286"
+    }
+  },
+  "900205": {
+    "id": "900205",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100288')}",
+      "sourceMedia": "m100288"
+    }
+  },
+  "900206": {
+    "id": "900206",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100290')}",
+      "sourceMedia": "m100290"
+    }
+  },
+  "900208": {
+    "id": "900208",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100294')}",
+      "sourceMedia": "m100294"
+    }
+  },
+  "900220": {
+    "id": "900220",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100305')}",
+      "sourceMedia": "m100305"
+    }
+  },
+  "900221": {
+    "id": "900221",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100307')}",
+      "sourceMedia": "m100307"
+    }
+  },
+  "900222": {
+    "id": "900222",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100309')}",
+      "sourceMedia": "m100309"
+    }
+  },
+  "900223": {
+    "id": "900223",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100311')}",
+      "sourceMedia": "m100311"
+    }
+  },
+  "900224": {
+    "id": "900224",
+    "richText": {
+      "content": "${occ:localizedWebContent('m100313')}",
+      "sourceMedia": "m100313"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- ko if: loaded -->
+<div class="templateRegion" id="cc-product-details" data-oc-id="cc-product-details">
+<!-- ko if: product -->
+
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-7" data-oc-id="panel-0-0">
+
+      <!-- oc section: product-back-link -->
+        <div data-bind="element: 'product-back-link'" class="back-link"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-badges --><div data-bind="element: 'product-badges'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-image -->
+        <div data-bind="element: 'product-image'" class="text-center"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-image-carousel -->
+        <div data-bind="element: 'product-image-carousel'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+<div data-bind="element: 'productDetailsProperty2',id: '900202'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+<div data-bind="element: 'productDetailsProperty2',id: '900203'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+<div data-bind="element: 'productDetailsProperty2',id: '900204'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+<div data-bind="element: 'productDetailsProperty2',id: '900205'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+<div data-bind="element: 'productDetailsProperty2',id: '900206'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-5" data-oc-id="panel-0-1">
+
+      <!-- oc section: product-title -->
+        <h1 data-bind="element: 'product-title'"></h1>
+      <!-- /oc -->
+
+      <!-- oc section: product-description -->
+        <div data-bind="element: 'product-description'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: ProductOffer --><div data-bind="element: 'ProductOffer'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: hcProductDetailsVariantOptions --><div data-bind="element: 'hcProductDetailsVariantOptions'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-stock-availability -->
+        <div data-bind="if: (showStockStatus() &amp;&amp; stockStatus() &amp;&amp; stockState()==='IN_STOCK')" data-oc-id="product-in-stock">
+          <div data-bind="element: 'product-in-stock-message'"></div>
+        </div>
+
+        <div data-bind="if: (showStockStatus() &amp;&amp; !stockStatus() )" data-oc-id="product-out-of-stock">
+          <div data-bind="element: 'product-out-of-stock-message'"></div>
+        </div>
+        <div data-bind="if: (showStockStatus() &amp;&amp; stockStatus() &amp;&amp; stockState()==='PREORDERABLE')" data-oc-id="product-preorder">
+          <div data-bind="element: 'product-preorder-message'"></div>
+        </div>
+        <div data-bind="if: (showStockStatus() &amp;&amp; stockStatus()&amp;&amp; stockState()==='BACKORDERABLE' )" data-oc-id="product-backorder">
+          <div data-bind="element: 'product-backorder-message'"></div>
+        </div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsCreditOptions --><div data-bind="element: 'productDetailsCreditOptions'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsAddToCartWithOptions --><div data-bind="element: 'productDetailsAddToCartWithOptions'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-add-to-space -->
+        <div data-bind="element: 'product-add-to-space'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsSocialSharing --><div data-bind="element: 'productDetailsSocialSharing'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: ProductId --><div data-bind="element: 'ProductId'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-long-description -->
+        <div data-bind="element: 'product-long-description'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-1-0">
+
+      <!-- oc section: productDetailsProperty2 -->
+<div data-bind="element: 'productDetailsProperty2',id: '900220'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+<div data-bind="element: 'productDetailsProperty2',id: '900221'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+<div data-bind="element: 'productDetailsProperty2',id: '900222'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+<div data-bind="element: 'productDetailsProperty2',id: '900223'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: productDetailsProperty2 -->
+<div data-bind="element: 'productDetailsProperty2',id: '900224'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+  
+<!-- /ko -->
+</div>
+<!-- /ko -->
