@@ -1,6 +1,0 @@
-{
-  "resources": {
-    "megaMenuFieldsRequiredHelpText": "Enter list of comma separated fields to include in the response.",
-    "megaMenuFieldsRequiredLabel": "Fields"
-  }
-}
