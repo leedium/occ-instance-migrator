@@ -418,7 +418,7 @@ async function extensionsTransfer() {
     await commit();
     await checkoutBranch(TARGET_BRANCH);
     await mergeBranch(SOURCE_BRANCH);
-    await getDiffs();
+    // await getDiffs();
     // await processDiffs();
     // await makeTmpFolder();
     // await transferAll();
