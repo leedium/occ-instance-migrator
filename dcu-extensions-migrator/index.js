@@ -122,10 +122,10 @@ function mergeBranch(name, callback) {
  * Performes a git add. Add all files
  * @returns {Promise<any>}
  */
-function addAll() {
+function addAll(path) {
     return new Promise((resolve) => {
         console.log('addAll...');
-        git(gitPath).raw(['add', '.'], () => {
+        git(path).raw(['add', '.'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -398,7 +398,7 @@ async function extensionsTransfer() {
     await deleteBranch('deploy');
     await deleteBranch('test');
     await grabTarget();
-    await addAll();
+    await addAll('.');
     await commit();
     // await createBranch('deploy');
     // await createBranch('test');
