@@ -1,0 +1,6 @@
+<div class="row">
+	<div class="col-md-12">
+		<a href="javascript:" class="btn back-to-top center-block" id="back-to-top" data-bind="widgetLocaleText:'backToTopText'">
+		</a>
+	</div>
+</div>

@@ -1,0 +1,6 @@
+
+  <!-- ko if: confirmation -->
+    <!-- ko with: confirmation -->
+    <!-- /ko -->
+  <!-- /ko -->
+

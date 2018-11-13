@@ -1,0 +1,32 @@
+{
+  "imports": [
+    "category",
+    "categoryId",
+    "dimensionId",
+    "productTypes"
+  ],
+  "translations": [
+    {
+      "name": "Product Listing Widget v9",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "pageTypes": [
+    "category",
+    "searchResults"
+  ],
+  "config": {
+    "blockSize": "60",
+    "fields": "",
+    "gridWidth": "3",
+    "isScrollEnabled": false,
+    "isViewModelCacheEnabled": false,
+    "listType": "product",
+    "productsPerPage": "9",
+    "shouldUseStyleBased": false,
+    "viewModelCacheLimit": "3"
+  }
+}
