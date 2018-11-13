@@ -399,14 +399,22 @@ async function extensionsTransfer() {
         throw new Error('--gitPath is not defined');
     }
     await clean();
+    console.log(process.cwd())
     await checkoutBranch('master');
+    console.log(process.cwd())
     await deleteBranch('deploy');
+    console.log(process.cwd())
     await deleteBranch('test');
+    console.log(process.cwd())
     // await grabTarget();
     await addAll('.');
+    console.log(process.cwd())
     await commit('.');
+    console.log(process.cwd())
     await createBranch('deploy');
+    console.log(process.cwd())
     await createBranch('test');
+    console.log(process.cwd())
     // await grabSource();
     await addAll('.');
     await commit('.');
