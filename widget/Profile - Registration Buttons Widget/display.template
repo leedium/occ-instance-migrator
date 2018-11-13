@@ -1,0 +1,15 @@
+<div id="CC-profileRegistrationButtons">
+
+    <div class="row progressTracker-button-row">
+        <!-- Previous Button -->
+        <div class="progressTracker-button-previous col-md-6 col-xs-6">
+        <button data-bind="click: previousButtonClick, visible: currentStep() > minStep()" class="btn cc-button-secondary">Previous</button>
+        </div>
+
+        <!-- Next Button -->
+        <div class="progressTracker-button-next col-md-6 col-xs-6 pull-right">
+        <button data-bind="click: nextButtonClick, visible: currentStep() < maxStep()" class="btn cc-button-primary pull-right">Next</button>
+        </div>
+    </div>
+
+</div>

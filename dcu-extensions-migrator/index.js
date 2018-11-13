@@ -413,12 +413,12 @@ async function extensionsTransfer() {
 
     await createBranch(TARGET_BRANCH);
     await createBranch(SOURCE_BRANCH);
-    // await grabSource();
-    // await addAll();
-    // await commit();
-    // await checkoutBranch(SOURCE_BRANCH);
-    // await mergeBranch(TARGET_BRANCH);
-    // await getDiffs();
+    await grabSource();
+    await addAll();
+    await commit();
+    await checkoutBranch(SOURCE_BRANCH);
+    await mergeBranch(TARGET_BRANCH);
+    await getDiffs();
     // await processDiffs();
     // await makeTmpFolder();
     // await transferAll();
