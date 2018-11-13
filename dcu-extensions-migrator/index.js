@@ -39,7 +39,6 @@ const pathsToBeRemoved = [];
  * @returns {Promise<any>}
  */
 function grabTarget() {
-    process.chdir(gitPath);
     return new Promise((resolve) => {
         console.log('GRABBING TARGET (currently deployed stable)', process.cwd());
         const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerTarget], {
