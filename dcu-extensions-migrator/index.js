@@ -402,12 +402,12 @@ async function extensionsTransfer() {
     await checkoutBranch('master');
     await deleteBranch('deploy');
     await deleteBranch('test');
-    await grabTarget();
+    // await grabTarget();
     await addAll('.');
     await commit('.');
     await createBranch('deploy');
     await createBranch('test');
-    await grabSource();
+    // await grabSource();
     await addAll('.');
     await commit('.');
     await checkoutBranch('deploy');
