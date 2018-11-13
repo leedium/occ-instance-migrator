@@ -31,6 +31,8 @@ const git = require('simple-git');
 const config = require('./config');
 
 const DCU_FOLDER_TEMP = './dcu-extensions-migrator/tmp/';
+const SOURCE_BRANCH = 'source';
+const TARGET_BRANCH = 'target';
 
 const {gitPath, dcu, plsu, all, layoutName} = argv;
 const transferPaths = [];
@@ -401,20 +403,20 @@ async function extensionsTransfer() {
     if (typeof gitPath === 'undefined') {
         throw new Error('--gitPath is not defined');
     }
-    // await clean();
+    await clean();
     // await checkoutBranch('master');
-    // await deleteBranch('deploy');
-    // await deleteBranch('test');
+    // await deleteBranch(SOURCE_BRANCH);
+    // await deleteBranch(TARGET_BRANCH);
     // await grabTarget();
-    await addAll();
-    await commit();
-    // await createBranch('deploy');
-    // await createBranch('test');
+    // await addAll();
+    // await commit();
+    // await createBranch(SOURCE_BRANCH);
+    // await createBranch(TARGET_BRANCH);
     // await grabSource();
     // await addAll();
     // await commit();
-    // await checkoutBranch('deploy');
-    // await mergeBranch('test');
+    // await checkoutBranch(SOURCE_BRANCH);
+    // await mergeBranch(TARGET_BRANCH);
     // await getDiffs();
     // await processDiffs();
     // await makeTmpFolder();
