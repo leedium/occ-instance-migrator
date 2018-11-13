@@ -409,10 +409,10 @@ async function extensionsTransfer() {
     }
     await clean();
 
-    // await grabTarget();
+    await grabTarget();
 
-    // await createBranch(TARGET_BRANCH);
-    // await createBranch(SOURCE_BRANCH);
+    await createBranch(TARGET_BRANCH);
+    await createBranch(SOURCE_BRANCH);
     // await grabSource();
     // await addAll();
     // await commit();
