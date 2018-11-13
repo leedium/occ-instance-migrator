@@ -5,9 +5,9 @@
       "defaultValue": "5",
       "name": "noOfItemsToDisplay",
       "id": "noOfItemsToDisplay",
+      "type": "stringType",
       "helpTextResourceId": "checkoutCartSummaryItemsToDisplayHelpText",
       "labelResourceId": "checkoutCartSummaryItemsToDisplayLabel",
-      "type": "stringType",
       "required": true
     }
   ]

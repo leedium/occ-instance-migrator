@@ -4,9 +4,9 @@
     {
       "defaultValue": false,
       "id": "fullWidth",
+      "type": "booleanType",
       "helpTextResourceId": "fullWidthHelp",
-      "labelResourceId": "fullWidthLabel",
-      "type": "booleanType"
+      "labelResourceId": "fullWidthLabel"
     },
     {
       "defaultValue": "tl",
@@ -58,9 +58,9 @@
         }
       ],
       "id": "copyAlignment",
+      "type": "optionType",
       "helpTextResourceId": "copyAlignmentHelp",
-      "labelResourceId": "copyAlignmentLabel",
-      "type": "optionType"
+      "labelResourceId": "copyAlignmentLabel"
     }
   ]
 }

@@ -4,23 +4,23 @@
     {
       "defaultValue": "https://www.pages03.net/homechoice/hcWebsite_Signup/Website_Signup?Email=$EMAIL_ADDRESS&formSourceName=StandardForm&sp_exp=yes&NameSource_Campaign=Website_Signup",
       "id": "endpointUrl",
+      "type": "stringType",
       "helpTextResourceId": "endpointUrlHelp",
-      "labelResourceId": "endpointUrlLabel",
-      "type": "stringType"
+      "labelResourceId": "endpointUrlLabel"
     },
     {
       "defaultValue": "transparent",
       "id": "widgetBackgroundColour",
+      "type": "stringType",
       "helpTextResourceId": "widgetBackgroundColourHelp",
-      "labelResourceId": "widgetBackgroundColourLabel",
-      "type": "stringType"
+      "labelResourceId": "widgetBackgroundColourLabel"
     },
     {
       "defaultValue": "transparent",
       "id": "titleColour",
+      "type": "stringType",
       "helpTextResourceId": "titleColourHelp",
-      "labelResourceId": "titleColourLabel",
-      "type": "stringType"
+      "labelResourceId": "titleColourLabel"
     }
   ]
 }

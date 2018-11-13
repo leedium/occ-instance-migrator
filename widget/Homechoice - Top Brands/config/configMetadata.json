@@ -4,23 +4,23 @@
     {
       "defaultValue": "3",
       "id": "panelCount",
+      "type": "stringType",
       "helpTextResourceId": "panelCountHelp",
-      "labelResourceId": "panelCountLabel",
-      "type": "stringType"
+      "labelResourceId": "panelCountLabel"
     },
     {
       "defaultValue": false,
       "id": "fullWidth",
+      "type": "booleanType",
       "helpTextResourceId": "fullWidthHelp",
-      "labelResourceId": "fullWidthLabel",
-      "type": "booleanType"
+      "labelResourceId": "fullWidthLabel"
     },
     {
       "defaultValue": "3000",
       "id": "interval",
+      "type": "stringType",
       "helpTextResourceId": "intervalHelp",
-      "labelResourceId": "intervalLabel",
-      "type": "stringType"
+      "labelResourceId": "intervalLabel"
     }
   ]
 }

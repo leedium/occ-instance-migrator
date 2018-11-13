@@ -4,9 +4,9 @@
     {
       "name": "exampleStringProperty",
       "id": "exampleStringProperty",
-      "helpTextResourceId": "exampleStringPropertyHelpText",
-      "labelResourceId": "exampleStringPropertyLabel",
       "type": "stringType",
+      "labelResourceId": "exampleStringPropertyLabel",
+      "helpTextResourceId": "exampleStringPropertyHelpText",
       "required": true
     },
     {
@@ -30,17 +30,17 @@
         }
       ],
       "id": "exampleOptionProperty",
+      "type": "optionType",
       "helpTextResourceId": "exampleOptionPropertyHelpText",
-      "labelResourceId": "exampleOptionPropertyLabel",
-      "type": "optionType"
+      "labelResourceId": "exampleOptionPropertyLabel"
     },
     {
       "defaultValue": true,
       "name": "exampleBooleanProperty",
       "id": "exampleBooleanProperty",
+      "type": "booleanType",
       "helpTextResourceId": "exampleBooleanPropertyHelpText",
-      "labelResourceId": "exampleBooleanPropertyLabel",
-      "type": "booleanType"
+      "labelResourceId": "exampleBooleanPropertyLabel"
     }
   ]
 }

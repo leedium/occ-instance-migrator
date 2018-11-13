@@ -6,9 +6,9 @@
       "name": "collectionId",
       "pattern": "^[a-zA-Z0-9-_]+$",
       "id": "collectionId",
+      "type": "stringType",
       "helpTextResourceId": "collectionIdHelpText",
       "labelResourceId": "collectionIdTextLabel",
-      "type": "stringType",
       "required": false
     },
     {
@@ -16,11 +16,11 @@
       "name": "fields",
       "pattern": "^[a-zA-Z0-9-_,.()]+$",
       "id": "fields",
+      "type": "stringType",
       "helpTextResourceId": "collectionFieldsRequiredHelpText",
       "labelResourceId": "collectionFieldsRequiredLabel",
-      "type": "stringType",
-      "maxLength": 5000,
-      "required": false
+      "required": false,
+      "maxLength": 5000
     }
   ]
 }

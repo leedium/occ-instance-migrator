@@ -1,0 +1,143 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('pdpPODelRest') -->
+
+    <!-- ko if: $data.pdpPODelRest.isAppropriateProduct -->
+    <div class="DeliverRestrictions">
+        <div class="DeliverRestrictionsHead">
+            This is a special delivery item:
+        </div>
+            <div data-bind="html: $data.pdpPODelRest.Message">
+                
+            </div>
+    </div> 
+    <!-- /ko -->
+
+
+    <div class="modal fade" id="modalShippingPOP" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="color:#000; font-weight: bold;font-size: 18px;">Check Shipping Address</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -20px;">
+                <span aria-hidden="true" style="color:#000">X</span>
+              </button>
+            </div>
+            <div style="padding:20px;">
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            
+
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-scountry" >Delivery country</label>
+                                    <div class="control">
+                                        <select class="col-md-12 form-control" name="sCountry" id="CC-checkoutAddressBook-scountry" aria-required="true" 
+                                            data-bind="enable: $data.pdpPODelRest.ShippingCountries().length, 
+                                                options: $data.pdpPODelRest.ShippingCountries, 
+                                                optionsText: 'country',
+                                                optionsValue: 'code', 
+                                                value: $data.pdpPODelRest.selectedCountry
+                                                        ">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-scountry" >Province/Region</label>
+                                    <div class="control">
+                                        <select class="col-md-12 form-control" name="sState" id="CC-checkoutAddressBook-sstate" aria-required="true" 
+                                            data-bind="enable: $data.pdpPODelRest.ShippingCountryRegion().length, 
+                                            options: $data.pdpPODelRest.ShippingCountryRegion(), 
+                                            optionsText: 'Region',
+                                            optionsValue: 'code',
+                                            value: $data.pdpPODelRest.selectedRegion">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-saddress1" >Street Address </label>
+                                    <div class="control">
+                                        <input type="text" autocomplete="off" class="col-md-12 form-control" 
+                                        name="sAddressLine1" id="CC-checkoutAddressBook-saddress1" aria-required="true"
+                                            data-bind="value: $data.pdpPODelRest.addressLine1Text" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-saddress2" >Street Address Line 2</label>
+                                    <div class="control">
+                                        <input type="text" autocomplete="off" class="col-md-12 form-control" 
+                                        name="sAddressLine2" id="CC-checkoutAddressBook-saddress2" 
+                                        data-bind="value: $data.pdpPODelRest.addressLine2Text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-scity" >Suburb &amp; City/Town</label>
+                                    <div class="control" style="position:relative;">
+                                        <input type="text" autocomplete="off" class="col-md-12 form-control" 
+                                        name="sCity" id="CC-checkoutAddressBook-scity" aria-required="true" 
+                                        data-bind="value: $data.pdpPODelRest.cityText"
+                                            required="required">
+                                    </div>
+                            
+                                    <div class="DistrictResults">
+                                        <ul>
+                            
+                                        </ul>
+                            
+                                    </div>
+                            
+                            
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label class="" for="CC-checkoutAddressBook-szipcode" >Postcode</label>
+                                    <div class="control">
+                                        <input type="text" autocomplete="off" class="col-md-12 form-control" 
+                                        name="sZip" id="CC-checkoutAddressBook-szipcode" aria-required="true" 
+                                        data-bind="value: $data.pdpPODelRest.zipCodeText"
+                                            required="required">
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+
+                                    <button class="cc-button-primary" id="cc-checkout-add-address"
+                                        data-bind="click: $data.pdpPODelRest.testNewAddress">
+                                        Check Address
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        
+                            
+
+                        </div>
+                        <div class="form-group col-sm-6" data-bind="html: $data.pdpPODelRest.testResults"  style="
+                        padding: 30px 20px 30px 10px;
+                        text-align: center;">
+                            
+                        </div>
+                    </div>
+
+
+
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- /ko -->
+      
