@@ -1,0 +1,11 @@
+{
+  "configuration": {
+    "shouldUseStyleBased": false,
+    "fields": "",
+    "gridWidth": "3",
+    "productsPerPage": "9",
+    "listType": "product",
+    "blockSize": "60"
+  },
+  "displayName": "Product Listing Widget"
+}

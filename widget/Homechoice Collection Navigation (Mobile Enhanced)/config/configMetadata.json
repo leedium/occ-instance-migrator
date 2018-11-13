@@ -1,0 +1,16 @@
+{
+  "widgetDescriptorName": "hcCollectionNavigation",
+  "properties": [
+    {
+      "defaultValue": "",
+      "name": "fields",
+      "pattern": "^[a-zA-Z0-9-_,.()]+$",
+      "id": "fields",
+      "type": "stringType",
+      "helpTextResourceId": "megaMenuFieldsRequiredHelpText",
+      "labelResourceId": "megaMenuFieldsRequiredLabel",
+      "required": false,
+      "maxLength": 5000
+    }
+  ]
+}

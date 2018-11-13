@@ -1,0 +1,37 @@
+<div class="col-md-3">
+  <ul class="hc-footer--link-list">
+    <li>      <strong>Our Company</strong>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/aboutus'" href="/aboutus">About us</a>    </li>
+    <li>      <a class="hc-footer--link" href="http://www.homechoiceholdings.co.za/careers/vacancies.asp" rel="noopener noreferrer" target="_self">Work at&nbsp;HomeChoice</a>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/start-earning'" href="/start-earning" rel="noopener noreferrer">Become a sales agent</a>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/Affiliate'" href="/Affiliate" rel="noopener noreferrer">Become an affiliate</a>    </li>
+  </ul>
+</div>
+<div class="col-md-3">
+  <ul class="hc-footer--link-list">
+    <li>      <strong>My Account</strong>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/profile'" href="/profile" rel="noopener noreferrer" target="_self">Manage my account</a>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/profile'" href="/profile" rel="noopener noreferrer" target="_self">How much can I spend?</a></li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/mydocs'" href="/mydocs" rel="noopener noreferrer" target="_self">Upload proof of income documents</a>    </li>
+  </ul>
+</div>
+<div class="col-md-3">
+  <ul class="hc-footer--link-list">
+    <li>      <strong>Need Help?</strong>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/help-faqs'" href="/help-faqs" rel="noopener noreferrer" target="_self">FAQs</a>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/how-to-shop'" href="/how-to-shop" rel="noopener noreferrer">How to shop with us</a>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/how-to-pay'" href="/how-to-pay">How to pay</a>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/help-faqs'" href="/help-faqs" rel="noopener noreferrer" target="_self">About our deliveries</a>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/help-faqs'" href="/help-faqs" rel="noopener noreferrer" target="_self">Returns and refunds</a>    </li>
+  </ul>
+</div>
+<div class="col-md-3">
+  <ul class="hc-footer--link-list">
+    <li>      <strong>Get in contact</strong>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/contactMe'" href="/contactMe" rel="noopener noreferrer" target="_self">Call me back</a>    </li>
+    <li>Tel: 0861 999 635</li>
+    <li>Tel (outside SA): +27 21 680 1300</li>
+    <li>      Email: <a class="hc-footer--link" href="mailto:contact@homechoice.co.za" rel="noopener noreferrer" target="_self">contact@homechoice.co.za</a>    </li>
+    <li>      <a class="hc-footer--link" data-bind="ccLink: '/showroom'" href="/showroom" rel="noopener noreferrer" target="_self">Showroom: Take a virtual tour</a>    </li>
+  </ul>
+</div>

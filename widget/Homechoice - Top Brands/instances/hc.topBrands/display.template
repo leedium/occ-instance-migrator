@@ -1,0 +1,233 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1000107": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1000107",
+    "image": {
+      "altText": "Defy",
+      "altTextId": "2000007",
+      "isProductImage": false,
+      "link": "https://www.sony.com/",
+      "src": "/file/v7191527947844763096/general/defy.png",
+      "titleText": "Defy",
+      "titleTextId": "1100088",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000108": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1000108",
+    "image": {
+      "altText": "Hisence",
+      "altTextId": "2000008",
+      "isProductImage": false,
+      "link": "http://www.lg.com",
+      "src": "/file/v834890999059441606/general/hisense.png",
+      "titleText": "Hisence",
+      "titleTextId": "1100089",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000109": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1000109",
+    "image": {
+      "altText": "LG",
+      "altTextId": "2000009",
+      "isProductImage": false,
+      "link": "http://global.levi.com/",
+      "src": "/file/v2525441058091069367/general/LG.png",
+      "titleText": "LG",
+      "titleTextId": "1100090",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000110": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1000110",
+    "image": {
+      "altText": "pierre cardin",
+      "altTextId": "2000010",
+      "isProductImage": false,
+      "link": "http://www.fila.com/",
+      "src": "/file/v2592273010304310230/general/PC.png",
+      "titleText": "pierre cardin",
+      "titleTextId": "1100091",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000111": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1000111",
+    "image": {
+      "altText": "Samsung",
+      "altTextId": "2000011",
+      "isProductImage": false,
+      "link": "http://www.bosch-home.com/",
+      "src": "/file/v4497361996475547563/general/samsung.png",
+      "titleText": "Samsung",
+      "titleTextId": "1100092",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000112": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1000112",
+    "image": {
+      "altText": "Froggie",
+      "altTextId": "2000012",
+      "isProductImage": false,
+      "link": "https://www.sony.com/",
+      "src": "/file/v8528695233841481071/general/froggie.png",
+      "titleText": "Froggie",
+      "titleTextId": "1100093",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000113": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1000113",
+    "image": {
+      "isProductImage": false,
+      "link": "http://global.levi.com/",
+      "src": "/file/v2584729904377082385/general/Levis.jpg",
+      "titleText": "Levi's",
+      "titleTextId": "1100094",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1400038": {"id": "1400038"}
+}} --><!-- /ko -->
+
+<div class="hc-TopBrands theTemplate" data-bind="css:cssClasses(), style:{width:bannerWidth(),marginLeft:bannerOffset()}, visible: parseInt($data.totalItems()) > parseInt(0)">
+  <div data-bind="carouselSwipe, attr:{'id': $data.id(), 'data-wrap': true}" class="carousel slide" data-interval="false">
+    <div class="carousel-inner">
+    </div>
+    <ol class="carousel-indicators" data-bind="foreach: new Array(parseInt($data.indicatators()))">
+      <li data-bind="{css:{active: $index() === 0 }, attr:{'data-target': '#'+$parent.id(),'data-slide-to':$index()}}"></li>
+    </ol>
+
+    <a class="left carousel-control" data-bind="attr:{href: '#this-carousel-id-' + $data.id()}, visible: parseInt($data.indicatators()) > parseInt(1)">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <div class="sr-only" data-bind="widgetLocaleText: 'previousBannerText'"></div>
+    </a>
+    <a class="right carousel-control" data-slide="next" data-bind="attr:{href: '#this-carousel-id-' + $data.id()}, visible: parseInt($data.indicatators()) > parseInt(1)">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <div class="sr-only" data-bind="widgetLocaleText: 'nextBannerText'"></div>
+    </a>
+  </div>
+</div>
+
+<div class="theTemplateItems">
+
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '1000107'"></span>
+
+      <!-- /oc -->
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '1000108'"></span>
+
+      <!-- /oc -->
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '1000109'"></span>
+
+      <!-- /oc -->
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '1000110'"></span>
+
+      <!-- /oc -->
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '1000111'"></span>
+
+      <!-- /oc -->
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '1000112'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+
+</div>

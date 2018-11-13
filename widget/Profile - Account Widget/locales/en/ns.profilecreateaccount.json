@@ -1,0 +1,23 @@
+{
+  "resources": {
+    "DateOfBirth": "Date of birth",
+    "ErrorDescription": "We cannot continue untill you've fixed the issues we've highlighted for you.",
+    "Email": "Email address",
+    "InputMobileNumber": "Please enter your mobile number",
+    "FirstName": "First name",
+    "InputLastName": "Please enter your last name",
+    "ErrorTitle": "Oopsie Daisy...",
+    "Title": "Title",
+    "InputConfirmPassword": "Please confirm your password",
+    "IdType": "ID Type",
+    "ConfirmPassword": "Confirm password",
+    "OffersAndUpdates": "I want to be the first to get the latest offers and updates",
+    "MobileNumber": "Mobile number",
+    "InputEmail": "Please enter your email address",
+    "CreatePassword": "Create password",
+    "InputIdNumber": "Please enter the required number",
+    "LastName": "Last name",
+    "InputCreatePassword": "Please enter a password",
+    "InputFirstName": "Please enter your first name"
+  }
+}

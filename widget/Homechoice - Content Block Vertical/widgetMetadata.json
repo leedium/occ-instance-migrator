@@ -1,0 +1,27 @@
+{
+  "imports": [
+    "product",
+    "pageContext",
+    "site",
+    "loaded",
+    "imageRootUrl",
+    "productVariantOptions",
+    "cart",
+    "links",
+    "productTypes",
+    "passwordPolicies",
+    "user"
+  ],
+  "translations": [
+    {
+      "name": "Homechoice - Content Block Vertical",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "defaultLayout": "hcContentBlockVertical_v1_lyt1",
+  "config": {}
+}

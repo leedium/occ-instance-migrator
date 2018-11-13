@@ -1,0 +1,381 @@
+      <div id="CC-ContactMeDetails">
+
+        <form data-bind="submit: formSubmit" novalidate="novalidate">
+          <div class="form-group call-me-back">
+
+
+            <!-- ko if: isContactPhone -->
+            <div class="row">
+              <!-- ko ifnot: isContactPhoneThankYou -->
+              <h2 class="call-me-header">Call me back</h2>
+                <div class="sub-heading">
+                  <p>
+                    Please leave your details below and we will call you back as soon as possible.
+                  </p>
+                </div>
+                <div class="row">
+
+                  <div class="col-md-10 form-container">
+                    <!--Radio Buttons -->
+
+                    <div class="form-group" data-bind="css:{'has-error': callBackOptionInvalid() }">
+                      <div class="radio">
+                        <input id="radioPlaceOrder" name="callBackOption" type="radio" Value="S" />
+                          <label for="radioPlaceOrder" class="radio-label">I would like to place an order</label>
+                        </div>
+                      <div class="radio">
+                        <input id="radioAskQuestion" name="callBackOption" type="radio" Value="Q" />
+                          <label for="radioAskQuestion" class="radio-label">I would like to ask a question</label>
+                       </div>
+                      <span data-bind="visible: callBackOptionInvalid()" class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i> Please select the call-back option.
+                      </span>
+                    </div>
+
+                    <!-- CELLPHONE NUMBER -->
+                    <div class="form-group pb-50" data-bind="css: {'has-error': mobileNumberInvalid() || mobileNumberInvalidRegex()}">
+                      <div class="">
+                        <div class="">
+                          <label for="cellNumber" class="control-label cellnumber">Cellphone number (e.g. 0812345678)</label>
+                          <br/>
+                          <div class="special-select">
+                            <select class="form-control" id="title">
+                              <option Value="27">+27 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; South Africa</option>
+                              <option Value="267">+267 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; Botswana</option>
+                              <option Value="266">+266 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; Lesotho</option>
+                              <option Value="264">+264 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; Namibia</option>
+                              <option Value="268">+268 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;Swaziland</option>
+                              <option Value="260">+260 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;Zambia</option>
+                            </select>
+                          </div>
+                          <div class="special-input">
+                            <input type="tel" class="form-control" id="mobileNumber" placeholder="" pattern="[0-9]+" />
+                           </div>
+                          <span data-bind="visible: mobileNumberInvalid()" class="text-danger">
+                            <i class="fa fa-exclamation-triangle"></i>Please enter a cellphone number.
+                          </span>
+                          <span data-bind="visible: mobileNumberInvalidRegex()" class="text-danger">
+                            <i class="fa fa-exclamation-triangle"></i>Please enter a cellphone number.
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <button class="btn cc-button-primary" type="submit" style="width:100%; margin-top: 20px;">Call me back</button>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+                <!-- /ko -->
+
+        
+        
+              <!-- ko if: isContactPhoneThankYou -->
+              <div class="row">
+                <div class="col-md-10 form-container">
+
+
+                  <div class="hcCallMeBackForm" id="Thankyou" runat="server" visible="false">
+                    <h2 class="call_thank_you">Thank you!</h2>
+                    <!--<asp:HiddenField ID="radiovalHiddenField" runat="server" Value="S" />-->
+                    <div id="order">
+                        <p>
+                          Please keep your phone nearby, <strong>an agent will call you now.</strong>
+                        </p>
+                        <p>
+                          If you placed your request outside of our business hours, we will call you the next working day.
+                          <br />
+                          <br />
+                          <strong>Business hours:</strong>
+                          <br />
+                          Monday - Friday : 8am to 7pm
+                          <br />
+                          Saturday : 8am to 1pm
+                        </p>
+                    </div>
+                  </div>
+
+                  </div>
+                </div>
+                <!-- /ko -->
+
+            </div>
+            <!-- /ko -->
+          </div>
+        </form>
+
+        <!-- ko ifnot: isContactPhoneThankYou -->
+        <!-- ko ifnot: isContactEmailThankYou -->
+
+        <!-- ko if: isContactPhone -->
+        <div class="row">
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-8 ortag">
+                OR
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <h4 class="col-md-8 emailText">If you’d prefer, we can email you back</h4>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-8 emailform">
+                <a href="#" data-bind="click: changeCallMeBackEmail" >email me back</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /ko -->
+
+        <!-- /ko -->
+        <!-- /ko -->
+
+        <form data-bind="submit: formSubmitEmail" novalidate="novalidate">
+          <div class="form-group call-me-back">
+        <!-- ko ifnot: isContactPhone -->
+            <!-- ko ifnot: isContactEmailThankYou -->
+
+            <div class="row">
+            <h2 class="email-me-header">Email me back</h2>
+            <div class="email-us-sub-heading">
+              <p>
+                Please fill in your details below and we will email you back as soon as possible.
+              </p>
+            </div>
+            <div class="row">
+              <div class="col-md-10 form-container">
+                <!-- Title -->
+                <div class="form-group">
+                  <div class="">
+                    <div class="">
+                      <label for="title" class="control-label">Title</label>
+                      <br/>
+                      <div class="special-select">
+                        <select class="form-control" id="ddlTitle">
+                          <option Value="1">Mr</option>
+                          <option Value="2">Miss</option>
+                          <option Value="3" Selected="True">Mrs</option>
+                          <option Value="4">Ms</option>
+                          <option Value="5">Dr</option>
+                          <option Value="6">Prof</option>
+                          <option Value="7">Rev</option>
+                          <option Value="8">Sgt</option>
+                          <option Value="9">Lt</option>
+                          <option Value="10">Sir</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <br/>
+                <br/>
+
+                <!-- NAME -->
+                <div class="form-group" data-bind="css: {'has-error': FirstNameInvalid()}">
+                  <div class="">
+                    <div class="">
+                      <label for="firstName" class="control-label">What is your first name?</label>
+                      <input type="text" data-bind="value: firstName" class="form-control" id="firstName" placeholder="" />
+                      <span data-bind="visible: FirstNameInvalid()" class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i> Your first name must be entered.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SURNAME -->
+                <div class="form-group" data-bind="css: {'has-error': SurnameInvalid()}">
+                  <div class="">
+                    <div class="">
+                      <label for="Surname" class="control-label">What is your surname?</label>
+                      <input type="text" data-bind="value: Surname" class="form-control" id="Surname" placeholder="" />
+                      <span data-bind="visible: SurnameInvalid()" class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i> Your surname must be entered.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- CELLPHONE NUMBER -->
+                <div class="form-group pb-50" data-bind="css: {'has-error': mobileEmailNumberInvalid() || mobileEmailNumberInvalidRegex()}">
+                  <div class="">
+                    <div class="">
+                      <label for="emailNumber" class="control-label">Cellphone number (e.g. 0812345678)</label>
+                      <br/>
+                      <div class="special-select">
+                        <select class="form-control" id="title">
+                          <option Value="27">+27 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; South Africa</option>
+                          <option Value="267">+267 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; Botswana</option>
+                          <option Value="266">+266 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; Lesotho</option>
+                          <option Value="264">+264 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; Namibia</option>
+                          <option Value="268">+268 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;Swaziland</option>
+                          <option Value="260">+260 &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;Zambia</option>
+                        </select>
+                      </div>
+                      <div class="special-input">
+                        <input type="tel" class="form-control" id="mobileNumber" placeholder="" pattern="[0-9]+" />
+                      </div>
+                      <span data-bind="visible: mobileEmailNumberInvalid()" class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i>Please enter a cellphone number.
+                      </span>
+                      <span data-bind="visible: mobileEmailNumberInvalidRegex()" class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i>Please enter a cellphone number.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <br/>
+                <br/>
+
+                <!-- EMAIL -->
+                <div class="form-group" data-bind="css: {'has-error': EmailAddressInvalid()}">
+                  <div class="">
+                    <div class="">
+                      <label for="EmailAddress" class="control-label">Email address</label>
+                      <input type="text" data-bind="value: EmailAddress" class="form-control" id="EmailAddress" placeholder="" />
+                      <span data-bind="visible: EmailAddressInvalid()" class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i> Your email address must be entered.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- HC ACCOUNT -->
+                <div class="form-group" data-bind="css: {'has-error': HCAccountInvalid()}">
+                  <div class="">
+                    <div class="">
+                      <label for="HCAccountNo" class="control-label">HomeChoice account number (for existing customers only)</label>
+                      <a tabindex="0" class="btn account-link pull-right" role="button" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="dummy text" data-bind="onRender:function () {$('[data-toggle=popover]').popover();}">
+                        <small>What's this?</small>
+                        <i class="fa fa-question-circle fa-lg"></i>
+                      </a>
+                      <input type="text" data-bind="value: HCAccountNo" class="form-control" id="HCAccountNo" placeholder="" />
+                      <span data-bind="visible: EmailAddressInvalid()" class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i> Please enter your account number.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- HC QUESTION & SUGGESTION -->
+                <div class="form-group" data-bind="css: {'has-error': HCQuestionInvalid()}">
+                  <div class="">
+                    <div class="">
+                      <label for="Question" class="control-label">Your query, question or suggestion</label>
+                      <textarea type="text" data-bind="value: Question" col="20" row="5" class="form-control" id="Question" placeholder="" ></textarea>
+                      <span data-bind="visible: HCQuestionInvalid()" class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i> Your query must be entered.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                  <label class="form-check-label" for="exampleCheck1">Subscribe me to receive emails about great deals, promotions and new products!</label>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <button class="btn cc-button-primary" type="submit" style="width:100%; margin-top: 20px;">submit</button>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="emailfail" id="EmailThankyou" runat="server" visible="false">
+                  <div>
+                    <p>The Contact Us submission was unsuccessful, please try again later.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+            <!-- /ko -->
+            <!-- /ko -->
+
+
+
+
+            <!-- ko if: isContactEmailThankYou -->
+
+            <div class="row">
+              <div class="col-md-10 form-container">
+
+
+                <div class="hcCallMeBackForm" id="Thankyou" runat="server" visible="false">
+                  <h2 class="call_thank_you">Thank you!</h2>
+                  <div id="order">
+                    <p>
+                      Thank you for your submission, your message was submitted successfully.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- /ko -->
+
+      
+
+            <!-- /ko -->
+
+          </div>
+        </form>
+
+        <!-- ko ifnot: isContactPhoneThankYou -->
+        <!-- ko ifnot: isContactEmailThankYou -->
+
+          <!-- ko ifnot: isContactPhone -->
+        <div class="row">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-8 ortag">
+                OR
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <h4 class="col-md-8 emailText">If you’d prefer, we can call you back</h4>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-8 emailform">
+                <a href="#" data-bind="click: changeCallMeBackPhone">call me back</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /ko -->
+
+        <!-- /ko -->
+        <!-- /ko -->
+
+
+
+      </div>
+    

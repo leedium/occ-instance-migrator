@@ -1,0 +1,14 @@
+{
+  "configuration": {
+    "shouldUseStyleBased": true,
+    "viewModelCacheLimit": "3",
+    "isScrollEnabled": false,
+    "isViewModelCacheEnabled": false,
+    "fields": "",
+    "gridWidth": "3",
+    "productsPerPage": "9",
+    "listType": "product",
+    "blockSize": "60"
+  },
+  "displayName": "Product Listing ver.9"
+}

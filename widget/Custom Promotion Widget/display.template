@@ -1,0 +1,46 @@
+<!-- ko if: isViewVisible() -->
+<div id="CC-promotionDetails">
+  <fieldset>
+    <div class="row col-md-9 col-sm-12">
+      <div class="hidden-xs col-sm-offset-4 col-sm-5">
+        <!-- ko if: cart().couponErrorMessage() -->
+        <p class="text-danger" id="CC-promotionDetails-promoCodeApply-error" data-bind="text : cart().couponErrorMessage()" role="alert"></p>
+        <!-- /ko -->
+        <!-- ko ifnot: cart().couponErrorMessage() -->
+        <p class="text-danger" id="CC-promotionDetails-promoCode-error" data-bind="validationMessage:promoCode" role="alert"></p>
+        <!-- /ko -->
+      </div>
+      <div class="col-sm-12">
+        <div class="control">
+          <strong>
+            <span data-bind="widgetLocaleText: 'promotionLabelText'"></span>
+          </strong>
+        </div>
+      </div>
+      <div class="visible-xs col-xs-12">
+        <!-- ko if: cart().couponErrorMessage() -->
+        <p class="text-danger" id="CC-promotionDetails-promoCodeApply-error-xs" data-bind="text : cart().couponErrorMessage()" role="alert"></p>
+        <!-- /ko -->
+        <!-- ko ifnot: cart().couponErrorMessage() -->
+        <p class="text-danger" id="CC-promotionDetails-promoCode-error-xs" data-bind="validationMessage:promoCode" role="alert"></p>
+        <!-- /ko -->
+      </div>
+      <div class="form-group col-xs-8 col-sm-6">
+        <div class="control">
+          <input type="text" class="form-control col-md-12 input-inline" name="promoCode" id="CC-promotionDetails-promoCode" placeholder="Enter discount voucher" data-bind="validatableValue:promoCode, widgetLocaleText : {value:'promoCodeAriaLabelText', attr:'aria-label'}">
+        </div>
+      </div>
+      <div class="form-group col-xs-4 col-sm-4 ">
+        <a href="#" id="CC-promotion-applyCode" class="cc-button-secondary cc-btn-secondary__blue col-xs-12" data-bind="widgetLocaleText : {value:'buttonApplyCodeText', attr:'aria-label'}, disabled: {condition: cart().items().length == 0 || isApplyCodeClicked, click: handleApplyCoupon}, inTabFlow: cart().items().length != 0">
+          <!-- ko ifnot: isApplyCodeClicked -->
+          <span id="CC-promotion-applyCodeButton" data-bind="widgetLocaleText:'buttonApplyCodeText'"></span>
+          <!-- /ko -->
+          <!-- ko if: isApplyCodeClicked -->
+          <span id="CC-promotion-applyingCodeButton" data-bind="widgetLocaleText:'buttonApplyingCodeText'"></span>
+          <!-- /ko -->
+        </a>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<!-- /ko -->

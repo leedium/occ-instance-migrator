@@ -1,0 +1,159 @@
+<div id="CC-megaMenu">
+  <h3 class="label-hidden" data-bind="widgetLocaleText: 'categoryHeader'"></h3>
+
+  <!-- ko setContextVariable:{name:'widgetViewModel',value:$data} -->
+
+  <!-- DESKTOP MEGA MENU -->
+  <nav class="mega-menu navbar visible-md visible-lg" role="navigation">
+    <div class="collapse navbar-collapse mega-menu-fullwidth-collapse">
+      <ul class="nav navbar-nav" data-bind="foreach: categories">
+        <!-- ko if: $data.childCategories -->
+        <li class="dropdown menu-item cc-desktop-dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" data-bind="attr: { id: $data.uiIdentifier ,'aria-label': $data.ariaLabelText, title: $data.displayName },
+          click: $parent.megaMenuClick,
+          ccLink : $data">
+          <span data-bind="text: displayName"></span>
+        </a>
+        <ul class="dropdown-menu" data-bind="foreach: childCategories">
+          <li class="dropdown dropdown-submenu cc-desktop-dropdown">
+            <a tabindex="0" data-bind="attr:{id: $data.uiIdentifier ,'aria-label': $data.ariaLabelText, title: $data.displayName},
+            click : $widgetViewModel.catMenuClick,
+            ccLink : $data" class="dropdown-toggle" data-toggle="dropdown"></a>
+            <!-- ko if: $data.childCategories -->
+            <ul class="dropdown-menu" data-bind="foreach: $data.childCategories">
+              <li class="dropdown dropdown-submenu cc-desktop-dropdown" data-bind="template: {name: 'list-item'}" ></li>
+            </ul>
+            <!-- /ko -->
+          </li>
+        </ul>
+      </li>
+      <!-- /ko -->
+      <!-- ko ifnot: $data.childCategories -->
+      <li role="menuitem" class="rootCategoryChild menu-item">
+        <a data-bind="click : $widgetViewModel.catMenuClick,
+        ccLink : $data,
+        attr: { id: $data.uiIdentifier, title: $data.displayName },
+        event: { keydown : $data.keybindFunc, click: $data.otherItemClick}">
+      </a>
+    </li>
+    <!-- /ko -->
+  </ul>
+</div>
+</nav>
+<!-- MOBILE MEGA MENU -->
+<nav class="navbar hidden-md hidden-lg" role="navigation" id="cc-mobile-menubar">
+  <div class="mega-menu">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle btn-navbar btn-inverse" data-toggle="collapse" data-target="#mobile-menu">
+        <span class="label-hidden" data-bind="widgetLocaleText: 'mobileNavBtnText'">Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="mobile-menu">
+      <ul class="nav navbar-nav" data-bind="foreach: categories">
+        <!-- ko if: $index() === 0 -->
+        <li class="dropdown menu-item cc-desktop-dropdown">
+            <!-- ko if: $parent.user().loggedIn -->
+          <li class="rootCategoryChild dropdown mega-menu-fullwidth" data-toggle="collapse">
+              <a class="dropdown-toggle my-account" data-toggle="dropdown">
+                <i class="fa fa-user-o fa-2x"></i> <span>My Account</span> <i class="pull-right fa fa-chevron-right fa-2x"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="dropdown dropdown-submenu cc-desktop-dropdown">
+                  <a href="#">Edit My Details</a>
+                </li>
+                <li class="dropdown dropdown-submenu cc-desktop-dropdown">
+                  <a href="#">Update Credit Details</a>
+                </li>
+                <li class="dropdown dropdown-submenu cc-desktop-dropdown">
+                  <a data-original-title="wishlist" data-bind="widgetLocaleText: {attr: 'innerText', value: 'wishlist'}, ccLink: 'wishlist'" href="/wishlist">My wishlist</a>
+                </li>
+                <li class="dropdown dropdown-submenu cc-desktop-dropdown">
+                  <a href="#">Shopping History</a>
+                </li>
+                <li class="dropdown dropdown-submenu cc-desktop-dropdown">
+                  <a href="#">Track My Order</a>
+                </li>
+                <li class="dropdown dropdown-submenu cc-desktop-dropdown">
+                  <a href="#">Account Settings</a>
+                </li>
+              </ul>
+            </li>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: $data.childCategories -->
+            <li class="rootCategoryChild dropdown mega-menu-fullwidth" data-bind="attr:{id : $data.uiIdentifier + '_mobile_menu'}" data-toggle="collapse" data-target="#mobile-menu">
+              <a class="dropdown-toggle" data-toggle="dropdown" data-bind="css: $data.levelClass ,
+              attr: { id: $data.uiIdentifier + '_mobile', 'data-target':'#'+ $data.uiIdentifier + '_mobile_xmenu' , href: '#' , title:$data.displayName},
+              event: { keydown : $data.keybindFunc, click: $data.otherItemClick}">
+              <span data-bind="text: displayName"></span>
+            </a>
+            <ul class="dropdown-menu level1Menu" data-bind="attr : {id: $data.uiIdentifier + '_mobile_submenu' }, foreach: childCategories">
+              <li data-bind="css: {'dropdown-submenu' : $data.hasChildCategories, 'closed' : $data.hasChildCategories},
+              template: {name: 'mobile-list-item'}" >
+            </li>
+          </ul>
+        </li>
+        <!-- /ko -->
+        <!-- ko ifnot: $data.childCategories -->
+        <li role="menuitem" class="rootCategoryChild">
+          <a data-bind="css: $data.levelClass,
+          ccLink : $data,
+          attr: { id: $data.uiIdentifier + '_mobile' , title:$data.displayName},
+          event: { keydown : $data.keybindFunc, click: $data.otherItemClick}">
+        </a>
+      </li>
+      <!-- /ko -->
+      <!-- ko if: ($index() === ($parent.categories().length - 1)) -->
+        <!-- ko if: $parent.user().loggedIn -->
+        <li role="menuitem" class="rootCategoryChild">
+	        <button type="button" class="btn btn-default navbar-btn cc-button-primary menu-logout" onclick="$('#CC-loginHeader-logout, .navbar-toggle').trigger('click');">Log Out</button>
+	    </li>
+	    <!-- /ko -->
+	<!-- /ko -->
+    </ul>
+  </div>
+</div>
+</nav>
+<!-- /ko -->
+
+<script type='text/html' id='list-item'>
+  <!-- comment categoryNavListItem -->
+  <!-- ko if: $data.childCategories -->
+
+  <a tabindex="0" class="dropdown-toggle" data-toggle="dropdown" data-bind="attr: { id: $data.uiIdentifier , title:$data.displayName },ccLink : $data,click : $widgetViewModel.catMenuClick"></a>
+
+  <ul class="dropdown-menu" data-bind="attr : {id: $data.uiIdentifier +'_submenu', 'data-parent': $data.id + '_link' }, foreach: $data.childCategories">
+
+    <li data-bind="css: {'closed' : $data.hasChildCategories},
+    template: {name: 'list-item'}" >
+  </li>
+
+</ul>
+<!-- /ko -->
+<!-- ko ifnot: $data.childCategories -->
+<a data-bind="css: $data.levelClass , attr: { id: $data.uiIdentifier , title:$data.displayName},ccLink : $data, event: { keydown : $data.keybindFunc , click : $data.otherItemClick}, click : $widgetViewModel.catMenuClick">  </a>
+<!-- /ko -->
+</script>
+
+<script type='text/html' id='mobile-list-item'>
+  <!-- comment categoryNavListItem -->
+  <!-- ko if: $data.childCategories -->
+
+  <a data-bind="css: $data.levelClass , attr: { id: $data.uiIdentifier  + '_mobile',href: '#', title:$data.displayName},ccLink : $data, event: {click : $data.subSubmenuClickFunc}"></a>
+
+  <ul class="dropdown-menu sub-menu" data-bind="attr : {id: $data.uiIdentifier +'_mobile_submenu', 'data-parent': $data.id + '_link' }, foreach: $data.childCategories">
+
+    <li data-bind="css: {'closed' : $data.hasChildCategories},
+    template: {name: 'mobile-list-item'}" >
+  </li>
+
+</ul>
+<!-- /ko -->
+<!-- ko ifnot: $data.childCategories -->
+<a data-bind="css: $data.levelClass , attr: { id: $data.uiIdentifier + '_mobile' , title:$data.displayName},ccLink : $data, event: { keydown : $data.keybindFunc , click : $data.otherItemClick}"></a>
+<!-- /ko -->
+</script>
+</div>

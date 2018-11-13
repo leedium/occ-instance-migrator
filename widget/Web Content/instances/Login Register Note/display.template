@@ -1,0 +1,32 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1500096": {"id": "1500096"},
+  "1500097": {
+    "id": "1500097",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "20"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m160603')}",
+      "sourceMedia": "m160603"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1500097'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->

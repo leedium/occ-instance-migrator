@@ -1,0 +1,14 @@
+{
+  "resources": {
+    "TitleText": "Title",
+    "firstNameText": "What is your first name?",
+    "radioQuestionText": "I would like to ask a question",
+    "cta_label": "cta_label",
+    "EmailAddressText": "Email address",
+    "HcAccountNoText": "HomeChoice account no (for existing customers only)",
+    "formQueryText": "Your query, question or suggestion",
+    "media_alt": "image_alt",
+    "surNameText": "What is your surname?",
+    "radioOrderText": "I would like to place an order"
+  }
+}

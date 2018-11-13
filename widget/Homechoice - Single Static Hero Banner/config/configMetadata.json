@@ -1,0 +1,66 @@
+{
+  "widgetDescriptorName": "hrContentBlockRow",
+  "properties": [
+    {
+      "defaultValue": false,
+      "id": "fullWidth",
+      "type": "booleanType",
+      "helpTextResourceId": "fullWidthHelp",
+      "labelResourceId": "fullWidthLabel"
+    },
+    {
+      "defaultValue": "tl",
+      "options": [
+        {
+          "id": "tl",
+          "labelResourceId": "tlLabel",
+          "value": "tl"
+        },
+        {
+          "id": "tm",
+          "labelResourceId": "tmLabel",
+          "value": "tm"
+        },
+        {
+          "id": "tr",
+          "labelResourceId": "trLabel",
+          "value": "tr"
+        },
+        {
+          "id": "ml",
+          "labelResourceId": "mlLabel",
+          "value": "ml"
+        },
+        {
+          "id": "mm",
+          "labelResourceId": "mmLabel",
+          "value": "mm"
+        },
+        {
+          "id": "mr",
+          "labelResourceId": "mrLabel",
+          "value": "mr"
+        },
+        {
+          "id": "bl",
+          "labelResourceId": "blLabel",
+          "value": "bl"
+        },
+        {
+          "id": "bm",
+          "labelResourceId": "bmLabel",
+          "value": "bm"
+        },
+        {
+          "id": "br",
+          "labelResourceId": "brLabel",
+          "value": "br"
+        }
+      ],
+      "id": "copyAlignment",
+      "type": "optionType",
+      "helpTextResourceId": "copyAlignmentHelp",
+      "labelResourceId": "copyAlignmentLabel"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "widgetDescriptorName": "homechoiceFooterWidget",
+  "properties": [
+    {
+      "defaultValue": "https://www.pages03.net/homechoice/hcWebsite_Signup/Website_Signup?Email=$EMAIL_ADDRESS&formSourceName=StandardForm&sp_exp=yes&NameSource_Campaign=Website_Signup",
+      "id": "endpointUrl",
+      "type": "stringType",
+      "helpTextResourceId": "endpointUrlHelp",
+      "labelResourceId": "endpointUrlLabel"
+    }
+  ]
+}

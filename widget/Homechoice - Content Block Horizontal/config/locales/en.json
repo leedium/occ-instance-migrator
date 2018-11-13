@@ -1,0 +1,14 @@
+{
+  "resources": {
+    "containerColsHelp": "# of Columns of the parent container. Optimizes images to load",
+    "containerCols6Label": "1/2 (col-6)",
+    "containerCols3Label": "1/4 (col-3)",
+    "jpgLabel": "JPG",
+    "pngLabel": "PNG",
+    "containerCols12Label": "1/1 (col-12)",
+    "imageTypeHelp": "Format of image to be displayed",
+    "containerColsLabel": "Container cols",
+    "containerCols4Label": "1/3 (col-4)",
+    "imageTypeLabel": "Image Format"
+  }
+}

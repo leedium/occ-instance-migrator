@@ -1,0 +1,8 @@
+{
+  "resources": {
+    "emailSuccessText1": "Thank you for subscribing!",
+    "emailSuccessText2": "Amazing offers are coming your way soon! Don’t forget to add us to your address book.",
+    "emailTitle": "Email Sign Up!",
+    "emailDisclaimerText": "Be the first to know about our best deals and online-exclusive offers!"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "imports": [
+    "payment",
+    "paymentauthorization",
+    "order",
+    "site"
+  ],
+  "translations": [
+    {
+      "name": "MyGate Payer Authorization",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "pageTypes": [
+    "payment"
+  ],
+  "config": {}
+}

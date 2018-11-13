@@ -1,0 +1,18 @@
+<div class="templateRegion" id="sign-up-widget" data-oc-id="sign-up-widget">
+	<!-- oc layout: panels -->
+	<div class="row hc-sign-up" data-bind="style: { backgroundColor: widgetBackgroundColour }">
+			<div class="oc-panel col-md-4" data-oc-id="panel-0-0">
+				<!-- oc section: social-icons-element -->
+					<div data-bind="element: 'social-icons-element'"></div>
+				<!-- /oc -->
+			</div>
+
+			<div class="oc-panel col-md-8" data-oc-id="panel-1-0">
+				<!-- oc section: sign-up-element -->
+					<div data-bind="element: 'sign-up-element'">
+					</div>
+				<!-- /oc -->
+			</div>
+		</div>
+	<!-- /oc -->
+</div>

@@ -1,0 +1,21 @@
+{
+  "imports": [
+    "pageContext",
+    "site",
+    "loaded",
+    "imageRootUrl",
+    "links",
+    "user"
+  ],
+  "translations": [
+    {
+      "name": "Request a Catalogue Form",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "config": {}
+}

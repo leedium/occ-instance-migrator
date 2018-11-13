@@ -1,0 +1,79 @@
+<!-- ko if: isViewVisible() -->
+
+
+<!-- ko if: isBankVisible() -->
+<div id="CC-profileBankPayment" data-bind="visible: isBankVisible()">
+    <h4>Who do you bank with?</h4>
+
+  <div class="col-md-12 infopanel infopanel-default">
+    <p class="text-danger" id="errBankPayment" data-bind="visible:errorShow">Please choose your bank</p>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-12 product-details-credit-options">
+          <ul class="product-details-credit-options--list clearfix">
+
+            <li>
+              <input data-bind="checked: bankSelected, click:bankClick, attr: {id: EFT_ABSA_ID(), value: EFT_ABSA_ID()}" style="margin: 15px 0 0;"
+                  type="radio" name="eftPaymentType">
+                <label data-bind="attr: {for: EFT_ABSA_ID()}">
+                  <img style="height:40px;" src="/ccstore/v1/images/?source=/file/v1707112488244186463/general/logo_ABSA_radio.png"> Absa
+                            </label>
+
+              </li>
+
+            <li>
+              <input data-bind="checked: bankSelected, click:bankClick, attr: {id: EFT_FNB_ID(), value: EFT_FNB_ID()}" style="margin: 15px 0 0;"
+                  type="radio" name="eftPaymentType">
+                <label data-bind="attr: {for: EFT_FNB_ID()}">
+                  <img style="height:40px;" src="/ccstore/v1/images/?source=/file/v3949236085422319197/general/FNB+Logo.png"> FNB
+                            </label>
+              </li>
+
+
+            <li>
+              <input data-bind="checked: bankSelected, click:bankClick, attr: {id: EFT_STANDARD_BANK_ID(), value: EFT_STANDARD_BANK_ID()}"
+                  style="margin: 15px 0 0;" type="radio" name="eftPaymentType">
+                <label data-bind="attr: {for: EFT_STANDARD_BANK_ID()}">
+                  <img style="height:40px;" src="/ccstore/v1/images/?source=/file/general/logo_StandardBank_radio.png"> Standard Bank
+                            </label>
+
+
+              </li>
+
+            <!-- ko if: $data.isEFT -->
+            <li>
+              <input data-bind="checked: bankSelected, click:bankClick, attr: {id: EFT_OTHER_ID(), value: EFT_OTHER_ID()}" style="margin: 15px 0 0;"
+                  type="radio" name="eftPaymentType">
+                <label data-bind="attr: {for: EFT_OTHER_ID()}">
+                  <img style="height:40px;" src="/ccstore/v1/images/?source=/file/general/logo_Other_radio.png"> Other
+                            </label>
+
+
+              </li>
+
+            <!-- /ko -->
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- banking details section -->
+    <div id="bankingDetails">
+      <div class="form-group">
+        <div class="row">
+
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="clearfix"></div>
+
+</div>
+
+<!-- /ko -->
+<!-- /ko -->

@@ -124,7 +124,7 @@ function mergeBranch(name, callback) {
  */
 function addAll() {
     return new Promise((resolve) => {
-        console.log('staging...');
+        console.log('addAll...');
         git(gitPath).raw(['add', '.'], () => {
             setTimeout(() => {
                 resolve()
@@ -140,7 +140,7 @@ function addAll() {
  */
 function commit() {
     return new Promise((resolve) => {
-        console.log('committing...');
+        console.log('commit...');
         git(gitPath).raw(['commit', '-m', 'committing latest changes'], () => {
             setTimeout(() => {
                 resolve()
@@ -391,20 +391,20 @@ async function extensionsTransfer() {
     if (typeof gitPath === 'undefined') {
         throw new Error('--gitPath is not defined');
     }
-    clean();
-    await checkoutBranch('master');
-    await deleteBranch('deploy');
-    await deleteBranch('test');
-    await grabTarget();
+    // clean();
+    // await checkoutBranch('master');
+    // await deleteBranch('deploy');
+    // await deleteBranch('test');
+    // await grabTarget();
+    // await addAll();
+    // await commit();
+    // await createBranch('deploy');
+    // await createBranch('test');
+    // await grabSource();
     await addAll();
     await commit();
-    await createBranch('deploy');
-    await createBranch('test');
-    await grabSource();
-    await addAll();
-    await commit();
-    await checkoutBranch('deploy');
-    await mergeBranch('test');
+    // await checkoutBranch('deploy');
+    // await mergeBranch('test');
     // await getDiffs('test');
     // await processDiffs();
     // await makeTmpFolder();

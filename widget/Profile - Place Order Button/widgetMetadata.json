@@ -1,0 +1,19 @@
+{
+  "imports": [
+    "order",
+    "payment",
+    "shippingmethods",
+    "paymentauthorization"
+  ],
+  "translations": [
+    {
+      "name": "Profile - Place Order Button",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

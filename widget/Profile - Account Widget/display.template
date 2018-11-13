@@ -1,0 +1,210 @@
+<div id="CC-profileCreateAccount" style="display:none;">
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="idType" class="control-label" data-bind="widgetLocaleText: 'IdType'"></label>
+        <select class="form-control" id="idType" data-bind="event:{ change: idType_Change}">
+          <option value="0">South African ID</option>
+          <option value="1">South African Passport</option>
+          <option value="2">Foreign Passport</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="idNumber" class="control-label">
+          <span data-bind="text:IdentityDocumentUsedTitle"></span>
+        </label>
+        <div class="text-danger" data-bind="css: { 'hide': !idNumberValidation() }">
+          <i class="fa fa-exclamation-triangle"></i>
+          <span data-bind="text: idNumberValidation"></span>
+        </div>
+        <input type="text" data-bind="value: idNumber, widgetLocaleText : {value:'InputIdNumber', attr:'placeholder'}" class="form-control" id="idNumber">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" data-bind="visible: isSAIdTypeUsed() === false">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="birthDate" class="control-label" data-bind="widgetLocaleText: 'DateOfBirth'"></label>
+        <div class="text-danger" data-bind="css: { 'hide': !dobValidation() }">
+          <i class="fa fa-exclamation-triangle"></i>
+          <span data-bind="text: dobValidation"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-xs-4">
+        <!--<div class="input-group">-->
+        <!--<div class="input-group-addon">DD</div>-->
+        <input type="text" data-bind="value: dobDD, event: { 'keyup': checkKeyPress }" maxlength="2" class="form-control followtab"
+          tabindex="1" id="birthDateDD" placeholder="DD">
+        <!--</div>-->
+      </div>
+      <div class="col-md-2 col-xs-4">
+        <!--<div class="input-group">-->
+        <!--<div class="input-group-addon">MM</div>-->
+        <input type="text" data-bind="value: dobMM, event: { 'keyup': checkKeyPress }" maxlength="2" class="form-control followtab"
+          tabindex="2" id="birthDateMM" placeholder="MM">
+        <!--</div>-->
+      </div>
+      <div class="col-md-2 col-xs-4">
+        <!--<div class="input-group">-->
+        <!--<div class="input-group-addon">YYYY</div>-->
+        <input type="text" data-bind="value: dobYYYY, event: { 'keyup': checkKeyPress }" maxlength="4" class="form-control followtab"
+          tabindex="3" id="birthDateYYY" placeholder="YYYY">
+        <!--</div>-->
+      </div>
+      <div class="col-md-6"></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="title" class="control-label" data-bind="widgetLocaleText: 'Title'"></label>
+        <div class="text-danger" data-bind="css: { 'hide': !titleValidation() }">
+          <i class="fa fa-exclamation-triangle"></i>
+          <span data-bind="text: titleValidation"></span>
+        </div>
+        <select class="form-control" id="title" data-bind="options: titleSelect,
+            optionsText: 'text',
+            optionsValue: 'id',
+            value: title">
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="firstName" class="control-label" data-bind="widgetLocaleText: 'FirstName'"></label>
+        <div class="text-danger" data-bind="css: { 'hide': !firstNameValidation() }">
+          <i class="fa fa-exclamation-triangle"></i>
+          <span data-bind="text: firstNameValidation"></span>
+        </div>
+        <input type="text" data-bind="value: firstName, widgetLocaleText : {value:'InputFirstName', attr:'placeholder'}" class="form-control" id="firstName">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="lastName" class="control-label" data-bind="widgetLocaleText: 'LastName'"></label>
+        <div class="text-danger" data-bind="css: { 'hide': !lastNameValidation() }">
+          <i class="fa fa-exclamation-triangle"></i>
+          <span data-bind="text: lastNameValidation"></span>
+        </div>
+        <input type="text" data-bind="value: lastName, widgetLocaleText : {value:'InputLastName', attr:'placeholder'}" class="form-control" id="lastName">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="mobileNumber" class="control-label" data-bind="widgetLocaleText: 'MobileNumber'"></label>
+        <div class="text-danger" data-bind="css: { 'hide': !mobileNumberValidation() }">
+          <i class="fa fa-exclamation-triangle"></i>
+          <span data-bind="text: mobileNumberValidation"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-xs-4">
+          <select class="form-control" id="title" data-bind="options: mobileNumberExtentionSelect,
+              optionsText: 'text',
+              optionsValue: 'id',
+              value: mobileNumberExtention">
+          </select>
+      </div>
+      <div class="col-md-4 col-xs-8">
+        <input type="text" data-bind="value: mobileNumber, widgetLocaleText : {value:'InputMobileNumber', attr:'placeholder'}" class="form-control" id="mobileNumber">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="email" class="control-label" data-bind="widgetLocaleText: 'Email'"></label>
+        <div class="text-danger" data-bind="css: { 'hide': !emailValidation() }">
+          <i class="fa fa-exclamation-triangle"></i>
+          <span data-bind="text: emailValidation"></span>
+        </div>
+        <input type="email" data-bind="value: email, widgetLocaleText : {value:'InputEmail', attr:'placeholder'}" class="form-control" id="email">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="checkbox">
+          <label>
+            <input id="offersandupdates" data-bind="checked: wantsEmail" type="checkbox"><span data-bind="widgetLocaleText:'OffersAndUpdates'"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="email" class="control-label" data-bind="widgetLocaleText: 'CreatePassword'"></label>
+        <div class="text-danger" data-bind="css: { 'hide': !passwordValidation() }">
+          <i class="fa fa-exclamation-triangle"></i>
+          <span data-bind="text: passwordValidation"></span>
+        </div>
+        <div class="input-group">
+          <input type="password" data-bind="value: password, widgetLocaleText : {value:'InputCreatePassword', attr:'placeholder'}" class="form-control" id="password">
+          <span class="input-group-btn">
+            <button class="btn btn-default glyphicon glyphicon-eye-open toggler-ico" passwordCtrl="password" data-bind="event: { 'mousedown': togglePasswordView, 'mouseup': togglePasswordView }"
+              type="button"></button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <label for="email" class="control-label" data-bind="widgetLocaleText: 'ConfirmPassword'"></label>
+        <div class="text-danger" data-bind="css: { 'hide': !passwordConfirmValidation() }">
+          <i class="fa fa-exclamation-triangle"></i>
+          <span data-bind="text: passwordConfirmValidation"></span>
+        </div>
+        <div class="input-group">
+          <input type="password" data-bind="value: passwordConfirm, widgetLocaleText : {value:'InputConfirmPassword', attr:'placeholder'}" class="form-control" id="passwordconfirm">
+          <span class="input-group-btn">
+            <button class="btn btn-default glyphicon glyphicon-eye-open toggler-ico" passwordCtrl="passwordconfirm" data-bind="event: { 'mousedown': togglePasswordView, 'mouseup': togglePasswordView }"
+              type="button"></button>
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row" data-bind="css: { 'hide': !hasScreenValidations() }">
+    <div class="col-md-6 col-sm-12">
+      <div class="text-danger" data-bind="css: { 'hide': !profileValidation() }">
+        <i class="fa fa-exclamation-triangle"></i>
+        <span data-bind="text: profileValidation"></span>
+      </div>
+      <div class="alert alert-danger" role="alert">
+        <strong><span data-bind="text: ErrorTitle"></span></strong><span data-bind="text: ErrorDescription"></span> 
+      </div>
+    </div>
+  </div>
+
+</div>

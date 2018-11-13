@@ -1,0 +1,14 @@
+<!-- ko if: recommendations().length > 0 -->
+<div id="cc-recs" data-oc-id="cc-recs">
+  <!-- oc layout: panels -->
+  <div id="recs-panel" data-oc-id="recs-panel">
+    <!-- oc section: recommendations-title -->
+      <h2 data-bind="element: 'recommendations-title', visible: recommendations().length > 0"></h2>
+    <!-- /oc -->
+    <!-- oc section: recommendations-carousel -->
+      <div data-bind="element: 'recommendations-carousel', visible: recommendations().length > 0"></div>
+    <!-- /oc -->
+  </div>
+  <!-- /oc -->
+</div>
+<!-- /ko -->

@@ -1,0 +1,20 @@
+{
+  "configuration": {
+    "logoPageLink": "home",
+    "logoAltText": "Logo Alternative Text",
+    "logoImage": "/img/logo.png",
+    "miniCartDuration": "5",
+    "displayMiniCart": true,
+    "giftItemImageURL": "/img/GWP_GiftWithPurchase.jpg",
+    "miniCartNumberOfItems": "3",
+    "requiredLinks": [
+      "home",
+      "aboutUs",
+      "returns",
+      "shipping",
+      "contactUs",
+      "privacy"
+    ]
+  },
+  "displayName": "Header - Basic Widget"
+}
