@@ -189,6 +189,7 @@ function createBranch(name, callback) {
  * @returns {Promise<any>}
  */
 function getDiffs() {
+
     return new Promise((resolve) => {
         console.log('formulating diffs');
         const ls1 = spawn('./diffs.sh');
@@ -406,7 +407,7 @@ async function extensionsTransfer() {
     console.log(process.cwd())
     await deleteBranch('test');
     console.log(process.cwd())
-    // await grabTarget();
+    await grabTarget();
     await addAll('.');
     console.log(process.cwd())
     await commit('.');
@@ -415,14 +416,19 @@ async function extensionsTransfer() {
     console.log(process.cwd())
     await createBranch('test');
     console.log(process.cwd())
-    // await grabSource();
+    await grabSource();
+    console.log(process.cwd())
     await addAll('.');
+    console.log(process.cwd())
     await commit('.');
+    console.log(process.cwd())
     await checkoutBranch('deploy');
+    console.log(process.cwd())
     await mergeBranch('test');
-    await getDiffs('test');
-    await processDiffs();
-    await makeTmpFolder();
+    console.log(process.cwd())
+    // await getDiffs();
+    // await processDiffs();
+    // await makeTmpFolder();
     // await transferAll();
     // await clean();
 }
@@ -432,6 +438,7 @@ async function extensionsTransfer() {
  * @returns {Promise<void>}
  */
 async function start() {
+    console.log(process.cwd())
     try {
         if (plsu) {
             if (all) {
