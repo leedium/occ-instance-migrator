@@ -1,0 +1,130 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1400042": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1400042",
+    "image": {
+      "isProductImage": false,
+      "link": "/home",
+      "src": "/file/v8678431166316353417/general/hc-logo-white.png",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1400043": {"id": "1400043"},
+  "2000001": {"id": "2000001"}
+}} --><!-- /ko -->
+
+<!--
+ /**
+  *
+  * Header Widget Template
+  *
+  */
+-->
+<div class="templateRegion" id="CC-headerWidget" data-oc-id="CC-headerWidget">
+  <div class="header-line">
+    <h1 class="label-hidden" data-bind="text: $data.site().siteInfo.name"></h1>
+    <div class="header-background HeaderV10">
+      <div id="header">
+
+        <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-8" data-oc-id="panel-0-0">
+
+      <!-- oc section: secondary-nav-links-element --><div data-bind="element: 'secondary-nav-links-element'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-4" data-oc-id="panel-0-1">
+
+      <!-- oc section: hcHeaderWelcome2 --><div data-bind="element: 'hcHeaderWelcome2'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-1" data-oc-id="panel-1-0">
+
+      <!-- oc section: hcCollectionNavHamburger --><div data-bind="element: 'hcCollectionNavHamburger'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: image -->
+        <span class="logo-small" data-bind="element: 'image',id: '1400042'"></span>
+      <!-- /oc -->
+
+      <!-- oc section: unknown-1 --><a href="/home" class="logo-large-link"><img class="logo-large" src="/ccstore/v1/images/?source=/file/v8028710341337785274/general/homechoice-black-pant-213-copy.png"></a>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-1-1">
+
+      <!-- oc section: search -->
+            <div class="q-search-box" data-bind="element: 'search'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-4" data-oc-id="panel-1-2">
+
+      <!-- oc section: headerLoginRegistrationCreditSSO --><div data-bind="element: 'headerLoginRegistrationCreditSSO'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-1" data-oc-id="panel-1-3">
+
+      <!-- oc section: hcHeaderDropdownMinicart --><div data-bind="element: 'hcHeaderDropdownMinicart'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-2-0">
+
+      <!-- oc section: hcHeaderWelcome2 --><div data-bind="element: 'hcHeaderWelcome2'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="col-xs-12 bottom-line">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

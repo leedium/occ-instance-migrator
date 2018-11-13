@@ -1,0 +1,82 @@
+  <div class="row">
+    <!-- Related Products Title -->
+    <div id="cc-carousel-controls" class="col-xs-3">
+      <!-- Carousel Controls -->
+      <!-- ko if: relatedProductGroups() && (relatedProductGroups().length > 1) -->
+      <div class="controls row pull-right hidden-xs">
+        <div id="cc-carousel-left-control" class="col-sm-6">
+          <a class="collection-carousel-control left btn btn-success" 
+            data-slide="prev" data-bind="event: {keyup: $data.handleCarouselArrows}, widgetLocaleText:{value:'previousImageText',attr:'title'}, attr:{href: '#carousel-id-'+id()}">
+            <i class="fa-2x fa fa-caret-left "></i>
+          </a>
+        </div>
+        <div id="cc-carousel-right-control" class="col-sm-6">
+          <a class="collection-carousel-control left btn btn-success" 
+            data-slide="next" data-bind="event: {keyup: $data.handleCarouselArrows}, widgetLocaleText:{value:'nextImageText',attr:'title'}, attr:{href: '#carousel-id-'+id()}">
+            <i class="fa-2x fa fa-caret-right "></i>
+          </a>
+        </div>
+      </div>
+      <!-- /ko -->
+    </div>
+  </div>
+  <hr>
+  <div data-bind="carouselSwipe, attr:{id: 'carousel-id-'+id()}" class="cc-related-products-carousel-slide carousel slide" data-interval="false">
+    <div class="carousel-inner">
+      <!-- ko foreach: relatedProductGroups -->
+        <div class="item row" data-bind="css: {'active': $index()==0}, foreach: $data">
+          <div data-bind="css: $parents[1].spanClass()" class="cc-product-item">
+            <div class="cc-item-detail">
+              <a data-bind="attr : { id: 'cc-product-detail-'+id(), title: displayName }, ccLink : $data.product">
+              <span data-bind="text: displayName" class="sr-only"></span>
+              <img class="img-responsive center-block" data-bind="imageSource: {src: $data.primaryFullImageURL, imageType: 'small',
+                errorSrc: '/img/no-image.jpg',
+                errorAlt: 'Missing Product Image'
+                }, attr: {id: 'cc-product-image-'+id(), alt: displayName}">
+              </a>
+            </div>
+             <!-- ko if: $parents[1].displayNameOfRelatedProducts() === true -->
+            <div class="cc-item-title">
+              <a data-bind="attr : { id: 'cc-product-title-'+id()}, ccLink : $data.product">
+                <p data-bind="text: displayName, attr: {id: 'cc-product-displayName-'+id()}" class="cc-text-overflow"></p>
+              </a>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: $parents[1].displayPriceOfRelatedProducts() === true -->
+            <div class="cc-item-price">
+              <!-- ko if: ($data.hasPriceRange) -->
+                <span data-bind="currency: {price: $data.minPrice, currencyObj: $parents[1].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true},
+                  attr: {id: 'cc-product-range-price-min'+ id()}"></span> - 
+                <span data-bind="currency: {price: $data.maxPrice, currencyObj: $parents[1].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true},
+                  attr: {id: 'cc-product-range-price-max'+ id()}"></span>
+                <!-- ko if: ($data.isOnSale) -->
+                  <span class="label label-danger" data-bind="widgetLocaleText:'onSaleText'"></span>
+                <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko ifnot: ($data.hasPriceRange) -->
+                <!-- ko if: ($data.isOnSale) -->
+                  <label data-bind="attr: { for: 'cc-product-sale-price-'+ id()}, widgetLocaleText : {value:'salePriceText', attr:'aria-label'}"></label>
+                  <span class="cc-sale-price" data-bind="currency: {price: $data.productSalePrice, currencyObj: $parents[1].site().selectedPriceListGroup().currency, nullReplace: '\u2014', prependNull: false},
+                  attr: {id: 'cc-product-sale-price-'+ id()}"></span>
+                  <span class="label label-danger" data-bind="widgetLocaleText:'onSaleText'"></span>
+                <!-- /ko -->
+                <!-- ko ifnot : ($data.isOnSale) -->
+                  <span data-bind="currency: {price: $data.productListPrice, currencyObj: $parents[1].site().selectedPriceListGroup().currency, nullReplace: '\u2014', prependNull: false},
+                   attr: {id: 'cc-product-list-price'+ id()}"></span>
+                <!-- /ko -->
+              <!-- /ko -->  
+            </div>
+            <!-- /ko -->
+          </div>
+        </div>
+      <!-- /ko -->
+    </div>
+    <!-- Carousel Indicators-->
+    <!-- ko if: relatedProductGroups().length > 1 -->
+      <div id="cc-carousel-indicators" class="row">
+        <ol role="presentation" class="carousel-indicators" data-bind="foreach: relatedProductGroups">
+          <li data-bind="css: {'active': $index()==0}, attr: {'data-slide-to': $index, 'data-target': '#carousel-id-'+$parent.id()}"></li>
+        </ol>
+      </div>
+    <!-- /ko -->
+  </div>

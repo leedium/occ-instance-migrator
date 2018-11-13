@@ -1,0 +1,40 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "2200013": {
+    "id": "2200013",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m250598')}",
+      "sourceMedia": "m250598"
+    }
+  },
+  "2200014": {
+    "id": "2200014",
+    "padding": {
+      "paddingBottom": "10",
+      "paddingLeft": "10",
+      "paddingRight": "10",
+      "paddingTop": "10"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m250599')}",
+      "sourceMedia": "m250599"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+        <div class="room-title">Bathroom</div>
+        <div class="room-description">Extend the beauty of your bedroom into your bathroom with our wide range of co-ordinating bathroom décor. Our bathroom products include towels, bathroom sets, bathroom supplies and bathroom accessories – all of which have been carefully designed and styled to embody the quality and innovation that HomeChoice is famous for. For the latest bathroom products, buy online today at HomeChoice. For sale bathroom products, visit our sale section to find our quality bathroom items at even more affordable prices.</div>
+    </div>
+
+
+  </div>
+  <!-- /oc -->

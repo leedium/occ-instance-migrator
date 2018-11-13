@@ -1,0 +1,7 @@
+<div id="messageBox" class="cc-message-box">
+  <!-- Message Panel -->
+  <!-- ko with: messageBox -->
+  <div id="CC-messages" data-bind="slide: messageFlag" role="alert"></div>
+  <!-- /ko -->
+  <!-- Message Panel -->
+</div>

@@ -1,0 +1,13 @@
+{
+  "resources": {
+    "continueShoppingText": "Continue Shopping",
+    "orderSummaryText": "Order Summary",
+    "includingTaxText": "(including tax)",
+    "orderTotalText": "Order Total:",
+    "totalExcludingTaxText": "Total (excluding tax): ",
+    "delimiter": ":",
+    "salesTaxText": "Sales Tax:",
+    "subTotalText": "Sub-Total:",
+    "orderDoesNotExist": "Order does not exist."
+  }
+}

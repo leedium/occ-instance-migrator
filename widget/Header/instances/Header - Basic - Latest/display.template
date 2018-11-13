@@ -1,0 +1,91 @@
+<!--
+ /**
+  *
+  * Header Widget Template
+  *
+  */
+-->
+<div class="templateRegion" id="CC-headerWidget" data-oc-id="CC-headerWidget">
+  <div class="header-line">
+    <h1 class="label-hidden" data-bind="text: $data.site().siteInfo.name"></h1>
+    <div class="header-background">
+      <div id="header">
+        <div class="skip-content" data-bind="click: skipToContentHandler.bind($masterViewModel.regions())">
+          <button id="cc-btn-skipToContent-desktop" data-bind="widgetLocaleText: 'skipToContent'"></button>
+        </div>
+        <!-- ko if: initialized -->
+        <h2 class="label-hidden" data-bind="widgetLocaleText : 'siteNavigationHeader'"></h2>
+        <!-- /ko -->
+
+        <!-- oc layout: panels -->
+        <div class="row">
+          <div class="oc-panel col-md-6 col-sm-5" data-oc-id="panel-1">
+          </div>
+           <div class="oc-panel col-md-4 col-sm-5" data-oc-id="panel-2">
+            <!-- oc section: login-registration-v2 -->
+            <div data-bind="element: 'login-registration-v2'"></div>
+            <!-- /oc -->
+          </div>
+
+          <div class="oc-panel col-md-1 col-sm-1" data-oc-id="panel-3">
+            <!-- oc section: header-currency-picker -->
+            <div data-bind="element: 'header-currency-picker'"></div>
+            <!-- /oc -->
+          </div>
+
+           <div class="oc-panel col-md-1 col-sm-1" data-oc-id="panel-4">
+            <!-- oc section: header-language-picker -->
+            <div data-bind="element: 'header-language-picker'"></div>
+            <!-- /oc -->
+          </div>
+        </div>
+        
+        
+        <div class="row">
+          <div class="oc-panel col-md-8" data-oc-id="panel-4">
+          </div>
+          <div class="oc-panel col-md-4" data-oc-id="panel-5">
+           <!-- oc section: header-dropdown-minicart -->
+           <div data-bind="element: 'header-dropdown-minicart'"></div>
+           <!-- /oc -->
+          </div>
+        </div>
+        
+        
+        <div class="row">
+          <div class="oc-panel col-md-3" data-oc-id="panel-6">
+
+            <!-- oc section: header-logo -->
+            <div data-bind="element: 'header-logo'"></div>
+            <!-- /oc -->
+
+          </div>
+
+          <div class="oc-panel col-md-4" data-oc-id="panel-7">
+
+          </div>
+
+          <div class="oc-panel col-md-5" data-oc-id="panel-8">
+
+            <!-- oc section: search -->
+            <div data-bind="element: 'search'"></div>
+            <!-- /oc -->
+
+          </div>
+        </div>
+        <!-- /oc -->
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="col-xs-12 bottom-line">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,67 @@
+<!-- ko if: cart().items().length > 0 -->
+<div id="shippingAddress">
+    <fieldset data-bind="with: shippingAddress, disable: shippingCountriesPriceListGroup().length == 0">
+      <!-- Country row -->
+      <div class="row">
+        <div class="form-group col-sm-7">
+          <label class="control-label inline" for="CC-cartShippingDetails-scountry" 
+              data-bind="widgetLocaleText:'countryText'"></label>
+          <span class="text-danger visible-xs" id="CC-cartShippingDetails-scountry-row-error" 
+              data-bind="validationMessage: country" role="alert"></span>
+          <div class="control">
+            <select class="form-control" name="sCountry" 
+                id="CC-cartShippingDetails-scountry" aria-required="true"
+                data-bind="enable: $parent.shippingCountriesPriceListGroup().length, 
+                    options: $parent.shippingCountriesPriceListGroup, optionsText: 'displayName',
+                    optionsValue: 'countryCode', optionsCaption: $parent.resources().countryText, 
+                    value: selectedCountry, validatableTarget: country, 
+                    validationElement: country, event: { mousedown: $parent.disableLoadPersistedMethod}">
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-5 hidden-xs">
+          <p class="text-danger" id="CC-cartShippingDetails-scountry-error" data-bind="validationMessage: country" role="alert"></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-7">
+          <label class="control-label inline" for="CC-cartShippingDetails-sstate"
+              data-bind="widgetLocaleText:'stateText'"></label>
+          <span class="text-danger visible-xs" id="CC-cartShippingDetails-sstate-row-error" 
+              data-bind="validationMessage: state" role="alert"></span>
+          <div class="control">
+            <select class="form-control" name="sState" 
+                id="CC-cartShippingDetails-sstate" aria-required="true" 
+                data-bind="enable: stateList().length, options: stateList,
+                    optionsText: 'displayName', optionsValue: 'abbreviation',
+                    optionsCaption: $parent.resources().stateRegionText,
+                    value: selectedState, validatableTarget: state,
+                    validationElement: state, event: { mousedown: $parent.disableLoadPersistedMethod}">
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-5 hidden-xs">
+          <p class="text-danger" id="CC-cartShippingDetails-state-error" data-bind="validationMessage: state" role="alert"></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-7">
+          <label class="control-label inline" for="CC-cartShippingDetails-szipcode"
+              data-bind="widgetLocaleText:'zipCodeText'"></label>
+          <span class="text-danger visible-xs" id="CC-cartShippingDetails-szipcode-row-error" 
+              data-bind="validationMessage: postalCode" role="alert"></span>
+          <div class="control">
+            <input type="text" class="form-control" name="sZip" 
+                id="CC-cartShippingDetails-szipcode" aria-required="true"
+                data-bind="validatableValue: postalCode, 
+                    widgetLocaleText:{value:'zipCodeText', attr:'placeholder'},
+                    event: { mousedown: $parent.disableLoadPersistedMethod}">
+          </div>
+        </div>
+        <div class="col-sm-5 hidden-xs">
+          <p class="text-danger" id="CC-cartShippingDetails-szipcode-error" data-bind="validationMessage: postalCode" role="alert"></p>
+        </div>
+      </div>
+    </fieldset>
+</div>
+ <!-- /ko -->

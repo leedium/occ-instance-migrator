@@ -1,0 +1,19 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('search') -->
+  <form role="form" data-bind="submit: function(data, event) { $data['elements']['search'].handleSearch.bind($data['elements']['search'], $data['elements']['search'], event)() }, event: { keydown : $data['elements']['search'].handleKeyPress }">
+    <!-- ko with: $data['elements']['search'] -->
+      <label for="CC-headerWidget-Search" class="label-hidden" data-bind="widgetLocaleText :'searchLabel'">
+        Search
+      </label>
+      <div class="col-xs-12 pull-right input-group search">
+        <input id="CC-headerWidget-Search" type="text" class="form-control search-query" autocomplete="off"
+          data-bind="widgetLocaleText: {attr: 'placeholder', value: 'searchPlaceholder'}, value: searchText, valueUpdate: 'afterkeydown', onRender:initializeSearch.bind($parent), event: { focus: searchSelected}" />
+        <div class="input-group-btn">
+          <button type="submit" id="searchSubmit" class="btn btn-default form-control" data-bind="event: { keydown : hideSearchDropdown}">
+            <span class="sr-only" data-bind="widgetLocaleText :'searchButtonText'"></span>
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+      </div>
+    <!-- /ko -->
+  </form>
+<!-- /ko -->

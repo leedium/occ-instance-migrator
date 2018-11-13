@@ -1,0 +1,17 @@
+<div class="col-md-12" id="breadcrumbElement">
+
+	<div id="breadcrumbTrailTest"></div>
+
+	<div data-bind="foreach:breadcrumb" id="breadcrumbTrail">
+		<!-- ko if:$index() > 0 -->
+			<span data-bind="text: $parent.delimiter" class="delimiter"></span>		
+		<!-- /ko -->
+		<!-- ko if:$data.hasOwnProperty('url') -->
+			<a data-bind="text: label, ccLink: {url:url}"></a>
+		<!-- /ko -->
+		<!-- ko ifnot:$data.hasOwnProperty('url') -->
+			<span data-bind="text: label"></span>
+		<!-- /ko -->
+	</div>	
+
+</div>

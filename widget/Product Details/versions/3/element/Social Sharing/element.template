@@ -1,0 +1,18 @@
+<div class="row social-share-div">
+  <div class="col-xs-12">
+		<span data-bind="widgetLocaleText:'shareText'"></span>
+  </div>
+</div>
+<div class="row social-share-div">
+  <div class="col-xs-12">
+		<a data-bind="visible: $data.siteFbAppId(), attr : { href: '#', 'title' : $data.translate('shareOnFacebookButtonText') }, click: shareProductFbClick">
+		  <i class="fa fa-facebook-square fa-2x social-facebook-icon"></i>
+		</a>
+		<a data-bind="attr : { href: '#', 'title' : $data.translate('shareOnTwitterButtonText') }, click: shareProductTwitterClick">
+		  <i class="fa fa-twitter-square fa-2x social-twitter-icon"></i>
+		</a>
+    <a data-bind="attr : { href: '#', 'title' : $data.translate('shareByEmailButtonText') }, click: shareProductEmailClick">
+      <i class="fa fa-envelope fa-2x social-email-icon"></i>
+    </a>
+  </div>
+</div> 
