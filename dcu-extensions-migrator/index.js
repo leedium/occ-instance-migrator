@@ -377,28 +377,28 @@ async function extensionsTransfer() {
     // await deleteBranch('test');
     // await grabTarget();
     await addAll();
-    await commit();
-    await createBranch('deploy');
-    await createBranch('test');
-    await grabSource();
-    await addAll();
-    await commit();
-    await checkoutBranch('deploy');
-    await mergeBranch('test');
-    await getDiffs('test');
-    await processDiffs();
-    await makeTmpFolder();
-    await transferAll();
-    deleteFilePath([
-        './tmp',
-        '../.ccc',
-        '../element',
-        '../global',
-        '../snippets',
-        '../stack',
-        '../theme',
-        '../widget',
-    ]);
+    // await commit();
+    // await createBranch('deploy');
+    // await createBranch('test');
+    // await grabSource();
+    // await addAll();
+    // await commit();
+    // await checkoutBranch('deploy');
+    // await mergeBranch('test');
+    // await getDiffs('test');
+    // await processDiffs();
+    // await makeTmpFolder();
+    // await transferAll();
+    // deleteFilePath([
+    //     './tmp',
+    //     '../.ccc',
+    //     '../element',
+    //     '../global',
+    //     '../snippets',
+    //     '../stack',
+    //     '../theme',
+    //     '../widget',
+    // ]);
 }
 
 /**
