@@ -14,6 +14,12 @@
  * @dateCreated 12/11/2018
  * @description This tool helps transfer only changed files across instances
  *              using git and Oracle's DCU tools
+ *              Options
+ *              --dcu [gitPath]  transfers extensions / widgets
+ *                  --gitPath - target directory to use for git processing
+ *              --plsu [all | layoutName] transfers layouts
+ *                  --all transfers all layouts
+ *                  --layoutName {name} - name of layoutto transfer
  **/
 
 const {spawn} = require('child_process');
@@ -24,8 +30,7 @@ const git = require('simple-git');
 
 const config = require('./config');
 
-
-const {gitPath} = argv;
+const {gitPath, dcu, plsu, all, layoutName} = argv;
 const transferPaths = [];
 const pathsToBeRemoved = [];
 
@@ -42,11 +47,10 @@ function grabTarget() {
                 'CC_APPLICATION_KEY': config.apiKeyTarget
             })
         });
-        // const ls1 = spawn('./dcu_grab_target.sh');
         ls1.stdout.on('data', (chunk) => {
             console.log(chunk.toString('utf-8'))
         });
-        ls1.on('close', (code) => {
+        ls1.on('close', () => {
             console.log('...created target branch...');
             resolve();
         });
@@ -65,11 +69,10 @@ function grabSource() {
                 'CC_APPLICATION_KEY': config.apiKeySource
             })
         });
-        // const ls1 = spawn('./dcu_grab_source.sh');
         ls1.stdout.on('data', (chunk) => {
             console.log(chunk.toString('utf-8'));
         });
-        ls1.on('close', (code) => {
+        ls1.on('close', () => {
             console.log('...create source branch...');
             resolve();
         });
@@ -84,7 +87,7 @@ function grabSource() {
  */
 function checkoutBranch(name, callback) {
     return new Promise((resolve) => {
-        console.log(`checkoutBranch:${name}`)
+        console.log(`checkoutBranch:${name}`);
         git(gitPath).raw(['checkout', name], () => {
             setTimeout(() => {
                 resolve()
@@ -101,7 +104,7 @@ function checkoutBranch(name, callback) {
  */
 function mergeBranch(name, callback) {
     return new Promise((resolve) => {
-        console.log(`mergeBranch:,${name} into target`)
+        console.log(`mergeBranch:,${name} into target`);
         git(gitPath).raw(['merge', name, '-X', 'theirs'], () => {
             setTimeout(() => {
                 resolve()
@@ -116,7 +119,7 @@ function mergeBranch(name, callback) {
  */
 function addAll() {
     return new Promise((resolve) => {
-        console.log('staging...')
+        console.log('staging...');
         git(gitPath).raw(['add', '.'], () => {
             setTimeout(() => {
                 resolve()
@@ -132,7 +135,7 @@ function addAll() {
  */
 function commit() {
     return new Promise((resolve) => {
-        console.log('committing...')
+        console.log('committing...');
         git(gitPath).raw(['commit', '-m', 'committing latest changes'], () => {
             setTimeout(() => {
                 resolve()
@@ -149,7 +152,7 @@ function commit() {
  */
 function deleteBranch(name, callback) {
     return new Promise((resolve) => {
-        console.log(`deleteLocalBranch:,${name}`)
+        console.log(`deleteLocalBranch:,${name}`);
         git(gitPath).raw(['branch', '-D', name], () => {
             setTimeout(() => {
                 resolve()
@@ -166,7 +169,7 @@ function deleteBranch(name, callback) {
  */
 function createBranch(name, callback) {
     return new Promise((resolve) => {
-        console.log(`createBranch:${name}`)
+        console.log(`createBranch:${name}`);
         git(gitPath).raw(['checkout', '-B', name], () => {
             setTimeout(() => {
                 resolve()
@@ -182,12 +185,12 @@ function createBranch(name, callback) {
  */
 function getDiffs() {
     return new Promise((resolve) => {
-        console.log('formulating diffs')
+        console.log('formulating diffs');
         const ls1 = spawn('./diffs.sh');
         ls1.stdout.on('data', (chunk) => {
-            console.log(chunk.toString('utf-8'))
+            console.log(chunk.toString('utf-8'));
         });
-        ls1.on('close', (code) => {
+        ls1.on('close', () => {
             console.log('...created diff file...');
             resolve();
         });
@@ -233,7 +236,7 @@ function processDiffs() {
                 if (!transferPathArrayTemp[path]) {
                     counter += 1;
                     transferPathArrayTemp[`${path}`] = true;
-                    console.log(path, modType)
+                    console.log(path, modType);
                     transferPaths.push(path);
                     // console.log(counter, path)
                 }
@@ -245,7 +248,6 @@ function processDiffs() {
             }
         });
         rl.on('close', () => {
-            // console.log(transferPathArrayTemp)
             resolve();
         });
     })
@@ -255,22 +257,17 @@ function makeTmpFolder() {
     return new Promise((resolve) => {
         fs.ensureDirSync('./tmp/.ccc');
         fs.copySync(`../.ccc`, `./tmp/.ccc`);
-
-        console.log(pathsToBeRemoved)
-
-        deleteFilePath(pathsToBeRemoved.map( path => `./tmp/${path}`));
-        deleteFilePath(pathsToBeRemoved.map( path => `./tmp/.ccc/${path}`));
-
+        console.log(pathsToBeRemoved);
+        deleteFilePath(pathsToBeRemoved.map(path => `./tmp/${path}`));
+        deleteFilePath(pathsToBeRemoved.map(path => `./tmp/.ccc/${path}`));
         transferPaths.map((path) => {
             const fa = path.split('/');
             const f = fa.slice(0, fa.length).join('/');
             fs.ensureDirSync(`./tmp/${f}`);
-
-            console.log(f, `../${path}`)
+            console.log(f, `../${path}`);
             try {
                 fs.copySync(`../${path}`, `./tmp/${f}`);
             } catch (err) {
-                // console.log(err)
             }
         });
         resolve();
@@ -282,17 +279,20 @@ function makeTmpFolder() {
  * @param pathsToBeRemoved - Array
  */
 function deleteFilePath(pathsToBeRemoved) {
-    console.log('Removing...', pathsToBeRemoved)
+    console.log('Removing...', pathsToBeRemoved);
     pathsToBeRemoved.map((item) => {
         fs.removeSync(item);
     });
 }
 
-
+/**
+ * Transfers all extension from source instance to target instance
+ * @returns {Promise<any>}
+ */
 function transferAll() {
     process.chdir('./tmp');
     return new Promise((resolve) => {
-        console.log(`transferring ...`)
+        console.log(`Transferring all extensions start...`);
         const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', config.dcuServerTarget, '-k', config.apiKeyTarget], {
             env: Object.assign({}, process.env, {
                 'CC_APPLICATION_KEY': config.apiKeyTarget
@@ -304,51 +304,123 @@ function transferAll() {
         ls1.stderr.on('data', (chunk) => {
             console.log('Error:', chunk.toString());
         });
-        ls1.on('close', (code) => {
+        ls1.on('close', () => {
             console.log(`... target updated`);
             resolve();
         });
     })
 }
 
+/**
+ * Transfers a Single Page Layout from source to target instance
+ */
+function plsuTransferSingle() {
 
+    if (typeof layoutName === 'undefined') {
+        throw new Error('--layoutName is not defined');
+    }
+    console.log(`Transfering layout:${layoutName} start...`);
+
+    const plsuSpawn = spawn('plsu', [
+        '--transfer',
+        '--node', config.dcuServerSource,
+        '--applicationKey', config.apiKeySource,
+        '--name', layoutName,
+        '--destinationNode', config.dcuServerTarget,
+        '--destinationApplicationKey', config.apiKeyTarget
+    ]);
+    plsuSpawn.stdout.on('data', (chunk) => {
+        console.log(chunk.toString('utf-8'));
+    });
+    plsuSpawn.stderr.on('data', (chunk) => {
+        console.log(chunk);
+    });
+    plsuSpawn.on('close', () => {
+        console.log('Transfer complete.');
+    });
+}
+
+/**
+ * Transfers All Page Layouts from source to target instance
+ */
+function plsuTransferAll() {
+    console.log('TransferAll page layouts start...');
+    const plsuSpawn = spawn('plsu', [
+        '--transfer',
+        '--node', config.dcuServerSource,
+        '--applicationKey', config.apiKeySource,
+        '--all',
+        '--destinationNode', config.dcuServerTarget,
+        '--destinationApplicationKey', config.apiKeyTarget
+    ]);
+    plsuSpawn.stdout.on('data', (chunk) => {
+        console.log(chunk.toString('utf-8'));
+    });
+    plsuSpawn.stderr.on('data', (chunk) => {
+        console.log(chunk.toString('utf-8'));
+    });
+    plsuSpawn.on('close', () => {
+        console.log('TransferAll page layouts complete.');
+    });
+}
+
+/**
+ * Executes extesion tasks
+ * @returns {Promise<void>}
+ */
+async function extensionsTransfer() {
+    if (typeof gitPath === 'undefined') {
+        throw new Error('--gitPath is not defined');
+    }
+    // await checkoutBranch('master');
+    // await deleteBranch('deploy');
+    // await deleteBranch('test');
+    // await grabTarget();
+    await addAll();
+    await commit();
+    await createBranch('deploy');
+    await createBranch('test');
+    await grabSource();
+    await addAll();
+    await commit();
+    await checkoutBranch('deploy');
+    await mergeBranch('test');
+    await getDiffs('test');
+    await processDiffs();
+    await makeTmpFolder();
+    await transferAll();
+    deleteFilePath([
+        './tmp',
+        '../.ccc',
+        '../element',
+        '../global',
+        '../snippets',
+        '../stack',
+        '../theme',
+        '../widget',
+    ]);
+}
+
+/**
+ * Entry method to start the process
+ * @returns {Promise<void>}
+ */
 async function start() {
     try {
-        // await checkoutBranch('master');
-        // await deleteBranch('deploy');
-        // await deleteBranch('test');
-        // await grabTarget();
-        // await addAll();
-        // await commit();
-        // await createBranch('deploy');
-        // await createBranch('test');
-        // await grabSource()
-        // await addAll();
-        // await commit();
-        // await checkoutBranch('deploy');
-        // await mergeBranch('test');
-        // await getDiffs('test');
-        // await processDiffs();
-        // await makeTmpFolder();
-        // await transferAll();
-        deleteFilePath([
-            './tmp',
-            '../.ccc',
-            '../element',
-            '../global',
-            '../snippets',
-            '../stack',
-            '../theme',
-            '../widget',
-        ])
-        // await commit();
+        if (plsu) {
+            if (all) {
+                plsuTransferAll();
+            } else {
+                plsuTransferSingle();
+            }
+        }
+        else if (dcu) {
+            extensionsTransfer();
+        }
     }
     catch (err) {
-        console.log(err)
+        console.log(err);
     }
 }
 
 start();
-
-
-

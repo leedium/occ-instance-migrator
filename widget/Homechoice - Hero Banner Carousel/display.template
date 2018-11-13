@@ -1,0 +1,68 @@
+<div class="hc-hero-banner-carousel" data-bind="css:cssClasses(), style:{width:bannerWidth(),marginLeft:bannerOffset()}">
+    <div data-bind="attr:{'id': $data.id(), 'data-interval':3000, 'data-wrap': true}" class="carousel slide">
+        <ol class="carousel-indicators" data-bind="foreach: new Array(parseInt(3))">
+            <li data-bind="{css:{active: $index() === 0 }, attr:{'data-target': '#'+$parent.id(),'data-slide-to':$index()}}"></li>
+        </ol>
+        <div class="carousel-inner">
+            <!-- oc layout: panels -->
+            <div class="row">
+
+                <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+                    <!-- oc section: rich-text -->
+                    <span data-bind="element: 'rich-text'"></span>
+                    <!-- /oc -->
+
+                    <!-- oc section: heroBannerImage -->
+                    <div data-bind="element: 'heroBannerImage'"></div>
+                    <!-- /oc -->
+
+                </div>
+
+
+            </div>
+
+            <div class="row">
+
+                <div class="oc-panel col-md-12" data-oc-id="panel-1-0">
+                    <!-- oc section: rich-text -->
+                    <span data-bind="element: 'rich-text'"></span>
+                    <!-- /oc -->
+
+                    <!-- oc section: heroBannerImage -->
+                    <div data-bind="element: 'heroBannerImage'"></div>
+                    <!-- /oc -->
+
+                </div>
+
+
+            </div>
+
+            <div class="row">
+
+                <div class="oc-panel col-md-12" data-oc-id="panel-2-0">
+                    <!-- oc section: rich-text -->
+                    <span data-bind="element: 'rich-text'"></span>
+
+                    <!-- /oc -->
+
+                    <!-- oc section: heroBannerImage -->
+                    <div data-bind="element: 'heroBannerImage'"></div>
+                    <!-- /oc -->
+
+                </div>
+
+
+            </div>
+            <!-- /oc -->
+
+        </div>
+        <a class="left carousel-control"data-bind="attr:{href: '#this-carousel-id-'+$data.id()}">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <div class="sr-only" data-bind="widgetLocaleText: 'previousBannerText'"></div>
+        </a>
+        <a class="right carousel-control" data-slide="next" data-bind="attr:{href: '#this-carousel-id-'+$data.id()}">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <div class="sr-only" data-bind="widgetLocaleText: 'nextBannerText'"></div>
+        </a>
+    </div>
+</div>

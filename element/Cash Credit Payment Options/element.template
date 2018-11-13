@@ -1,0 +1,18 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty($elementInstance.type) -->
+<!-- ko if: (showStockStatus() && stockStatus() && stockState()==='IN_STOCK') && $data.elements[$elementInstance.type].sizeSelected()-->
+<div class="row">
+    <div class="product-details-credit-options">
+        <div class="control-group col-xs-12">
+            <label data-bind="visible: $data.elements[$elementInstance.type].paymentOptionList().length > 0 " class="control-label product-details-credit-options-label" data-bind=" text: $data.site().extensionSiteSettings['productDetailsCreditOptionsSettings'].titleLabel, attr: {for: 'productCreditOptions'}">Choose Payment</label>
+        </div>
+        <div class="col-xs-12">
+            <ul class="product-details-credit-options--list clearfix" data-bind="foreach: $data.elements[$elementInstance.type].paymentOptionList()">
+                <li class="col-xs-12 col-sm-4"><input name="creditPaymentSelections" type="radio" data-bind="checked: $parent.elements[$elementInstance.type].paymentOption, click: $parent.elements[$elementInstance.type].onPaymentItemSelected.bind($parent), attr:{'value':$data.id, 'id': 'creditOpt'+ $index()}">
+                    <label data-bind="'text':$data.label, attr:{'for':'creditOpt'+ $index()}"></label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /ko -->
+<!-- /ko -->

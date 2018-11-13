@@ -1,0 +1,102 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1200001": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1200001",
+    "image": {
+      "altText": "HomeChoice Logo",
+      "altTextId": "1300004",
+      "isProductImage": false,
+      "src": "/file/v8678431166316353417/general/hc-logo-white.png",
+      "titleText": "HomeChoice",
+      "titleTextId": "1300005",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1200002": {
+    "id": "1200002",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m130001')}",
+      "sourceMedia": "m130001"
+    }
+  }
+}} --><!-- /ko -->
+
+<!--
+ /**
+  *
+  * Header Widget Template
+  *
+  */
+-->
+<div class="templateRegion" id="CC-headerWidget" data-oc-id="CC-headerWidget">
+  <div class="header-line">
+    <h1 class="label-hidden" data-bind="text: $data.site().siteInfo.name"></h1>
+    <div class="header-background">
+      <div id="header">
+        <div class="skip-content" data-bind="click: skipToContentHandler">
+          <button id="cc-btn-skipToContent-desktop" data-bind="widgetLocaleText: 'skipToContent'"></button>
+        </div>
+        <!-- ko if: initialized -->
+        <h2 class="label-hidden" data-bind="widgetLocaleText : 'siteNavigationHeader'"></h2>
+        <!-- /ko -->
+
+        <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '1200001'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-5" data-oc-id="panel-0-1">
+
+    </div>
+
+
+    <div class="oc-panel col-md-4" data-oc-id="panel-0-2">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1200002'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="col-xs-12 bottom-line">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

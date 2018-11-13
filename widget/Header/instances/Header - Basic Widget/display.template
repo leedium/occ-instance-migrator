@@ -1,0 +1,49 @@
+<!--
+ /**
+  *
+  * Header Widget Template
+  *
+  */
+-->
+<div class="templateRegion" id="CC-headerWidget" data-oc-id="CC-headerWidget">
+  <div class="header-line">
+    <h1 class="label-hidden" data-bind="text: $data.site().siteInfo.name"></h1>
+    <div class="header-background">
+      <div id="header">
+        <div class="skip-content" data-bind="click: skipToContentHandler">
+          <button id="cc-btn-skipToContent-desktop" data-bind="widgetLocaleText: 'skipToContent'"></button>
+        </div>
+        <!-- ko if: initialized -->
+        <h2 class="label-hidden" data-bind="widgetLocaleText : 'siteNavigationHeader'"></h2>
+        <!-- /ko -->
+
+        <!-- oc layout: panels -->
+        <div class="row">
+          <div class="oc-panel col-md-3" data-oc-id="panel-1">
+
+            <!-- oc section: header-logo -->
+            <div data-bind="element: 'header-logo'"></div>
+            <!-- /oc -->
+
+          </div>
+
+          <div class="oc-panel col-md-9" data-oc-id="panel-2">
+
+          </div>
+        </div>
+        <!-- /oc -->
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="col-xs-12 bottom-line">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

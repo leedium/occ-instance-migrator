@@ -1,0 +1,26 @@
+{
+  "widgetDescriptorName": "collection",
+  "properties": [
+    {
+      "defaultValue": "",
+      "name": "collectionId",
+      "pattern": "^[a-zA-Z0-9-_]+$",
+      "id": "collectionId",
+      "type": "stringType",
+      "helpTextResourceId": "collectionIdHelpText",
+      "labelResourceId": "collectionIdTextLabel",
+      "required": true
+    },
+    {
+      "defaultValue": "",
+      "name": "fields",
+      "pattern": "^[a-zA-Z0-9-_,.()]+$",
+      "id": "fields",
+      "type": "stringType",
+      "helpTextResourceId": "collectionFieldsRequiredHelpText",
+      "labelResourceId": "collectionFieldsRequiredLabel",
+      "required": false,
+      "maxLength": 5000
+    }
+  ]
+}

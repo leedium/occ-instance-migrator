@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="control-group col-xs-3">
+    <label class="control-label" for="CC-prodDetails-quantity"><span data-bind="widgetLocaleText: 'itemQuantityLabelText'"></span>:</label>
+  </div>
+  <div class="col-sm-2 col-xs-4">
+    <input id="CC-prodDetails-quantity" type="text" class="cc-numericField form-control"
+           data-bind="textInput: itemQuantity"></input>
+  </div>
+  <!-- ko if: variantOptionsArray().length == 0 || selectedSku -->
+  <div class="notify col-xs-6">
+    <span id="CC-prodDetails-quantity-itemError" class="text-danger" role="alert" aria-live="assertive" data-bind="validationMessage: itemQuantity"></span>
+  </div>
+  <!-- /ko -->
+</div>

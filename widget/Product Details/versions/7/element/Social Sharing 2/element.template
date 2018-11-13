@@ -1,0 +1,21 @@
+<div class="row social-share-div">
+  <div class="col-xs-12">
+  <span data-bind="widgetLocaleText:'shareText'"></span>
+  </div>
+</div>
+<div class="row social-share-div">
+  <div class="col-xs-12">
+    <a data-bind="visible: $data.siteFbAppId(), attr : { href: '#', 'title' : $data.translate('shareOnFacebookButtonText') }, click: shareProductFbClick">
+      <img src="/file/ccimg/icon32_facebook.png" data-bind="attr : { 'alt' : $data.translate('shareOnFacebookButtonText') }" width="32px" height="32px" />
+    </a>
+    <a data-bind="attr : { href: '#', 'title' : $data.translate('shareOnTwitterButtonText') }, click: shareProductTwitterClick">
+      <img src="/file/ccimg/icon32_twitter.png" data-bind="attr : { 'alt' : $data.translate('shareOnTwitterButtonText') }" width="32px" height="32px" />
+    </a>
+    <a data-bind="attr : { href: '#', 'title' : $data.translate('shareOnPinterestButtonText') }, click: shareProductPinterestClick" data-pin-do="buttonPin" data-pin-tall="true" data-pin-round="true">
+      <img src="/file/ccimg/icon32_pinterest.png" data-bind="attr : { 'alt' : $data.translate('shareOnPinterestButtonText') }" width="32px" height="32px" />
+    </a>
+    <a data-bind="attr : { href: '#', 'title' : $data.translate('shareByEmailButtonText') }, click: shareProductEmailClick">
+      <img src="/file/ccimg/icon32_email.png" data-bind="attr : { 'alt' : $data.translate('shareByEmailButtonText') }" width="32px" height="32px" />
+    </a>
+  </div>
+</div> 

@@ -1,0 +1,7 @@
+{
+  "configuration": {
+    "isOneItemRedirectEnabled": false,
+    "listType": "search"
+  },
+  "displayName": "hc.Search.Result.One.Item.Redirect"
+}

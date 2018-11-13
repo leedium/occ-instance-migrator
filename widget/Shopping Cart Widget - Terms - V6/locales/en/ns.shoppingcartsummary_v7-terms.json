@@ -1,0 +1,26 @@
+{
+  "resources": {
+    "buttonContinueShopping": "Continue Shopping",
+    "atTheRateText": "@",
+    "itemQuantity": "__productName__ Quantity",
+    "totalTableSubTotal": "Sub-Total:",
+    "placeHolderSelect": "Select Free Gift",
+    "totalTableSummary": "Shopping cart totals.",
+    "cartHeader": "Your Shopping Cart",
+    "itemHeaderItem": "Item",
+    "gwpItemNotAvailable": "Promotion free gift is not available at this time.",
+    "buttonReconfigure": "Edit",
+    "changeButton": "Change",
+    "instockText": "In stock",
+    "itemHeaderItemTotal": "Item Total",
+    "includingTaxText": "(including tax)",
+    "cartEmptyHeader": "Your cart is empty.",
+    "totalTableTotal": "Total:",
+    "outofstockText": "Out of stock",
+    "reconfigureText": "Reconfigure",
+    "buttonRemoveItem": "Remove",
+    "itemHeaderItemPrice": "Price",
+    "itemHeaderQuantity": "Quantity",
+    "buttonUpdateQuantity": "Update"
+  }
+}

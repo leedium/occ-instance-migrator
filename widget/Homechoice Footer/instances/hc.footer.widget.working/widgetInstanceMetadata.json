@@ -1,0 +1,6 @@
+{
+  "configuration": {
+    "endpointUrl": "https://www.pages03.net/homechoice/hcWebsite_Signup/Website_Signup?Email=$EMAIL_ADDRESS&formSourceName=StandardForm&sp_exp=yes&NameSource_Campaign=Website_Signup"
+  },
+  "displayName": "hc.footer.widget.working"
+}

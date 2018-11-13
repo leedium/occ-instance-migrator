@@ -1,0 +1,26 @@
+{
+  "widgetDescriptorName": "hrContentBlockRow",
+  "properties": [
+    {
+      "defaultValue": "3",
+      "id": "panelCount",
+      "type": "stringType",
+      "helpTextResourceId": "panelCountHelp",
+      "labelResourceId": "panelCountLabel"
+    },
+    {
+      "defaultValue": false,
+      "id": "fullWidth",
+      "type": "booleanType",
+      "helpTextResourceId": "fullWidthHelp",
+      "labelResourceId": "fullWidthLabel"
+    },
+    {
+      "defaultValue": "3000",
+      "id": "interval",
+      "type": "stringType",
+      "helpTextResourceId": "intervalHelp",
+      "labelResourceId": "intervalLabel"
+    }
+  ]
+}

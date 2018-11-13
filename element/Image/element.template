@@ -1,0 +1,14 @@
+<!-- ko with: $elementInstance -->
+  <!-- ko if: ($data.hasOwnProperty('config') && $data.id !== 'id') -->
+  <div class="cc-image" data-bind="style: {'text-align': config.horizontalAlignment.horizontalAlignment}">
+    <!-- ko if: (config.image.link && config.image.link !== '') -->
+    <a data-bind="attr: {href: config.image.link}">
+      <img data-bind="attr: {src: config.image.src, alt: config.image.altText, title: config.image.titleText}, style: {borderWidth: config.border.borderWidth + 'px', borderColor: config.border.borderColor, borderStyle: 'solid', paddingTop: config.padding.paddingTop + 'px', paddingBottom: config.padding.paddingBottom + 'px', paddingLeft: config.padding.paddingLeft + 'px', paddingRight: config.padding.paddingRight + 'px'}">
+    </a>
+    <!-- /ko -->
+    <!-- ko ifnot: (config.image.link && config.image.link !== '') -->
+      <img data-bind="attr: {src: config.image.src, alt: config.image.altText, title: config.image.titleText}, style: {borderWidth: config.border.borderWidth + 'px', borderColor: config.border.borderColor, borderStyle: 'solid', paddingTop: config.padding.paddingTop + 'px', paddingBottom: config.padding.paddingBottom + 'px', paddingLeft: config.padding.paddingLeft + 'px', paddingRight: config.padding.paddingRight + 'px'}">
+    <!-- /ko -->
+  </div>
+  <!-- /ko -->
+<!-- /ko -->
