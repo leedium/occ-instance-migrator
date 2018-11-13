@@ -370,7 +370,7 @@ function plsuTransferAll() {
     });
 }
 
-function clean() {
+async function clean() {
     deleteFilePath([
         './tmp',
         '../.ccc',
@@ -381,6 +381,8 @@ function clean() {
         '../theme',
         '../widget',
     ]);
+    await addAll();
+    await commit();
 }
 
 /**
@@ -391,7 +393,7 @@ async function extensionsTransfer() {
     if (typeof gitPath === 'undefined') {
         throw new Error('--gitPath is not defined');
     }
-    // clean();
+    clean();
     // await checkoutBranch('master');
     // await deleteBranch('deploy');
     // await deleteBranch('test');
@@ -401,8 +403,8 @@ async function extensionsTransfer() {
     // await createBranch('deploy');
     // await createBranch('test');
     // await grabSource();
-    await addAll();
-    await commit();
+    // await addAll();
+    // await commit();
     // await checkoutBranch('deploy');
     // await mergeBranch('test');
     // await getDiffs('test');
