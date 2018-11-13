@@ -16,5 +16,5 @@ migrate.sh
 .ccc/
 *.diff
 
-dcu-extenstins-migrator/whatchanged.txt
+dcu-extenstions-migrator/whatchanged.txt
 
