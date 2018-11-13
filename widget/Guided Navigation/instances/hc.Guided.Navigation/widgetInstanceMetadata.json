@@ -1,7 +1,0 @@
-{
-  "configuration": {
-    "maxRefinementCount": "10",
-    "maxDimensionCount": "10"
-  },
-  "displayName": "hc.Guided.Navigation"
-}
