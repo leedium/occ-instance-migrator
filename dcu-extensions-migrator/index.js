@@ -41,7 +41,7 @@ const pathsToBeRemoved = [];
 function grabTarget() {
     process.chdir(gitPath);
     return new Promise((resolve) => {
-        console.log('GRABBING TARGET (currently deployed stable)');
+        console.log('GRABBING TARGET (currently deployed stable)', process.cwd());
         const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerTarget], {
             env: Object.assign({}, process.env, {
                 'CC_APPLICATION_KEY': config.apiKeyTarget
@@ -64,9 +64,8 @@ function grabTarget() {
  * @returns {Promise<any>}
  */
 function grabSource() {
-    // process.chdir(gitPath);
     return new Promise((resolve) => {
-        console.log('GRABBING SOURCE (latest changes)');
+        console.log('GRABBING SOURCE (latest changes)', process.cwd());
         const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerSource], {
             env: Object.assign({}, process.env, {
                 'CC_APPLICATION_KEY': config.apiKeySource
@@ -93,7 +92,7 @@ function grabSource() {
 function checkoutBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`checkoutBranch:${name}`);
-        git(gitPath).raw(['checkout', name], () => {
+        git('.').raw(['checkout', name], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -110,7 +109,7 @@ function checkoutBranch(name, callback) {
 function mergeBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`mergeBranch:,${name} into target`);
-        git(gitPath).raw(['merge', name, '-X', 'theirs'], () => {
+        git('.').raw(['merge', name, '-X', 'theirs'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -122,10 +121,10 @@ function mergeBranch(name, callback) {
  * Performes a git add. Add all files
  * @returns {Promise<any>}
  */
-function addAll(path) {
+function addAll() {
     return new Promise((resolve) => {
         console.log('addAll...');
-        git(path).raw(['add', '.'], () => {
+        git('.').raw(['add', '.'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -138,10 +137,10 @@ function addAll(path) {
  * Performs a git commit
  * @returns {Promise<any>}
  */
-function commit(path) {
+function commit() {
     return new Promise((resolve) => {
         console.log('commit...');
-        git(path).raw(['commit', '-m', 'committing latest changes'], () => {
+        git('.').raw(['commit', '-m', 'committing latest changes'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -158,7 +157,7 @@ function commit(path) {
 function deleteBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`deleteLocalBranch:,${name}`);
-        git(gitPath).raw(['branch', '-D', name], () => {
+        git('.').raw(['branch', '-D', name], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -175,7 +174,7 @@ function deleteBranch(name, callback) {
 function createBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`createBranch:${name}`);
-        git(gitPath).raw(['checkout', '-B', name], () => {
+        git('.').raw(['checkout', '-B', name], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -408,9 +407,9 @@ async function extensionsTransfer() {
     await deleteBranch('test');
     console.log(process.cwd())
     await grabTarget();
-    await addAll('.');
+    await addAll();
     console.log(process.cwd())
-    await commit('.');
+    await commit();
     console.log(process.cwd())
     await createBranch('deploy');
     console.log(process.cwd())
@@ -418,9 +417,9 @@ async function extensionsTransfer() {
     console.log(process.cwd())
     await grabSource();
     console.log(process.cwd())
-    await addAll('.');
+    await addAll();
     console.log(process.cwd())
-    await commit('.');
+    await commit();
     console.log(process.cwd())
     await checkoutBranch('deploy');
     console.log(process.cwd())
@@ -438,7 +437,7 @@ async function extensionsTransfer() {
  * @returns {Promise<void>}
  */
 async function start() {
-    console.log(process.cwd())
+    process.chdir(gitPath)
     try {
         if (plsu) {
             if (all) {
