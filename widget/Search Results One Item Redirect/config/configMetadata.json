@@ -5,9 +5,9 @@
       "defaultValue": true,
       "name": "isOneItemRedirectEnabled",
       "id": "isOneItemRedirectEnabled",
-      "type": "booleanType",
       "helpTextResourceId": "shouldUseOneItemRedirectHelpText",
-      "labelResourceId": "shouldUseOneItemRedirectTextLabel"
+      "labelResourceId": "shouldUseOneItemRedirectTextLabel",
+      "type": "booleanType"
     }
   ]
 }
