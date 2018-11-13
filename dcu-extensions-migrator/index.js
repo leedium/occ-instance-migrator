@@ -51,7 +51,7 @@ function grabTarget() {
             console.log(chunk.toString('utf-8'))
         });
         ls1.on('close', () => {
-            console.log('...created target branch...');
+            console.log('...target branch download completed.');
             setTimeout(() => {
                 resolve()
             }, config.taskDelay);
@@ -75,7 +75,7 @@ function grabSource() {
             console.log(chunk.toString('utf-8'));
         });
         ls1.on('close', () => {
-            console.log('...create source branch...');
+            console.log('...source branch download completed');
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -407,24 +407,25 @@ async function extensionsTransfer() {
     await deleteBranch('test');
     console.log(process.cwd())
     await grabTarget();
-    await addAll();
-    console.log(process.cwd())
-    await commit();
-    console.log(process.cwd())
-    await createBranch('deploy');
-    console.log(process.cwd())
-    await createBranch('test');
-    console.log(process.cwd())
-    await grabSource();
     console.log(process.cwd())
     await addAll();
     console.log(process.cwd())
     await commit();
-    console.log(process.cwd())
-    await checkoutBranch('deploy');
-    console.log(process.cwd())
-    await mergeBranch('test');
-    console.log(process.cwd())
+    // console.log(process.cwd())
+    // await createBranch('deploy');
+    // console.log(process.cwd())
+    // await createBranch('test');
+    // console.log(process.cwd())
+    // await grabSource();
+    // console.log(process.cwd())
+    // await addAll();
+    // console.log(process.cwd())
+    // await commit();
+    // console.log(process.cwd())
+    // await checkoutBranch('deploy');
+    // console.log(process.cwd())
+    // await mergeBranch('test');
+    // console.log(process.cwd())
     // await getDiffs();
     // await processDiffs();
     // await makeTmpFolder();
