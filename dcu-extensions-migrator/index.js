@@ -408,15 +408,15 @@ async function extensionsTransfer() {
         throw new Error('--gitPath is not defined');
     }
     await clean();
-    //
-    // await grabTarget();
-    // await addAll();
-    // await commit();
-    // await createBranch(TARGET_BRANCH);
-    // await createBranch(SOURCE_BRANCH);
-    // await grabSource();
-    // await addAll();
-    // await commit();
+
+    await grabTarget();
+    await addAll();
+    await commit();
+    await createBranch(TARGET_BRANCH);
+    await createBranch(SOURCE_BRANCH);
+    await grabSource();
+    await addAll();
+    await commit();
     // await checkoutBranch(SOURCE_BRANCH);
     // await mergeBranch(TARGET_BRANCH);
     // await getDiffs();
