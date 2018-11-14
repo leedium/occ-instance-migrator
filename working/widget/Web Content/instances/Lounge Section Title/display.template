@@ -1,0 +1,43 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "2200013": {
+    "id": "2200013",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m250598')}",
+      "sourceMedia": "m250598"
+    }
+  },
+  "2200014": {
+    "id": "2200014",
+    "padding": {
+      "paddingBottom": "10",
+      "paddingLeft": "10",
+      "paddingRight": "10",
+      "paddingTop": "10"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m250599')}",
+      "sourceMedia": "m250599"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: unknown-1 --><div class="room-title">Lounge</div>
+        <div class="room-description">Gorgeous lounge décor comes standard at HomeChoice. No matter what the size of your home, we have stylish lounge suites, couches, coffee tables and furnishings for you to create the lounge of your dreams. For the very latest, on-trend living room décor inspired by international designs, buy online today. Remember to check our sale section for lounge décor at even more affordable prices.</div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->

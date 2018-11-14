@@ -1,0 +1,15 @@
+<div id="CC-404-widget">
+  <div class="jumbotron">
+    <div id="CC-404-site404">
+      <span id="CC-404-error404" data-bind="widgetLocaleText: 'error404'"></span>
+      <span id="CC-404-title" data-bind="widgetLocaleText: 'title'"></span>    
+      <p>
+        <span id="CC-404-pageNotFoundText" data-bind="widgetLocaleText: 'pageNotFoundText'"></span>
+      </p>
+      <div class="row">
+        <button id="CC-404-lnkBack" data-bind="click: historyFind" class="cc-button-secondary pull-left"><span id="CC-404-spanBack" data-bind="widgetLocaleText: 'lnkBack'"></span></button>        
+        <a id="CC-404-lnkHome" data-bind="ccLink: homePageLink" class="cc-button-secondary pull-right"><span id="CC-404-spanHome" data-bind="widgetLocaleText: 'lnkHome'"></span></a>         
+      </div>
+    </div>
+  </div>
+</div>

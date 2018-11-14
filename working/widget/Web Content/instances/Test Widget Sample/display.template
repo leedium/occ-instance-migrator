@@ -1,0 +1,57 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1800026": {
+    "id": "1800026",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m200037')}",
+      "sourceMedia": "m200037"
+    }
+  },
+  "1800027": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1800027",
+    "image": {
+      "isProductImage": false,
+      "link": "http://www.homechoice.co.za",
+      "src": "/file/v5196149762773417445/general/Clearance_06.jpg",
+      "titleText": "HomeChoice",
+      "titleTextId": "2000027",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1800026'"></span>
+
+      <!-- /oc -->
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '1800027'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->

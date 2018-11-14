@@ -1,0 +1,7 @@
+<span role="alert" aria-atomic="true" aria-live="polite">
+  <span data-bind="widgetLocaleText:{custom: $elementInstance.textId, value: 'preorderableText', attr:'innerText'}"></span>
+  <!-- ko if: $data.availabilityDate() != null-->
+    <span data-bind="widgetLocaleText: 'availabilityDateText'"></span>
+    <span data-bind="ccDate: {date: $data.availabilityDate()}"></span>
+  <!-- /ko -->
+</span>

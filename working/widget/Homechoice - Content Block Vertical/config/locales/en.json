@@ -1,0 +1,24 @@
+{
+  "resources": {
+    "containerColsHelp": "# of Columns of the parent container. Optimizes images to load",
+    "mediaPathHelp": "Upload or select an image from the Media gallery.",
+    "openInNewWindowLabel": "Open in new window",
+    "ctaClickFullLabel": "Full Area click-through",
+    "jpgLabel": "JPG",
+    "openInNewWindowHelp": "Opens path in new window.",
+    "ctaRouteHelp": "URL Path for the CTA. Ex[internal]:/aboutus, Ex[external]: http://www.nba.com",
+    "mediaPathLabel": "Image",
+    "containerCols12Label": "1/1 (col-12)",
+    "imageTypeHelp": "Format of image to be displayed",
+    "containerCols4Label": "1/3 (col-4)",
+    "ctaRouteLabel": "CTA url/path",
+    "containerCols6Label": "1/2 (col-6)",
+    "containerCols3Label": "1/4 (col-3)",
+    "useHomeChoiceLinkHelp": "Uses ccLink. Set true if the destination resides in OCC environment ie: '/aboutus'",
+    "useHomeChoiceLinkLabel": "Use internal Homechoice link",
+    "pngLabel": "PNG",
+    "containerColsLabel": "Container cols",
+    "ctaClickFullHelp": "Set full area of the content block to be clicked.",
+    "imageTypeLabel": "Image Format"
+  }
+}

@@ -1,0 +1,7 @@
+<!-- ko if: isMorning -->
+	<h1>Good Morning!</h1>
+<!-- /ko -->
+
+<!-- ko ifnot: isMorning -->
+	<h1>Saluton Mondo!</h1>
+<!-- /ko -->

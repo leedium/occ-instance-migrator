@@ -1,0 +1,8 @@
+<!-- Full Product Details Element -->
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('product-fulldetails') -->
+<div class="full-product-details">
+  <a href="#" data-bind="click : $data.elements['product-fulldetails'].gotoFullProduct.bind(this)" id="CC-fullProductDetails-link">
+    <span id="CC-fullProductDetails-label" data-bind="widgetLocaleText: 'fullProductDetailsText'"></span>
+  </a>      
+</div>
+<!-- /ko -->

@@ -1,0 +1,24 @@
+{
+  "imports": [
+    "category",
+    "product",
+    "cart"
+  ],
+  "translations": [
+    {
+      "name": "Homechoice Collection Navigation (Mobile Enhanced)",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "defaultLayout": "hcCollectionNavigation_v3_lyt1",
+  "config": {
+    "catalogId": "cloudCatalog",
+    "fields": "",
+    "maxNoOfElements": "10",
+    "rootCategoryId": "rootCategory"
+  }
+}
