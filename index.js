@@ -416,13 +416,13 @@ async function clean() {
 async function extensionsTransfer() {
     await clean();
     await grabTarget();
-    // await createBranch(BRANCH_TARGET);
-    // await createBranch(BRANCH_SOURCE);
-    // await grabSource();
-    // await addAll();
-    // await commit();
-    // await checkoutBranch(BRANCH_TARGET);
-    // await mergeBranch(BRANCH_SOURCE);
+    await createBranch(BRANCH_TARGET);
+    await createBranch(BRANCH_SOURCE);
+    await grabSource();
+    await addAll();
+    await commit();
+    await checkoutBranch(BRANCH_TARGET);
+    await mergeBranch(BRANCH_SOURCE);
     // await getDiffs();
     // await processDiffs();
     // await makeTmpFolder();
