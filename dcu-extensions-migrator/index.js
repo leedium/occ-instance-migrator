@@ -104,7 +104,7 @@ function grabSource() {
 function checkoutBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`checkoutBranch:${name}`);
-        git(WORKING_FOLDER).raw(['checkout', name], () => {
+        git(gitPath).raw(['checkout', name], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -121,7 +121,7 @@ function checkoutBranch(name, callback) {
 function mergeBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`mergeBranch:,${name} into target`);
-        git(WORKING_FOLDER).raw(['merge', name, '-Xtheirs'], () => {
+        git(gitPath).raw(['merge', name, '-Xtheirs'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -136,7 +136,7 @@ function mergeBranch(name, callback) {
 function addAll() {
     return new Promise((resolve) => {
         console.log('addAll...');
-        git(WORKING_FOLDER).raw(['add', '.'], () => {
+        git(gitPath).raw(['add', '.'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -152,7 +152,7 @@ function addAll() {
 function commit() {
     return new Promise((resolve) => {
         console.log('commit...');
-        git(WORKING_FOLDER).raw(['commit', '-m', 'committing latest changes'], () => {
+        git(gitPath).raw(['commit', '-m', 'committing latest changes'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -169,7 +169,7 @@ function commit() {
 function deleteBranch(name) {
     return new Promise((resolve) => {
         console.log(`deleteLocalBranch:,${name}`);
-        git(WORKING_FOLDER).raw(['branch', '-D', name], () => {
+        git(gitPath).raw(['branch', '-D', name], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -186,7 +186,7 @@ function deleteBranch(name) {
 function createBranch(name) {
     return new Promise((resolve) => {
         console.log(`createBranch:${name}`);
-        git(WORKING_FOLDER).raw(['checkout', '-B', name], () => {
+        git(gitPath).raw(['checkout', '-B', name], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -405,7 +405,7 @@ async function clean() {
         '../theme',
         '../widget',
     ]);
-    await checkoutBranch('master');
+    await checkoutBranch(BRANCH_MASTER);
     await addAll();
     await commit();
     await deleteBranch(BRANCH_SOURCE);
@@ -420,9 +420,9 @@ async function clean() {
  */
 async function extensionsTransfer() {
     await clean();
-    await grabTarget();
-    await createBranch(BRANCH_TARGET);
-    await createBranch(BRANCH_SOURCE);
+    // await grabTarget();
+    // await createBranch(BRANCH_TARGET);
+    // await createBranch(BRANCH_SOURCE);
     // await grabSource();
     // await addAll();
     // await commit();

@@ -1,0 +1,234 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "200374": {
+    "id": "200374",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20430')}",
+      "sourceMedia": "m20430"
+    }
+  },
+  "200376": {
+    "id": "200376",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20432')}",
+      "sourceMedia": "m20432"
+    }
+  },
+  "200378": {
+    "id": "200378",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20434')}",
+      "sourceMedia": "m20434"
+    }
+  },
+  "200379": {
+    "id": "200379",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20436')}",
+      "sourceMedia": "m20436"
+    }
+  },
+  "200380": {
+    "id": "200380",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20438')}",
+      "sourceMedia": "m20438"
+    }
+  },
+  "200381": {
+    "id": "200381",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20440')}",
+      "sourceMedia": "m20440"
+    }
+  },
+  "200382": {
+    "id": "200382",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20442')}",
+      "sourceMedia": "m20442"
+    }
+  },
+  "300110": {"id": "300110"},
+  "300111": {"id": "300111"},
+  "300112": {"id": "300112"},
+  "400001": {
+    "id": "400001",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m40001')}",
+      "sourceMedia": "m40001"
+    }
+  },
+  "400019": {
+    "id": "400019",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m40017')}",
+      "sourceMedia": "m40017"
+    }
+  }
+}} --><!-- /ko -->
+
+
+
+<div class="hc-footer">
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '200374'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-9" data-oc-id="panel-1-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '200376'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-1-1">
+
+      <!-- oc section: email-signup -->
+            <div class="hc-footer--email-form">
+                <h6 class="hc-footer--email-title" data-bind="widgetLocaleText: 'emailTitle' "></h6>
+                <div data-bind="visible: !formSubmitted()">
+                    <form data-bind="submit: onEmailSignup">
+                        <input id="email" type="email">
+                        <button type="submit"><span class="fa fa-angle-right" aria-hidden="true"></span></button>
+                    </form>
+                    <!-- <p class="hc-footer--email-disclaimer" data-bind="{widgetLocaleText:'emailDisclaimerText'}"></p> -->
+
+                </div>
+                <p class="hc-footer--email-success" data-bind="{visible: formSubmitted(), widgetLocaleText:'emailSuccessText1'}"></p>
+                <p class="hc-footer--email-success" data-bind="{visible: formSubmitted(), widgetLocaleText:'emailSuccessText2'}"></p>
+            </div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-2-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '200378'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-2-1">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '200379'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-2-2">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '200380'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-2-3">
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-8" data-oc-id="panel-3-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '200381'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-4" data-oc-id="panel-3-1">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '400001'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>

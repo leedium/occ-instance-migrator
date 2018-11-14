@@ -1,0 +1,14 @@
+{
+  "resources": {
+    "endpointUrlHelp": "Path to the email submission endpoint. (Param: $EMAIL_ADDRESS)",
+    "widgetBackgroundColourHelp": "Background colour for the widget. Hex or colour name value (e.g. #000 or black)",
+    "titleColourHelp": "Colour for the main title on the email sign up widget. Hex or colour name value (e.g. #000 or black)",
+    "isCompactVersionHelp": "Determines if the widget will be stretched out or not for Desktop",
+    "titleColourLabel": "Title Colour",
+    "descriptionColourLabel": "Description Text Colour",
+    "endpointUrlLabel": "Endpoint URL",
+    "isCompactVersionLabel": "Compact Version Widget",
+    "widgetBackgroundColourLabel": "Widget Background Colour",
+    "descriptionColourHelp": "Colour for the description text on the email sign up widget. Hex or colour name value (e.g. #000 or black)"
+  }
+}

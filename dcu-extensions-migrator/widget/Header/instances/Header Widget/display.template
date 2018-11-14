@@ -1,0 +1,401 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "100001": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "100001",
+    "image": {
+      "altText": "Home Page",
+      "altTextId": "100001",
+      "isProductImage": false,
+      "link": "/home",
+      "src": "/file/v508827013114301438/general/Round.png",
+      "titleText": "HomeChoice",
+      "titleTextId": "100002",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "10"
+    }
+  },
+  "100002": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "100002",
+    "image": {
+      "isProductImage": false,
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "200007": {"id": "200007"},
+  "200012": {
+    "font": {"styles": {
+      "color": "#ffffff",
+      "display": "block"
+    }},
+    "id": "200012",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "200022": {"id": "200022"},
+  "200023": {
+    "id": "200023",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "18"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20015')}",
+      "sourceMedia": "m20015"
+    }
+  },
+  "200032": {
+    "id": "200032",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20029')}",
+      "sourceMedia": "m20029"
+    }
+  },
+  "200033": {
+    "id": "200033",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20031')}",
+      "sourceMedia": "m20031"
+    }
+  },
+  "200035": {"id": "200035"},
+  "200036": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "200036",
+    "image": {
+      "altTextId": "200007",
+      "isProductImage": false,
+      "link": "/home",
+      "src": "/file/v508827013114301438/general/Round.png",
+      "titleTextId": "200008",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "20"
+    }
+  },
+  "200050": {"id": "200050"},
+  "200051": {"id": "200051"},
+  "200065": {
+    "font": {"styles": {
+      "color": "#ffffff",
+      "display": "block",
+      "font-size": "0.8rem"
+    }},
+    "id": "200065",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "200066": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "200066",
+    "image": {
+      "altText": "Home Page",
+      "altTextId": "200018",
+      "isProductImage": false,
+      "link": "/home",
+      "src": "/file/v8678431166316353417/general/hc-logo-white.png",
+      "titleText": "HomeChoice",
+      "titleTextId": "200019",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "200260": {"id": "200260"},
+  "200261": {"id": "200261"},
+  "200262": {"id": "200262"},
+  "200271": {
+    "id": "200271",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m20290')}",
+      "sourceMedia": "m20290"
+    }
+  },
+  "300001": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "300001",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v7648374874237029848/general/logo.png",
+      "titleText": "logo_desktop",
+      "titleTextId": "300001",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "300002": {
+    "id": "300002",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m30001')}",
+      "sourceMedia": "m30001"
+    }
+  },
+  "300003": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "300003",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v8678431166316353417/general/hc-logo-white.png",
+      "titleText": "homechoice-logo",
+      "titleTextId": "300002",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "400075": {"id": "400075"},
+  "500100": {"id": "500100"},
+  "900108": {"id": "900108"},
+  "900109": {"id": "900109"},
+  "900110": {"id": "900110"},
+  "900111": {
+    "id": "900111",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m100195')}",
+      "sourceMedia": "m100195"
+    }
+  },
+  "900112": {
+    "id": "900112",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m100193')}",
+      "sourceMedia": "m100193"
+    }
+  },
+  "900113": {"id": "900113"},
+  "900133": {"id": "900133"},
+  "900134": {
+    "font": {"styles": {
+      "color": "#fefefe",
+      "display": "block"
+    }},
+    "id": "900134",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "900240": {
+    "font": {"styles": {
+      "color": "#fc0c0c",
+      "display": "block"
+    }},
+    "id": "900240",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+<!--
+ /**
+  *
+  * Header Widget Template
+  *
+  */
+-->
+
+
+<div class="templateRegion" id="CC-headerWidget" data-oc-id="CC-headerWidget">
+  <div class="header-line">
+    <h1 class="label-hidden" data-bind="text: $data.site().siteInfo.name"></h1>
+    <div class="header-background">
+      <div id="header">
+        <div class="skip-content" data-bind="click: skipToContentHandler.bind($masterViewModel.regions())">
+          <button id="cc-btn-skipToContent-desktop" data-bind="widgetLocaleText: 'skipToContent'"></button>
+        </div>
+        <!-- ko if: initialized -->
+        <h2 class="label-hidden" data-bind="widgetLocaleText : 'siteNavigationHeader'"></h2>
+        <!-- /ko -->
+
+        <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-0">
+
+      <!-- oc section: generic-text -->
+<p data-bind="element: 'generic-text',id: '900134'"></p>
+      <!-- /oc -->
+
+      <!-- oc section: hcCollectionNavHamburger --><div data-bind="element: 'hcCollectionNavHamburger'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-1">
+
+    </div>
+
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-0-2">
+
+      <!-- oc section: headerLoginRegistrationCredit_v1 --><div data-bind="element: 'headerLoginRegistrationCredit_v1'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-4" data-oc-id="panel-1-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '900112'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-1-1">
+
+    </div>
+
+
+    <div class="oc-panel col-md-4" data-oc-id="panel-1-2">
+
+      <!-- oc section: search -->
+            <div data-bind="element: 'search'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-1" data-oc-id="panel-1-3">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '900111'"></span>
+      <!-- /oc -->
+
+      <!-- oc section: header-dropdown-minicart -->
+        <!--<div data-bind="element: 'header-dropdown-minicart'"></div>-->
+      <!-- /oc -->
+
+      <!-- oc section: hcHeaderDropdownMinicart --><div data-bind="element: 'hcHeaderDropdownMinicart'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="col-xs-12 bottom-line">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

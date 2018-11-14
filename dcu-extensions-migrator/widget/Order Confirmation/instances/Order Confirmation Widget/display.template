@@ -1,0 +1,149 @@
+<div id="orderConfirmation">
+  <h2 data-bind="widgetLocaleText: 'orderConfirmationText'"></h2>
+  <hr />
+
+  <!-- ko if: confirmation -->
+  <!-- ko with: confirmation -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="well">
+        <!-- ko if: ($parent.isPending) -->
+        <span data-bind="widgetLocaleText: 'pendingMsg'"></span><br />
+        <!-- /ko -->
+        <!-- ko ifnot: ($parent.isPending) -->
+        <span data-bind="text: $parent.thankyouMsg"></span><br />
+        <span data-bind="widgetLocaleText: 'processingMsg'"></span><br />
+        <!-- /ko -->
+        <br />
+        <b data-bind="text: $parent.orderNumberMsg"></b>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 data-bind="widgetLocaleText: 'yourOrderText'"></h3>
+      <table data-bind="attr: { summary: $parent.yourOrderText }"
+        id="order-info" class="table">
+        <thead>
+          <tr>
+            <th data-bind="widgetLocaleText: 'itemText'" scope="row"></th>
+            <th data-bind="widgetLocaleText: 'quantityText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'itemTotalText'" class="pull-right" scope="col"></th>
+          </tr>
+        </thead>
+        <!-- ko with: shoppingCart -->
+        <tbody data-bind="foreach: items">
+          <tr class="item">
+            <td scope="row">
+              <span data-bind="text: displayName" class="name"></span>
+               <!-- ko foreach: variant -->
+                 <div>
+                   <!-- ko if: $data.optionValue -->
+                     <small>
+                       <span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+                       optionValue: $data.optionValue}}"></span>
+                     </small>
+                   <!-- /ko -->
+                 </div>
+               <!-- /ko -->
+            </td>
+            <td data-bind="ccNumber: quantity"></td>
+            <td data-bind="currency: {price: price, currencyObj: $parents[1].priceListGroup.currency}" class="pull-right"></td>
+          </tr>
+
+          <!-- ko with : $data.discountInfo -->
+            <!-- ko foreach : $data -->
+              <tr>
+                <td>
+                  <!-- ko ifnot: $data.coupon -->
+                    <small data-bind="attr: { id: 'CC-confirmation-itemDesc-' + $parents[1].productId + '-' + $index() }, text: promotionDesc"></small>
+                  <!-- /ko -->
+                  <!-- ko if : $data.coupon -->
+                    <small data-bind="attr: { id: 'CC-confirmation-itemDesc-' + $parents[1].productId + '-' + $index() }, widgetLocaleText : {value:'couponDisplayText', attr: 'innerText', params: {description: promotionDesc, code : coupon}}"></small>
+                  <!-- /ko -->
+                </td>
+              </tr>
+            <!-- /ko -->
+          <!-- /ko -->
+          
+          <!-- ko if : shippingSurchargeValue !== 0 -->
+            <tr>
+              <td>
+                <div data-bind="attr: { id: 'CC-confirmation-item-shipping-surcharge-' + $data.productId + '-' + $index() }">
+                  <div class="CC-confirmation-displayShippingSurcharge" data-bind="attr: { id: 'CC-confirmation-displayShippingSurcharge-' + $data.productId + '-' + $data.catRefId }">
+                    <span data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>
+                    <span data-bind="currency: {price: shippingSurchargeValue,
+                                  currencyObj: $parents[1].priceListGroup.currency, nullReplace: '0.00', prependNull: true},
+                                  attr: { id: 'CC-confirmation-item-shipping-surcharge-value-' + $data.productId + '-' + $data.catRefId }">
+                    </span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          <!-- /ko -->
+        </tbody>
+        <!-- /ko -->
+      </table>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 data-bind="widgetLocaleText: 'shippingAddressAndMethodText'"></h3>
+      <hr />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 summary-table">
+      <table role="presentation">
+        <tbody>
+          <tr>
+            <td data-bind="widgetLocaleText: 'shipToText'"
+              class="summary-table-title"></td>
+            <td>
+              <!-- ko with: shippingAddress -->
+              <span data-bind="widgetLocaleText : {value: 'fullName', attr: 'innerText', params: {firstName: firstName, lastName: lastName}}"></span><br />
+              <span data-bind="text: address1"></span>,<br />
+              <!-- ko if: address2 -->
+              <span data-bind="text: address2"></span>,<br />
+              <!-- /ko -->
+              <!-- ko if: state -->
+              <span data-bind="widgetLocaleText : {value: 'cityStatePostalCode', attr: 'innerText', params: {city: city, state: $parents[1].getStateDisplayName(country, state), postalCode: postalCode}}">
+              </span><br />
+              <!-- /ko -->
+              <!-- ko ifnot: state -->
+              <span data-bind="widgetLocaleText : {value: 'cityPostalCode', attr: 'innerText', params: {city: city, postalCode: postalCode}}">
+              </span><br />
+              <!-- /ko -->
+              <span data-bind="text: $parents[1].getCountryDisplayName(country)"></span><br />
+              <!-- /ko -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-6 summary-table">
+      <table role="presentation">
+        <tbody>
+          <tr>
+            <td data-bind="widgetLocaleText: 'shippingMethodText'"
+              class="summary-table-title"></td>
+            <td>
+              <span data-bind="text: shippingGroup.shippingMethodDescription">
+              </span>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- /ko -->
+  <!-- /ko -->
+  <!-- ko ifnot: confirmation -->
+  <span data-bind="widgetLocaleText: 'orderDoesNotExist'"></span>
+  <!-- /ko -->
+</div>

@@ -1,0 +1,24 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {"100009": {
+  "id": "100009",
+  "padding": {
+    "paddingBottom": "0",
+    "paddingLeft": "0",
+    "paddingRight": "0",
+    "paddingTop": "0"
+  },
+  "richText": {
+    "content": "${occ:localizedWebContent('m10008')}",
+    "sourceMedia": "m10008"
+  }
+}}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->

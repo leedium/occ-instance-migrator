@@ -1,0 +1,19 @@
+<!-- ko foreach: variantOptionsArray -->
+<div class="row">
+  <div class="control-group col-xs-3">
+    <label class="control-label" data-bind="attr: {for: 'CC-prodDetails-' + $data.optionId, id: 'CC-prodDetails-label-' + $data.optionId}, text: $data.optionDisplayName + ':'"></label>
+  </div>
+  <div class="col-sm-4 col-xs-8">
+    <!-- ko if: $data.optionCaption -->
+      <select class="form-control cc-skuDropdown" data-bind="validatableTarget: selectedOption, validationOptions: {decorateElement: false, decorateElementOnModified:  false}, options: optionValues, optionsText: 'key',
+          attr: {id: 'CC-prodDetails-' + $data.optionId}, optionsCaption: $data.optionCaption, value: $data.selectedOption, disable: $parent.disableOptions() || $data.disable">
+      </select>
+    <!-- /ko -->
+    <!-- ko ifnot: $data.optionCaption -->
+      <select class="form-control cc-skuDropdown" data-bind="validatableTarget: selectedOption, validationOptions: {decorateElement: false, decorateElementOnModified:  false}, options: optionValues, optionsText: 'key',
+          attr: {id: 'CC-prodDetails-' + $data.optionId}, value: $data.selectedOption, disable: $parent.disableOptions() || $data.disable">
+      </select>
+    <!-- /ko -->
+  </div>
+</div>
+<!-- /ko -->

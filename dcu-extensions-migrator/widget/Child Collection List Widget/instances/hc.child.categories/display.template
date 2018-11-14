@@ -1,0 +1,126 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "500145": {
+    "id": "500145",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50155')}",
+      "sourceMedia": "m50155"
+    }
+  },
+  "500148": {
+    "id": "500148",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50157')}",
+      "sourceMedia": "m50157"
+    }
+  },
+  "500152": {
+    "id": "500152",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50161')}",
+      "sourceMedia": "m50161"
+    }
+  }
+}} --><!-- /ko -->
+
+<!--<pre style="display: none;" data-bind="text: console.log('...' + $data)"></pre>-->
+
+<div id="cc-collection" data-oc-id="cc-collection">
+    <div class="row">
+        <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+            <!-- Check if we have more than one category image. Convention dictates that the second image is the banner image -->
+            <div data-bind="if: $data.category().categoryImages.length > 1">
+                <div class="category-banner" style="margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);">
+                    <img
+                        class="img-responsive center-block"
+                        data-bind="
+                            imageSource: {
+                                src: $data.category().categoryImages.length > 0 ? $data.category().categoryImages[1].url : null, imageType: 'small'
+                            },
+                            attr: {
+                                id: 'CC-product-grid-image-' + id + '-' + $parentContext.$index() + $index(),
+                                alt: $data.category().categoryImages.length > 0 &amp;&amp; $data.category().categoryImages[1].metadata.altText? $data.category().categoryImages[1].metadata.altText : $data.displayName,
+                                title: $data.category().categoryImages.length > 0 &amp;&amp; $data.category().categoryImages[1].metadata.titleText ? $data.category().categoryImages[1].metadata.titleText : $data.displayName
+                            }"
+                    />
+                </div>
+            </div>
+            <!-- ko if: $data.category().childCategories != null -->
+            <div class="category-banner-custom-block custom-text-block">
+                <h1 data-bind="html: $data.category().displayName"></h1>
+                <p data-bind="html: $data.category().description"></p>
+                <div data-bind="html: $data.category().longDescription"></div>
+            </div>
+            <!-- /ko -->
+
+            <div data-bind="if: $data.category().childCategories != null">
+                
+                <div class="row category-container" data-bind="foreach: $data.childCollectionList()">
+                    
+                    <div data-bind="onRender: function(){console.log('Test Collection... ', $data);}"></div>
+                    
+                    <!--<pre style="display: none;" data-bind="text: console.log('collection cat... ', $data.collection.displayName, $data.active)"></pre>-->
+                    
+                    <!-- ko if: $data.collection.active === true -->
+                    
+                    <div class="cc-product-item col-xs-12 col-sm-6 col-md-4">
+                        <!--<div class="cc-item-detail" data-bind="css:{'has-no-children': !$data.collection.active }">-->
+                            <div class="cc-item-detail">
+                            <a data-bind="ccLink: { route: $data.collection.active ? $data.collection.route : '' }, click: $parents[1].updateFocus">    
+
+                                <div class="category-tile-image">
+                                    <img
+                                        class="img-responsive center-block"
+                                        data-bind="
+                                            imageSource: {
+                                                src: $data.collection.categoryImages.length > 0 ? $data.collection.categoryImages[0].url : null, imageType: 'small',
+                                                errorSrc: '/img/no-image.jpg',
+                                                errorAlt: 'Missing Category Image'
+                                            },
+                                            attr: {
+                                                id: 'CC-product-grid-image-' + $data.collection.id + '-' + $parentContext.$index() + $index(),
+                                                alt: $data.collection.categoryImages.length > 0 &amp;&amp; $data.collection.categoryImages[0].metadata.altText? $data.collection.categoryImages[0].metadata.altText : $data.collection.displayName,
+                                                title: $data.collection.categoryImages.length > 0 &amp;&amp; $data.collection.categoryImages[0].metadata.titleText ? $data.collection.categoryImages[0].metadata.titleText : $data.collection.displayName
+                                            }"
+                                    />
+                                </div>
+                                <div class="item-attributes">
+                                    <div class="cc-item-title">
+                                        <!--<h3 data-bind="attr:{'data-child-count':$data.totalChildren}, text: $data.collection.displayName" class="cc-text-overflow"></h3>-->
+                                        <h3 class="cc-text-overflow">
+                                            <span data-bind="text: $data.collection.displayName"></span>
+                                        </h3>
+                                        <!--<div class="custom-text-block" data-bind="html: $data.collection.longDescription"></div>-->
+                                    </div>
+                                </div>
+                                
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- /ko -->
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<!-- Footer region -->
+<div id="CC-footerWidget">
+  <div class="footer-region">
+   <div class="container-fluid">
+    
+    <div class="row">
+      
+    <footer class="col-xs-12 footer">
+     
+        <div class="footer-btm">
+          <!-- ko if: contextDataLoaded -->
+          <span class="label-hidden" data-bind="widgetLocaleText : 'siteNavigationFooter'"></span>
+          <div data-bind="foreach: requiredLinks" class="footer-links">
+            <a data-bind="ccLink: $data, attr : { id : $data +'_footerLinks-phone' }"></a>
+            <!-- ko if:(($index() < ($parent.requiredLinks().length - 1))) -->
+              &#124;
+            <!-- /ko -->
+          </div>
+          <!-- /ko -->
+        </div>
+      
+    </footer>
+    
+    </div>
+    </div>
+  </div>
+</div>
+<!-- End of Footer region -->

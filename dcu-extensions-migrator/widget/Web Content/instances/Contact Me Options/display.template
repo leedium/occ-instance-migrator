@@ -1,0 +1,26 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {"500144": {
+  "font": {"styles": {
+    "display": "block",
+    "font-style": "normal",
+    "font-weight": "bold",
+    "text-decoration": "none"
+  }},
+  "id": "500144",
+  "padding": {
+    "paddingBottom": "0",
+    "paddingLeft": "0",
+    "paddingRight": "0",
+    "paddingTop": "0"
+  }
+}}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
