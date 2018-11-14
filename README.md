@@ -8,8 +8,8 @@ If Page Layout requires an instance, run the "--dcu" option before the "--plsu" 
 Web Content data is currently not supported and coming in a later OCC release
 
 ### status
-todo:  parameterize the configuration
-todo:  convert to global node module
+todo:  convert to global node module  
+todo:  parameterize the configuration    
 
 
 ### Prerequisites
