@@ -15,8 +15,7 @@
  * @description This tool helps transfer only changed files across instances
  *              using git and Oracle's DCU tools
  *              Options
- *              --dcu [gitPath]  transfers extensions / widgets
- *                  --gitPath - target directory to use for git processing
+ *              --dcu  transfers extensions / widgets
  *              --plsu [all | layoutName] transfers layouts
  *                  --all transfers all layouts
  *                  --layoutName {name} - name of layoutto transfer
@@ -91,7 +90,7 @@ function grabSource() {
             process.chdir('../');
             setTimeout(() => {
                 resolve()
-            }, config.taskDelay)
+            }, config.taskDelay);
         });
     });
 }
@@ -108,7 +107,7 @@ function checkoutBranch(name, callback) {
         git(GIT_PATH).raw(['checkout', name], () => {
             setTimeout(() => {
                 resolve()
-            }, config.taskDelay)
+            }, config.taskDelay);
         })
     })
 }
@@ -125,7 +124,7 @@ function mergeBranch(name, callback) {
         git(GIT_PATH).raw(['merge', name, '-Xtheirs'], () => {
             setTimeout(() => {
                 resolve()
-            }, config.taskDelay)
+            }, config.taskDelay);
         })
     })
 }
@@ -140,7 +139,7 @@ function addAll() {
         git(GIT_PATH).raw(['add', '.'], () => {
             setTimeout(() => {
                 resolve()
-            }, config.taskDelay)
+            }, config.taskDelay);
         })
     })
 
@@ -156,7 +155,7 @@ function commit() {
         git(GIT_PATH).raw(['commit', '-m', 'committing latest changes'], () => {
             setTimeout(() => {
                 resolve()
-            }, config.taskDelay)
+            }, config.taskDelay);
         })
     });
 }
@@ -173,7 +172,7 @@ function deleteBranch(name) {
         git(GIT_PATH).raw(['branch', '-D', name], () => {
             setTimeout(() => {
                 resolve()
-            }, config.taskDelay)
+            }, config.taskDelay);
         })
     })
 }
@@ -190,7 +189,7 @@ function createBranch(name) {
         git(GIT_PATH).raw(['checkout', '-B', name], () => {
             setTimeout(() => {
                 resolve()
-            }, config.taskDelay)
+            }, config.taskDelay);
         })
     })
 }
@@ -203,9 +202,8 @@ function createBranch(name) {
 function getDiffs() {
 
     return new Promise((resolve) => {
-        console.log(process.cwd())
-        console.log('formulating diffs');
-        const ls1 = spawn('git',['whatchanged','-1','--pretty=""'],{
+        console.log('getDiffs');
+        const ls1 = spawn('git', ['whatchanged', '-1', '--pretty=""'], {
             shell: true
         });
         ls1.stdout.pipe(fs.createWriteStream('./whatchanged.txt'))
@@ -216,7 +214,7 @@ function getDiffs() {
             console.log('...created diff file...');
             setTimeout(() => {
                 resolve()
-            }, config.taskDelay)
+            }, config.taskDelay);
         });
     })
 }
@@ -227,7 +225,6 @@ function getDiffs() {
  * @returns {Promise<any>}
  */
 function processDiffs() {
-    console.log(process.cwd())
     return new Promise((resolve) => {
         const transferPathArrayTemp = [];
         const deletePathArrayTemp = [];
@@ -280,20 +277,22 @@ function processDiffs() {
 
 function makeTmpFolder() {
     return new Promise((resolve) => {
-        fs.ensureDirSync(`${TEMP_FOLDER}/.ccc`);
-        fs.copySync(`${WORKING_FOLDER}/.ccc`, `${TEMP_FOLDER}/.ccc`);
+        const workingTransfer = WORKING_FOLDER.split('/')[1];
+        fs.ensureDirSync(`${TEMP_FOLDER}/${workingTransfer}/.ccc`);
+        fs.copySync(`${WORKING_FOLDER}/.ccc`, `${TEMP_FOLDER}/${workingTransfer}/.ccc`);
 
-        deleteFilePath(pathsToBeRemoved.map(path => `${TEMP_FOLDER}/${path}`));
-        deleteFilePath(pathsToBeRemoved.map(path => `${TEMP_FOLDER}/.ccc/${path}`));
+        deleteFilePath(pathsToBeRemoved.map(path => `${WORKING_FOLDER}/${path}`));
+        deleteFilePath(pathsToBeRemoved.map(path => `${WORKING_FOLDER}/.ccc/${path}`));
 
         transferPaths.map((path) => {
             const fa = path.split('/');
             const f = fa.slice(0, fa.length).join('/');
-            console.log(f, `${WORKING_FOLDER}/${path}`);
+            console.log(f, `${path}`);
             fs.ensureDirSync(`${TEMP_FOLDER}/${f}`);
             try {
-                fs.copySync(`${WORKING_FOLDER}/${path}`, `${TEMP_FOLDER}/${f}`);
+                fs.copySync(`${path}`, `${TEMP_FOLDER}/${f}`);
             } catch (err) {
+                console.log(err)
             }
         });
         resolve();
@@ -321,7 +320,8 @@ function deleteFilePath(pathsToBeRemoved) {
  * @returns {Promise<any>}
  */
 function transferAll() {
-    process.chdir(TEMP_FOLDER);
+    const workingTransfer = WORKING_FOLDER.split('/')[1];
+    process.chdir(`${TEMP_FOLDER}/${workingTransfer}`);
     return new Promise((resolve) => {
         console.log(`Transferring all extensions start...`);
         const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', config.dcuServerTarget, '-k', config.apiKeyTarget], {
@@ -374,25 +374,28 @@ function plsuTransferSingle() {
 /**
  * Transfers All Page Layouts from source to target instance
  */
-function plsuTransferAll() {
-    console.log('TransferAll page layouts start...');
-    const plsuSpawn = spawn('plsu', [
-        '--transfer',
-        '--node', config.dcuServerSource,
-        '--applicationKey', config.apiKeySource,
-        '--all',
-        '--destinationNode', config.dcuServerTarget,
-        '--destinationApplicationKey', config.apiKeyTarget
-    ]);
-    plsuSpawn.stdout.on('data', (chunk) => {
-        console.log(chunk.toString('utf-8'));
-    });
-    plsuSpawn.stderr.on('data', (chunk) => {
-        console.log(chunk.toString('utf-8'));
-    });
-    plsuSpawn.on('close', () => {
-        console.log('TransferAll page layouts complete.');
-    });
+async function plsuTransferAll() {
+    return new Promise(resolve => {
+        console.log('TransferAll page layouts start...');
+        const plsuSpawn = spawn('plsu', [
+            '--transfer',
+            '--node', config.dcuServerSource,
+            '--applicationKey', config.apiKeySource,
+            '--all',
+            '--destinationNode', config.dcuServerTarget,
+            '--destinationApplicationKey', config.apiKeyTarget
+        ]);
+        plsuSpawn.stdout.on('data', (chunk) => {
+            console.log(chunk.toString('utf-8'));
+        });
+        plsuSpawn.stderr.on('data', (chunk) => {
+            console.log(chunk.toString('utf-8'));
+        });
+        plsuSpawn.on('close', () => {
+            console.log('TransferAll page layouts complete.');
+            resolve();
+        });
+    })
 }
 
 async function clean() {
@@ -414,20 +417,21 @@ async function clean() {
  * @returns {Promise<void>}
  */
 async function extensionsTransfer() {
-    await clean();
-    await grabTarget();
-    await createBranch(BRANCH_TARGET);
-    await createBranch(BRANCH_SOURCE);
-    await grabSource();
-    await addAll();
-    await commit();
-    await checkoutBranch(BRANCH_TARGET);
-    await mergeBranch(BRANCH_SOURCE);
+    // await clean();
+    // await grabTarget();
+    // await createBranch(BRANCH_TARGET);
+    // await createBranch(BRANCH_SOURCE);
+    // await grabSource();
+    // await addAll();
+    // await commit();
+    // await checkoutBranch(BRANCH_TARGET);
+    // await mergeBranch(BRANCH_SOURCE);
     // await getDiffs();
     // await processDiffs();
     // await makeTmpFolder();
     // await transferAll();
-    // await clean();
+    // await plsuTransferAll();
+    await clean();
 }
 
 /**
