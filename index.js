@@ -15,7 +15,8 @@
  * @description This tool helps transfer only changed files across instances
  *              using git and Oracle's DCU tools
  *              Options
- *              --dcu  transfers extensions / widgets
+ *              --dcu [full]  transfers extensions / widgets
+ *                  --full runs both the extensions and plsu transfer
  *              --plsu [all | layoutName] transfers layouts
  *                  --all transfers all layouts
  *                  --layoutName {name} - name of layoutto transfer
@@ -376,28 +377,27 @@ function plsuTransferSingle() {
  */
 async function plsuTransferAll() {
     return new Promise(resolve => {
-        // console.log('TransferAll page layouts start...');
-        // const plsuSpawn = spawn('plsu', [
-        //     '--transfer',
-        //     '--node', config.dcuServerSource,
-        //     '--applicationKey', config.apiKeySource,
-        //     '--all',
-        //     '--destinationNode', config.dcuServerTarget,
-        //     '--destinationApplicationKey', config.apiKeyTarget
-        // ]);
-        // plsuSpawn.stdout.on('data', (chunk) => {
-        //     console.log(chunk.toString('utf-8'));
-        // });
-        // plsuSpawn.stderr.on('data', (chunk) => {
-        //     console.log(chunk.toString('utf-8'));
-        // });
-        // plsuSpawn.on('close', () => {
-        //     console.log('TransferAll page layouts complete.');
-        //     setTimeout(() => {
-        //         resolve()
-        //     }, config.taskDelay);
-        // });
-        console.log('plsuTransferAll')
+        console.log('TransferAll page layouts start...');
+        const plsuSpawn = spawn('plsu', [
+            '--transfer',
+            '--node', config.dcuServerSource,
+            '--applicationKey', config.apiKeySource,
+            '--all',
+            '--destinationNode', config.dcuServerTarget,
+            '--destinationApplicationKey', config.apiKeyTarget
+        ]);
+        plsuSpawn.stdout.on('data', (chunk) => {
+            console.log(chunk.toString('utf-8'));
+        });
+        plsuSpawn.stderr.on('data', (chunk) => {
+            console.log(chunk.toString('utf-8'));
+        });
+        plsuSpawn.on('close', () => {
+            console.log('TransferAll page layouts complete.');
+            setTimeout(() => {
+                resolve()
+            }, config.taskDelay);
+        });
         resolve();
 
     })
@@ -423,23 +423,21 @@ async function clean() {
  */
 async function extensionsTransfer() {
     return new Promise(async (resolve) => {
-        // await clean();
-        // await grabTarget();
-        // await createBranch(BRANCH_TARGET);
-        // await createBranch(BRANCH_SOURCE);
-        // await grabSource();
-        // await addAll();
-        // await commit();
-        // await checkoutBranch(BRANCH_TARGET);
-        // await mergeBranch(BRANCH_SOURCE);
-        // await getDiffs();
-        // await processDiffs();
-        // await makeTmpFolder();
-        // await transferAll();
+        await clean();
+        await grabTarget();
+        await createBranch(BRANCH_TARGET);
+        await createBranch(BRANCH_SOURCE);
+        await grabSource();
+        await addAll();
+        await commit();
+        await checkoutBranch(BRANCH_TARGET);
+        await mergeBranch(BRANCH_SOURCE);
+        await getDiffs();
+        await processDiffs();
+        await makeTmpFolder();
+        await transferAll();
         await clean();
         resolve();
-        console.log('extensionsTransfer')
-
     });
 }
 
@@ -450,12 +448,10 @@ async function extensionsTransfer() {
 async function start() {
     try {
         if (dcu || full) {
-            console.log('full1')
             await extensionsTransfer();
         }
         if (plsu || full) {
             if (all || full) {
-                console.log('full2')
                 await plsuTransferAll();
             } else {
                 await plsuTransferSingle();
