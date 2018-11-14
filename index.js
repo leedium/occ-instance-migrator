@@ -398,21 +398,15 @@ function plsuTransferAll() {
 async function clean() {
     await deleteFilePath([
         TEMP_FOLDER,
-        '../.ccc',
-        '../element',
-        '../global',
-        '../snippets',
-        '../stack',
-        '../theme',
-        '../widget',
+        WORKING_FOLDER
     ]);
     await checkoutBranch(BRANCH_MASTER);
     await addAll();
     await commit();
     await deleteBranch(BRANCH_SOURCE);
     await deleteBranch(BRANCH_TARGET);
-    fs.ensureDirSync(`${TEMP_FOLDER}`);
-    fs.ensureDirSync(`${WORKING_FOLDER}`);
+    fs.ensureDirSync(TEMP_FOLDER);
+    fs.ensureDirSync(WORKING_FOLDER);
 }
 
 /**
