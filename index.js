@@ -393,7 +393,9 @@ async function plsuTransferAll() {
         });
         plsuSpawn.on('close', () => {
             console.log('TransferAll page layouts complete.');
-            resolve();
+            setTimeout(() => {
+                resolve()
+            }, config.taskDelay);
         });
     })
 }
@@ -417,21 +419,21 @@ async function clean() {
  * @returns {Promise<void>}
  */
 async function extensionsTransfer() {
-    // await clean();
-    // await grabTarget();
-    // await createBranch(BRANCH_TARGET);
-    // await createBranch(BRANCH_SOURCE);
-    // await grabSource();
-    // await addAll();
-    // await commit();
-    // await checkoutBranch(BRANCH_TARGET);
-    // await mergeBranch(BRANCH_SOURCE);
-    // await getDiffs();
-    // await processDiffs();
-    // await makeTmpFolder();
-    // await transferAll();
-    // await plsuTransferAll();
     await clean();
+    await grabTarget();
+    await createBranch(BRANCH_TARGET);
+    await createBranch(BRANCH_SOURCE);
+    await grabSource();
+    await addAll();
+    await commit();
+    await checkoutBranch(BRANCH_TARGET);
+    await mergeBranch(BRANCH_SOURCE);
+    await getDiffs();
+    await processDiffs();
+    await makeTmpFolder();
+    await transferAll();
+    await clean();
+    await plsuTransferAll();
 }
 
 /**
