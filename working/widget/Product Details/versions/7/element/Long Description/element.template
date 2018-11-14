@@ -1,1 +1,0 @@
-<div data-bind="html: product().longDescription" id="CC-prodDetails-longDescription"></div>

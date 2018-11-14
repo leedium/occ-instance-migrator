@@ -76,7 +76,7 @@ function grabTarget() {
  */
 function grabSource() {
   return new Promise((resolve) => {
-    process.chdir(WORKING_FOLDER);
+    // process.chdir(WORKING_FOLDER);
     console.log('GRABBING SOURCE (latest changes)', process.cwd());
     const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerSource], {
       env: Object.assign({}, process.env, {
@@ -88,7 +88,7 @@ function grabSource() {
     });
     ls1.on('close', () => {
       console.log('...source branch download completed');
-      process.chdir('../');
+      // process.chdir('../');
       setTimeout(() => {
         resolve()
       }, config.taskDelay);
@@ -246,13 +246,9 @@ function processDiffs() {
       // path = (`${pathArray[0]}/`);
       path = pathArray.slice(0, pathArray.length-1).join('/');
       // } else if (pathArray.length > 2) {
-      //     if (pathArray[1] === "Web Content") {
-      //         pathDelete = path = (`${pathArray.slice(0, 4).join('/')}`);
-      //     } else {
-      //         path = (`${pathArray.slice(0, 2).join('/')}`);
-      //         pathDelete = (`${pathArray.slice(0, 4).join('/')}`);
-      //
-      //     }
+      if (pathArray[1] === "Web Content" && !webContentFound) {
+        webContentFound = true;
+      }
       // }
 
 
@@ -265,10 +261,10 @@ function processDiffs() {
           }
         }
       } else {
-        if (!deletePathArrayTemp[path]) {
-          pathsToBeRemoved.push(path);
-          deletePathArrayTemp[path] = true;
-        }
+        // if (!deletePathArrayTemp[path]) {
+        //   pathsToBeRemoved.push(path);
+        //   deletePathArrayTemp[path] = true;
+        // }
       }
     });
     rl.on('close', () => {
@@ -277,22 +273,26 @@ function processDiffs() {
   })
 }
 
-function makeTmpFolder() {
-  return new Promise((resolve) => {
+async function makeTmpFolder() {
+  return new Promise( async(resolve) => {
     const workingTransfer = WORKING_FOLDER.split('/')[1];
     fs.ensureDirSync(`${TEMP_FOLDER}/${workingTransfer}/.ccc`);
-    fs.copySync(`${WORKING_FOLDER}/.ccc`, `${TEMP_FOLDER}/${workingTransfer}/.ccc`);
+    fs.copySync(`${WORKING_FOLDER}/.ccc/config.json`, `${TEMP_FOLDER}/${workingTransfer}/.ccc/config.json`);
+    // deleteFilePath(pathsToBeRemoved.map(path => `${TEMP_FOLDER}/${workingTransfer}/${path}`));
 
-    deleteFilePath(pathsToBeRemoved.map(path => `${WORKING_FOLDER}/${path}`));
-    deleteFilePath(pathsToBeRemoved.map(path => `${WORKING_FOLDER}/.ccc/${path}`));
-
+    // await deleteFilePath(pathsToBeRemoved.map(path => `${path}`));
+    // await deleteFilePath(pathsToBeRemoved.map(path => `.ccc/${path}`));
+    //
     transferPaths.map((path) => {
       const fa = path.split('/');
       const f = fa.slice(0, fa.length).join('/');
-      console.log(f, `${path}`);
+      fa[1] = `.ccc/${fa[1]}`;
+      const c = fa.slice(0, fa.length).join('/');
       fs.ensureDirSync(`${TEMP_FOLDER}/${f}`);
+      fs.ensureDirSync(`${TEMP_FOLDER}/${c}`);
       try {
         fs.copySync(`${path}`, `${TEMP_FOLDER}/${f}`);
+        fs.copySync(`${c}`, `${TEMP_FOLDER}/${c}`);
       } catch (err) {
         console.log(err)
       }
@@ -305,8 +305,8 @@ function makeTmpFolder() {
  * Removes paths specified in Array
  * @param pathsToBeRemoved - Array
  */
-function deleteFilePath(pathsToBeRemoved) {
-  return new Promise(resolve => {
+async function deleteFilePath(pathsToBeRemoved) {
+  return new Promise(async (resolve) => {
     console.log('Removing...', pathsToBeRemoved);
     pathsToBeRemoved.map((item) => {
       fs.removeSync(item);
@@ -323,7 +323,7 @@ function deleteFilePath(pathsToBeRemoved) {
  */
 function transferAll() {
   const workingTransfer = WORKING_FOLDER.split('/')[1];
-  process.chdir(`${TEMP_FOLDER}/${workingTransfer}`);
+  // process.chdir(`${TEMP_FOLDER}/${workingTransfer}`);
   return new Promise((resolve) => {
     console.log(`Transferring all extensions start...`);
     const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', config.dcuServerTarget, '-k', config.apiKeyTarget], {
@@ -425,22 +425,22 @@ async function clean() {
 async function extensionsTransfer() {
   return new Promise(async (resolve) => {
     await clean();
-    await grabTarget();
-    await addAll();
-    await commit();
-    await createBranch(BRANCH_TARGET);
-    await createBranch(BRANCH_SOURCE);
+    // await grabTarget();
+    // await addAll();
+    // await commit();
+    // await createBranch(BRANCH_TARGET);
+    // await createBranch(BRANCH_SOURCE);
     await grabSource();
-    await addAll();
-    await commit();
-    await checkoutBranch(BRANCH_TARGET);
-    await mergeBranch(BRANCH_SOURCE);
-    await getDiffs();
-    await processDiffs();
-    await makeTmpFolder();
-    // await transferAll();
+    // await addAll();
+    // await commit();
+    // await checkoutBranch(BRANCH_TARGET);
+    // await mergeBranch(BRANCH_SOURCE);
+    // await getDiffs();
+    // await processDiffs();
+    // await makeTmpFolder();
+    await transferAll();
     // await clean();
-    // resolve();
+    resolve();
   });
 }
 
