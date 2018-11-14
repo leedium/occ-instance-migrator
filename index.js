@@ -169,7 +169,7 @@ function commit() {
  */
 function deleteBranch(name) {
     return new Promise((resolve) => {
-        console.log(`deleteLocalBranch:,${name}`);
+        console.log(`deleteLocalBranch:${name}`);
         git(GIT_PATH).raw(['branch', '-D', name], () => {
             setTimeout(() => {
                 resolve()
