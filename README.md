@@ -27,15 +27,15 @@ $ npm i
 
 ### Transfer Extensions :
 ```
-npm run migrate -- --gitPath ../
+$ npm run migrate -- --dcu  
 ```
 
 ### Transfer Page Layouts ([PLSU](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usetheplsuutility01.html "Page Layout Synchronization Utility")) to :
 ```
-npm run migrate -- --plsu ../
+$ npm run migrate -- --plsu
 ```
 
 ### Transfer Extensions and ([PLSU](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usetheplsuutility01.html "Page Layout Synchronization Utility")) to :
 ```
-npm run migrate -- --gitPath ../ --full
+npm run migrate -- --full
 ```
