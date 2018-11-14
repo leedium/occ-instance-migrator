@@ -449,7 +449,7 @@ async function extensionsTransfer() {
  * @returns {Promise<void>}
  */
 async function start() {
-  if(cleaner){
+  if(typeof cleaner !== 'undefined'){
     await clean();
     return;
   }
