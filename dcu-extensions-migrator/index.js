@@ -30,7 +30,7 @@ const git = require('simple-git');
 
 const config = require('./config');
 
-const DCU_FOLDER_TEMP = './dcu-extensions-migrator/tmp/';
+const DCU_FOLDER_TEMP = './tmp/';
 
 const SOURCE_BRANCH = 'source';
 const TARGET_BRANCH = 'target';
@@ -113,7 +113,7 @@ function checkoutBranch(name, callback) {
 function mergeBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`mergeBranch:,${name} into target`);
-        git('.').raw(['merge', name, '-X', 'theirs'], () => {
+        git('.').raw(['merge', name, '-Xtheirs'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -188,16 +188,20 @@ function createBranch(name) {
 
 /**
  * Creates list of files that have been modified.
- * Results are piped to whatchanged.txt
+ * Results are piped via writeStream to whatchanged.txt
  * @returns {Promise<any>}
  */
 function getDiffs() {
 
     return new Promise((resolve) => {
+        console.log(process.cwd())
         console.log('formulating diffs');
-        const ls1 = spawn('./dcu-extensions-migrator/diffs.sh');
+        const ls1 = spawn('git',['whatchanged','-1','--pretty=""'],{
+            shell: true
+        });
+        ls1.stdout.pipe(fs.createWriteStream('./whatchanged.txt'))
         ls1.stdout.on('data', (chunk) => {
-            console.log(chunk.toString('utf-8'));
+            // process.stdout.write(chunk);
         });
         ls1.on('close', () => {
             console.log('...created diff file...');
@@ -212,6 +216,7 @@ function getDiffs() {
  * @returns {Promise<any>}
  */
 function processDiffs() {
+    console.log(process.cwd())
     return new Promise((resolve) => {
         const transferPathArrayTemp = [];
         const deletePathArrayTemp = [];
@@ -245,7 +250,6 @@ function processDiffs() {
                 if (!transferPathArrayTemp[path]) {
                     counter += 1;
                     transferPathArrayTemp[`${path}`] = true;
-                    console.log(path, modType);
                     if (path.indexOf('dcu-extensions-migrator') < 0) {
                         transferPaths.push(path);
                     }
@@ -266,19 +270,18 @@ function processDiffs() {
 function makeTmpFolder() {
     return new Promise((resolve) => {
         fs.ensureDirSync(`${DCU_FOLDER_TEMP}.ccc`);
-        fs.copySync(`./.ccc`, `${DCU_FOLDER_TEMP}.ccc`);
+        fs.copySync(`../.ccc`, `${DCU_FOLDER_TEMP}.ccc`);
+
         deleteFilePath(pathsToBeRemoved.map(path => `${DCU_FOLDER_TEMP}${path}`));
         deleteFilePath(pathsToBeRemoved.map(path => `${DCU_FOLDER_TEMP}.ccc/${path}`));
-
-        console.log('transferPaths',transferPaths);
 
         transferPaths.map((path) => {
             const fa = path.split('/');
             const f = fa.slice(0, fa.length).join('/');
-            fs.ensureDirSync(`./tmp/${f}`);
+            fs.ensureDirSync(`${DCU_FOLDER_TEMP}${f}`);
             console.log(f, `../${path}`);
             try {
-                fs.copySync(`../${path}`, `./tmp/${f}`);
+                fs.copySync(`../${path}`, `${DCU_FOLDER_TEMP}${f}`);
             } catch (err) {
             }
         });
@@ -408,20 +411,18 @@ async function extensionsTransfer() {
         throw new Error('--gitPath is not defined');
     }
     await clean();
-
     await grabTarget();
-
     await createBranch(TARGET_BRANCH);
     await createBranch(SOURCE_BRANCH);
     await grabSource();
     await addAll();
     await commit();
     await checkoutBranch(TARGET_BRANCH);
-    // await mergeBranch(SOURCE_BRANCH);
-    // await getDiffs();
-    // await processDiffs();
-    // await makeTmpFolder();
-    // await transferAll();
+    await mergeBranch(SOURCE_BRANCH);
+    await getDiffs();
+    await processDiffs();
+    await makeTmpFolder();
+    await transferAll();
     // await clean();
 }
 
@@ -430,10 +431,6 @@ async function extensionsTransfer() {
  * @returns {Promise<void>}
  */
 async function start() {
-    console.log(process.cwd())
-    process.chdir(gitPath);
-    console.log(process.cwd())
-
     try {
         if (plsu) {
             if (all) {
