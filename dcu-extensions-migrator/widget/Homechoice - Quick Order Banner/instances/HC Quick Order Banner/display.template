@@ -1,9 +1,0 @@
-<div class="QuickOrderButton">
-  <a href="#" data-bind="ccLink: 'quick-order'"  >
-    <img class="QO1 hidden-xs hidden-sm " data-bind="attr:{src: $data.bannerLarge() }" />
-    <img class="QO2 hidden-xs hidden-md hidden-lg" data-bind="attr:{src: $data.bannerMedium() }" />
-    <img class="QO2 hidden-sm hidden-md hidden-lg" data-bind="attr:{src: $data.bannerSmall() }" />
-  </a>
-</div>
-
-
