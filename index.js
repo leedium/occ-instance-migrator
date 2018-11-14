@@ -425,20 +425,21 @@ async function clean() {
 async function extensionsTransfer() {
   return new Promise(async (resolve) => {
     await clean();
-    // await grabTarget();
-    // await addAll();
-    // await commit();
-    // await createBranch(BRANCH_TARGET);
-    // await createBranch(BRANCH_SOURCE);
+    await grabTarget();
+    await addAll();
+    await commit();
+    await createBranch(BRANCH_TARGET);
+    await createBranch(BRANCH_SOURCE);
     await grabSource();
-    // await addAll();
-    // await commit();
-    // await checkoutBranch(BRANCH_TARGET);
-    // await mergeBranch(BRANCH_SOURCE);
+    await addAll();
+    await commit();
+    await checkoutBranch(BRANCH_TARGET);
+    await mergeBranch(BRANCH_SOURCE);
     // await getDiffs();
     // await processDiffs();
     // await makeTmpFolder();
-    await transferAll();
+    await deleteBranch(BRANCH_SOURCE);
+    // await transferAll();
     // await clean();
     resolve();
   });
