@@ -7,6 +7,11 @@ If Page Layout requires an instance, run the "--dcu" option before the "--plsu" 
 
 Web Content data is currently not supported and coming in a later OCC release
 
+### status
+todo:  parameterize the configuration
+todo:  convert to global node module
+
+
 ### Prerequisites
 [Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud") [DCU v1.0.7](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.html "Use the Design Code Utility")  
 [git](https://git-scm.com/downloads "download git")  
