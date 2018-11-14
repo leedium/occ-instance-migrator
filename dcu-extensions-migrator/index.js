@@ -30,10 +30,14 @@ const git = require('simple-git');
 
 const config = require('./config');
 
-const DCU_FOLDER_TEMP = './tmp/';
 
-const SOURCE_BRANCH = 'source';
-const TARGET_BRANCH = 'target';
+const WORKING_FOLDER = '.';
+const TEMP_FOLDER = './transfer';
+
+
+const BRANCH_MASTER = 'master';
+const BRANCH_SOURCE = 'source';
+const BRANCH_TARGET = 'target';
 
 const {gitPath, dcu, plsu, all, layoutName} = argv;
 const transferPaths = [];
@@ -45,6 +49,7 @@ const pathsToBeRemoved = [];
  */
 function grabTarget() {
     return new Promise((resolve) => {
+        process.chdir(WORKING_FOLDER);
         console.log('GRABBING TARGET (currently deployed stable)', process.cwd());
         const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerTarget], {
             env: Object.assign({}, process.env, {
@@ -56,6 +61,7 @@ function grabTarget() {
         });
         ls1.on('close', () => {
             console.log('...target branch download completed.');
+            process.chdir('../');
             setTimeout(() => {
                 resolve()
             }, config.taskDelay);
@@ -69,6 +75,7 @@ function grabTarget() {
  */
 function grabSource() {
     return new Promise((resolve) => {
+        process.chdir(WORKING_FOLDER);
         console.log('GRABBING SOURCE (latest changes)', process.cwd());
         const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerSource], {
             env: Object.assign({}, process.env, {
@@ -80,6 +87,7 @@ function grabSource() {
         });
         ls1.on('close', () => {
             console.log('...source branch download completed');
+            process.chdir('../');
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -96,7 +104,7 @@ function grabSource() {
 function checkoutBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`checkoutBranch:${name}`);
-        git('.').raw(['checkout', name], () => {
+        git(WORKING_FOLDER).raw(['checkout', name], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -113,7 +121,7 @@ function checkoutBranch(name, callback) {
 function mergeBranch(name, callback) {
     return new Promise((resolve) => {
         console.log(`mergeBranch:,${name} into target`);
-        git('.').raw(['merge', name, '-Xtheirs'], () => {
+        git(WORKING_FOLDER).raw(['merge', name, '-Xtheirs'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -128,7 +136,7 @@ function mergeBranch(name, callback) {
 function addAll() {
     return new Promise((resolve) => {
         console.log('addAll...');
-        git('.').raw(['add', '.'], () => {
+        git(WORKING_FOLDER).raw(['add', '.'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -144,7 +152,7 @@ function addAll() {
 function commit() {
     return new Promise((resolve) => {
         console.log('commit...');
-        git('.').raw(['commit', '-m', 'committing latest changes'], () => {
+        git(WORKING_FOLDER).raw(['commit', '-m', 'committing latest changes'], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -161,7 +169,7 @@ function commit() {
 function deleteBranch(name) {
     return new Promise((resolve) => {
         console.log(`deleteLocalBranch:,${name}`);
-        git('.').raw(['branch', '-D', name], () => {
+        git(WORKING_FOLDER).raw(['branch', '-D', name], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -178,7 +186,7 @@ function deleteBranch(name) {
 function createBranch(name) {
     return new Promise((resolve) => {
         console.log(`createBranch:${name}`);
-        git('.').raw(['checkout', '-B', name], () => {
+        git(WORKING_FOLDER).raw(['checkout', '-B', name], () => {
             setTimeout(() => {
                 resolve()
             }, config.taskDelay)
@@ -205,7 +213,9 @@ function getDiffs() {
         });
         ls1.on('close', () => {
             console.log('...created diff file...');
-            resolve();
+            setTimeout(() => {
+                resolve()
+            }, config.taskDelay)
         });
     })
 }
@@ -269,19 +279,19 @@ function processDiffs() {
 
 function makeTmpFolder() {
     return new Promise((resolve) => {
-        fs.ensureDirSync(`${DCU_FOLDER_TEMP}.ccc`);
-        fs.copySync(`../.ccc`, `${DCU_FOLDER_TEMP}.ccc`);
+        fs.ensureDirSync(`${TEMP_FOLDER}/.ccc`);
+        fs.copySync(`${WORKING_FOLDER}/.ccc`, `${TEMP_FOLDER}/.ccc`);
 
-        deleteFilePath(pathsToBeRemoved.map(path => `${DCU_FOLDER_TEMP}${path}`));
-        deleteFilePath(pathsToBeRemoved.map(path => `${DCU_FOLDER_TEMP}.ccc/${path}`));
+        deleteFilePath(pathsToBeRemoved.map(path => `${TEMP_FOLDER}/${path}`));
+        deleteFilePath(pathsToBeRemoved.map(path => `${TEMP_FOLDER}/.ccc/${path}`));
 
         transferPaths.map((path) => {
             const fa = path.split('/');
             const f = fa.slice(0, fa.length).join('/');
-            fs.ensureDirSync(`${DCU_FOLDER_TEMP}${f}`);
-            console.log(f, `../${path}`);
+            console.log(f, `${WORKING_FOLDER}/${path}`);
+            fs.ensureDirSync(`${TEMP_FOLDER}/${f}`);
             try {
-                fs.copySync(`../${path}`, `${DCU_FOLDER_TEMP}${f}`);
+                fs.copySync(`${WORKING_FOLDER}/${path}`, `${TEMP_FOLDER}/${f}`);
             } catch (err) {
             }
         });
@@ -310,7 +320,7 @@ function deleteFilePath(pathsToBeRemoved) {
  * @returns {Promise<any>}
  */
 function transferAll() {
-    process.chdir('./tmp');
+    process.chdir(TEMP_FOLDER);
     return new Promise((resolve) => {
         console.log(`Transferring all extensions start...`);
         const ls1 = spawn(`dcu`, ['--transferAll', '.', '--node', config.dcuServerTarget, '-k', config.apiKeyTarget], {
@@ -386,7 +396,7 @@ function plsuTransferAll() {
 
 async function clean() {
     await deleteFilePath([
-        './tmp',
+        TEMP_FOLDER,
         '../.ccc',
         '../element',
         '../global',
@@ -398,8 +408,10 @@ async function clean() {
     await checkoutBranch('master');
     await addAll();
     await commit();
-    await deleteBranch(SOURCE_BRANCH);
-    await deleteBranch(TARGET_BRANCH);
+    await deleteBranch(BRANCH_SOURCE);
+    await deleteBranch(BRANCH_TARGET);
+    fs.ensureDirSync(`${TEMP_FOLDER}`);
+    fs.ensureDirSync(`${WORKING_FOLDER}`);
 }
 
 /**
@@ -407,22 +419,19 @@ async function clean() {
  * @returns {Promise<void>}
  */
 async function extensionsTransfer() {
-    if (typeof gitPath === 'undefined') {
-        throw new Error('--gitPath is not defined');
-    }
     await clean();
-    await grabTarget();
-    await createBranch(TARGET_BRANCH);
-    await createBranch(SOURCE_BRANCH);
-    await grabSource();
-    await addAll();
-    await commit();
-    await checkoutBranch(TARGET_BRANCH);
-    await mergeBranch(SOURCE_BRANCH);
-    await getDiffs();
-    await processDiffs();
-    await makeTmpFolder();
-    await transferAll();
+    // await grabTarget();
+    // await createBranch(BRANCH_TARGET);
+    // await createBranch(BRANCH_SOURCE);
+    // await grabSource();
+    // await addAll();
+    // await commit();
+    // await checkoutBranch(BRANCH_TARGET);
+    // await mergeBranch(BRANCH_SOURCE);
+    // await getDiffs();
+    // await processDiffs();
+    // await makeTmpFolder();
+    // await transferAll();
     // await clean();
 }
 
