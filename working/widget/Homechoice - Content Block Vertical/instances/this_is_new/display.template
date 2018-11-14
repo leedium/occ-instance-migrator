@@ -1,0 +1,105 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "500106": {"id": "500106"},
+  "500107": {"id": "500107"},
+  "500108": {
+    "id": "500108",
+    "image": {
+      "isProductImage": false,
+      "link": "/aboutus",
+      "src": "/file/v2709796919550137044/collections/Penguins.jpg",
+      "titleText": "t",
+      "titleTextId": "600092",
+      "zoomEnabled": false
+    }
+  },
+  "500109": {
+    "id": "500109",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50101')}",
+      "sourceMedia": "m50101"
+    }
+  },
+  "500110": {
+    "id": "500110",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50103')}",
+      "sourceMedia": "m50103"
+    }
+  }
+}} --><!-- /ko -->
+
+<div data-bind="css: cssClasses()" class="hc-content-block hc-content-block__1-col" data-oc-id="hc-content-block">
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-1-0">
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-2-0">
+
+      <!-- oc section: contentBlockImage -->
+<div data-bind="element: 'contentBlockImage',id: '500108'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-3-0">
+
+      <!-- oc section: rich-text -->
+<div data-bind="element: 'rich-text',id: '500109'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-4-0">
+
+      <!-- oc section: rich-text -->
+<div data-bind="element: 'rich-text',id: '500110'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+    <!----------------->
+
+
+</div>

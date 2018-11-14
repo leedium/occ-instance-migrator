@@ -1,0 +1,17 @@
+{
+  "resources": {
+    "blLabel": "bottom-left",
+    "trLabel": "top-right",
+    "mrLabel": "middle-right",
+    "brLabel": "bottom-right",
+    "copyAlignmentHelp": "Alignment of the copy in the baner",
+    "tlLabel": "top-left",
+    "fullWidthLabel": "Full width",
+    "fullWidthHelp": "Banner will consume full width of the Area",
+    "mmLabel": "middle-middle",
+    "copyAlignmentLabel": "Copy Alignment",
+    "tmLabel": "top-middle",
+    "bmLabel": "bottom-middle",
+    "mlLabel": "middle-left"
+  }
+}

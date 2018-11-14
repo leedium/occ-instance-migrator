@@ -1,0 +1,15 @@
+{
+  "imports": [
+    "confirmation"
+  ],
+  "translations": [
+    {
+      "name": "VSG Commerce Google Tag Manager Integration",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

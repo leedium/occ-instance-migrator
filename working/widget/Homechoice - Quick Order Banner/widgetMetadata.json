@@ -1,0 +1,20 @@
+{
+  "imports": [
+    "pageContext",
+    "site",
+    "loaded",
+    "imageRootUrl",
+    "links"
+  ],
+  "translations": [
+    {
+      "name": "Homechoice - Quick Order Banner",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "config": {}
+}

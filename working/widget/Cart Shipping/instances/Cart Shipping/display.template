@@ -1,0 +1,23 @@
+<div id="CC-cart-shipping-details" data-oc-id="CC-cart-shipping-details">
+  <!-- oc layout: panels -->
+    <div class="row">
+      <div class="oc-panel col-md-12" data-oc-id="cs-panel-1">
+        <!-- oc section: cart-shipping-title -->
+          <div data-bind="element: 'cart-shipping-title'"></div>
+        <!-- /oc -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="oc-panel col-md-6" data-oc-id="cs-panel-2">
+        <!-- oc section: cart-shipping-address -->
+          <div data-bind="element: 'cart-shipping-address'"></div>
+        <!-- /oc -->
+      </div>
+      <div class="oc-panel col-md-6" data-oc-id="cs-panel-3">
+        <!-- oc section: cart-shipping-options -->
+          <div data-bind="element: 'cart-shipping-options'"></div>
+        <!-- /oc -->
+      </div>
+    </div>
+  <!-- /oc -->
+</div>

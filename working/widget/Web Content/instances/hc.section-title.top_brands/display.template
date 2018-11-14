@@ -1,0 +1,105 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1000068": {
+    "font": {"styles": {
+      "color": "#000000",
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-align": "center",
+      "text-decoration": "none"
+    }},
+    "id": "1000068",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000076": {"id": "1000076"},
+  "1000078": {"id": "1000078"},
+  "1000098": {
+    "font": {"styles": {
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-align": "center",
+      "text-decoration": "none"
+    }},
+    "id": "1000098",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000106": {
+    "font": {"styles": {
+      "color": "#000000",
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-align": "center",
+      "text-decoration": "none"
+    }},
+    "id": "1000106",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000127": {
+    "font": {"styles": {
+      "color": "#333333",
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "line-height": "150%",
+      "text-align": "center",
+      "text-decoration": "none"
+    }},
+    "id": "1000127",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "900182": {
+    "font": {"styles": {
+      "color": "#000000",
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-align": "center",
+      "text-decoration": "none"
+    }},
+    "id": "900182",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: generic-text -->
+<h3 data-bind="element: 'generic-text',id: '1000127'"></h3>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->

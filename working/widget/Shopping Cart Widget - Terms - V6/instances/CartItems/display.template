@@ -1,0 +1,631 @@
+<!-- ko if: hcCartReady() && userReady()-->
+<!-- ko with: cart -->
+<div class="cart-page--line-items">
+    <div id="cc-cartSummary">
+        <!-- ko if: items().length === 0 -->
+        <h2 data-bind="widgetLocaleText: 'cartEmptyHeader'"></h2>
+        <div class="cart-inner">
+            <div class="row">
+                <div class="buttons pull-left col-md-3">
+                    <a data-bind="ccLink:'home'" id="CC-shoppingCart-continueShopping" class="cc-button-primary">
+                        <span data-bind="widgetLocaleText : 'buttonContinueShopping'"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: allItems().length > 0 -->
+        
+        <!--<span data-bind="onRender:function(){console.log('Cart Items: Checking Values', $parent);}"></span>-->
+        
+        <div class="cart-inner">
+            <div class="row">
+                <div class="cart-page--title col-xs-12 col-sm-7">
+                    <h2 data-bind="widgetLocaleText: 'cartHeader'"></h2>
+                </div>
+                <div class="buttons col-xs-12 col-sm-4 pull-right">
+                    <!--<a data-bind="ccLink:'home'" id="CC-shoppingCart-continueShopping" class="cc-button-secondary">
+                        <span data-bind="widgetLocaleText : 'buttonContinueShopping'"></span>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+        <div class="cart-inner">
+
+            <div class="row thead hidden-xs">
+                <!--itemHeaderItem-->
+                <div class="col-xs-12 col-sm-6 image" data-bind="widgetLocaleText : 'itemHeaderItem'"></div>
+                <!--itemHeaderQuantity-->
+                <div class="quantity col-sm-3 text-center hidden-xs" data-bind="widgetLocaleText: 'itemHeaderQuantity'"></div>
+                <!--itemHeaderItemTotal-->
+                <div class="col-sm-3 text-right hidden-xs">Payment Option</div>
+            </div>
+
+            <section id="cart-info" data-bind="widgetLocaleText:{value:'cartHeader',attr:'summary'}">
+                <!-- ko foreach: allItems -->
+                <!-- ko ifnot: ($data.isPlaceHolderItem) -->
+                <div class="clearfix item" data-bind="css: {even: ( (($index() % 2)==0) && ($parent.allItems().length > 1) )}">
+                    <!--itemHeaderItem-->
+                    <!-- ko with: productData -->
+
+
+
+                    <!--- IMAGE -->
+                    <div class="image col-xs-5 col-sm-2">
+                        <div>
+                            <div class="hc-product-badge--container">
+                                <!-- ko if: $data.new -->
+                                <span  class="hc-product-badge hc-product-badge__new">New</span>
+                                <!-- /ko -->
+                                <!-- ko if: $data.sale -->
+                                <span class="hc-product-badge hc-product-badge__onsale">Sale</span>
+                                <!-- /ko -->
+                                <!-- ko ifnot: $parent.stockStatus() -->
+                                <span class="hc-product-badge hc-product-badge__out-of-stock">Out of Stock</span>
+                                <!-- /ko -->
+                            </div>
+                            <a data-bind="ccLink : $data">
+                                <img data-bind="productVariantImageSource: {src: $data, imageType:'thumb', alt: displayName,
+                              errorSrc: '/img/no-image.jpg', errorAlt: 'Missing Product Image'},
+                              attr:{id: 'CC-shoppingCart-productImage-' + $parent.productId + $parent.catRefId + ($parent.commerceItemId ? $parent.commerceItemId: '') }" />
+
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!--- DETAILS -->
+                    <div class="details col-xs-6 col-sm-4">
+                        <div class="padding-offset">
+                            <!-- if product is on sale, display badge-->
+                            <!-- ko if: ($data.sale) -->
+                            <!--<span class="label label-danger">SALE</span>-->
+                            <!-- /ko -->
+                            <!--<span data-bind="onRender:function(){console.log('Prod Data: Checking Values',$data, $parents);}"></span>-->
+                            <a class="bold" data-bind="attr: { href: $data.route, id: 'CC-shoppingCart-productName-' + $parent.productId + $parent.catRefId + ($parent.commerceItemId ? $parent.commerceItemId: '') }">
+                                <span data-bind="text: $data.displayName"></span>
+                                <!-- ko if: $parents[2].showOverCommit -->
+                                <span data-bind="text: '(R' + $data.childSKUs[0].listPrice + ')'"></span>
+                                <!-- /ko -->
+                            </a>
+                            
+                            <div class="cart-page--variant-list">
+                                <small>
+                                    <div>
+                                        Product Code: <span data-bind="text: $data.orderCode"></span>
+                                    </div>
+                                </small>
+                            </div>
+
+                            <div class="hidden-phone cart-page--variant-list" data-bind="attr: { id: 'CC-shoppingCart-productVariant-' + $parent.productId + $parent.catRefId + ($parent.commerceItemId ? $parent.commerceItemId: '') }">
+                                <!-- ko foreach: $parent.selectedOptions -->
+                                <small>
+                                    <!-- ko if: $data.optionValue -->
+                                    <!-- ko if: $index() > 0 -->
+                                    <!-- /ko -->
+                                    <div><span data-bind="text: $data.optionName"></span>: <span data-bind="text: $data.optionValue"></span></div>
+                                    <!-- /ko -->
+                                </small>
+                                <!-- /ko -->
+                            </div>
+
+
+                            <!-- ko if: (configurable && $parent.childItems) -->
+                            <div class="hidden-xs" data-bind="attr: { id: 'CC-shoppingCart-productConfigurationDetails-' + $parent.productId + $parent.catRefId + $parent.commerceItemId + $index()}">
+                                <small>
+                                    <a data-bind="widgetLocaleText:'configurationDetails', attr: { href: '#CC-shoppingCart-configDetails-' + $parent.productId + $parent.catRefId + $parent.commerceItemId + $index()}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a>
+                                    <div data-bind="attr: { id: 'CC-shoppingCart-configDetails-' + $parent.productId + $parent.catRefId + $parent.commerceItemId + $index()}" class="collapse">
+                                        <ul data-bind="foreach: $parent.childItems">
+                                            <li><a data-bind="ccLink: productData"><span data-bind="text: displayName"></span></a>
+                                                <!-- ko foreach: $data.selectedOptions -->
+                                                <!-- ko foreach: $data -->
+                                                <!-- ko if: $data.optionValue -->
+                                                (<span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+                                              optionValue: $data.optionValue}},
+                                                attr: { id: 'CC-shoppingCart-childProductOptions-'+ $parent.productId + $parent.catRefId  + ($parent.commerceItemId ? $parent.commerceItemId: '') + $parent.removeSpaces($data.optionValue)}">
+                                            </span>)
+                                                <!-- /ko -->
+                                                <!-- /ko -->
+                                                <!-- /ko -->
+                                                <span data-bind="text: quantity"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </small>
+                            </div>
+                            <!-- /ko -->
+
+                            <!-- ko if: $parent.stockStatus() -->
+                            <!--HOMECHOICE EDIT-->
+                            <!--<div class="instock" data-bind="widgetLocaleText : 'instockText',-->
+                            <!--      attr: { id: 'CC-shoppingCart-productStockStatus-' + $parent.productId + $parent.catRefId + ($parent.commerceItemId ? $parent.commerceItemId: '') }">-->
+                            <!--</div>-->
+                            <!-- /ko -->
+                            <!-- ko ifnot: $parent.stockStatus() -->
+                            <!--HOMECHOICE EDIT-->
+                            <!--<div class="outofstock" data-bind="widgetLocaleText : 'outofstockText',-->
+                            <!--      attr: { id: 'CC-shoppingCart-productStockStatus-' + $parent.productId + $parent.catRefId + ($parent.commerceItemId ? $parent.commerceItemId: '') }">-->
+                            <!--</div>-->
+                            <!-- /ko -->
+                            <!-- ko with: $parent.discountInfo -->
+                            <!-- ko foreach: $data -->
+
+                            <!--<div>-->
+                            <!-- ko ifnot: $data.coupon -->
+                            <!--    <small data-bind="text: promotionDesc, attr: { id: 'CC-shoppingCart-itemDesc-' + $parents[1].id + '-' + $index() }"></small>-->
+                            <!-- /ko -->
+                            <!-- ko if : $data.coupon -->
+                            <!--    <small data-bind="attr: { id: 'CC-shoppingCart-itemDesc-' + $parents[1].id + '-' + $index() },-->
+                            <!--            widgetLocaleText : {value:'couponDisplayText', attr: 'innerText', params: {description: promotionDesc, code : coupon}}">-->
+                            <!--    </small>-->
+                            <!-- /ko -->
+                            <!--</div>-->
+                            <!-- /ko -->
+                            <!-- /ko -->
+
+                            <!-- ko if: $parent.productData().shippingSurcharge -->
+                            <!--<div class="CC-shoppingCart-shippingSurcharge" data-bind="attr:-->
+                            <!--      { id: 'CC-shoppingCart-shippingSurcharge-for-' + $parent.productId + $parent.catRefId + ($parent.commerceItemId ? $parent.commerceItemId: '') }">-->
+                            <!--    <span data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>-->
+                            <!--    <span data-bind="text: $parents[1].currency.symbol + $parent.productData().shippingSurcharge,-->
+                            <!--        attr: { id: 'CC-shoppingCart-shippingSurcharge-' + $parent.productId + $parent.catRefId + ($parent.commerceItemId ? $parent.commerceItemId: '') }">-->
+                            <!--    </span>-->
+                            <!--</div>-->
+                            <!-- /ko -->
+                            <!--<div data-bind="if: (configurable && $parent.childItems && $parents[2].site().extensionSiteSettings && $parents[2].site().extensionSiteSettings.CPQConfigurationSettings && $parents[2].site().extensionSiteSettings.CPQConfigurationSettings.enabled)">-->
+                            <!--    <button class="cc-button-secondary col-md-3 hidden-xs" data-bind="click: $parents[2].handleReconfigure.bind($parent, $parents[2]), widgetLocaleText : {value:'reconfigureText', attr:'aria-label'}">-->
+                            <!--        <span data-bind="widgetLocaleText:'buttonReconfigure'"></span>-->
+                            <!--    </button>-->
+                            <!--    <small>-->
+                            <!--        <a class="visible-xs" data-bind="click: $parents[2].handleReconfigure.bind($parent, $parents[2]), widgetLocaleText : {value:'reconfigureText', attr:'aria-label'}" >-->
+                            <!--            <span data-bind="widgetLocaleText:'buttonReconfigure'"></span>-->
+                            <!--        </a>-->
+                            <!--    </small>-->
+                            <!--</div>-->
+                            <!--<div class="padding-top" data-bind="if: $parent.isGWPChoicesAvaliable()">-->
+                            <!--    <a data-bind="click: $parents[2].changeGiftChoice.bind($parent,$parents[2]), attr: {id: 'CC-shoppingCart-changeButton-'+$index()}"-->
+                            <!--       role="button" tabindex="0" class="cc-button-primary placeHolderButton" data-toggle="modal" data-target="#CC-giftSelectionpane">-->
+                            <!--        <span data-bind="widgetLocaleText: 'changeButton'"></span>-->
+                            <!--    </a>-->
+                            <!--</div>-->
+
+                            <!--- update when property gets added to the product model-->
+      <!-- ko if: hc_productOffer || hc_productSkinny -->
+                            <div class="cart-page--line-item hidden-xs">
+                                <div class="cart-page--line-item--container">
+                                    
+      <!-- ko if: hc_productOffer -->
+      <span class="cart-page--line-item--offer-title" data-bind="text: hc_productOffer">SPECIAL OFFER</span>
+      <!-- /ko -->          
+      <!-- ko if:hc_productSkinny -->
+      <span class="cart-page--line-item--offer-desc" data-bind="text: hc_productSkinny">Get a FREE Shawl with your bedding</span>
+      <!-- /ko -->
+ 
+                                </div>
+                            </div>
+      <!-- /ko -->
+
+
+
+
+
+      <!-- <div >
+            <div class="" data-bind="attr: { class : 'CheckoutOffer2 CO' + $parent.catRefId }">
+            </div>
+      </div> -->
+
+
+                            <!--- // end update-->
+
+
+                        </div>
+                    </div>
+                    <!-- /ko -->
+
+
+                    <!--- QUANTITY -->
+                    <div class="form-group quantity hidden-xs col-xs-6 col-sm-3 text-center">
+                        <div class="padding-offset-center">
+                            <!-- ko with: productData -->
+                            <label class="" data-bind="text : 'Qty',
+                                attr: { for: 'CC-shoppingCart-productQuantity-label-' + $parent.productId + $parent.catRefId + ($parent.commerceItemId ? $parent.commerceItemId: '') }">
+                            </label>
+                            <!-- /ko -->
+                            <input data-bind="textInput: updatableQuantity, widgetLocaleText : {value:'itemHeaderQuantity', attr:'aria-label'}, attr:{id:'CC-shoppingCart-productQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: '') },
+                              event:{input:function(data, event){ return $parents[1].validateInput(data, event, 'CC-shoppingCart-updateQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: '') );}, focus:$parents[1].quantityFocus, keypress: function(data, event){ return $parents[1].updateQuantity(data, event, 'CC-shoppingCart-updateQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: '') );}}"
+                                   type="number" name="qty2" class="input-qty form-control">
+                            <a href="#" class="hidden-xs" data-bind="click: $parents[1].handleRemoveFromCart">
+                                <!--    <img data-bind="widgetLocaleText : {value:'handleRemoveFromCart', attr:'alt'},-->
+                                <!--attr:{id:'CC-shoppingCart-removeItem-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }" src="/img/remove.png" alt="Remove">-->
+                            </a>
+                            
+                            <a href="#" style="position: relative;left: 146px;top: -143px;" class="visible-xs pull-right qty-xs" data-bind="click: $parents[1].handleRemoveFromCart">
+                            </a>
+                            
+                            <p>
+                                <button class="cc-button-primary btn-update" type="button"
+                                        data-bind="widgetLocaleText : 'buttonUpdateQuantity',
+                                click: function(data, event){ return $parents[1].updateQuantity(data, event, 'CC-shoppingCart-updateQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: ''));},
+                                attr:{id:'CC-shoppingCart-updateQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }">
+                                </button>
+                            </p>
+                        </div>
+                        <div class="col-xs-12">
+                            <!--notifications-->
+                            <div class="notify col-sm-12 no-gutters">
+                                  <span class="text-danger lineBreak" role="alert" aria-live="assertive"
+                                        data-bind="validationMessage: updatableQuantity, attr:{id:'CC-shoppingCart-itemError-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>
+                                <span class="text-info lineBreak" role="alert" aria-live="polite"
+                                      data-bind="triggerMessage: updatableQuantity, attr:{id:'CC-shoppingCart-itemInfo-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>
+                                <span class="text-info lineBreak" role="alert" aria-live="polite"
+                                      data-bind="triggerMessage: productPriceChanged, attr:{id:'CC-shoppingCart-itemInfo-priceChanged-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>
+                                <span class="text-danger lineBreak" role="alert" aria-live="assertive"
+                                      data-bind="visible: isUnpricedError, text: unpricedErrorMessage, attr:{id:'CC-shoppingCart-itemError-externalPrice-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <a href="#" style="position: relative;left: -20px;top: 10px;" class="visible-xs pull-right qty-xs" data-bind="click: $parents[1].handleRemoveFromCart">
+                </a>
+
+
+                    <!--- QUANTITY WITH TERMS -->
+                    <div class="cart-page--itemHeaderTotal quantity_mobile cart-page--quantity-with-terms col-xs-12 col-sm-3 ">
+                        <div class="padding-offset-center">
+                            <div class="form-group visible-xs quantity  col-xs-5 no-gutters ">
+                                <!-- ko with: productData -->
+                                <label class="" data-bind="text : 'Qty',
+                                    attr: { for: 'CC-shoppingCart-mobile-productQuantity-label' + $parent.productId + $parent.catRefId + $parent.catRefId + ($parent.commerceItemId ? $parent.commerceItemId: '')}">
+                                </label>
+                                <!-- /ko -->
+                                <input data-bind="textInput: updatableQuantity, widgetLocaleText : {value:'itemHeaderQuantity', attr:'aria-label'}, attr:{id:'CC-shoppingCart-mobile-productQuantity-' + productId + catRefId },
+                                  event:{input:function(data, event){ return $parents[1].validateInput(data, event, 'CC-shoppingCart-updateQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: '') );}, focus:$parents[1].quantityFocus, keypress: function(data, event){ return $parents[1].updateQuantity(data, event, 'CC-shoppingCart-updateQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: ''), $index() );}}"
+                                       type="number" name="qty2" class="input-qty form-control">
+                                <a href="#" class="hidden-xs" data-bind="click: $parents[1].handleRemoveFromCart">
+                                    <!--    <img data-bind="widgetLocaleText : {value:'handleRemoveFromCart', attr:'alt'},-->
+                                    <!--attr:{id:'CC-shoppingCart-removeItem-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }" src="/img/remove.png" alt="Remove">-->
+                                </a>
+                                
+                                <p>
+                                    <button class="cc-button-primary btn-update" type="button"
+                                            data-bind="widgetLocaleText : 'buttonUpdateQuantity',
+                                    click: function(data, event){ return $parents[1].updateQuantity(data, event, 'CC-shoppingCart-updateQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: ''));},
+                                    attr:{id:'CC-shoppingCart-updateQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }">
+                                    </button>
+                                </p>
+                            </div>
+
+
+                            <!-- ko with: productData -->
+                            <div class="CartCashTermsHolderOuterHover  col-xs-6 col-sm-12">
+                                <div class="CartCashTermsHolderOuter">
+                                    <div class="CartCashTermsHolder">
+                                        <!--<span data-bind="onRender:function(){console.log('Before getTermDDL',$data, $parent,$parentContext, $parentContext.$parents[0], $index(), $parentContext.$parents[1].getTermsForOptionDropdown($parent))}"></span>-->
+                                        <!--<span data-bind="onRender:function(){console.log('Before getTermDDL',$parentContext.$parents[1])}"></span>-->
+                                        <!-- $parentContext.$parents[1].getTermsForOptionDropdown($parent), -->
+                                        <!--ADD BACK-->
+                                        <select class="clearfix CartCashTerms form-control cc-skuDropdown" data-bind="
+                                        options: [{id:'t_'+$parent.productData().childSKUs[0].hc_termPeriod5+'_termPrice5_'+$parent.productData().childSKUs[0].hc_termPrice5, label:'R'+$parent.productData().childSKUs[0].hc_termPrice5 + ' X '+ $parent.productData().childSKUs[0].hc_termPeriod5, price: $parent.productData().childSKUs[0].hc_termPrice5},
+                                            {id:'t_'+$parent.productData().childSKUs[0].hc_termPeriod4+'_p_'+$parent.productData().childSKUs[0].hc_termPrice4, label:'R'+$parent.productData().childSKUs[0].hc_termPrice4 + ' X '+ $parent.productData().childSKUs[0].hc_termPeriod4, price: $parent.productData().childSKUs[0].hc_termPrice4},
+                                            {id:'t_'+$parent.productData().childSKUs[0].hc_termPeriod3+'_p_'+$parent.productData().childSKUs[0].hc_termPrice3, label:'R'+$parent.productData().childSKUs[0].hc_termPrice3 + ' X '+ $parent.productData().childSKUs[0].hc_termPeriod3, price: $parent.productData().childSKUs[0].hc_termPrice3},
+                                            {id:'t_'+$parent.productData().childSKUs[0].hc_termPeriod2+'_p_'+$parent.productData().childSKUs[0].hc_termPrice2, label:'R'+$parent.productData().childSKUs[0].hc_termPrice2 + ' X '+ $parent.productData().childSKUs[0].hc_termPeriod2, price: $parent.productData().childSKUs[0].hc_termPrice2},
+                                            {id:'t_'+$parent.productData().childSKUs[0].hc_termPeriod1+'_p_'+$parent.productData().childSKUs[0].hc_termPrice1, label:'R'+$parent.productData().childSKUs[0].hc_termPrice1 + ' X '+ $parent.productData().childSKUs[0].hc_termPeriod1, price: $parent.productData().childSKUs[0].hc_termPrice1},
+                                            {id:'cash', label: 'R'+ ($parent.productData().childSKUs[0].listPrice), price: ($parent.productData().childSKUs[0].listPrice) }
+                                            ].reduce(function(a,b,i){ if ( (i===0 || i ===1 ) && $parentContext.$parent.user().dynamicProperties().filter(function(item){ return item.id() === '24MonthTermOption'  })[0].value()   ){ a.push(b) } if(i > 1){ a.push(b) } return a;  },[]).filter(function(item){ return (item.price !== 0)}),
+                                        optionsText: 'label',
+                                        optionsValue: 'id',
+                                        value:$parent.hcTermsCharge() !== null ? ('t_' + $parent.hcTermsDuration() + '_p_' + $parent.hcTermsCharge()) : 'cash',
+                                        attr:{ id:'select'+$parent.catRefId,'data-catRefId': $parent.catRefId, 'data-commerceItemId': $parent.commerceItemId},
+                                        event:{ change: $parentContext.$parents[1].termsChange.bind($parentContext.$parents[1]) }
+                                         ">
+                                        </select>
+                                        
+                                        <!-- <select class="clearfix CartCashTerms form-control cc-skuDropdown" data-bind="-->
+                                        <!--options: [{id:'t_'+$parent.productData().childSKUs[0].termPeriod5+'_termPrice5_'+$parent.productData().childSKUs[0].termPrice5, label:'R'+$parent.productData().childSKUs[0].termPrice5 + ' X '+ $parent.productData().childSKUs[0].termPeriod5, price: $parent.productData().childSKUs[0].termPrice5},-->
+                                        <!--    {id:'t_'+$parent.productData().childSKUs[0].termPeriod4+'_p_'+$parent.productData().childSKUs[0].termPrice4, label:'R'+$parent.productData().childSKUs[0].termPrice4 + ' X '+ $parent.productData().childSKUs[0].termPeriod4, price: $parent.productData().childSKUs[0].termPrice4},-->
+                                        <!--    {id:'t_'+$parent.productData().childSKUs[0].termPeriod3+'_p_'+$parent.productData().childSKUs[0].termPrice3, label:'R'+$parent.productData().childSKUs[0].termPrice3 + ' X '+ $parent.productData().childSKUs[0].termPeriod3, price: $parent.productData().childSKUs[0].termPrice3},-->
+                                        <!--    {id:'t_'+$parent.productData().childSKUs[0].termPeriod2+'_p_'+$parent.productData().childSKUs[0].termPrice2, label:'R'+$parent.productData().childSKUs[0].termPrice2 + ' X '+ $parent.productData().childSKUs[0].termPeriod2, price: $parent.productData().childSKUs[0].termPrice2},-->
+                                        <!--    {id:'t_'+$parent.productData().childSKUs[0].termPeriod1+'_p_'+$parent.productData().childSKUs[0].termPrice1, label:'R'+$parent.productData().childSKUs[0].termPrice1 + ' X '+ $parent.productData().childSKUs[0].termPeriod1, price: $parent.productData().childSKUs[0].termPrice1},-->
+                                        <!--    {id:'cash', label: 'R'+ ($parent.productData().childSKUs[0].listPrice), price: ($parent.productData().childSKUs[0].listPrice) }-->
+                                        <!--    ].reduce(function(a,b,i){ if ( (i===0 || i ===1 ) && $parentContext.$parent.user().dynamicProperties().filter(function(item){ return item.id() === '24MonthTermOption'  })[0].value()   ){ a.push(b) } if(i > 1){ a.push(b) } return a;  },[]).filter(function(item){ return (item.price !== 0)}),-->
+                                        <!--optionsText: 'label',-->
+                                        <!--optionsValue: 'id',-->
+                                        <!--value:$parent.externalRecurringCharge() !== null ? ('t_' + $parent.externalRecurringChargeDuration() + '_p_' + $parent.externalRecurringCharge()) : 'cash',-->
+                                        <!--attr:{ id:'select'+$parent.catRefId,'data-catRefId': $parent.catRefId, 'data-commerceItemId': $parent.commerceItemId},-->
+                                        <!--event:{ change: $parentContext.$parents[1].termsChange.bind($parentContext.$parents[1]) }-->
+                                        <!-- ">-->
+                                        <!--</select>-->
+                                        
+                                        
+                                        <span class="updatingCartTerms">Updating Cart</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--
+
+                            value: JSON.parse($parentContext.$parents[0].dynamicProperties().filter(function(item){ return item.id() === 'hcOrderCustomizations'})[0].value())[$parent.catRefId].value,
+-->
+                            <!-- /ko -->
+                        </div>
+                        <div class="col-xs-12 visible-xs">
+                            <!--notifications-->
+                            <div class="notify col-sm-12 no-gutters">
+                                  <span class="text-danger lineBreak" role="alert" aria-live="assertive"
+                                        data-bind="validationMessage: updatableQuantity, attr:{id:'CC-shoppingCart-itemError-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>
+                                <span class="text-info lineBreak" role="alert" aria-live="polite"
+                                      data-bind="triggerMessage: updatableQuantity, attr:{id:'CC-shoppingCart-itemInfo-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>
+                                <span class="text-info lineBreak" role="alert" aria-live="polite"
+                                      data-bind="triggerMessage: productPriceChanged, attr:{id:'CC-shoppingCart-itemInfo-priceChanged-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>
+                                <span class="text-danger lineBreak" role="alert" aria-live="assertive"
+                                      data-bind="visible: isUnpricedError, text: unpricedErrorMessage, attr:{id:'CC-shoppingCart-itemError-externalPrice-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 visible-xs">
+                        <!--- update when property gets added to the product model-->
+                        <div class="cart-page--line-item">
+                            <div class="cart-page--line-item--container">
+                                <span class="cart-page--line-item--offer-title">SPECIAL OFFER</span>
+                                <span class="cart-page--line-item--offer-desc">Get a FREE Shawl with your bedding</span>
+                            </div>
+                        </div>
+                        <!--- // end update-->
+                    </div>
+                </div>
+
+
+                <!-- mobile view-->
+                <!--<div class="row visible-xs" data-bind="css: {even: ( (($index() % 2)==0) && ($parent.allItems().length > 1) )}">-->
+                <!--    <div class="col-xs-12 text-right total">-->
+                <!--        <ul class="list-unstyled" data-bind="foreach: detailedItemPriceInfo">-->
+                <!--            <li>-->
+                <!--<span data-bind="onRender:function(){console.log('Before Price1',$data, $parent,$parentContext, $index())}"></span>-->
+                <!--<span data-bind="text: $parents[2].site().currency.symbol + (($parent.externalRecurringCharge() || $parent.productData().childSKUs[0].listPrice || $parent.productData().listPrice) * $parent.quantity()), attr:{id:'CC-shoppingCart-itemTotal-' + productId + catRefId + (commerceItemId ? commerceItemId: '') + $index()"></span>-->
+
+                <!--            </li>-->
+                <!--        </ul>-->
+                <!-- if product is on sale, display its accumulated original price-->
+                <!-- ko with: productData -->
+                <!-- ko if: ($data.sale) -->
+                <!-- //ko if: ($parentContext.$parents[1].isNotTerm($parent.productId, $parent)) -->
+                <!--<div class="raw-sale-price bold" data-bind="text: $parents[2].site().currency.symbol + $parent.rawTotalPrice()"></div>-->
+                <!-- //ko -->
+                <!-- /ko -->
+                <!-- /ko -->
+                <!--    </div>-->
+
+                <!--notifications-->
+                <!--    <div class="notify col-xs-12">-->
+                <!--      <span class="text-danger lineBreak" role="alert" aria-live="assertive"-->
+                <!--            data-bind="validationMessage: updatableQuantity, attr:{id:'CC-shoppingCart-itemError-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>-->
+                <!--        <span class="text-info lineBreak" role="alert" aria-live="polite"-->
+                <!--              data-bind="triggerMessage: updatableQuantity, attr:{id:'CC-shoppingCart-itemInfo-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>-->
+                <!--        <span class="text-info lineBreak" role="alert" aria-live="polite"-->
+                <!--              data-bind="triggerMessage: productPriceChanged, attr:{id:'CC-shoppingCart-itemInfo-priceChanged-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>-->
+                <!--        <span class="text-danger lineBreak" role="alert" aria-live="assertive"-->
+                <!--              data-bind="visible: isUnpricedError, text: unpricedErrorMessage, attr:{id:'CC-shoppingCart-itemError-externalPrice-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }"></span>-->
+                <!--    </div>-->
+
+                <!--    <div class="col-xs-12 form-group quantity">-->
+                <!-- ko with: productData -->
+                <!--        <label class="label-hidden" data-bind="widgetLocaleText : {value:'itemQuantity', attr:'innerText',-->
+                <!--            params: {productName: displayName +'-'+ $parent.catRefId}},-->
+                <!--            attr: { for: 'CC-shoppingCart-mobile-productQuantity-label' + $parent.productId + $parent.catRefId + $parent.catRefId + ($parent.commerceItemId ? $parent.commerceItemId: '') }">-->
+                <!--        </label>-->
+                <!-- /ko -->
+                <!--        <input data-bind="textInput: updatableQuantity, attr:{id:'CC-shoppingCart-mobile-productQuantity-' + productId + catRefId },-->
+                <!--          event:{focus:$parents[1].quantityFocus, keypress: function(data, event){ return $parents[1].updateQuantity(data, event, 'CC-shoppingCart-updateQuantity-' + productId + catRefId  + (commerceItemId ? commerceItemId: ''));}}"-->
+                <!--               type="text" name="qty2" class="input-qty form-control">-->
+                <!--        <a href="#" data-bind="click: $parents[1].handleRemoveFromCart">-->
+                <!--            <img data-bind="widgetLocaleText : {value:'handleRemoveFromCart', attr:'alt'}, attr:{-->
+                <!--            id:'CC-shoppingCart-mobile-removeItem-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }" src="/img/remove.png" alt="Remove">-->
+                <!--        </a>-->
+                <!--        <p>-->
+                <!--            <button class="cc-button-primary btn-update" type="button"-->
+                <!--                    data-bind="widgetLocaleText : 'buttonUpdateQuantity',-->
+                <!--            click: function(data, event){ return $parents[1].updateQuantity(data, event, 'CC-shoppingCart-updateQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: ''));},-->
+                <!--            attr:{id:'CC-shoppingCart-updateQuantity-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }">-->
+                <!--            </button>-->
+                <!--        </p>-->
+                <!--    </div>-->
+
+
+
+                <!--</div>-->
+                <!-- /ko -->
+
+                <!-- Place holder items -->
+                <!-- ko if: ($data.isPlaceHolderItem) -->
+                <div class="row item" data-bind="css: {even: ( (($index() % 2)==0) && ($parent.items().length > 1) )}">
+                    <div class="col-xs-4 col-sm-2" scope="row">
+                        <i class="fa fa-gift giftIcon" data-bind="attr:{id: 'CC-shoppingCart-placeHolderImage'+$index() }"></i>
+                    </div>
+                    <div class="bold col-xs-8 col-sm-4">
+                        <div data-bind="text: displayName"></div>
+                        <a data-bind="click: $parents[1].getGiftChoices, attr: {id: 'CC-shoppingCart-placeHolderButton'+$index()}"
+                           role="button" tabindex="0" class="cc-button-primary placeHolderButton" data-toggle="modal" data-target="#CC-giftSelectionpane">
+                            <span data-bind="widgetLocaleText: 'placeHolderSelect'"></span>
+                        </a>
+                    </div>
+
+                    <div class="form-group quantity col-xs-5 col-sm-1">
+                        <input data-bind="disable: quantityDisabled, value: quantity, attr: {id:'CC-shoppingCart-placeHolderQuantity-'+$index()}"
+                               type="text" name="placeHolderQty" class="input-qty form-control">
+                        <a href="#" data-bind="click: $parents[1].handlePlaceHolderRemove">
+                            <img data-bind="widgetLocaleText : {value:'handlePlaceHolderRemove', attr:'alt'}, attr:{
+                          id:'CC-shoppingCart-removePlaceHolderItem-'+$index()}" src="/img/remove.png" alt="Remove">
+                        </a>
+                    </div>
+
+                    <div class="col-sm-3 hidden-xs"></div>
+                    <div class="text-right col-sm-2 hidden-xs">
+                      <span data-bind="text: $parents[1].site().currency.symbol + itemTotal,
+                          attr:{id:'CC-shoppingCart-placeHolderitemTotal-'+$index()}">
+                      </span>
+                    </div>
+                </div>
+
+                <div class="row visible-xs padding-border" data-bind="css: {even: ( (($index() % 2)==0) && ($parent.items().length > 1) )}">
+                    <div class="quantity col-xs-4" data-bind="widgetLocaleText: 'itemHeaderQuantity'"></div>
+                    <div class="form-group quantity col-xs-4">
+                        <input data-bind="disable: quantityDisabled, value: quantity, attr: {id:'CC-shoppingCart-placeHolderQuantity-'+$index()}"
+                               type="text" name="placeHolderQty" class="input-qty form-control">
+                        <a href="#" data-bind="click: $parents[1].handlePlaceHolderRemove">
+                            <img data-bind="widgetLocaleText : {value:'handlePlaceHolderRemove', attr:'alt'}, attr:{
+                            id:'CC-shoppingCart-removePlaceHolderItem-'+$index()}" src="/img/remove.png" alt="Remove">
+                        </a>
+                    </div>
+                    <div class="total col-xs-4">
+                      <span data-bind="text: $parents[1].site().currency.symbol + itemTotal,
+                          attr:{id:'CC-shoppingCart-placeHolderitemTotal-'+$index()}">
+                      </span>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- End of place holder items-->
+                <!-- /ko -->
+            </section>
+
+            <section id="total-cart" >
+                <div class="row">
+                    <!--<div class="buttons col-sm-6 hidden-xs total-cart-padding-top">-->
+                    <!--    <a data-bind="ccLink:'home'" id="CC-shoppingCart-continueShopping" class="cc-button-secondary">-->
+                    <!--        <span data-bind="widgetLocaleText : 'buttonContinueShopping'"> </span>-->
+                    <!--    </a>-->
+                    <!--</div>-->
+
+
+                    <!--<div class="col-xs-12 col-sm-6 text-right total-cart-padding-top" data-bind="widgetLocaleText:{value:'totalTableSummary',attr:'summary'}">-->
+                    <!--    <span class="bold padding-right" data-bind="widgetLocaleText : 'totalTableSubTotal'"></span>-->
+                    <!-- ko if: (isTaxIncluded && showTaxSummary) -->
+                    <!--    <span data-bind="widgetLocaleText: 'includingTaxText'"></span>-->
+                    <!-- /ko -->
+
+
+                    <!-- ADD BACK -->
+                    <!--<span data-bind="onRender:function(){console.log('Before Price',$data, $parent,$parentContext, $index())}"></span>-->
+
+                    <!--    <span id="CC-shoppingCart-subTotal" class="bold padding-zero cartSubTotal" data-bind="text: $parent.site().currency.symbol + $parent.subTotal()"></span>-->
+
+                    <!--</div>-->
+                </div>
+            </section>
+        </div>
+        <!-- /ko -->
+
+        <!-- CPQ Reconfiguration Modal -->
+        <div class="modal fade" id="cc-re-cpqmodalpane" tabindex="-1" role="dialog">
+            <div class="modal-dialog cc-config-modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe class="configFrame" id="cc-cpqReconfiguration-frame" data-bind="attr: { src : $parent.absoluteUrl('/templates/cpq-reconfig.html') }" ></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL dialouge for making a gift selection -->
+        <div class="modal fade" id="CC-giftSelectionpane" tabindex="-1" role="dialog">
+            <div class="modal-dialog cc-modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header CC-header-modal-heading">
+                        <h6 data-bind="widgetLocaleText:'giftChoiceText'"></h6>
+                    </div>
+                    <!-- ko if: $parent.currentGiftChoice() -->
+                    <!-- ko with: $parent.currentGiftChoice().giftChoice -->
+                    <div class="modal-body cc-modal-body">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <img class="img-responsive image center-block"
+                                     id="CC-shoppingCart-giftChoiceImage" data-bind="productVariantImageSource: {src: $data.product, imageType:'small', alt: displayName,
+                            errorSrc: '/img/no-image.jpg', errorAlt: 'Missing Product Image'}">
+                            </div>
+                            <div class="col-xs-6">
+                                <h3 data-bind="text: displayName"></h3>
+                                <h4 data-bind="text: $parents[1].site().currency.symbol + $data.itemTotal"></h4>
+                                <!-- ko if: (inStock() && showStockStatus()) -->
+                                <span data-bind="widgetLocaleText:{value: 'instockText', attr:'innerText'}" role="alert" aria-atomic="true" aria-live="polite"></span>
+                                <!-- /ko -->
+                                <!-- ko if: (!inStock() && showStockStatus()) -->
+                                <span data-bind="widgetLocaleText:{value: 'outofstockText', attr:'innerText'}" role="alert" aria-atomic="true" aria-live="polite"></span>
+                                <!-- /ko -->
+                                <div class="variantOptions hidden-xs">
+                                    <!-- ko foreach: variantOptionsArray -->
+                                    <div class="row">
+                                        <div class="control-group col-xs-4">
+                                            <label class="control-label" data-bind="attr: {for: 'CC-giftChoice-' + $data.optionId,
+                                    id: 'CC-giftChoice-label-' + $data.optionId}, text: $data.optionDisplayName + ':'">
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <!-- ko if: $data.optionCaption -->
+                                            <select class="form-control cc-skuDropdown" data-bind="validatableTarget: selectedOption,
+                                      validationOptions: {decorateElement: false, decorateElementOnModified:  false}, options: optionValues, optionsText: 'key',
+                                      attr: {id: 'CC-giftChoice-' + $data.optionId}, optionsCaption: $data.optionCaption, value: $data.selectedOption, disable: $data.disable">
+                                            </select>
+                                            <!-- /ko -->
+                                            <!-- ko ifnot: $data.optionCaption -->
+                                            <select class="form-control cc-skuDropdown" data-bind="validatableTarget: selectedOption,
+                                      validationOptions: {decorateElement: false, decorateElementOnModified:  false}, options: optionValues, optionsText: 'key',
+                                      attr: {id: 'CC-giftChoice-' + $data.optionId}, value: $data.selectedOption, disable: $data.disable">
+                                            </select>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row visible-xs">
+                            <div class="col-xs-12">
+                                <div class="variantOptions">
+                                    <!-- ko foreach: variantOptionsArray -->
+                                    <div class="row">
+                                        <div class="control-group col-xs-4 text-center">
+                                            <label class="control-label" data-bind="attr: {for: 'CC-giftChoice-' + $data.optionId,
+                                    id: 'CC-giftChoice-label-' + $data.optionId}, text: $data.optionDisplayName + ':'">
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <!-- ko if: $data.optionCaption -->
+                                            <select class="form-control cc-skuDropdown" data-bind="validatableTarget: selectedOption,
+                                      validationOptions: {decorateElement: false, decorateElementOnModified:  false}, options: optionValues, optionsText: 'key',
+                                      attr: {id: 'CC-giftChoice-' + $data.optionId}, optionsCaption: $data.optionCaption, value: $data.selectedOption, disable: $data.disable">
+                                            </select>
+                                            <!-- /ko -->
+                                            <!-- ko ifnot: $data.optionCaption -->
+                                            <select class="form-control cc-skuDropdown" data-bind="validatableTarget: selectedOption,
+                                      validationOptions: {decorateElement: false, decorateElementOnModified:  false}, options: optionValues, optionsText: 'key',
+                                      attr: {id: 'CC-giftChoice-' + $data.optionId}, value: $data.selectedOption, disable: $data.disable">
+                                            </select>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                    <!-- /ko -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <div class="modal-footer CC-header-modal-footer">
+                        <button type="button" id="CC-giftSelected-button" class="cc-button-primary"
+                                data-bind="disabled: { condition: !($parent.allOptionsSelected() && $parent.currentGiftChoice().giftChoice.inStock()),
+                    click: $parent.handleGiftAddToCart.bind($parent)}">
+                            <span data-bind="widgetLocaleText: 'okText'"></span>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>
+<!-- /ko -->
+<!-- /ko -->
+

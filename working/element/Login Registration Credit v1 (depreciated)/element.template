@@ -1,0 +1,377 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('login-registration') -->
+<div>
+    <!-- ko with: user -->
+    <!-- ko if: readyToDisplay -->
+    <div class="text-right cc-welcome">
+        <div data-bind="visible: loggedInUserName() &amp;&amp; (loggedIn() || isUserSessionExpired()) "
+             style="display: none;">
+                
+                    <span class="cc-header-firstName">Hi 
+                        <span data-bind="text:loggedInUserName"></span>, your credit limit is 
+                        <strong>R
+                            <span data-bind="text:$parent.elements['login-registration'].ATB_limit"></span>
+                        </strong>
+                    </span>
+            <span>
+              <a id="CC-loginHeader-myAccount" data-original-title="myAccount"
+                 data-bind="widgetLocaleText: {attr: 'innerText', value: 'myAccount'}, click: validatePrivilagePageRequest, ccNavigation: 'prevent', ccLink: 'profile'"
+                 href="/profile">My Account</a>
+            </span>|
+            <span>
+            <a id="CC-loginHeader-logout" data-original-title="logout"
+               data-bind="widgetLocaleText: {attr: 'innerText', value: 'logoutLinkText'}, click: $parent['elements']['login-registration'].handleLogout.bind($parent)"
+               href="#">Log Out</a>
+            </span>
+            <!-- ko if: $parent.hasOwnProperty('links') && $parent.links().hasOwnProperty('wishlist') -->
+            |<span>
+                <a id="CC-loginHeader-wishlist-logged-in" data-original-title="wishlist"
+                   data-bind="widgetLocaleText: {attr: 'innerText', value: 'wishlist'}, ccLink: 'wishlist'"
+                   href="/wishlist">My wishlist</a>
+              </span>
+            <!-- /ko -->
+        </div>
+        <div data-bind="visible: !(loggedInUserName() &amp;&amp; (loggedIn() || isUserSessionExpired()))">
+            <a href="#CC-headermodalpane" id="CC-loginHeader-login" data-original-title="login"
+               data-bind="click:$parent['elements']['login-registration'].clickLogin.bind($parent['elements']['login-registration']), widgetLocaleText: {attr: 'innerText', value: 'loginLinkText'}"
+               data-toggle="modal">Sign in</a> |
+            <a href="#CC-headermodalpane" id="CC-loginHeader-registration" data-original-title="createAccount"
+               data-bind="click: $parent['elements']['login-registration'].clickRegistration.bind($parent['elements']['login-registration']), widgetLocaleText: {attr: 'innerText', value: 'createAccountText'}"
+               data-toggle="modal">Register</a>
+            <!-- ko if: $parent.hasOwnProperty('links') && $parent.links().hasOwnProperty('wishlist') -->
+            | <a id="CC-loginHeader-wishlist-anonymous" data-original-title="wishlist"
+                 data-bind="widgetLocaleText: {attr: 'innerText', value: 'wishlist'}, ccLink: 'wishlist'"
+                 href="/wishlist">My wishlist</a>
+            <!-- /ko -->
+        </div>
+    </div>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+
+<!-- MODAL dialouge for registration pane -->
+<!-- ko with: $data['elements']['login-registration'] -->
+<div class="modal fade" id="CC-headermodalpane" tabindex="-1" role="link">
+    <div class="modal-dialog cc-modal-dialog" id="CC-LoginRegistrationModal">
+        <div class="modal-content">
+            <div id="CC-registerUserPane">
+                <div class="modal-header CC-header-modal-heading">
+                    <h3 data-bind="widgetLocaleText:'headerCreateAccount'">Create an Account</h3>
+                </div>
+                <div class="modal-body cc-modal-body">
+                    <div id="CC-messages-registration" data-bind="visible: showErrorMessage" style="display: none;">
+                        <div role="alert" class="text-danger cc-error-message" data-bind="text: modalMessageText"></div>
+                    </div>
+                    <div id="CC-userRegistration" data-bind="with: $parent.user">
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-userRegistration-firstname"
+                                       data-bind="widgetLocaleText:'firstNameText'">First Name</label>
+                                <span role="alert" class="text-danger" id="CC-userRegistration-firstname-error"
+                                      data-bind="validationMessage: firstName" style="display: none;"></span>
+                                <input type="text" class="col-md-5 form-control" id="CC-userRegistration-firstname"
+                                       aria-required="true"
+                                       data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}, valueUpdate: 'afterkeydown', event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}"
+                                       required="required" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-userRegistration-lastname"
+                                       data-bind="widgetLocaleText:'lastNameText'">Last Name</label>
+                                <span role="alert" class="text-danger" id="CC-userRegistration-lastname-error"
+                                      data-bind="validationMessage: lastName" style="display: none;"></span>
+                                <input type="text" class="col-md-5 form-control" id="CC-userRegistration-lastname"
+                                       aria-required="true"
+                                       data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText', attr:'placeholder'}, valueUpdate: 'afterkeydown', event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}"
+                                       required="required" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-userRegistration-emailAddress"
+                                       data-bind="widgetLocaleText:'emailAddressText'">Email Address</label>
+                                <span role="alert" class="text-danger" id="CC-userRegistration-emailAddress-error"
+                                      data-bind="validationMessage: emailAddress" style="display: none;"></span>
+                                <input type="email" class="col-md-5 form-control" id="CC-userRegistration-emailAddress"
+                                       aria-required="true" data-bind="validatableValue: emailAddress,
+                          widgetLocaleText : {value:'emailAddressText', attr:'placeholder'}, valueUpdate: 'afterkeydown', event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }, blur: $parent.emailAddressLostFocus.bind($parents[1]), focus: $parent.emailAddressFocused.bind($parents[1])}"
+                                       required="required" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-userRegistration-password"
+                                       data-bind="widgetLocaleText:'passwordText'">Password</label>
+                                <div class="password-errors" role="alert">
+                                    <div class="text-muted" id="cc-userRegistration-password-embeddedAssistance"
+                                         data-bind="embeddedAssistance: newPassword" style="display: none;"></div>
+                                    <div class="text-danger" id="CC-userRegistration-password-error"
+                                         data-bind="validationMessage: newPassword" style="display: none;"></div>
+                                </div>
+                                <input type="password" class="col-md-5 form-control" id="CC-userRegistration-password"
+                                       aria-required="true" data-bind="validatableValue: newPassword, widgetLocaleText : {value:'passwordText', attr:'placeholder'}, valueUpdate: 'afterkeydown',
+                          event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }, blur: $parent.passwordFieldLostFocus.bind($parents[1]), focus: $parent.passwordFieldFocused.bind($parents[1])}"
+                                       required="required" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-userRegistration-confirmPassword"
+                                       data-bind="widgetLocaleText:'confirmPasswordText'">Confirm Password</label>
+                                <span role="alert" class="text-danger" id="CC-userRegistration-cPassword-error"
+                                      data-bind="validationMessage: confirmPassword" style="display: none;"></span>
+                                <input type="password" class="col-md-5 form-control"
+                                       id="CC-userRegistration-confirmPassword" aria-required="true" data-bind="validatableValue: confirmPassword, widgetLocaleText : {value:'confirmPasswordText', attr:'placeholder'}, valueUpdate: 'afterkeydown',
+                          event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }, blur: $parent.confirmPwdFieldLostFocus.bind($parents[1]), focus: $parent.confirmPwdFieldFocused.bind($parents[1])}"
+                                       required="required" placeholder="Confirm Password">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <div class="checkbox">
+                                    <label for="CC-emailUpdates">
+                                        <input type="checkbox" id="CC-emailUpdates"
+                                               data-bind="checked: emailMarketingMails, event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}">
+                                        <span data-bind="widgetLocaleText: 'marketingMailsText'">I want to get email updates.</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer CC-header-modal-footer">
+                    <button class="cc-button-primary" id="CC-userRegistrationSubmit"
+                            data-bind="click: function(data, event) { registerUser.bind(data, $parent, event)() }, widgetLocaleText: 'buttonCreateAccount', event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}">
+                        Create Account
+                    </button>
+                    <button class="cc-button-secondary" id="CC-userRegistrationCancel"
+                            data-bind="click: cancelRegistration.bind($data, $parent), widgetLocaleText: 'buttonCancel', event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+            <div id="CC-loginUserPane">
+                <div class="modal-header CC-header-modal-heading">
+                    <h3 data-bind="widgetLocaleText:'titleLogin'">Log In</h3>
+                </div>
+                <div class="modal-body cc-modal-body">
+                    <div id="CC-messages-login" data-bind="visible: showErrorMessage" role="alert"
+                         style="display: none;">
+                        <div role="alert" class="text-danger cc-error-message" data-bind="text: modalMessageText"></div>
+                    </div>
+                    <div id="CC-userLogin" data-bind="with: $parent.user">
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-login-input"
+                                       data-bind="widgetLocaleText:'emailAddressText'">Email Address</label>
+                                <span role="alert" class="text-danger" id="CC-login-error"
+                                      data-bind="validationMessage: login" style="display: none;"></span>
+                                <input type="email" class="col-md-5 form-control" id="CC-login-input"
+                                       aria-required="true" data-bind="validatableValue: login, valueUpdate: 'afterkeydown',
+                         widgetLocaleText : {value:'emailAddressText', attr:'placeholder'}, event: {keydown: function(data, event) { return $parent.handleLogin.bind(data, $parents[1], event)() }, blur: $parent.emailAddressLostFocus.bind($parents[1], $parents[1]), focus: $parent.emailAddressFocused.bind($parents[1], $parents[1])}"
+                                       required="required" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-login-password-input"
+                                       data-bind="widgetLocaleText:'passwordText'">Password</label>
+                                <span role="alert" class="text-danger" id="CC-login-password-input-error"
+                                      data-bind="validationMessage: password" style="display: none;"></span>
+                                <input type="password" class="col-md-5 form-control" id="CC-login-password-input"
+                                       aria-required="true" data-bind="validatableValue: password,
+                      widgetLocaleText : {value:'passwordText', attr:'placeholder'}, valueUpdate: 'afterkeydown', event: {keydown: function(data, event) { return $parent.handleLogin.bind(data, $parents[1], event)() }}"
+                                       required="required" placeholder="Password">
+                                <div id="CC-header-forgotPasswd">
+                                    <a href="#CC-headermodalpane" id="CC-linkForgotPasswd"
+                                       data-original-title="forgotPassword"
+                                       data-bind="click: $parent.showForgotPasswordSection.bind($parent),widgetLocaleText: 'forgotPasswordLinkText', event: {mousedown: $parent.handleMouseDown.bind($parent, $parents[1]), mouseup: $parent.handleMouseUp.bind($parent, $parents[1])}">Forgotten
+                                        Password?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="CC-login-modal-footer" class="modal-footer CC-header-modal-footer">
+                    <div class="center-block">
+                        <button type="button" id="CC-userLoginSubmit" class="cc-button-primary"
+                                data-bind="click: function(data, event) { handleLogin.bind(data, $parent, event)() }, widgetLocaleText: 'buttonLogin', event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}">
+                            Log In
+                        </button>
+                        <button type="button" id="CC-userLoginCancel" class="cc-button-secondary"
+                                data-bind="click: function(data, event) { handleCancel.bind(data, $parent, event)() }, widgetLocaleText: 'buttonCancel', event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}"
+                                data-dismiss="modal">Cancel
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div id="CC-signup">
+                    <hr>
+                    <div class="CC-createAccount-div">
+                        <h4 data-bind="widgetLocaleText:'noAccountText'" align="center">Not Registered?</h4>
+                        <button type="button" class="cc-button-primary" id="CC-loginHeader-createAccount"
+                                data-bind="click: showRegistrationSection.bind($data, $parent), widgetLocaleText: 'buttonCreateAccount', event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}">
+                            Create Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="CC-forgotPasswordSectionPane">
+                <div class="modal-header CC-header-modal-heading">
+                    <h3 class="modal-title" id="CC-forgotPwdText-title"
+                        data-bind="text: $parent.user().forgotPasswordMsg"></h3>
+                </div>
+                <div class="modal-body cc-modal-body">
+                    <div>
+                        <div id="CC-forgotPassword-messagePart1" data-bind="widgetLocaleText: 'forgotPwdPart1'">Enter
+                            your email address to receive your new temporary password.
+                        </div>
+                        <br>
+                        <div id="CC-forgotPassword-messagePart2" data-bind="widgetLocaleText: 'forgotPwdPart2'">You must
+                            update this the next time you log in.
+                        </div>
+                        <br>
+                    </div>
+                    <div id="CC-forgotPasswordSection" data-bind="with: $parent.user">
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-forgotPwd-input"
+                                       data-bind="widgetLocaleText:'emailAddressText'">Email Address</label>
+                                <span role="alert" class="text-danger" id="CC-forgotPwd-emailAddress-error"
+                                      data-bind="validationMessage: emailAddressForForgottenPwd"
+                                      style="display: none;"></span>
+                                <input type="email" class="col-md-5 form-control" id="CC-forgotPwd-input"
+                                       aria-required="true" data-bind="validatableValue: emailAddressForForgottenPwd, valueUpdate: 'afterkeydown', widgetLocaleText : {value:'emailAddressText', attr:'placeholder'},
+                    event:{keydown: function(data, event) { return $parent.resetForgotPassword.bind(data, $parents[1], event)() }, blur: $parent.emailAddressLostFocus.bind($parents[1]), focus: $parent.emailAddressFocused.bind($parents[1]) }"
+                                       required="required" placeholder="Email Address">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer CC-header-modal-footer">
+                    <div class="center-block">
+                        <button type="button" id="CC-emailPasswordSubmit" class="cc-button-primary"
+                                data-bind="widgetLocaleText: 'emailPasswordText',click: function(data, event) { resetForgotPassword.bind($data, $parent, event)() }, event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}">
+                            Email Password
+                        </button>
+                        <button type="button" id="CC-emailPasswordCancel" class="cc-button-secondary"
+                                data-bind="widgetLocaleText: 'emailCancelText', event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}"
+                                data-dismiss="modal">Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="CC-forgotPasswordMessagePane">
+                <div class="modal-header CC-header-modal-heading">
+                    <h3 class="modal-title" id="CC-forgotPwdText-titleMessage"
+                        data-bind="text: $parent.user().forgotPasswordMsg"></h3>
+                </div>
+                <div class="modal-body cc-modal-body">
+                    <div id="CC-forgotPassword-message" class="alert alert-success"
+                         data-bind="widgetLocaleText: 'forgotPwdMessage'">A new temporary password has been sent to your
+                        email address, along with reset password instructions.
+                    </div>
+                    <br>
+                </div>
+                <div class="modal-footer CC-header-modal-footer">
+                    <div class="center-block">
+                        <button type="button" id="CC-messagePaneClose" class="cc-button-secondary"
+                                data-bind="widgetLocaleText: 'closeText'" data-dismiss="modal">Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="CC-createNewPasswordPane">
+                <div class="modal-header CC-header-modal-heading">
+                    <h3 data-bind="widgetLocaleText:'headercreateNewPassword'">Create New Password</h3>
+                </div>
+                <div class="modal-body cc-modal-body">
+                    <div id="CC-messages-createNewPassword"
+                         data-bind="visible: $parent.user().showExpiredPasswordErrorMsg">
+                        <div role="alert" class="text-danger cc-error-message"
+                             data-bind="text: $parent.user().createNewPasswordError"></div>
+                    </div>
+                    <div id="CC-createNewPassword" data-bind="with: $parent.user">
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-createNewPassword-oldPassword"
+                                       data-bind="widgetLocaleText:'currentPasswordText'">Current Password</label>
+                                <div class="password-errors" role="alert">
+                                    <div class="text-danger" id="CC-createNewPassword-oldPassword-error"
+                                         data-bind="validationMessage: oldPassword" style="display: none;"></div>
+                                </div>
+                                <input type="password" class="col-md-5 form-control"
+                                       id="CC-createNewPassword-oldPassword" aria-required="true"
+                                       data-bind="validatableValue: oldPassword, widgetLocaleText : {value:'currentPasswordText', attr:'placeholder'}, event:{keydown: function(data, event) { return $parent.savePassword.bind(data, $parents[1], event)() }}"
+                                       required="required" placeholder="Current Password">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-createNewPassword-password"
+                                       data-bind="widgetLocaleText:'newPasswdText'">New Password</label>
+                                <div class="password-errors" role="alert">
+                                    <div class="text-muted" id="CC-createNewPassword-password-embeddedAssistance"
+                                         data-bind="embeddedAssistance: newPassword" style="display: none;"></div>
+                                    <div class="text-danger" id="CC-createNewPassword-password-error"
+                                         data-bind="validationMessage: newPassword" style="display: none;"></div>
+                                </div>
+                                <input type="password" class="col-md-5 form-control" id="CC-createNewPassword-password"
+                                       aria-required="true"
+                                       data-bind="validatableValue: newPassword, widgetLocaleText : {value:'newPasswdText', attr:'placeholder'}, event:{keydown: function(data, event) { return $parent.savePassword.bind(data, $parents[1], event)() }}"
+                                       required="required" placeholder="New Password">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="controls col-md-12">
+                                <label class="control-label inline" for="CC-createNewPassword-confirmPassword"
+                                       data-bind="widgetLocaleText:'newConfirmPasswordText'">Confirm New
+                                    Password</label>
+                                <span role="alert" class="text-danger" id="CC-createNewPassword-cPassword-error"
+                                      data-bind="validationMessage: confirmPassword" style="display: none;"></span>
+                                <input type="password" class="col-md-5 form-control"
+                                       id="CC-createNewPassword-confirmPassword" aria-required="true" data-bind="validatableValue: confirmPassword, widgetLocaleText : {value:'newConfirmPasswordText', attr:'placeholder'},valueUpdate: 'afterkeydown',event:
+                           {keydown: function(data, event) { return $parent.savePassword.bind(data, $parents[1], event)() },blur:
+                           $parent.confirmPwdFieldLostFocus.bind($parents[1]), focus: $parent.confirmPwdFieldFocused.bind($parents[1])}"
+                                       required="required" placeholder="Confirm New Password">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer CC-header-modal-footer">
+                    <div class="center-block">
+                        <button type="button" class="cc-button-primary" id="CC-createNewPasswordSave"
+                                data-bind="click: function(data, event) { savePassword.bind(data, $parent, event)() }, widgetLocaleText: 'buttonSave', event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}">
+                            Save
+                        </button>
+                        <button class="cc-button-secondary" id="CC-createNewPasswordCancel" data-dismiss="modal"
+                                data-bind="click: function(data, event) { handleCancel.bind(data, $parent, event)() }, widgetLocaleText: 'buttonCancel', event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="CC-createNewPasswordMessagePane">
+                <div class="modal-header CC-header-modal-heading">
+                    <h3 class="modal-title" id="CC-createNewPasswordMsg-titleMessage"
+                        data-bind="widgetLocaleText: 'headercreateNewPassword'">Create New Password</h3>
+                </div>
+                <div class="modal-body cc-modal-body">
+                    <div id="CC-createNewPasswordMsg-message" class="alert alert-success"
+                         data-bind="widgetLocaleText: 'createNewPwdMessage'">Password successfully updated.
+                    </div>
+                    <br>
+                </div>
+                <div class="modal-footer CC-header-modal-footer">
+                    <div class="center-block">
+                        <button type="button" id="CC-createNewPasswordMsgContinue" class="cc-button-primary"
+                                data-bind="widgetLocaleText: 'continueText'" data-dismiss="modal">Continue
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->
+<!-- /ko -->

@@ -1,0 +1,15 @@
+{
+  "resources": {
+    "spaceSettingsSaveErrorTxt": "There was a problem saving your notification settings changes.",
+    "spaceSettingsSaveTxt": "Save",
+    "spaceSettingsCancelTxt": "Cancel",
+    "spaceSettingsSaveSuccessTxt": "Your notification settings have been updated and saved.",
+    "spaceSettingsNotificationEnableHelpText": "Select \"I want to get email updates\" on the Account Details page to enable wish list notifications.",
+    "spaceSettingsOnText": "Yes",
+    "spaceSettingsNotificationHeadingText": "Email Notification Settings",
+    "spaceSettingsCommentNotificationTxt": "Comment and product notifications",
+    "spaceSettingsOffText": "No",
+    "spaceSettingsNewMemberNotificationTxt": "New member notifications",
+    "spaceSettingsNotificationIntroText": "I would like to receive:"
+  }
+}

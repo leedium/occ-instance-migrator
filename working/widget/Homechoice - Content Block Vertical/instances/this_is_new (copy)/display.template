@@ -1,0 +1,88 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1000009": {
+    "id": "1000009",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m110006')}",
+      "sourceMedia": "m110006"
+    }
+  },
+  "500111": {
+    "id": "500111",
+    "image": {
+      "altText": "Fashion New1",
+      "altTextId": "1100007",
+      "isProductImage": false,
+      "link": "/aboutus",
+      "src": "/file/v8731082836360551332/general/Fashion.jpg",
+      "titleText": "Fashion New",
+      "titleTextId": "600092",
+      "zoomEnabled": false
+    }
+  },
+  "500112": {
+    "id": "500112",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50101')}",
+      "sourceMedia": "m50101"
+    }
+  },
+  "500113": {
+    "id": "500113",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50103')}",
+      "sourceMedia": "m50103"
+    }
+  }
+}} --><!-- /ko -->
+
+<div data-bind="css: cssClasses()" class="hc-content-block hc-content-block__1-col" data-oc-id="hc-content-block">
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: contentBlockImage -->
+<div data-bind="element: 'contentBlockImage',id: '500111'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-1-0">
+
+      <!-- oc section: rich-text -->
+<div data-bind="element: 'rich-text',id: '1000009'"></div>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+    <!----------------->
+
+
+</div>

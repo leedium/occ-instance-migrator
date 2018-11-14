@@ -1,0 +1,32 @@
+<!--
+/**
+* Popup Stack Template
+*/
+-->
+<!-- Pop-up Stack -->
+<div class="popup-stack">
+	<!-- ko foreach: regions -->
+		<!-- ko if: $index() == 0 -->
+			<!-- Main -->
+			<div class="main-content" data-bind="attr: {id: 'popup-stack-'+$parent.id()},
+																						setContextVariable: { name:'popupId', value:'#popup-stack-'+$parent.id()+'-popup'}">
+				<div data-bind="template: {name: 'region-template'}" class="row popup-stack-main-content" id="popup-stack-main-content"></div>
+			</div>
+		<!-- /ko -->
+		<!-- ko if: $index() == 1 -->
+			<!-- Popup -->
+			<div class="modal fade" data-bind="attr: { id: 'popup-stack-'+$parent.id()+'-popup' }" tabindex="-1" role="dialog">
+				<div class="modal-dialog cc-config-modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<a href="#" class="close" data-dismiss="modal" aria-label="Close">&times;</a>
+						</div>
+						<div class="modal-body">
+							<div data-bind="template: {name: 'region-template'}" class="row popup-stack-popup-content" id="popup-stack-popup-content"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /ko -->
+	<!-- /ko -->
+</div>
