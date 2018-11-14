@@ -39,7 +39,7 @@ const BRANCH_MASTER = 'master';
 const BRANCH_SOURCE = 'source';
 const BRANCH_TARGET = 'target';
 
-const {dcu, plsu, all, layoutName} = argv;
+const {dcu, plsu, all, layoutName, full} = argv;
 const transferPaths = [];
 const pathsToBeRemoved = [];
 
@@ -376,27 +376,30 @@ function plsuTransferSingle() {
  */
 async function plsuTransferAll() {
     return new Promise(resolve => {
-        console.log('TransferAll page layouts start...');
-        const plsuSpawn = spawn('plsu', [
-            '--transfer',
-            '--node', config.dcuServerSource,
-            '--applicationKey', config.apiKeySource,
-            '--all',
-            '--destinationNode', config.dcuServerTarget,
-            '--destinationApplicationKey', config.apiKeyTarget
-        ]);
-        plsuSpawn.stdout.on('data', (chunk) => {
-            console.log(chunk.toString('utf-8'));
-        });
-        plsuSpawn.stderr.on('data', (chunk) => {
-            console.log(chunk.toString('utf-8'));
-        });
-        plsuSpawn.on('close', () => {
-            console.log('TransferAll page layouts complete.');
-            setTimeout(() => {
-                resolve()
-            }, config.taskDelay);
-        });
+        // console.log('TransferAll page layouts start...');
+        // const plsuSpawn = spawn('plsu', [
+        //     '--transfer',
+        //     '--node', config.dcuServerSource,
+        //     '--applicationKey', config.apiKeySource,
+        //     '--all',
+        //     '--destinationNode', config.dcuServerTarget,
+        //     '--destinationApplicationKey', config.apiKeyTarget
+        // ]);
+        // plsuSpawn.stdout.on('data', (chunk) => {
+        //     console.log(chunk.toString('utf-8'));
+        // });
+        // plsuSpawn.stderr.on('data', (chunk) => {
+        //     console.log(chunk.toString('utf-8'));
+        // });
+        // plsuSpawn.on('close', () => {
+        //     console.log('TransferAll page layouts complete.');
+        //     setTimeout(() => {
+        //         resolve()
+        //     }, config.taskDelay);
+        // });
+        console.log('plsuTransferAll')
+        resolve();
+
     })
 }
 
@@ -419,21 +422,25 @@ async function clean() {
  * @returns {Promise<void>}
  */
 async function extensionsTransfer() {
-    await clean();
-    await grabTarget();
-    await createBranch(BRANCH_TARGET);
-    await createBranch(BRANCH_SOURCE);
-    await grabSource();
-    await addAll();
-    await commit();
-    await checkoutBranch(BRANCH_TARGET);
-    await mergeBranch(BRANCH_SOURCE);
-    await getDiffs();
-    await processDiffs();
-    await makeTmpFolder();
-    await transferAll();
-    await clean();
-    await plsuTransferAll();
+    return new Promise(async (resolve) => {
+        // await clean();
+        // await grabTarget();
+        // await createBranch(BRANCH_TARGET);
+        // await createBranch(BRANCH_SOURCE);
+        // await grabSource();
+        // await addAll();
+        // await commit();
+        // await checkoutBranch(BRANCH_TARGET);
+        // await mergeBranch(BRANCH_SOURCE);
+        // await getDiffs();
+        // await processDiffs();
+        // await makeTmpFolder();
+        // await transferAll();
+        await clean();
+        resolve();
+        console.log('extensionsTransfer')
+
+    });
 }
 
 /**
@@ -442,15 +449,17 @@ async function extensionsTransfer() {
  */
 async function start() {
     try {
-        if (plsu) {
-            if (all) {
-                plsuTransferAll();
-            } else {
-                plsuTransferSingle();
-            }
+        if (dcu || full) {
+            console.log('full1')
+            await extensionsTransfer();
         }
-        else if (dcu) {
-            extensionsTransfer();
+        if (plsu || full) {
+            if (all || full) {
+                console.log('full2')
+                await plsuTransferAll();
+            } else {
+                await plsuTransferSingle();
+            }
         }
     }
     catch (err) {
