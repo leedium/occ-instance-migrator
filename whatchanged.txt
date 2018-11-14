@@ -1,66 +1,91 @@
 :000000 100644 0000000 4a30857 A	working/element/Cash Credit Payment Options/element.js
 :000000 100644 0000000 aab404a A	working/element/Cash Credit Payment Options/element.template
+:000000 100644 0000000 0985719 A	working/element/Cash Credit Payment Options/elementMetadata.json
 :000000 100644 0000000 72825e3 A	working/element/Collection Nav Hamburger Button/element.js
 :000000 100644 0000000 61fa56e A	working/element/Collection Nav Hamburger Button/element.template
+:000000 100644 0000000 9414d11 A	working/element/Collection Nav Hamburger Button/elementMetadata.json
 :000000 100644 0000000 1ca9da3 A	working/element/Collection Navigation Hamburger Button/element.js
 :000000 100644 0000000 80c0a47 A	working/element/Collection Navigation Hamburger Button/element.template
+:000000 100644 0000000 4155e3f A	working/element/Collection Navigation Hamburger Button/elementMetadata.json
 :000000 100644 0000000 36a2a9c A	working/element/Company Logo/element.template
 :000000 100644 0000000 759a153 A	working/element/Company Name/element.template
 :000000 100644 0000000 5a65d2d A	working/element/Contact Login (for Managed Accounts) (Deprecated)/element.template
 :000000 100644 0000000 1f0a1f0 A	working/element/Contact Login (for Managed Accounts)/element.template
 :000000 100644 0000000 dc7011a A	working/element/Content Block Image/element.js
 :000000 100644 0000000 92c601b A	working/element/Content Block Image/element.template
+:000000 100644 0000000 dee8fde A	working/element/Content Block Image/elementMetadata.json
 :000000 100644 0000000 403093b A	working/element/Editorial Link/element.js
 :000000 100644 0000000 b8f432d A	working/element/Editorial Link/element.template
+:000000 100644 0000000 50efc2f A	working/element/Editorial Link/elementMetadata.json
 :000000 100644 0000000 48af8da A	working/element/Footer Links cc-link/element.js
 :000000 100644 0000000 662c314 A	working/element/Footer Links cc-link/element.template
+:000000 100644 0000000 dd61cdc A	working/element/Footer Links cc-link/elementMetadata.json
 :000000 100644 0000000 33b66f5 A	working/element/Full Product Details/element.template
 :000000 100644 0000000 e53918e A	working/element/HC- PDP Variant Options/element.js
 :000000 100644 0000000 7000204 A	working/element/HC- PDP Variant Options/element.template
+:000000 100644 0000000 d658259 A	working/element/HC- PDP Variant Options/elementMetadata.json
 :000000 100644 0000000 8a647ed A	working/element/Hero Banner Image Size (XS, S, M, L)/element.js
 :000000 100644 0000000 7a3fa77 A	working/element/Hero Banner Image Size (XS, S, M, L)/element.template
+:000000 100644 0000000 f9830b6 A	working/element/Hero Banner Image Size (XS, S, M, L)/elementMetadata.json
 :000000 100644 0000000 e2aaeff A	working/element/Homechoice - Header - Welcome/element.js
 :000000 100644 0000000 7872091 A	working/element/Homechoice - Header - Welcome/element.template
+:000000 100644 0000000 92ec222 A	working/element/Homechoice - Header - Welcome/elementMetadata.json
 :000000 100644 0000000 814e686 A	working/element/Homechoice Header Dropdown Minicart/element.js
 :000000 100644 0000000 57e9dd5 A	working/element/Homechoice Header Dropdown Minicart/element.template
+:000000 100644 0000000 c3deac9 A	working/element/Homechoice Header Dropdown Minicart/elementMetadata.json
 :000000 100644 0000000 bd0ccbc A	working/element/Homechoice Social Sharing/element.js
 :000000 100644 0000000 b3a307f A	working/element/Homechoice Social Sharing/element.template
+:000000 100644 0000000 0b81ff2 A	working/element/Homechoice Social Sharing/elementMetadata.json
 :000000 100644 0000000 0217450 A	working/element/Image/element.template
 :000000 100644 0000000 1326087 A	working/element/Login Registration (Deprecated)/element.template
 :000000 100644 0000000 6a1339c A	working/element/Login Registration Credit SAML SSO/element.js
 :000000 100644 0000000 8e7a97c A	working/element/Login Registration Credit SAML SSO/element.template
+:000000 100644 0000000 35209fa A	working/element/Login Registration Credit SAML SSO/elementMetadata.json
 :000000 100644 0000000 ad132c5 A	working/element/Login Registration Credit v1 (depreciated)/element.js
 :000000 100644 0000000 84f03ae A	working/element/Login Registration Credit v1 (depreciated)/element.template
+:000000 100644 0000000 b8ebc79 A	working/element/Login Registration Credit v1 (depreciated)/elementMetadata.json
 :000000 100644 0000000 6cc830c A	working/element/Login Registration/element.template
 :000000 100644 0000000 dd0de5e A	working/element/Min Max Pricing Values/element.js
 :000000 100644 0000000 fa8c1d1 A	working/element/Min Max Pricing Values/element.template
+:000000 100644 0000000 9c4e3ff A	working/element/Min Max Pricing Values/elementMetadata.json
 :000000 100644 0000000 dc780fe A	working/element/Mobile Nav Menu/element.js
 :000000 100644 0000000 c34fc3c A	working/element/Mobile Nav Menu/element.template
+:000000 100644 0000000 5f26d3d A	working/element/Mobile Nav Menu/elementMetadata.json
 :000000 100644 0000000 eb980dc A	working/element/Product Badges/element.js
 :000000 100644 0000000 0bade2d A	working/element/Product Badges/element.template
+:000000 100644 0000000 4dd6ebd A	working/element/Product Badges/elementMetadata.json
 :000000 100644 0000000 ad5e091 A	working/element/Product Delivery Restrictions/element.js
 :000000 100644 0000000 e3dbce6 A	working/element/Product Delivery Restrictions/element.template
+:000000 100644 0000000 c2a28aa A	working/element/Product Delivery Restrictions/elementMetadata.json
 :000000 100644 0000000 cd17906 A	working/element/Product Details Add To Cart Button with Method Overrides/element.js
 :000000 100644 0000000 f19c2ef A	working/element/Product Details Add To Cart Button with Method Overrides/element.template
+:000000 100644 0000000 71a1bae A	working/element/Product Details Add To Cart Button with Method Overrides/elementMetadata.json
 :000000 100644 0000000 b19e834 A	working/element/Product Details Promo Text/element.js
 :000000 100644 0000000 9e23ceb A	working/element/Product Details Promo Text/element.template
+:000000 100644 0000000 292529e A	working/element/Product Details Promo Text/elementMetadata.json
 :000000 100644 0000000 9b8a010 A	working/element/Product Details Property/element.js
 :000000 100644 0000000 d137a99 A	working/element/Product Details Property/element.template
+:000000 100644 0000000 738ad16 A	working/element/Product Details Property/elementMetadata.json
 :000000 100644 0000000 43d373d A	working/element/Product ID/element.template
+:000000 100644 0000000 59c5b1c A	working/element/Product ID/elementMetadata.json
 :000000 100644 0000000 a2e7e45 A	working/element/Product Offer/element.js
 :000000 100644 0000000 033a58b A	working/element/Product Offer/element.template
+:000000 100644 0000000 6fd6a68 A	working/element/Product Offer/elementMetadata.json
 :000000 100644 0000000 270d4eb A	working/element/Product Quick View/element.template
 :000000 100644 0000000 10f2f84 A	working/element/Rich Text/element.template
 :000000 100644 0000000 d6c2ae2 A	working/element/SAML Login Registration/element.template
 :000000 100644 0000000 1ad852f A	working/element/Search/element.template
 :000000 100644 0000000 48af8da A	working/element/Secondary Nav Links/element.js
 :000000 100644 0000000 358f656 A	working/element/Secondary Nav Links/element.template
+:000000 100644 0000000 c1049c1 A	working/element/Secondary Nav Links/elementMetadata.json
 :000000 100644 0000000 b8c3095 A	working/element/Shipping Methods/element.template
 :000000 100644 0000000 a352f99 A	working/element/Text/element.template
 :000000 100644 0000000 eb39465 A	working/element/Variant Options Listing/element.js
 :000000 100644 0000000 791072d A	working/element/Variant Options Listing/element.template
+:000000 100644 0000000 f288e20 A	working/element/Variant Options Listing/elementMetadata.json
 :000000 100644 0000000 f3b1f5d A	working/element/Variant Options With Dispatch/element.js
 :000000 100644 0000000 ebc78f5 A	working/element/Variant Options With Dispatch/element.template
+:000000 100644 0000000 c4ccd7f A	working/element/Variant Options With Dispatch/elementMetadata.json
 :000000 100644 0000000 8aa21b4 A	working/element/Volume Pricing/element.template
 :000000 100644 0000000 12f1d6f A	working/global/hc.cart.dynamicproperties.app.js
 :000000 100644 0000000 9259abf A	working/global/hc.constants.js
@@ -71,7 +96,7 @@
 :000000 100644 0000000 c50e0bd A	working/global/profile.registration.controller.js
 :000000 100644 0000000 5877787 A	working/global/profile.update.controller.js
 :000000 100644 0000000 eb6d1fc A	working/snippets/en/snippets.json
-:000000 100644 0000000 d935055 A	working/stack/Accordion/instances/Accordion/stack-variables.less
+:000000 100644 0000000 079fabb A	working/stack/Accordion/instances/Accordion/stack-variables.less
 :000000 100644 0000000 911b050 A	working/stack/Accordion/instances/Accordion/stack.less
 :000000 100644 0000000 6e6c3ed A	working/stack/Accordion/instances/Accordion/stack.template
 :000000 100644 0000000 71fbf29 A	working/stack/Popup Stack/instances/Popup Stack/stack-variables.less
@@ -106,26 +131,32 @@
 :000000 100644 0000000 9928a37 A	working/widget/Bootstrap Accordion Widget/widgetMetadata.json
 :000000 100644 0000000 c03f2a8 A	working/widget/Breadcrumb/element/Breadcrumb Links/element.template
 :000000 100644 0000000 554ad03 A	working/widget/Breadcrumb/instances/No Search Results Breadcrumb v3/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Breadcrumb/instances/No Search Results Breadcrumb v3/elementInstancesMetadata.json
 :000000 100644 0000000 bdf0958 A	working/widget/Breadcrumb/instances/No Search Results Breadcrumb v3/locales/en/ns.breadcrumb.json
 :000000 100644 0000000 b9e34e3 A	working/widget/Breadcrumb/instances/No Search Results Breadcrumb v3/widget.less
 :000000 100644 0000000 8a160f4 A	working/widget/Breadcrumb/instances/No Search Results Breadcrumb v3/widgetInstanceMetadata.json
 :000000 100644 0000000 554ad03 A	working/widget/Breadcrumb/instances/Product Details Breadcrumb/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Breadcrumb/instances/Product Details Breadcrumb/elementInstancesMetadata.json
 :000000 100644 0000000 bdf0958 A	working/widget/Breadcrumb/instances/Product Details Breadcrumb/locales/en/ns.breadcrumb.json
 :000000 100644 0000000 b9e34e3 A	working/widget/Breadcrumb/instances/Product Details Breadcrumb/widget.less
 :000000 100644 0000000 d0383ae A	working/widget/Breadcrumb/instances/Product Details Breadcrumb/widgetInstanceMetadata.json
 :000000 100644 0000000 554ad03 A	working/widget/Breadcrumb/instances/Product Listing Breadcrumb v4/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Breadcrumb/instances/Product Listing Breadcrumb v4/elementInstancesMetadata.json
 :000000 100644 0000000 59673a8 A	working/widget/Breadcrumb/instances/Product Listing Breadcrumb v4/locales/en/ns.breadcrumb.json
 :000000 100644 0000000 b9e34e3 A	working/widget/Breadcrumb/instances/Product Listing Breadcrumb v4/widget.less
 :000000 100644 0000000 d92ae8d A	working/widget/Breadcrumb/instances/Product Listing Breadcrumb v4/widgetInstanceMetadata.json
 :000000 100644 0000000 6abe1ea A	working/widget/Breadcrumb/instances/Product Listing Breadcrumb/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Breadcrumb/instances/Product Listing Breadcrumb/elementInstancesMetadata.json
 :000000 100644 0000000 bdf0958 A	working/widget/Breadcrumb/instances/Product Listing Breadcrumb/locales/en/ns.breadcrumb.json
 :000000 100644 0000000 b9e34e3 A	working/widget/Breadcrumb/instances/Product Listing Breadcrumb/widget.less
 :000000 100644 0000000 615445b A	working/widget/Breadcrumb/instances/Product Listing Breadcrumb/widgetInstanceMetadata.json
 :000000 100644 0000000 554ad03 A	working/widget/Breadcrumb/instances/Search Results Breadcrumb v4/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Breadcrumb/instances/Search Results Breadcrumb v4/elementInstancesMetadata.json
 :000000 100644 0000000 59673a8 A	working/widget/Breadcrumb/instances/Search Results Breadcrumb v4/locales/en/ns.breadcrumb.json
 :000000 100644 0000000 b9e34e3 A	working/widget/Breadcrumb/instances/Search Results Breadcrumb v4/widget.less
 :000000 100644 0000000 8331d32 A	working/widget/Breadcrumb/instances/Search Results Breadcrumb v4/widgetInstanceMetadata.json
 :000000 100644 0000000 554ad03 A	working/widget/Breadcrumb/instances/Search Results Breadcrumb/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Breadcrumb/instances/Search Results Breadcrumb/elementInstancesMetadata.json
 :000000 100644 0000000 3bd27a9 A	working/widget/Breadcrumb/instances/Search Results Breadcrumb/locales/en/ns.breadcrumb.json
 :000000 100644 0000000 b9e34e3 A	working/widget/Breadcrumb/instances/Search Results Breadcrumb/widget.less
 :000000 100644 0000000 c45ce23 A	working/widget/Breadcrumb/instances/Search Results Breadcrumb/widgetInstanceMetadata.json
@@ -139,10 +170,12 @@
 :000000 100644 0000000 0ab2f29 A	working/widget/Cart Dynamic Properties Global/locales/en/ns.cartdynamicpropertiesglobal.json
 :000000 100644 0000000 7c9fe00 A	working/widget/Cart Dynamic Properties Global/widgetMetadata.json
 :000000 100644 0000000 c47508a A	working/widget/Cart Shipping/instances/Cart Shipping (copy)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Cart Shipping/instances/Cart Shipping (copy)/elementInstancesMetadata.json
 :000000 100644 0000000 24ef39b A	working/widget/Cart Shipping/instances/Cart Shipping (copy)/locales/en/ns.cartshippingdetails.json
 :000000 100644 0000000 78ff69e A	working/widget/Cart Shipping/instances/Cart Shipping (copy)/widget.less
 :000000 100644 0000000 2d84a1e A	working/widget/Cart Shipping/instances/Cart Shipping (copy)/widgetInstanceMetadata.json
 :000000 100644 0000000 dbf1023 A	working/widget/Cart Shipping/instances/Cart Shipping/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Cart Shipping/instances/Cart Shipping/elementInstancesMetadata.json
 :000000 100644 0000000 24ef39b A	working/widget/Cart Shipping/instances/Cart Shipping/locales/en/ns.cartshippingdetails.json
 :000000 100644 0000000 78ff69e A	working/widget/Cart Shipping/instances/Cart Shipping/widget.less
 :000000 100644 0000000 f00e7d6 A	working/widget/Cart Shipping/instances/Cart Shipping/widgetInstanceMetadata.json
@@ -201,6 +234,7 @@
 :000000 100644 0000000 4d24ec1 A	working/widget/Child Collection List Widget/config/locales/en.json
 :000000 100644 0000000 24801ec A	working/widget/Child Collection List Widget/display.template
 :000000 100644 0000000 5449327 A	working/widget/Child Collection List Widget/instances/hc.child.categories/display.template
+:000000 100644 0000000 2435d66 A	working/widget/Child Collection List Widget/instances/hc.child.categories/elementInstancesMetadata.json
 :000000 100644 0000000 c455843 A	working/widget/Child Collection List Widget/instances/hc.child.categories/locales/en/ns.childcollectionlist.json
 :000000 100644 0000000 a072278 A	working/widget/Child Collection List Widget/instances/hc.child.categories/widget.less
 :000000 100644 0000000 703b512 A	working/widget/Child Collection List Widget/instances/hc.child.categories/widgetInstanceMetadata.json
@@ -214,14 +248,17 @@
 :000000 100644 0000000 6733664 A	working/widget/Collection Navigation/instances/Collection Navigation Widget/widgetInstanceMetadata.json
 :000000 100644 0000000 80da181 A	working/widget/Collection/element/Collection Carousel/element.template
 :000000 100644 0000000 24801ec A	working/widget/Collection/instances/JW Collection/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Collection/instances/JW Collection/elementInstancesMetadata.json
 :000000 100644 0000000 c455843 A	working/widget/Collection/instances/JW Collection/locales/en/ns.collection.json
 :000000 100644 0000000 713b390 A	working/widget/Collection/instances/JW Collection/widget.less
 :000000 100644 0000000 3d9c3f0 A	working/widget/Collection/instances/JW Collection/widgetInstanceMetadata.json
 :000000 100644 0000000 c0452c8 A	working/widget/Collection/instances/hc.collection.most_popular_products/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Collection/instances/hc.collection.most_popular_products/elementInstancesMetadata.json
 :000000 100644 0000000 6ebaf76 A	working/widget/Collection/instances/hc.collection.most_popular_products/locales/en/ns.collection.json
 :000000 100644 0000000 713b390 A	working/widget/Collection/instances/hc.collection.most_popular_products/widget.less
 :000000 100644 0000000 92ecf2b A	working/widget/Collection/instances/hc.collection.most_popular_products/widgetInstanceMetadata.json
 :000000 100644 0000000 f43b553 A	working/widget/Collection/instances/testCarColl/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Collection/instances/testCarColl/elementInstancesMetadata.json
 :000000 100644 0000000 c455843 A	working/widget/Collection/instances/testCarColl/locales/en/ns.collection.json
 :000000 100644 0000000 713b390 A	working/widget/Collection/instances/testCarColl/widget.less
 :000000 100644 0000000 377bfc3 A	working/widget/Collection/instances/testCarColl/widgetInstanceMetadata.json
@@ -247,7 +284,7 @@
 :000000 100644 0000000 11f522e A	working/widget/Custom Customer Profile Widget/instances/My Account - Profile/locales/en/ns.customcustomerprofile.json
 :000000 100644 0000000 ec51906 A	working/widget/Custom Customer Profile Widget/instances/My Account - Profile/widget.less
 :000000 100644 0000000 d1fd494 A	working/widget/Custom Customer Profile Widget/instances/My Account - Profile/widgetInstanceMetadata.json
-:000000 100644 0000000 14710e2 A	working/widget/Custom Customer Profile Widget/js/customCustomerProfile.js
+:000000 100644 0000000 e95437c A	working/widget/Custom Customer Profile Widget/js/customCustomerProfile.js
 :000000 100644 0000000 11f522e A	working/widget/Custom Customer Profile Widget/locales/en/ns.customcustomerprofile.json
 :000000 100644 0000000 b91892a A	working/widget/Custom Customer Profile Widget/widget.less
 :000000 100644 0000000 633cb4e A	working/widget/Custom Customer Profile Widget/widgetMetadata.json
@@ -284,10 +321,12 @@
 :000000 100644 0000000 cf75a33 A	working/widget/Footer/instances/Footer Widget/widget.less
 :000000 100644 0000000 6038533 A	working/widget/Footer/instances/Footer Widget/widgetInstanceMetadata.json
 :000000 100644 0000000 167ad12 A	working/widget/Gift Card/instances/Gift Card - Latest/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Gift Card/instances/Gift Card - Latest/elementInstancesMetadata.json
 :000000 100644 0000000 9d38ad6 A	working/widget/Gift Card/instances/Gift Card - Latest/locales/en/ns.giftcard.json
 :000000 100644 0000000 b03a77b A	working/widget/Gift Card/instances/Gift Card - Latest/widget.less
 :000000 100644 0000000 a8532aa A	working/widget/Gift Card/instances/Gift Card - Latest/widgetInstanceMetadata.json
 :000000 100644 0000000 167ad12 A	working/widget/Gift Card/instances/Gift Card Widget/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Gift Card/instances/Gift Card Widget/elementInstancesMetadata.json
 :000000 100644 0000000 9d38ad6 A	working/widget/Gift Card/instances/Gift Card Widget/locales/en/ns.giftcard.json
 :000000 100644 0000000 b03a77b A	working/widget/Gift Card/instances/Gift Card Widget/widget.less
 :000000 100644 0000000 1c2cad9 A	working/widget/Gift Card/instances/Gift Card Widget/widgetInstanceMetadata.json
@@ -308,42 +347,59 @@
 :000000 100644 0000000 768cee5 A	working/widget/Header/element/Links/element.template
 :000000 100644 0000000 b47ec26 A	working/widget/Header/element/Logo/element.template
 :000000 100644 0000000 01d0ffc A	working/widget/Header/instances/Header - Basic - Latest/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Header/instances/Header - Basic - Latest/elementInstancesMetadata.json
 :000000 100644 0000000 66834e1 A	working/widget/Header/instances/Header - Basic - Latest/locales/en/ns.headerwidget.json
 :000000 100644 0000000 21e22e5 A	working/widget/Header/instances/Header - Basic - Latest/widget.less
 :000000 100644 0000000 70d22e4 A	working/widget/Header/instances/Header - Basic - Latest/widgetInstanceMetadata.json
 :000000 100644 0000000 93a70fa A	working/widget/Header/instances/Header - Basic Minimal/display.template
+:000000 100644 0000000 ca7c1a6 A	working/widget/Header/instances/Header - Basic Minimal/elementInstancesMetadata.json
+:000000 100644 0000000 cace8c6 A	working/widget/Header/instances/Header - Basic Minimal/images/hc-logo-white.png
 :000000 100644 0000000 66834e1 A	working/widget/Header/instances/Header - Basic Minimal/locales/en/ns.headerwidget.json
 :000000 100644 0000000 6f25669 A	working/widget/Header/instances/Header - Basic Minimal/widget.less
 :000000 100644 0000000 a109400 A	working/widget/Header/instances/Header - Basic Minimal/widgetInstanceMetadata.json
 :000000 100644 0000000 399c30c A	working/widget/Header/instances/Header - Basic Widget/display.template
+:000000 100644 0000000 87ecf2d A	working/widget/Header/instances/Header - Basic Widget/elementInstancesMetadata.json
+:000000 100644 0000000 cace8c6 A	working/widget/Header/instances/Header - Basic Widget/images/hc-logo-white.png
 :000000 100644 0000000 66834e1 A	working/widget/Header/instances/Header - Basic Widget/locales/en/ns.headerwidget.json
 :000000 100644 0000000 35782af A	working/widget/Header/instances/Header - Basic Widget/widget.less
 :000000 100644 0000000 cd59330 A	working/widget/Header/instances/Header - Basic Widget/widgetInstanceMetadata.json
 :000000 100644 0000000 a8d2d07 A	working/widget/Header/instances/Header Widget - SSO - Marcelo/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Header/instances/Header Widget - SSO - Marcelo/elementInstancesMetadata.json
 :000000 100644 0000000 66834e1 A	working/widget/Header/instances/Header Widget - SSO - Marcelo/locales/en/ns.headerwidget.json
 :000000 100644 0000000 21e22e5 A	working/widget/Header/instances/Header Widget - SSO - Marcelo/widget.less
 :000000 100644 0000000 baf7fa9 A	working/widget/Header/instances/Header Widget - SSO - Marcelo/widgetInstanceMetadata.json
 :000000 100644 0000000 478e1d6 A	working/widget/Header/instances/Header Widget SSO/display.template
+:000000 100644 0000000 4fd7566 A	working/widget/Header/instances/Header Widget SSO/elementInstancesMetadata.json
 :000000 100644 0000000 173565d A	working/widget/Header/instances/Header Widget SSO/locales/en/ns.headerwidget.json
 :000000 100644 0000000 35782af A	working/widget/Header/instances/Header Widget SSO/widget.less
 :000000 100644 0000000 90ba998 A	working/widget/Header/instances/Header Widget SSO/widgetInstanceMetadata.json
 :000000 100644 0000000 4e1ed43 A	working/widget/Header/instances/Header Widget v10/display.template
+:000000 100644 0000000 c430b27 A	working/widget/Header/instances/Header Widget v10/elementInstancesMetadata.json
+:000000 100644 0000000 cace8c6 A	working/widget/Header/instances/Header Widget v10/images/hc-logo-white.png
 :000000 100644 0000000 fe1dbe5 A	working/widget/Header/instances/Header Widget v10/locales/en/ns.headerwidget.json
 :000000 100644 0000000 af44303 A	working/widget/Header/instances/Header Widget v10/widget.less
 :000000 100644 0000000 c968f3f A	working/widget/Header/instances/Header Widget v10/widgetInstanceMetadata.json
 :000000 100644 0000000 c2016df A	working/widget/Header/instances/Header Widget/display.template
+:000000 100644 0000000 228266d A	working/widget/Header/instances/Header Widget/elementInstancesMetadata.json
+:000000 100644 0000000 2b5ae7c A	working/widget/Header/instances/Header Widget/images/Round.png
+:000000 100644 0000000 cace8c6 A	working/widget/Header/instances/Header Widget/images/hc-logo-white.png
+:000000 100644 0000000 86eace2 A	working/widget/Header/instances/Header Widget/images/logo.png
 :000000 100644 0000000 173565d A	working/widget/Header/instances/Header Widget/locales/en/ns.headerwidget.json
 :000000 100644 0000000 35782af A	working/widget/Header/instances/Header Widget/widget.less
 :000000 100644 0000000 1192ab9 A	working/widget/Header/instances/Header Widget/widgetInstanceMetadata.json
 :000000 100644 0000000 ff59757 A	working/widget/Header/instances/Header v9/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Header/instances/Header v9/elementInstancesMetadata.json
 :000000 100644 0000000 66834e1 A	working/widget/Header/instances/Header v9/locales/en/ns.headerwidget.json
 :000000 100644 0000000 1af098f A	working/widget/Header/instances/Header v9/widget.less
 :000000 100644 0000000 53bbdc4 A	working/widget/Header/instances/Header v9/widgetInstanceMetadata.json
 :000000 100644 0000000 b93c397 A	working/widget/Header/instances/OOTB Login Register Links/display.template
+:000000 100644 0000000 e0411e9 A	working/widget/Header/instances/OOTB Login Register Links/elementInstancesMetadata.json
+:000000 100644 0000000 cace8c6 A	working/widget/Header/instances/OOTB Login Register Links/images/hc-logo-white.png
 :000000 100644 0000000 fa1ff36 A	working/widget/Header/instances/OOTB Login Register Links/locales/en/ns.headerwidget.json
 :000000 100644 0000000 28f5179 A	working/widget/Header/instances/OOTB Login Register Links/widget.less
 :000000 100644 0000000 91d330c A	working/widget/Header/instances/OOTB Login Register Links/widgetInstanceMetadata.json
 :000000 100644 0000000 b17de2d A	working/widget/Header/instances/sso/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Header/instances/sso/elementInstancesMetadata.json
 :000000 100644 0000000 66834e1 A	working/widget/Header/instances/sso/locales/en/ns.headerwidget.json
 :000000 100644 0000000 1af098f A	working/widget/Header/instances/sso/widget.less
 :000000 100644 0000000 311ab28 A	working/widget/Header/instances/sso/widgetInstanceMetadata.json
@@ -379,8 +435,11 @@
 :000000 100644 0000000 eb985e2 A	working/widget/HomeChoice Email Sign Up Widget/config/locales/en.json
 :000000 100644 0000000 c30e9ec A	working/widget/HomeChoice Email Sign Up Widget/display.template
 :000000 100644 0000000 763ecb7 A	working/widget/HomeChoice Email Sign Up Widget/element/Email Sign Up/element.template
+:000000 100644 0000000 41a6133 A	working/widget/HomeChoice Email Sign Up Widget/element/Email Sign Up/elementMetadata.json
 :000000 100644 0000000 70b74ed A	working/widget/HomeChoice Email Sign Up Widget/element/Social Media Icons/element.template
+:000000 100644 0000000 ab6aa00 A	working/widget/HomeChoice Email Sign Up Widget/element/Social Media Icons/elementMetadata.json
 :000000 100644 0000000 6d184e6 A	working/widget/HomeChoice Email Sign Up Widget/instances/HC. Email Signup/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/HomeChoice Email Sign Up Widget/instances/HC. Email Signup/elementInstancesMetadata.json
 :000000 100644 0000000 7f086a0 A	working/widget/HomeChoice Email Sign Up Widget/instances/HC. Email Signup/locales/en/ns.signupwidget.json
 :000000 100644 0000000 f46c7c5 A	working/widget/HomeChoice Email Sign Up Widget/instances/HC. Email Signup/widget.less
 :000000 100644 0000000 3904bb3 A	working/widget/HomeChoice Email Sign Up Widget/instances/HC. Email Signup/widgetInstanceMetadata.json
@@ -391,8 +450,11 @@
 :000000 100644 0000000 3e21292 A	working/widget/HomeChoice Sign Up Widget/config/locales/en.json
 :000000 100644 0000000 23e20a4 A	working/widget/HomeChoice Sign Up Widget/display.template
 :000000 100644 0000000 7ebdfe5 A	working/widget/HomeChoice Sign Up Widget/element/Email Sign Up/element.template
+:000000 100644 0000000 10da223 A	working/widget/HomeChoice Sign Up Widget/element/Email Sign Up/elementMetadata.json
 :000000 100644 0000000 2b3eacd A	working/widget/HomeChoice Sign Up Widget/element/Social Media Icons/element.template
+:000000 100644 0000000 f543bb1 A	working/widget/HomeChoice Sign Up Widget/element/Social Media Icons/elementMetadata.json
 :000000 100644 0000000 23e20a4 A	working/widget/HomeChoice Sign Up Widget/instances/test.su/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/HomeChoice Sign Up Widget/instances/test.su/elementInstancesMetadata.json
 :000000 100644 0000000 95330d0 A	working/widget/HomeChoice Sign Up Widget/instances/test.su/locales/en/ns.homechoicesignup.json
 :000000 100644 0000000 b03a77b A	working/widget/HomeChoice Sign Up Widget/instances/test.su/widget.less
 :000000 100644 0000000 21f0d2e A	working/widget/HomeChoice Sign Up Widget/instances/test.su/widgetInstanceMetadata.json
@@ -448,54 +510,80 @@
 :000000 100644 0000000 954169a A	working/widget/Homechoice - Content Block Horizontal/config/locales/en.json
 :000000 100644 0000000 900a966 A	working/widget/Homechoice - Content Block Horizontal/display.template
 :000000 100644 0000000 4e1ea4b A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1 (copy)/display.template
+:000000 100644 0000000 0978e03 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1 (copy)/elementInstancesMetadata.json
+:000000 100644 0000000 f747a82 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1 (copy)/images/Bedding.jpg
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1 (copy)/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1 (copy)/widget.less
 :000000 100644 0000000 44acc73 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1 (copy)/widgetInstanceMetadata.json
 :000000 100644 0000000 36f606b A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1/display.template
+:000000 100644 0000000 aa4fa35 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1/elementInstancesMetadata.json
+:000000 100644 0000000 1119f0e A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1/images/men-fashion.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1/widget.less
 :000000 100644 0000000 0ed6f93 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory1/widgetInstanceMetadata.json
 :000000 100644 0000000 adea8a2 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory10/display.template
+:000000 100644 0000000 8cb7896 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory10/elementInstancesMetadata.json
+:000000 100644 0000000 2154bb6 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory10/images/luggage.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory10/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory10/widget.less
 :000000 100644 0000000 28e9005 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory10/widgetInstanceMetadata.json
 :000000 100644 0000000 9928cbd A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory11/display.template
+:000000 100644 0000000 1bfc5af A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory11/elementInstancesMetadata.json
+:000000 100644 0000000 32cc771 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory11/images/under R1000.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory11/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory11/widget.less
 :000000 100644 0000000 81dd2ce A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory11/widgetInstanceMetadata.json
 :000000 100644 0000000 682929c A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory12/display.template
+:000000 100644 0000000 5cf8c0d A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory12/elementInstancesMetadata.json
+:000000 100644 0000000 a9cf06b A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory12/images/Sale.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory12/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory12/widget.less
 :000000 100644 0000000 5d48438 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory12/widgetInstanceMetadata.json
 :000000 100644 0000000 4e9d1a2 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory2/display.template
+:000000 100644 0000000 4b44c08 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory2/elementInstancesMetadata.json
+:000000 100644 0000000 19a3c51 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory2/images/women-fashion.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory2/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory2/widget.less
 :000000 100644 0000000 6d0f56d A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory2/widgetInstanceMetadata.json
 :000000 100644 0000000 24f2c3c A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory3/display.template
+:000000 100644 0000000 f8ed583 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory3/elementInstancesMetadata.json
+:000000 100644 0000000 5f357a6 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory3/images/cookware.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory3/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory3/widget.less
 :000000 100644 0000000 47e9415 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory3/widgetInstanceMetadata.json
 :000000 100644 0000000 5af7061 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory4/display.template
+:000000 100644 0000000 59453a9 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory4/elementInstancesMetadata.json
+:000000 100644 0000000 d535a79 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory4/images/sheets.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory4/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory4/widget.less
 :000000 100644 0000000 3c8754c A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory4/widgetInstanceMetadata.json
 :000000 100644 0000000 63539a9 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory5/display.template
+:000000 100644 0000000 120bb98 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory5/elementInstancesMetadata.json
+:000000 100644 0000000 3c60daa A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory5/images/Duvets.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory5/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory5/widget.less
 :000000 100644 0000000 1388c82 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory5/widgetInstanceMetadata.json
 :000000 100644 0000000 0bc02a0 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory6/display.template
+:000000 100644 0000000 6824728 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory6/elementInstancesMetadata.json
+:000000 100644 0000000 6fdc888 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory6/images/Whats new.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory6/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory6/widget.less
 :000000 100644 0000000 08345f9 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory6/widgetInstanceMetadata.json
 :000000 100644 0000000 3d8ce55 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory7/display.template
+:000000 100644 0000000 0fe10d9 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory7/elementInstancesMetadata.json
+:000000 100644 0000000 009d136 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory7/images/appliances1.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory7/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory7/widget.less
 :000000 100644 0000000 e89de43 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory7/widgetInstanceMetadata.json
 :000000 100644 0000000 e7b368e A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory8/display.template
+:000000 100644 0000000 36c6b8a A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory8/elementInstancesMetadata.json
+:000000 100644 0000000 b861023 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory8/images/furniture.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory8/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory8/widget.less
 :000000 100644 0000000 860ada8 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory8/widgetInstanceMetadata.json
 :000000 100644 0000000 bf6f0e0 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory9/display.template
+:000000 100644 0000000 d1accef A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory9/elementInstancesMetadata.json
+:000000 100644 0000000 2097aac A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory9/images/Online exclusive.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory9/locales/en/ns.hccontentblockhorizontal.json
 :000000 100644 0000000 2107221 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory9/widget.less
 :000000 100644 0000000 71dca75 A	working/widget/Homechoice - Content Block Horizontal/instances/hc.popularCategory9/widgetInstanceMetadata.json
@@ -507,18 +595,27 @@
 :000000 100644 0000000 e350a4f A	working/widget/Homechoice - Content Block Vertical/config/locales/en.json
 :000000 100644 0000000 d3927af A	working/widget/Homechoice - Content Block Vertical/display.template
 :000000 100644 0000000 eaa009f A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 1 2/display.template
+:000000 100644 0000000 dd4fd23 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 1 2/elementInstancesMetadata.json
+:000000 100644 0000000 7d7d320 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 1 2/images/Marketing1.jpg
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 1 2/locales/en/ns.hccontentblockvertical.json
 :000000 100644 0000000 d289be4 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 1 2/widget.less
 :000000 100644 0000000 2b32231 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 1 2/widgetInstanceMetadata.json
 :000000 100644 0000000 5ad156f A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 2 2/display.template
+:000000 100644 0000000 c46ad74 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 2 2/elementInstancesMetadata.json
+:000000 100644 0000000 0ad0a40 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 2 2/images/Marketing2.jpg
+:000000 100644 0000000 0293b64 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 2 2/images/imageTest5-2-ratio.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 2 2/locales/en/ns.hccontentblockvertical.json
 :000000 100644 0000000 d289be4 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 2 2/widget.less
 :000000 100644 0000000 cefd4e1 A	working/widget/Homechoice - Content Block Vertical/instances/hc.home.contentBlockVertical 2 2/widgetInstanceMetadata.json
 :000000 100644 0000000 c97c37b A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new (copy)/display.template
+:000000 100644 0000000 abdecc9 A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new (copy)/elementInstancesMetadata.json
+:000000 100644 0000000 43a247b A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new (copy)/images/Fashion.jpg
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new (copy)/locales/en/ns.hccontentblockvertical.json
 :000000 100644 0000000 d289be4 A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new (copy)/widget.less
 :000000 100644 0000000 3d5fb82 A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new (copy)/widgetInstanceMetadata.json
 :000000 100644 0000000 12231dc A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new/display.template
+:000000 100644 0000000 1f0d2ca A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new/elementInstancesMetadata.json
+:000000 100644 0000000 030ab8a A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new/images/Penguins.jpg
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new/locales/en/ns.hccontentblockvertical.json
 :000000 100644 0000000 d289be4 A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new/widget.less
 :000000 100644 0000000 92b7240 A	working/widget/Homechoice - Content Block Vertical/instances/this_is_new/widgetInstanceMetadata.json
@@ -578,6 +675,14 @@
 :000000 100644 0000000 fca0042 A	working/widget/Homechoice - Hero Banner Carousel/config/locales/en.json
 :000000 100644 0000000 d4b1fb6 A	working/widget/Homechoice - Hero Banner Carousel/display.template
 :000000 100644 0000000 449ba23 A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/display.template
+:000000 100644 0000000 da242ee A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/elementInstancesMetadata.json
+:000000 100644 0000000 56df78b A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/images/Banner_FrenchF.jpg
+:000000 100644 0000000 23465d6 A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/images/banner_mock_no_copy_1200x448.png
+:000000 100644 0000000 ade289b A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/images/cooking_thumb.png
+:000000 100644 0000000 b04c115 A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/images/image_source_01.jpg
+:000000 100644 0000000 85c977d A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/images/image_source_03.jpg
+:000000 100644 0000000 1998e76 A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/images/image_source_04.jpg
+:000000 100644 0000000 04e2e70 A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/images/image_source_05.jpg
 :000000 100644 0000000 c4cfd82 A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/widget.less
 :000000 100644 0000000 9206016 A	working/widget/Homechoice - Hero Banner Carousel/instances/hc.home.heroBannerCarousel/widgetInstanceMetadata.json
 :000000 100644 0000000 81958f2 A	working/widget/Homechoice - Hero Banner Carousel/js/main.js
@@ -636,10 +741,20 @@
 :000000 100644 0000000 fca0042 A	working/widget/Homechoice - Top Brands/config/locales/en.json
 :000000 100644 0000000 b25a10f A	working/widget/Homechoice - Top Brands/display.template
 :000000 100644 0000000 8a5aec3 A	working/widget/Homechoice - Top Brands/instances/hc.topBrandGow/display.template
+:000000 100644 0000000 afb99d4 A	working/widget/Homechoice - Top Brands/instances/hc.topBrandGow/elementInstancesMetadata.json
+:000000 100644 0000000 0a3894b A	working/widget/Homechoice - Top Brands/instances/hc.topBrandGow/images/Sony.jpg
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Top Brands/instances/hc.topBrandGow/locales/en/ns.hctopbrands.json
 :000000 100644 0000000 2b7858b A	working/widget/Homechoice - Top Brands/instances/hc.topBrandGow/widget.less
 :000000 100644 0000000 9314727 A	working/widget/Homechoice - Top Brands/instances/hc.topBrandGow/widgetInstanceMetadata.json
 :000000 100644 0000000 e840847 A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/display.template
+:000000 100644 0000000 03eae12 A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/elementInstancesMetadata.json
+:000000 100644 0000000 d23c72a A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/images/LG.png
+:000000 100644 0000000 0ef080d A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/images/Levis.jpg
+:000000 100644 0000000 77e7a9a A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/images/PC.png
+:000000 100644 0000000 e7c4151 A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/images/defy.png
+:000000 100644 0000000 4c21746 A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/images/froggie.png
+:000000 100644 0000000 8e67331 A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/images/hisense.png
+:000000 100644 0000000 680cd13 A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/images/samsung.png
 :000000 100644 0000000 bcde780 A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/locales/en/ns.hctopbrands.json
 :000000 100644 0000000 2b7858b A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/widget.less
 :000000 100644 0000000 a820f5f A	working/widget/Homechoice - Top Brands/instances/hc.topBrands/widgetInstanceMetadata.json
@@ -651,6 +766,7 @@
 :000000 100644 0000000 1cfe512 A	working/widget/Homechoice Collection Navigation (Mobile Enhanced)/config/locales/en.json
 :000000 100644 0000000 8c4658d A	working/widget/Homechoice Collection Navigation (Mobile Enhanced)/display.template
 :000000 100644 0000000 1412d38 A	working/widget/Homechoice Collection Navigation (Mobile Enhanced)/instances/hc.CollectionNavigation (Mobile Enhanced)/display.template
+:000000 100644 0000000 f558dd9 A	working/widget/Homechoice Collection Navigation (Mobile Enhanced)/instances/hc.CollectionNavigation (Mobile Enhanced)/elementInstancesMetadata.json
 :000000 100644 0000000 a680451 A	working/widget/Homechoice Collection Navigation (Mobile Enhanced)/instances/hc.CollectionNavigation (Mobile Enhanced)/locales/en/ns.hccollectionnavigation.json
 :000000 100644 0000000 0c12d62 A	working/widget/Homechoice Collection Navigation (Mobile Enhanced)/instances/hc.CollectionNavigation (Mobile Enhanced)/widget.less
 :000000 100644 0000000 051da81 A	working/widget/Homechoice Collection Navigation (Mobile Enhanced)/instances/hc.CollectionNavigation (Mobile Enhanced)/widgetInstanceMetadata.json
@@ -676,18 +792,22 @@
 :000000 100644 0000000 e1c3037 A	working/widget/Homechoice Footer/config/locales/en.json
 :000000 100644 0000000 6abe25a A	working/widget/Homechoice Footer/display.template
 :000000 100644 0000000 1816596 A	working/widget/Homechoice Footer/instances/hc footer fix shaun/display.template
+:000000 100644 0000000 4f81a3f A	working/widget/Homechoice Footer/instances/hc footer fix shaun/elementInstancesMetadata.json
 :000000 100644 0000000 db156a5 A	working/widget/Homechoice Footer/instances/hc footer fix shaun/locales/en/ns.homechoicefooter.json
 :000000 100644 0000000 370ba5d A	working/widget/Homechoice Footer/instances/hc footer fix shaun/widget.less
 :000000 100644 0000000 cec49c8 A	working/widget/Homechoice Footer/instances/hc footer fix shaun/widgetInstanceMetadata.json
 :000000 100644 0000000 5da8f7d A	working/widget/Homechoice Footer/instances/hc footer fix/display.template
+:000000 100644 0000000 46ce534 A	working/widget/Homechoice Footer/instances/hc footer fix/elementInstancesMetadata.json
 :000000 100644 0000000 db156a5 A	working/widget/Homechoice Footer/instances/hc footer fix/locales/en/ns.homechoicefooter.json
 :000000 100644 0000000 370ba5d A	working/widget/Homechoice Footer/instances/hc footer fix/widget.less
 :000000 100644 0000000 1de0a9f A	working/widget/Homechoice Footer/instances/hc footer fix/widgetInstanceMetadata.json
 :000000 100644 0000000 3414253 A	working/widget/Homechoice Footer/instances/hc.footer.widget.working/display.template
+:000000 100644 0000000 21b6e5d A	working/widget/Homechoice Footer/instances/hc.footer.widget.working/elementInstancesMetadata.json
 :000000 100644 0000000 05c04e7 A	working/widget/Homechoice Footer/instances/hc.footer.widget.working/locales/en/ns.homechoicefooter.json
 :000000 100644 0000000 15891d9 A	working/widget/Homechoice Footer/instances/hc.footer.widget.working/widget.less
 :000000 100644 0000000 130b742 A	working/widget/Homechoice Footer/instances/hc.footer.widget.working/widgetInstanceMetadata.json
 :000000 100644 0000000 45c4fe6 A	working/widget/Homechoice Footer/instances/hc.footer.widget/display.template
+:000000 100644 0000000 e3bd6b1 A	working/widget/Homechoice Footer/instances/hc.footer.widget/elementInstancesMetadata.json
 :000000 100644 0000000 db156a5 A	working/widget/Homechoice Footer/instances/hc.footer.widget/locales/en/ns.homechoicefooter.json
 :000000 100644 0000000 9786123 A	working/widget/Homechoice Footer/instances/hc.footer.widget/widget.less
 :000000 100644 0000000 15b0800 A	working/widget/Homechoice Footer/instances/hc.footer.widget/widgetInstanceMetadata.json
@@ -715,6 +835,7 @@
 :000000 100644 0000000 456f6d3 A	working/widget/Login - Checkout/instances/Login Checkout - Latest/widgetInstanceMetadata.json
 :000000 100644 0000000 50d1efc A	working/widget/MyGate Payer Authorization/display.template
 :000000 100644 0000000 1031f8c A	working/widget/MyGate Payer Authorization/instances/MyGate Payer Authorization/display.template
+:000000 100644 0000000 25fbf8b A	working/widget/MyGate Payer Authorization/instances/MyGate Payer Authorization/elementInstancesMetadata.json
 :000000 100644 0000000 afd1bdc A	working/widget/MyGate Payer Authorization/instances/MyGate Payer Authorization/locales/en/ns.mygatepaymentauthorization.json
 :000000 100644 0000000 5cd87a5 A	working/widget/MyGate Payer Authorization/instances/MyGate Payer Authorization/widget.less
 :000000 100644 0000000 a7c8e85 A	working/widget/MyGate Payer Authorization/instances/MyGate Payer Authorization/widgetInstanceMetadata.json
@@ -733,6 +854,7 @@
 :000000 100644 0000000 97284aa A	working/widget/No Search Results/instances/No Search Results Widget/widgetInstanceMetadata.json
 :000000 100644 0000000 5a8a562 A	working/widget/Notifications/element/Notifications Message Box/element.template
 :000000 100644 0000000 3645196 A	working/widget/Notifications/instances/Notification Widget - latest/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Notifications/instances/Notification Widget - latest/elementInstancesMetadata.json
 :000000 100644 0000000 ae77587 A	working/widget/Notifications/instances/Notification Widget - latest/widget.less
 :000000 100644 0000000 4e530b5 A	working/widget/Notifications/instances/Notification Widget - latest/widgetInstanceMetadata.json
 :000000 100644 0000000 3645196 A	working/widget/Notifications/instances/Notifications Widget/display.template
@@ -854,6 +976,7 @@
 :000000 100644 0000000 1313290 A	working/widget/Payment Details/instances/Payment Details/widget.less
 :000000 100644 0000000 38bdfa6 A	working/widget/Payment Details/instances/Payment Details/widgetInstanceMetadata.json
 :000000 100644 0000000 e3d5e0a A	working/widget/Payment Gateway Options/instances/Payment Gateway/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Payment Gateway Options/instances/Payment Gateway/elementInstancesMetadata.json
 :000000 100644 0000000 34c2022 A	working/widget/Payment Gateway Options/instances/Payment Gateway/locales/en/ns.paymentgatewayoptions.json
 :000000 100644 0000000 d9bd363 A	working/widget/Payment Gateway Options/instances/Payment Gateway/widget.less
 :000000 100644 0000000 697a7f9 A	working/widget/Payment Gateway Options/instances/Payment Gateway/widgetInstanceMetadata.json
@@ -872,26 +995,32 @@
 :000000 100644 0000000 7182f4f A	working/widget/Product Details Breadcrumb Custom/widget.less
 :000000 100644 0000000 ad18bdd A	working/widget/Product Details Breadcrumb Custom/widgetMetadata.json
 :000000 100644 0000000 9186327 A	working/widget/Product Details/instances/Bedding Product Details Widget/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Product Details/instances/Bedding Product Details Widget/elementInstancesMetadata.json
 :000000 100644 0000000 fd20ebd A	working/widget/Product Details/instances/Bedding Product Details Widget/locales/en/ns.productdetails.json
 :000000 100644 0000000 43f91cc A	working/widget/Product Details/instances/Bedding Product Details Widget/widget.less
 :000000 100644 0000000 fbf827d A	working/widget/Product Details/instances/Bedding Product Details Widget/widgetInstanceMetadata.json
 :000000 100644 0000000 134ea75 A	working/widget/Product Details/instances/Product Details V7 (mobile)/display.template
+:000000 100644 0000000 eb91619 A	working/widget/Product Details/instances/Product Details V7 (mobile)/elementInstancesMetadata.json
 :000000 100644 0000000 787db9b A	working/widget/Product Details/instances/Product Details V7 (mobile)/locales/en/ns.productdetails.json
 :000000 100644 0000000 ed40233 A	working/widget/Product Details/instances/Product Details V7 (mobile)/widget.less
 :000000 100644 0000000 d398a5e A	working/widget/Product Details/instances/Product Details V7 (mobile)/widgetInstanceMetadata.json
 :000000 100644 0000000 a51a505 A	working/widget/Product Details/instances/Product Details V7/display.template
+:000000 100644 0000000 2b425ca A	working/widget/Product Details/instances/Product Details V7/elementInstancesMetadata.json
 :000000 100644 0000000 787db9b A	working/widget/Product Details/instances/Product Details V7/locales/en/ns.productdetails.json
 :000000 100644 0000000 af2b21b A	working/widget/Product Details/instances/Product Details V7/widget.less
 :000000 100644 0000000 1a40a31 A	working/widget/Product Details/instances/Product Details V7/widgetInstanceMetadata.json
 :000000 100644 0000000 ff3014e A	working/widget/Product Details/instances/Product Details v8 ( OCC v 18A)/display.template
+:000000 100644 0000000 0f15648 A	working/widget/Product Details/instances/Product Details v8 ( OCC v 18A)/elementInstancesMetadata.json
 :000000 100644 0000000 787db9b A	working/widget/Product Details/instances/Product Details v8 ( OCC v 18A)/locales/en/ns.productdetails.json
 :000000 100644 0000000 e26e908 A	working/widget/Product Details/instances/Product Details v8 ( OCC v 18A)/widget.less
 :000000 100644 0000000 835edc3 A	working/widget/Product Details/instances/Product Details v8 ( OCC v 18A)/widgetInstanceMetadata.json
 :000000 100644 0000000 6437d28 A	working/widget/Product Details/instances/Product Quick View/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Product Details/instances/Product Quick View/elementInstancesMetadata.json
 :000000 100644 0000000 ff0b883 A	working/widget/Product Details/instances/Product Quick View/locales/en/ns.productdetails.json
 :000000 100644 0000000 ed40233 A	working/widget/Product Details/instances/Product Quick View/widget.less
 :000000 100644 0000000 bfd7b67 A	working/widget/Product Details/instances/Product Quick View/widgetInstanceMetadata.json
 :000000 100644 0000000 7c680ef A	working/widget/Product Details/instances/product details/display.template
+:000000 100644 0000000 424f363 A	working/widget/Product Details/instances/product details/elementInstancesMetadata.json
 :000000 100644 0000000 3333388 A	working/widget/Product Details/instances/product details/locales/en/ns.productdetails.json
 :000000 100644 0000000 5c755ef A	working/widget/Product Details/instances/product details/widget.less
 :000000 100644 0000000 0c313fe A	working/widget/Product Details/instances/product details/widgetInstanceMetadata.json
@@ -903,11 +1032,14 @@
 :000000 100644 0000000 1276352 A	working/widget/Product Details/versions/3/element/Description/element.template
 :000000 100644 0000000 a352f99 A	working/widget/Product Details/versions/3/element/Entered Text/element.template
 :000000 100644 0000000 28c06cd A	working/widget/Product Details/versions/3/element/In Stock Message/element.template
+:000000 100644 0000000 aa9afb2 A	working/widget/Product Details/versions/3/element/Line Break/element.template
+:000000 100644 0000000 6f3a328 A	working/widget/Product Details/versions/3/element/List Price/element.template
 :000000 100644 0000000 492d434 A	working/widget/Product Details/versions/3/element/Long Description/element.template
 :000000 100644 0000000 c1d5d27 A	working/widget/Product Details/versions/3/element/Name/element.template
 :000000 100644 0000000 c05149c A	working/widget/Product Details/versions/3/element/Out Of Stock Message/element.template
 :000000 100644 0000000 ee5bd2a A	working/widget/Product Details/versions/3/element/Product Image/element.template
 :000000 100644 0000000 d844a1b A	working/widget/Product Details/versions/3/element/Product Quantity/element.template
+:000000 100644 0000000 72f63c8 A	working/widget/Product Details/versions/3/element/Sale Price/element.template
 :000000 100644 0000000 2709c74 A	working/widget/Product Details/versions/3/element/Shipping Surcharge/element.template
 :000000 100644 0000000 3e27528 A	working/widget/Product Details/versions/3/element/Social Sharing 2/element.template
 :000000 100644 0000000 f2f347f A	working/widget/Product Details/versions/3/element/Social Sharing/element.template
@@ -921,12 +1053,15 @@
 :000000 100644 0000000 1276352 A	working/widget/Product Details/versions/7/element/Description/element.template
 :000000 100644 0000000 a352f99 A	working/widget/Product Details/versions/7/element/Entered Text/element.template
 :000000 100644 0000000 28c06cd A	working/widget/Product Details/versions/7/element/In Stock Message/element.template
+:000000 100644 0000000 aa9afb2 A	working/widget/Product Details/versions/7/element/Line Break/element.template
+:000000 100644 0000000 6f3a328 A	working/widget/Product Details/versions/7/element/List Price/element.template
 :000000 100644 0000000 492d434 A	working/widget/Product Details/versions/7/element/Long Description/element.template
 :000000 100644 0000000 c1d5d27 A	working/widget/Product Details/versions/7/element/Name/element.template
 :000000 100644 0000000 c05149c A	working/widget/Product Details/versions/7/element/Out Of Stock Message/element.template
 :000000 100644 0000000 12ca211 A	working/widget/Product Details/versions/7/element/PreOrder Message/element.template
 :000000 100644 0000000 12f1148 A	working/widget/Product Details/versions/7/element/Product Image/element.template
 :000000 100644 0000000 d844a1b A	working/widget/Product Details/versions/7/element/Product Quantity/element.template
+:000000 100644 0000000 72f63c8 A	working/widget/Product Details/versions/7/element/Sale Price/element.template
 :000000 100644 0000000 2709c74 A	working/widget/Product Details/versions/7/element/Shipping Surcharge/element.template
 :000000 100644 0000000 3e27528 A	working/widget/Product Details/versions/7/element/Social Sharing 2/element.template
 :000000 100644 0000000 f2f347f A	working/widget/Product Details/versions/7/element/Social Sharing/element.template
@@ -940,12 +1075,15 @@
 :000000 100644 0000000 1276352 A	working/widget/Product Details/versions/8/element/Description/element.template
 :000000 100644 0000000 a352f99 A	working/widget/Product Details/versions/8/element/Entered Text/element.template
 :000000 100644 0000000 28c06cd A	working/widget/Product Details/versions/8/element/In Stock Message/element.template
+:000000 100644 0000000 aa9afb2 A	working/widget/Product Details/versions/8/element/Line Break/element.template
+:000000 100644 0000000 6f3a328 A	working/widget/Product Details/versions/8/element/List Price/element.template
 :000000 100644 0000000 492d434 A	working/widget/Product Details/versions/8/element/Long Description/element.template
 :000000 100644 0000000 c1d5d27 A	working/widget/Product Details/versions/8/element/Name/element.template
 :000000 100644 0000000 c05149c A	working/widget/Product Details/versions/8/element/Out Of Stock Message/element.template
 :000000 100644 0000000 12ca211 A	working/widget/Product Details/versions/8/element/PreOrder Message/element.template
 :000000 100644 0000000 12f1148 A	working/widget/Product Details/versions/8/element/Product Image/element.template
 :000000 100644 0000000 d844a1b A	working/widget/Product Details/versions/8/element/Product Quantity/element.template
+:000000 100644 0000000 72f63c8 A	working/widget/Product Details/versions/8/element/Sale Price/element.template
 :000000 100644 0000000 4276f51 A	working/widget/Product Details/versions/8/element/Shipping Surcharge/element.template
 :000000 100644 0000000 3e27528 A	working/widget/Product Details/versions/8/element/Social Sharing 2/element.template
 :000000 100644 0000000 f2f347f A	working/widget/Product Details/versions/8/element/Social Sharing/element.template
@@ -959,12 +1097,15 @@
 :000000 100644 0000000 1276352 A	working/widget/Product Details/versions/9/element/Description/element.template
 :000000 100644 0000000 a352f99 A	working/widget/Product Details/versions/9/element/Entered Text/element.template
 :000000 100644 0000000 28c06cd A	working/widget/Product Details/versions/9/element/In Stock Message/element.template
+:000000 100644 0000000 aa9afb2 A	working/widget/Product Details/versions/9/element/Line Break/element.template
+:000000 100644 0000000 6f3a328 A	working/widget/Product Details/versions/9/element/List Price/element.template
 :000000 100644 0000000 492d434 A	working/widget/Product Details/versions/9/element/Long Description/element.template
 :000000 100644 0000000 c1d5d27 A	working/widget/Product Details/versions/9/element/Name/element.template
 :000000 100644 0000000 c05149c A	working/widget/Product Details/versions/9/element/Out Of Stock Message/element.template
 :000000 100644 0000000 12ca211 A	working/widget/Product Details/versions/9/element/PreOrder Message/element.template
 :000000 100644 0000000 12f1148 A	working/widget/Product Details/versions/9/element/Product Image/element.template
 :000000 100644 0000000 d844a1b A	working/widget/Product Details/versions/9/element/Product Quantity/element.template
+:000000 100644 0000000 72f63c8 A	working/widget/Product Details/versions/9/element/Sale Price/element.template
 :000000 100644 0000000 4276f51 A	working/widget/Product Details/versions/9/element/Shipping Surcharge/element.template
 :000000 100644 0000000 3e27528 A	working/widget/Product Details/versions/9/element/Social Sharing 2/element.template
 :000000 100644 0000000 f2f347f A	working/widget/Product Details/versions/9/element/Social Sharing/element.template
@@ -1005,6 +1146,7 @@
 :000000 100644 0000000 71f441e A	working/widget/Product Listing/instances/Search Results Widget/widget.less
 :000000 100644 0000000 24df75f A	working/widget/Product Listing/instances/Search Results Widget/widgetInstanceMetadata.json
 :000000 100644 0000000 b62a78f A	working/widget/Product Recommendations/instances/homepage-recommendations/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Product Recommendations/instances/homepage-recommendations/elementInstancesMetadata.json
 :000000 100644 0000000 1c3b8b1 A	working/widget/Product Recommendations/instances/homepage-recommendations/locales/en/ns.recommendations.json
 :000000 100644 0000000 66a4e73 A	working/widget/Product Recommendations/instances/homepage-recommendations/widget.less
 :000000 100644 0000000 a192e3f A	working/widget/Product Recommendations/instances/homepage-recommendations/widgetInstanceMetadata.json
@@ -1190,6 +1332,7 @@
 :000000 100644 0000000 8fd166c A	working/widget/Quick Order/instances/malcs quick order/widgetInstanceMetadata.json
 :000000 100644 0000000 30494f1 A	working/widget/Quick Order/module/js/extendquickOrder_v1.js
 :000000 100644 0000000 f79eb3f A	working/widget/Related Products/instances/hc.relatedProductsCarousel/display.template
+:000000 100644 0000000 7038e29 A	working/widget/Related Products/instances/hc.relatedProductsCarousel/elementInstancesMetadata.json
 :000000 100644 0000000 09916b7 A	working/widget/Related Products/instances/hc.relatedProductsCarousel/locales/en/ns.relatedproducts.json
 :000000 100644 0000000 d88d88e A	working/widget/Related Products/instances/hc.relatedProductsCarousel/widget.less
 :000000 100644 0000000 659ca13 A	working/widget/Related Products/instances/hc.relatedProductsCarousel/widgetInstanceMetadata.json
@@ -1266,361 +1409,502 @@
 :000000 100644 0000000 3e4ef06 A	working/widget/VSG Commerce Google Tag Manager Integration/js/googleTagManager.js
 :000000 100644 0000000 0ab2f29 A	working/widget/VSG Commerce Google Tag Manager Integration/locales/en/ns.vsggoogletagmanager.json
 :000000 100644 0000000 bd0856c A	working/widget/VSG Commerce Google Tag Manager Integration/widgetMetadata.json
+:000000 100644 0000000 3dc0e38 A	working/widget/Web Content/instances/123456789/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/123456789/widget.less
 :000000 100644 0000000 19ff08d A	working/widget/Web Content/instances/123456789/widgetInstanceMetadata.json
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/3/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/3/widget.less
 :000000 100644 0000000 dc3d249 A	working/widget/Web Content/instances/3/widgetInstanceMetadata.json
 :000000 100644 0000000 3b8fbe6 A	working/widget/Web Content/instances/404 Custom text/display.template
+:000000 100644 0000000 225d2ab A	working/widget/Web Content/instances/404 Custom text/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/404 Custom text/widget.less
 :000000 100644 0000000 bef85bb A	working/widget/Web Content/instances/404 Custom text/widgetInstanceMetadata.json
 :000000 100644 0000000 29eea0d A	working/widget/Web Content/instances/7ways to pay/display.template
+:000000 100644 0000000 c8ef6ef A	working/widget/Web Content/instances/7ways to pay/elementInstancesMetadata.json
 :000000 100644 0000000 d6c9a4f A	working/widget/Web Content/instances/7ways to pay/widget.less
 :000000 100644 0000000 3c8b196 A	working/widget/Web Content/instances/7ways to pay/widgetInstanceMetadata.json
 :000000 100644 0000000 ce8c5c2 A	working/widget/Web Content/instances/7ways/display.template
+:000000 100644 0000000 0729ad8 A	working/widget/Web Content/instances/7ways/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/7ways/widget.less
 :000000 100644 0000000 de91ed9 A	working/widget/Web Content/instances/7ways/widgetInstanceMetadata.json
 :000000 100644 0000000 b52e1d6 A	working/widget/Web Content/instances/AAAA-DCU TEST/display.template
+:000000 100644 0000000 fdae35d A	working/widget/Web Content/instances/AAAA-DCU TEST/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/AAAA-DCU TEST/widget.less
 :000000 100644 0000000 d467ab2 A	working/widget/Web Content/instances/AAAA-DCU TEST/widgetInstanceMetadata.json
 :000000 100644 0000000 f4edd40 A	working/widget/Web Content/instances/ATM Text/display.template
+:000000 100644 0000000 7e23cf6 A	working/widget/Web Content/instances/ATM Text/elementInstancesMetadata.json
 :000000 100644 0000000 dac5246 A	working/widget/Web Content/instances/ATM Text/widget.less
 :000000 100644 0000000 b79c34f A	working/widget/Web Content/instances/ATM Text/widgetInstanceMetadata.json
 :000000 100644 0000000 ad95785 A	working/widget/Web Content/instances/Account Online/display.template
+:000000 100644 0000000 d455150 A	working/widget/Web Content/instances/Account Online/elementInstancesMetadata.json
 :000000 100644 0000000 e00e611 A	working/widget/Web Content/instances/Account Online/widget.less
 :000000 100644 0000000 a69bb33 A	working/widget/Web Content/instances/Account Online/widgetInstanceMetadata.json
 :000000 100644 0000000 06404f6 A	working/widget/Web Content/instances/BOTSWANA/display.template
+:000000 100644 0000000 917b3d5 A	working/widget/Web Content/instances/BOTSWANA/elementInstancesMetadata.json
 :000000 100644 0000000 7023c29 A	working/widget/Web Content/instances/BOTSWANA/widget.less
 :000000 100644 0000000 2a2511e A	working/widget/Web Content/instances/BOTSWANA/widgetInstanceMetadata.json
 :000000 100644 0000000 61f3eb9 A	working/widget/Web Content/instances/Bank Text/display.template
+:000000 100644 0000000 9726fa9 A	working/widget/Web Content/instances/Bank Text/elementInstancesMetadata.json
 :000000 100644 0000000 160aa3e A	working/widget/Web Content/instances/Bank Text/widget.less
 :000000 100644 0000000 045cba5 A	working/widget/Web Content/instances/Bank Text/widgetInstanceMetadata.json
 :000000 100644 0000000 d831fca A	working/widget/Web Content/instances/Bathroom Section Title/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/Bathroom Section Title/elementInstancesMetadata.json
 :000000 100644 0000000 dd7fa24 A	working/widget/Web Content/instances/Bathroom Section Title/widget.less
 :000000 100644 0000000 2e41c37 A	working/widget/Web Content/instances/Bathroom Section Title/widgetInstanceMetadata.json
 :000000 100644 0000000 bd70925 A	working/widget/Web Content/instances/Become a Affiliate/display.template
+:000000 100644 0000000 ef5b843 A	working/widget/Web Content/instances/Become a Affiliate/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Become a Affiliate/widget.less
 :000000 100644 0000000 7365c50 A	working/widget/Web Content/instances/Become a Affiliate/widgetInstanceMetadata.json
 :000000 100644 0000000 77078bc A	working/widget/Web Content/instances/Bedroom Section Title/display.template
+:000000 100644 0000000 c6a881e A	working/widget/Web Content/instances/Bedroom Section Title/elementInstancesMetadata.json
 :000000 100644 0000000 dd7fa24 A	working/widget/Web Content/instances/Bedroom Section Title/widget.less
 :000000 100644 0000000 a22721a A	working/widget/Web Content/instances/Bedroom Section Title/widgetInstanceMetadata.json
 :000000 100644 0000000 d6df05c A	working/widget/Web Content/instances/Brands template/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/Brands template/elementInstancesMetadata.json
 :000000 100644 0000000 8c96d3e A	working/widget/Web Content/instances/Brands template/widget.less
 :000000 100644 0000000 cc62017 A	working/widget/Web Content/instances/Brands template/widgetInstanceMetadata.json
 :000000 100644 0000000 c71ceee A	working/widget/Web Content/instances/Bulelani Test/display.template
+:000000 100644 0000000 8c13f22 A	working/widget/Web Content/instances/Bulelani Test/elementInstancesMetadata.json
+:000000 100644 0000000 0462d3f A	working/widget/Web Content/instances/Bulelani Test/images/19DCF270-258F-4E4C-A44C-97C596A397E3.png
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Bulelani Test/widget.less
 :000000 100644 0000000 e006e74 A	working/widget/Web Content/instances/Bulelani Test/widgetInstanceMetadata.json
 :000000 100644 0000000 456fa8b A	working/widget/Web Content/instances/Call Me Lady/display.template
+:000000 100644 0000000 f0f5182 A	working/widget/Web Content/instances/Call Me Lady/elementInstancesMetadata.json
 :000000 100644 0000000 35f352d A	working/widget/Web Content/instances/Call Me Lady/widget.less
 :000000 100644 0000000 af11d89 A	working/widget/Web Content/instances/Call Me Lady/widgetInstanceMetadata.json
 :000000 100644 0000000 4b77990 A	working/widget/Web Content/instances/Card Text/display.template
+:000000 100644 0000000 8d9c4eb A	working/widget/Web Content/instances/Card Text/elementInstancesMetadata.json
 :000000 100644 0000000 3250dcb A	working/widget/Web Content/instances/Card Text/widget.less
 :000000 100644 0000000 a0c6ea1 A	working/widget/Web Content/instances/Card Text/widgetInstanceMetadata.json
 :000000 100644 0000000 ef806d4 A	working/widget/Web Content/instances/CheckOut Important Information/display.template
+:000000 100644 0000000 3377942 A	working/widget/Web Content/instances/CheckOut Important Information/elementInstancesMetadata.json
 :000000 100644 0000000 db4b6ae A	working/widget/Web Content/instances/CheckOut Important Information/widget.less
 :000000 100644 0000000 fce0723 A	working/widget/Web Content/instances/CheckOut Important Information/widgetInstanceMetadata.json
 :000000 100644 0000000 08db3fd A	working/widget/Web Content/instances/Contact Info/display.template
+:000000 100644 0000000 ef33224 A	working/widget/Web Content/instances/Contact Info/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Contact Info/widget.less
 :000000 100644 0000000 b5fdaa1 A	working/widget/Web Content/instances/Contact Info/widgetInstanceMetadata.json
 :000000 100644 0000000 b71fc5d A	working/widget/Web Content/instances/Contact Me Options/display.template
+:000000 100644 0000000 0a53109 A	working/widget/Web Content/instances/Contact Me Options/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Contact Me Options/widget.less
 :000000 100644 0000000 3032ef8 A	working/widget/Web Content/instances/Contact Me Options/widgetInstanceMetadata.json
 :000000 100644 0000000 1a6643d A	working/widget/Web Content/instances/Credit ImgText/display.template
+:000000 100644 0000000 a63554c A	working/widget/Web Content/instances/Credit ImgText/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Credit ImgText/widget.less
 :000000 100644 0000000 63648d8 A	working/widget/Web Content/instances/Credit ImgText/widgetInstanceMetadata.json
 :000000 100644 0000000 f95e247 A	working/widget/Web Content/instances/Credit Text/display.template
+:000000 100644 0000000 f6a6e0f A	working/widget/Web Content/instances/Credit Text/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Credit Text/widget.less
 :000000 100644 0000000 29f12cf A	working/widget/Web Content/instances/Credit Text/widgetInstanceMetadata.json
 :000000 100644 0000000 3e7b9d7 A	working/widget/Web Content/instances/Dining Room Section Title/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/Dining Room Section Title/elementInstancesMetadata.json
 :000000 100644 0000000 dd7fa24 A	working/widget/Web Content/instances/Dining Room Section Title/widget.less
 :000000 100644 0000000 1b1ced0 A	working/widget/Web Content/instances/Dining Room Section Title/widgetInstanceMetadata.json
 :000000 100644 0000000 7208b1a A	working/widget/Web Content/instances/Earn at HC/display.template
+:000000 100644 0000000 c45034d A	working/widget/Web Content/instances/Earn at HC/elementInstancesMetadata.json
 :000000 100644 0000000 ef6ae4c A	working/widget/Web Content/instances/Earn at HC/widget.less
 :000000 100644 0000000 3117e91 A	working/widget/Web Content/instances/Earn at HC/widgetInstanceMetadata.json
 :000000 100644 0000000 6e4720e A	working/widget/Web Content/instances/Easy Pay Credit/display.template
+:000000 100644 0000000 0061fed A	working/widget/Web Content/instances/Easy Pay Credit/elementInstancesMetadata.json
 :000000 100644 0000000 f9c578f A	working/widget/Web Content/instances/Easy Pay Credit/widget.less
 :000000 100644 0000000 0848cc8 A	working/widget/Web Content/instances/Easy Pay Credit/widgetInstanceMetadata.json
 :000000 100644 0000000 4efe842 A	working/widget/Web Content/instances/Easy Terms Page/display.template
+:000000 100644 0000000 be7a704 A	working/widget/Web Content/instances/Easy Terms Page/elementInstancesMetadata.json
+:000000 100644 0000000 8152576 A	working/widget/Web Content/instances/Easy Terms Page/images/shutterstock_40163134.png
 :000000 100644 0000000 4abd62a A	working/widget/Web Content/instances/Easy Terms Page/widget.less
 :000000 100644 0000000 654317f A	working/widget/Web Content/instances/Easy Terms Page/widgetInstanceMetadata.json
 :000000 100644 0000000 f6c4e25 A	working/widget/Web Content/instances/FAQ Banner/display.template
+:000000 100644 0000000 ccf96ad A	working/widget/Web Content/instances/FAQ Banner/elementInstancesMetadata.json
+:000000 100644 0000000 ed4c434 A	working/widget/Web Content/instances/FAQ Banner/images/faq-banner.jpg
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/FAQ Banner/widget.less
 :000000 100644 0000000 c1b4fb2 A	working/widget/Web Content/instances/FAQ Banner/widgetInstanceMetadata.json
 :000000 100644 0000000 4a19bcd A	working/widget/Web Content/instances/Footer - Minimal/display.template
+:000000 100644 0000000 d8180d7 A	working/widget/Web Content/instances/Footer - Minimal/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Footer - Minimal/widget.less
 :000000 100644 0000000 ae53049 A	working/widget/Web Content/instances/Footer - Minimal/widgetInstanceMetadata.json
 :000000 100644 0000000 f0a30d2 A	working/widget/Web Content/instances/Free Delivery - Skinny Banner/display.template
+:000000 100644 0000000 e050a58 A	working/widget/Web Content/instances/Free Delivery - Skinny Banner/elementInstancesMetadata.json
 :000000 100644 0000000 904fb96 A	working/widget/Web Content/instances/Free Delivery - Skinny Banner/widget.less
 :000000 100644 0000000 5dea522 A	working/widget/Web Content/instances/Free Delivery - Skinny Banner/widgetInstanceMetadata.json
 :000000 100644 0000000 363b01e A	working/widget/Web Content/instances/Get it on credit/display.template
+:000000 100644 0000000 e84ab64 A	working/widget/Web Content/instances/Get it on credit/elementInstancesMetadata.json
 :000000 100644 0000000 f5435e4 A	working/widget/Web Content/instances/Get it on credit/widget.less
 :000000 100644 0000000 a4b173f A	working/widget/Web Content/instances/Get it on credit/widgetInstanceMetadata.json
 :000000 100644 0000000 83b669d A	working/widget/Web Content/instances/Help You/display.template
+:000000 100644 0000000 e9c8ded A	working/widget/Web Content/instances/Help You/elementInstancesMetadata.json
 :000000 100644 0000000 8132371 A	working/widget/Web Content/instances/Help You/widget.less
 :000000 100644 0000000 42abfc4 A	working/widget/Web Content/instances/Help You/widgetInstanceMetadata.json
 :000000 100644 0000000 beb85d3 A	working/widget/Web Content/instances/How to pay/display.template
+:000000 100644 0000000 144ec31 A	working/widget/Web Content/instances/How to pay/elementInstancesMetadata.json
 :000000 100644 0000000 977773d A	working/widget/Web Content/instances/How to pay/widget.less
 :000000 100644 0000000 2b64a0d A	working/widget/Web Content/instances/How to pay/widgetInstanceMetadata.json
 :000000 100644 0000000 9f1a598 A	working/widget/Web Content/instances/Kids Bedroom Section Title/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/Kids Bedroom Section Title/elementInstancesMetadata.json
 :000000 100644 0000000 dd7fa24 A	working/widget/Web Content/instances/Kids Bedroom Section Title/widget.less
 :000000 100644 0000000 92bc99d A	working/widget/Web Content/instances/Kids Bedroom Section Title/widgetInstanceMetadata.json
 :000000 100644 0000000 7eaa442 A	working/widget/Web Content/instances/Kitchen-Laundry Section Title (copy)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/Kitchen-Laundry Section Title (copy)/elementInstancesMetadata.json
 :000000 100644 0000000 dd7fa24 A	working/widget/Web Content/instances/Kitchen-Laundry Section Title (copy)/widget.less
 :000000 100644 0000000 88e3098 A	working/widget/Web Content/instances/Kitchen-Laundry Section Title (copy)/widgetInstanceMetadata.json
 :000000 100644 0000000 492088e A	working/widget/Web Content/instances/Login Register Note/display.template
+:000000 100644 0000000 5d41a70 A	working/widget/Web Content/instances/Login Register Note/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Login Register Note/widget.less
 :000000 100644 0000000 c177add A	working/widget/Web Content/instances/Login Register Note/widgetInstanceMetadata.json
 :000000 100644 0000000 6191578 A	working/widget/Web Content/instances/Lounge Section Title/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/Lounge Section Title/elementInstancesMetadata.json
 :000000 100644 0000000 dd7fa24 A	working/widget/Web Content/instances/Lounge Section Title/widget.less
 :000000 100644 0000000 cd23819 A	working/widget/Web Content/instances/Lounge Section Title/widgetInstanceMetadata.json
 :000000 100644 0000000 a28207d A	working/widget/Web Content/instances/Manage account/display.template
+:000000 100644 0000000 5213305 A	working/widget/Web Content/instances/Manage account/elementInstancesMetadata.json
 :000000 100644 0000000 45eca14 A	working/widget/Web Content/instances/Manage account/widget.less
 :000000 100644 0000000 2d20d55 A	working/widget/Web Content/instances/Manage account/widgetInstanceMetadata.json
 :000000 100644 0000000 29d0100 A	working/widget/Web Content/instances/NAMIBIA/display.template
+:000000 100644 0000000 f1f3356 A	working/widget/Web Content/instances/NAMIBIA/elementInstancesMetadata.json
 :000000 100644 0000000 8ffb6ae A	working/widget/Web Content/instances/NAMIBIA/widget.less
 :000000 100644 0000000 5d5c092 A	working/widget/Web Content/instances/NAMIBIA/widgetInstanceMetadata.json
 :000000 100644 0000000 3737c02 A	working/widget/Web Content/instances/Online Shopping/display.template
+:000000 100644 0000000 4be98d1 A	working/widget/Web Content/instances/Online Shopping/elementInstancesMetadata.json
 :000000 100644 0000000 a65216c A	working/widget/Web Content/instances/Online Shopping/widget.less
 :000000 100644 0000000 c4e4e59 A	working/widget/Web Content/instances/Online Shopping/widgetInstanceMetadata.json
 :000000 100644 0000000 c4dda14 A	working/widget/Web Content/instances/Online Text/display.template
+:000000 100644 0000000 b697af2 A	working/widget/Web Content/instances/Online Text/elementInstancesMetadata.json
 :000000 100644 0000000 8fc39d3 A	working/widget/Web Content/instances/Online Text/widget.less
 :000000 100644 0000000 2f74521 A	working/widget/Web Content/instances/Online Text/widgetInstanceMetadata.json
 :000000 100644 0000000 f50ac51 A	working/widget/Web Content/instances/Page Title/display.template
+:000000 100644 0000000 c4a8cd2 A	working/widget/Web Content/instances/Page Title/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Page Title/widget.less
 :000000 100644 0000000 efc5a41 A	working/widget/Web Content/instances/Page Title/widgetInstanceMetadata.json
 :000000 100644 0000000 783a9a9 A	working/widget/Web Content/instances/Payment Tips/display.template
+:000000 100644 0000000 18b2005 A	working/widget/Web Content/instances/Payment Tips/elementInstancesMetadata.json
+:000000 100644 0000000 0462d3f A	working/widget/Web Content/instances/Payment Tips/images/19DCF270-258F-4E4C-A44C-97C596A397E3.png
+:000000 100644 0000000 b0e1a53 A	working/widget/Web Content/instances/Payment Tips/images/94B6FA75-326B-4B2F-AED9-C61EF39F922D.png
+:000000 100644 0000000 3c10f6d A	working/widget/Web Content/instances/Payment Tips/images/D8909FD9-44AB-4EA9-A074-2F611383EA99.png
 :000000 100644 0000000 80001ff A	working/widget/Web Content/instances/Payment Tips/widget.less
 :000000 100644 0000000 1d06551 A	working/widget/Web Content/instances/Payment Tips/widgetInstanceMetadata.json
 :000000 100644 0000000 4677121 A	working/widget/Web Content/instances/Payment types/display.template
+:000000 100644 0000000 1c8f564 A	working/widget/Web Content/instances/Payment types/elementInstancesMetadata.json
 :000000 100644 0000000 050c29d A	working/widget/Web Content/instances/Payment types/widget.less
 :000000 100644 0000000 c8f6325 A	working/widget/Web Content/instances/Payment types/widgetInstanceMetadata.json
 :000000 100644 0000000 9a8319c A	working/widget/Web Content/instances/Post text/display.template
+:000000 100644 0000000 6b474dd A	working/widget/Web Content/instances/Post text/elementInstancesMetadata.json
 :000000 100644 0000000 ac0b892 A	working/widget/Web Content/instances/Post text/widget.less
 :000000 100644 0000000 ae0ae50 A	working/widget/Web Content/instances/Post text/widgetInstanceMetadata.json
 :000000 100644 0000000 0fdc25b A	working/widget/Web Content/instances/Request a Catalogue - Digital Catalogues/display.template
+:000000 100644 0000000 6ed7d2f A	working/widget/Web Content/instances/Request a Catalogue - Digital Catalogues/elementInstancesMetadata.json
+:000000 100644 0000000 ebd4d46 A	working/widget/Web Content/instances/Request a Catalogue - Digital Catalogues/images/catalogue-oct-bedding.png
+:000000 100644 0000000 570c819 A	working/widget/Web Content/instances/Request a Catalogue - Digital Catalogues/images/catalogue-oct-fashion.png
 :000000 100644 0000000 3ca0592 A	working/widget/Web Content/instances/Request a Catalogue - Digital Catalogues/widget.less
 :000000 100644 0000000 ead3f22 A	working/widget/Web Content/instances/Request a Catalogue - Digital Catalogues/widgetInstanceMetadata.json
 :000000 100644 0000000 bc5aef8 A	working/widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/display.template
+:000000 100644 0000000 95a16c8 A	working/widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/elementInstancesMetadata.json
 :000000 100644 0000000 581652d A	working/widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/widget.less
 :000000 100644 0000000 e64a8b8 A	working/widget/Web Content/instances/Request a Catalogue - Printed Catalogues Copy/widgetInstanceMetadata.json
 :000000 100644 0000000 7d14027 A	working/widget/Web Content/instances/Request a Catalogue - Why Order/display.template
+:000000 100644 0000000 18cccf4 A	working/widget/Web Content/instances/Request a Catalogue - Why Order/elementInstancesMetadata.json
 :000000 100644 0000000 92374a0 A	working/widget/Web Content/instances/Request a Catalogue - Why Order/widget.less
 :000000 100644 0000000 2e9f68f A	working/widget/Web Content/instances/Request a Catalogue - Why Order/widgetInstanceMetadata.json
 :000000 100644 0000000 3163e85 A	working/widget/Web Content/instances/Room Tile - Bathroom/display.template
+:000000 100644 0000000 4561c33 A	working/widget/Web Content/instances/Room Tile - Bathroom/elementInstancesMetadata.json
 :000000 100644 0000000 03faf63 A	working/widget/Web Content/instances/Room Tile - Bathroom/widget.less
 :000000 100644 0000000 ca63a83 A	working/widget/Web Content/instances/Room Tile - Bathroom/widgetInstanceMetadata.json
 :000000 100644 0000000 4567804 A	working/widget/Web Content/instances/Room Tile - Bedroom/display.template
+:000000 100644 0000000 693db25 A	working/widget/Web Content/instances/Room Tile - Bedroom/elementInstancesMetadata.json
 :000000 100644 0000000 03faf63 A	working/widget/Web Content/instances/Room Tile - Bedroom/widget.less
 :000000 100644 0000000 62be6cf A	working/widget/Web Content/instances/Room Tile - Bedroom/widgetInstanceMetadata.json
 :000000 100644 0000000 9be4565 A	working/widget/Web Content/instances/Room Tile - Dining/display.template
+:000000 100644 0000000 cc8dff2 A	working/widget/Web Content/instances/Room Tile - Dining/elementInstancesMetadata.json
 :000000 100644 0000000 03faf63 A	working/widget/Web Content/instances/Room Tile - Dining/widget.less
 :000000 100644 0000000 c6b866f A	working/widget/Web Content/instances/Room Tile - Dining/widgetInstanceMetadata.json
 :000000 100644 0000000 366b6aa A	working/widget/Web Content/instances/Room Tile - Kids/display.template
+:000000 100644 0000000 f8020af A	working/widget/Web Content/instances/Room Tile - Kids/elementInstancesMetadata.json
 :000000 100644 0000000 03faf63 A	working/widget/Web Content/instances/Room Tile - Kids/widget.less
 :000000 100644 0000000 7776e83 A	working/widget/Web Content/instances/Room Tile - Kids/widgetInstanceMetadata.json
 :000000 100644 0000000 9cce5c2 A	working/widget/Web Content/instances/Room Tile - Kitchen&Laundry/display.template
+:000000 100644 0000000 283ae2e A	working/widget/Web Content/instances/Room Tile - Kitchen&Laundry/elementInstancesMetadata.json
 :000000 100644 0000000 03faf63 A	working/widget/Web Content/instances/Room Tile - Kitchen&Laundry/widget.less
 :000000 100644 0000000 46a954a A	working/widget/Web Content/instances/Room Tile - Kitchen&Laundry/widgetInstanceMetadata.json
 :000000 100644 0000000 dfcd01d A	working/widget/Web Content/instances/Room Tile - KitchenLaundry/display.template
+:000000 100644 0000000 220241a A	working/widget/Web Content/instances/Room Tile - KitchenLaundry/elementInstancesMetadata.json
 :000000 100644 0000000 03faf63 A	working/widget/Web Content/instances/Room Tile - KitchenLaundry/widget.less
 :000000 100644 0000000 4943853 A	working/widget/Web Content/instances/Room Tile - KitchenLaundry/widgetInstanceMetadata.json
 :000000 100644 0000000 57468ef A	working/widget/Web Content/instances/Room Tile - Lounge/display.template
+:000000 100644 0000000 0ced462 A	working/widget/Web Content/instances/Room Tile - Lounge/elementInstancesMetadata.json
 :000000 100644 0000000 03faf63 A	working/widget/Web Content/instances/Room Tile - Lounge/widget.less
 :000000 100644 0000000 785a17c A	working/widget/Web Content/instances/Room Tile - Lounge/widgetInstanceMetadata.json
 :000000 100644 0000000 4a57cef A	working/widget/Web Content/instances/Ryan_Top_Category_Title/display.template
+:000000 100644 0000000 b57c790 A	working/widget/Web Content/instances/Ryan_Top_Category_Title/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Ryan_Top_Category_Title/widget.less
 :000000 100644 0000000 b0f0a33 A	working/widget/Web Content/instances/Ryan_Top_Category_Title/widgetInstanceMetadata.json
 :000000 100644 0000000 7a5449c A	working/widget/Web Content/instances/SOUTH AFRICA/display.template
+:000000 100644 0000000 13f4e6f A	working/widget/Web Content/instances/SOUTH AFRICA/elementInstancesMetadata.json
 :000000 100644 0000000 d15eed6 A	working/widget/Web Content/instances/SOUTH AFRICA/widget.less
 :000000 100644 0000000 55070de A	working/widget/Web Content/instances/SOUTH AFRICA/widgetInstanceMetadata.json
 :000000 100644 0000000 428ef03 A	working/widget/Web Content/instances/Secondary header/display.template
+:000000 100644 0000000 6386cb7 A	working/widget/Web Content/instances/Secondary header/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Secondary header/widget.less
 :000000 100644 0000000 9c4ccf6 A	working/widget/Web Content/instances/Secondary header/widgetInstanceMetadata.json
 :000000 100644 0000000 035a32f A	working/widget/Web Content/instances/Section Title/display.template
+:000000 100644 0000000 7589b0a A	working/widget/Web Content/instances/Section Title/elementInstancesMetadata.json
 :000000 100644 0000000 dd7fa24 A	working/widget/Web Content/instances/Section Title/widget.less
 :000000 100644 0000000 e3892d7 A	working/widget/Web Content/instances/Section Title/widgetInstanceMetadata.json
 :000000 100644 0000000 49f7986 A	working/widget/Web Content/instances/Shop Online/display.template
+:000000 100644 0000000 6b57608 A	working/widget/Web Content/instances/Shop Online/elementInstancesMetadata.json
 :000000 100644 0000000 3421812 A	working/widget/Web Content/instances/Shop Online/widget.less
 :000000 100644 0000000 6dd5ce9 A	working/widget/Web Content/instances/Shop Online/widgetInstanceMetadata.json
 :000000 100644 0000000 5accf2e A	working/widget/Web Content/instances/ShopByBathroomBanner/display.template
+:000000 100644 0000000 45673a6 A	working/widget/Web Content/instances/ShopByBathroomBanner/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/ShopByBathroomBanner/widget.less
 :000000 100644 0000000 b57885a A	working/widget/Web Content/instances/ShopByBathroomBanner/widgetInstanceMetadata.json
 :000000 100644 0000000 430f472 A	working/widget/Web Content/instances/ShopByBathroomBedroom (1-1)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByBathroomBedroom (1-1)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByBathroomBedroom (1-1)/widget.less
 :000000 100644 0000000 a4dd801 A	working/widget/Web Content/instances/ShopByBathroomBedroom (1-1)/widgetInstanceMetadata.json
 :000000 100644 0000000 a48b131 A	working/widget/Web Content/instances/ShopByBedroom (1-1) (copy)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByBedroom (1-1) (copy)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByBedroom (1-1) (copy)/widget.less
 :000000 100644 0000000 d156349 A	working/widget/Web Content/instances/ShopByBedroom (1-1) (copy)/widgetInstanceMetadata.json
 :000000 100644 0000000 11e3c20 A	working/widget/Web Content/instances/ShopByBedroom (1-1)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByBedroom (1-1)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByBedroom (1-1)/widget.less
 :000000 100644 0000000 0cf1ef3 A	working/widget/Web Content/instances/ShopByBedroom (1-1)/widgetInstanceMetadata.json
 :000000 100644 0000000 1f3cc40 A	working/widget/Web Content/instances/ShopByBedroom (1-2)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByBedroom (1-2)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByBedroom (1-2)/widget.less
 :000000 100644 0000000 0aa7256 A	working/widget/Web Content/instances/ShopByBedroom (1-2)/widgetInstanceMetadata.json
 :000000 100644 0000000 d759dc9 A	working/widget/Web Content/instances/ShopByBedroom (4-4)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByBedroom (4-4)/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/ShopByBedroom (4-4)/widget.less
 :000000 100644 0000000 8ddb27f A	working/widget/Web Content/instances/ShopByBedroom (4-4)/widgetInstanceMetadata.json
 :000000 100644 0000000 651ad75 A	working/widget/Web Content/instances/ShopByBedroomBanner/display.template
+:000000 100644 0000000 e5c7b86 A	working/widget/Web Content/instances/ShopByBedroomBanner/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/ShopByBedroomBanner/widget.less
 :000000 100644 0000000 7f4dc75 A	working/widget/Web Content/instances/ShopByBedroomBanner/widgetInstanceMetadata.json
 :000000 100644 0000000 334cd59 A	working/widget/Web Content/instances/ShopByDiningRoomBanner/display.template
+:000000 100644 0000000 099a0df A	working/widget/Web Content/instances/ShopByDiningRoomBanner/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/ShopByDiningRoomBanner/widget.less
 :000000 100644 0000000 8f28cea A	working/widget/Web Content/instances/ShopByDiningRoomBanner/widgetInstanceMetadata.json
 :000000 100644 0000000 0a5035c A	working/widget/Web Content/instances/ShopByDiningroom (1-1)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByDiningroom (1-1)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByDiningroom (1-1)/widget.less
 :000000 100644 0000000 ab437d3 A	working/widget/Web Content/instances/ShopByDiningroom (1-1)/widgetInstanceMetadata.json
 :000000 100644 0000000 39bb52c A	working/widget/Web Content/instances/ShopByDiningroom (1-1-1)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByDiningroom (1-1-1)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByDiningroom (1-1-1)/widget.less
 :000000 100644 0000000 419a6a8 A	working/widget/Web Content/instances/ShopByDiningroom (1-1-1)/widgetInstanceMetadata.json
 :000000 100644 0000000 0a5035c A	working/widget/Web Content/instances/ShopByKidsBedroom (1-1)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByKidsBedroom (1-1)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByKidsBedroom (1-1)/widget.less
 :000000 100644 0000000 d53b873 A	working/widget/Web Content/instances/ShopByKidsBedroom (1-1)/widgetInstanceMetadata.json
 :000000 100644 0000000 73a270b A	working/widget/Web Content/instances/ShopByKidsRoom (1-2)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByKidsRoom (1-2)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByKidsRoom (1-2)/widget.less
 :000000 100644 0000000 98e5101 A	working/widget/Web Content/instances/ShopByKidsRoom (1-2)/widgetInstanceMetadata.json
 :000000 100644 0000000 f019f50 A	working/widget/Web Content/instances/ShopByKidsRoomBanner/display.template
+:000000 100644 0000000 d0dd84a A	working/widget/Web Content/instances/ShopByKidsRoomBanner/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/ShopByKidsRoomBanner/widget.less
 :000000 100644 0000000 708ea97 A	working/widget/Web Content/instances/ShopByKidsRoomBanner/widgetInstanceMetadata.json
 :000000 100644 0000000 e3e72ec A	working/widget/Web Content/instances/ShopByKitchen-Laundry (1-1)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByKitchen-Laundry (1-1)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByKitchen-Laundry (1-1)/widget.less
 :000000 100644 0000000 f99b959 A	working/widget/Web Content/instances/ShopByKitchen-Laundry (1-1)/widgetInstanceMetadata.json
 :000000 100644 0000000 19860d1 A	working/widget/Web Content/instances/ShopByKitchen-Laundry (1-2)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByKitchen-Laundry (1-2)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByKitchen-Laundry (1-2)/widget.less
 :000000 100644 0000000 605da3c A	working/widget/Web Content/instances/ShopByKitchen-Laundry (1-2)/widgetInstanceMetadata.json
 :000000 100644 0000000 18d4787 A	working/widget/Web Content/instances/ShopByKitchen-LaundryBanner/display.template
+:000000 100644 0000000 6d00a6e A	working/widget/Web Content/instances/ShopByKitchen-LaundryBanner/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/ShopByKitchen-LaundryBanner/widget.less
 :000000 100644 0000000 c550a1f A	working/widget/Web Content/instances/ShopByKitchen-LaundryBanner/widgetInstanceMetadata.json
 :000000 100644 0000000 9a3ea9d A	working/widget/Web Content/instances/ShopByKitchen-Laundryroom (1-1-1)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByKitchen-Laundryroom (1-1-1)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByKitchen-Laundryroom (1-1-1)/widget.less
 :000000 100644 0000000 0946e4c A	working/widget/Web Content/instances/ShopByKitchen-Laundryroom (1-1-1)/widgetInstanceMetadata.json
 :000000 100644 0000000 6102294 A	working/widget/Web Content/instances/ShopByLoungeBanner/display.template
+:000000 100644 0000000 3119790 A	working/widget/Web Content/instances/ShopByLoungeBanner/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/ShopByLoungeBanner/widget.less
 :000000 100644 0000000 96cc5f2 A	working/widget/Web Content/instances/ShopByLoungeBanner/widgetInstanceMetadata.json
 :000000 100644 0000000 6bbd78e A	working/widget/Web Content/instances/ShopByLoungeroom (1-1) (copy)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByLoungeroom (1-1) (copy)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByLoungeroom (1-1) (copy)/widget.less
 :000000 100644 0000000 979bdfa A	working/widget/Web Content/instances/ShopByLoungeroom (1-1) (copy)/widgetInstanceMetadata.json
 :000000 100644 0000000 ec0cdee A	working/widget/Web Content/instances/ShopByLoungeroom (1-1)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByLoungeroom (1-1)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByLoungeroom (1-1)/widget.less
 :000000 100644 0000000 0b1b154 A	working/widget/Web Content/instances/ShopByLoungeroom (1-1)/widgetInstanceMetadata.json
 :000000 100644 0000000 c52a261 A	working/widget/Web Content/instances/ShopByLoungeroom (1-1-1)/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/ShopByLoungeroom (1-1-1)/elementInstancesMetadata.json
 :000000 100644 0000000 b665c14 A	working/widget/Web Content/instances/ShopByLoungeroom (1-1-1)/widget.less
 :000000 100644 0000000 e93b612 A	working/widget/Web Content/instances/ShopByLoungeroom (1-1-1)/widgetInstanceMetadata.json
 :000000 100644 0000000 ff4ef15 A	working/widget/Web Content/instances/ShopByRoomBanner/display.template
+:000000 100644 0000000 afebebb A	working/widget/Web Content/instances/ShopByRoomBanner/elementInstancesMetadata.json
+:000000 100644 0000000 8c6e416 A	working/widget/Web Content/instances/ShopByRoomBanner/images/shopbyroombanner.png
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/ShopByRoomBanner/widget.less
 :000000 100644 0000000 94e0e8c A	working/widget/Web Content/instances/ShopByRoomBanner/widgetInstanceMetadata.json
 :000000 100644 0000000 2bd6f4d A	working/widget/Web Content/instances/Skinny Banner/display.template
+:000000 100644 0000000 90ab12c A	working/widget/Web Content/instances/Skinny Banner/elementInstancesMetadata.json
+:000000 100644 0000000 f23882a A	working/widget/Web Content/instances/Skinny Banner/images/Skinny Banner.jpg
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Skinny Banner/widget.less
 :000000 100644 0000000 9206e65 A	working/widget/Web Content/instances/Skinny Banner/widgetInstanceMetadata.json
 :000000 100644 0000000 96919f2 A	working/widget/Web Content/instances/Start Earning/display.template
+:000000 100644 0000000 4cc53fd A	working/widget/Web Content/instances/Start Earning/elementInstancesMetadata.json
 :000000 100644 0000000 744c970 A	working/widget/Web Content/instances/Start Earning/widget.less
 :000000 100644 0000000 a464ca4 A	working/widget/Web Content/instances/Start Earning/widgetInstanceMetadata.json
 :000000 100644 0000000 e0378e0 A	working/widget/Web Content/instances/Test Widget Sample/display.template
+:000000 100644 0000000 edfab68 A	working/widget/Web Content/instances/Test Widget Sample/elementInstancesMetadata.json
+:000000 100644 0000000 93fd596 A	working/widget/Web Content/instances/Test Widget Sample/images/Clearance_06.jpg
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/Test Widget Sample/widget.less
 :000000 100644 0000000 bc41296 A	working/widget/Web Content/instances/Test Widget Sample/widgetInstanceMetadata.json
 :000000 100644 0000000 88038fe A	working/widget/Web Content/instances/Text two/display.template
+:000000 100644 0000000 ba423a7 A	working/widget/Web Content/instances/Text two/elementInstancesMetadata.json
 :000000 100644 0000000 3a29619 A	working/widget/Web Content/instances/Text two/widget.less
 :000000 100644 0000000 e646097 A	working/widget/Web Content/instances/Text two/widgetInstanceMetadata.json
 :000000 100644 0000000 5fce31e A	working/widget/Web Content/instances/Text/display.template
+:000000 100644 0000000 4ee4700 A	working/widget/Web Content/instances/Text/elementInstancesMetadata.json
 :000000 100644 0000000 950c812 A	working/widget/Web Content/instances/Text/widget.less
 :000000 100644 0000000 8b4a952 A	working/widget/Web Content/instances/Text/widgetInstanceMetadata.json
 :000000 100644 0000000 351566f A	working/widget/Web Content/instances/Welcome Header/display.template
+:000000 100644 0000000 dc8f3d1 A	working/widget/Web Content/instances/Welcome Header/elementInstancesMetadata.json
 :000000 100644 0000000 455e954 A	working/widget/Web Content/instances/Welcome Header/widget.less
 :000000 100644 0000000 6437cf4 A	working/widget/Web Content/instances/Welcome Header/widgetInstanceMetadata.json
 :000000 100644 0000000 1987cdb A	working/widget/Web Content/instances/about us/display.template
+:000000 100644 0000000 afd71c8 A	working/widget/Web Content/instances/about us/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/about us/widget.less
 :000000 100644 0000000 b9cbd8b A	working/widget/Web Content/instances/about us/widgetInstanceMetadata.json
 :000000 100644 0000000 ec1a348 A	working/widget/Web Content/instances/affiliate/display.template
+:000000 100644 0000000 2c6ea37 A	working/widget/Web Content/instances/affiliate/elementInstancesMetadata.json
 :000000 100644 0000000 f692e15 A	working/widget/Web Content/instances/affiliate/widget.less
 :000000 100644 0000000 ff6b74a A	working/widget/Web Content/instances/affiliate/widgetInstanceMetadata.json
 :000000 100644 0000000 a1bc896 A	working/widget/Web Content/instances/competitions & past winners!/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/competitions & past winners!/elementInstancesMetadata.json
 :000000 100644 0000000 cfcfea3 A	working/widget/Web Content/instances/competitions & past winners!/widget.less
 :000000 100644 0000000 448b9d8 A	working/widget/Web Content/instances/competitions & past winners!/widgetInstanceMetadata.json
 :000000 100644 0000000 4c3ef39 A	working/widget/Web Content/instances/credit-image-text/display.template
+:000000 100644 0000000 4cfb8e1 A	working/widget/Web Content/instances/credit-image-text/elementInstancesMetadata.json
+:000000 100644 0000000 323d162 A	working/widget/Web Content/instances/credit-image-text/images/how_credit_works.png
 :000000 100644 0000000 1120e92 A	working/widget/Web Content/instances/credit-image-text/widget.less
 :000000 100644 0000000 ebf9a60 A	working/widget/Web Content/instances/credit-image-text/widgetInstanceMetadata.json
 :000000 100644 0000000 a4eed3b A	working/widget/Web Content/instances/document-uplaod/display.template
+:000000 100644 0000000 4da8859 A	working/widget/Web Content/instances/document-uplaod/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/document-uplaod/widget.less
 :000000 100644 0000000 ca46c26 A	working/widget/Web Content/instances/document-uplaod/widgetInstanceMetadata.json
 :000000 100644 0000000 a0686bd A	working/widget/Web Content/instances/fashion range/display.template
+:000000 100644 0000000 4c38d6c A	working/widget/Web Content/instances/fashion range/elementInstancesMetadata.json
 :000000 100644 0000000 c24310e A	working/widget/Web Content/instances/fashion range/widget.less
 :000000 100644 0000000 ad13842 A	working/widget/Web Content/instances/fashion range/widgetInstanceMetadata.json
 :000000 100644 0000000 996be17 A	working/widget/Web Content/instances/footer-links-test/display.template
+:000000 100644 0000000 01983d0 A	working/widget/Web Content/instances/footer-links-test/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/footer-links-test/widget.less
 :000000 100644 0000000 61bd932 A	working/widget/Web Content/instances/footer-links-test/widgetInstanceMetadata.json
 :000000 100644 0000000 6b881e5 A	working/widget/Web Content/instances/hc.linebreak.divider/display.template
+:000000 100644 0000000 3421525 A	working/widget/Web Content/instances/hc.linebreak.divider/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/hc.linebreak.divider/widget.less
 :000000 100644 0000000 2cb1561 A	working/widget/Web Content/instances/hc.linebreak.divider/widgetInstanceMetadata.json
 :000000 100644 0000000 3bb43aa A	working/widget/Web Content/instances/hc.promoBlocks/display.template
+:000000 100644 0000000 55d81e5 A	working/widget/Web Content/instances/hc.promoBlocks/elementInstancesMetadata.json
+:000000 100644 0000000 ef3fcb2 A	working/widget/Web Content/instances/hc.promoBlocks/images/USP_1.png
+:000000 100644 0000000 5270797 A	working/widget/Web Content/instances/hc.promoBlocks/images/USP_2.png
+:000000 100644 0000000 c94605e A	working/widget/Web Content/instances/hc.promoBlocks/images/USP_3.png
+:000000 100644 0000000 4ed077f A	working/widget/Web Content/instances/hc.promoBlocks/images/USP_4.png
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/hc.promoBlocks/widget.less
 :000000 100644 0000000 ea34aed A	working/widget/Web Content/instances/hc.promoBlocks/widgetInstanceMetadata.json
 :000000 100644 0000000 f4d0236 A	working/widget/Web Content/instances/hc.section-title.most_popular_products/display.template
+:000000 100644 0000000 dc20e5a A	working/widget/Web Content/instances/hc.section-title.most_popular_products/elementInstancesMetadata.json
+:000000 100644 0000000 a0896c6 A	working/widget/Web Content/instances/hc.section-title.most_popular_products/images/Appliances.jpg
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/hc.section-title.most_popular_products/widget.less
 :000000 100644 0000000 3a4abcd A	working/widget/Web Content/instances/hc.section-title.most_popular_products/widgetInstanceMetadata.json
 :000000 100644 0000000 23ff1c3 A	working/widget/Web Content/instances/hc.section-title.top_brands/display.template
+:000000 100644 0000000 ac7b60d A	working/widget/Web Content/instances/hc.section-title.top_brands/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/hc.section-title.top_brands/widget.less
 :000000 100644 0000000 25cdd5c A	working/widget/Web Content/instances/hc.section-title.top_brands/widgetInstanceMetadata.json
 :000000 100644 0000000 a9d0f5b A	working/widget/Web Content/instances/hc.section-title.top_category/display.template
+:000000 100644 0000000 dd0842c A	working/widget/Web Content/instances/hc.section-title.top_category/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/hc.section-title.top_category/widget.less
 :000000 100644 0000000 7dacdcd A	working/widget/Web Content/instances/hc.section-title.top_category/widgetInstanceMetadata.json
 :000000 100644 0000000 72a40f9 A	working/widget/Web Content/instances/hc.sse.title/display.template
+:000000 100644 0000000 9a075b4 A	working/widget/Web Content/instances/hc.sse.title/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/hc.sse.title/widget.less
 :000000 100644 0000000 8fea945 A	working/widget/Web Content/instances/hc.sse.title/widgetInstanceMetadata.json
 :000000 100644 0000000 b70e75a A	working/widget/Web Content/instances/increase/display.template
+:000000 100644 0000000 0b609b1 A	working/widget/Web Content/instances/increase/elementInstancesMetadata.json
 :000000 100644 0000000 8b6b3f9 A	working/widget/Web Content/instances/increase/widget.less
 :000000 100644 0000000 5b10ffa A	working/widget/Web Content/instances/increase/widgetInstanceMetadata.json
 :000000 100644 0000000 78161a9 A	working/widget/Web Content/instances/malcs web content/display.template
+:000000 100644 0000000 fe1502f A	working/widget/Web Content/instances/malcs web content/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/malcs web content/widget.less
 :000000 100644 0000000 89be76e A	working/widget/Web Content/instances/malcs web content/widgetInstanceMetadata.json
 :000000 100644 0000000 e5a8639 A	working/widget/Web Content/instances/marketing offer/display.template
+:000000 100644 0000000 7748607 A	working/widget/Web Content/instances/marketing offer/elementInstancesMetadata.json
 :000000 100644 0000000 3504508 A	working/widget/Web Content/instances/marketing offer/widget.less
 :000000 100644 0000000 d53eab3 A	working/widget/Web Content/instances/marketing offer/widgetInstanceMetadata.json
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/one/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/one/widget.less
 :000000 100644 0000000 f541869 A	working/widget/Web Content/instances/one/widgetInstanceMetadata.json
 :000000 100644 0000000 39f6c7e A	working/widget/Web Content/instances/our contact details/display.template
+:000000 100644 0000000 2468e9a A	working/widget/Web Content/instances/our contact details/elementInstancesMetadata.json
 :000000 100644 0000000 3a98ce1 A	working/widget/Web Content/instances/our contact details/widget.less
 :000000 100644 0000000 17c360e A	working/widget/Web Content/instances/our contact details/widgetInstanceMetadata.json
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/over time/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/over time/widget.less
 :000000 100644 0000000 068de8b A	working/widget/Web Content/instances/over time/widgetInstanceMetadata.json
 :000000 100644 0000000 beb0859 A	working/widget/Web Content/instances/paymenttips1/display.template
+:000000 100644 0000000 bd4d20f A	working/widget/Web Content/instances/paymenttips1/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/paymenttips1/widget.less
 :000000 100644 0000000 716096c A	working/widget/Web Content/instances/paymenttips1/widgetInstanceMetadata.json
 :000000 100644 0000000 268d1b1 A	working/widget/Web Content/instances/privacy policy/display.template
+:000000 100644 0000000 29f082d A	working/widget/Web Content/instances/privacy policy/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/privacy policy/widget.less
 :000000 100644 0000000 90414bd A	working/widget/Web Content/instances/privacy policy/widgetInstanceMetadata.json
 :000000 100644 0000000 8f43875 A	working/widget/Web Content/instances/reasons one/display.template
+:000000 100644 0000000 7470186 A	working/widget/Web Content/instances/reasons one/elementInstancesMetadata.json
 :000000 100644 0000000 1e8b02d A	working/widget/Web Content/instances/reasons one/widget.less
 :000000 100644 0000000 cbef80d A	working/widget/Web Content/instances/reasons one/widgetInstanceMetadata.json
 :000000 100644 0000000 7e2b552 A	working/widget/Web Content/instances/reasons two/display.template
+:000000 100644 0000000 9cbf548 A	working/widget/Web Content/instances/reasons two/elementInstancesMetadata.json
 :000000 100644 0000000 cc191be A	working/widget/Web Content/instances/reasons two/widget.less
 :000000 100644 0000000 5fd0850 A	working/widget/Web Content/instances/reasons two/widgetInstanceMetadata.json
 :000000 100644 0000000 5eced3f A	working/widget/Web Content/instances/settlement-letter/display.template
+:000000 100644 0000000 22ebc4e A	working/widget/Web Content/instances/settlement-letter/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/settlement-letter/widget.less
 :000000 100644 0000000 5a8a0e9 A	working/widget/Web Content/instances/settlement-letter/widgetInstanceMetadata.json
+:000000 100644 0000000 29355b9 A	working/widget/Web Content/instances/shop now/elementInstancesMetadata.json
 :000000 100644 0000000 92052f1 A	working/widget/Web Content/instances/shop now/widget.less
 :000000 100644 0000000 eade42d A	working/widget/Web Content/instances/shop now/widgetInstanceMetadata.json
 :000000 100644 0000000 370058f A	working/widget/Web Content/instances/showroom/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/showroom/elementInstancesMetadata.json
 :000000 100644 0000000 59c4c44 A	working/widget/Web Content/instances/showroom/widget.less
 :000000 100644 0000000 7b09781 A	working/widget/Web Content/instances/showroom/widgetInstanceMetadata.json
 :000000 100644 0000000 1912654 A	working/widget/Web Content/instances/terms and conditions/display.template
+:000000 100644 0000000 a66923e A	working/widget/Web Content/instances/terms and conditions/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/terms and conditions/widget.less
 :000000 100644 0000000 4df82c1 A	working/widget/Web Content/instances/terms and conditions/widgetInstanceMetadata.json
 :000000 100644 0000000 fbbb808 A	working/widget/Web Content/instances/test-image/display.template
+:000000 100644 0000000 8fc84f4 A	working/widget/Web Content/instances/test-image/elementInstancesMetadata.json
+:000000 100644 0000000 0b88c91 A	working/widget/Web Content/instances/test-image/images/Desert.jpg
 :000000 100644 0000000 9662f32 A	working/widget/Web Content/instances/test-image/widget.less
 :000000 100644 0000000 9d37381 A	working/widget/Web Content/instances/test-image/widgetInstanceMetadata.json
+:000000 100644 0000000 4c22075 A	working/widget/Web Content/instances/testContent/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/testContent/widget.less
 :000000 100644 0000000 2c40103 A	working/widget/Web Content/instances/testContent/widgetInstanceMetadata.json
 :000000 100644 0000000 c8b44cb A	working/widget/Web Content/instances/testTitle/display.template
+:000000 100644 0000000 f3d6d2d A	working/widget/Web Content/instances/testTitle/elementInstancesMetadata.json
+:000000 100644 0000000 b89ad36 A	working/widget/Web Content/instances/testTitle/images/dummy-block-image.jpg
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/testTitle/widget.less
 :000000 100644 0000000 78d2f6a A	working/widget/Web Content/instances/testTitle/widgetInstanceMetadata.json
 :000000 100644 0000000 1d3c8fd A	working/widget/Web Content/instances/testing/display.template
+:000000 100644 0000000 9a09bec A	working/widget/Web Content/instances/testing/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/testing/widget.less
 :000000 100644 0000000 0d43b0b A	working/widget/Web Content/instances/testing/widgetInstanceMetadata.json
 :000000 100644 0000000 59dd6e6 A	working/widget/Web Content/instances/three reasons/display.template
+:000000 100644 0000000 a500b36 A	working/widget/Web Content/instances/three reasons/elementInstancesMetadata.json
 :000000 100644 0000000 f99d4ac A	working/widget/Web Content/instances/three reasons/widget.less
 :000000 100644 0000000 6e2600d A	working/widget/Web Content/instances/three reasons/widgetInstanceMetadata.json
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/three/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/three/widget.less
 :000000 100644 0000000 1adf476 A	working/widget/Web Content/instances/three/widgetInstanceMetadata.json
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/tips1/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/tips1/widget.less
 :000000 100644 0000000 7f8624a A	working/widget/Web Content/instances/tips1/widgetInstanceMetadata.json
+:000000 100644 0000000 f8d88b4 A	working/widget/Web Content/instances/two/elementInstancesMetadata.json
 :000000 100644 0000000 b03a77b A	working/widget/Web Content/instances/two/widget.less
 :000000 100644 0000000 eb31dd0 A	working/widget/Web Content/instances/two/widgetInstanceMetadata.json
 :000000 100644 0000000 c791c36 A	working/widget/Wish List Canvas/instances/Wish List Canvas Widget/display.template
@@ -1643,8 +1927,11 @@
 :000000 100644 0000000 9ef8980 A	working/widget/Wish List Settings Header/instances/Wish List Settings Header Widget/locales/en/ns.spacesettingsheaderwidget.json
 :000000 100644 0000000 e45f1c6 A	working/widget/Wish List Settings Header/instances/Wish List Settings Header Widget/widget.less
 :000000 100644 0000000 ac457e9 A	working/widget/Wish List Settings Header/instances/Wish List Settings Header Widget/widgetInstanceMetadata.json
+:000000 100644 0000000 1a8b2c8 A	working/widget/Wish List Welcome/element/Login Button/element.template
+:000000 100644 0000000 542b3b1 A	working/widget/Wish List Welcome/element/Registration Button/element.template
 :000000 100644 0000000 d1af253 A	working/widget/Wish List Welcome/element/Wish List Welcome Text/element.template
 :000000 100644 0000000 0a22d5f A	working/widget/Wish List Welcome/instances/Wish List Welcome Widget/display.template
+:000000 100644 0000000 f8d88b4 A	working/widget/Wish List Welcome/instances/Wish List Welcome Widget/elementInstancesMetadata.json
 :000000 100644 0000000 ba9b1fc A	working/widget/Wish List Welcome/instances/Wish List Welcome Widget/locales/en/ns.spacewelcomewidget.json
 :000000 100644 0000000 f2e5f7f A	working/widget/Wish List Welcome/instances/Wish List Welcome Widget/widget.less
 :000000 100644 0000000 3328ed6 A	working/widget/Wish List Welcome/instances/Wish List Welcome Widget/widgetInstanceMetadata.json

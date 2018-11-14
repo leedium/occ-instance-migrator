@@ -242,18 +242,19 @@ function processDiffs() {
 
             let path;
             let pathDelete;
-            if (pathArray.length === 2) {
+            // if (pathArray.length === 2) {
                 // path = (`${pathArray[0]}/`);
-                path = (`${pathArray[0]}/`);
-            } else if (pathArray.length > 2) {
-                if (pathArray[1] === "Web Content") {
-                    pathDelete = path = (`${pathArray.slice(0, 4).join('/')}`);
-                } else {
-                    path = (`${pathArray.slice(0, 2).join('/')}`);
-                    pathDelete = (`${pathArray.slice(0, 4).join('/')}`);
+                path = pathArray.slice(0, pathArray.length-1).join('/');
+            // } else if (pathArray.length > 2) {
+            //     if (pathArray[1] === "Web Content") {
+            //         pathDelete = path = (`${pathArray.slice(0, 4).join('/')}`);
+            //     } else {
+            //         path = (`${pathArray.slice(0, 2).join('/')}`);
+            //         pathDelete = (`${pathArray.slice(0, 4).join('/')}`);
+            //
+            //     }
+            // }
 
-                }
-            }
 
             if (modType !== "D" && modType.indexOf('R') < 0) {
                 if (!transferPathArrayTemp[path]) {
@@ -264,9 +265,9 @@ function processDiffs() {
                     }
                 }
             } else {
-                if (!deletePathArrayTemp[pathDelete]) {
-                    pathsToBeRemoved.push(pathDelete);
-                    deletePathArrayTemp[pathDelete] = true;
+                if (!deletePathArrayTemp[path]) {
+                    pathsToBeRemoved.push(path);
+                    deletePathArrayTemp[path] = true;
                 }
             }
         });
@@ -424,20 +425,20 @@ async function clean() {
 async function extensionsTransfer() {
     return new Promise(async (resolve) => {
         await clean();
-        await grabTarget();
-        await createBranch(BRANCH_TARGET);
-        await createBranch(BRANCH_SOURCE);
-        await grabSource();
-        await addAll();
-        await commit();
-        await checkoutBranch(BRANCH_TARGET);
-        await mergeBranch(BRANCH_SOURCE);
-        await getDiffs();
-        await processDiffs();
-        await makeTmpFolder();
-        await transferAll();
-        await clean();
-        resolve();
+        // await grabTarget();
+        // await createBranch(BRANCH_TARGET);
+        // await createBranch(BRANCH_SOURCE);
+        // await grabSource();
+        // await addAll();
+        // await commit();
+        // await checkoutBranch(BRANCH_TARGET);
+        // await mergeBranch(BRANCH_SOURCE);
+        // await getDiffs();
+        // await processDiffs();
+        // await makeTmpFolder();
+        // await transferAll();
+        // await clean();
+        // resolve();
     });
 }
 
