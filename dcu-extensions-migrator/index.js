@@ -420,9 +420,9 @@ async function clean() {
  */
 async function extensionsTransfer() {
     await clean();
-    // await grabTarget();
-    // await createBranch(BRANCH_TARGET);
-    // await createBranch(BRANCH_SOURCE);
+    await grabTarget();
+    await createBranch(BRANCH_TARGET);
+    await createBranch(BRANCH_SOURCE);
     // await grabSource();
     // await addAll();
     // await commit();
