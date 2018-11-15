@@ -1,0 +1,9 @@
+<div id="cc-notifications" data-oc-id="cc-notifications">
+  <!-- oc layout: panels -->
+  <div id="cc-notifications-panel" data-oc-id="cc-notifications-panel">
+    <!-- oc section: notifications-message-box -->
+      <div data-bind="element: 'notifications-message-box'"></div>
+    <!-- /oc -->
+  </div>
+  <!-- /oc -->
+</div>

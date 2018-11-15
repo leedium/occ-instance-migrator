@@ -1,0 +1,279 @@
+<!-- ko with: user -->
+<div id="checkout-registration">
+  <h2 data-bind="widgetLocaleText:'checkoutRegistrationText'"></h2>
+  <hr>
+  <fieldset id="checkoutOptions" data-bind="visible: !loggedIn()">
+  <legend id="checkoutOptions-legend" data-bind="widgetLocaleText:'checkoutOption'"></legend>
+  <div class="row">
+    <div class="form-group">
+      <div class="col-sm-6 col-lg-4 cc-checkoutRegistration-radio">
+        <label class="radio" data-bind="attr:{ for: 'CC-checkoutRegistration-userOption-'+ $parent.order().checkoutGuest() }">
+          <input type="radio" class="form control" name="account" data-bind="value: $parent.order().checkoutGuest, attr:{ id: 'CC-checkoutRegistration-userOption-'+$parent.order().checkoutGuest() }, checked: $parent.order().checkoutOption"/>
+          <span data-bind="widgetLocaleText: 'checkoutAsGuestText'"></span>
+        </label>
+      </div>
+      <div class="col-sm-6 col-lg-8 cc-checkoutRegistration-radio">
+        <label class="radio" data-bind="attr:{ for: 'CC-checkoutRegistration-userOption-'+$parent.order().checkoutLogin() }">
+          <input type="radio" class="form control" name="account" data-bind="value: $parent.order().checkoutLogin, attr:{ id: 'CC-checkoutRegistration-userOption-'+$parent.order().checkoutLogin() }, checked: $parent.order().checkoutOption"/>
+           <span data-bind="widgetLocaleText: 'loginToAccountText'"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+   <!--This only appears for guest users-->
+   <div id="guest" data-bind="inTabFlow: ($parent.order().checkoutOption() === $parent.order().checkoutGuest())">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <span data-bind="widgetLocaleText: 'registrationMessageText'"></sapn>
+        </div>
+      </div>
+     <div class="row" id="createAccount">
+       <div class="form-group col-sm-12">
+         <label class="control-label inline" for="CC-checkoutRegistration-email" data-bind="widgetLocaleText:'emailAddressText'"></label>
+         <span class="text-danger visible-xs" id="CC-checkoutRegistration-email-error-phone" data-bind="validationMessage: $parent.order().guestEmailAddress" role="alert"></span>
+         <div class="row">
+           <div class="col-sm-6">
+             <input type="email" class="email col-sm-12 form-control" name="email" id="CC-checkoutRegistration-email" aria-required="true" data-bind="validatableValue: $parent.order().guestEmailAddress, 
+                  valueUpdate: 'afterkeydown', widgetLocaleText : {value:'emailAddressText', attr:'placeholder'}, event: {blur: $parent.guestEmailAddressLostFocus, focus: $parent.guestEmailAddressFocused}" >
+           </div>           
+           <div class="col-sm-6 hidden-xs text-danger" id="CC-checkoutRegistration-email-error" data-bind="validationMessage: $parent.order().guestEmailAddress" role="alert"></div>
+         </div>
+       </div>
+       <div class="col-sm-12">
+         <div class="form-group" >
+           <div class="checkbox">
+             <label for="CC-checkoutRegistration-createAccount">
+               <input type="checkbox" name="register-me" data-bind="checked: $parent.order().createAccount" id="CC-checkoutRegistration-createAccount">
+               <span data-bind="widgetLocaleText: 'rememberMeText'"></span>
+             </label>
+           </div>
+         </div>
+       </div>
+     </div>
+     <!--This only appears if Remember me box is checked-->
+     <div id="remember" style="display: none;">
+       <div class="row">
+         <div class="col-sm-12" >
+           <div class="checkbox">
+             <label for="CC-checkoutRegistration-marketingMails">
+               <input type="checkbox" name="marketing-mail" data-bind="checked: emailMarketingMails" id="CC-checkoutRegistration-marketingMails">
+               <span data-bind="widgetLocaleText: 'marketingMailsText'"></span>
+             </label>
+           </div>
+         </div>
+       </div>
+       <div class="row" data-bind="visible:$parent.site().requireGDPRP13nConsent">
+         <div class="form-group col-sm-12" >
+           <div class="checkbox">
+             <label for="CC-checkoutRegistration-personalizationConsent">
+               <input type="checkbox" name="personalization-Consent" data-bind="checked: GDPRProfileP13nConsentGranted" id="CC-checkoutRegistration-personalizationConsent">
+               <span data-bind="widgetLocaleText: 'personalizationConsentText'"></span>
+             </label>
+           </div>
+         </div>
+       </div>
+       <div class="row">
+         <div class="form-group col-sm-4">
+           <label class="control-label inline" for="CC-checkoutRegistration-firstName" data-bind="widgetLocaleText:'firstNameText'"></label>
+           <span class="text-danger visible-xs" id="CC-checkoutRegistration-firstName-error-phone" data-bind="validationMessage: firstName" role="alert"></span>
+           <div class="control">
+             <input type="text" class="col-sm-12 form-control" name="firstName" id="CC-checkoutRegistration-firstName" aria-required="true" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}" >
+           </div>
+         </div>
+         <div class="form-group col-sm-4">
+           <label class="control-label inline" for="CC-checkoutRegistration-lastName" data-bind="widgetLocaleText:'lastNameText'"></label>
+           <span class="text-danger visible-xs" id="CC-checkoutRegistration-lastName-error-phone" data-bind="validationMessage: lastName" role="alert"></span>
+           <div class="control">
+             <input type="text" class="col-sm-12 form-control" name="lastName" id="CC-checkoutRegistration-lastName" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText', attr:'placeholder'}" >
+           </div>
+         </div>
+         <div class="col-sm-4 hidden-xs">
+           <p class="text-danger" id="CC-checkoutRegistration-firstName-error" data-bind="validationMessage: firstName" role="alert"></p>
+           <p class="text-danger" id="CC-checkoutRegistration-lastName-error" data-bind="validationMessage: lastName" role="alert"></p>
+         </div>
+       </div>
+       
+       <div class="row">
+         <div class="col-sm-12" id="CC-checkoutRegistration-password-embeddedAssistance" data-bind="embeddedAssistance: newPassword"></div>
+       </div>
+       
+       <div class="row">  
+         <div class="form-group col-sm-4">
+           <label class="control-label inline" for="CC-checkoutRegistration-password" data-bind="widgetLocaleText:'passwordText'"></label>
+           <span class="text-danger visible-xs" id="CC-checkoutRegistration-password-error-phone" data-bind="validationMessage: newPassword"></span>
+           <div class="control">
+             <input type="password" class="col-sm-12 form-control" name="password" id="CC-checkoutRegistration-password" aria-required="true" data-bind="validatableValue: newPassword, widgetLocaleText : {value:'passwordText', attr:'placeholder'}, 
+                 valueUpdate: 'afterkeydown', event: {blur: $parent.passwordFieldLostFocus.bind($parent), focus: $parent.passwordFieldFocused.bind($parent)}" >
+           </div>
+         </div>
+         <div class="form-group col-sm-4">
+           <label class="control-label inline" for="CC-checkoutRegistration-confirmPassword" data-bind="widgetLocaleText:'confirmPasswordText'"></label>
+           <span class="text-danger visible-xs" id="CC-checkoutRegistration-confirmPassword-error-phone" data-bind="validationMessage: confirmPassword" role="alert"></span>
+           <div class="control">
+             <input type="password" class="col-sm-12 form-control" name="confirmPassword" id="CC-checkoutRegistration-confirmpassword" aria-required="true" data-bind="validatableValue: confirmPassword, widgetLocaleText : {value:'confirmPasswordText', attr:'placeholder'}, 
+                 valueUpdate: 'afterkeydown', event: {blur: $parent.confirmPwdFieldLostFocus.bind($parent), focus: $parent.confirmPwdFieldFocused.bind($parent)}" >
+           </div>
+         </div>
+         <div class="col-sm-4 hidden-xs">
+           <p class="text-danger" id="CC-checkoutRegistration-password-error" data-bind="validationMessage: newPassword"></p>
+           <p class="text-danger" id="CC-checkoutRegistration-confirm-password-error" data-bind="validationMessage: confirmPassword" role="alert"></p>
+         </div>
+       </div>
+     </div>
+     <!-- END - This only appears if Remember me box is checked-->
+   </div>
+   <!-- END - This only appears for guest users-->      
+    
+   <!-- BEGIN - This only appears for registered users -->
+   <div id="registered" class="row col-md-12" data-bind="inTabFlow: ($parent.order().checkoutOption() === $parent.order().checkoutLogin())" style="display: none;">
+     <div class="form-group">
+       <label class="control-label inline" for="CC-checkoutRegistration-login-email" data-bind="widgetLocaleText:'emailAddressText'"></label>
+       <span class="text-danger visible-xs" id="CC-checkoutRegistration-phone-login-email-error" data-bind="validationMessage: login" role="alert"></span>
+       <div class="row">
+         <div class="col-sm-6">
+           <input type="email" class="email col-md-12 form-control" name="loginEmail" id="CC-checkoutRegistration-login-email" aria-required="true" data-bind="validatableValue: login, 
+                valueUpdate: 'afterkeydown', widgetLocaleText : {value:'emailAddressText', attr:'placeholder'}, event: {keydown: function(data, event) { return $parent.handleLogin.bind(data, $parents[1], event)() }, blur: emailAddressLostFocus, focus: emailAddressFocused}" >
+         </div>           
+         <div class="col-sm-6 hidden-xs text-danger" id="CC-checkoutRegistration-login-email-error" data-bind="validationMessage: login" role="alert"></div>
+       </div>
+     </div>
+     <div class="form-group">
+       <label class="control-label inline" for="CC-checkoutRegistration-login-password" data-bind="widgetLocaleText:'passwordText'"></label>
+       <span class="text-danger visible-xs" id="CC-checkoutRegistration-phone-login-password-error" data-bind="validationMessage: password" role="alert"></span>
+       <div class="row">
+         <div class="col-sm-6">
+           <input type="password" class="email col-md-12 form-control" name="password" id="CC-checkoutRegistration-login-password" aria-required="true" 
+             data-bind="validatableValue: password, valueUpdate: 'afterkeydown', widgetLocaleText : {value:'passwordText', attr:'placeholder'}, event: {keydown: function(data, event) { return $parent.handleLogin.bind(data, $parents[1], event)() }}" >
+           <div id="CC-checkout-forgotPasswd">
+             <a href="#CC-checkoutmodalpane" data-toggle="modal" class="text-underline" id="CC-checkoutLinkForgotPasswd" data-bind="click: $parent.showForgotPasswordSection.bind($parent),widgetLocaleText: 'forgotPasswordLinkText'"></a>
+           </div>
+         </div>           
+         <div class="col-sm-6 hidden-xs text-danger" id="CC-checkoutRegistration-login-password-error" data-bind="validationMessage: password" role="alert"></div>
+       </div>
+     </div>
+     <div class="col-md-12 row text-danger" id="CC-checkoutRegistration-login-error" data-bind="visible: isLoginFailed" role="alert">
+       <p data-bind="text: loginError" id="CC-checkoutRegistration-login-msgId" role="alert"></p>
+     </div>
+     <div class="col-md-12 row visible-sm visible-md visible-lg">
+       <div class="form-group">
+         <div class="col-sm-12 row">
+       	   <button id="CC-checkoutRegistration-login-cancel" class="cc-button-secondary col-sm-3" data-bind="click: $parent.handleCancel">
+       	     <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+           </button>
+           <button id="CC-checkoutRegistration-login-submit" class="cc-button-primary col-sm-3" data-bind="click: $parent.handleLogin">
+             <span data-bind="widgetLocaleText: 'buttonLogin'"></span>
+           </button>
+         </div>
+       </div>
+     </div>
+     <div class="row hidden-sm hidden-md hidden-lg">
+       <div class="form-group col-xs-12">
+           <button id="CC-checkoutRegistration-login-mobile-submit" class="cc-button-primary col-xs-12" data-bind="click: $parent.handleLogin">
+       	     <span data-bind="widgetLocaleText: 'buttonLogin'"></span>
+       	   </button>
+       	   <button id="CC-checkoutRegistration-login-mobile-cancel" class="cc-button-secondary col-xs-12" data-bind="click: $parent.handleCancel">
+       	     <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+       	   </button>
+       </div>
+     </div>
+   </div>
+   <div class="modal fade" id="CC-checkoutModalPane" tabindex="-1" role="link" data-bind="event: {mousedown: $parent.handleModalDownClick.bind($parent), mouseup: $parent.handleMouseUp.bind($parent)}, modalTabbingContraint">
+     <div class="modal-dialog cc-modal-dialog" id="CC-checkoutForgotPasswordSectionPane" role="alert">
+       <div class="modal-content">
+         <div class="modal-header CC-header-modal-heading">
+           <h3 class="modal-title" id="CC-checkoutForgotPwdText-title" data-bind="widgetLocaleText: 'resetPwdText'"></h3>
+         </div>
+         <div class="modal-body cc-modal-body">
+           <div>
+             <div id="CC-checkoutForgotPassword-messagePart1" data-bind="widgetLocaleText: 'forgotPasswordHelpText'"></div><br>
+           </div>
+           <div class="form-group row" id="CC-checkoutUserForgotPassword">
+             <div class="controls col-md-12">
+               <label class="control-label inline" for="CC-checkoutForgotPwd-input" data-bind="widgetLocaleText:'emailAddressText'"></label>
+               <span role="alert" class="text-danger" id="CC-checkoutForgotPwd-emailAddress-error" data-bind="validationMessage: emailAddressForForgottenPwd" role="alert"></span>
+               <input type="email" class="col-md-5 form-control" id="CC-checkoutForgotPwd-input" aria-required="true" 
+                 data-bind="validatableValue: emailAddressForForgottenPwd, widgetLocaleText : {value:'emailAddressText', attr:'placeholder'}, 
+                   event: {blur: $parent.emailAddressLostFocus.bind($parent), focus: $parent.emailAddressFocused.bind($parent), keydown: function(data, event) { return $parent.resetForgotPassword.bind(data, $data, event)() }}"/>
+             </div>
+           </div>
+         </div>
+         <div class="modal-footer CC-header-modal-footer">
+           <button type="button" id="CC-checkoutEmailPasswordSubmit" class="cc-button-primary btn-block" data-bind="widgetLocaleText:'sendRequestText', click: $parent.resetForgotPassword.bind($parent)"></button>
+           <button type="button" id="CC-checkoutEmailPasswordCancel" class="cc-button-secondary btn-block" data-dismiss="modal" data-bind="widgetLocaleText:'emailCancelText',
+           event: {mousedown: $parent.handleMouseDown.bind($parent), mouseup: $parent.handleMouseUp.bind($parent) }"></button>
+         </div>
+       </div>
+     </div>
+     <div class="modal-dialog cc-modal-dialog" id="CC-checkoutForgotPasswordMessagePane" role="alert">
+       <div class="modal-content">
+         <div class="modal-header CC-header-modal-heading">
+           <h3 class="modal-title" id="CC-checkoutForgotPwdText-titleMessage" data-bind="widgetLocaleText: 'resetPwdText'"></h3>
+         </div>
+         <div class="modal-body cc-modal-body">
+           <div id="CC-checkoutForgotPassword-message" class="alert alert-success" data-bind="widgetLocaleText: 'resetPasswordMessage'"></div><br>
+         </div>
+         <div class="modal-footer CC-header-modal-footer">
+           <div class="center-block">
+             <button type="button" id="CC-checkoutMessagePaneClose" class="cc-button-secondary btn-block" data-bind="widgetLocaleText: 'closeText'" data-dismiss="modal"></button>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   <!-- END - This only appears for registered users   -->  
+   
+  </fieldset>
+  
+  <!--BEGIN - This appears for loggedIn user   -->    
+    <div class="row CC-checkoutRegistration" data-bind="visible: loggedIn()">
+      <div id="CC-checkoutRegistration-welcomeMessage" class="col-xs-12 no-outline" data-bind="widgetLocaleText: 'welcomeMessage'" aria-labelby="CC-checkoutRegistration-welcomeMessage"></div>
+      <div class="col-sm-3 col-xs-12">
+        <button id="CC-checkoutRegistration-logoutButton" class="cc-button-primary col-xs-12" data-bind="click: $parent.handleLogout">
+          <span data-bind="widgetLocaleText: 'buttonLogout'"></span>
+        </button>
+      </div>
+      <div class="modal fade" id="CC-checkoutConsentModalPane" tabindex="-1" role="link" data-bind="event: {mousedown: $parent.handleModalDownClick.bind($parent), mouseup: $parent.handleMouseUp.bind($parent)}, modalTabbingContraint">
+     <div class="modal-dialog cc-modal-dialog" id="CC-checkoutPersonalizationConsentPane" role="alert">
+     <div class="modal-content">
+            <div class="modal-header CC-header-modal-heading">
+              <h3 class="modal-title" id="CC-personalizationConsentPane-titleMessage" data-bind="widgetLocaleText:'titleLogin'"></h3>
+            </div>
+            <div class="modal-body cc-modal-body" data-bind="with: $parent.user">              
+              <div class="col-md-10">
+                <div class="form group">
+                  <div class="checkbox" id="CC-customerProfile-edit-marketingMail-checkbox">
+                    <label for="CC-customerProfile-edit-marketingMails">
+                      <input type="checkbox" name="marketing-mail" data-bind="checked: emailMarketingMails" id="CC-customerProfile-edit-marketingMails">
+                      <span data-bind="widgetLocaleText: 'marketingMailsText'" id="CC-CC-personalizationConsentPane-edit-marketingMail-text"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-10" data-bind="visible:$parents[1].site().requireGDPRP13nConsent">
+                <div class="form group">
+                  <div class="checkbox" id="CC-customerProfile-edit-personalizationConsent-checkbox">
+                    <label for="CC-customerProfile-edit-personalizationConsent">
+                      <input type="checkbox" name="personalization-Consent" data-bind="checked: GDPRProfileP13nConsentGranted" id="CC-customerProfile-edit-personalizationConsent">
+                      <span data-bind="widgetLocaleText: 'personalizationConsentText'" id="CC-CC-personalizationConsentPane-edit-personalizationConsent-text"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer CC-header-modal-footer">
+              <div class="center-block">
+                <button type="button" id="CC-personalizationConsentContinue" class="cc-button-primary" data-bind="click: $parent.handlePersonalizationConsent, widgetLocaleText: 'continueText'" data-dismiss="modal"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+   </div>
+    </div>
+  <!--END - This appears for loggedIn user   -->   
+  
+</div>
+<!-- /ko -->
+
+
+

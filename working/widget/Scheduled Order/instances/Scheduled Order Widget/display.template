@@ -1,0 +1,1042 @@
+<div id="CC-scheduledOrder">
+  <!-- ko if: display -->
+  <div id="CC-scheduledOrder-heading" class="row">
+
+    <div id="CC-scheduledOrder-heading-col" class="col-sm-7">
+      <h2 data-bind="widgetLocaleText:'scheduleDetails'"></h2>
+    </div>
+
+	<!-- ko if: $data.isBackLinkAvailable() -->
+    <div id="CC-scheduledOrder-backToMySchedulesLink" class="col-sm-5 text-right">
+      <a data-bind="click: browserBack,
+                        widgetLocaleText:'backLink'"
+         id="CC-scheduledOrder-backToMySchedulesLink-link"
+         href="#"></a>
+    </div>
+    <!-- /ko -->
+
+  </div>
+
+  <!-- ko with: scheduledOrder -->
+  <div>
+    <section id="CC-scheduledOrder-subheading" class="section-scheduleOrderDetails">
+      <table id="CC-scheduledOrder-subheading-table" role="presentation">
+        <tbody>
+        <tr>
+          <td><span class="titleText" data-bind="widgetLocaleText: 'scheduledOrderNameText'"></span></td>
+          <td><span id="CC-scheduledOrder-ordername" data-bind="text: name"></span></td>
+        </tr>
+        <tr>
+          <td><span class="titleText" data-bind="widgetLocaleText: 'orderNumberText'"></span></td>
+          <td><span id="CC-scheduledOrder-orderNumber" data-bind="text: templateOrderId"></span></td>
+        </tr>
+        <!-- ko if: nextScheduledRun -->
+        <tr>
+          <td><span class="titleText" data-bind="widgetLocaleText: 'nextOrderText'"></span></td>
+          <td><span id="CC-scheduledOrder-nextOrder" data-bind="ccDate: {date: nextScheduledRun, returnedDate: 'medium'}"></span></td>
+        </tr>
+        <!-- /ko -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <div id="CC-scheduledOrder-scheduleForm" class="panel panel-default cc-spinner-container" >
+    <div class="panel-heading">
+      <form role="form" novalidate>
+        <div class="row">
+
+            <div class="form-group col-sm-4">
+              <label data-bind="widgetLocaleText:'nameText'"
+                     class="control-label"
+                     for="CC-scheduledOrder-name"></label>
+              <input data-bind="widgetLocaleText : {value:'nameText', attr:'aria-label'},validatableValue: name,
+                                                        widgetLocaleText : {
+                                                          value: 'nameText',
+                                                          attr: 'placeholder'
+                                                        }"
+                     type="text"
+                     class="form-control"
+                     name="name"
+                     id="CC-scheduledOrder-name"
+                     aria-required="true">
+              <span data-bind="validationMessage: name"
+                    class="text-danger"
+                    id="CC-scheduledOrder-name-error"
+                    role="alert">
+                              </span>
+            </div>
+
+
+            <div class="form-group col-sm-2">
+              <label data-bind="widgetLocaleText:'startDateText'"
+                     class="control-label"
+                     for="CC-scheduledOrder-startDate">
+              </label>
+              <div class="input-group">
+                <input data-bind="widgetLocaleText : {value:'startDateText', attr:'aria-label'},validatableValue: $parent.parsedStartDate,
+                                   datepicker: $parent.parsedStartDate,
+                                   dpOptions: {
+                                        autoclose: true,
+                                        startDate: '+1d',
+                                        format: 'mm/dd/yyyy'}"
+                     type="text"
+                     class="form-control"
+                     name="$parent.parsedStartDate"
+                     id="CC-scheduledOrder-startDate"
+                     aria-required="true"
+                     placeholder="mm/dd/yyyy">
+                <label class="input-group-btn" for="CC-scheduledOrder-startDate">
+                  <span class="btn btn-default" type="button">
+                          <span class="fa fa-calendar"></span>
+                  </span>
+                </label>
+              </div>
+              <span data-bind="validationMessage: startDate"
+                    class="text-danger"
+                    id="CC-scheduledOrder-startDate-error"
+                    role="alert">
+                            </span>
+            </div>
+
+            <div class="form-group col-sm-2">
+              <label data-bind="widgetLocaleText:'endDateText'"
+                     class="control-label"
+                     for="CC-scheduledOrder-endDate">
+              </label>
+              <div class="input-group">
+                <input data-bind="widgetLocaleText : {value:'endDateText', attr:'aria-label'}, validatableValue: $parent.parsedEndDate,
+                               datepicker: $parent.parsedEndDate,
+                               dpOptions: {
+                                    autoclose: true,
+                                    startDate: '+1d',
+                                    format: 'mm/dd/yyyy'}"
+                     type="text"
+                     class="form-control"
+                     name="$parent.parsedEndDate"
+                     id="CC-scheduledOrder-endDate"
+                     aria-required="false"
+                     placeholder="mm/dd/yyyy">
+                <label class="input-group-btn" for="CC-scheduledOrder-endDate">
+                  <span class="btn btn-default" type="button">
+                          <span class="fa fa-calendar"></span>
+                  </span>
+                </label>
+              </div>
+              <span data-bind="validationMessage: endDate"
+                    class="text-danger"
+                    id="CC-scheduledOrder-endDate-error"
+                    role="alert">
+                        </span>
+            </div>
+
+            <div class="form-group col-sm-2">
+              <label
+                data-bind="widgetLocaleText:'frequencyText'"
+                class="control-label"
+                for="CC-scheduledOrder-scheduleMode">
+              </label>
+              <select
+                data-bind="value: scheduleMode, foreach: $parent.scheduleModeOptGroups"
+                class="form-control"
+                name="scheduleMode"
+                id="CC-scheduledOrder-scheduleMode"
+                aria-required="true">
+                <optgroup data-bind="attr: {label: label}, foreach: options">
+                  <option data-bind="value: value, text: text">
+                  </option>
+                </optgroup>
+              </select>
+              <span
+                data-bind="validationMessage: scheduleMode"
+                class="text-danger"
+                id="CC-scheduledOrder-scheduleMode-error"
+                role="alert">
+                            </span>
+            </div>
+
+            <div class="form-group col-sm-2">
+              <label data-bind="widgetLocaleText:'suspendOrderText'"
+                     class="control-label"
+                     for="CC-scheduledOrder-suspend">
+              </label>
+              <div id="CC-scheduledOrder-suspend">
+                <input data-bind="widgetLocaleText : {value:'suspendText', attr:'aria-label'},checked: $data.suspend, event: { change: $data.suspendedOrder.bind($data)}"
+                       type="checkbox"
+                       id="CC-scheduledOrder-suspend-checkbox"
+                       aria-required="true">
+                <span data-bind="widgetLocaleText:'suspendText'"></span>
+              </div>
+            </div>
+
+        </div>
+      </form>
+    </div>
+
+    <div class="panel-body" data-bind="visible: $parent.daysOfWeekEnabled() && $parent.weeksInMonthEnabled()">
+
+      <div class="col-sm-8">
+
+        <fieldset data-bind="visible: $parent.daysOfWeekEnabled()" class="form-group" >
+          <strong data-bind="widgetLocaleText: 'chooseDaysOfWeekText'"></strong><br>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 1">
+            <span data-bind="widgetLocaleText:'sundayAbbreviationText'"></span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 2">
+            <span data-bind="widgetLocaleText:'mondayAbbreviationText'"></span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 3">
+            <span data-bind="widgetLocaleText:'tuesdayAbbreviationText'"></span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 4">
+            <span data-bind="widgetLocaleText:'wednesdayAbbreviationText'"></span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 5">
+            <span data-bind="widgetLocaleText:'thursdayAbbreviationText'"></span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 6">
+            <span data-bind="widgetLocaleText:'fridayAbbreviationText'"></span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 7">
+            <span data-bind="widgetLocaleText:'saturdayAbbreviationText'"></span>
+          </label>
+        </fieldset>
+        <span data-bind="validationMessage: daysOfWeek"
+              class="text-danger"
+              id="CC-scheduledOrder-daysOfWeek-error"
+              role="alert">
+                </span>
+      </div>
+
+      <div class="col-sm-4">
+
+        <fieldset data-bind="visible: $parent.weeksInMonthEnabled()" class="form-group">
+          <strong data-bind="widgetLocaleText: 'chooseOccuranceText'"></strong><br>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: weeksInMonth, checkedValue: 1, disable: $parent.weeksInMonthReadonly($element)">
+            <span data-bind="widgetLocaleText:'firstText'"></span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: weeksInMonth, checkedValue: 2, disable: $parent.weeksInMonthReadonly($element)">
+            <span data-bind="widgetLocaleText:'secondText'"></span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: weeksInMonth, checkedValue: 3, disable: $parent.weeksInMonthReadonly($element)">
+            <span data-bind="widgetLocaleText:'thirdText'"></span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: weeksInMonth, checkedValue: 4, disable: $parent.weeksInMonthReadonly($element)">
+            <span data-bind="widgetLocaleText:'fourthText'"></span>
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: weeksInMonth, checkedValue: 5, disable: $parent.weeksInMonthReadonly($element)">
+            <span data-bind="widgetLocaleText:'lastText'"></span>
+          </label>
+        </fieldset>
+        <span data-bind="validationMessage: weeksInMonth"
+              class="text-danger"
+              id="CC-scheduledOrder-weeksInMonth-error"
+              role="alert">
+                </span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ko if: executionStatusList().length > 0 -->
+  <table class="table" data-bind="widgetLocaleText:{value:'myScheduledOrderHistory',attr:'summary'}" id="CC-scheduledOrder-history">
+    <thead>
+    <tr>
+      <th data-bind="widgetLocaleText : 'orderDate'" class="col-md-3" scope="col"></th>
+      <th data-bind="widgetLocaleText : 'orderId'" class="col-md-3" scope="col"></th>
+      <th data-bind="widgetLocaleText : 'orderFailureReason'" class="col-md-3" scope="col"></th>
+      <th data-bind="widgetLocaleText : 'orderTotal'" class="col-md-3 text-right" scope="col"></th>
+    </tr>
+    </thead>
+    <tbody data-bind="foreach: executionStatusList">
+    <tr>
+      <td data-bind="ccDate: {date: $data.executionDate, returnedDate: 'default'}"
+          class="col-md-3"></td>
+      <!-- ko if: $data.orderId -->
+      <td class="col-md-3" scope="row">
+        <a data-bind="attr: {href: '/orderDetails/' + $data.orderId,
+                            id: 'CC-scheduledOrder-' + $data.orderId},
+                            text: $data.orderId">
+        </a>
+      </td>
+      <!-- /ko -->
+      <!-- ko ifnot: $data.orderId -->
+      <td class="col-md-3" scope="row">
+        <span class="text-danger" data-bind="widgetLocaleText:'failureText'"></span>
+      </td>
+      <!-- /ko -->
+      <td data-bind="text : $data.errorMessages"
+          class="col-md-3"></td>
+      <td class="col-md-3 text-right">
+         <span data-bind="currency: {
+                          price:  $data.orderTotal,
+                          currencyObj: $parent.templateOrder().priceListGroup.currency}"></span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <!-- /ko -->
+
+  <!-- ko with: templateOrder -->
+  <!-- ko with: $data.order -->
+  <table data-bind="widgetLocaleText : {
+                          value:'orderDetailsTableSummary',
+                          attr: 'summary'
+                        }"
+         id="CC-scheduledOrder-orderDetails"
+         class="table"">
+  <thead>
+  <tr>
+    <th data-bind="widgetLocaleText: 'itemText'" scope="col" colspan="2"></th>
+    <th data-bind="widgetLocaleText: 'quantityText'" scope="col" class="text-center"></th>
+    <th data-bind="widgetLocaleText: 'priceText'" scope="col" class="text-left"></th>
+    <th data-bind="widgetLocaleText: 'itemTotalText'" scope="col" class="text-right"></th>
+  </tr>
+  </thead>
+  <tbody data-bind="foreach: items">
+  <tr>
+    <td class="image col-sm-1">
+      <!-- ko if: active -->
+      <a data-bind="ccLink:$data">
+        <img data-bind="attr: {
+                                    title: primaryImageTitle
+                                  },
+                                  imageSource: {
+                                    src: primaryThumbImageURL,
+                                    alt: primaryImageAltText,
+                                    errorSrc: '/img/no-image.jpg',
+                                    errorAlt: 'Missing Product Image'
+                                  }" />
+      </a>
+      <!--/ko -->
+
+      <!-- ko if: (primaryThumbImageURL && !active) -->
+      <img data-bind="attr: {
+                                  title: primaryImageTitle
+                                },
+                                imageSource: {
+                                  src: primaryThumbImageURL,
+                                  alt: primaryImageAltText,
+                                  errorSrc: '/img/no-image.jpg',
+                                  errorAlt: 'Missing Product Image'
+                                }" />
+      <!--/ko -->
+
+      <!-- ko ifnot: primaryThumbImageURL -->
+      <img data-bind="attr: {
+                                  src: '/img/no-image.jpg',
+                                  alt: 'Missing Product Image'
+                                }" />
+      <!--/ko -->
+    </td>
+
+    <td class="product-name col-sm-2">
+      <!-- ko if: active -->
+      <a data-bind="ccLink: $data"></a>
+      <!--/ko -->
+
+      <!-- ko ifnot: active -->
+      <span data-bind="text: displayName"></span>
+      <!--/ko -->
+
+      <!-- ko foreach: variant -->
+
+      <!-- ko if: optionValue -->
+      <div data-bind="widgetLocaleText : {
+                                      value:'option',
+                                      attr:'innerText',
+                                      params: {
+                                        optionName: optionName,
+                                        optionValue: optionValue
+                                      }
+                                    }"
+           class="small"></div>
+      <!-- /ko -->
+
+      <!-- /ko -->
+
+      <!-- ko foreach: discountInfo -->
+
+      <!-- ko if: $data.coupon -->
+      <div data-bind="widgetLocaleText : {
+                                        value:'couponDisplayText',
+                                        attr: 'innerText',
+                                        params: {
+                                          description: promotionDesc,
+                                          code : coupon
+                                        }
+                                      }"
+           class="small"></div>
+      <!-- /ko -->
+
+      <!-- ko ifnot: $data.coupon -->
+      <div data-bind="widgetLocaleText : promotionDesc"
+           class="small"></div>
+      <!-- /ko -->
+
+      <!-- /ko -->
+
+
+      <!-- ko if: shippingSurchargeValue !== 0 -->
+
+      <div class="small">
+
+        <span data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>
+        <span data-bind="currency: {
+                                      price: shippingSurchargeValue,
+                                      currencyObj: $parents[1].priceListGroup.currency,
+                                      nullReplace: '0.00',
+                                      prependNull: true
+                                    }"></span>
+
+      </div>
+
+      <!-- /ko -->
+
+      <!-- ko if: (stockStatus && active)-->
+
+      <!-- ko if: !(stockStatus.stockStatus === 'IN_STOCK') || (stockStatus.orderableQuantity < $data.quantity) -->
+      <div>
+        <label data-bind="widgetLocaleText:'outStockText'"
+               class="text-danger"/>
+      </div>
+      <!-- /ko -->
+
+      <!-- ko if: stockStatus.stockStatus === 'IN_STOCK' && (stockStatus.orderableQuantity >= $data.quantity) -->
+      <div>
+        <label data-bind="widgetLocaleText:'inStockText'" id="CC-scheduledOrder-InstockText"/>
+      </div>
+      <!-- /ko -->
+
+      <!-- /ko -->
+    </td>
+
+    <td class="text-center col-sm-4">
+      <span data-bind="ccNumber: $data.quantity"></span>
+    </td>
+
+    <td class="text-left col-sm-3">
+      <!-- ko foreach: detailedItemPriceInfo -->
+      <div class="row">
+        <div data-bind="ccNumber: $data.quantity" class="col-sm-1"></div>
+        <div class="col-sm-1">@</div>
+        <div data-bind="currency: {price: $data.detailedUnitPrice, currencyObj: $parents[2].priceListGroup.currency}" class="col-sm-4"></div>
+      </div>
+      <!-- /ko -->
+    </td>
+
+    <td class="text-right col-sm-2">
+      <!-- ko foreach: detailedItemPriceInfo -->
+	  <div class="row">
+	    <div data-bind="currency: {price: $data.amount, currencyObj: $parents[2].priceListGroup.currency}" class="col-sm-12"></div>
+	  </div>
+	  <!-- /ko -->
+    </td>
+
+  </tr>
+  </tbody>
+  </table>
+  <!-- /ko -->
+
+  <div id="CC-scheduledOrder-orderDetails-priceDetails-mobile" class="row visible-xs">
+    <div class="col-xs-12">
+      <!-- ko with: $data.priceInfo -->
+      <div>
+        <!-- Sub-Total -->
+        <div class="row">
+          <div class="col-xs-8">
+            <div id="CC-scheduledOrder-orderDetails-subTotal-label-mobile" class="titleText" data-bind="widgetLocaleText: 'subtotalText'"></div>
+            <!-- ko if: ($parent.taxPriceInfo.isTaxIncluded && $parents[2].cart().showTaxSummary) -->
+            <div data-bind="widgetLocaleText: 'includingTaxText'"></div>
+            <!-- /ko -->
+          </div>
+          <div class="col-xs-4">
+            <span id="CC-scheduledOrder-orderDetails-subTotal-value-mobile" class="titleText pull-right" data-bind="currency: { price: subTotal, currencyObj: $parent.priceListGroup.currency}"></span>
+          </div>
+        </div>
+        <!-- Discount -->
+        <!-- ko if: $parent.discountInfo.orderDiscount -->
+        <div class="row">
+          <div class="col-xs-8">
+            <span id="CC-scheduledOrder-orderDetails-discount-label-mobile" class="titleText" data-bind="widgetLocaleText: 'discountText'"></span>
+          </div>
+          <div class="col-xs-4">
+                <span id="CC-scheduledOrder-orderDetails-discount-value-mobile" class="breakWord pull-right titleText" data-bind="currency: { price: -$parent.discountInfo.orderDiscount, currencyObj: $parent.priceListGroup.currency}">
+                </span>
+          </div>
+        </div>
+        <!-- /ko -->
+        <!-- Shipping -->
+        <div class="row">
+          <div class="col-xs-8">
+            <span id="CC-scheduledOrder-orderDetails-shippingMethod-value-mobile" class="titleText" data-bind="widgetLocaleText: {value: 'shippingMethodValueText', attr: 'innerText', params: {shippingMethod :$parent.shippingGroup.shippingMethodDescription}}"></span>
+          </div>
+          <div class="col-xs-4">
+              <span id="CC-scheduledOrder-orderDetails-shippingPrice-value-mobile" class="titleText pull-right"
+                    data-bind="currency: { price: shipping, currencyObj: $parent.priceListGroup.currency}">
+              </span>
+          </div>
+        </div>
+        <!-- ko if: $parent.discountInfo.shippingDiscount !== 0 -->
+        <div class="row">
+          <div class="col-xs-8">
+            <span id="CC-scheduledOrder-orderDetails-shippingDiscount-label-mobile" class="titleText" data-bind="widgetLocaleText: 'shippingDiscountText'"></span>
+          </div>
+          <div class="col-xs-4">
+                <span id="CC-scheduledOrder-orderDetails-shippingDiscount-value-mobile" class="breakWord pull-right titleText"
+                      data-bind="currency: { price: -$parent.discountInfo.shippingDiscount, currencyObj: $parent.priceListGroup.currency}">
+                </span>
+          </div>
+        </div>
+        <!-- /ko -->
+        <!-- Shipping Surcharge -->
+        <!-- ko if: shippingSurchargeValue &&  shippingSurchargeValue !== 0 -->
+        <div class="row">
+          <div class="col-xs-8">
+            <span id="CC-scheduledOrder-orderDetails-shippingSurcharge-label-mobile" class="titleText" data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>
+          </div>
+          <div class="col-xs-4">
+              <span id="CC-scheduledOrder-orderDetails-shippingSurcharge-value-mobile" class="titleText pull-right"
+                    data-bind="currency: { price: shippingSurchargeValue, currencyObj: $parent.priceListGroup.currency}">
+              </span>
+          </div>
+        </div>
+        <!-- /ko -->
+        <!-- Sales Tax -->
+        <!-- ko if: $parents[2].cart().showTaxSummary -->
+        <div class="row">
+          <div class="col-xs-8">
+              <span id="CC-scheduledOrder-orderDetails-salesTax-label-mobile" class="titleText" data-bind="widgetLocaleText: 'salesTaxText'">
+              </span>
+          </div>
+          <div class="col-xs-4">
+              <span id="CC-scheduledOrder-orderDetails-salesTax-value-mobile" class="titleText pull-right" data-bind="currency: { price: tax, currencyObj: $parent.priceListGroup.currency}">
+              </span>
+          </div>
+        </div>
+        <!-- /ko -->
+
+        <!-- Gift Card Used -->
+        <!-- ko if: $parents[2].isGiftCardUsed() -->
+
+        <!-- ko foreach: $parent.payments -->
+        <!-- ko if: paymentMethod == "physicalGiftCard" -->
+        <div class="row">
+          <div class="col-xs-8">
+              <span class="titleText" data-bind="widgetLocaleText: maskedCardNumber, attr: {id: 'CCscheduledOrder-orderDetails-giftCard-label-mobile-'+$index()}">
+              </span>
+          </div>
+          <div class="col-xs-4">
+              <span class="titleText pull-right" data-bind="currency: { price: -amount, currencyObj: $parents[1].priceListGroup.currency},
+                  attr: {id: 'CC-scheduledOrder-orderDetails-giftCard-value-mobile-'+$index()}">
+              </span>
+          </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko with: $parent.discountInfo -->
+        <!-- ko if: orderImplicitDiscountList -->
+        <small data-bind="foreach: orderImplicitDiscountList">
+          <div class="discount">
+            <div>
+              <span data-bind="widgetLocaleText : promotionDesc, attr: { id: 'CC-scheduledOrder-orderDetails-orderImplicitDiscountList-mobile-'+$data.promotionId}"></span>
+            </div>
+          </div>
+        </small>
+        <!-- /ko -->
+        <!-- ko if: $parents[2].claimedCouponMultiPromotions -->
+        <small data-bind="foreach: $parents[2].claimedCouponMultiPromotions">
+          <div data-bind="foreach: $data.promotions">
+            <div class="discount">
+              <!-- ko if: $index() == "0" -->
+              <span data-bind="widgetLocaleText : {value:'orderCouponDisplayText', attr: 'innerText', params: {description: promotionDesc, code : $parent.code}}"></span>
+              <!-- /ko -->
+              <!-- ko ifnot: $index() == "0" -->
+              <span data-bind="widgetLocaleText : {value:'OrderDiscountDesc', attr: 'innerText', params: {discountDesc: promotionDesc}}"></span>
+              <!-- /ko -->
+            </div>
+        </small>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- Order Total excluding tax -->
+      <!-- ko if: ($parent.taxPriceInfo.isTaxIncluded && $parents[2].cart().showTaxSummary) -->
+      <div class="row">
+        <div class="col-xs-8">
+              <span id="CC-scheduledOrder-orderDetails-orderTotal-extax-label-mobile" class="titleText" data-bind="widgetLocaleText: 'totalExcludingTaxText'">
+              </span>
+        </div>
+        <div class="col-xs-4">
+              <span id="CC-scheduledOrder-orderDetails-orderTotal-extax-value-mobile" class="titleText pull-right" data-bind="currency: { price: totalWithoutTax, currencyObj: $parent.priceListGroup.currency}">
+              </span>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- Order Total -->
+      <div class="row">
+        <div class="col-xs-8">
+          <div id="CC-scheduledOrder-orderDetails-orderTotal-label-mobile" class="titleText" data-bind="widgetLocaleText: 'orderTotalText'">
+          </div>
+          <!-- ko if: ($parent.taxPriceInfo.isTaxIncluded && $parents[2].cart().showTaxSummary) -->
+          <div data-bind="widgetLocaleText:'includingTaxText'"></div>
+          <!-- /ko -->
+        </div>
+        <div class="col-xs-4">
+              <span id="CC-scheduledOrder-orderDetails-orderTotal-value-mobile" class="titleText pull-right" data-bind="currency: { price: total, currencyObj: $parent.priceListGroup.currency}">
+              </span>
+        </div>
+      </div>
+    </div>
+    <!-- /ko -->
+  </div>
+</div>
+
+<div class="row solidFrame" id="CC-scheduledOrder-orderDetails-shipping-priceInfo">
+  <div class="col-md-12">
+    <h3 data-bind="widgetLocaleText: 'shippingAddressAndMethodText'"></h3>
+    <div class="row">
+      <div class="col-md-3">
+        <strong data-bind="widgetLocaleText: 'shippingToText'"></strong>
+        <!-- ko with: $data.shippingAddress -->
+        <div data-bind="widgetLocaleText : {
+                                  value: 'fullName', attr: 'innerText',
+                                  params: {
+                                    firstName: firstName,
+                                    lastName: lastName
+                                  }
+                                }"></div>
+
+        <div data-bind="widgetLocaleText : {
+                                  value: 'address1',
+                                  attr: 'innerText',
+                                  params: {
+                                    address1: address1
+                                  }
+                                }"></div>
+
+        <!-- ko if: address2 -->
+        <div data-bind="widgetLocaleText : {
+                                    value: 'address2',
+                                    attr: 'innerText',
+                                    params: {
+                                      address2: address2
+                                    }
+                                  }"></div>
+        <!-- /ko -->
+
+        <!-- ko if: $data.regionName -->
+        <div data-bind="widgetLocaleText : {
+                                    value: 'cityStatePostalCode',
+                                    attr: 'innerText',
+                                    params: {
+                                      city: city,
+                                      state: $data.regionName,
+                                      postalCode: postalCode
+                                    }
+                                  }"></div>
+        <!-- /ko -->
+
+        <!-- ko if: !$data.regionName && state -->
+        <div data-bind="widgetLocaleText : {
+                                    value: 'cityStatePostalCode',
+                                    attr: 'innerText',
+                                    params: {
+                                      city: city,
+                                      state: state,
+                                      postalCode: postalCode
+                                    }
+                                  }"></div>
+        <!-- /ko -->
+
+        <!-- ko ifnot: state -->
+        <div data-bind="widgetLocaleText : {
+                                    value: 'cityPostalCode',
+                                    attr: 'innerText',
+                                    params: {
+                                      city: city,
+                                      postalCode: postalCode
+                                    }
+                                  }"></div>
+        <!-- /ko -->
+
+        <!-- ko if: $data.countryName -->
+        <div data-bind="text: $data.countryName"></div>
+        <!-- /ko -->
+
+        <!-- ko ifnot: $data.countryName -->
+        <div data-bind="text: country"></div>
+        <!-- /ko -->
+
+        <!-- /ko -->
+
+      </div>
+
+      <div class="col-md-3">
+
+        <strong data-bind="widgetLocaleText: 'shippingMethodText'"></strong>
+        <!-- ko if: $data.shippingMethod -->
+        <div data-bind="text: shippingGroup.shippingMethodDescription"></div>
+        <!-- /ko -->
+
+        <!-- ko ifnot: $data.shippingMethod -->
+        <div data-bind="widgetLocaleText: 'noShippingMethodText'"></div>
+        <!-- /ko -->
+
+        <!-- ko if: $data.trackingInfo && $data.trackingInfo.length > 0 -->
+        <strong  data-bind="widgetLocaleText: 'trackingNumbersText'"></strong>
+        <!-- ko foreach: trackingInfo -->
+        <span data-bind="text: $data.carrierName"></span>
+        <a data-bind="attr: {
+                                  href: $data.trackingUrl
+                                },
+                                widgetLocaleText : {
+                                  value: 'trackingReferenceReaderText',
+                                  attr: 'aria-label',
+                                  params: {
+                                    carrierName: $data.carrierName,
+                                    trackingReference: $data.trackingNumber
+                                  }
+                                },
+                                text: $data.trackingNumber"
+           target="_blank"></a>
+        <!-- /ko -->
+        <!-- /ko -->
+
+        <!-- ko if: $data.trackingInfo && $data.trackingInfo.length == 0 && $data.trackingNumber != null -->
+        <div data-bind="widgetLocaleText: 'trackingNumbersText'"></div>
+        <div data-bind="text: trackingNumber"></div>
+        <!-- /ko -->
+
+      </div>
+
+      <div class="col-md-3">
+        <!-- ko if: $data.payments -->
+        <strong data-bind="widgetLocaleText: 'paymentDetailsText'"></strong>
+
+        <!-- ko foreach: $data.payments -->
+        <div>
+          <span data-bind="text: $data.paymentMethod"></span> -
+		  <span data-bind="text: $data.PONumber"></span>
+        </div>
+        <!-- /ko -->
+
+        <!-- /ko -->
+
+      </div>
+
+      <div id="CC-scheduledOrder-orderDetails-priceDetails" class="col-md-3 hidden-xs">
+        <!-- ko with: priceInfo -->
+        <div>
+          <!-- Sub-Total -->
+          <div class="row">
+            <div class="col-xs-7">
+              <div id="CC-scheduledOrder-orderDetails-subTotal-label" class="titleText" data-bind="widgetLocaleText: 'subtotalText'">Sub Total</div>
+              <!-- ko if: ($parent.taxPriceInfo.isTaxIncluded && $parents[2].cart().showTaxSummary) -->
+              <div data-bind="widgetLocaleText: 'includingTaxText'"></div>
+              <!-- /ko -->
+            </div>
+            <div class="col-xs-5">
+                    <span id="CC-scheduledOrder-orderDetails-subTotal-value" class="titleText pull-right" data-bind="currency: { price: subTotal, currencyObj: $parent.priceListGroup.currency},
+                attr: { id:'CC-orderDetails-productDetails-subTotal' }"></span>
+            </div>
+          </div>
+          <!-- Discount -->
+          <!-- ko if: $parent.discountInfo.orderDiscount -->
+          <div class="row">
+            <div class="col-xs-7">
+              <span id="CC-scheduledOrder-orderDetails-discount-label" class="titleText" data-bind="widgetLocaleText: 'discountText'"></span>
+            </div>
+            <div class="col-xs-5">
+                <span id="CC-scheduledOrder-orderDetails-discount-value" class="breakWord titleText pull-right"
+                      data-bind="currency: { price: -$parent.discountInfo.orderDiscount, currencyObj: $parent.priceListGroup.currency}">
+                </span>
+            </div>
+          </div>
+          <!-- /ko -->
+          <!-- Shipping -->
+          <div class="row">
+            <div class="col-xs-8">
+              <span id="CC-scheduledOrder-orderDetails-shippingMethod-value" class="breakWord titleText" data-bind="widgetLocaleText: {value: 'shippingMethodValueText', attr: 'innerText', params: {shippingMethod :$parent.shippingGroup.shippingMethodDescription}}"></span>
+            </div>
+            <div class="col-xs-4">
+              <span id="CC-scheduledOrder-orderDetails-shippingPrice-value" class="titleText pull-right"
+                    data-bind="currency: { price: shipping, currencyObj: $parent.priceListGroup.currency}">
+              </span>
+            </div>
+          </div>
+          <!-- ko if: $parent.discountInfo.shippingDiscount !== 0 -->
+          <div class="row">
+            <div class="col-xs-7">
+              <span id="CC-scheduledOrder-orderDetails-shippingDiscount-label" class="titleText" data-bind="widgetLocaleText: 'shippingDiscountText'"></span>
+            </div>
+            <div class="col-xs-5">
+                <span id="CC-scheduledOrder-orderDetails-shippingDiscount-value" class="breakWord titleText pull-right" data-bind="currency: { price: -$parent.discountInfo.shippingDiscount, currencyObj: $parent.priceListGroup.currency}">
+                </span>
+            </div>
+          </div>
+          <!-- /ko -->
+          <!-- Shipping Surcharge -->
+          <!-- ko if: shippingSurchargeValue &&  shippingSurchargeValue !== 0 -->
+          <div class="row">
+            <div class="col-xs-8">
+              <span id="CC-scheduledOrder-orderDetails-shippingSurcharge-label" class="titleText" data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>
+            </div>
+            <div class="col-xs-4">
+              <span id="CC-scheduledOrder-orderDetails-shippingSurcharge-value" class="titleText pull-right" data-bind="currency: { price: shippingSurchargeValue, currencyObj: $parent.priceListGroup.currency}">
+              </span>
+            </div>
+          </div>
+          <!-- /ko -->
+          <!-- Sales Tax -->
+          <!-- ko if: $parents[2].cart().showTaxSummary -->
+          <div class="row">
+            <div class="col-xs-8">
+              <span id="CC-scheduledOrder-orderDetails-salesTax-label" class="titleText" data-bind="widgetLocaleText: 'salesTaxText'">
+              </span>
+            </div>
+            <div class="col-xs-4">
+              <span id="CC-scheduledOrder-orderDetails-salesTax-value" class="titleText pull-right" data-bind="currency: { price: tax, currencyObj: $parent.priceListGroup.currency}">
+              </span>
+            </div>
+          </div>
+          <!-- /ko -->
+
+          <!-- Gift Card Used -->
+          <!-- ko if: $parents[2].isGiftCardUsed() -->
+          <span class="titleText" data-bind="widgetLocaleText:'giftCardUsedText'"></span>
+          <!-- /ko -->
+          <!-- ko foreach: $parent.payments -->
+          <!-- ko if: paymentMethod == "physicalGiftCard" -->
+          <div class="row">
+            <div class="col-xs-8">
+              <span class="titleText" data-bind="widgetLocaleText: maskedCardNumber, attr: {id: 'CC-scheduledOrder-orderDetails-giftCard-label-'+$index()}">
+              </span>
+            </div>
+            <div class="col-xs-4">
+              <span class="titleText pull-right" data-bind="currency: { price: -amount, currencyObj: $parents[1].priceListGroup.currency},
+                  attr: {id: 'CC-scheduledOrder-orderDetails-giftCard-value-'+$index()}">
+              </span>
+            </div>
+          </div>
+          <!-- /ko -->
+          <!-- /ko -->
+
+          <!-- ko with: $parent.discountInfo -->
+          <!-- ko if: orderImplicitDiscountList -->
+          <small data-bind="foreach: orderImplicitDiscountList">
+            <div class="discount" data-bind="attr: { id: 'CC-scheduledOrder-orderDetails-orderImplicitDiscountList-' + $data.promotionId}">
+              <div>
+                <!-- ko if : $data.promotionLevel === "order" -->
+                <span data-bind="widgetLocaleText : {value:'OrderDiscountDesc', attr: 'innerText', params: {discountDesc: promotionDesc}}"></span>
+                <!-- /ko -->
+                <!-- ko if : $data.promotionLevel === "item" -->
+                <span data-bind="widgetLocaleText : promotionDesc"></span>
+                <!-- /ko -->
+                <!-- ko if : $data.promotionLevel === "shipping" -->
+                <span data-bind="widgetLocaleText : promotionDesc"></span>
+                <!-- /ko -->
+              </div>
+            </div>
+          </small>
+          <!-- /ko -->
+          <!-- ko if: $parents[3].claimedCouponMultiPromotions -->
+          <small data-bind="foreach: $parents[3].claimedCouponMultiPromotions">
+            <div data-bind="foreach: $data.promotions">
+              <div class="discount">
+                <!-- ko if: $index() == "0" -->
+                <!-- ko if : $data.promotionLevel === "order" -->
+                <span data-bind="widgetLocaleText : {value:'orderCouponDisplayText', attr: 'innerText', params: {description: promotionDesc, code : $parent.code}}"></span>
+                <!-- /ko -->
+                <!-- ko if : $data.promotionLevel === "item" -->
+                <span data-bind="widgetLocaleText : {value:'couponDisplayText', attr: 'innerText', params: {description: promotionDesc, code : $parent.code}}"></span>
+                <!-- /ko -->
+                <!-- ko if : $data.promotionLevel === "shipping" -->
+                <span data-bind="widgetLocaleText : {value:'couponDisplayText', attr: 'innerText', params: {description: promotionDesc, code : $parent.code}}"></span>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko ifnot: $index() == "0" -->
+                <!-- ko if : $data.promotionLevel === "order" -->
+                <span data-bind="widgetLocaleText : {value:'OrderDiscountDesc', attr: 'innerText', params: {discountDesc: promotionDesc}}"></span>
+                <!-- /ko -->
+                <!-- ko if : $data.promotionLevel === "item" -->
+                <span data-bind="text : promotionDesc"></span>
+                <!-- /ko -->
+                <!-- ko if : $data.promotionLevel === "shipping" -->
+                <span data-bind="text : promotionDesc"></span>
+                <!-- /ko -->
+                <!-- /ko -->
+              </div>
+            </div>
+          </small>
+          <!-- /ko -->
+          <!-- /ko -->
+          <!-- Order Total excluding tax -->
+          <!-- ko if: ($parent.taxPriceInfo.isTaxIncluded && $parents[2].cart().showTaxSummary) -->
+          <div class="row" id="CC-scheduledOrder-orderDetails-orderTotal-extax">
+            <div class="col-xs-8">
+              <span id="CC-scheduledOrder-orderDetails-orderTotal-extax-label" class="titleText" data-bind="widgetLocaleText: 'totalExcludingTaxText'">
+              </span>
+            </div>
+            <div class="col-xs-4">
+              <span id="CC-scheduledOrder-orderDetails-orderTotal-extax-value" class="titleText pull-right" data-bind="currency: { price: totalWithoutTax, currencyObj: $parent.priceListGroup.currency}">
+              </span>
+            </div>
+          </div>
+          <!-- /ko -->
+          <!-- Order Total -->
+          <div class="row" id="CC-scheduledOrder-orderDetails-orderTotal">
+            <div class="col-xs-8">
+              <div id="CC-scheduledOrder-orderDetails-orderTotal-label" class="titleText" data-bind="widgetLocaleText: 'orderTotalText'">
+              </div>
+              <!-- ko if: ($parent.taxPriceInfo.isTaxIncluded && $parents[2].cart().showTaxSummary) -->
+              <div data-bind="widgetLocaleText:'includingTaxText'"></div>
+              <!-- /ko -->
+            </div>
+            <div class="col-xs-4">
+              <span id="CC-scheduledOrder-orderDetails-orderTotal-value" class="titleText pull-right" data-bind="currency: { price: total, currencyObj: $parent.priceListGroup.currency}">
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- /ko -->
+      </div>
+      <div data-bind="widgetLocaleText: 'scheduledOrderTotalInstructionText'" class="CC-scheduledOrder-orderDetails-instructions"></div>
+    </div>
+  </div>
+</div>
+
+<!-- /ko -->
+<!-- end of template order -->
+
+<!-- /ko -->
+<!-- end of scheduled order -->
+<div class="row" id="CC-scheduledOrder-orderDetails-button-group">
+  <div class="col-xs-6 button-group">
+    <button data-bind="widgetLocaleText:'buttonDelete'"
+            data-toggle="modal"
+            data-target="#cc-scheduleOrder-Modal"
+            type="button" class="btn btn-default btn-sm">
+    </button>
+    <!-- ko if:($data.cart().items().length > 0) -->
+    <button data-bind="widgetLocaleText:'addItemsToCart'"
+                    data-toggle="modal"
+                    data-target="#cc-placeOrder-ModalContainer"
+                    type="button"
+                    class="btn btn-default btn-sm">
+     </button>
+     <!-- /ko -->
+     <!-- ko if:($data.cart().items().length == 0) -->
+     <button data-bind="click: $data.mergeToCart.bind($data),
+                    widgetLocaleText:'addItemsToCart'"
+            type="button"
+            class="btn btn-default btn-sm">
+    </button>
+     <!-- /ko -->
+  </div>
+  <div class="text-right button-group col-xs-6">
+    <button data-bind="click: $data.closeScheduledOrder.bind($data),
+                    widgetLocaleText:'buttonCancel'"
+            type="button"
+            class="btn btn-default btn-sm">
+    </button>
+    <button data-bind="click: $data.saveScheduledOrder.bind($data),
+                    enable: $data.scheduledOrder().dirtyFlag.isDirty(),
+                    widgetLocaleText:'buttonSave'"
+            type="submit"
+            class="btn btn-primary btn-sm">
+    </button>
+    <br>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div data-bind="modal: 0,
+                    modalTabbingContraint"
+     class="modal width-fixed fade cc-modalForm"
+     id="cc-scheduleOrder-Modal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3 data-bind="widgetLocaleText:'deleteScheduleModalMessage'"
+            class="modal-title text-center"></h3>
+      </div>
+      <div class="modal-footer">
+        <button data-bind="click: $data.deleteScheduledOrder.bind($data),
+                               widgetLocaleText:'buttonYes'"
+                type="button"
+                class="btn btn-primary btn-sm"></button>
+        <button data-bind="widgetLocaleText:'buttonNo'"
+                data-dismiss="modal"
+                type="button"
+                class="btn btn-default btn-sm"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Place Order Modal-->
+            <div data-bind="modal: 0,
+                            modalTabbingContraint"
+                  class="modal width-fixed fade cc-modalForm"
+                  id="cc-placeOrder-ModalContainer">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <text data-bind="widgetLocaleText:'addItemsToCartModalMessage'"
+                        class="modal-title text-center"></text>
+                  </div>
+                  <div class="modal-footer">
+                    <div><button data-bind="click: $data.mergeToCart.bind($data),
+                                       widgetLocaleText:'buttonOk'"
+                                       data-dismiss="modal"
+                            type="button"
+                            class="btn btn-primary btn-sm"></button>
+                    <button data-bind="widgetLocaleText:'buttonCancel'"
+                            data-dismiss="modal"
+                            type="button"
+                            class="btn btn-primary btn-sm"></button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<!-- Cancel Modal -->
+<div data-bind="modal: 0,
+                    modalTabbingContraint"
+     class="modal width-fixed fade cc-modalForm"
+     id="cc-cancel-scheduleOrder-ModalContainer">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" id="cc-cancel-scheduleOrder-ModalPane">
+      <div class="modal-body">
+        <h4 data-bind="widgetLocaleText:'cancelScheduleModalMessage'"
+            class="modal-title text-center"></h3>
+      </div>
+      <div class="modal-footer">
+        <button data-bind="click: $data.redirectToListingPage.bind($data),
+                               widgetLocaleText:'buttonYes'"
+                type="button"
+                class="btn btn-primary btn-sm"></button>
+        <button data-bind="widgetLocaleText:'buttonNo'"
+                data-dismiss="modal"
+                type="button"
+                class="btn btn-default btn-sm"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /ko -->
+<!-- end of display -->
+</div>

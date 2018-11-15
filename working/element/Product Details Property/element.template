@@ -1,0 +1,11 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('productDetailsProperty') -->
+    <!-- ko if: $data.elements.productDetailsProperty.processDotNotation($elementInstance.textId) -->
+    <div data-bind="onRender:$data.elements.productDetailsProperty.onRender" class="product-details-accordion-item">
+        <input class="product-details-accordion-item--checkbox" type="checkbox" data-bind="attr:{id:'checkbox' + $elementInstance.id}" />
+        <label class="product-details-accordion-item--title" data-bind="attr:{for:'checkbox' + $elementInstance.id}, html: $elementInstance.config.richText.content"></label>
+        <div class="product-details-accordion-item--description"  data-bind="html:$data.elements.productDetailsProperty.processDotNotation($elementInstance.textId)"></div>
+    </div>
+    <!-- /ko -->
+<!-- /ko -->
+
+

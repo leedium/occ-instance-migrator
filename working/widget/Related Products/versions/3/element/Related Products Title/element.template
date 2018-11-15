@@ -1,0 +1,1 @@
+<span data-bind="widgetLocaleText:{custom: $elementInstance.textId, value: 'relatedProductsText', attr:'innerText'}" role="alert" aria-atomic="true" aria-live="polite"></span>

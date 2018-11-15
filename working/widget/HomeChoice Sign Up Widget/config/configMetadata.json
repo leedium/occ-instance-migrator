@@ -1,0 +1,26 @@
+{
+  "widgetDescriptorName": "homechoiceSignUp",
+  "properties": [
+    {
+      "defaultValue": "https://www.pages03.net/homechoice/hcWebsite_Signup/Website_Signup?Email=$EMAIL_ADDRESS&formSourceName=StandardForm&sp_exp=yes&NameSource_Campaign=Website_Signup",
+      "id": "endpointUrl",
+      "helpTextResourceId": "endpointUrlHelp",
+      "labelResourceId": "endpointUrlLabel",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": "transparent",
+      "id": "widgetBackgroundColour",
+      "helpTextResourceId": "widgetBackgroundColourHelp",
+      "labelResourceId": "widgetBackgroundColourLabel",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": "transparent",
+      "id": "titleColour",
+      "helpTextResourceId": "titleColourHelp",
+      "labelResourceId": "titleColourLabel",
+      "type": "stringType"
+    }
+  ]
+}

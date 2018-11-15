@@ -1,0 +1,23 @@
+{
+  "imports": [
+    "order",
+    "shippingCountriesPriceListGroup",
+    "shippingCountries",
+    "billingCountries",
+    "defaultShippingCountry",
+    "defaultBillingCountry"
+  ],
+  "translations": [
+    {
+      "name": "Profile - Delivery Address Widget",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "config": {
+    "displaySWM": "true"
+  }
+}

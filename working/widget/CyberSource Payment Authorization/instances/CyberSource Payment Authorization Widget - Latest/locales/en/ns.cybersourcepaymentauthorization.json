@@ -1,0 +1,33 @@
+{
+  "resources": {
+    "101": "(101) Your credit card has been declined, please use an alternative card.",
+    "102": "(102) Your credit card has been declined, please use an alternative card.",
+    "104": "(104) Your credit card has been declined, please use an alternative card.",
+    "110": "(110) Your credit card has been declined, please use an alternative card.",
+    "150": "(150) We experienced a technical problem contacting you credit card's issuing bank. Please try again or use an alternative card.",
+    "151": "(151) We experienced a technical problem. Please try again in a little while.",
+    "152": "(152) We experienced a technical problem. Please try again in a little while.",
+    "200": "(200) The billing address you provided does not match the address on file with your credit card. Please check the address and try again.",
+    "201": "(201) Your credit card has been declined, please use an alternative card.",
+    "202": "(202) Please check your card's expiration date and try again.",
+    "203": "(203) Your credit card has been declined, please use an alternative card.",
+    "204": "(204) Your credit card has been declined, please use an alternative card.",
+    "205": "(205) Your credit card has been declined, please use an alternative card.",
+    "207": "(207) We experienced a technical problem contacting you credit card's issuing bank. Please try again or use an alternative card.",
+    "208": "(208) Your credit card has been declined, please use an alternative card.",
+    "209": "(209) Your credit card has been declined, please use an alternative card.",
+    "210": "(210) Your credit card has been declined, please use an alternative card.",
+    "211": "(211) Your credit card has been declined, please use an alternative card.",
+    "221": "(221) Your credit card has been declined, please use an alternative card.",
+    "230": "(230) Your credit card has been declined, please use an alternative card.",
+    "231": "(231) Your credit card has been declined, please use an alternative card.",
+    "232": "(232) Your credit card has been declined, please use an alternative card.",
+    "233": "(233) Your credit card has been declined, please use an alternative card.",
+    "234": "(234) Your credit card has been declined, please use an alternative card.",
+    "476": "(476) Card not authenticated for use, please use an alternative card.",
+    "520": "(520) Your credit card has been declined, please use an alternative card.",
+    "1000": "(1000) Your credit card has been declined, please use an alternative card.",
+    "processingText": "Processing, please wait. Do not click the refresh or back button as your transaction may be interrupted or terminated.",
+    "paymentErrorText": "We experienced a technical problem. Please try again in a little while."
+  }
+}

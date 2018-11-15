@@ -1,0 +1,46 @@
+<!-- ko if: ( $data.user().loggedIn() || $data.user().isUserSessionExpired() ) -->
+<div id="SWM-settingsNotification-section" data-bind="visible: $data.showWidget()">
+  <h3 data-bind="widgetLocaleText: 'spaceSettingsNotificationHeadingText'"></h3>
+  <hr />
+  <h4 data-bind="widgetLocaleText: 'spaceSettingsNotificationIntroText'"></h4>
+  <h5 data-bind="widgetLocaleText: 'spaceSettingsNotificationEnableHelpText', visible: !$data.user().emailMarketingMails()"></h5>
+  
+  <!-- Comment Notification Group -->
+  <div class="row swm-slider-group">
+    <span class="col-xs-6 col-sm-4 col-md-3 col-lg-3" data-bind="widgetLocaleText: 'spaceSettingsCommentNotificationTxt'"></span>
+    <div class="col-xs-6 col-sm-8 col-md-9 col-lg-9">
+      <div data-bind="click: $data.user().emailMarketingMails() ? toggleCommentsNotificationSetting : null" class="btn-group">
+        <button class="btn btn-xs" data-bind="css: { 'swm-btn-active' : notificationSettingComments(), 'swm-btn-inactive' : !notificationSettingComments() }, widgetLocaleText: 'spaceSettingsOnText', enable: $data.user().emailMarketingMails()"></button>
+        <button class="btn btn-xs" data-bind="css: { 'swm-btn-inactive' : notificationSettingComments(), 'swm-btn-active' : !notificationSettingComments() }, widgetLocaleText: 'spaceSettingsOffText', enable: $data.user().emailMarketingMails()"></button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- New Member Notification Group -->
+  <div class="row swm-slider-group">
+    <span class="col-xs-6 col-sm-4 col-md-3 col-lg-3" data-bind="widgetLocaleText: 'spaceSettingsNewMemberNotificationTxt'"></span>
+    <div class="col-xs-6 col-sm-8 col-md-9 col-lg-9">
+      <div data-bind="click: $data.user().emailMarketingMails() ? toggleNewMemberNotificationSetting : null" class="btn-group">
+        <button class="btn btn-xs" data-bind="css: { 'swm-btn-active' : notificationSettingNewMember(), 'swm-btn-inactive' : !notificationSettingNewMember() }, widgetLocaleText: 'spaceSettingsOnText', enable: $data.user().emailMarketingMails()"></button>
+        <button class="btn btn-xs" data-bind="css: { 'swm-btn-inactive' : notificationSettingNewMember(), 'swm-btn-active' : !notificationSettingNewMember() }, widgetLocaleText: 'spaceSettingsOffText', enable: $data.user().emailMarketingMails()"></button>
+      </div>
+    </div>    
+  </div>
+  
+  <!-- Save / Cancel -->
+  <div class="row" data-bind="visible: $data.isSettingsFormDirty()">
+    <div class="visible-xs col-xs-6">
+      <button class="cc-button-secondary btn-block" data-bind="widgetLocaleText: 'spaceSettingsCancelTxt', click: settingsCancelHandler"></button>
+    </div>
+    <div class="visible-xs col-xs-6">
+      <button class="cc-button-primary btn-block" data-bind="widgetLocaleText: 'spaceSettingsSaveTxt', click: settingsSaveHandler"></button>
+    </div>
+    <div class="hidden-xs col-sm-12">
+      <div class="pull-right">
+        <button class="cc-button-secondary" data-bind="widgetLocaleText: 'spaceSettingsCancelTxt', click: settingsCancelHandler"></button>
+        <button class="cc-button-primary" data-bind="widgetLocaleText: 'spaceSettingsSaveTxt', click: settingsSaveHandler"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /ko -->

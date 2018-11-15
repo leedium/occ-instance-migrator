@@ -1,0 +1,20 @@
+<div id="CC-commonInfoPanel" data-bind="visible: isViewVisible()">
+    <br/>
+    <div class="alert alert-info" role="info">
+        <h1></h1>
+        <p></p>
+        <div>
+            <ul>
+                <li>
+                    <button data-bind="click: clickLogin" class="btn cc-button-primary">Login</button>
+                </li>
+                <li>
+                    <a data-bind="ccLink: {route:'register'}" class="btn cc-button-primary">Registration</a>
+                </li>
+                <li>
+                    <a data-bind="visible: cart().allItems().length, ccLink: {route:'home'}"  class="btn cc-button-primary">Continue Shopping</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

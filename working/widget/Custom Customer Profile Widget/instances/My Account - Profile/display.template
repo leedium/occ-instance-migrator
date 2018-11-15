@@ -1,0 +1,305 @@
+<!-- ko if: (user().loggedIn() || user().isUserSessionExpired()) -->
+<div id="CC-customerAccount" class="customer-profile">
+  <h2 data-bind="widgetLocaleText:'myAccountText'" id="CC-customerAccount-title"></h2>
+              <a href="#" data-bind="click:$data.handleSignout" 
+                    class="AccountLogout">LOG OUT</a>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6 font22">
+        <b>Account Number: </b>
+        <span data-bind="text:hcPersonNo"></span>
+    </div>
+    <div class="col-md-6 font22">
+        <b>My Credit Limit: </b>
+        <span data-bind="text:amountATB"></span>
+    </div>
+  </div>
+<br>
+<br>
+  <div>
+    <div class="accountTable">
+      <div class="row accountLabel">
+        <div class=" col-md-12">
+          <div>
+            <b>Terms Account</b>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class=" col-md-4">
+          <div class="green">Now Due</div>
+        </div>
+        <div class=" col-md-4">
+          <div class="green" data-bind="text:hcDueNowDate"></div>
+        </div>
+        <div class=" col-md-4">
+          <div class="green" data-bind="text:hcDueNow"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class=" col-md-4">
+          <div>Last Payment</div>
+        </div>
+        <div class=" col-md-4">
+          <div data-bind="text:hcLastPaymentDate"></div>
+        </div>
+        <div class=" col-md-4">
+          <div data-bind="text:hcLastPayment"></div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="accountTable">
+      <div class="row accountLabel">
+        <div class=" col-md-12">
+          <div>
+            <b>Cash Account</b>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class=" col-md-4">
+          <div>Last Payment</div>
+        </div>
+        <div class=" col-md-4">
+          <div data-bind="text:hcLastPaymentCashDate"></div>
+        </div>
+        <div class=" col-md-4">
+          <div data-bind="text:hcLastPaymentCash"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <br />
+    If you would like to know your outstanding balance, 
+    please phone our call centre on <a href="tel:0861999635" style="color:black" ><b>0861 999 635</b></a>
+    and you can also enquire about your settlement amount.
+  </p>
+  <p>
+    <b>Please note:</b> Cash, deposit and EFT payments may not be refelected here immediately.
+  </p>
+
+  <hr/>
+    <div class="row">
+      <div class="col-sm-6">
+        <a href="http://sso-dev.homechoice.co.za/auth/realms/occ/account/password" style="color: #000; font-size: 24px; font-family: 'Roboto','Helvetica Neue',Helvetica" class="kc-reset-passwrd">Change my password</a>
+      </div>
+    </div>
+  <hr/>
+    <div class="row">
+        <div class="col-sm-6">
+          
+            <div>
+              <a class="cc-button-primary " role="button" href="#" data-bind="disabled: {condition: handleRequestStatementDisabled}, click: handleRequestStatement" style="height: 40px;
+              line-height: 20px;
+            float: left;
+            width: 46%;
+            padding: 10px 15px;">
+                  <span>Request Statement</span>
+              </a>
+            </div>
+            <div data-bind="html: handleRequestStatementMessage" style="color: #000;
+            font-size: 24px;
+            padding: 0px 0 0 10px;
+            float: left;
+            width: 54%;">
+
+            </div>
+          
+        </div>
+        <div class="col-sm-6">
+          
+            <a class="cc-button-primary " role="button" href="#" data-bind="disabled: {condition: handleRequestSettlementLetterDisabled}, click: handleRequestSettlementLetter" style="height: 40px;
+            line-height: 20px;
+            float: left;
+            width: 46%;
+            padding: 10px 15px;">
+                <span>Request Settlement Letter</span>
+            </a>
+            <div data-bind="html: handleRequestSettlementLetterMessage" style="color: #000;
+            font-size: 24px;
+            padding: 0px 0 0 10px;
+            float: left;
+            width: 54%;">
+
+            </div>
+          
+        </div>
+    </div>
+  <hr/>
+    <div class="row">
+      <div class="col-sm-6" >
+              <legend >
+                <span data-bind="widgetLocaleText:'userDetailsText'" class="header-section">My Details</span>
+              </legend>
+
+
+<!-- ko with: user -->
+
+  <!-- ko foreach: dynamicProperties -->
+    <!-- ko if: $data.id() == "title" -->
+                  <div class="row">
+                      <div class="col-md-4">
+                        <b>Title</b>
+                      </div>
+                      <div class="col-md-8" data-bind="text: value">
+                
+                      </div>
+                  </div>
+    <!-- /ko -->
+  <!-- /ko -->
+              <div class="row">
+                  <div class="col-md-4">
+                    <b>Name</b>
+                  </div>
+                  <div class="col-md-8" data-bind="text: firstName">
+            
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4">
+                    <b>Surname</b>
+                  </div>
+                  <div class="col-md-8" data-bind="text: lastName">
+            
+                  </div>
+              </div>
+              <!-- ko foreach: dynamicProperties -->
+                <!-- ko if: $data.id() == "hcDOB" -->
+              <div class="row">
+                  <div class="col-md-4">
+                    <b>Date fo Birth</b>
+                  </div>
+                  <div class="col-md-8" data-bind="text: function(v){
+                      return (v + '').split('T')[0];
+                    }(value())">
+            
+                  </div>
+              </div>
+              <!-- /ko -->
+            <!-- /ko -->
+              <div class="row">
+                  <div class="col-md-4">
+                    <b>Email</b>
+                  </div>
+                  <div class="col-md-8" data-bind="text: email">
+            
+                  </div>
+              </div>
+              <!-- ko foreach: dynamicProperties -->
+                <!-- ko if: $data.id() == "mobileTelephoneNumber" -->
+              <div class="row">
+                  <div class="col-md-4">
+                    <b>Mobile Number</b>
+                  </div>
+                  <div class="col-md-8" data-bind="text: value">
+                  </div>
+              </div>
+              <!-- /ko -->
+            <!-- /ko -->
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-8">
+                  <br>
+                    <a data-toggle="modal" data-target="#modalEditDetails" class="cc-button-primary" role="button" href="#" style="height: 40px;
+                      line-height: 20px;
+                      padding: 10px 25px;"
+                      data-bind="click: $parent.DoEditInit">
+                        <span>Edit Details</span>
+                    </a>
+                </div>
+            </div>
+<!-- /ko -->
+
+<div class="modal fade" id="modalEditDetails" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="color:#000; font-weight: bold;font-size: 18px;">Edit Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -20px;">
+            <span aria-hidden="true" style="color:#000">X</span>
+          </button>
+        </div>
+        <div style="padding:20px;">
+
+                <div class="row">
+                    <div class="form-group col-sm-8">
+                        
+
+                        <div class="row">
+                            <div class="form-group col-sm-12">
+                                <label class="" for="CC-checkoutAddressBook-saddress1" >Email </label>
+                                <div class="control">
+                                    <input type="text" autocomplete="off" class="col-md-12 form-control" aria-required="true"
+                                      data-bind="value: EditEmail" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-12">
+                                <label class="" for="CC-checkoutAddressBook-saddress1" >Mobile Number </label>
+                                <div class="control">
+                                    <input type="text" autocomplete="off" class="col-md-12 form-control" aria-required="true"
+                                      data-bind="value: EditMobile" required="required">
+                                </div>
+                            </div>
+                        </div>
+                      
+                    
+                        <div class="row" >
+                            <div class="form-group col-sm-12">
+                                <br >
+                                <button class="cc-button-primary"  style="height: 40px;
+                                    line-height: 20px;
+                                    padding: 10px 25px;"
+                                    data-bind="disabled: {condition: DoEditDisabled}, click: DoEdit">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4" data-bind="html: DoEditMessage">
+                    </div>
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+      </div>
+    </div>
+  <hr />
+
+  <div id="CC-customerAccount-details">
+    <div class="row">
+      <div class="col-sm-6">
+        <div id="CC-customerProfile-orderDetails-section" class="cc-customerProfile-order-details" data-bind="template: { name: templateAbsoluteUrl('/templates/customerProfileOrders.template') , templateUrl: ''}">
+        </div>
+        <br/>
+      </div>
+      <div class="col-sm-6">
+        <!-- ko if: showSWM -->
+        <div id="CC-customerProfile-spaceSettings-section" class="cc-customerProfile-space-settings" data-bind="template: { name: templateAbsoluteUrl('/templates/customerProfileSpaceSettings.template') , templateUrl: ''}">
+        </div>
+        <br/>
+        <!-- /ko -->
+      </div>
+    </div>
+      <div id="CC-customerProfile-profileDetails-section" class="row cc-customerProfile-profile-details" data-bind="template: { name: templateAbsoluteUrl('/templates/customerProfileDetails.template') , templateUrl: ''}">
+      </div>
+    <div style="position:relative">
+          <div class="DistrictResultsP" >
+            <ul>
+            </ul>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- /ko -->
