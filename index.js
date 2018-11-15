@@ -407,7 +407,15 @@ async function plsuTransferAll() {
 async function clean() {
   await deleteFilePath([
     TEMP_FOLDER,
-    WORKING_FOLDER
+    WORKING_FOLDER,
+    '.ccc',
+    'element',
+    'global',
+    'snippets',
+    'stack',
+    'theme',
+    'widget'
+
   ]);
   await checkoutBranch(BRANCH_MASTER);
   await addAll();
