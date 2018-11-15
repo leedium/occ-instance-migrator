@@ -1,0 +1,49 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1800019": {
+    "id": "1800019",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m200031')}",
+      "sourceMedia": "m200031"
+    }
+  },
+  "1800020": {
+    "id": "1800020",
+    "image": {
+      "altText": "Luggage",
+      "altTextId": "2000019",
+      "isProductImage": false,
+      "src": "/file/v7453836779388782667/general/luggage.png",
+      "titleText": "Luggage",
+      "titleTextId": "2000020",
+      "zoomEnabled": false
+    }
+  }
+}} --><!-- /ko -->
+
+<div data-bind="css: cssClasses()" class="hc-content-block popularCat hc-content-block__1-row" data-oc-id="hc-content-block">
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: contentBlockImage -->
+<div data-bind="element: 'contentBlockImage',id: '1800020'"></div>
+
+      <!-- /oc -->
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1800019'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>

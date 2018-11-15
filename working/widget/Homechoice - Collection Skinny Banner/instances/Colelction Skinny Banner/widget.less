@@ -1,0 +1,47 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+    .CustomCategoryBanner,
+    .CustomCategorySkinnyBanner {
+        display: block;
+    }
+    .CustomCategoryBanner{
+    //   margin-left: -141px;
+    //   margin-right: -141px;
+      padding-top: 20px;
+    }    
+    .CustomCategoryBanner .catbanner-lg{
+        width: 100%;
+        margin: auto;
+    }
+    .skinny-sm,
+    .skinny-md,
+    .skinny-lg {
+        display: none;
+    }
+
+    .catbanner-lg,
+    .catbanner-md,
+    .catbanner-sm{
+        display: none;
+    }
+
+    @media (min-width: 992px) {
+        .catbanner-lg ,
+        .skinny-lg {
+            display: block;
+        }
+    }
+
+    @media (max-width: 991px) and (min-width: 481px) {
+        .catbanner-md ,
+        .skinny-md {
+            display: block;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .catbanner-sm ,
+        .skinny-sm {
+            display: block;
+        }
+    }
+}

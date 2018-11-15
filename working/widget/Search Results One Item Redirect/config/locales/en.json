@@ -1,0 +1,6 @@
+{
+  "resources": {
+    "shouldUseOneItemRedirectTextLabel": "Use One Item Result Redirect to PDP",
+    "shouldUseOneItemRedirectHelpText": "Check to enable redirect to PDP if search results listing has one item, rather than show Search Results Listing page."
+  }
+}

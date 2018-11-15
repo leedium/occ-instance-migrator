@@ -1,0 +1,21 @@
+{
+  "imports": [
+    "payment",
+    "order",
+    "paymentauthorization",
+    "shippingmethods"
+  ],
+  "translations": [
+    {
+      "name": "Shopping Cart Order Summary - Terms",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "pageTypes": [
+    "cart"
+  ],
+  "config": {}
+}

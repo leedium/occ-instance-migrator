@@ -1,0 +1,8 @@
+<div class="SkinnyBannerButton">
+  <a data-bind="attr:{href: $data.bannerLink() }" >
+    <img class="hidden-xs " data-bind="attr:{src: $data.bannerLarge() }" style="width: 100%;" />
+    <img class="hidden-sm hidden-md hidden-lg" data-bind="attr:{src: $data.bannerSmall() }" style="width: 100%;" />
+  </a>
+</div>
+
+

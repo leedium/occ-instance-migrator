@@ -1,0 +1,205 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "100003": {"id": "100003"},
+  "100004": {"id": "100004"},
+  "100005": {"id": "100005"},
+  "100006": {"id": "100006"},
+  "100007": {"id": "100007"},
+  "100008": {"id": "100008"},
+  "100019": {"id": "100019"},
+  "100020": {"id": "100020"},
+  "300245": {
+    "id": "300245",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m30183')}",
+      "sourceMedia": "m30183"
+    }
+  },
+  "300250": {
+    "font": {"styles": {
+      "display": "block",
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-decoration": "none"
+    }},
+    "id": "300250",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "300251": {"id": "300251"},
+  "300252": {"id": "300252"},
+  "400016": {"id": "400016"},
+  "400017": {"id": "400017"},
+  "400018": {"id": "400018"},
+  "500097": {
+    "id": "500097",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50092')}",
+      "sourceMedia": "m50092"
+    }
+  },
+  "500132": {
+    "id": "500132",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50152')}",
+      "sourceMedia": "m50152"
+    }
+  },
+  "500133": {
+    "font": {"styles": {
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-decoration": "none"
+    }},
+    "id": "500133"
+  },
+  "500134": {"id": "500134"},
+  "500135": {
+    "font": {"styles": {
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-decoration": "none"
+    }},
+    "id": "500135"
+  },
+  "500136": {"id": "500136"},
+  "500137": {
+    "font": {"styles": {
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-decoration": "none"
+    }},
+    "id": "500137"
+  },
+  "500138": {"id": "500138"},
+  "500139": {"id": "500139"},
+  "500140": {"id": "500140"},
+  "500141": {
+    "font": {"styles": {
+      "font-style": "normal",
+      "font-weight": "bold",
+      "text-decoration": "none"
+    }},
+    "id": "500141"
+  },
+  "500142": {"id": "500142"},
+  "500143": {
+    "font": {"styles": {
+      "display": "block",
+      "font-size": "1.5rem"
+    }},
+    "id": "500143"
+  }
+}} --><!-- /ko -->
+
+<!-- ko if: loaded -->
+<div class="templateRegion" id="cc-product-details" data-oc-id="cc-product-details">
+<!-- ko if: product -->
+<pre style="display: none;" data-bind="text: console.log('Sku Properties', $data.product().skuProperties())"></pre>
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-0-0">
+
+      <!-- oc section: product-back-link -->
+        <div data-bind="element: 'product-back-link'" class="back-link"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-image -->
+        <div data-bind="element: 'product-image'" class="text-center"></div>
+      <!-- /oc -->
+
+      <!-- oc section: product-image-carousel-cout --><div data-bind="element: 'product-image-carousel-cout'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-0-1">
+
+      <!-- oc section: product-title-cout --><div data-bind="element: 'product-title-cout'"></div>
+      <!-- /oc -->
+
+      
+
+      <!-- oc section: product-shipping-surcharge -->
+        <div data-bind="if: shippingSurcharge()">
+          <span data-bind="element: 'product-shipping-surcharge'"></span>
+        </div>
+      <!-- /oc -->
+
+      <!-- oc section: product-variants -->
+        <div data-bind="element: 'product-variants'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-1-0">
+
+      
+
+      
+
+      
+
+      
+
+      
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-2-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '500097'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-3-0">
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+  
+<!-- /ko -->
+</div>
+<!-- /ko -->

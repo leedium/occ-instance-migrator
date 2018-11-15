@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-md-12 hc-email">
+		<div class="hc-footer--email-form text-center center-block">
+			<div data-bind="style: { color: titleColour }">
+				<span class="hc-footer--email-title" data-bind="widgetLocaleText: 'emailTitle'"></span>
+				<i data-bind="widgetLocaleText: {attr: 'class', value: 'fontAwesomeIconClass'}"></i>
+			</div>
+
+			<p data-bind="widgetLocaleText: 'emailPromoIntroText'"></p>
+			<form data-bind="visible: !formSubmitted(), submit: onEmailSignup">
+				<div class="input-group">
+					<input data-bind="widgetLocaleText: {attr: 'placeholder', value: 'emailSignUpPlaceholder'}" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+					 type="email" class="form-control" aria-describedby="basic-addon2">
+					<span class="input-group-btn">
+						<button data-bind="widgetLocaleText: 'signUpButtonText'" class="btn btn-default btn-nav" type="submit"></button>
+					</span>
+				</div>
+
+				<p class="hc-footer--email-disclaimer" data-bind="{widgetLocaleText:'emailDisclaimerText'}"></p>
+			</form>
+			<p class="hc-footer--email-success" data-bind="{visible: formSubmitted(), widgetLocaleText:'emailSuccessText1'}"></p>
+			<p class="hc-footer--email-success" data-bind="{visible: formSubmitted(), widgetLocaleText:'emailSuccessText2'}"></p>
+		</div>
+	</div>
+</div>

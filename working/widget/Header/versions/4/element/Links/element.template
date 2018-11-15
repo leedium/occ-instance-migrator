@@ -1,0 +1,10 @@
+<div class="row">
+  <!-- ko if: initialized -->
+  <div data-bind="foreach: requiredLinks" class="col-xs-12 header-links">
+    <a data-bind="ccLink: $data,  attr: { id: 'CC-headerLinks-'+$data }"></a>
+    <!-- ko if: ($index() < ($parent.requiredLinks().length - 1)) -->
+    |
+    <!-- /ko -->
+  </div>
+  <!-- /ko -->
+</div>
