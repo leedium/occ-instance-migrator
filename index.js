@@ -76,7 +76,7 @@ function grabTarget() {
  */
 function grabSource() {
   return new Promise((resolve) => {
-    // process.chdir(WORKING_FOLDER);
+    process.chdir(WORKING_FOLDER);
     console.log('GRABBING SOURCE (latest changes)', process.cwd());
     const ls1 = spawn('dcu', ['--grab', '--clean', '--node', config.dcuServerSource], {
       env: Object.assign({}, process.env, {
@@ -88,7 +88,7 @@ function grabSource() {
     });
     ls1.on('close', () => {
       console.log('...source branch download completed');
-      // process.chdir('../');
+      process.chdir('../');
       setTimeout(() => {
         resolve()
       }, config.taskDelay);
