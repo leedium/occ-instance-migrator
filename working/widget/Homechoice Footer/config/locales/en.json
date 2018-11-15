@@ -1,6 +1,0 @@
-{
-  "resources": {
-    "endpointUrlHelp": "Path to the email submission endpoint.(Param: $EMAIL_ADDRESS)",
-    "endpointUrlLabel": "Endpoint url"
-  }
-}

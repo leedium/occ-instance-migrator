@@ -1,8 +1,0 @@
-<!-- ko if: isViewVisible -->
-<div class="profile-placeorderbutton">
-    <div id="CC-checkoutOrderSummary-placeOrder-desktop" class="checkout">
-        <button class="cc-button-primary col-xs-12 hidden-xs" data-bind="click: handleCreateOrder, enable: order().enableOrderButton, css: nextButtonCss"> <span data-bind="">Place Order</span>
-        </button>
-    </div>
-</div>
-<!-- /ko -->

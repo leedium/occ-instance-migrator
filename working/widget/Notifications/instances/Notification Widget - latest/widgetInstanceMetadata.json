@@ -1,8 +1,0 @@
-{
-  "configuration": {
-    "fixed": true,
-    "timeoutEnabled": true,
-    "timeout": "5"
-  },
-  "displayName": "Notification Widget - latest"
-}

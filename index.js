@@ -435,10 +435,10 @@ async function extensionsTransfer() {
     await commit();
     await checkoutBranch(BRANCH_TARGET);
     await mergeBranch(BRANCH_SOURCE);
-    // await getDiffs();
+    await getDiffs();
     // await processDiffs();
     // await makeTmpFolder();
-    await deleteBranch(BRANCH_SOURCE);
+    // await deleteBranch(BRANCH_SOURCE);
     // await transferAll();
     // await clean();
     resolve();
