@@ -565,7 +565,8 @@ async function extensionsTransfer() {
     await makeTmpFolder();
     await deleteFilePath([WORKING_FOLDER]);
     await transferAll();
-    // await deleteFilePath([TEMP_FOLDER]);
+    await deleteFilePath([TEMP_FOLDER]);
+    await checkoutBranch(BRANCH_MASTER);
 
     resolve();
   });

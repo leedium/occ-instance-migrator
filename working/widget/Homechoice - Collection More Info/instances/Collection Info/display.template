@@ -1,7 +1,0 @@
-<!-- ko if: $data.Collection_MoreInfo != '' -->
-  <div class="CustomCategoryMoreInfo">
-      <hr>
-      <h2 data-bind="html: $data.Collection_Title"></h2>
-      <div data-bind="html: $data.Collection_MoreInfo"></div>
-  </div>
-<!-- /ko -->
