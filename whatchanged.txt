@@ -2,8 +2,9 @@
 :000000 100644 0000000 662c314 A	working/element/Footer Links cc-link/element.template
 :000000 100644 0000000 ad5e091 A	working/element/Product Delivery Restrictions/element.js
 :000000 100644 0000000 e3dbce6 A	working/element/Product Delivery Restrictions/element.template
+:100644 100644 079fabb d935055 M	working/stack/Accordion/instances/Accordion/stack-variables.less
 :100644 100644 911b050 7077430 M	working/stack/Accordion/instances/Accordion/stack.less
-:100644 100644 db80131 0cb2005 M	working/stack/Popup Stack/instances/Popup Stack/stack.less
+:100644 100644 db80131 6f40c08 M	working/stack/Popup Stack/instances/Popup Stack/stack.less
 :100644 000000 554ad03 0000000 D	working/widget/Breadcrumb/instances/Product Listing Breadcrumb v3/display.template
 :100644 000000 59673a8 0000000 D	working/widget/Breadcrumb/instances/Product Listing Breadcrumb v3/locales/en/ns.breadcrumb.json
 :100644 000000 b9e34e3 0000000 D	working/widget/Breadcrumb/instances/Product Listing Breadcrumb v3/widget.less

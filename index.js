@@ -31,6 +31,8 @@ const git = require("simple-git");
 
 const config = require("./config");
 
+const APP_ID = __dirname.split('/').pop();
+
 const GIT_PATH = ".";
 
 const WORKING_FOLDER = "./working";
@@ -42,9 +44,31 @@ const BRANCH_SOURCE = "source";
 const BRANCH_TARGET = "target";
 
 const { dcu, plsu, all, layoutName, full, cleaner } = argv;
-const instanceTracker = [];
 
-let transferPaths = [];
+const ExtensionTypes = {
+  WIDGET: "widget",
+  ELEMENT: "element",
+  STACK: "stack",
+  GLOBAL: "global",
+  THEME: "theme",
+  SNIPPETS: "snippets"
+};
+
+const GitMergeKeys = {
+  MODIFIED: "M",
+  RENAMED: "R",
+  ADDED: "A",
+  DELETED: "D"
+};
+
+const DCUSubFolder = {
+  INSTANCES: "instances",
+  CCC: ".ccc"
+};
+
+//  stores
+const instanceRef = [];
+let transferRef = [];
 
 /**
  * Grabs the target(Source Copied From) dcu source
@@ -243,11 +267,11 @@ function processDiffs() {
 
       // Checks if the difference is an addition or modification
       // Renames and deletions are ignored.
-      if (modType !== "D" && modType.indexOf("R") < 0) {
+      if (modType !== GitMergeKeys.DELETED && modType.indexOf(GitMergeKeys.RENAMED) < 0) {
         if (!transferPathArrayTemp[path]) {
-          if (path.indexOf("dcu-extensions-migrator") < 0) {
+          if (path.indexOf(APP_ID) < 0) {
             let sp = path.split("/");
-            transferPaths.push({
+            transferRef.push({
               path: sp.slice(0, 5).join("/"),
               extType: sp[1]
             });
@@ -262,7 +286,7 @@ function processDiffs() {
       const pathListSearched = {};
       const filteredSearched = {};
 
-      transferPaths = transferPaths.reduce((a, pathObj) => {
+      transferRef = transferRef.reduce((a, pathObj) => {
         // Convert flat paths to object with extensionType and path
         const { extType, path } = pathObj;
         if (!pathListSearched[pathObj.path]) {
@@ -281,16 +305,22 @@ function processDiffs() {
           const pSplit = path.split("/");
 
           //  If path is a widget and includes an instance store value
-          if (pSplit[3] === "instances" && pSplit.length > 4 && extType === "widget") {
-            instanceTracker.push({extType,path});
+          if (pSplit[3] === DCUSubFolder.INSTANCES && pSplit.length > 4 && extType === ExtensionTypes.WIDGET) {
+            instanceRef.push({ extType, path });
             path = pSplit.slice(0, 3).join("/");
 
           }
           // if path is a pure instance path, ignore
-          else if (pSplit[3] === "instances" && pSplit.length === 4) {
+          else if (pSplit[3] === DCUSubFolder.INSTANCES && pSplit.length === 4) {
             return ac;
-          } else {
-            path = pSplit.slice(0, 3).join("/");
+          }
+
+          else if (pSplit[2] === ExtensionTypes.STACK) {
+            console.log('===>', path)
+            stackRef.push({
+              extType,
+              path: pSplit.slice(0, 3).join("/")
+            });
           }
 
           if (!filteredSearched[path]) {
@@ -300,11 +330,7 @@ function processDiffs() {
           return ac;
         }, []);
       console.log("\n\n\nTransfer Paths");
-      console.log( instanceTracker.map(({ extType, path }) => {
-        if (extType === "widget") {
-          return path.split("/").slice(0, 5).join("/");
-        }
-      }));
+      transferRef.map(({extType,path}) => console.log(extType,':', path))
       resolve();
     });
   });
@@ -319,16 +345,16 @@ async function makeTmpFolder() {
     const workingTransfer = WORKING_FOLDER.split("/")[1];
 
     // create temp folder
-    fs.ensureDirSync(`${TEMP_FOLDER}/${workingTransfer}/.ccc`);
+    fs.ensureDirSync(`${TEMP_FOLDER}/${workingTransfer}/${DCUSubFolder.CCC}`);
 
     // copy root .ccc/config.json
-    fs.copySync(`${WORKING_FOLDER}/.ccc/config.json`, `${TEMP_FOLDER}/${workingTransfer}/.ccc/config.json`);
+    fs.copySync(`${WORKING_FOLDER}/${DCUSubFolder.CCC}/config.json`, `${TEMP_FOLDER}/${workingTransfer}/${DCUSubFolder.CCC}/config.json`);
 
     // copy dcu source and tracking file to temp
-    transferPaths.map(({ extType, path }) => {
+    transferRef.map(({ extType, path }) => {
       const pathSplitArray = path.split("/");
       const dcuSourceFolder = pathSplitArray.slice(0, pathSplitArray.length).join("/");
-      pathSplitArray[1] = `.ccc/${pathSplitArray[1]}`;
+      pathSplitArray[1] = `${DCUSubFolder.CCC}/${pathSplitArray[1]}`;
       let dcuTrackingFolder = pathSplitArray.slice(0, pathSplitArray.length).join("/");
 
       try {
@@ -338,45 +364,33 @@ async function makeTmpFolder() {
         fs.copySync(dcuTrackingFolder, `${TEMP_FOLDER}/${dcuTrackingFolder}`);
 
         //  Blow away the instance folder.  We need to do this as we only want to
-        //  include the instances we stored in instanceTracker
-        if (extType === "widget") {
-          const splPath = path.split("/");
+        //  include the instances we stored in instanceRef
+        if (extType === ExtensionTypes.WIDGET) {
+          const splPath = pathSplitArray;
           const cPath = splPath.slice(0);
-          cPath.splice(1,0,'.ccc');
-          const fp = `${TEMP_FOLDER}/${splPath.slice(0, 3).join("/")}/instances`;
-          const cp = `${TEMP_FOLDER}/${cPath.join("/")}/instances`;
+          cPath.splice(1, 0, DCUSubFolder.CCC);
+          const fp = `${TEMP_FOLDER}/${splPath.slice(0, 3).join("/")}/${DCUSubFolder.INSTANCES}`;
+          const cp = `${TEMP_FOLDER}/${cPath.join("/")}/${DCUSubFolder.INSTANCES}`;
           fs.removeSync(fp);
           fs.removeSync(cp);
         }
-        // }
-        //
-        // if (isStack) {
-        //   let file = `${dcuTrackingFolder.split("/").slice(0, 4).join("/")}/stack.json`;
-        //   console.log(isStack, path, file);
-        //   fs.copySync(`${file}`, `${TEMP_FOLDER}/${file}`);
-        // }
-
-
       } catch (err) {
         console.log(err);
       }
     });
 
-    //  Add back the selected instances
-    instanceTracker.map(({ extType, path }) => {
-      if (extType === "widget") {
-        let cSpl= path.split('/')
-        cSpl.splice(1,0,'.ccc')
-        let cI = cSpl.join('/');
-        console.log(cI)
-
+    //  Add back the selected widget instances
+    instanceRef.map(({ extType, path }) => {
+      if (extType === ExtensionTypes.WIDGET) {
+        let cSpl = path.split("/");
+        cSpl.splice(1, 0,DCUSubFolder.CCC);
+        let cI = cSpl.join("/");
         fs.ensureDirSync(`${TEMP_FOLDER}/${path}`);
         fs.ensureDirSync(`${TEMP_FOLDER}/${cI}`);
         fs.copySync(path, `${TEMP_FOLDER}/${path}`);
         fs.copySync(cI, `${TEMP_FOLDER}/${cI}`);
       }
     });
-
     resolve();
   });
 }
@@ -527,10 +541,11 @@ async function extensionsTransfer() {
     await processDiffs();
     await makeTmpFolder();
     // await deleteFilePath([WORKING_FOLDER]);
-    // await transferAll();
+    await transferAll();
     // await deleteFilePath([TEMP_FOLDER]);
     // await checkoutBranch(BRANCH_MASTER);
     resolve();
+    console.log('..complete');
   });
 }
 
