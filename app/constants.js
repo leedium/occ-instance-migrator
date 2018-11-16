@@ -17,6 +17,8 @@
 
 exports.APP_ID = __dirname.split("/").pop();
 
+exports.DIFF_TEXT_FILE = "./whatchanged.txt";
+
 exports.WORKING_FOLDER = "./working";
 exports.TEMP_FOLDER = "./tmp";
 

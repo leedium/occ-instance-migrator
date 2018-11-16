@@ -17,9 +17,6 @@
  **/
 
 const program = require("commander");
-const { spawn } = require("child_process");
-const fs = require("fs-extra");
-const readline = require("readline");
 
 const constants = require('./constants');
 
@@ -54,73 +51,15 @@ exports.main = function(argv) {
     // .command("-d, --dcu", "Execute a dcu transferAll from source to target instance")
 
     // .option("-g, --gitpath <gitpath>", "Target git repository containing target DCU folders (grab)")
-    .option("-s --sourceserver <sourceserver> ", "Occ Admin url for source instance (from)")
-    .option("-t --sourcekey <sourcekey>", "Occ Admin api key for source instance (from)")
-    .option("-u --targetserver <targetserver>", "Occ Admin url for target instance (to)")
-    .option("-w --targetkey <targetkey>", "Occ Admin api key for target instance (from)")
-    .option("-L, --includelayouts", "Transfer All Layouts [true | false]")
-    .option("-t, --taskdelay", "Execution delay in milliseconds between tasks.   Defaults to 3000ms")
+    // .option("-s --sourceserver <sourceserver> ", "Occ Admin url for source instance (from)")
+    // .option("-t --sourcekey <sourcekey>", "Occ Admin api key for source instance (from)")
+    // .option("-u --targetserver <targetserver>", "Occ Admin url for target instance (to)")
+    // .option("-w --targetkey <targetkey>", "Occ Admin api key for target instance (from)")
+    // .option("-L, --includelayouts", "Transfer All Layouts [true | false]")
+    // .option("-t, --taskdelay", "Execution delay in milliseconds between tasks.   Defaults to 3000ms")
     .parse(argv);
 
   start();
-
-
-  /**
-   * Executes DCU transferAll
-   * @returns {Promise<any>}
-   */
-  function transferAll() {
-    const workingTransfer = constants.WORKING_FOLDER.split("/")[1];
-    process.chdir(`${constants.TEMP_FOLDER}/${workingTransfer}`);
-    return new Promise((resolve) => {
-      console.log(`Transferring all extensions start...`);
-      const cmd = spawn(`dcu`, ["--transferAll", ".", "--node", program.targetserver, "-k", program.targetkey], {
-        env: Object.assign({}, process.env, {
-          "CC_APPLICATION_KEY": program.targetkey
-        })
-      });
-      cmd.stdout.on("data", (chunk) => {
-        console.log(chunk.toString("utf-8"));
-      });
-      cmd.stderr.on("data", (chunk) => {
-        console.log("Error:", chunk.toString());
-      });
-      cmd.on("close", () => {
-        console.log(`... target updated`);
-        resolve();
-      });
-    });
-  }
-
-  /**
-   * Transfers All Page Layouts from source to target instance
-   */
-  async function plsuTransferAll() {
-    return new Promise(resolve => {
-      console.log("TransferAll page layouts start...");
-      const plsuSpawn = spawn("plsu", [
-        "--transfer",
-        "--node", program.sourceserver,
-        "--applicationKey", program.sourcekey,
-        "--all",
-        "--destinationNode", program.targetserver,
-        "--destinationApplicationKey", program.targetkey
-      ]);
-      plsuSpawn.stdout.on("data", (chunk) => {
-        console.log(chunk.toString("utf-8"));
-      });
-      plsuSpawn.stderr.on("data", (chunk) => {
-        console.log(chunk.toString("utf-8"));
-      });
-      plsuSpawn.on("close", () => {
-        console.log("TransferAll page layouts complete.");
-        setTimeout(() => {
-          resolve();
-        }, program.taskdelay);
-      });
-      resolve();
-    });
-  }
 
   async function init() {
     await deleteFilePath([
@@ -131,8 +70,6 @@ exports.main = function(argv) {
     await commit();
     await deleteBranch(constants.BRANCH_SOURCE);
     await deleteBranch(constants.BRANCH_TARGET);
-    fs.ensureDirSync(constants.TEMP_FOLDER);
-    // fs.ensureDirSync(WORKING_FOLDER);
   }
 
   /**
@@ -141,26 +78,26 @@ exports.main = function(argv) {
    */
   async function extensionsTransfer() {
     return new Promise(async (resolve) => {
-      await initGitPath();
-      await init();
-      await grabTarget();
-      await addAll();
-      await commit();
-      await createBranch(constants.BRANCH_TARGET);
-      await createBranch(constants.BRANCH_SOURCE);
-      await grabSource();
-      await addAll();
-      await commit();
-      await checkoutBranch(constants.BRANCH_TARGET);
-      await mergeBranch(constants.BRANCH_SOURCE);
-      await getDiffs();
-      await processDiffs();
-      await makeTmpFolder();
-      await deleteFilePath([constants.WORKING_FOLDER]);
+      // await initGitPath();
+      // await init();
+      // await grabTarget(program);
+      // await addAll();
+      // await commit();
+      // await createBranch(constants.BRANCH_TARGET);
+      // await createBranch(constants.BRANCH_SOURCE);
+      // await grabSource(program);
+      // await addAll();
+      // await commit();
+      // await checkoutBranch(constants.BRANCH_TARGET);
+      // await mergeBranch(constants.BRANCH_SOURCE);
+      // await getDiffs();
+
+      const diffs = await processDiffs();
+      await makeTmpFolder(diffs);
       await transferAll();
-      await deleteFilePath([constants.TEMP_FOLDER]);
-      await checkoutBranch(constants.BRANCH_MASTER);
-      console.log('..complete');
+      // await deleteFilePath([constants.TEMP_FOLDER]);
+      // await checkoutBranch(constants.BRANCH_MASTER);
+      // console.log('..complete');
       resolve();
     });
   }
@@ -171,9 +108,9 @@ exports.main = function(argv) {
    */
   async function start() {
     try {
-      await extensionsTransfer();
+      await extensionsTransfer(program);
       if (program.includelayouts) {
-        await plsuTransferAll();
+        await plsuTransferAll(program);
       }
     }
     catch (err) {

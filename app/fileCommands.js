@@ -15,7 +15,11 @@
  * @description  Methods to interface with the file system
  */
 
-const DELAY = require('../package').taskDelay;
+const fs = require("fs-extra");
+const readline = require("readline");
+const upath = require("upath");
+
+const constants = require('./constants');
 
 //  stores
 const instanceRef = [];
@@ -32,9 +36,11 @@ const _processDiffs = function() {
   return new Promise((resolve) => {
     const transferPathArrayTemp = {};
 
+   const diffFile = (upath.join(__dirname,'../',constants.DIFF_TEXT_FILE))
+
     // reads line from whatchanged.txt
     const rl = readline.createInterface({
-      input: fs.createReadStream(config.diffFilePath)
+      input: fs.createReadStream(diffFile)
     });
     rl.on("line", (line) => {
       const infoArray = line.split("\t");
@@ -46,9 +52,9 @@ const _processDiffs = function() {
 
       // Checks if the difference is an addition or modification
       // Renames and deletions are ignored.
-      if (modType !== GitMergeKeys.DELETED && modType.indexOf(GitMergeKeys.RENAMED) < 0) {
+      if (modType !== constants.GitMergeKeys.DELETED && modType.indexOf(constants.GitMergeKeys.RENAMED) < 0) {
         if (!transferPathArrayTemp[path]) {
-          if (path.indexOf(APP_ID) < 0) {
+          if (path.indexOf(constants.APP_ID) < 0) {
             let sp = path.split("/");
             transferRef.push({
               path: sp.slice(0, 5).join("/"),
@@ -92,14 +98,14 @@ const _processDiffs = function() {
           //  Grab Only Widgets root folders that are updated
           //  This will be used for all the root level non /instance folders and files that are
           //  required for the DCU transfer
-          if (type === ExtensionTypes.WIDGET && pSplit[3] != DCUSubFolder.INSTANCES) {
+          if (type === constants.ExtensionTypes.WIDGET && pSplit[3] != constants.DCUSubFolder.INSTANCES) {
             widgetRef.push({ type, path });
             path = pSplit.slice(0, 3).join("/");
           }
 
           //  If path is of type widget and includes an instance folder store value so that it
           //  will get added back after the instance folder removal
-          else if (pSplit[3] === DCUSubFolder.INSTANCES && type === ExtensionTypes.WIDGET) {
+          else if (pSplit[3] === constants.DCUSubFolder.INSTANCES && type === constants.ExtensionTypes.WIDGET) {
             path = pSplit.slice(0, 3).join("/");
             instanceRef.push({ type, path });
             return ac;
@@ -120,17 +126,22 @@ const _processDiffs = function() {
           }
           return ac;
         }, []);
-      resolve();
+      resolve(transferRef);
     });
   });
 };
 
 /**
  * Constructs the temporary folder which will be used by the DCU's transferAll
+ * @param transferRef
  * @returns {Promise<*>}
+ * @private
  */
-const _makeTmpFolder = async function() {
+const _makeTmpFolder = async function(transferRef) {
   return new Promise(async (resolve) => {
+    //  create temp folder
+    fs.ensureDirSync(constants.TEMP_FOLDER);
+
     const workingTransfer = WORKING_FOLDER.split("/")[1];
 
     // create temp folder
