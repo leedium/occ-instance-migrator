@@ -563,9 +563,10 @@ async function extensionsTransfer() {
     await getDiffs();
     await processDiffs();
     await makeTmpFolder();
-    // await deleteFilePath([WORKING_FOLDER]);
-    //await transferAll();
-    // await clean();
+    await deleteFilePath([WORKING_FOLDER]);
+    await transferAll();
+    // await deleteFilePath([TEMP_FOLDER]);
+
     resolve();
   });
 }
