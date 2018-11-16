@@ -1,0 +1,14 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "Contact Me - Call Back Request",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

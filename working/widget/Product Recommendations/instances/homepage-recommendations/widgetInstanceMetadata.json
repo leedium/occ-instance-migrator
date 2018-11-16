@@ -1,0 +1,8 @@
+{
+  "configuration": {
+    "numRecs": "12",
+    "restriction": "Unrestricted",
+    "strategy": "Blended"
+  },
+  "displayName": "homepage-recommendations"
+}

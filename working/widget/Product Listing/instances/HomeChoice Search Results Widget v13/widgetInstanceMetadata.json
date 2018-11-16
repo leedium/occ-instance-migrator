@@ -1,0 +1,16 @@
+{
+  "configuration": {
+    "shouldUseStyleBased": false,
+    "showListViewOption": false,
+    "viewModelCacheLimit": "3",
+    "showResultsPerPageOption": true,
+    "isScrollEnabled": false,
+    "isViewModelCacheEnabled": false,
+    "fields": "",
+    "gridWidth": "4",
+    "productsPerPage": "12",
+    "listType": "product",
+    "blockSize": "60"
+  },
+  "displayName": "HomeChoice Search Results Widget v13"
+}

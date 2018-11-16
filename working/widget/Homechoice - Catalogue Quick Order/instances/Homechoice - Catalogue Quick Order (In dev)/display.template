@@ -1,0 +1,169 @@
+<div class="homechoice-cataloguequickorder clearfix">
+    <div class="homechoice-cataloguequickorder__input-container">
+        <div class="">
+            <div class="homechoice-cataloguequickorder__search-container  ">
+                <div class="col-sm-7">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="26" viewBox="0 0 40 26"><title>Quick Order Icon</title><desc>  Created with Sketch.</desc><g fill="none"><g fill="#288DE5"><path d="M21.8 20.3C23.3 20.3 24.2 21.3 23.7 22.7 23.1 24.1 21.7 25 20.1 25 18.6 25 17.8 24 18.3 22.7 18.9 21.2 20.3 20.3 21.8 20.3"></path><path d="M31.7 20.3C33.2 20.3 34.1 21.3 33.6 22.7 33 24.1 31.6 25 30 25 28.5 25 27.7 24 28.1 22.7 28.8 21.2 30.2 20.3 31.7 20.3"></path><path d="M20.1 10.4C20.3 9.7 20.9 9.3 21.6 9.3L32.2 9.3C32.9 9.3 33.5 9.8 33.4 10.4 33.2 11.1 32.6 11.5 31.9 11.4L21.3 11.4C20.6 11.4 20 11 20.2 10.4"></path><path d="M22.3 12.9L30.4 12.9C31.1 12.9 31.7 13.3 31.6 13.9 31.4 14.6 30.8 15 30.1 14.9L22.1 14.9C21.4 14.9 20.8 14.5 20.9 13.9 21.1 13.3 21.7 12.8 22.4 12.9"></path><path d="M12.4 0.1L15.2 0.1C15.7 0.1 16.2 0.6 16.3 1.1L19.5 16.4 32.5 16.4 36.3 7.8 20.7 7.8C20.3 7.9 19.9 7.7 19.7 7.4 19.4 7.1 19.3 6.8 19.4 6.4 19.5 5.6 20.2 5 21 4.9L38.6 4.9C39.1 4.9 39.5 5.2 39.7 5.5 39.9 5.9 39.9 6.4 39.7 6.8L34.6 18.3C34.3 18.9 33.8 19.3 33.1 19.3L18.2 19.3C17.6 19.3 17.1 18.9 17 18.3L13.8 3 12 3C11.6 3.1 11.3 2.9 11 2.6 10.8 2.3 10.7 2 10.8 1.6 10.9 0.8 11.6 0.2 12.4 0.1"></path><path d="M1.7 5L11.3 5C11.7 5 12 5.1 12.3 5.4 12.5 5.6 12.6 6 12.5 6.4 12.4 7.2 11.8 7.7 11 7.8L1.4 7.8C1 7.8 0.7 7.6 0.4 7.4 0.2 7.1 0.1 6.7 0.1 6.4 0.3 5.6 0.9 5 1.7 5"></path><path d="M5.1 9.2L12 9.2C12.8 9.2 13.3 9.6 13.3 10.2 13.1 10.9 12.5 11.3 11.8 11.3L4.8 11.3C4 11.3 3.5 10.8 3.5 10.2 3.7 9.6 4.4 9.1 5.1 9.2"></path><path d="M8.4 13L12.7 13C13.5 13 14 13.5 14 14.1 13.7 14.7 13.1 15.1 12.4 15.1L8.2 15.1C7.4 15.1 6.8 14.6 6.9 14.1 7.1 13.4 7.7 13 8.4 13"></path></g></g></svg>
+                    <h4>Quick Order</h4>
+                    <p>Enter the product code from your catalogue or flyer and order immediately!</p>
+                </div>
+                <div class="col-sm-5">
+                    <form data-bind="submit: $data.handleSubmit" novalidate>
+                        <div class="homechoice-cataloguequickorder__search-btn-container">
+                            <input id="homechoiceCatalogueQuickOrderSearchInput" class="homechoice-cataloguequickorder__search-input" type="tel" onkeyup="this.value=this.value.replace(/[^\d]+/,'')" pattern="[0-9]{6}" maxlength="6" required data-bind="textInput: searchInput" />
+                            <button class="homechoice-cataloguequickorder__search-btn" type="submit"><i class="fa fa-search"></i></button>
+                            <!-- ko if: $data.productData() && $data.productData() != 'NOTHING_FOUND'-->
+                            <!-- <button class="homechoice-cataloguequickorder__search-clear" type="button" data-bind="click: $data.clear"><i class="fa fa-ban" aria-hidden="true"></i></button> -->
+                            <!-- /ko -->
+                        </div>
+                    </form>
+
+                  <!-- ko ifnot: productCodeValid -->
+
+                    <label class="homechoice-cataloguequickorder__search-error text-danger" data-bind="visible: searchInputEmpty()">Please enter a product code.</label>
+                    <label class="homechoice-cataloguequickorder__search-error text-danger" data-bind="visible: searchInputPatternMismatch()">Product code must be 6 digits long.</label>
+
+                  <!-- /ko -->
+                  
+                    <!-- ko if: $data.productData() === 'NOTHING_FOUND' && productCodeValid -->
+                    <div class="text-danger">
+                        <p class="homechoice-cataloguequickorder__search-not-found">
+                            Sorry, we didn't find any results for this product code. Please check your product code or try another search.
+                        </p>
+                    </div>
+                    <!-- /ko -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ko if: showProductCodeHelp() -->
+    <div class="homechoice-cataloguequickorder__example-container col-sm-12">
+       <div class="col-sm-12 text-center">
+           <p class="text-green">
+               Product code is the 6 digit number before the product name
+           </p>
+           <img data-bind="ccResizeImage: {
+           source: '/ccstore/v1/images/?source=/file/general/product-code-sample-mobile.png',
+           isSrcSetEnabled: true,
+           outputFormat: 'JPEG',
+           quality: '0.6',
+           medium_img: '/ccstore/v1/images/?source=/file/general/product-code-sample.png',
+           medium: '600,197',
+           large_img: '/ccstore/v1/images/?source=/file/general/product-code-sample.png',
+           large: '600,197',
+           alt: selectedSku.displayName,
+           errorSrc:'images/noImage.png',
+           errorAlt:'No Image Found'}" 
+           alt="Sample picture showing how to locate the product code from your catalogue" />
+       </div>
+   </div>
+   <!-- /ko -->
+
+   <!-- ko if: $data.productData() && $data.productData() != 'NOTHING_FOUND' && productCodeValid -->
+  <span data-bind="onRender:function(){console.log('BULELANI: Quick Order Widget', $data, $parents);}"></span>
+   <div class="homechoice-cataloguequickorder__pdp-container col-sm-12 ">
+    <!--- begin OOTB Product Details Here -->
+    <div class="col-sm-6 product-image">
+        <div>
+         <img class="pdp-variant-options-listing--image" data-bind="ccResizeImage: {
+         source: '/file/products/'+selectedSku().repositoryId+'.jpg',
+         size:'360,3360',
+         alt: selectedSku.displayName,
+         errorSrc:'images/noImage.png',
+         errorAlt:'No Image Found'}" alt="Antique Wood Chair" />
+        </div>
+    </div>
+ <div class="col-sm-6 grey-bordered">
+    <!-- ko if: selectedSku().displayName != null && typeof selectedSku().displayName != 'undefined' -->
+        <div><h3 data-bind="text:selectedSku().displayName"></h3></div>
+    <!-- /ko -->
+    <!-- ko if: selectedSku().hc_orderCode != null && typeof selectedSku().hc_orderCode != 'undefined' -->
+        <p class="product-code">Product code: <span data-bind="text:selectedSku().hc_orderCode"></span></p>
+    <!-- /ko -->
+    <!-- ko if: selectedSku().hc_skuLongDescription != null && typeof selectedSku().hc_skuLongDescription != 'undefined' -->
+        <div class="sku-description" data-bind="html:selectedSku().hc_skuLongDescription"></div>
+    <!-- /ko -->
+
+    <div class="bg-grey-shading" data-bind="onRender:function(){console.log('Quick Order TTEESSTT: ', $data, $parent, $parents);}">
+        <p><label data-bind="text: $data.skuLabel">Type/Size</label></p>
+        <select class="form-control cc-skuDropdown" data-bind="foreach: $data.alternateSkus(), event:{change: handleSKUVariantChange}">
+           <option data-bind="attr:{disabled: $data.disabled, value: $data.value}, text: $data.label"></option>
+       </select>
+
+       <div>
+            <div class="productOfferContainer">
+                
+              <!-- ko if: $data.productData().hc_productOffer -->
+              <span class="productOffer-title" data-bind="text: $data.productData().hc_productOffer"></span>
+              <!-- /ko -->          
+              <!-- ko if: $data.productData().hc_productSkinny -->
+              <span class="productOffer-desc" data-bind="text: $data.productData().hc_productSkinny"></span>
+              <!-- /ko -->
+
+            </div>
+       </div>
+
+       <div data-bind="">
+        <div class="product-details-credit-options clearfix">
+            <div class="control-group">
+                <p><label class="control-label">Payment Options</label></p>
+            </div>
+            <ul class="product-details-credit-options--list clearfix" data-bind="foreach: getTermsListBySku($data.selectedSku().repositoryId), disabled: { condition: $data.paymentOptionDisabled() }">
+                <li class="col-xs-12">
+                  <input type="radio" data-bind="click: $parent.handleRadioClick, attr:{'tabindex': 0, 'value':$parent.selectedSku().repositoryId, 'name':$parent.selectedSku().repositoryId + 'creditPaymentSelections', 'id': $parent.selectedSku().repositoryId+'-creditOpt-'+ $index(), checked: $index() == 0 ? 'checked' : null}, onRender: function() { if ($index() == 0) { $('input[name=' + $parent.selectedSku().repositoryId + 'creditPaymentSelections' + ']').first().trigger('click'); } }"></input>
+                    <label data-bind="'text':$data.label, attr:{'for': $parent.selectedSku().repositoryId+'-creditOpt-'+ $index()}">R106 X 16</label>
+                </li>
+            </ul>
+        </div>
+        <div class="pdp-quantity" data-bind="template:{name:'pdpQuantity'}, disabled: { condition: $data.paymentOptionDisabled() }"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a data-bind="disabled: {condition: cart().items().length == 0, link : 'checkout'}" class="cc-button-primary btn-checkout col-xs-12" aria-label="Checkout" href="/checkout" role="button" tabindex="0">
+               <span data-bind="">Secure Checkout</span>
+           </a>
+
+          <button data-bind="attr:{'aria-disabled':$data.addTocCartButtonDisabled()}, click: $data.addToCart, disable: $data.addTocCartButtonDisabled(), css: $data.selectedSkuOutOfStock() ? 'out-of-stock' : ''" class="cc-button-secondary-pink col-md-12" tabindex="0">
+            <span id="cc-prodDetails-addToCart" data-bind="">Add to Basket</span>
+          </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+       <p class="text-center note">
+        The prices online are our latest and may differ slightly from print flyers.
+    </p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- /end OOTB Product Details Custom Here -->
+
+</div> 
+<!-- /ko -->
+</div>
+
+<script type="text/html" id="pdpQuantity">
+    <div class="qty-section pull-left">
+        <label class="control-label" for="CC-prodDetails-quantity"><span>Quantity</span></label>
+
+        <input id="CC-prodDetails-quantity" type="number" class="cc-numericField form-control" step="1" min="1" data-bind="textInput: itemQuantity, event:{input: checkStockInventory}" />
+        <a class="btn btn-default btn-border" data-bind="click: $data.handleQuantityIncrease.bind('minus')" title="Decrease quantity by 1">
+          <i class="fa fa-minus"></i>
+        </a>
+        <a class="btn btn-default btn-border" data-bind="click: $data.handleQuantityIncrease.bind('plus')" title="Increase quantity by 1">
+          <i class="fa fa-plus"></i>
+        </a>
+
+        <label id="CC-prodDetails-quantity-qtyError" class="text-danger" role="alert" aria-live="assertive"></label>
+      
+        <!-- ko if: $data.selectedSku() -->
+            <div class="notify col-xs-6">
+                <span id="CC-prodDetails-quantity-itemError" class="text-danger" role="alert" aria-live="assertive" data-bind="validationMessage: itemQuantity"></span>
+            </div>
+        <!-- /ko -->
+    </div>
+</script>

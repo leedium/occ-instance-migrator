@@ -1,0 +1,78 @@
+<form>
+  <div class="row">
+    <div class="col-md-5">
+
+      <div class="form-group">
+        <label for="title">Title</label><br/>
+
+        <select class="form-control" id="title">
+          <option value="1">Mr</option>
+          <option value="2">Miss</option>
+          <option value="3" selected="selected">Mrs</option>
+          <option value="4">Ms</option>
+          <option value="6">Dr</option>
+          <option value="7">Prof</option>
+          <option value="8">Rev</option>
+          <option value="10">Sgt</option>
+          <option value="11">Lt</option>
+          <option value="12">Sir</option>
+        </select>
+
+        <div class="form-group">
+          <label for="firstName">First name</label>
+          <input type="text" class="form-control" id="firstName" placeholder="Please enter your first name">
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last name</label>
+          <input type="text" class="form-control" id="lastName" placeholder="Please enter your last name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" class="form-control" id="email" placeholder="Please enter your email address">
+        </div>
+
+        <div class="form-group">
+          <label for="dayTimeCountryCode">Daytime Contact Number</label><br/>
+
+          <select class="form-control" id="dayTimeCountryCode">
+            <option value="1">0027 (South Africa)</option>
+            <option value="2">00267 (Botswana)</option>
+            <option value="3">00266 (Lesotho)</option>
+            <option value="4">00264 (Namibia)</option>
+            <option value="8">00268 (Swaziland)</option>
+            <option value="14">00260 (Zambia)</option>
+          </select>
+
+          <input type="text" class="form-control" id="daytimeContactNumber" placeholder="Please enter your daytime contact number">
+        </div>
+
+        <div class="form-group">
+          <label for="mobileNumber">Mobile number</label><br/>
+          <input type="text" class="form-control" id="mobileNumber" placeholder="Please enter your mobile number">
+        </div>
+
+        <div class="form-group">
+          <label for="accountNumber">HomeChoice Account Number</label><br/>
+          <input type="text" class="form-control" id="accountNumber" placeholder="Please enter your homechoice account number">
+        </div>
+
+        <div class="form-group">
+          <label for="queries" class="control-label">Your query, question or suggestion</label> <br>
+          <textarea class="form-control" name="queries" id="comments" cols="50" rows="8"></textarea>
+        </div>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            Subscribe me to receive emails about great deals, promotions and new products
+          </label>
+        </div>
+
+        <button type="submit" class="btn cc-button-primary">Submit</button>
+      </div>
+      
+    </div>
+  </div>
+</form>

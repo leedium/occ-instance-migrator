@@ -1,0 +1,19 @@
+<!-- ko if: initialized() && $data.hasOwnProperty('cashPayment') -->
+<!-- ko if: cashPayment.isCashPaymentEnabled() && !order().isPaypalVerified() -->
+  <div id="CC-paymentGatewayOptions-cashPayment-checkboxField" class="row col-sm-12">
+    <!-- ko if: (order().showSchedule() && !order().paymentDetails().isCashEnabledForScheduledOrder()) -->
+      <span id="CC-cashPayment-paymentAvailablability" data-bind="widgetLocaleText: 'paymentMethodNotAvilable'"></span><br>
+    <!-- /ko -->
+      <div class=" checkbox">
+        <label for="CC-paymentGatewayOptions-cashPayment"> <input
+          type="checkbox" name="payByCash"
+          data-bind="checked: order().isCashPayment, 
+          disable: order().isPaymentsDisabled() || cart().items().length == 0 || cart().giftCards().length > 0 ||
+            order().isInvoicePayment() || (order().showSchedule() && !order().paymentDetails().isCashEnabledForScheduledOrder()) || (order().approvalRequired() && !order().paymentDetails().isCashEnabledForApproval())"
+          id="CC-paymentGatewayOptions-cashPayment" class="checkbox">
+          <span data-bind="widgetLocaleText:'payByCashText'"></span>
+        </label>
+      </div>
+  </div>
+<!-- /ko -->
+<!-- /ko -->

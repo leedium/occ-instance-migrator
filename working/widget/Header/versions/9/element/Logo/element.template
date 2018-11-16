@@ -1,0 +1,5 @@
+<div class="row">
+  <div class="logo">
+    <a data-bind="ccLink: logoPageLink" id="CC-header-logoImageLink"><img class="col-xs-12 img img-responsive" data-bind="attr: { alt: logoAltText, src: logoImage }"></a>
+  </div>
+</div>

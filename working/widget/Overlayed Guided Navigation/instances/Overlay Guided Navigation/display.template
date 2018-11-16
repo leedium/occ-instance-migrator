@@ -1,0 +1,136 @@
+<div id="CC-overlayedGuidedNavigation">
+  <h3 class="label-hidden" data-bind="widgetLocaleText: 'guidedNavigationHeader'"></h3>
+  <div id="CC-overlayedGuidedNavigation-column" class="overlayedNavigation col-sm-4 col-md-3 col-xs-12" data-bind="css: {open: isNavigationVisible}" aria-live="polite" aria-atomic="true">
+    <div class="row" id="CC-overlayedGuidedNavigation-row">
+      <a id="CC-overlayedGuidedNavigation-done" href="#" data-bind="click: $data.handleHideRefinements.bind($data)" class="cc-button-primary pull-right">
+        <span class="sr-only" data-bind="widgetLocaleText: 'overlayedGuidedNavigationLoadedText'"></span>
+        <span data-bind="widgetLocaleText: 'doneText'"></span> 
+      </a>
+    </div>
+    <!-- ko if: guidedNavigationViewModel().displayWidget -->
+      <div class="storefront-sidenav" >
+        <!--  ko with: guidedNavigationViewModel -->
+          <div id="CC-overlayedGuidedNavigation-refinementCrumbSection" class="well clearfix" aria-live="polite">
+            <div>
+              <h4 class="nav-header" id="CC-overlayedGuidedNavigation-refineByText" data-bind="widgetLocaleText: 'refineByText'"></h4>
+              <!-- ko foreach: allRefinementCrumbs -->
+                <div data-bind="attr: {id: 'CC-overlayedGuidedNavigation-refineBySection'+ $index()}" class="label label-default label-info">               
+                  <span class="CC-guidedNavigation-refineByTextOption" data-bind="attr: {id: 'CC-overlayedGuidedNavigation-refinementCrumbText-'+ $index()}">
+                    <!-- ko if: $parents[0].checkForRange($data) -->
+                      <!-- ko ifnot: $parents[0].checkIfUnboundRange($data) -->
+                        <span data-bind="currency: {price: $parents[1].guidedNavigationViewModel().getLowerBound($data), currencyObj: $parents[1].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                        <span>&nbsp;-&nbsp;</span>
+                        <span data-bind="currency: {price: $parents[1].guidedNavigationViewModel().getUpperBound($data), currencyObj: $parents[1].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                      <!-- /ko -->
+                      <!-- ko if: $parents[0].checkIfUnboundRange($data) -->
+                        <span data-bind="currency: {price: $parents[1].guidedNavigationViewModel().getLowerBound($data), currencyObj: $parents[1].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                        <span data-bind="text: $parents[1].guidedNavigationViewModel().getUpperBoundText($data)"></span>
+                      <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko ifnot: $parents[0].checkForRange($data) -->
+                      <span data-bind="text: $parent.convertLabel($data)"></span>
+                    <!-- /ko -->
+                  </span>
+                  <button type="btn" data-bind="attr: {id: 'CC-overlayedGuidedNavigation-refinementCrumbCloseButton-'+ $index(), 'aria-label': $data.label + ' Close'}, click: $parent.removeRefinement" class="close" >&times;</button>
+                </div>               
+              <!-- /ko -->
+            </div>
+          </div>
+          <div class="panel-group" id="CC-overlayedGuidedNavigation-accordionSection" >
+            <!-- ko if: allRefinementCrumbs().length > 0 -->
+              <div id="CC-overlayedGuidedNavigation-clearAllRefinementsSection" class="panel panel-default">
+                <button class="cc-button-secondary btn-block" data-bind="attr: {id: 'CC-overlayedGuidedNavigation-clearAllRefinementsButton'}, widgetLocaleText: 'clearAllRefinementsText', event: {click: clearAllRefinements}">Cancel</button>
+              </div>
+            <!-- /ko -->
+          
+            <!-- ko foreach: dimensions.display -->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col-md-7 col-xs-7">
+                      <h4><span><a class="panel-toggle nav-header" data-toggle="collapse" data-bind="click: $parents[1].collapseDimension.bind($parents[1]), attr: {id: 'CC-overlayedGuidedNavigation-dimensionHeader-'+ $index(), href: '#CC-overlayedGuidedNavigation-collapseList-'+ $index()}, text: displayName">
+                      </a></span></h4>
+                    </div>
+                    <div class="col-md-5 col-xs-5">
+                      <a class="panel-toggle nav-header pull-right refinement-icon glyphicon"  data-toggle="collapse" data-bind="click: $parents[1].collapseDimension.bind($parents[1]), css: {'glyphicon-chevron-right': !isExpanded(), 'glyphicon-chevron-down': isExpanded()}, 
+                        widgetLocaleText : {value: $data.ariaLabelText(), attr:'aria-label'}, attr: {id: 'CC-overlayedGuidedNavigation-dimensionIcon-'+ $index(), href: '#CC-overlayedGuidedNavigation-collapseList-'+ $index()}">
+                      </a>                    
+                    </div>
+                  </div>        
+                </div>
+                    
+                <div data-bind="attr: {id: 'CC-overlayedGuidedNavigation-collapseList-'+ $index()}, css: {'in': shouldDimensionExpand()}" class="panel-collapse collapse">
+                  <div class="panel-body" >          
+                    <ul class="nav-custom-list">
+                      <!-- ko foreach: refinements.display -->
+                        <!-- ko if: $data.multiSelect === false -->
+                          <li>
+                            <a data-bind="attr: {for: 'CC-overLayedGuidedNavigation-refinementValue-' + $parentContext.$index() + '_' + $index()}, click: $data.clickRefinement" href="#">
+                              <!-- ko if: $parents[1].checkForRange($data) -->
+                                <!-- ko ifnot: $parents[1].checkIfUnboundRange($data) -->
+                                  <span data-bind="currency: {price: $parents[2].guidedNavigationViewModel().getLowerBound($data), currencyObj: $parents[2].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                                  <span>&nbsp;-&nbsp;</span>
+                                  <span data-bind="currency: {price: $parents[2].guidedNavigationViewModel().getUpperBound($data), currencyObj: $parents[2].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                                  &nbsp;(<span data-bind="text: $data.count"></span>)
+                                <!-- /ko -->
+                                <!-- ko if: $parents[1].checkIfUnboundRange($data) -->
+                                  <span data-bind="currency: {price: $parents[2].guidedNavigationViewModel().getLowerBound($data), currencyObj: $parents[2].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                                  <span data-bind="text: $parents[2].guidedNavigationViewModel().getUpperBoundText($data)"></span>
+                                  &nbsp;(<span data-bind="text: $data.count"></span>)
+                                <!-- /ko -->
+                              <!-- /ko -->
+                              <!-- ko ifnot: $parents[1].checkForRange($data) -->
+                                <span data-bind="text: $data.refinementValue"></span>
+                              <!-- /ko -->
+                            </a>
+                          </li>
+                        <!-- /ko -->
+                        <!-- ko if: $data.multiSelect === true -->
+                          <li>
+                            <div class="checkbox">
+                              <label data-bind="attr: {for: 'CC-overLayedGuidedNavigation-refinementCheckboxValue-'+ $parentContext.$index() + '_' + $index()}">
+                                <input type="checkbox" data-bind="attr: {id: 'CC-overLayedGuidedNavigation-refinementCheckboxValue-'+ $parentContext.$index() + '_' + $index()}, checked: $data.checkedValue">
+                                  <!-- ko if: $parents[1].checkForRange($data) -->
+                                    <!-- ko ifnot: $parents[1].checkIfUnboundRange($data) -->
+                                      <span data-bind="currency: {price: $parents[2].guidedNavigationViewModel().getLowerBound($data), currencyObj: $parents[2].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                                      <span>&nbsp;-&nbsp;</span>
+                                      <span data-bind="currency: {price: $parents[2].guidedNavigationViewModel().getUpperBound($data), currencyObj: $parents[2].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                                      &nbsp;(<span data-bind="text: $data.count"></span>)
+                                    <!-- /ko -->
+                                    <!-- ko if: $parents[1].checkIfUnboundRange($data) -->
+                                      <span data-bind="currency: {price: $parents[2].guidedNavigationViewModel().getLowerBound($data), currencyObj: $parents[2].site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                                      <span data-bind="text: $parents[2].guidedNavigationViewModel().getUpperBoundText($data)"></span>
+                                    <!-- /ko -->
+                                  <!-- /ko -->
+                                  <!-- ko ifnot: $parents[1].checkForRange($data) -->
+                                    <span data-bind="text: $data.refinementValue"></span>
+                                  <!-- /ko -->
+                              </label>
+                            </div>
+                          </li>
+                        <!-- /ko -->
+                      <!-- /ko -->
+                    </ul>               
+                    <!-- ko if: (refinements().length > $parent.maxRefinementCount) -->                   
+                      <span class="li-see-more-less">                
+                        <span class="sign" id="CC-overLayedGuidedNavigation-plusOrMinusForRefinement" data-bind="widgetLocaleText: $data.refinements.showAll() ? 'minus' : 'plus'"></span>
+                        <a class="see-more-less" id="CC-overlayedGuidedNavigation-seeMoreOrLessForRefinement" data-bind="widgetLocaleText: $data.refinements.showAll() ? 'seeLessText' : 'seeMoreText', click: $data.refinements.toggleShowAll" href="#"></a>                
+                      </span>
+                    <!-- /ko -->
+                  </div>
+                </div> 
+              </div>                           
+            <!-- /ko -->
+          </div>
+          <!-- ko if: (dimensions().length > maxDimensionCount) -->   
+            <span class="li-see-more-less">      
+              <span class="sign" id="CC-overlayedGuidedNavigation-plusOrMinusForDimension" data-bind="widgetLocaleText: dimensions.showAll() ? 'minus' : 'plus'"></span>                        
+              <a class="see-more-less" id="CC-overlayedGuidedNavigation-seeMoreOrLessForDimension" data-bind="widgetLocaleText: dimensions.showAll() ? 'seeLessText' : 'seeMoreText', click: dimensions.toggleShowAll" href="#"></a>
+            </span>
+          <!-- /ko -->
+        <!-- /ko -->  
+      </div>   
+    <!-- /ko -->       
+    </div>
+
+</div>

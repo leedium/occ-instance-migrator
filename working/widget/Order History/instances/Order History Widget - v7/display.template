@@ -1,0 +1,191 @@
+<!-- ko if: (historyViewModel().display) -->
+<div id="CC-orderHistory">
+  <div id="CC-orderHistory-account-title" class="row">
+    <div id="CC-myaccount-header" class="col-sm-7">
+      <h2 data-bind="widgetLocaleText:'myAccount'"></h2>
+    </div>
+    <div id="CC-backToAccount-lg-md-sm" class="hidden-xs col-sm-5 cc-account-back-link">
+      <a id="CC-backToMyAccounts" href="#" class="pull-right" data-bind="click: user().validatePrivilagePageRequest.bind(user()), ccNavigation: 'prevent', ccLink: 'profile', widgetLocaleText:'backToMyAccount'"></a>
+    </div>
+    <div id="CC-backToAccount-xs" class="visible-xs col-xs-12">
+      <a href="#" class="center-block col-xs-12" data-bind="click: user().validatePrivilagePageRequest.bind(user()), ccNavigation: 'prevent', ccLink: 'profile', widgetLocaleText:'backToMyAccount'"></a>
+    </div>
+  </div>
+  
+  <div id="CC-orderHistory-legend">
+    <legend id="CC-orderHistory-title" class="cc-profile-legend-title" data-bind="widgetLocaleText:'orderHistoryText'"></legend>
+  </div>
+  <section id="orders-info" class="col-md-12">
+  <div class="row form-group" id="CC-orderHistoryFilter">
+  <div class="col-sm-6 col-xs-12 pull-right">
+	  <label for="CC-orderList-statusFilter" data-bind="widgetLocaleText: 'showText'"></label>
+	  <select id="CC-orderList-statusFilter" data-bind="options: availableStatuses,
+                       optionsText: 'selectedName',
+                       value: status, event: {change: getFilteredStatus(status().selectedStatuses) }" class= "form-control">
+	  </select>
+   </div>
+   </div>
+  <div id="CC-orderHistory-table-md-lg-sm" class="row hidden-xs">
+    
+      <table class="table" data-bind="widgetLocaleText:{value:'myAccount',attr:'summary'}">
+        <thead>
+          <tr>
+             <th class="col-md-3" scope="col" >
+            <span data-bind="widgetLocaleText : 'historyHeaderOrderDate'"></span>
+          		<!-- ko if : ($data.sortDirections().submittedDate == "asc") -->
+          		<span class="fa fa-sort-desc" data-bind="click : $data.clickToSort.bind($data,'desc','submittedDate')" aria-hidden="true"></span>
+          		<!-- /ko -->
+          		<!-- ko if : ($data.sortDirections().submittedDate == "desc") -->
+          		<span class="fa fa-sort-asc" data-bind="click : $data.clickToSort.bind($data,'asc','submittedDate')" aria-hidden="true"></span>
+          		<!-- /ko -->
+          		<!-- ko if : ($data.sortDirections().submittedDate == "both") -->
+          		<span class="fa fa-sort" data-bind="click : $data.clickToSort.bind($data,'asc','submittedDate')" aria-hidden="true"></span>
+          		<!-- /ko -->
+          	</th>
+            <!-- ko if: (includeScheduledInformation()) -->
+             <th class="col-md-2" scope="col" data-bind="widgetLocaleText: 'historyHeaderOrderNumber'"></th>
+            <th class="col-md-2" scope="col" data-bind="widgetLocaleText : 'listingHeaderScheduledOrderId'"></th>
+            <th class="col-md-2" scope="col" data-bind="widgetLocaleText: 'historyHeaderOrderStatus'"></th>
+            <!--/ko-->
+            <!-- ko ifnot: (includeScheduledInformation()) -->
+            <th class="col-md-3" scope="col" data-bind="widgetLocaleText: 'historyHeaderOrderNumber'"></th>
+            <th class="col-md-3" scope="col" data-bind="widgetLocaleText: 'historyHeaderOrderStatus'"></th>
+             <!--/ko-->
+            <th class="col-md-3" scope="col"><div class="sr-only" data-bind="widgetLocaleText : 'historyHeaderOrderDetails'"></div></th>
+            <th class="col-md-3" scope="col"><div class="sr-only" data-bind="widgetLocaleText : 'historyHeaderOrderDetails'"></div></th>
+          </tr>
+        </thead>
+        <!-- ko if : (historyGrid().length > 0 ) -->
+        <tbody data-bind="foreach: historyGrid">
+          <tr data-bind="foreach: $data">
+            <td class="col-md-3" data-bind="ccDate: {date: $data.submittedDate? $data.submittedDate: $data.creationDate, returnedDate: 'medium'}"></td>
+            <!-- ko if: ($parents[1].includeScheduledInformation()) -->
+            <td class="col-md-2" data-bind="text : $data.orderId.replace('o','')" scope="row"></td>
+            <td class="col-md-2" data-bind="text : $data.scheduledOrderId" scope="row"></td>
+            <td class="col-md-2" data-bind="widgetLocaleText : $data.state"></td>
+            <!--/ko-->
+            <!-- ko ifnot: ($parents[1].includeScheduledInformation()) -->
+            <td class="col-md-3" data-bind="text : $data.orderId.replace('o','')" scope="row"></td>
+            <td class="col-md-3" data-bind="widgetLocaleText : $data.state"></td>
+            <!--/ko-->
+            <td class="col-md-3">
+              <button class="cc-button-primary pull-right" href="#" data-bind="click: $parents[1].clickOrderDetails.bind($parents[1]), attr: {id: 'cc-order-details-'+$data.orderId}" >
+                <span data-bind="widgetLocaleText: 'orderDetails'"></span>
+              </button>
+            </td>
+            <td class="col-md-5" scope="row">
+              <!-- ko if:($parents[1].cart().items().length > 0) -->
+    			<a href="#" class="pull-left linkText" data-bind="widgetLocaleText:'copyToCart', click: $parents[1].setSelectedOrderId.bind($parents[1]), attr: {id: 'CC-mergeOrder-'+$data.orderId}"
+                    data-toggle="modal"
+                    data-id=$parents[1].orderId
+                    data-target="#cc-placeOrder-ModalContainer"
+                    type="button">
+     			</a> 
+     			<!-- /ko -->
+     		<!-- ko if:($parents[1].cart().items().length == 0) -->
+     		<a id="CC-copyOrder" href="#" class="pull-right linkText" href="#" data-bind="click:  $parents[1].mergeToCart.bind($parents[1]), widgetLocaleText: 'copyToCart', attr: {id: 'cc-copy-to-cart-'+$data.orderId}" >
+              </a>
+     		<!-- /ko -->
+            </td>
+            <!-- /ko -->
+          </tr>
+        </tbody>
+        <!-- /ko -->
+        <!-- ko if : (historyGrid().length == 0 ) -->
+        <tbody>
+         <tr>
+           <td data-bind ="widgetLocaleText:'NoItemDisplayMessage' " />            
+           <td/><td/><td/><td/>
+         </tr>
+        </tbody>
+        <!-- /ko -->
+      </table>
+    </section>
+  </div>
+
+	<!-- Place Order Modal-->
+            <div data-bind="modal: 0,
+                            modalTabbingContraint"
+                  class="modal width-fixed fade cc-modalForm"
+                  id="cc-placeOrder-ModalContainer">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <text data-bind="widgetLocaleText:'placeOrderModalMessage'"
+                        class="modal-title text-center"></text>
+                  </div>
+                  <div class="modal-footer">
+                    <div><button data-bind="click: $data.mergeToCart.bind($data),
+                                       widgetLocaleText:'buttonOk'"
+                                       data-dismiss="modal"
+                            type="button"
+                            class="cc-button-primary btn btn-primary btn-sm"
+                            id="modal-copy-order-ok"></button>
+                    <button data-bind="widgetLocaleText:'buttonCancel'"
+                            data-dismiss="modal"
+                            type="button"
+                            class="cc-button-secondary btn btn-primary btn-sm"></button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  <div id="CC-orderHistory-table-xs" class="row visible-xs">
+    <section id="orders-info-phone" class="col-md-12">
+      <table class="table" data-bind="widgetLocaleText:{value:'myAccount',attr:'summary'}">
+        <thead></thead>
+        <tbody data-bind="foreach: historyGrid">
+          <tr data-bind="foreach: $data">
+            <td>
+              <div data-bind="text : $data.orderId.replace('o','')"></div>
+              <div data-bind="ccDate: {date: $data.submittedDate? $data.submittedDate: $data.creationDate, returnedDate: 'short'}"></div>
+            </td>
+            <td>
+              <a class="text-underline" href="#" data-bind="attr: {id: 'CC-profile-order-' + $data.orderId},click: $parents[1].clickOrderDetails.bind($parents[1])">
+              <span data-bind="widgetLocaleText: 'orderDetails'"></span>
+              </a>
+              <div data-bind="text : $data.scheduledOrderId"></td>
+            </td>
+            <td>
+            <!-- ko if:($parents[1].cart().items().length > 0) -->
+              <a href="#" class="pull-left" data-bind="widgetLocaleText:'copyToCart', click: $parents[1].setSelectedOrderId.bind($parents[1]), attr: {id: 'xs-CC-mergeOrder-'+$data.orderId}"
+                    data-toggle="modal"
+                    data-id=$parents[1].orderId
+                    data-target="#cc-placeOrder-ModalContainer"
+                    type="button">
+          </a> 
+          <!-- /ko -->
+        <!-- ko if:($parents[1].cart().items().length == 0) -->
+        <a id="CC-copyOrder" href="#" class="pull-right" href="#" data-bind="click:  $parents[1].mergeToCart.bind($parents[1]), attr: {id: 'cc-copy-to-cart-'+$data.orderId}" >
+                <span data-bind="widgetLocaleText: 'copyToCart'"></span>
+              </a>
+        <!-- /ko -->  
+            </td>
+            <td>
+              <!-- ko if: $data.secondaryOrderDataAvailable && $data.secondaryCurrency() --!>
+                <div>
+                  <span data-bind="currency: {price: $data.primaryCurrencyTotal, currencyObj: $data.priceListGroup.currency}"></span><br>
+                  <span data-bind="currency: {price: $data.secondaryCurrencyTotal, currencyObj: $data.secondaryCurrency(), prependSymbol: '+'}"></span>
+                </div>
+              <!-- /ko -->
+              <!-- ko ifnot: $data.secondaryOrderDataAvailable && $data.secondaryCurrency() --!> 
+                <div data-bind="currency: {price: $data.total, currencyObj: $data.priceListGroup.currency}"></div>
+              <!-- /ko -->
+              <div data-bind="text : $data.status"></div>
+            </td>    
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+    
+  <!-- ko with: historyViewModel -->
+  <div id="cc-paginated-controls-bottom" class="row col-md-12 visible-md visible-lg">
+    <div data-bind="visible : (totalNumberOfPages() > 1)">
+      <div>
+        <div class="row pull-right" data-bind="template: { name: $parent.templateAbsoluteUrl('/templates/paginationControls.template') , templateUrl: ''}"></div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</div>
+<!-- /ko -->
