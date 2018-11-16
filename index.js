@@ -340,10 +340,11 @@ async function makeTmpFolder() {
         //  Blow away the instance folder.  We need to do this as we only want to
         //  include the instances we stored in instanceTracker
         if (extType === "widget") {
-          const cccPath = pathSplitArray.slice(0);
-          cccPath.splice(1,0,'.ccc');
-          const fp = `${TEMP_FOLDER}/${pathSplitArray.slice(0, 3).join("/")}/instances`;
-          const cp = `${TEMP_FOLDER}/${cccPath.join("/")}/instances`;
+          const splPath = path.split("/");
+          const cPath = splPath.slice(0);
+          cPath.splice(1,0,'.ccc');
+          const fp = `${TEMP_FOLDER}/${splPath.slice(0, 3).join("/")}/instances`;
+          const cp = `${TEMP_FOLDER}/${cPath.join("/")}/instances`;
           fs.removeSync(fp);
           fs.removeSync(cp);
         }
