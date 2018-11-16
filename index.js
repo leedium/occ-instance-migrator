@@ -231,6 +231,7 @@ function processDiffs() {
   return new Promise((resolve) => {
     const transferPathArrayTemp = {};
 
+    // reads line from whatchanged.txt
     const rl = readline.createInterface({
       input: fs.createReadStream(config.diffFilePath)
     });
@@ -242,15 +243,13 @@ function processDiffs() {
 
       let path;
       path = pathArray.slice(0, pathArray.length - 1).join("/");
+
+      // Checks if the difference is an addition or modification
+      // Renames and deletions are ignored.
       if (modType !== "D" && modType.indexOf("R") < 0) {
-
-        console.log(modType, pathString);
-
         if (!transferPathArrayTemp[path]) {
           if (path.indexOf("dcu-extensions-migrator") < 0) {
             let sp = path.split("/");
-            // console.log(sp)
-            // const headPath = sp.slice(0, 2).join("/");
             transferPaths.push({
               path: path.split("/").slice(0, 5).join("/"),
               extType: sp[1]
@@ -261,40 +260,16 @@ function processDiffs() {
       }
     });
 
+    //  When EOF and close, modify the paths best suited for OCC DCU structure
     rl.on("close", () => {
       const pathListSearched = {};
       const filteredSearched = {};
-      // console.log(transferPaths)
+
       transferPaths = transferPaths.reduce((a, pathObj) => {
+        // Convert flat paths to object with extensionType and path
         const { extType, path } = pathObj;
-        let extra = [];
         if (!pathListSearched[pathObj.path]) {
           pathListSearched[pathObj.path] = true;
-
-          // const directories = filehound.create()
-          //   .depth(4)
-          //   .paths(pathObj.path)
-          //   .directory().findSync()
-          //   .map(path => ({ type: "d", path }));
-
-          // const files = filehound.create()
-          //   .ignoreHiddenFiles()
-          //   .depth(0)
-          //   .paths(pathObj.path)
-          //   .findSync()
-          //   .map(path => ({ type: "f", path }));
-
-
-          // switch (extType) {
-          //   case "element":
-          //   case "theme":
-          //     extra.push({ extType, path });
-          //     break;
-          // }
-          // a = a.concat(
-          // directories
-          // files
-          // );
           a.push({
             extType,
             path
@@ -302,35 +277,34 @@ function processDiffs() {
         }
         return a;
       }, []).reduce(
+        // Convert paths to grab necessary files for OCC DCU folder structure
+        // Keep track of widget instance folders
         (ac, pathObj) => {
           let { extType, path } = pathObj;
           const pSplit = path.split("/");
+
+          //  If path is a widget and includes an instance store value
           if (pSplit[3] === "instances" && pSplit.length > 4 && extType === "widget") {
             instanceTracker.push({extType,path});
             path = pSplit.slice(0, 3).join("/");
 
           }
+          // if path is a pure instance path, ignore
           else if (pSplit[3] === "instances" && pSplit.length === 4) {
-            // if (pSplit[3] === "instances" && pSplit.length === 4) {
             return ac;
-            // }else{
           } else {
             path = pSplit.slice(0, 3).join("/");
           }
-          // else if (pSplit[3] !== "instances") {
-          //   path = pSplit.slice(0, pSplit.length -1).join("/");
-          // }
+
           if (!filteredSearched[path]) {
             filteredSearched[path] = true;
             ac.push({ extType, path });
           }
-          // ac.push(path);
           return ac;
         }, []);
-      console.log("\n\n\n", transferPaths);
-      console.log("\n\n\n", instanceTracker.map(({ extType, path }) => {
+      console.log("\n\n\nTransfer Paths");
+      console.log( instanceTracker.map(({ extType, path }) => {
         if (extType === "widget") {
-          console.log(path.split("/").slice(0, 5).join("/"));
           return path.split("/").slice(0, 5).join("/");
         }
       }));
@@ -339,54 +313,44 @@ function processDiffs() {
   });
 }
 
+/**
+ * Constructs the temporary folder which will be used by the DCU's transferAll
+ * @returns {Promise<*>}
+ */
 async function makeTmpFolder() {
   return new Promise(async (resolve) => {
     const workingTransfer = WORKING_FOLDER.split("/")[1];
-    fs.ensureDirSync(`${TEMP_FOLDER}/${workingTransfer}/.ccc`);
-    fs.copySync(`${WORKING_FOLDER}/.ccc/config.json`, `${TEMP_FOLDER}/${workingTransfer}/.ccc/config.json`);
-    // deleteFilePath(pathsToBeRemoved.map(path => `${TEMP_FOLDER}/${workingTransfer}/${path}`));
 
-    // await deleteFilePath(pathsToBeRemoved.map(path => `${path}`));
-    // await deleteFilePath(pathsToBeRemoved.map(path => `.ccc/${path}`));
-    //
+    // create temp folder
+    fs.ensureDirSync(`${TEMP_FOLDER}/${workingTransfer}/.ccc`);
+
+    // copy root .ccc/config.json
+    fs.copySync(`${WORKING_FOLDER}/.ccc/config.json`, `${TEMP_FOLDER}/${workingTransfer}/.ccc/config.json`);
+
+    // copy dcu source and tracking file to temp
     transferPaths.map(({ extType, path }) => {
       const fa = path.split("/");
       const f = fa.slice(0, fa.length).join("/");
       fa[1] = `.ccc/${fa[1]}`;
       let c = fa.slice(0, fa.length).join("/");
 
-      const isStack = path.lastIndexOf("stack") >= 0;
-
       try {
-        // if (type === "f") {
-        //   fs.ensureFileSync(`${TEMP_FOLDER}/${f}`);
-        //   fs.ensureFileSync(`${TEMP_FOLDER}/${c}.etag`);
-        //   fs.copySync(`${path}`, `${TEMP_FOLDER}/${f}`);
-        //   fs.copySync(`${c}.etag`, `${TEMP_FOLDER}/${c}.etag`);
-        // } else if (type === "d") {
         fs.ensureDirSync(`${TEMP_FOLDER}/${f}`);
         fs.ensureDirSync(`${TEMP_FOLDER}/${c}`);
         fs.copySync(`${path}`, `${TEMP_FOLDER}/${f}`);
         fs.copySync(c, `${TEMP_FOLDER}/${c}`);
 
-
-        // instanceTracker.map(({extType, path}) => {
+        //  Blow away the instance folder.  We need to do this as we only want to
+        //  include the instances we stored in instanceTracker
         if (extType === "widget") {
           const splPath = path.split("/");
           const cPath = splPath.slice(0);
           cPath.splice(1,0,'.ccc');
           const fp = `${TEMP_FOLDER}/${splPath.slice(0, 3).join("/")}/instances`;
           const cp = `${TEMP_FOLDER}/${cPath.join("/")}/instances`;
-
-          // console.log(cp)
-          // fs.removeSync(`${TEMP_FOLDER}/${`);
           fs.removeSync(fp);
           fs.removeSync(cp);
-          // fs.removeSync(path.split('/').slice(0,4).join('/'))
         }
-        // });
-
-
         // }
         //
         // if (isStack) {
@@ -400,6 +364,8 @@ async function makeTmpFolder() {
         console.log(err);
       }
     });
+
+    //  Add back the selected instances
     instanceTracker.map(({ extType, path }) => {
       if (extType === "widget") {
         let cSpl= path.split('/')
@@ -419,23 +385,7 @@ async function makeTmpFolder() {
 }
 
 /**
- * Removes paths specified in Array
- * @param pathsToBeRemoved - Array
- */
-async function deleteFilePath(pathsToBeRemoved) {
-  return new Promise(async (resolve) => {
-    console.log("Removing...", pathsToBeRemoved);
-    pathsToBeRemoved.map((item) => {
-      fs.removeSync(item);
-    });
-    setTimeout(() => {
-      resolve();
-    }, config.taskDelay);
-  });
-}
-
-/**
- * Transfers all extension from source instance to target instance
+ * Executes DCU transferAll
  * @returns {Promise<any>}
  */
 function transferAll() {
@@ -458,6 +408,22 @@ function transferAll() {
       console.log(`... target updated`);
       resolve();
     });
+  });
+}
+
+/**
+ * Removes paths specified in Array
+ * @param pathsToBeRemoved - Array
+ */
+async function deleteFilePath(pathsToBeRemoved) {
+  return new Promise(async (resolve) => {
+    console.log("Removing...", pathsToBeRemoved);
+    pathsToBeRemoved.map((item) => {
+      fs.removeSync(item);
+    });
+    setTimeout(() => {
+      resolve();
+    }, config.taskDelay);
   });
 }
 
@@ -567,7 +533,6 @@ async function extensionsTransfer() {
     await transferAll();
     await deleteFilePath([TEMP_FOLDER]);
     await checkoutBranch(BRANCH_MASTER);
-
     resolve();
   });
 }
