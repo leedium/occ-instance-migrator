@@ -1,28 +1,36 @@
 {
   "name": "occ-instance-migrator",
-  "version": "1.0.0",
+  "version": "1.1.17",
   "description": "Tools to help with Oracle Commerce Cloud Solutions",
-  "main": "index.js",
+  "bin": {
+    "oim": "./index.js"
+  },
+  "preferGlobal": true,
+  "main": "app/app.js",
   "scripts": {
-    "migrate": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leedium/occ-instance-migrator.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "LEEDIUM",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/leedium/occ-instance-migrator/issues"
   },
   "homepage": "https://github.com/leedium/occ-instance-migrator#readme",
   "dependencies": {
+    "commander": "^2.19.0",
     "fs-extra": "^7.0.0",
     "simple-git": "^1.105.0",
     "yargs": "^12.0.2"
   },
   "devDependencies": {
     "prettier": "^1.14.3"
+  },
+  "config": {
+    "taskDelay": 3000,
+    "gitPath": "."
   }
 }
