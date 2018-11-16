@@ -1,0 +1,16 @@
+{
+  "resources": {
+    "wasText": "Was",
+    "salePriceText": "Sale price",
+    "onSaleText": "SALE",
+    "previousImageText": "Previous Images",
+    "joinText": "or",
+    "moreInfoButtonText": "Get More Info",
+    "fromText": "From",
+    "listPriceText": "List price",
+    "saveText": "SAVE",
+    "nextImageText": "Next Images",
+    "perMonthText": "p/m",
+    "cashText": "cash"
+  }
+}

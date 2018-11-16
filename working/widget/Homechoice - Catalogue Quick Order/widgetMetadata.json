@@ -1,0 +1,166 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "Homechoice - Catalogue Quick Order  [th]",
+      "language": "th"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [pt_BR]",
+      "language": "pt_BR"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [et]",
+      "language": "et"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [no]",
+      "language": "no"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [el]",
+      "language": "el"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [da]",
+      "language": "da"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order ",
+      "language": "en"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [de]",
+      "language": "de"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [es]",
+      "language": "es"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [it]",
+      "language": "it"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "Homechoice - Catalogue Quick Order  [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

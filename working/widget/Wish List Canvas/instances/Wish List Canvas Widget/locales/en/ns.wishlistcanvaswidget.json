@@ -1,0 +1,11 @@
+{
+  "resources": {
+    "protalIntroText2": "Invite friends to your Wish List and make shopping decisions together.",
+    "portalLogoAltText": "Your Logo Here",
+    "headingText": "The Wish List owner wants you to join a Wish List.",
+    "portalIntroText1": "Find great products at <Your Store URL> today!",
+    "bulletText": "As a member of a Wish List, you'll be able to add products, comments, and make shopping decisions together!",
+    "acceptText": "Accept Invitation",
+    "introText": "You should automatically be redirected to the Wish List.  If not, accept the invitation again from Facebook."
+  }
+}

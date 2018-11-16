@@ -1,0 +1,26 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('header-language-picker') -->
+<!-- ko with: $data['elements']['header-language-picker'] -->
+
+  <div id="languagedropdown">
+    <div class="pull-right">
+      <div class="heading">
+        <a data-bind="visible: supportedLocales().length > 1 , click: toggleLanguageDropDown, event: {keydown: $data.keypressLanguageHandler, mouseover: toggleLanguageDropDown}, attr: {id: 'CC-header-language-link', href: redirectToLink()}">
+          <span data-bind="text: languageLinkText"></span>
+        </a>
+        <span data-bind="visible: supportedLocales().length == 1, text: languageLinkText"></span>
+      </div>
+      <div class="content" data-bind="visible: languageDropdownVisible()">
+        <div data-bind="foreach: supportedLocales" role="presentation">
+          <div>
+            <a data-bind="attr: {id: 'CC-header-languagePicker-'+ $index(), href: $parent.redirectToLink()},
+                click: $parent.handleLanguageChange.bind($parent), event: {keydown: $parent.keypressLanguageHandler.bind($parent)}">
+              <span data-bind="text: $data.name.toUpperCase() + ' - ' + $data.displayName"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- /ko -->
+<!-- /ko -->

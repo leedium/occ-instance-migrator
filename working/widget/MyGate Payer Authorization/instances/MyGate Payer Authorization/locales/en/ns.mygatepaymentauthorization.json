@@ -1,0 +1,7 @@
+{
+  "resources": {
+    "authDeclinedMessage": "The Authorization declined.  Please try using a different card and try again.",
+    "authSuccessMessage": "The Authorization is confirmed.  Please wait while the system processes the transaction",
+    "timeoutMessage": "Sorry your transaction has timed out.  Please try again."
+  }
+}

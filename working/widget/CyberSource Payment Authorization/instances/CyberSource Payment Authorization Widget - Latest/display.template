@@ -1,0 +1,5 @@
+<div id='cc-cybersourcePaymentAuthorization' data-bind="onRender: destroySpinnerOnResponse">
+  <br> <span data-bind="widgetLocaleText: 'processingText'"></span>
+  <iframe id='cc-cybersourcePaymentAuthorization-frame' class="hidden-widget" data-bind="attr : { src : absoluteUrl('/cs-auth.html') }"></iframe>
+  <iframe id='cc-cybersourcePaymentAuthorization-output-frame' frameBorder="0" class="col-xs-12 col-md-6" height="500" scrolling="no" name="output_frame" src=""></iframe>
+</div>

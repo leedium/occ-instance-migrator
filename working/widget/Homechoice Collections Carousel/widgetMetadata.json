@@ -1,0 +1,17 @@
+{
+  "imports": [
+    "category",
+    "categoryId"
+  ],
+  "translations": [
+    {
+      "name": "Homechoice Collections Carousel",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

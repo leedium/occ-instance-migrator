@@ -1,0 +1,8 @@
+{
+  "configuration": {
+    "fullWidth": false,
+    "interval": "3000",
+    "panelCount": "3"
+  },
+  "displayName": "hc.topBrands"
+}

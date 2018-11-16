@@ -1,0 +1,543 @@
+<div id="SWM-spaceheader">
+
+
+
+  <!-- ko if: $data.showWidget() == true -->
+  <div data-bind="visible: $data.space().showSpace()">
+  
+    <div class="row">
+    
+      <!-- Space Title and Space Access Level Icon ( all modes ) -->
+      <div class="col-xs-12 col-sm-8">
+        <span data-bind="visible: $data.userIsSpaceOwner(), text: $data.space().name(), click: $data.openEditSpaceModal, attr: {'title': $data.translate('editWishlistTooltipTxt')}" class="swm-space-title swmLink"></span>
+        <span data-bind="visible: !$data.userIsSpaceOwner(), text: $data.space().name()" class="swm-space-title"></span>
+        <!-- ko if: $data.space().isPrivate() -->
+        <div data-bind="visible: $data.userIsSpaceOwner(), text: ' ' + $data.translate('spaceAccessPrivateIconTxt'), click: $data.openEditSpaceModal, attr: {'title': $data.spaceTitleIconTooltip($data.space().accessLevel())}" class="swm-space-private swm-space-fa-label-align swmLink"></div>
+        <div data-bind="visible: !$data.userIsSpaceOwner(), text: ' ' + $data.translate('spaceAccessPrivateIconTxt')" class="swm-space-private swm-space-fa-label-align"></div>
+        <!-- /ko -->
+        <!-- ko if: $data.space().isShared() -->
+        <div data-bind="visible: $data.userIsSpaceOwner(), text: ' ' + $data.translate('spaceAccessSharedIconTxt'), click: $data.openEditSpaceModal, attr: {'title': $data.spaceTitleIconTooltip($data.space().accessLevel())}" class="swm-space-shared swm-space-fa-label-align swmLink"></div>
+        <div data-bind="visible: !$data.userIsSpaceOwner(), text: ' ' + $data.translate('spaceAccessSharedIconTxt')" class="swm-space-shared swm-space-fa-label-align"></div>
+        <!-- /ko -->
+        <!-- ko if: $data.space().isGroup() -->
+        <div data-bind="visible: $data.userIsSpaceOwner(), text: ' ' + $data.translate('spaceAccessGroupIconTxt'), click: $data.openEditSpaceModal, attr: {'title': $data.spaceTitleIconTooltip($data.space().accessLevel())}" class="swm-space-group swm-space-fa-label-align swmLink"></div>
+        <div data-bind="visible: !$data.userIsSpaceOwner(), text: ' ' + $data.translate('spaceAccessGroupIconTxt')" class="swm-space-group swm-space-fa-label-align"></div>
+        <!-- /ko -->
+      </div>
+      
+      <!-- Space Selector and Modify Space Control ( > xs ) -->
+      <div class="hidden-xs col-sm-4">
+        <div class="pull-right">
+          <!-- ko if: spaceOptionsArray().length > 0 -->
+          <div id="SWM-space-selector" class="swm-space-selector dropdown">
+            <button id="SWM-space-selector-label" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span data-bind="widgetLocaleText : 'switchSpaceLabel'"></span> <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="SWM-space-selector-label">
+              <li role="presentation" class="dropdown-header" data-bind="widgetLocaleText: 'mySpacesGroupText'"></li>
+              <!-- ko foreach : {data : $data.user().myWishLists(), as : 'mySpaces'} -->
+                <li role="presentation"><a role="menuitem" tabindex="-1" data-bind="text: mySpaces.spaceNameFull, click: $parent.selectSpace.bind($parent, mySpaces.spaceid)"></a></li>
+              <!-- /ko -->
+              <li role="presentation" class="dropdown-header" data-bind="visible: $data.user().joinedWishLists().length > 0, widgetLocaleText: 'joinedSpacesGroupText'"></li>
+              <!-- ko foreach : {data : $data.user().joinedWishLists, as : 'joinedSpaces'} -->
+                <li role="presentation"><a role="menuitem" tabindex="-1" data-bind="text: joinedSpaces.spaceNameFormatted, click: $parent.selectSpace.bind($parent, joinedSpaces.spaceid)"></a></li>
+              <!-- /ko -->
+              <li role="presentation" class="divider"></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="" data-bind="widgetLocaleText: 'createNewSpaceOptText', click: $data.handleCreateSpaceModelOpen"></a></li>
+            </ul>
+          </div>
+          <!-- /ko -->
+          <div id="SWM-space-mod-controls" class="swm-space-mod-control dropdown">
+            <button id="SWM-space-mod-controls-label" type="button" class="dropdown-toggle" href="#" data-toggle="dropdown" 
+                data-bind="visible: $data.userIsSpaceOwner(), attr: {'title' : $data.translate('wishlistActionsTooltipTxt')}">
+              <span class="swm-down-icon"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="SWM-space-mod-controls-label">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="visible: $data.userIsSpaceOwner(), widgetLocaleText: 'editDetailsBtnText', click: $data.openEditSpaceModal"></a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="visible: $data.userIsSpaceOwner(), widgetLocaleText: 'deleteBtnText', click: $data.openDeleteSpaceModal"></a></li>
+            </ul>
+          </div>
+        </div>      
+      </div>
+    
+    <!-- Space Selector and Modify Space Control ( xs ) -->
+        <div class="visible-xs col-xs-12">
+          <div id="SWM-space-selector-XS" class="swm-space-selector dropdown">
+            <button id="SWM-space-selector-label-XS" type="button" class="btn btn-default dropdown-toggle swm-button-text-allow-wrap" data-toggle="dropdown"><span data-bind="widgetLocaleText : 'switchSpaceLabel'"></span> <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="SWM-space-selector-label-XS">
+              <li role="presentation" class="dropdown-header" data-bind="widgetLocaleText: 'mySpacesGroupText'"></li>
+              <li role="presentation" data-bind="foreach : {data : $data.user().myWishLists, as : 'mySpaces'}">
+                <a role="menuitem" tabindex="-1" data-bind="text: mySpaces.spaceNameFull, click: $parent.selectSpace.bind($parent, mySpaces.spaceid)"></a>
+              </li>
+              <li role="presentation" class="dropdown-header" data-bind="visible: $data.user().joinedWishLists().length > 0, widgetLocaleText: 'joinedSpacesGroupText'"></li>
+              <li role="presentation" data-bind="foreach : {data : $data.user().joinedWishLists, as : 'joinedSpaces'}">
+                <a role="menuitem" tabindex="-1" data-bind="text: joinedSpaces.spaceNameFormatted, click: $parent.selectSpace.bind($parent, joinedSpaces.spaceid)"></a>
+              </li>
+              <li role="presentation" class="divider"></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="" data-bind="widgetLocaleText: 'createNewSpaceOptText', click: $data.handleCreateSpaceModelOpen"></a></li>
+            </ul>
+          </div>
+          <div id="SWM-space-mod-controls-XS" class="swm-space-mod-control dropdown">
+            <button id="SWM-space-mod-controls-label-XS" type="button" class="dropdown-toggle" href="#" data-toggle="dropdown" 
+                data-bind="visible: ( $data.userIsSpaceOwner() || $data.currentUserIsMember() || $data.space().isShared()), attr: {'title' : $data.translate('editDetailsBtnText')}">
+              <span class="swm-down-icon"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="SWM-space-mod-controls-label-XS">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="visible: $data.userIsSpaceOwner(), widgetLocaleText: 'editDetailsBtnText', click: $data.openEditSpaceModal"></a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="visible: $data.userIsSpaceOwner(), widgetLocaleText: 'deleteBtnText', click: $data.openDeleteSpaceModal"></a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="visible: $data.userIsSpaceOwner(), widgetLocaleText: 'inviteToSpaceText', click: $data.inviteToSpaceClick"></a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="visible: !$data.userIsSpaceOwner() && $data.currentUserIsMember(), widgetLocaleText: 'leaveSpaceBtnText', click: $data.onClickLeaveSpace"></a></li>
+              <!-- Share by Facebook -->
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="visible: $data.space().isShared() && $data.space().fbAppId(), widgetLocaleText: 'shareOnFacebookButtonText', click: shareSpaceFbClick"></a></li>
+              <!-- Share by Twitter -->
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="visible: $data.space().isShared(), widgetLocaleText: 'shareOnTwitterButtonText', click: shareSpaceTwitterClick"></a></li>
+              <!-- Share by Pinterest -->
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="visible: $data.space().isShared(), widgetLocaleText: 'shareOnPinterestButtonText', click: shareSpacePinterestClick"></a></li>
+              <!-- Share by email -->
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-bind="visible: $data.userIsSpaceOwner() || $data.space().isShared(), widgetLocaleText: 'shareByEmailButtonText', click: shareSpaceClick"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+  </div>
+    
+  <!-- BEGIN Create Space Modal -->
+  <div class="modal fade" id="SWM-modalContainer" data-bind="modal: 0, modalTabbingContraint" role="link" >
+    <div class="modal-dialog cc-modal-dialog">
+      <!-- Begin New Space Content -->  
+      <div id="SWM-modalPane" class="modal-content">
+        <div class="modal-header">
+          <button id="SWM-createSpaceClose" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3 class="modal-title" data-bind="widgetLocaleText:'createSpaceText'"></h3>
+        </div>
+        <div class="modal-body swm-modal-body-scroll"> 
+          <div id="SWM-addToSpaceForm">
+            <span id="SWM-space-name-error" class="text-danger" data-bind="validationMessage:createSpaceName"></span>
+            <p><label class="hidden" id="SWM-space-name-label" data-bind="widgetLocaleText:'spaceNameText'" for="SWM-createSpace-name"></label></p>
+            <div id="SWM-space-name" class="form-horizontal"> 
+              <input data-bind="validatableValue:createSpaceName, messagesOnModified: widgetMessagesOnModified,  widgetLocaleText : {value:'spaceNameText', attr:'placeholder'}, event: { focus: createSpaceInputUnmodified, blur : createSpaceInputUnmodified }, focusBubble: false, blurBubble: false" class="form-control" id="SWM-createSpace-name" type="text" maxlength="100"/>
+            </div>
+            <!-- Begin private/group/shared radio buttons -->
+            <div class="swm-privacy-settings">
+              <h4 data-bind="widgetLocaleText: 'privacySettingsLabel'"></h4>
+              <p data-bind="widgetLocaleText: 'privacySettingsDescription'"></p>
+              <div class="row">
+                <div class="col-xs-4 col-sm-3">
+                  <input type="radio" name="accessLevelGroup" id="SWM-accessLevelGroupPrivate" value="0" data-bind="checked : $data.createSpaceAccessLevel"/>
+                  <label class="swm-space-private-form-label" id="SWM-access-private" data-bind="text: $data.translate('spaceAccessPrivateIconTxt') + ' '" for="SWM-accessLevelGroupPrivate"></label>
+                </div>
+                <div class="col-xs-8 col-xs-pull-1 col-sm-9 col-sm-pull-1">
+                  <span data-bind="widgetLocaleText: 'privacyPrivateLabel'"></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-4 col-sm-3">
+                  <input type="radio" name="accessLevelGroup" id="SWM-accessLevelGroupGroup" value="2" data-bind="checked : $data.createSpaceAccessLevel"/> 
+                  <label class="swm-space-group-form-label" id="SWM-access-group" data-bind="text: $data.translate('spaceAccessGroupIconTxt') + ' '" for="SWM-accessLevelGroupGroup"></label>
+                </div>
+                <div class="col-xs-8 col-xs-pull-1 col-sm-9 col-sm-pull-1">
+                  <span data-bind="widgetLocaleText: 'privacyGroupLabel'"></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-4 col-sm-3">
+                  <input type="radio" name="accessLevelGroup" id="SWM-accessLevelGroupShared" value="1" data-bind="checked : $data.createSpaceAccessLevel"/> 
+                  <label class="swm-space-shared-form-label" id="SWM-access-shared" data-bind="text: $data.translate('spaceAccessSharedIconTxt') + ' '" for="SWM-accessLevelGroupShared"></label>
+                </div>
+                <div class="col-xs-8 col-xs-pull-1 col-sm-9 col-sm-pull-1">
+                  <span data-bind="widgetLocaleText: 'privacySharedLabel'"></span>
+                </div>
+              </div>
+            </div>
+            <!-- End private/group/shared radio buttons -->
+          </div>
+        </div>
+        <div class="modal-footer swm-modal-footer-remove-top-padding">
+          <button class="btn btn-cancel cc-button-secondary" type="button" id="SWM-createSpaceCancel" data-bind="click: handleCreateSpaceCancel, widgetLocaleText: 'buttonSpaceCancel'"></button>
+          <button class="btn btn-primary cc-button-primary" type="button" id="SWM-createSpaceSubmit" data-bind="click: handleCreateSpace, widgetLocaleText: 'buttonSpaceCreate'"></button>
+        </div>
+      </div>
+      <!-- End New Space Content -->      
+    </div>  
+  </div>
+  <!-- END Create Space Modal -->
+  
+  
+  <!-- BEGIN Edit Space Modal -->
+  <div class="modal fade" id="SWM-editSpaceModalContainer" data-bind="modal: 0, modalTabbingContraint" role="link" >
+    <div class="modal-dialog cc-modal-dialog">
+      <!-- Begin Edit Space Details Content -->
+      <div id="SWM-editSpaceModalPane" class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3 class="modal-title" data-bind="widgetLocaleText:'spaceDetailsText'"></h3>
+        </div>
+        <div class="modal-body swm-modal-body-scroll"> 
+          <div id="SWM-editSpaceModalForm">
+            <div class="text-danger swm-text-error-reset" data-bind="validationMessage:spaceTitle"></div>
+            <p><label class="hidden" data-bind="widgetLocaleText:'spaceNameText'" for="SWM-editSpaceName"></label></p>
+            <div class="form-horizontal"> 
+              <input data-bind="validatableValue:spaceTitle, widgetLocaleText : {value:'spaceNameText', attr:'placeholder'}" class="form-control" id="SWM-editSpaceName" type="text" maxlength="100"/>
+            </div>
+            <!-- Begin private/group/shared radio buttons -->
+            <div class="swm-privacy-settings">
+              <h4 data-bind="widgetLocaleText: 'privacySettingsLabel'"></h4>
+              <p data-bind="widgetLocaleText: 'privacySettingsDescription'"></p>
+              <div class="row">
+                <div class="col-xs-4 col-sm-3">
+                  <input type="radio" name="editSpaceAccessLevelGroup" id="SWM-editSpaceAccessLevelPrivate" value="0" data-bind="disable: $data.space().members().length > 0, checked : $data.spaceAccessLevel" /> 
+                  <label class="swm-space-private-form-label" data-bind="css: {'swm-label-disabled' : $data.space().members().length > 0}, text: $data.translate('spaceAccessPrivateIconTxt') + ' '" for="SWM-editSpaceAccessLevelPrivate"></label>
+                </div>
+                <div class="col-xs-8 col-xs-pull-1 col-sm-9 col-sm-pull-1">
+                  <span data-bind="css: { 'swm-label-disabled' : $data.space().members().length > 0}, widgetLocaleText: 'privacyPrivateLabel'"></span>
+                </div>
+                <div class="col-xs-12" data-bind="visible: (!$data.space().isPrivate() && $data.space().members().length > 0)">
+                  <p class="help-block" data-bind="widgetLocaleText: 'privacyPrivateOptDisabledText'"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-4 col-sm-3">
+                  <input type="radio" name="editSpaceAccessLevelGroup" id="SWM-editSpaceAccessLevelGroup" value="2" data-bind="checked : $data.spaceAccessLevel"/> 
+                  <label class="swm-space-group-form-label" data-bind="text: $data.translate('spaceAccessGroupIconTxt') + ' '" for="SWM-editSpaceAccessLevelGroup"></label>
+                </div>
+                <div class="col-xs-8 col-xs-pull-1 col-sm-9 col-sm-pull-1">
+                  <span data-bind="widgetLocaleText: 'privacyGroupLabel'"></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-4 col-sm-3">
+                  <input type="radio" name="editSpaceAccessLevelGroup" id="SWM-editSpaceAccessLevelShared" value="1" data-bind="checked : $data.spaceAccessLevel"/> 
+                  <label class="swm-space-shared-form-label" data-bind="text: $data.translate('spaceAccessSharedIconTxt') + ' '" for="SWM-editSpaceAccessLevelShared"></label>
+                </div>
+                <div class="col-xs-8 col-xs-pull-1 col-sm-9 col-sm-pull-1">
+                  <span data-bind="widgetLocaleText: 'privacySharedLabel'"></span>
+                </div>
+              </div>
+            </div>
+            <!-- End private/group/shared radio buttons -->
+          </div>
+        </div>
+        <div class="modal-footer swm-modal-footer-remove-top-padding">
+          <button class="btn cc-button-secondary pull-left" type="button" id="SWM-editSpaceDelete" data-bind="click: $data.openDeleteSpaceModal, widgetLocaleText: 'deleteBtnText'"></button>
+          <button class="btn btn-cancel cc-button-secondary" type="button" id="SWM-editSpaceCancel" data-bind="click: closeEditSpaceModal, widgetLocaleText: 'buttonSpaceCancel'"></button>
+          <button class="btn btn-primary cc-button-primary" type="button" id="SWM-editSpaceCancelSubmit" data-bind="click: saveEditSpaceModalAction, widgetLocaleText: 'buttonSpaceSave'"></button>
+        </div>
+      </div>
+      <!-- End Edit Space Details Content -->
+    </div>  
+  </div>
+  <!-- END Edit Space Modal -->
+    
+  <!-- BEGIN MODAL confirmation dialog for delete space -->
+  <div class="modal fade modal-no-leftmargin" id="SWM-deleteSpaceConfirm-ModalContainer" data-bind="modal: 0, modalTabbingContraint">
+    <div class="modal-dialog swm-confirm-modal-dialog">
+      <div class="modal-content swm-confirm-modal-content" id="SWM-deleteSpaceConfirm-ModalPane">
+        <div class="swm-confirm-body"> 
+          <div class="swm-confirm-title">
+            <div data-bind="widgetLocaleText:'deleteConfirmTitleText'"></div>
+          </div>
+          <div class="swm-confirm-message" data-bind="widgetLocaleText:'deleteConfirmMessageText'"></div>
+          <div class="swm-confirm-actions">
+            <button class="btn cc-button-secondary" id="SWM-deleteSpaceConfirm-Cancel" data-dismiss="modal" aria-hidden="true"
+                    data-bind="widgetLocaleText: 'buttonDeleteConfirmCancel'"></button>
+            <button class="btn cc-button-primary" id="SWM-deleteSpaceConfirm-Delete" 
+                    data-bind="click: deleteSpaceModalAction, widgetLocaleText: 'buttonDeleteConfirmDelete'"></button>
+          </div>  
+        </div> 
+      </div>
+    </div>   
+  </div>
+  <!-- END MODAL dialog for delete space -->   
+  <!-- /ko -->  
+</div>
+
+
+
+
+
+
+
+
+
+<!-- BEGIN: MEMBERS BAR -->
+  <div id="SWM-space-members" data-bind="visible: $data.showWidget() == true">
+    <div class="container-fluid" data-bind="visible: $data.space().showSpace() == true">
+      <div class="row swm-members-row">
+        
+        <!-- Begin: Owner Profile Image -->
+        <div class="col-xs-8 col-sm-4 swm-members-row-col">
+          <div>
+            <div id="SWM-spaceOwnerImage" class="pull-left">
+              <!-- if space owner, show link to open modal -->
+              <a class="thumbnail swm-space-owner-profile-thumb" data-bind="visible: $data.userIsSpaceOwner(), attr : { href: '', 'title': $data.translate('editProfilePhotoTooltipTxt') }, click: spaceOwnerImageClick">
+                <img class="swm-space-owner-profile-img" data-bind="attr : { src: $data.space().ownerMediaUrl(), alt: $data.space().ownerFirstName() + ' ' + $data.space().ownerLastName()}" />
+              </a>
+              <form id="SWM-profile-img-upload">
+                <div><input id="SWM-profile-img-browse-file" class="swm-input-file-browseBtn" data-bind="event: {change: handleChangeSelect}" name="filename" type="file" accept="image/*" /></div>
+              </form>
+              <!-- if not space owner, just show image -->        
+              <span data-bind="visible : !$data.userIsSpaceOwner()" class="thumbnail swm-space-owner-profile-thumb"><img data-bind="attr : { src: $data.space().ownerMediaUrl(), alt: $data.spaceOwnerFullName}" class="swm-space-owner-profile-img"/></span>          
+            </div>
+            <div>
+              <div id="SWM-spaceOwnerTitle" class="swm-space-owner-title" data-bind="widgetLocaleText:'spaceOwnerTitle'"></div>
+              <div id="SWM-spaceOwnerName" data-bind="text: $data.space().ownerFullName()"></div>
+            </div>
+          </div>
+              
+        </div>
+        <!-- END: Owner Profile Image -->
+        
+        
+        <!-- Begin: Members and Invite Members section -->
+        <div class="col-xs-4 col-sm-4 swm-members-row-col">
+          <div class="swm-members-section swm-display-table">
+            
+            <div class="swm-share-table-cell" data-bind="visible: $data.space().members().length > 0">
+              <span data-bind="attr: { 'title': $data.translate('memberListTooltipTxt') }">
+                <a data-bind="visible: $data.userIsSpaceOwner(), attr : { href: '#' }, click: onClickEditMembers">
+                  <span data-bind="widgetLocaleText:'spaceMembersTitle'"></span>
+                </a>
+                <a data-bind="visible: !$data.userIsSpaceOwner() , attr : { href: '#' }, click: viewMembersClick">
+                  <span data-bind="widgetLocaleText:'spaceMembersTitle'"></span>
+                </a>
+              </span>
+              <span>(<span data-bind="text: $data.space().members().length"></span>)</span>
+               <button data-bind="visible: $data.currentUserIsMember() && !$data.userIsSpaceOwner(), click: onClickLeaveSpace, widgetLocaleText: 'leaveSpaceBtnText'" class="btn cc-button-secondary hidden-xs"></button>
+               <button data-bind="visible: $data.userIsSpaceOwner(), click: inviteToSpaceClick, attr: {'title': $data.inviteFriendsBtnTooltip()}" class="cc-button-secondary swm-button-text-allow-wrap hidden-xs"><span class="swm-invite-icon" data-bind="text: ' ' + $data.translate('inviteToSpaceText')"></span></button>
+            </div>
+            <div class="swm-share-table-cell" data-bind="visible: $data.space().members().length == 0">
+              <div>
+                <span data-bind="visible: !$data.space().isPrivate() && $data.userIsSpaceOwner()">
+                  <span data-bind="attr: { 'title': $data.translate('memberListTooltipTxt') }">
+                    <a data-bind="attr : { href: '#' }, click: viewMembersClick">
+                     <span data-bind="widgetLocaleText:'spaceMembersTitle'"></span>
+                    </a>
+                  </span>
+                  <span>(<span data-bind="text: $data.space().members().length"></span>)</span>
+                </span>
+                <button
+                  data-bind="visible: $data.userIsSpaceOwner(), click: inviteToSpaceClick, attr: {'title': $data.inviteFriendsBtnTooltip()}"
+                  class="cc-button-secondary swm-button-text-allow-wrap hidden-xs">
+                  <span class="swm-invite-icon" data-bind="text: ' ' + $data.translate('inviteToSpaceText')"></span>
+                </button>
+            </div>
+              <div data-bind="visible: !$data.userIsSpaceOwner() && $data.space().isShared()">
+                <span data-bind="widgetLocaleText:'spaceMembersTitle'"></span> <span data-bind="text: '(' + $data.space().members().length + ')' "></span>
+              </div>
+            </div>      
+          </div>
+        </div>
+        <!-- END: Members and Invite Members section  --> 
+        
+        
+        <!-- BEGIN: Social Share section  -->
+        <div class="hidden-xs col-sm-4 swm-members-row-col">
+            <!-- BEGIN: Share section -->
+            <div class="swm-display-table pull-right">
+              <div id="SWM-share-section" class="swm-share-table-cell">
+                <span class="swm-share-section-heading" data-bind="visible: $data.userIsSpaceOwner() || $data.space().isShared(), widgetLocaleText:'shareText'"></span>
+                <span class="swm-share-section-icons">
+                  <!-- Share by Facebook -->
+                  <a data-bind="visible: $data.space().isShared() && $data.space().fbAppId(), attr : { href: '#', 'title' : $data.translate('shareOnFacebookButtonText') }, click: shareSpaceFbClick">
+                    <img src="/file/ccimg/icon32_facebook.png" data-bind="attr : { 'alt' : $data.translate('shareOnFacebookButtonText') }" width="32px" height="32px" />
+                  </a>
+                  <!-- Share by Twitter -->
+                  <a data-bind="visible: $data.space().isShared(), attr : { href: '#', 'title' : $data.translate('shareOnTwitterButtonText') }, click: shareSpaceTwitterClick">
+                    <img src="/file/ccimg/icon32_twitter.png" data-bind="attr : { 'alt' : $data.translate('shareOnTwitterButtonText') }" width="32px" height="32px" />
+                  </a>  
+                  <!-- Share by Pinterest -->
+                  <a data-bind="visible: $data.space().isShared(), attr : { href: '#', 'title' : $data.translate('shareOnPinterestButtonText') }, click: shareSpacePinterestClick" data-pin-do="buttonPin" data-pin-tall="true" data-pin-round="true">
+                    <img src="/file/ccimg/icon32_pinterest.png" data-bind="attr : { 'alt' : $data.translate('shareOnPinterestButtonText') }" width="32px" height="32px" />
+                  </a>
+                  <!-- Share by email -->
+                  <a data-bind="visible: $data.userIsSpaceOwner() || $data.space().isShared(), attr : { href: '', 'title' : $data.translate('shareByEmailButtonText') }, click: shareSpaceClick">
+                    <img src="/file/ccimg/icon32_email.png" data-bind="attr : { 'alt' : $data.translate('shareByEmailButtonText') }" width="32px" height="32px" />
+                  </a>
+                  </span>
+              </div>
+              
+            </div>
+            <!-- END: Share section -->
+        </div>
+        <!-- END: Social Share section  -->
+      </div>
+      
+    </div>
+    <!-- ko if: $data.userIsSpaceOwner() -->
+  <!-- MODAL dialog for invite to space -->
+  <div class="modal fade modal-no-leftmargin" id="SWM-inviteToSpaceModalContainer" data-bind="modal: 0, modalTabbingContraint" role="link" >
+    <div class="modal-dialog cc-modal-dialog">
+      <div class="modal-content" id="SWM-inviteToSpaceModalPane">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3 class="modal-title" data-bind="widgetLocaleText:'inviteToSpaceText'"></h3>
+        </div>
+        <div class="modal-body swm-modal-body-scroll">
+          <p data-bind="visible: $data.space().isPrivate(), widgetLocaleText: 'inviteSpaceModalWarningText'"></p>
+          <p data-bind="visible: !$data.space().isPrivate(), widgetLocaleText: 'inviteSpaceModalInfoText'"></p>
+          <br/> 
+          <div class="modal-button-grp">
+            <button class="cc-button-secondary" 
+              data-bind="
+                widgetLocaleText: 'inviteSpaceByEmailText' 
+                , click: $data.inviteToSpaceSend
+                , attr: { title : $data.translate('inviteSpaceByEmailText') }
+              ">
+            </button>
+          </div>
+          <div class="modal-button-grp" data-bind="visible:false"> <!-- Disable Invite Facebook Friends -->
+            <div data-bind="visible: $data.space().fbAppId()">
+              <p data-bind="widgetLocaleText: 'or'"></p>
+              <button class="btn cc-button-primary" data-bind="attr: { title : $data.translate('findFacebookFriends') }, click: showFbRequestDialog">
+                <i class="fa fa-facebook-square fa-1x swm-fb-invite-btn-txt"></i>
+                <span class="swm-fb-invite-btn-txt" data-bind="widgetLocaleText: 'findFacebookFriends'"></span>
+              </button>
+            </div>  
+          </div>          
+        </div>
+        <div class="modal-footer swm-modal-footer-remove-top-padding">
+          <button class="btn cc-button-secondary" id="SWM-inviteToSpaceCancel" data-dismiss="modal" aria-hidden="true"
+                  data-bind="widgetLocaleText: 'buttonSpaceInviteCancel'"></button>
+        </div>  
+      </div>
+    </div>  
+  </div>
+  <!-- /ko -->
+
+  <!-- ko if: $data.userIsSpaceOwner() -->
+  <!-- BEGIN MODAL dialog for removing members -->
+  <div class="modal fade modal-no-leftmargin" id="SWM-selectMembersModalContainer" data-bind="modal: 0, modalTabbingContraint" role="link" >
+    <div class="modal-dialog swm-select-members-modal-dialog">
+      <div class="modal-content" id="SWM-selectMembersModalPane">
+        <div class="modal-header">
+          <button class="close" id="SWM-selectMembersClose" type="button" data-dismiss="modal" aria-hidden="true" data-bind="click: onClickSelectedMembersCancel">&times;</button>
+          <h3 class="modal-title" data-bind="widgetLocaleText:'spaceMembersTitle'"></h3>
+        </div>
+        <div class="modal-body swm-modal-body-scroll">
+          <div data-bind="foreach: {data: $data.space().members(), as:'member'}">
+            <div class="swm-select-members-img" data-bind="click: $parent.onClickMemberSelectedToggle.bind($parent, member.userId), css:{swmSelectedImg: $parent.isMemberSelectedForRemoval(member.userId) == true}">
+              <div>
+                <span class="swm-selected-icon"></span>
+                <a class="thumbnail" href=""><img data-bind="attr:{src:member.mediaUrl, alt:member.fullName, id:member.userId, title:member.fullName}"></a>
+                <div class="caption swm-select-member-name" data-bind="text: member.fullName"></div>
+              </div>
+              
+            </div>
+          </div>         
+        </div>
+        <div class="modal-footer swm-modal-footer-remove-top-padding">
+          <button class="btn cc-button-secondary" id="SWM-selectMembersCancel" data-dismiss="modal" aria-hidden="true" 
+                  data-bind="click: onClickSelectedMembersCancel, widgetLocaleText: 'selectMembersCancelText'"></button>
+          <button class="btn cc-button-primary" id="SWM-selectMembersRemove" 
+                  data-bind="click: onClickSelectedMembersRemove, widgetLocaleText: 'selectMembersRemoveText'"></button>
+        </div>  
+      </div>
+    </div>  
+  </div>
+    
+  <!-- MODAL confirmation dialog for remove members -->
+  <div class="modal fade modal-no-leftmargin" id="SWM-removeMembersConfirm-ModalContainer" data-bind="modal: 0, modalTabbingContraint">
+    <div class="modal-dialog swm-confirm-modal-dialog">
+      <div class="modal-content swm-confirm-modal-content" id="SWM-removeMembersConfirm-ModalPane">
+        <div class="swm-confirm-body"> 
+          <div class="swm-confirm-title">
+            <div data-bind="widgetLocaleText:'removeMembersConfirmTitleText'"></div>
+          </div>
+          <div class="swm-confirm-message" data-bind="widgetLocaleText:'removeMembersConfirmMessage'"></div>
+          <div class="swm-confirm-actions">
+            <button class="btn cc-button-secondary" id="SWM-removeMembersConfirm-Cancel" data-dismiss="modal" aria-hidden="true"
+                    data-bind="widgetLocaleText: 'buttonConfirmCancelText'"></button>
+            <button class="btn cc-button-primary" id="SWM-removeMembersConfirm-Remove" 
+                    data-bind="click: performMembersRemoval, widgetLocaleText: 'buttonConfirmRemoveText'"></button>
+          </div>  
+        </div> 
+      </div>
+    </div>   
+  </div>
+  <!-- /ko --> 
+    
+  <!-- MODAL dialog for View Members pane -->
+  <div class="modal fade modal-no-leftmargin" id="SWM-viewMembersModalContainer" data-bind="modal: 0, modalTabbingContraint" role="link" >
+    <div class="modal-dialog cc-modal-dialog">
+      <div class="modal-content" id="SWM-viewMembersModalPane">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3 class="modal-title" data-bind="widgetLocaleText:'spaceMembersTitle'"></h3>
+        </div>
+        <div class="modal-body swm-modal-body-scroll">
+          <!-- ko if : $data.space().members().length > 0 -->
+            <!-- ko foreach : {data : $data.space().members(), as : 'member'} -->
+              <!-- MEMBER LIST ITEM -->
+              <div class="swm-members-table">
+                <div class="swm-members-table-row">
+                  <div class="swm-members-table-cell">
+                    <span class="thumbnail swm-members-mobile-thumbnail-img">
+                      <img data-bind="attr : {src: member.mediaUrl , alt: member.fullName}" width="50px" height="50px" />
+                    </span>
+                  </div>
+                  <div class="swm-members-table-cell">
+                    <p class="swm-members-member-info" data-bind="text: member.fullName"></p>
+                  </div>
+                </div>
+              </div>
+            <!-- /ko -->
+          <!-- /ko -->
+          <!-- ko if : $data.space().members().length == 0 -->
+            <p data-bind="widgetLocaleText: 'inviteMembersText'"></p>
+          <!-- /ko -->                    
+        </div>
+        <div class="modal-footer swm-modal-footer-remove-top-padding">
+          <button class="btn cc-button-primary" id="SWM-viewMembersDone" data-dismiss="modal" aria-hidden="true"
+                  data-bind="widgetLocaleText: 'buttonViewMembersDone'"></button>
+        </div>  
+      </div>
+    </div>  
+  </div>
+    
+  <!-- MODAL dialog for share space alert -->
+  <div class="modal fade" id="SWM-shareSpaceModalContainer" data-bind="modal: 0, modalTabbingContraint" role="link" >
+    <div class="modal-dialog cc-modal-dialog" id="SWM-shareSpaceModalPane">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3 class="modal-title" data-bind="widgetLocaleText:'shareSpaceHeaderText'"></h3>
+        </div>
+        <div class="modal-body swm-modal-body-scroll">
+          <div>
+            <span data-bind="widgetLocaleText:'shareConvertPrivateMsg1'"></span>
+          </div>
+          <div>
+            <span data-bind="widgetLocaleText:'shareConvertPrivateMsg2'"></span>
+          </div>
+        </div>
+        <div class="modal-footer swm-modal-footer-remove-top-padding">
+          <button class="btn cc-button-secondary" id="SWM-shareSpaceCancel" data-dismiss="modal" aria-hidden="true"
+                  data-bind="widgetLocaleText: 'buttonShareCancel'"></button>
+          <button class="btn cc-button-primary" id="SWM-shareSpaceSend" 
+                  data-bind="click: shareSpaceUpdateShared, widgetLocaleText: 'buttonShareContinue'"></button>
+        </div>
+      </div>  
+    </div>
+  </div>
+  
+  <!-- MODAL confirmation dialog for leave space -->
+  <div class="modal fade modal-no-leftmargin" id="SWM-leaveConfirm-ModalContainer" data-bind="modal: 0, modalTabbingContraint">
+    <div class="modal-dialog swm-confirm-modal-dialog">
+      <div class="modal-content swm-confirm-modal-content" id="SWM-leaveConfirm-ModalPane">
+        <div class="swm-confirm-body"> 
+          <div class="swm-confirm-title">
+            <div data-bind="widgetLocaleText:'leaveConfirmTitleText'"></div>
+          </div>
+          <div class="swm-confirm-message" data-bind="widgetLocaleText:'leaveConfirmMessage'"></div>
+          <div class="swm-confirm-actions">
+            <button class="btn cc-button-secondary" id="SWM-leaveConfirm-Cancel" data-dismiss="modal" aria-hidden="true"
+                    data-bind="widgetLocaleText: 'buttonConfirmCancelText'"></button>
+            <button class="btn cc-button-primary" id="SWM-leaveConfirm-Delete" 
+                    data-bind="click: performLeaveSpace, widgetLocaleText: 'leaveSpaceBtnText'"></button>
+          </div>  
+        </div> 
+      </div>
+    </div>   
+  </div>
+    
+</div>
+<!-- END: MEMBERS BAR -->

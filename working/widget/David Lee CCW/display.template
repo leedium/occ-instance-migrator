@@ -1,0 +1,8 @@
+<div class="davidleeccw">
+  
+  <!--
+   Localized resource values can be accessed as follows:
+  -->
+  <span data-bind="widgetLocaleText : {value:'exampleResourceKey', attr:'innerText', params:{}}"></span>
+
+</div>
