@@ -42,7 +42,7 @@ const BRANCH_SOURCE = "source";
 const BRANCH_TARGET = "target";
 
 const { dcu, plsu, all, layoutName, full, cleaner } = argv;
-const pathsToBeRemoved = [];
+const instanceTracker = [];
 
 let transferPaths = [];
 
@@ -171,7 +171,7 @@ function commit() {
  */
 function deleteBranch(name) {
   return new Promise((resolve) => {
-    console.log(`deleteLocalBranch:,${name}`);
+    console.log(`deleteLocalBranch:${name}`);
     git(GIT_PATH).raw(["branch", "-D", name], () => {
       setTimeout(() => {
         resolve();
@@ -252,7 +252,7 @@ function processDiffs() {
             // console.log(sp)
             // const headPath = sp.slice(0, 2).join("/");
             transferPaths.push({
-              path: path.split('/').slice(0, 3).join("/"),
+              path: path.split("/").slice(0, 5).join("/"),
               extType: sp[1]
             });
             transferPathArrayTemp[`${path}`] = true;
@@ -264,9 +264,9 @@ function processDiffs() {
     rl.on("close", () => {
       const pathListSearched = {};
       const filteredSearched = {};
-      console.log(transferPaths)
+      // console.log(transferPaths)
       transferPaths = transferPaths.reduce((a, pathObj) => {
-        const {extType, path } = pathObj;
+        const { extType, path } = pathObj;
         let extra = [];
         if (!pathListSearched[pathObj.path]) {
           pathListSearched[pathObj.path] = true;
@@ -285,12 +285,12 @@ function processDiffs() {
           //   .map(path => ({ type: "f", path }));
 
 
-          switch (extType) {
-            case "element":
-            case "theme":
-              extra.push({extType,path});
-              break;
-          }
+          // switch (extType) {
+          //   case "element":
+          //   case "theme":
+          //     extra.push({ extType, path });
+          //     break;
+          // }
           // a = a.concat(
           // directories
           // files
@@ -298,26 +298,29 @@ function processDiffs() {
           a.push({
             extType,
             path
-          })
+          });
         }
         return a;
       }, []).reduce(
         (ac, pathObj) => {
           let { extType, path } = pathObj;
           const pSplit = path.split("/");
-          if (pSplit[3] === "instances" && pSplit.length > 4) {
-            path = pSplit.slice(0, 2).join("/");
+          if (pSplit[3] === "instances" && pSplit.length > 4 && extType === "widget") {
+            instanceTracker.push({extType,path});
+            path = pSplit.slice(0, 3).join("/");
+
           }
           else if (pSplit[3] === "instances" && pSplit.length === 4) {
             // if (pSplit[3] === "instances" && pSplit.length === 4) {
             return ac;
             // }else{
+          } else {
+            path = pSplit.slice(0, 3).join("/");
           }
           // else if (pSplit[3] !== "instances") {
           //   path = pSplit.slice(0, pSplit.length -1).join("/");
           // }
-          if (!filteredSearched[path] )
-          {
+          if (!filteredSearched[path]) {
             filteredSearched[path] = true;
             ac.push({ extType, path });
           }
@@ -325,6 +328,12 @@ function processDiffs() {
           return ac;
         }, []);
       console.log("\n\n\n", transferPaths);
+      console.log("\n\n\n", instanceTracker.map(({ extType, path }) => {
+        if (extType === "widget") {
+          console.log(path.split("/").slice(0, 5).join("/"));
+          return path.split("/").slice(0, 5).join("/");
+        }
+      }));
       resolve();
     });
   });
@@ -340,7 +349,7 @@ async function makeTmpFolder() {
     // await deleteFilePath(pathsToBeRemoved.map(path => `${path}`));
     // await deleteFilePath(pathsToBeRemoved.map(path => `.ccc/${path}`));
     //
-    transferPaths.map(({ type, path }) => {
+    transferPaths.map(({ extType, path }) => {
       const fa = path.split("/");
       const f = fa.slice(0, fa.length).join("/");
       fa[1] = `.ccc/${fa[1]}`;
@@ -359,17 +368,52 @@ async function makeTmpFolder() {
         fs.ensureDirSync(`${TEMP_FOLDER}/${c}`);
         fs.copySync(`${path}`, `${TEMP_FOLDER}/${f}`);
         fs.copySync(c, `${TEMP_FOLDER}/${c}`);
+
+
+        // instanceTracker.map(({extType, path}) => {
+        if (extType === "widget") {
+          const splPath = path.split("/");
+          const cPath = splPath.slice(0);
+          cPath.splice(1,0,'.ccc');
+          const fp = `${TEMP_FOLDER}/${splPath.slice(0, 3).join("/")}/instances`;
+          const cp = `${TEMP_FOLDER}/${cPath.join("/")}/instances`;
+
+          // console.log(cp)
+          // fs.removeSync(`${TEMP_FOLDER}/${`);
+          fs.removeSync(fp);
+          fs.removeSync(cp);
+          // fs.removeSync(path.split('/').slice(0,4).join('/'))
+        }
+        // });
+
+
+        // }
+        //
+        // if (isStack) {
+        //   let file = `${c.split("/").slice(0, 4).join("/")}/stack.json`;
+        //   console.log(isStack, path, file);
+        //   fs.copySync(`${file}`, `${TEMP_FOLDER}/${file}`);
         // }
 
-        if (isStack) {
-          let file = `${c.split("/").slice(0, 4).join("/")}/stack.json`;
-          console.log(isStack, path, file);
-          fs.copySync(`${file}`, `${TEMP_FOLDER}/${file}`);
-        }
+
       } catch (err) {
         console.log(err);
       }
     });
+    instanceTracker.map(({ extType, path }) => {
+      if (extType === "widget") {
+        let cSpl= path.split('/')
+        cSpl.splice(1,0,'.ccc')
+        let cI = cSpl.join('/');
+        console.log(cI)
+
+        fs.ensureDirSync(`${TEMP_FOLDER}/${path}`);
+        fs.ensureDirSync(`${TEMP_FOLDER}/${cI}`);
+        fs.copySync(path, `${TEMP_FOLDER}/${path}`);
+        fs.copySync(cI, `${TEMP_FOLDER}/${cI}`);
+      }
+    });
+
     resolve();
   });
 }
@@ -519,8 +563,8 @@ async function extensionsTransfer() {
     // await getDiffs();
     // await processDiffs();
     // await makeTmpFolder();
-    // await deleteBranch(BRANCH_SOURCE);
-    //await transferAll();
+    // await deleteFilePath([WORKING_FOLDER]);
+    // await transferAll();
     // await clean();
     resolve();
   });
