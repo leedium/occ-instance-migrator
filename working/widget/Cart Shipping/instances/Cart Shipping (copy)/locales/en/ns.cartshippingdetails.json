@@ -1,0 +1,25 @@
+{
+  "resources": {
+    "countryRequired": "Country is mandatory. ",
+    "fetchingShippingMethodsText": "Fetching shipping methods for address",
+    "stateRequired": "State is mandatory. ",
+    "noShippingMethodsText": "There are no shipping methods available for your destination address.",
+    "shippingMethodNoLongerAvailable": "The previously selected shipping method is no longer available. Please check the shipping method before placing your order.",
+    "noShippingMethodsForAddressText": "Failed To retrieve shipping methods for the entered shipping address",
+    "stateRegionText": "State/Region",
+    "zipCodeText": "Zip/Postal Code",
+    "calculateShippingText": "Calculate Shipping and Tax (optional)",
+    "invalidShippingAddress": "Invalid shipping address specified.",
+    "zipCodeRequired": "Zip/Postal Code is mandatory. ",
+    "selectShippingMethodText": "Select shipping method",
+    "stateText": "State",
+    "pricingError": "Unable to calculate shipping and tax costs. Please check your shipping address.",
+    "zipCodeInvalid": "Invalid entry. Please enter a valid zip/postal code.",
+    "noShippingSelectedText": "No Shipping Method Selected.",
+    "shippingAddressRequired": "",
+    "cartShippingErrorMsg": "Please ensure you have completed all shipping fields and corrected any invalid entries.",
+    "countryText": "Country",
+    "invalidShippingMethod": "Invalid shipping method specified.",
+    "invalidPreviousAddress": "We no longer ship to your previously used shipping address."
+  }
+}

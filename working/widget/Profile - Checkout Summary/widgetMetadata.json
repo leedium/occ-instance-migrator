@@ -1,0 +1,19 @@
+{
+  "imports": [
+    "order",
+    "payment",
+    "shippingmethods",
+    "paymentauthorization"
+  ],
+  "translations": [
+    {
+      "name": "Profile - Checkout Summary",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "config": {}
+}

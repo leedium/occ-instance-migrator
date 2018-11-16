@@ -1,0 +1,39 @@
+<!-- ko if: initialized() && $data.hasOwnProperty('payULatamGateway') -->
+<!-- ko if: payULatamGateway.showPayULatam() -->
+  <div id="CC-paymentGatewayOptions-payULatam" class="checkout row center-block col-xs-12" style="padding-top:15px;">
+  <!-- ko if: (!order().approvalRequired()) -->
+    <!-- ko if: ((order().showSchedule() && !order().paymentDetails().isPayULEnabledForScheduledOrder()) || (order().approvalRequired() && !order().paymentDetails().isPayULEnabledForApproval())) -->
+    <span class="payment-disable-text-center text-center" id="CC-payULatam-paymentAvailablability" data-bind="widgetLocaleText: 'paymentMethodNotAvilable'"></span><br>
+    <img class="img-responsive center-block" alt="checkoutWithPayULatam" src="/img/payumoney.png">
+    <!-- /ko -->
+    <!-- ko ifnot: ((order().showSchedule() && !order().paymentDetails().isPayULEnabledForScheduledOrder()) || (order().approvalRequired() && !order().paymentDetails().isPayULEnabledForApproval()))  -->
+    <a data-bind="attr : { id: 'CC-paymentGatewayOptions-checkoutWithPayULatam'}, disabled: {condition: cart().items().length == 0}, click: payULatamGateway.handleCheckoutWithPayULatam" href="#">
+      <img class="img-responsive center-block" alt="checkoutWithPayULatam" src="/img/payumoney.png">
+    </a>
+    <!-- /ko -->
+    <!-- /ko -->
+  </div>
+
+
+<div class="hidden-widget" style="display: none">
+ <form id="payULatam_payment_form" method="post" action="" accept-charset="UTF-8" autocomplete="off">
+  <input name="merchantId" id="merchantId" type="text"  data-bind="value: payULatamGateway.merchantId()">
+  <input name="accountId" id="accountId" type="text"  data-bind="value: payULatamGateway.accountId()">
+  <input name="description" id="description" type="text"  data-bind="value: payULatamGateway.description()">
+  <input name="referenceCode" id="referenceCode" type="text" data-bind="value: payULatamGateway.referenceCode()">
+  <input name="amount" id="amount" type="text"  data-bind="value: payULatamGateway.amount()">
+  <input name="tax" id="tax" type="text"  data-bind="value: payULatamGateway.tax()">
+  <input name="taxReturnBase" id="taxReturnBase" type="text"  data-bind="value: payULatamGateway.taxReturnBase()">
+  <input name="currency" id="currency" type="text"  data-bind="value: payULatamGateway.currency()">
+  <input name="signature" id="signature" type="text"  data-bind="value: payULatamGateway.signature()">
+  <input name="algorithmSignature" id="algorithmSignature" type="text"  data-bind="value: payULatamGateway.algorithmSignature()">
+  <input name="test" id="test" type="text"  data-bind="value: payULatamGateway.test()">
+  <input name="buyerEmail" id="buyerEmail" type="text"  data-bind="value: payULatamGateway.buyerEmail()">
+  <input name="responseUrl" id="responseUrl" type="text"  data-bind="value: payULatamGateway.responseUrl()">
+  <input name="confirmationUrl" id="confirmationUrl" type="text"  data-bind="value: payULatamGateway.confirmationUrl()">
+  <input name="lng" id="buyerLanguage" type="text"  data-bind="value: payULatamGateway.buyerLanguage()">
+  <input name="Submit"  type="submit"  value="Submit">
+ </form>
+</div>
+<!-- /ko -->
+<!-- /ko -->

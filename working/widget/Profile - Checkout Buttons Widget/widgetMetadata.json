@@ -1,0 +1,19 @@
+{
+  "imports": [
+    "order",
+    "payment"
+  ],
+  "translations": [
+    {
+      "name": "Profile - Checkout Buttons Widget",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "config": {
+    "displaySWM": "true"
+  }
+}

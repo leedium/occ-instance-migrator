@@ -1,0 +1,17 @@
+{
+  "imports": [
+    "category",
+    "categoryId"
+  ],
+  "translations": [
+    {
+      "name": "Homechoice - Collection Skinny Banner",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "config": {}
+}

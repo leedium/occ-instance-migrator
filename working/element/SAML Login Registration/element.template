@@ -1,0 +1,31 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('login-registration') -->
+  <div>
+    <!-- ko with: user -->
+      <!-- ko if: readyToDisplay -->
+        <div class="text-right cc-welcome">
+          <div data-bind="visible: loggedInUserName() && (loggedIn() || isUserSessionExpired()) ">
+            <strong><span data-bind="widgetLocaleText : {value:'welcome', attr:'innerText', params: {userName: loggedInUserName()}}" class="cc-header-firstName"></span></strong>
+            <span>
+              <a id="CC-loginHeader-myAccount" data-original-title="myAccount" data-bind="widgetLocaleText: {attr: 'innerText', value: 'myAccount'}, click: validatePrivilagePageRequest, ccNavigation: 'prevent', ccLink: 'profile'"></a>
+            </span>|
+            <span>
+            <a id="CC-loginHeader-logout" data-original-title="logout" data-bind="widgetLocaleText: {attr: 'innerText', value: 'logoutLinkText'}, click: $parent['elements']['login-registration'].handleLogout.bind($parent)" href="#"></a>
+            </span>
+            <!-- ko if: $parent.hasOwnProperty('links') && $parent.links().hasOwnProperty('wishlist') -->
+              |<span>
+                <a id="CC-loginHeader-wishlist-logged-in" data-original-title="wishlist" data-bind="widgetLocaleText: {attr: 'innerText', value: 'wishlist'}, ccLink: 'wishlist'"></a>
+              </span>
+            <!-- /ko -->
+          </div>
+          <div data-bind="visible: !(loggedInUserName() && (loggedIn() || isUserSessionExpired()))">
+            <a href="#CC-headermodalpane" id="CC-loginHeader-login" data-original-title="login" data-bind="click:function(data, event) { handleSamlLogin.bind(data, $parent, event)() }, widgetLocaleText: {attr: 'innerText', value: 'loginLinkText'}"></a> |
+            <a href="#CC-headermodalpane" id="CC-loginHeader-registration" data-original-title="createAccount" data-bind="click:function(data, event) { handleSamlLogin.bind(data, $parent, event)() }, widgetLocaleText: {attr: 'innerText', value: 'createAccountText'}"></a>
+            <!-- ko if: $parent.hasOwnProperty('links') && $parent.links().hasOwnProperty('wishlist') -->
+              | <a id="CC-loginHeader-wishlist-anonymous" data-original-title="wishlist" data-bind="widgetLocaleText: {attr: 'innerText', value: 'wishlist'}, ccLink: 'wishlist'"></a>
+            <!-- /ko -->
+          </div>
+        </div>
+      <!-- /ko -->
+    <!-- /ko -->
+  </div>
+<!-- /ko -->

@@ -1,0 +1,16 @@
+<!-- ko if: $data.skinny_Link != '' -->
+  <div class="CustomCategorySkinnyBanner">
+    <a data-bind="ccLink: { route: $data.skinny_Link }">
+      <!-- ko if: $data.skinny_Image_Lg != '' -->
+        <img class="img-responsive center-block skinny-lg" data-bind="attr: {src: $data.skinny_Image_Lg}" />
+      <!-- /ko -->
+      <!-- ko if: $data.skinny_Image_Md != '' -->
+        <img class="img-responsive center-block skinny-md" data-bind="attr: {src: $data.skinny_Image_Md}" />
+      <!-- /ko -->
+      <!-- ko if: $data.skinny_Image_Sm != '' -->
+        <img class="img-responsive center-block skinny-sm" data-bind="attr: {src: $data.skinny_Image_Sm}" />
+      <!-- /ko -->
+    </a>
+  </div>
+<!-- /ko -->
+<!--918x62 800x62 480x62-->

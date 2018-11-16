@@ -1,0 +1,5 @@
+<!-- ko if: cart().items().length > 0 -->
+<div class="shipping-title">
+  <h4 data-bind="widgetLocaleText: 'calculateShippingText'">Calculate Shipping and Tax (optional)</h4>
+</div>
+<!-- /ko -->

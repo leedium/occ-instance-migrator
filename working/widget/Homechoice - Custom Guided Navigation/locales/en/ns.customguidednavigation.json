@@ -1,0 +1,11 @@
+{
+  "resources": {
+    "minus": "-",
+    "refineByText": "Refine By",
+    "seeMoreText": "See More...",
+    "guidedNavigationHeader": "Guided Navigation Header",
+    "seeLessText": "See Less...",
+    "plus": "+",
+    "clearAllRefinementsText": "Clear all Refinements"
+  }
+}

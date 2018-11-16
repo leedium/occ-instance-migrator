@@ -1,0 +1,344 @@
+<div class="cart-page">
+  <!-- ko if: paymentType() === 'mixed' -->
+  <div  id="orderSummary" class="OrderMixed" style="display:block !important;">
+    
+    
+    <!-- move to top of cart page <div class="ordersummary clearfix" data-bind="text: $data.cartMessage()"></div>-->
+    
+    <div>
+      <a data-bind="widgetLocaleText : {value:'checkoutText', attr:'aria-label'}, disabled: true" class="cc-button-primary btn-checkout disabled col-xs-12" aria-label="Checkout" href="#" tabindex="0">
+        <span data-bind="widgetLocaleText:'checkoutText'"></span>
+        <!--<span data-bind="">SECURE CHECKOUT</span>-->
+      </a>
+    </div>
+    
+    <div class="ordersummary clearfix">
+        You cannot checkout until you have selected one payment method only.
+    </div>
+    
+  </div>
+  <!-- /ko -->
+
+  <!-- ko if:  paymentType() === 'cash' -->
+  <div id="orderSummary" class="OrderCash">
+    <div class="ordersummary clearfix">
+
+      <!-- Cart Total -->
+      <div id="CC-orderSummary-orderTotal" role="alert" aria-live="polite" aria-atomic="true" class="cc-orderSummary-orderTotal cc-orderSummary-orderTotal__subtotal ordertotal clearfix">
+        <!-- ko ifnot: (cart().isTaxIncluded && cart().showTaxSummary) -->
+        <span >Subtotal:</span>
+        <span class="ordersumprice pull-right" data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + cart().subTotal()"></span>
+        <!-- /ko -->
+      </div>
+
+
+
+
+
+        <!-- List of coupons used -->
+        <div id="CC-orderSummary-coupons" style="float:left" class="clearfix discountDescText" data-bind="foreach: cart().claimedCouponMultiPromotions()">
+            <div data-bind="foreach: $data.promotions(), attr: { id: 'CC-orderSummary-couponEntry-' + $index() }">
+              <div class="row" data-bind="attr: { id: 'CC-orderSummary-coupon-'+ $parent.code()+ '-promotionEntry-' + $index() }">
+                <!-- ko if : $index() == "0" -->
+                <!-- ko if : $data.promotionLevel() === "order" -->
+                <!-- <span class="discount-line-item col-xs-9" data-bind="widgetLocaleText : {value:'orderCouponDisplayText', attr: 'innerText', params: {description: promotionDesc(), code : $parent.code()}}"></span> -->
+                <span class="discount-line-item col-xs-9" >Voucher</span>
+                <!-- /ko -->
+                <!-- ko if : $data.promotionLevel() === "item" -->
+                <span class="discount-line-item col-xs-9" data-bind="widgetLocaleText : {value:'couponDisplayText', attr: 'innerText', params: {description: promotionDesc(), code : $parent.code()}}"></span>
+                <!-- /ko -->
+                <!-- ko if: $parents[1].hasShippingInfo -->
+                <!-- ko if : $data.promotionLevel() === "shipping" -->
+                <span class="discount-line-item col-xs-9" data-bind="widgetLocaleText : {value:'couponDisplayText', attr: 'innerText', params: {description: promotionDesc(), code : $parent.code()}}"></span>
+                <!-- /ko -->
+                <!-- /ko -->
+                <span class="discount-line-item--remove col-xs-3"><a href="#" class="text-underline pull-right" data-bind="widgetLocaleText: {attr: 'innerText', value: 'removeLinkText'}, attr: {'aria-label': $parents[1].cart().getRemoveCouponReadText()}, click: $parents[1].cart().removeCoupon.bind($parents[1].cart(), $parent)"></a></span>
+                <!-- /ko -->
+                <!-- ko ifnot : $index() == "0" -->
+                <!-- ko if : $data.promotionLevel() === "order" -->
+                <span class="discount-line-item col-xs-9" data-bind="widgetLocaleText : {value:'OrderDiscountDesc', attr: 'innerText', params: {discountDesc: promotionDesc()}}"></span>
+                <!-- /ko -->
+                <!-- ko if : $data.promotionLevel() === "item" -->
+                <span class="discount-line-item col-xs-9" data-bind="text : promotionDesc()"></span>
+                <!-- /ko -->
+                <!-- ko if: $parents[1].hasShippingInfo -->
+                <!-- ko if : $data.promotionLevel() === "shipping" -->
+                <span class="discount-line-item col-xs-9" data-bind="text : promotionDesc()"></span>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- /ko -->
+              </div>
+            </div>
+          </div>
+  
+
+
+      <!-- Discount, shipping and sales tax -->
+      <div id="CC-orderSummaryLoadingModal">
+        <!-- ko if: cart().orderDiscount() != 0 -->
+        <div id="CC-orderSummary-discount" class="clearfix">
+          <!-- <span id="CC-orderSummary-discountText" data-bind="widgetLocaleText:'discountText'" class="discount-line-item"></span> -->
+          <span id="CC-orderSummary-discountAmt" class="ordersumprice discount-line-item pull-right"
+                data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + (-cart().orderDiscount())">
+              </span>
+        </div>
+        <!-- /ko -->
+        <!-- List of discount descriptions -->
+        <div id="CC-orderSummary-discounts" class="clearfix discountContainer discountDescText" data-bind="foreach: cart().orderDiscountDescList()">
+          <div data-bind="attr: { id: 'CC-orderSummary-discountEntry-' + $index() }">
+            <!-- ko if : $data.promotionLevel === "order" -->
+            <span class="discount-line-item" data-bind="attr: { id: 'CC-OrderSummary-discountDescription-' + $index() }, widgetLocaleText : {value:'OrderDiscountDesc', attr: 'innerText', params: {discountDesc: $data.promotionDesc}}"></span>
+            <!-- /ko -->
+            <!-- ko if : $data.promotionLevel === "item" -->
+            <span class="discount-line-item"  data-bind="attr: { id: 'CC-OrderSummary-discountDescription-' + $index() }, text : $data.promotionDesc"></span>
+            <!-- /ko -->
+            <!-- ko if: $parent.hasShippingInfo-->
+            <!-- ko if : $data.promotionLevel === "shipping" -->
+            <span class="discount-line-item"  data-bind="attr: { id: 'CC-OrderSummary-discountDescription-' + $index() }, text : $data.promotionDesc"></span>
+            <!-- /ko -->
+            <!-- /ko -->
+          </div>
+        </div>
+
+
+        <!-- ko if: includeShipping -->
+
+                <div id="CC-orderSummary-shipping" class="shippingCost clearfix">
+                  <span class="">Delivery fee</span>
+        
+        
+        
+        
+                  <!-- WHEREVER DELIVERY IS CALCULATED  DO IT HERE-->
+                  <span class="ordersumprice pull-right"
+                        data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + $data.shipping() "></span>
+        
+        
+        
+                </div>
+            
+
+
+
+        <!-- ko if: hasShippingInfo && cart().shippingDiscount() !== 0 -->
+        <!--<div id="CC-orderSummary-shippingDiscount" class="shippingDiscount clearfix">-->
+        <!--  <span data-bind="widgetLocaleText:'shippingDiscountText'"></span>-->
+        <!--  <span class="ordersumprice pull-right"-->
+        <!--        data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + (-cart().shippingDiscount()) "></span>-->
+        <!--</div>-->
+        <!-- /ko -->
+        <!-- /ko -->
+
+        <!-- ko if: hasShippingInfo && cart().shippingSurcharge() !== 0 -->
+        <div id="CC-orderSummary-shippingSurcharge" class="shippingSurcharge clearfix">
+         <span >Assembly Fee</span>
+         <span class="ordersumprice pull-right"
+               data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + parseInt(cart().shippingSurcharge())"></span>
+        </div>
+        <!-- /ko -->
+
+        <!-- ko if: includeTax && cart().showTaxSummary -->
+        <!-- Sales Tax may depend on delivery address-->
+        <!--<div id="CC-orderSummary-salesTax" class="salesTax clearfix">-->
+        <!--  <span data-bind="widgetLocaleText:'salesTaxText'"></span>-->
+        <!-- ko ifnot: hasTaxInfo -->
+        <!--  <span class="ordersumprice pull-right">&ndash;</span>-->
+        <!-- /ko -->
+        <!-- ko if: hasTaxInfo -->
+        <!--  <span class="ordersumprice pull-right"-->
+        <!--        data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + cart().tax()"></span>-->
+        <!-- /ko -->
+        <!--</div>-->
+        <!-- /ko -->
+      </div>
+
+      <!-- Cart Total -->
+      <div id="CC-orderSummary-orderTotal" role="alert" aria-live="polite" aria-atomic="true" class="cc-orderSummary-orderTotal ordertotal clearfix">
+        <!-- ko if: (cart().isTaxIncluded && cart().showTaxSummary) -->
+
+        <div class="ordertotalextax">
+          <span data-bind="widgetLocaleText:'totalExcludingTaxText'"></span>
+          <span class="ordersumprice pull-right" data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + cart().totalWithoutTax()}"></span>
+        </div>
+        <div class="row">
+          <div class="col-md-7 col-sm-12 col-xs-7">
+            <div data-bind="widgetLocaleText:'orderTotalText'"></div>
+            <div class="includingtaxtext" data-bind="widgetLocaleText:'includingTaxText'"></div>
+          </div>
+          <div class="col-md-5 col-sm-12 col-xs-5">
+            <div class="ordersumprice pull-right" data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + (cart().total())}"></div>
+          </div>
+        </div>
+        <!-- /ko -->
+        <!-- ko ifnot: (cart().isTaxIncluded && cart().showTaxSummary) -->
+        <span data-bind="widgetLocaleText:'orderTotalText'"></span>
+
+        <span data-bind="onRender:function(){console.log('This is my test: ',$data,cart())}"></span>
+
+        <span class="ordersumprice pull-right" data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + parseInt(cart().total() + $data.AssemblyFee() + $data.shipping())"></span>
+        <!-- /ko -->
+      </div>
+    </div>
+
+    <div id="CC-orderSummary-checkout" class="checkout">
+      <a data-bind="css:{'cart-page--checkout__locked':!buttonEnabled()}, widgetLocaleText : {value:'checkoutText', attr:'aria-label'},click: handleValidateCart, ccNavigation: 'prevent', disabled: {condition: cart().items().length == 0, link : 'checkout'}, inTabFlow: cart().items().length != 0" class="cc-button-primary btn-checkout col-xs-12">
+        <span data-bind="widgetLocaleText:'checkoutText'"></span>
+        <!--<span data-bind="">SECURE CHECKOUT</span>-->
+      </a>
+    </div>
+
+  </div>
+  <!-- /ko -->
+
+  <!-- ko if:  paymentType() === 'terms' -->
+  <div id="orderSummary" class="OrderTerms">
+    <div class="ordersummary clearfix">
+
+      <!-- Cart Total -->
+      <div id="CC-orderSummary-orderTotal"  style="border-bottom: 1px solid #eeeeee !important;padding-bottom: 10px;margin-bottom: 10px;" role="alert" aria-live="polite" aria-atomic="true" class="cc-orderSummary-orderTotal cc-orderSummary-orderTotal__subtotal ordertotal clearfix">
+        <!-- ko ifnot: (cart().isTaxIncluded && cart().showTaxSummary) -->
+        <span >Subtotal:</span>
+        <span class="ordersumprice pull-right" data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + subTotal()"></span>
+        <!-- /ko -->
+      </div>
+      
+<!-- 
+      <div data-bind="foreach: cart().claimedCouponMultiPromotions()">
+          <div data-bind="foreach: $data.promotions()">
+     <div class="row" data-bind="attr: { id: 'CC-orderSummary-coupon-'+ $parent.code()+ '-promotionEntry-' + $index() }">
+         <!- - ko if : $index() == "0" - ->
+           <span class="discount-line-item--remove col-xs-3">
+             <a href="#" class="text-underline pull-right small" 
+               data-bind="onRender :function(){console.log('=============NEW============', $data, $parent, $parents);},attr: {click: $parents[1].cart().removeCoupon.bind($parents[1].cart(), $parent)}"
+               >Remove</a>
+           </span>
+           <!- - /ko - ->
+     </div> 
+         </div> 
+       </div> -->
+
+
+      <!-- List of coupons used -->
+      <div id="CC-orderSummary-coupons" style="float:left" class="clearfix discountDescText" data-bind="foreach: cart().claimedCouponMultiPromotions()">
+          <div data-bind="foreach: $data.promotions()">
+            <div class="row" data-bind="attr: { id: 'CC-orderSummary-coupon-'+ $parent.code()+ '-promotionEntry-' + $index() }, attr: { id: 'CC-orderSummary-couponEntry-' + $index() }">
+              <!-- ko if : $index() == "0" -->
+              <!-- ko if : $data.promotionLevel() === "order" -->
+              <!-- <span class="discount-line-item col-xs-9" data-bind="widgetLocaleText : {value:'orderCouponDisplayText', attr: 'innerText', params: {description: promotionDesc(), code : $parent.code()}}"></span> -->
+              <span class="discount-line-item col-xs-9">Voucher</span>
+              <!-- /ko -->
+              <!-- ko if : $data.promotionLevel() === "item" -->
+              <span class="discount-line-item col-xs-9" data-bind="widgetLocaleText : {value:'couponDisplayText', attr: 'innerText', params: {description: promotionDesc(), code : $parent.code()}}"></span>
+              <!-- /ko -->
+              <!-- ko if: $parents[1].hasShippingInfo -->
+              <!-- ko if : $data.promotionLevel() === "shipping" -->
+              <span class="discount-line-item col-xs-9" data-bind="widgetLocaleText : {value:'couponDisplayText', attr: 'innerText', params: {description: promotionDesc(), code : $parent.code()}}"></span>
+              <!-- /ko -->
+              <!-- /ko -->
+              <span class="discount-line-item--remove col-xs-3" >
+                <a href="#" class="text-underline pull-right" data-bind="onRender :function(){console.log('=============OLD============', $data, $parent, $parents);},widgetLocaleText: {attr: 'innerText', value: 'removeLinkText'}, attr: {'aria-label': $parents[1].cart().getRemoveCouponReadText()}, click: $parents[1].cart().removeCoupon.bind($parents[1].cart(), $parent)"></a></span>
+              <!-- /ko -->
+              <!-- ko ifnot : $index() == "0" -->
+              <!-- ko if : $data.promotionLevel() === "order" -->
+              <span class="discount-line-item col-xs-9" data-bind="widgetLocaleText : {value:'OrderDiscountDesc', attr: 'innerText', params: {discountDesc: promotionDesc()}}"></span>
+              <!-- /ko -->
+              <!-- ko if : $data.promotionLevel() === "item" -->
+              <span class="discount-line-item col-xs-9" data-bind="text : promotionDesc()"></span>
+              <!-- /ko -->
+              <!-- ko if: $parents[1].hasShippingInfo -->
+              <!-- ko if : $data.promotionLevel() === "shipping" -->
+              <span class="discount-line-item col-xs-9" data-bind="text : promotionDesc()"></span>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- /ko -->
+
+
+              <!-- <span id="CC-orderSummary-discountAmt" class="ordersumprice discount-line-item pull-right"
+                data-bind="text: 'R ' + (-$parent.cart().orderDiscount())">
+              </span> -->
+            </div>
+          </div>
+        </div>
+  
+  
+
+
+
+
+
+      <!-- ko if: cart().orderDiscount() != 0 -->
+        <div id="CC-orderSummary-discount" class="clearfix">
+          <!-- <span id="CC-orderSummary-discountText" data-bind="widgetLocaleText:'discountText'" class="discount-line-item"></span> -->
+          
+          <!--<span data-bind="onRender:function(){console.log('BULELANI: CART SUMMARY', $data, $parent, $parents[1]);}"></span>-->
+          <!-- new remove -->
+          <!-- <span class="discount-line-item--remove col-xs-3"><a href="#" class="text-underline pull-right small" data-bind="widgetLocaleText: {attr: 'innerText', value: 'removeLinkText'}, attr: {'aria-label': cart().getRemoveCouponReadText()}, click: cart().removeCoupon.bind(cart(), $parent)"></a></span> -->
+          
+          <span id="CC-orderSummary-discountAmt" class="ordersumprice discount-line-item pull-right"
+                data-bind="text: $data.site().selectedPriceListGroup().currency.symbol + (-cart().orderDiscount())">
+              </span>
+        </div>
+        <span class="discount-line-item"><em>(Deducted off your last instalment)</em></span><br>
+      <!-- /ko -->
+
+
+      <!-- delivery included with terms prices -->
+      <div class="discount-line-item--included-fees clearfix">
+        <span>Delivery fee included (excl. international)</span>
+      </div>
+
+      <span data-bind="onRender:function(){ console.log('cart:',cart()); }"></span>
+
+      <!-- List of discount descriptions -->
+      <div id="CC-orderSummary-discounts" class="clearfix discountContainer discountDescText" data-bind="foreach: cart().orderDiscountDescList()">
+
+
+        <div data-bind="attr: { id: 'CC-orderSummary-discountEntry-' + $index() }">
+          <!-- ko if : $data.promotionLevel === "order" -->
+          <span class="discount-line-item" data-bind="attr: { id: 'CC-OrderSummary-discountDescription-' + $index() }, widgetLocaleText : {value:'OrderDiscountDesc', attr: 'innerText', params: {discountDesc: $data.promotionDesc}}"></span>
+          <!-- /ko -->
+          <!-- ko if : $data.promotionLevel === "item" -->
+          <span class="discount-line-item"  data-bind="attr: { id: 'CC-OrderSummary-discountDescription-' + $index() }, text : $data.promotionDesc"></span>
+          <!-- /ko -->
+          <!-- ko if: $parent.hasShippingInfo-->
+          <!-- ko if : $data.promotionLevel === "shipping" -->
+          <span class="discount-line-item"  data-bind="attr: { id: 'CC-OrderSummary-discountDescription-' + $index() }, text : $data.promotionDesc"></span>
+          <!-- /ko -->
+          <!-- /ko -->
+        </div>
+      </div>
+
+
+      <!-- Cart Total AFTER DISCOUNTS AND COUPONS-->
+      <div style="border-top: 1px solid #eeeeee !important;padding-top: 10px;" id="CC-orderSummary-orderTotal" role="alert" aria-live="polite" aria-atomic="true" class="ordertotal clearfix">
+        <!-- ko ifnot: (cart().isTaxIncluded && cart().showTaxSummary) -->
+        <span >Total Instalment</span>
+        <span class="ordersumprice pull-right OrderTermsValue" data-bind="text:$data.site().selectedPriceListGroup().currency.symbol + $data.subTotal()" ></span>
+        <!-- /ko -->
+      </div>
+    </div>
+
+    <div id="CC-orderSummary-checkout" class="checkout">
+      <a data-bind="css:{'cart-page--checkout__locked':!buttonEnabled()}, widgetLocaleText : {value:'checkoutText', attr:'aria-label'},click: handleValidateCart, ccNavigation: 'prevent', disabled: {condition: cart().items().length == 0, link : 'checkout'}, inTabFlow: cart().items().length != 0" class="cc-button-primary btn-checkout col-xs-12">
+        <span data-bind="widgetLocaleText:'checkoutText'"></span>
+        <!--<span data-bind="">CHECKOUT SECURELY</span>-->
+      </a>
+    </div>
+
+  </div>
+  <!-- /ko -->
+</div>
+
+<div style="
+    padding-top: 60px;
+">
+    <div class="CheckoutOffer2 CO0" style="background: rgba(237,34,130,0.15);
+    border: none;
+    color: #ed2282;
+    padding: 5px 13px;
+    margin: 5px 10px;
+    font-size: 12px;
+    display:none;">
+    </div>
+</div>
+

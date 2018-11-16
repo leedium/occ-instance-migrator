@@ -1,0 +1,14 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "HomeChoice Alert Widget",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

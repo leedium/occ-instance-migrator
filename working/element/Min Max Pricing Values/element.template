@@ -1,0 +1,39 @@
+<div class="custom-pricing">
+	<div class="cc-item-price">
+		<span data-bind="text: $data.site().extensionSiteSettings['custom-pricing-settings'].fromLabel" class="from"></span>
+		<span data-bind="currency: { price: $data.product().product.minPrice, currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '0', prependNull: true }" class="from-price"></span>
+		<span data-bind="text: $data.site().extensionSiteSettings['custom-pricing-settings'].perMonthLabel" class="per-month"></span>
+		<span data-bind="text: $data.site().extensionSiteSettings['custom-pricing-settings'].joinLabel"></span>
+		
+		
+		<!-- ko if: ($data.product().isOnSale) -->
+	
+		<span class="cc-sale-price current-price" data-bind="currency: { price: salePrice(), currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '\u2014', prependNull: false }"></span>
+		<span data-bind="text: $data.site().extensionSiteSettings['custom-pricing-settings'].cashLabel" class="cash"></span>
+	
+		<p class="cc-list-price">
+			<label class="was">
+				<span data-bind="text: $data.site().extensionSiteSettings['custom-pricing-settings'].wasLabel"></span>
+				<span data-bind="currency: {price: $data.product().product.maxPrice, currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '\u2014', prependNull: false},
+				attr: {id: 'CC-product-list-price-'+ id()}"></span>
+			</label>
+			<label class="save">
+				<span data-bind="text: $data.site().extensionSiteSettings['custom-pricing-settings'].saveLabel"></span>
+				<span data-bind="currency: {price: ($data.product().product.maxPrice - salePrice()), currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '\u2014', prependNull: false}, attr: {id: 'CC-difference-price-'+ id()}"></span>
+			</label>
+		</p>
+		<!-- /ko -->
+	
+		<!-- ko ifnot : ($data.product().isOnSale) -->
+	
+		<span class="current-price" data-bind="currency: {price: $data.product().product.maxPrice, currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '\u2014', prependNull: false},
+		attr: {id: 'CC-product-list-price-'+ id()}"></span>
+	
+		<span data-bind="text: $data.site().extensionSiteSettings['custom-pricing-settings'].cashLabel" class="cash"></span>
+	
+		<!-- /ko -->
+
+
+		
+	</div>
+</div>
