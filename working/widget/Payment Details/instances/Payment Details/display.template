@@ -1,0 +1,150 @@
+<div id="checkoutPaymentDetails">
+  <h2 id="CC-checkoutPaymentDetails-header" class="a11y" data-bind="widgetLocaleText: 'paymentDetails'"></h2>
+  <fieldset id="paymentDetails" data-bind="disable: order().paymentDetails().isCardPaymentDisabled() || (order().showSchedule() && !order().paymentDetails().isCardEnabledForScheduledOrder())">
+    <legend id="CC-checkoutPaymentDetails-legend" data-bind="widgetLocaleText: 'paymentDetails'"></legend>
+    <!-- ko if: (order().showSchedule() && !order().paymentDetails().isCardEnabledForScheduledOrder()) -->
+      <span id="CC-checkoutPaymentDetails-paymentAvailablability" data-bind="widgetLocaleText: 'paymentMethodNotAvilable'"></span><br>
+    <!-- /ko -->
+    <!-- ko if: $data.order().isPaypalVerified() -->
+      <div id="CC-checkoutPaymentDetails-paymentMethod" >
+        <span  data-bind="widgetLocaleText: 'paymentMethod'"></span>
+      </div>
+      <img src="https://www.paypal.com/en_US/i/logo/PayPal_mark_37x23.gif"
+        align="left" style="margin-right: 7px;" data-bind="attr:{alt: 'PayPal'}">
+        <span class="paypalText" data-bind="widgetLocaleText: 'paypalText'"></span>
+    <!-- /ko -->
+    <!-- ko ifnot: $data.order().isPaypalVerified() -->
+    <!-- Name on Card -->
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" id="CC-checkoutPaymentDetails-nameOnCard-label" style="font-size: 14px; font-weight:bold;"
+          for="CC-checkoutPaymentDetails-nameOnCard" data-bind="widgetLocaleText: 'nameOnCardLabel'">Name on Card</label>
+        <span class="text-danger visible-xs" id="CC-checkoutPaymentDetails-phone-nameOnCard-error"
+          data-bind="validationMessage: order().paymentDetails().nameOnCard" role="alert"></span>
+        <div class="control">
+          <input aria-required="true" type="text" class="col-md-12 form-control" id="CC-checkoutPaymentDetails-nameOnCard" name="nameOnCard"
+            data-bind="validatableValue: order().paymentDetails().nameOnCard, widgetLocaleText: {value:'nameOnCardPlaceholder', attr:'placeholder'}" placeholder="Name on Card"/>
+        </div>
+      </div>
+      <div class="hidden-xs col-sm-offset-4 col-sm-4">
+        <p class="text-danger" id="CC-checkoutPaymentDetails-nameOnCard-error"
+          data-bind="validationMessage: order().paymentDetails().nameOnCard" role="alert"></p>
+      </div>
+    </div>
+    <!-- card type -->
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" id="CC-checkoutPaymentDetails-cardType-label"
+          for="CC-checkoutPaymentDetails-cardType" data-bind="widgetLocaleText: 'cardTypeLabel'">Card Type</label>
+        <span class="text-danger visible-xs" id="CC-checkoutPaymentDetails-phone-cardType-error"
+          data-bind="validationMessage: order().paymentDetails().cardType" role="alert"></span>
+        <div class="control">
+          <select aria-required="true" type="text" class="col-md-12 form-control" id="CC-checkoutPaymentDetails-cardType" name="cardType"
+            data-bind="options: order().paymentDetails().cardTypeList, optionsText: 'name', optionsValue: 'value',
+              optionsCaption: order().paymentDetails().cardTypePlaceholderText, value: order().paymentDetails().selectedCardType,
+              validatableTarget: order().paymentDetails().cardType, validationElement: order().paymentDetails().cardType">
+          </select>
+        </div>
+      </div>
+      <div class="hidden-xs col-sm-4">
+        <!-- ko foreach: order().paymentDetails().cardTypeList -->
+        <span class="paymentimages"
+          data-bind="attr:{id: 'CC-checkoutPaymentDetails-payment'+value}, click:$parent.cardClicked,
+                    css:{selectedCard: $parent.order().paymentDetails().selectedCardType() === value}">
+          <img data-bind="attr:{src: img, alt: name}"/>
+        </span>
+        <!-- /ko -->
+      </div>
+      <div class="hidden-xs col-sm-4">
+        <p class="text-danger" id="CC-checkoutPaymentDetails-cardType-error"
+          data-bind="validationMessage: order().paymentDetails().cardType" role="alert"></p>
+      </div>
+    </div>
+    <!-- card number & cvv -->
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" id="CC-checkoutPaymentDetails-cardNumber-label" style="font-size: 14px; font-weight:bold;"
+          for="CC-checkoutPaymentDetails-cardNumber" data-bind="widgetLocaleText: 'cardNumberLabel'">Card Number</label>
+        <span class="text-danger visible-xs" id="CC-checkoutPaymentDetails-phone-cardNumber-error"
+          data-bind="validationMessage: order().paymentDetails().cardNumber" role="alert"></span>
+        <div class="control">
+          <input aria-required="true" type="text" class="col-md-12 form-control" id="CC-checkoutPaymentDetails-cardNumber" name="cardNumber"
+            data-bind="validatableValue: order().paymentDetails().cardNumber, widgetLocaleText: {value:'cardNumberPlaceholder', attr:'placeholder'}" placeholder="Card Number"/>
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" id="CC-checkoutPaymentDetails-cardCVV-label" style="font-size: 14px; font-weight:bold;"
+          for="CC-checkoutPaymentDetails-cardCVV" data-bind="widgetLocaleText: 'cardCVVLabel'">CVV</label>
+        <small id="CC-checkoutPaymentDetails-cardCVV-whatsthis-phone" class="visible-xs cvvPopover"
+            data-bind="widgetLocaleText: 'cardCVVWhatsThis', event:{mouseover:cvvMouseOver, focus:cvvMouseOver}"
+          data-toggle="popover" data-placement="bottom" tabindex="0">
+            What's This
+        </small>
+        <span class="text-danger visible-xs" id="CC-checkoutPaymentDetails-phone-cardCVV-error"
+          data-bind="validationMessage: order().paymentDetails().cardCVV" role="alert"></span>
+        <div class="control row">
+          <div class="col-sm-6" >
+            <input aria-required="true" type="password" class="col-md-12 form-control" id="CC-checkoutPaymentDetails-cardCVV" name="cardCVV"
+              data-bind="validatableValue: order().paymentDetails().cardCVV, widgetLocaleText: {value:'cardCVVPlaceholder', attr:'placeholder'}" placeholder="CVV"/>
+          </div>
+          <!-- TODO Find a better way to change popover placement, without duplication -->
+          <div class="hidden-xs cc-checkout-payment-details-cvv-row">
+            <small id="CC-checkoutPaymentDetails-cardCVV-whatsthis" class="cvvPopover"
+              data-bind="widgetLocaleText: 'cardCVVWhatsThis',
+                         event:{mouseover:cvvMouseOver, focus:cvvMouseOver},
+                         attr: {'aria-label': $data.translate('cardCVVWhatsThis')}"
+              data-toggle="popover" data-placement="right" tabindex="0">
+                What's This
+            </small>
+          </div>
+          <div id="CC-checkoutPaymentDetails-cardCVV-details" class="a11y">
+            <h3 data-bind="widgetLocaleText: 'cardCVVPopupTitle'"></h3>
+            <div data-bind="widgetLocaleText: 'cardCVVPopupText'"></div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden-xs col-sm-4">
+        <p class="text-danger" id="CC-checkoutPaymentDetails-cardNumber-error"
+          data-bind="validationMessage: order().paymentDetails().cardNumber" role="alert"></p>
+        <p class="text-danger" id="CC-checkoutPaymentDetails-cardCVV-error"
+          data-bind="validationMessage: order().paymentDetails().cardCVV" role="alert"></p>
+      </div>
+    </div>
+    <!-- end month and year -->
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" id="CC-checkoutPaymentDetails-endMonth-label"
+          for="CC-checkoutPaymentDetails-endMonth" data-bind="widgetLocaleText: 'endMonthLabel'">End Month</label>
+        <span class="text-danger visible-xs" id="CC-checkoutPaymentDetails-phone-endMonth-error"
+          data-bind="validationMessage: order().paymentDetails().endMonth" role="alert"></span>
+        <div class="control">
+          <select aria-required="true" type="text" class="col-md-12 form-control" id="CC-checkoutPaymentDetails-endMonth" name="endMonth"
+            data-bind="options:  order().paymentDetails().monthList, optionsText: 'name', optionsValue: 'value',
+                 optionsCaption: order().paymentDetails().endMonthPlaceholderText, value: order().paymentDetails().selectedEndMonth,
+                 validatableTarget: order().paymentDetails().endMonth, validationElement: order().paymentDetails().endMonth">
+          </select>
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" id="CC-checkoutPaymentDetails-endYear-label"
+          for="CC-checkoutPaymentDetails-endYear" data-bind="widgetLocaleText: 'endYearLabel'">End Year</label>
+        <span class="text-danger visible-xs" id="CC-checkoutPaymentDetails-phone-endYear-error"
+          data-bind="validationMessage: order().paymentDetails().endYear" role="alert"></span>
+        <div class="control">
+          <select aria-required="true" type="text" class="col-md-12 form-control" id="CC-checkoutPaymentDetails-endYear" name="endYear"
+            data-bind="options: order().paymentDetails().endYearList, optionsText: 'name', optionsValue: 'value',
+                 optionsCaption: order().paymentDetails().endYearPlaceholderText, value: order().paymentDetails().selectedEndYear,
+                       validatableTarget: order().paymentDetails().endYear, validationElement: order().paymentDetails().endYear">
+          </select>
+        </div>
+      </div>
+      <div class="hidden-xs col-sm-4">
+        <p class="text-danger" id="CC-checkoutPaymentDetails-endMonth-error"
+          data-bind="validationMessage: order().paymentDetails().endMonth" role="alert"></p>
+        <p class="text-danger" id="CC-checkoutPaymentDetails-endYear-error"
+          data-bind="validationMessage: order().paymentDetails().endYear" role="alert"></p>
+      </div>
+    </div>
+    <!-- /ko -->
+  </fieldset>
+</div>

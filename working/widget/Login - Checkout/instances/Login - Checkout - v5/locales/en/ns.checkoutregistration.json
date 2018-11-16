@@ -1,0 +1,23 @@
+{
+  "resources": {
+    "buttonLogout": "Log Out",
+    "registrationMessageText": "Creating an account means you can shop faster, keep up to date on the progress of your current order, and check the status of previous orders.",
+    "passwordText": "Password",
+    "buttonLogin": "Log In",
+    "emailAddressText": "Email Address",
+    "lastNameText": "Last Name",
+    "welcomeMessage": "Welcome back!",
+    "checkoutOption": "Choose your checkout option.",
+    "checkoutAsGuestText": "Check out as Guest",
+    "loginToAccountText": "Log in to your account",
+    "confirmPasswordText": "Confirm Password",
+    "marketingMailsText": "I want to get email updates.",
+    "userSessionExpiredErrorMsg": "Your checkout session has expired due to inactivity. Please restart checkout.",
+    "firstNameText": "First Name",
+    "personalizationConsentText": "Show me relevant site content and promotions whilst browsing.",
+    "checkoutRegistrationText": "Checkout",
+    "buttonCancel": "Cancel",
+    "rememberMeText": "I want to create an account.",
+    "checkoutErrorMsg": "Please ensure you have completed all mandatory fields and corrected any invalid entries."
+  }
+}

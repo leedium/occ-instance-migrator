@@ -1,0 +1,227 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+
+
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 50% ;
+    left: 50% ;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+    border-radius: 50% ;
+    border: 1px solid #ccc;
+    border-top-color: #07d;
+    animation:spinner .6s linear infinite
+}
+.category-banner {
+    min-height: 400px;
+    max-height: 400px;
+    position: relative;
+    overflow: hidden;
+    img {
+        position: absolute;
+        top: -100%;
+        bottom: -100%;
+        margin: auto;
+    }
+    @media screen and (max-width: @screen-md) {
+        min-height: 220px;
+    }
+    @media screen and (max-width: @screen-sm) {
+        min-height: 160px;
+    }
+}
+
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category-tile-image {
+    display: flex;
+    min-width: 220px;
+    // max-width: 220px;
+    min-height: 220px;
+     max-height: 284px;
+    background-color: #bebebe;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: solid 1px #cccccc;
+    img {
+        height: 100%;
+    }
+    @media screen and (max-width: @screen-xs) {
+        min-width: 120px;
+        // max-width: 120px;
+        min-height: 120px;
+        // max-height: 120px;
+    }
+}
+.cc-item-title {
+    position: relative;
+    // padding-top: 40px;
+    .cc-button-primary {
+        display: block;
+        margin-top: 25px;
+        text-transform: uppercase;
+        color: #fff;
+        font-weight: 500;
+        font-size: 12px;
+        margin-top: 68px;
+    }
+}
+.category-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.cc-product-item a {
+    color: #000;
+    text-decoration: none;
+}
+.cc-product-item a:hover .btn-primary {
+    color: #ffffff;
+    background-color: #3276b1;
+    border-color: #285e8e;
+}
+.cc-product-item {
+    margin-bottom: 10px;
+}
+.cc-item-detail {
+    border: solid 1px #cccccc;
+    margin-bottom: 30px;
+
+    .img-responsive {
+        position: relative;
+        width: 100%;
+    }
+    
+    &.has-no-children {
+        pointer-events: none;
+        opacity:.4;
+    }
+}
+.cc-item-detail .item-attributes {
+    padding: 10px;
+}
+.cc-item-title {
+    position: relative;
+    // padding-top: 40px;
+    // min-height: 190px;
+    
+    // h3:after {
+    //     content: "("attr(data-child-count)")";
+    //     display: inline-block;
+    //     font-size: 14px;
+    //     position:relative;
+    //     left:10px;
+    // }
+    
+}
+.cc-text-overflow {
+    margin: 0 !important;
+    text-align: center !important;
+
+    font-size: 16px !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+}
+.cc-text-overflow span{
+    position: relative;
+}
+.cc-text-overflow span:after{
+    font-size: 16px;
+    color: #ed2282;
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    display: inline-block;
+    position: absolute;
+    right: -20px;
+   top: -3px;
+}
+@media screen and (max-width: 700px) {
+    .cc-text-overflow {
+        font-size: 13px !important;
+    }
+    .cc-text-overflow span:after{
+        display: none;
+    }
+}
+.category-title {
+    margin-bottom: 0;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.custom-text-block {
+    tile-badge,
+    tile-promo,
+    tile-price {
+        display: block;
+    }
+    p {
+        margin: 0;
+    }
+    tile-price {
+        font-size: 13px;
+    }
+    tile-promo {
+        color: @ButtonPrimaryBackgroundColor;
+        background-color: #fbfbfb;
+        border-left: 5px solid @ButtonPrimaryBackgroundColor;
+        padding: 10px;
+        margin: 8px 0;
+        position: absolute;
+    }
+    tile-badge {
+        position: absolute;
+        top: 0;
+        padding: 5px 15px;
+        display: inline-block;
+        clear: both;
+        color: white;
+        font-size: 80%;
+        text-transform: uppercase;
+        &.sale-badge {
+            background-color: @ButtonPrimaryBackgroundColor;
+        }
+        &.new-badge {
+            background-color: #0088cc;
+        }
+    }
+}
+.category-banner-custom-block {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    tile-price,
+    tile-badge {
+        display: none;
+    }
+    tile-promo {
+        position: relative;
+        margin-bottom: 40px;
+    }
+}
+
+}

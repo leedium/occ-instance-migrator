@@ -1,0 +1,9 @@
+<!-- ko if: initialized() -->
+  <!-- ko with: user -->
+    <!-- ko if: readyToDisplay -->
+      <div data-bind="visible: parentOrganization.name() && (loggedIn() || isUserSessionExpired())">
+        <span class="cc-company-name" data-bind="text: parentOrganization.name">*</span>
+      </div>
+    <!-- /ko -->
+  <!-- /ko -->
+<!-- /ko -->

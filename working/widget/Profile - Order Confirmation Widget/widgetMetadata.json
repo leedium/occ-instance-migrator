@@ -1,0 +1,16 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "Profile - Order Confirmation Widget",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "config": {
+    "displaySWM": "true"
+  }
+}

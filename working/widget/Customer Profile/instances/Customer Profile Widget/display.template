@@ -1,0 +1,27 @@
+<!-- ko if: (user().loggedIn() || user().isUserSessionExpired()) -->
+<div id="CC-customerAccount">
+  <h2 data-bind="widgetLocaleText:'myAccountText'" id="CC-customerAccount-title"></h2>
+  <br/>
+  <div id="CC-customerAccount-details">
+    <div class="row">
+      <div class="col-sm-6">
+        <div id="CC-customerProfile-orderDetails-section" class="cc-customerProfile-order-details" 
+          data-bind="template: { name: templateAbsoluteUrl('/templates/customerProfileOrders.template') , templateUrl: ''}">
+        </div>
+        <br/>
+      </div>
+      <div class="col-sm-6">
+        <!-- ko if: showSWM -->
+        <div id="CC-customerProfile-spaceSettings-section" class="cc-customerProfile-space-settings" 
+            data-bind="template: { name: templateAbsoluteUrl('/templates/customerProfileSpaceSettings.template') , templateUrl: ''}">
+        </div>
+        <br/>
+        <!-- /ko -->
+      </div>
+    </div>
+    <div id="CC-customerProfile-profileDetails-section" class="row cc-customerProfile-profile-details" 
+        data-bind="template: { name: templateAbsoluteUrl('/templates/customerProfileDetails.template') , templateUrl: ''}">
+    </div>
+  </div>
+</div>
+<!-- /ko -->

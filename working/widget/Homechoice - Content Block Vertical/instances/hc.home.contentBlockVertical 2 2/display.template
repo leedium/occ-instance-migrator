@@ -1,0 +1,169 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "300154": {
+    "id": "300154",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m30127')}",
+      "sourceMedia": "m30127"
+    }
+  },
+  "300156": {
+    "id": "300156",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m30129')}",
+      "sourceMedia": "m30129"
+    }
+  },
+  "300161": {"id": "300161"},
+  "300162": {
+    "id": "300162",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m30135')}",
+      "sourceMedia": "m30135"
+    }
+  },
+  "300225": {
+    "id": "300225",
+    "image": {
+      "altText": "Open an account",
+      "altTextId": "300191",
+      "isProductImage": false,
+      "link": "/aboutus",
+      "src": "/file/v8556626396422992866/general/Marketing2.jpg",
+      "titleText": "Open an account",
+      "titleTextId": "300192",
+      "zoomEnabled": false
+    }
+  },
+  "300233": {
+    "id": "300233",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m30177')}",
+      "sourceMedia": "m30177"
+    }
+  },
+  "300237": {
+    "id": "300237",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v1693666751785302206/general/imageTest5-2-ratio.png",
+      "titleText": "Test",
+      "titleTextId": "300206",
+      "zoomEnabled": false
+    }
+  },
+  "500104": {
+    "id": "500104",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50097')}",
+      "sourceMedia": "m50097"
+    }
+  },
+  "500105": {
+    "id": "500105",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50099')}",
+      "sourceMedia": "m50099"
+    }
+  }
+}} --><!-- /ko -->
+
+<div data-bind="css: cssClasses()" class="hc-content-block hc-content-block__1-col" data-oc-id="hc-content-block">
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-1-0">
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-2-0">
+
+      <!-- oc section: contentBlockImage -->
+<div data-bind="element: 'contentBlockImage',id: '300225'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-3-0">
+
+      <!-- oc section: rich-text -->
+<div data-bind="element: 'rich-text',id: '500104'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-4-0">
+
+      <!-- oc section: rich-text -->
+<div data-bind="element: 'rich-text',id: '500105'"></div>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+    <!----------------->
+
+
+</div>

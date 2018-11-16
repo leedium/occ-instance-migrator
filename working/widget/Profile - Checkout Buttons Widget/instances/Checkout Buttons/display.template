@@ -1,0 +1,34 @@
+<!-- ko if: isViewVisible() -->
+<div id="CC-profileCheckoutButtons">
+    <div id="CC-checkoutOrderSummary-placeOrder" class="checkout row" data-bind="">
+        <button data-bind="disable: buttonDisabled(), click: nextButtonClick, css: nextButtonCss"
+                class="cc-button-primary col-xs-12">
+            <span>Place Order</span>
+        </button>
+        <span data-bind="text:cartData"></span>
+    </div>
+
+    <!-- ko if: paymentVM.isShippingBlocked() -->
+    <p class="text-danger text-center">
+        Sorry, 1 or more of your selected items can't be shipped to your area.
+    </p>
+    <!-- /ko -->
+</div>
+<div class="row" style="border: solid 1px red; display: none">
+    <div class="col-xs-12">
+        <h4>Test Payment Data, For testing purposes only</h4>
+    </div>
+    <div class="col-xs-12">
+        <h5>Use genericPayment gateway:</h5>
+        <span data-bind="text:paymentVM.useGenericPaymentGateway()"></span>
+    </div>
+    <div class="col-xs-12">
+        <h5>PaymentData:</h5>
+        <span style="word-wrap: break-word;" data-bind="text:paymentVM.paymentData"></span>
+    </div>
+</div>
+<div class="cc-rich-text" data-bind="" style="padding: 0px;">
+    <p class="agreement-text">By placing an order with HomeChoice, you are agreeing to our <a
+            href="http://homechoice.co.za">Terms &amp; Conditions</a>.</p>
+</div>
+<!-- /ko -->

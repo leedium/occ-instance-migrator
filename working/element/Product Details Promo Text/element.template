@@ -1,0 +1,9 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('productDetailsPromoText') -->
+        <div class="product-details-promo">
+            <!-- ko if: $data.product().product.promoText -->
+                <div class="product-details-promo" text: $data.product().product.promoText()"></div>
+            <!-- /ko -->
+        </div>
+<!-- /ko -->
+
+

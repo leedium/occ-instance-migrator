@@ -1,0 +1,13 @@
+{
+  "resources": {
+    "wasText": "Was",
+    "salePriceText": "Sale price",
+    "onSaleText": "Sale",
+    "previousImageText": "Previous Images",
+    "numRecsHelpText": "The maximum number of recommendations to display.",
+    "listPriceText": "List price",
+    "nextImageText": "Next Images",
+    "recommendationsTitleText": "You may also like",
+    "numRecsLabel": "Number of Recommendations"
+  }
+}

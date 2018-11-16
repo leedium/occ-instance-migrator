@@ -1,0 +1,7 @@
+<!-- ko if: initialized -->
+  <!-- ko with: user -->
+    <!-- ko if: readyToDisplay -->
+      <img class="cc-company-logo" height="14px" data-bind="attr: { alt: parentOrganization.organizationLogoAltText, src: parentOrganization.organizationLogoURL, title: parentOrganization.organizationLogoTitle }, visible: loggedIn() || isUserSessionExpired() ">
+    <!-- /ko -->
+  <!-- /ko -->
+<!-- /ko -->

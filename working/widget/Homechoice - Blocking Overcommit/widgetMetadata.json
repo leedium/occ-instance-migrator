@@ -1,0 +1,26 @@
+{
+  "imports": [
+    "product",
+    "pageContext",
+    "site",
+    "loaded",
+    "imageRootUrl",
+    "productVariantOptions",
+    "cart",
+    "links",
+    "productTypes",
+    "passwordPolicies",
+    "user"
+  ],
+  "translations": [
+    {
+      "name": "Homechoice - Blocking Overcommit",
+      "language": "en"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "config": {}
+}

@@ -1,0 +1,46 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('shipping-methods') -->
+<!-- ko if: cart().items -->
+<div id="CC-shipping-options" class="clearfix">
+  <!-- ko if: $data['elements']['shipping-methods'].displayShippingOptions -->
+    <div id="CC-shippingMethods" class="col-sm-12">
+      <div class="row">
+        <span id="CC-shippingOptions-legend" data-bind="widgetLocaleText: 'shippingOptionsText'"></span>
+      </div>
+      <form>
+        <fieldset>
+          <!-- ko foreach: shippingmethods().shippingOptions -->
+            <label class="radio shipping-option" data-bind="attr:{ for: 'CC-shippingOption-'+repositoryId }">
+              <div class="row">
+                <input type="radio" name="optionRadio" data-bind="
+                    event: {
+                      keydown: $parent['elements']['shipping-methods'].shippingOptionsKeyDownPressHandler.bind($parent['elements']['shipping-methods'], '#CC-shippingOption-'),
+                      keyup: $parent['elements']['shipping-methods'].shippingOptionsKeyUpPressHandler.bind($parent['elements']['shipping-methods'])
+                    }, 
+                    attr:{id: 'CC-shippingOption-'+repositoryId},
+                    value: repositoryId,
+                    checked: $parent['elements']['shipping-methods'].selectedShippingValue">
+                  <span 
+                      data-bind="attr:{id: 'CC-shippingMethodName-'+repositoryId},text: displayName"></span>: <span
+                      data-bind="attr:{id: 'CC-shippingOptionPrice-'+repositoryId},currency: {price: estimatedCostText(), currencyObj: $parent.site().selectedPriceListGroup().currency}"></span>
+                </input>
+              </div>
+            </label>
+          <!-- /ko -->
+        </fieldset>
+      </form>
+    </div>
+  <!-- /ko -->
+  <!-- ko ifnot: $data['elements']['shipping-methods'].displayShippingOptions -->
+    <div id="CC-feedback" class="col-sm-12">
+      <div class="row" role="alert" aria-live="rude">
+        <p class="text-danger" data-bind="widgetLocaleText: $data['elements']['shipping-methods'].invalidShippingAddress() 
+          ? 'invalidShippingAddress' : $data['elements']['shipping-methods'].noShippingMethods() 
+          ? 'noShippingMethodsText' : $data['elements']['shipping-methods'].invalidShippingMethod() 
+          ? 'invalidShippingMethod' : $data['elements']['shipping-methods'].pricingError() 
+          ? 'pricingError' : 'shippingAddressRequired'"/>
+      </div>
+    </div>
+  <!-- /ko -->
+</div>
+<!-- /ko -->
+<!-- /ko -->

@@ -1,0 +1,21 @@
+{
+  "imports": [
+    "shippingCountries",
+    "defaultShippingCountry"
+  ],
+  "translations": [
+    {
+      "name": "Custom Customer Profile Widget",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "pageTypes": [
+    "profile"
+  ],
+  "config": {
+    "displaySWM": "true"
+  }
+}

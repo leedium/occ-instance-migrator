@@ -1,0 +1,489 @@
+<div id="CC-orderDetails" data-bind="onRender:function(){console.log('My Orders', $data)}">
+<!-- ko if: display -->
+  <div id="CC-orderDetails-account-title" class="row">
+    <div id="CC-myaccount-header" class="col-sm-7">
+      <h2 data-bind="widgetLocaleText:'myOrders'"></h2>
+    </div>
+    <div id="CC-backToMyOrders" class="col-sm-5">
+      <a id="CC-backToMyOrders-link" href="#" data-bind="click: user().validatePrivilagePageRequest.bind(user()), ccLink: 'orderHistory',
+        widgetLocaleText:'backToMyOrdersLink'"></a>
+    </div>
+  </div>
+  <div id="CC-orderDetails-legend"> 
+    <legend id="CC-orderDetails-title" class="cc-profile-legend-title" data-bind="widgetLocaleText:'orderDetailsText'">Order Details</legend>
+  </div>
+  <!-- ko with: orderDetails -->
+  <div>
+    <section id="CC-orderDetailsHeader" class="section-orderDetails">
+      <table id="CC-orderDetailsHeaderTable" role="presentation">
+        <tbody>
+        <tr>
+            <td><span class="titleText" data-bind="widgetLocaleText: 'orderDateText'"></span></td>
+            <td><span id="CC-orderDetails-orderDate" data-bind="ccDate: {date: $data.creationDate, returnedDate: 'medium'}"></span></td>
+        </tr>
+        <tr>
+            <td><span class="titleText" data-bind="widgetLocaleText: 'orderNumberText'"></span></td>
+            <td><span id="CC-orderDetails-orderNumber" data-bind="text: id.replace('o','')"></span></td>
+        </tr>
+        <tr>
+            <td><span class="titleText" data-bind="widgetLocaleText: 'orderStatusText'"></span></td>
+            <td><span id="CC-orderDetails-orderStatus" class="titleText" data-bind="widgetLocaleText: $data.state"></span></td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <div id="CC-orderDetails-table">
+    <div>
+      <section class="section-orderDetails">
+        <!-- ko with: order -->    
+        <table id="CC-orderDetailsTable" class="table" summary="Order Details">
+          <thead>
+            <tr>
+              <th colspan="2" data-bind="widgetLocaleText: 'itemText'" scope="row"></th>
+			  <th data-bind="widgetLocaleText: 'skuIdText'" scope="col" class="centeredText"></th>
+              <th data-bind="widgetLocaleText: 'quantityText'" scope="col" class="centeredText"></th>
+			  <th data-bind="widgetLocaleText: 'unitPriceText'" scope="col" style="text-align: right;"></th>
+            </tr>
+          </thead>
+          <tbody  data-bind="foreach: items">
+            <tr>
+              <td class="hidden-xs image col-xs-1">
+                <!-- ko if: active -->
+                  <a data-bind="ccLink:$data">
+                    <img data-bind="attr:{id: 'CC-orderDetails-productImage-' +productId +catRefId, src: primaryThumbImageURL, alt: primaryImageAltText, title: primaryImageTitle}"/>
+                  </a>
+                <!--/ko -->
+                <!-- ko if: (primaryThumbImageURL && !active) -->
+                  <img data-bind="attr:{id: 'CC-orderDetails-productImage-' +productId +catRefId, src: primaryThumbImageURL, alt: primaryImageAltText, title: primaryImageTitle}"/>
+                <!--/ko -->
+                <!-- ko ifnot: primaryThumbImageURL -->
+                  <img data-bind="attr:{id: 'CC-orderDetails-productImage-' +productId +catRefId, src: '/img/no-image.jpg', alt: 'Missing Product Image'}"/>
+                <!--/ko -->
+              </td>
+              <td scope="row" class="product-name col-xs-4">
+                <!-- ko if: active -->
+                  <a data-bind="ccLink :$data, attr: { id: 'CC-orderDetails-productName-' + productId + '-' + catRefId }"></a>
+                <!--/ko -->
+                <!-- ko ifnot: active -->
+                  <span data-bind="attr: { id: 'CC-orderDetails-productName-' + productId + '-' + catRefId }, text: displayName" ></span>
+                <!--/ko -->
+                <!-- ko if: variant -->  
+                  <div data-bind="attr: { id: 'CC-orderDetails-productVariant'+ productId + '-' + catRefId }" >
+                    <small  data-bind="foreach: variant"> 
+                      <!-- ko if: optionValue -->
+                        <span  class="col-xs-12" data-bind="widgetLocaleText : { value:'option', attr:'innerText', params: {optionName: optionName, optionValue: optionValue}},
+                         attr: { id: 'CC-orderDetails-productOptions-'+$parent.productId + $parent.catRefId + optionValue }">
+                        </span>
+                      <!-- /ko --> 
+                    </small>
+                  </div>
+                <!-- /ko -->
+                <!-- ko if: discountInfo -->  
+                  <div data-bind="attr: { id: 'CC-orderDetails-discountInfo'+ productId + '-' + catRefId }" >
+                    <!-- ko if: discountInfo -->  
+                      <small  data-bind="foreach: discountInfo"> 
+                        <!-- ko if: $data.coupon -->  
+                          <span data-bind="widgetLocaleText : {value:'orderCouponDisplayText', attr: 'innerText', params: {description: promotionDesc, code : coupon}}"></span>
+                        <!-- /ko -->         
+                        <!-- ko ifnot: $data.coupon -->  
+                          <span data-bind="widgetLocaleText : promotionDesc, attr: { id: 'CC-orderDetails-discountInfo-'+$data.promotionId}"></span> 
+                        <!-- /ko -->
+                      </small>
+                    <!-- /ko -->
+                  </div>
+                <!-- /ko -->
+                <!-- k o if: shippingSurchargeValue !== 0 - ->
+                  <div class="CC-orderDetails-itemShippingSurcharge" data-bind="attr: { id: 'CC-orderDetails-itemShippingSurcharge-for-' +$data.productId + '-' + $data.catRefId }">
+                    <!- - k o if: shippingSurchargeValue !== 0 - ->
+                      <span data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>
+                      <span data-bind="currency: {price: shippingSurchargeValue,
+                              currencyObj: $parents[1].priceListGroup.currency, nullReplace: '0.00', prependNull: true},
+                              attr: { id: 'cc-orderDetails-item-shipping-surcharge-' + $data.productId + '-' + $data.catRefId }">
+                      </span>
+                    <!- - /k o - ->
+                  </div>
+                <! - - /k o -->
+                <div class="titleText">
+                  <!-- ko if: backOrderQuantity != null && backOrderQuantity > 0 && quantity > backOrderQuantity -->
+                    <span data-bind="text: $data.backOrderQuantity"></span>
+                    <span data-bind="widgetLocaleText: 'backOrderText'"></span>
+                  <!-- /ko -->
+                  <!-- ko if: preOrderQuantity != null && preOrderQuantity > 0 && quantity > preOrderQuantity -->
+                    <span data-bind="text: $data.preOrderQuantity"></span>
+                    <span data-bind="widgetLocaleText: 'preOrderText'"></span>
+                  <!-- /ko -->
+                  <!-- ko if: $data.availabilityDate != null -->
+                    <span data-bind="widgetLocaleText: 'availabilityDateText'"></span>
+                    <span data-bind="ccDate: {date: $data.availabilityDate},
+                    attr: { id: 'CC-orderDetails-item-date-' + $data.productId + '-' + $data.catRefId }"></span>
+                  <!-- /ko -->
+                </div>
+              </td>
+              <td class="visible-xs"></td>
+              <td class="col-xs-2 centeredText" data-bind="attr: {id: 'CC-orderDetails-skuId-'+ $data.productId + '-' + $data.catRefId}, text: $data.catRefId"></td>
+			  <td class="col-xs-2 centeredText" data-bind="attr: {id: 'CC-orderDetails-itemQuantity-'+ $data.productId + '-' + $data.catRefId}, text: quantity"></td>
+			  <td class="col-xs-2" style="text-align: right;">
+
+
+			    <!-- ko foreach: dynamicProperties -->
+                <!-- ko if: $data.id == "hcTermsCharge" -->
+                      <!-- ko if: $data.value != null -->
+                        R <span data-bind="text: $data.value"></span> x 
+                      <!-- /ko -->
+                      <!-- ko if: $data.value == null -->
+
+                            <!-- ko foreach: $parents[0].detailedItemPriceInfo -->
+                            R <span data-bind="text: detailedUnitPrice" ></span>
+                            <!-- /ko -->
+
+                      <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: $data.id == "hcTermsDuration" -->
+                      <!-- ko if: $data.value != null -->
+                        <span data-bind="text: $data.value"></span>
+                      <!-- /ko -->
+                <!-- /ko -->
+          <!-- /ko -->
+            
+          
+
+
+			  </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- /ko -->
+      </section>
+    </div>
+    <div id="CC-copyItemsToCart" class="col-xs-12 pull-right">
+    <!-- ko if:($parent.cart().items().length > 0) -->
+    <div>
+      <a id="CC-mergeOrder" href="#" class="pull-right" data-bind="widgetLocaleText:'copyToCart', click: $parent.setSelectedOrder.bind($parent)"
+                    data-toggle="modal"
+                    data-id=$parents[1].orderId
+                    data-target="#cc-placeOrder-ModalContainer"
+                    type="button">
+     </a> 
+     </div>
+   <!-- /ko -->
+   <!-- ko if:($parent.cart().items().length == 0) -->
+      <a id="CC-copyOrder" href="#" class="pull-right" data-bind="click:  $parent.mergeToCart.bind($parent), widgetLocaleText:'copyToCart'"></a>
+   <!-- /ko -->
+    </div>
+    <div class="row solidFrame" id="CC-orderDetails-shipping-priceInfo">
+      <div class="col-sm-12 col-md-12 section-orderDetails">
+        <div id="CC-orderDetails-shippingAddressAndMethodText" style="padding-top:20px;">
+          <span data-bind="widgetLocaleText: 'shippingAddressAndMethodText'" style="padding-top:20px;"></span>
+        </div>
+        <div class="row">
+          <div id="cc-orderDetails-shippingAddress" class="col-md-4 col-sm-12">
+            <!-- ko with: shippingAddress -->   
+            <div>
+              <section>
+                <table>
+                  <tbody>
+                    <tr class="row">
+                      <td class="titleText removePadding" id="CC-orderDetails-ShipAdressText" data-bind="widgetLocaleText: 'shippingAddressText'"></td>
+                      <td id="CC-orderDetails-ShippingAdress-Column">
+                        <div>
+                          <span data-bind="widgetLocaleText : {value: 'fullName', attr: 'innerText', params: {firstName: firstName, lastName: lastName}}"></span>
+                        </div>
+                        <div>
+                          <span data-bind="widgetLocaleText : {value: 'address1', attr: 'innerText', params: {address1: address1}}"></span>
+                        </div>
+                        <!-- ko if: address2 -->
+                          <div>                          
+                            <span data-bind="widgetLocaleText : {value: 'address2', attr: 'innerText', params: {address2: address2}}"></span>
+                          </div>
+                        <!-- /ko -->
+                        <!-- ko if: state -->                        
+                          <div>                          
+                            <span data-bind="widgetLocaleText : {value: 'cityStatePostalCode', attr: 'innerText', params: {city: city, state: $parents[1].getStateName(), postalCode: postalCode}}">
+                            </span>                          
+                          </div>
+                        <!-- /ko -->
+                        <!-- ko ifnot: state -->
+                          <div> 
+                            <span data-bind="widgetLocaleText : {value: 'cityPostalCode', attr: 'innerText', params: {city: city, postalCode: postalCode}}">
+                            </span>
+                          </div>
+                        <!-- /ko --> 
+                        <div>
+                          <span data-bind="text: $parents[1].getCountryName()"></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+            </div>
+            <!-- /ko --> 
+          </div>
+          <div id="cc-orderDetails-billingAddress" class="col-md-4 col-sm-12">
+            <!-- ko if : $parent.isBillingAddressPresent -->
+              <!-- ko if : billingAddress.address1 -->
+                <!-- ko with: billingAddress -->   
+                  <div>
+                    <section>
+                      <table>
+                        <tbody>
+                          <tr class="row">
+                            <td class="titleText removePadding" id="CC-orderDetails-BillAdressText" data-bind="widgetLocaleText: 'billingAddressText'"></td>
+                            <td id="CC-orderDetails-BillingAdress-Column">
+                              <div>
+                                <span data-bind="widgetLocaleText : {value: 'fullName', attr: 'innerText', params: {firstName: firstName, lastName: lastName}}"></span>
+                              </div>
+                              <div>
+                                <span data-bind="widgetLocaleText : {value: 'address1', attr: 'innerText', params: {address1: address1}}"></span>
+                              </div>
+                              <!-- ko if: address2 -->
+                                <div>                          
+                                  <span data-bind="widgetLocaleText : {value: 'address2', attr: 'innerText', params: {address2: address2}}"></span>
+                                </div>
+                              <!-- /ko -->
+                              <!-- ko if: state -->                        
+                                <div>                          
+                                  <span data-bind="widgetLocaleText : {value: 'cityStatePostalCode', attr: 'innerText', params: {city: city, state: $parents[1].getStateName(), postalCode: postalCode}}">
+                                  </span>                          
+                                </div>
+                              <!-- /ko -->
+                              <!-- ko ifnot: state -->
+                                <div> 
+                                  <span data-bind="widgetLocaleText : {value: 'cityPostalCode', attr: 'innerText', params: {city: city, postalCode: postalCode}}">
+                                  </span>
+                                </div>
+                              <!-- /ko --> 
+                            <div>
+                              <span data-bind="text: $parents[1].getCountryName()"></span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                </div>
+                <!-- /ko -->
+              <!-- /ko -->
+            <!-- /ko -->
+          </div>
+         
+          <div id="CC-orderDetails-priceDetails" class="col-md-4 col-sm-12">
+            <!-- ko with: priceInfo --> 
+              <div>
+                <!-- Sub-Total -->
+                <div class="row">
+                  <div class="col-xs-7">
+
+
+                    <div id="CC-orderDetails-subTotal-label" class="titleText" data-bind="widgetLocaleText: 'subtotalText'">Sub Total</div>
+                      <!-- ko if: ($parent.taxPriceInfo.isTaxIncluded && $parents[1].cart().showTaxSummary) -->
+                        <div data-bind="widgetLocaleText: 'includingTaxText'"></div>
+                      <!-- /ko -->
+                    </div>
+                    <div class="col-xs-5">
+                      <span id="CC-orderDetails-subTotal-value" class="titleText pull-right" data-bind="currency: { price: subTotal, currencyObj: $parent.priceListGroup.currency},
+                            attr: { id:'CC-orderDetails-productDetails-subTotal' }"></span>
+                    </div>
+                  </div>
+                  <!-- Discount -->
+                  <!-- ko if: $parent.discountInfo.orderDiscount --> 
+                  <div class="row">
+                    <div class="col-xs-7">
+                      <span id="CC-orderDetails-discount-label" class="titleText" data-bind="widgetLocaleText: 'discountText'"></span>
+                    </div>
+                    <div class="col-xs-5">
+                      <span id="CC-orderDetails-discount-value" class="breakWord titleText pull-right"
+                            data-bind="currency: { price: -$parent.discountInfo.orderDiscount, currencyObj: $parent.priceListGroup.currency}">
+                      </span>
+                    </div>
+                  </div>
+                  <!-- /ko -->
+                  <!-- Shipping -->
+                  <div class="row">
+                    <div class="col-xs-8">
+                      <span id="CC-orderDetails-shippingMethod-value" class="breakWord titleText" data-bind="widgetLocaleText: {value: 'shippingMethodValueText', attr: 'innerText', params: {shippingMethod :$parent.shippingGroup.shippingMethodDescription}}"></span>
+                    </div>
+                    <div class="col-xs-4">
+                      <span id="CC-orderDetails-shippingPrice-value" class="titleText pull-right"
+                            data-bind="currency: { price: shipping, currencyObj: $parent.priceListGroup.currency}">
+                      </span>
+                    </div>
+                  </div>
+                  <!-- ko if: $parent.discountInfo.shippingDiscount !== 0 --> 
+                  <div class="row">
+                    <div class="col-xs-7">
+                      <span id="CC-orderDetails-shippingDiscount-label" class="titleText" data-bind="widgetLocaleText: 'shippingDiscountText'"></span>
+                    </div>
+                    <div class="col-xs-5">
+                      <span id="CC-orderDetails-shippingDiscount-value" class="breakWord titleText pull-right" data-bind="currency: { price: -$parent.discountInfo.shippingDiscount, currencyObj: $parent.priceListGroup.currency}">
+                      </span>
+                    </div>
+                  </div>
+                  <!-- /ko -->
+                  <!-- Shipping Surcharge -->
+                  <!-- ko if: shippingSurchargeValue &&  shippingSurchargeValue !== 0 -->
+                  <div class="row">
+                    <div class="col-xs-8">
+                      <span id="CC-orderDetails-shippingSurcharge-label" class="titleText" data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>
+                    </div>
+                    <div class="col-xs-4">
+                      <span id="CC-orderDetails-shippingSurcharge-value" class="titleText pull-right" data-bind="currency: { price: shippingSurchargeValue, currencyObj: $parent.priceListGroup.currency}">
+                      </span>
+                    </div>
+                  </div>
+                  <!-- /ko -->
+                  <!-- Sales Tax -->
+                  <!-- ko if: $parents[1].cart().showTaxSummary -->
+                  <!-- <div class="row">
+                    <div class="col-xs-8">
+                      <span id="CC-orderDetails-salesTax-label" class="titleText" data-bind="widgetLocaleText: 'salesTaxText'">
+                      </span>
+                    </div>
+                    <div class="col-xs-4">
+                      <span id="CC-orderDetails-salesTax-value" class="titleText pull-right" data-bind="currency: { price: tax, currencyObj: $parent.priceListGroup.currency}">
+                      </span>
+                    </div>
+                  </div> -->
+                  <!-- /ko -->
+          
+                  <!-- Gift Card Used -->
+                  <!-- ko if: $parents[1].isGiftCardUsed() -->
+                    <span class="titleText" data-bind="widgetLocaleText:'giftCardUsedText'"></span>
+                  <!-- /ko -->
+                  <!-- ko foreach: $parent.payments -->
+                    <!-- ko if: (paymentMethod == "physicalGiftCard" && paymentState == "AUTHORIZED") -->
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <span class="titleText" data-bind="widgetLocaleText: maskedCardNumber, attr: {id: 'CC-orderDetails-giftCard-label-'+$index()}">
+                        </span>
+                      </div>
+                      <div class="col-xs-4">
+                        <span class="titleText pull-right" data-bind="currency: { price: -amount, currencyObj: $parents[1].priceListGroup.currency}, 
+                              attr: {id: 'CC-orderDetails-giftCard-value-'+$index()}">
+                        </span>
+                      </div>
+                    </div>          
+                    <!-- /ko -->
+                  <!-- /ko -->
+          
+                  <!-- ko with: $parent.discountInfo --> 
+                    <!-- ko if: orderImplicitDiscountList -->
+                    <small data-bind="foreach: orderImplicitDiscountList"> 
+                      <div class="discount">
+                        <div>
+                          <span data-bind="widgetLocaleText : promotionDesc, attr: { id: 'CC-orderDetails-orderImplicitDiscountList-'+$data.promotionId}"></span>
+                        </div>
+                      </div>
+                    </small>
+                    <!-- /ko -->
+                    <!-- ko if: $parents[2].coupons -->
+                    <small data-bind="foreach: $parents[2].coupons">
+                      <div class="discount">
+                        <span data-bind="widgetLocaleText : {value:'orderCouponDisplayText', attr: 'innerText', params: {description: promotionDesc, code : code}}"></span>
+                      </div>
+                    </small>
+                    <!-- /ko -->
+                  <!-- /ko -->
+                  <!-- Order Total excluding tax -->
+                    <!-- ko if: ($parent.taxPriceInfo.isTaxIncluded && $parents[1].cart().showTaxSummary) -->
+                      <div class="row" id="CC-orderDetails-orderTotal-extax">
+                        <div class="col-xs-8">
+                          <span id="CC-orderDetails-orderTotal-extax-label" class="titleText" data-bind="widgetLocaleText: 'totalExcludingTaxText'">
+                          </span>
+                        </div>
+                        <div class="col-xs-4">
+                          <span id="CC-orderDetails-orderTotal-extax-value" class="titleText pull-right" data-bind="currency: { price: totalWithoutTax, currencyObj: $parent.priceListGroup.currency}">
+                          </span>
+                        </div>
+                      </div>
+                    <!-- /ko -->
+                  <!-- Order Total -->
+                  <div class="row" id="CC-orderDetails-orderTotal">
+                    <div class="col-xs-8">
+                      <div id="CC-orderDetails-orderTotal-label" class="titleText" data-bind="widgetLocaleText: 'orderTotalText'">
+                      </div>
+                      <!-- ko if: ($parent.taxPriceInfo.isTaxIncluded && $parents[1].cart().showTaxSummary) -->
+                        <div data-bind="widgetLocaleText:'includingTaxText'"></div>
+                      <!-- /ko -->
+                    </div>
+                    <div class="col-xs-4">
+                      <span id="CC-orderDetails-orderTotal-value" class="titleText pull-right" data-bind="currency: { price: total, currencyObj: $parent.priceListGroup.currency}">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            <!-- /ko -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+  <!-- ko if: isEligibleToCompletePayment -->
+    <div id="CC-accountOrderDetails-completePayment">
+      <button id="CC-accountOrder-details-completePayment-button"  data-bind="click: completePayment,
+        widgetLocaleText:'completePayment'" type="submit" class="btn btn-primary btn-sm"> </button>
+    </div>
+  <!-- /ko -->
+  <!-- /ko -->
+</div>
+  <div class="modal fade" id="CC-orderDetails-modal"
+     tabindex="-1" role="alert" data-bind="modalTabbingContraint">
+    <!-- ko if: $data.orderDetails() -->
+  <div class="modal-dialog" id="CC-orderDetails-modal-dialog">
+    <div class="modal-content" id="CC-orderDetailsModalContent">
+      <div class="modal-header cc-orderDetails-modal-heading cc-orderDetails-confirm-icon" id="CC-orderDetails-modal-header">
+        <button type="button" class="close" data-dismiss="modal" id="CC-orderDetails-modal-headerClose" aria-hidden="true">&times;</button>
+        <h4 data-bind="widgetLocaleText:'conextChangeModalTitle'" id="CC-orderDetails-modal-headerText"></h4>
+      </div>
+      <div class="modal-body cc-orderDetails-body-modal" id="CC-orderDetails-modal-modalBody">
+        <p data-bind="widgetLocaleText:{value:'conextChangeModalMessage', attr: 'innerText', params: {organizationName: $data.orderDetails().organizationName}}" align="center" id="CC-orderDetails-modal-bodyText"></p>
+      </div>
+      <div class="modal-footer cc-orderDetails-modal-footer" id="CC-orderDetails-modal-footer">
+        <button class="btn cc-button-secondary" id="CC-orderDetails-modal-cancel" data-bind="click: handleModalNo">
+          <span id="CC-orderDetails-modal-discard" data-bind="widgetLocaleText:'conextChangeModalNo'"></span>
+        </button>
+        <button class="btn cc-button-primary" id="CC-orderDetails-modal-submit"  data-bind="click: handleModalYes">
+          <span id="CC-orderDetails-modal-save" data-bind="widgetLocaleText:'conextChangeModalYes'"></span>
+        </button>
+    </div> 
+    </div>
+  </div>
+  <!-- /ko -->
+</div>
+
+<div id="CC-orderDetailsContextChangeMsg">
+ <!-- ko if: $data.orderDetails() -->
+  <div class="jumbotron">
+    <div id="CC-contextChange-error">
+        <span id="CC-contextChange-error-text" data-bind="widgetLocaleText: {value:'contextChangeErrorText', attr: 'innerText', params: {organizationName: $data.orderDetails().organizationName}}"></span>
+    </div>
+  </div>
+  <!-- /ko -->
+</div>
+<!-- copy Order Modal-->
+<div data-bind="modal: 0,
+  modalTabbingContraint"
+  class="modal width-fixed fade cc-modalForm"
+  id="cc-placeOrder-ModalContainer">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <text data-bind="widgetLocaleText:'placeOrderModalMessage'"
+          class="modal-title text-center"></text>
+      </div>
+      <div class="modal-footer">
+        <div><button data-bind="click: $data.mergeToCart.bind($data),
+          widgetLocaleText:'buttonOk'"
+          data-dismiss="modal"
+          type="button"
+          class="btn btn-primary btn-sm"></button>
+          <button data-bind="widgetLocaleText:'buttonCancel'"
+          data-dismiss="modal"
+          type="button"
+          class="btn btn-primary btn-sm"></button></div>
+        </div>
+      </div>
+    </div>
+  </div>
