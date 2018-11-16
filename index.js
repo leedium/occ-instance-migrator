@@ -210,9 +210,6 @@ function getDiffs() {
       shell: true
     });
     ls1.stdout.pipe(fs.createWriteStream("./whatchanged.txt"));
-    ls1.stdout.on("data", (chunk) => {
-      // process.stdout.write(chunk);
-    });
     ls1.on("close", () => {
       console.log("...created diff file...");
       setTimeout(() => {
@@ -251,7 +248,7 @@ function processDiffs() {
           if (path.indexOf("dcu-extensions-migrator") < 0) {
             let sp = path.split("/");
             transferPaths.push({
-              path: path.split("/").slice(0, 5).join("/"),
+              path: sp.slice(0, 5).join("/"),
               extType: sp[1]
             });
             transferPathArrayTemp[`${path}`] = true;
@@ -329,32 +326,31 @@ async function makeTmpFolder() {
 
     // copy dcu source and tracking file to temp
     transferPaths.map(({ extType, path }) => {
-      const fa = path.split("/");
-      const f = fa.slice(0, fa.length).join("/");
-      fa[1] = `.ccc/${fa[1]}`;
-      let c = fa.slice(0, fa.length).join("/");
+      const pathSplitArray = path.split("/");
+      const dcuSourceFolder = pathSplitArray.slice(0, pathSplitArray.length).join("/");
+      pathSplitArray[1] = `.ccc/${pathSplitArray[1]}`;
+      let dcuTrackingFolder = pathSplitArray.slice(0, pathSplitArray.length).join("/");
 
       try {
-        fs.ensureDirSync(`${TEMP_FOLDER}/${f}`);
-        fs.ensureDirSync(`${TEMP_FOLDER}/${c}`);
-        fs.copySync(`${path}`, `${TEMP_FOLDER}/${f}`);
-        fs.copySync(c, `${TEMP_FOLDER}/${c}`);
+        fs.ensureDirSync(`${TEMP_FOLDER}/${dcuSourceFolder}`);
+        fs.ensureDirSync(`${TEMP_FOLDER}/${dcuTrackingFolder}`);
+        fs.copySync(`${path}`, `${TEMP_FOLDER}/${dcuSourceFolder}`);
+        fs.copySync(dcuTrackingFolder, `${TEMP_FOLDER}/${dcuTrackingFolder}`);
 
         //  Blow away the instance folder.  We need to do this as we only want to
         //  include the instances we stored in instanceTracker
         if (extType === "widget") {
-          const splPath = path.split("/");
-          const cPath = splPath.slice(0);
-          cPath.splice(1,0,'.ccc');
-          const fp = `${TEMP_FOLDER}/${splPath.slice(0, 3).join("/")}/instances`;
-          const cp = `${TEMP_FOLDER}/${cPath.join("/")}/instances`;
+          const cccPath = pathSplitArray.slice(0);
+          cccPath.splice(1,0,'.ccc');
+          const fp = `${TEMP_FOLDER}/${pathSplitArray.slice(0, 3).join("/")}/instances`;
+          const cp = `${TEMP_FOLDER}/${cccPath.join("/")}/instances`;
           fs.removeSync(fp);
           fs.removeSync(cp);
         }
         // }
         //
         // if (isStack) {
-        //   let file = `${c.split("/").slice(0, 4).join("/")}/stack.json`;
+        //   let file = `${dcuTrackingFolder.split("/").slice(0, 4).join("/")}/stack.json`;
         //   console.log(isStack, path, file);
         //   fs.copySync(`${file}`, `${TEMP_FOLDER}/${file}`);
         // }
