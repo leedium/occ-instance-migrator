@@ -1,0 +1,9 @@
+{
+  "configuration": {
+    "relatedProductsDisplaySection": "",
+    "displayNameOfRelatedProducts": true,
+    "numberOfRelatedProducts": "20",
+    "displayPriceOfRelatedProducts": true
+  },
+  "displayName": "hc.relatedProductsCarousel"
+}

@@ -1,0 +1,224 @@
+<!-- ko if:  isViewVisible() -->
+
+<div id="CC-profileEmploymentDetails">
+
+  <div class="profile-registration--employment-details">
+
+    <h2 class="profile-registration--employment-details--heading">Your income and expenses</h2>
+
+    <form data-bind="submit: formSubmit" novalidate="novalidate">
+      <div class="form-group qualify-credit">
+        <div class="row">
+          <div class="col-md-7 col-sm-12 form-container">
+            <div class="profile-registration--employment-details--header">
+              <p>
+                To see if you qualify for credit, we need a few details. Please answer as accurately as possible. Your personal information will be securely stored and not shared.
+              </p>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <!-- EMPLOYMENT STATUS -->
+                <div class="form-group" data-bind="css:{'has-error': employmentInvalid()">
+                  <label for="employmentStatus" class="control-label">Your employment status</label>
+                  <!-- <select class="form-control" id="employmentStatus" data-bind="value: employmentStatus, event:{ change: employmentStatusChange}">
+                    <option value="0">Please select...</option>
+                    <option value="1">Permanently Employed</option>
+                    <option value="10">Self-Employed</option>
+                    <option value="16">Pensioner</option>
+                  </select>
+                  <div class="text-danger" data-bind="visible: employmentInvalid()">
+                    <i class="fa fa-exclamation-triangle"></i>
+                    <span>Please select an employment status</span>
+                  </div> -->
+
+
+                  <ul class="product-details-credit-options--list clearfix" >
+                    <li class="radio-inline">
+                      <input checked="checked" name="employmentStatus" type="radio" id="146690-Option-0" data-bind="event:{ change: employmentStatusChange2(1, 1)}, onRender: function() { employmentStatusChange2(1, 1); }" />
+                      <label for="146690-Option-0">Permanently Employed</label>
+                    </li>
+                    <li class="radio-inline">
+                      <input name="employmentStatus" type="radio" id="146690-Option-1" data-bind="event:{ change: employmentStatusChange2(2, 10)}" />
+                      <label for="146690-Option-1">Self-Employed</label>
+                    </li>
+                    <li class="radio-inline">
+                      <input name="employmentStatus" type="radio" id="146690-Option-2" data-bind="event:{ change: employmentStatusChange2(3, 16)}" />
+                      <label for="146690-Option-2">Pensioner</label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-md-10">
+                <!-- WORK NAME -->
+                <div class="form-group" data-bind="visible: inputVisibility()[0], css: {'has-error': workNameInvalid()}">
+                  <div class="">
+                    <div class="">
+                      <label for="workName" class="control-label">Your employer</label>
+                      <input type="text" data-bind="value: workName" class="form-control" id="workName" placeholder="" />
+                      <span data-bind="visible: workNameInvalid()" class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i> Please enter the name of your employer.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-7">
+
+                <!-- WORK PHONE -->
+                <div class="form-group pb-50" data-bind="visible: inputVisibility()[1], css: {'has-error': workPhoneInvalid()}">
+                  <div class="">
+                    <div class="">
+                      <label for="workPhone" class="control-label">Work phone number</label>
+                      <input type="tel" maxlength="10" data-bind="value: workPhone" class="form-control" id="workPhone" onkeyup="this.value=this.value.replace(/[^\d]+/,'')" pattern="[0-9]+" />
+                      <span data-bind="visible: workPhoneInvalid()" class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i> Please enter your work phone number.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="xs-indent">
+                  <!-- GROSS MONTHLY INCOME -->
+                  <div class="form-group"  data-bind="css: {'has-error': grossIncomeInvalid()}">
+                    <div class="">
+                      <div class="rand-before">
+                        <label for="grossMonthlyIncome" class="control-label">Gross monthly income</label>
+                        <a tabindex="0" class="btn btn-link pull-right" role="button" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="This is your total monthly income before you have any money removed - like tax (if you pay tax) or UIF." data-bind="onRender:function () {$('[data-toggle=popover]').popover();}">
+                          <small>What's this?</small>
+                          <i class="fa fa-question-circle fa-lg"></i>
+                        </a>
+                        <input type="tel" maxlength="10" min="1" data-bind="value: grossMonthlyIncome, event:{keyup:validateIncomeValue}" onkeyup="this.value=this.value.replace(/[^\d]+/,'')" class="form-control" id="grossMonthlyIncome" placeholder="0" pattern="[0-9]+" />
+                        <span data-bind="visible: grossIncomeInvalid()" class="text-danger">
+                          <i class="fa fa-exclamation-triangle"></i> Please enter your gross monthly income.
+                        </span>
+                        <span data-bind="visible: grossMonthlyIncomeLessThanZero()" class="text-danger">
+                          <i class="fa fa-exclamation-triangle"></i> Your gross monthly income must be greater than zero.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- NET MONTHLY INCOME -->
+                  <div class="form-group" data-bind="css: {'has-error': netIncomeInvalid()}">
+                    <div class="">
+                      <div class="rand-before">
+                        <label for="netMonthlyIncome" class="control-label">Net monthly income</label>
+                        <a tabindex="0" class="btn btn-link pull-right" role="button" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="This is the money that is paid into your account every month, after you have tax (if you pay tax) or UIF removed." data-bind="onRender:function () {$('[data-toggle=popover]').popover();}">
+                          <small>What's this?</small>
+                          <i class="fa fa-question-circle fa-lg"></i>
+                        </a>
+                        <input type="tel" maxlength="10" data-bind="value: netMonthlyIncome, event:{keyup:validateIncomeValue}" onkeyup="this.value=this.value.replace(/[^\d]+/,'')" class="form-control" id="netMonthlyIncome" placeholder="0" pattern="[0-9]+" />
+                        <span data-bind="visible: netIncomeInvalid()" class="text-danger">
+                          <i class="fa fa-exclamation-triangle"></i> Please enter your net monthly income.
+                        </span>
+                        <span data-bind="visible: netIncomeLessThanZero()" class="text-danger">
+                          <i class="fa fa-exclamation-triangle"></i> Your net monthly income must be greater than zero.
+                        </span>
+                        <span data-bind="visible: netIncomeExceedgrossIncome()" class="text-danger">
+                          <i class="fa fa-exclamation-triangle"></i> Your monthly net income cannot be more than your gross monthly income.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ADDITIONAL MONTHLY INCOME -->
+                  <div class="form-group pb-50" data-bind="css: {'has-error': additionalMonthlyIncomeInvalid()}">
+                    <div class="">
+                      <div class="rand-before">
+                        <label for="additionalMonthlyIncome" class="control-label">Additional monthly income</label>
+                        <a tabindex="0" class="btn btn-link pull-right" role="button" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="Any extra money you get from sources other than your steady income – like social grants, allowances, commission, rent, selling products, etc." data-bind="onRender:function () {$('[data-toggle=popover]').popover();}">
+                          <small>What's this?</small>
+                          <i class="fa fa-question-circle fa-lg"></i>
+                        </a>
+                        <input type="tel" maxlength="10" data-bind="value: additionalMonthlyIncome, event:{keyup:''}" onkeyup="this.value=this.value.replace(/[^\d]+/,'')" class="form-control" id="additionalMonthlyIncome" placeholder="0" pattern="[0-9]+" />
+                        <span data-bind="visible: additionalMonthlyIncomeInvalid()" class="text-danger">
+                          <i class="fa fa-exclamation-triangle"></i> Invalid additional income value. Value must be zero(0) or greater.
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- TOTAL LIVING EXPENSES -->
+                  <div class="form-group" data-bind="css: {'has-error': livingExpenseInvalid()}">
+                    <div class="">
+                      <div class="rand-before">
+                        <label for="totalLivingExpenses" class="control-label">Monthly expenses</label>
+                        <a tabindex="0" class="btn btn-link pull-right" role="button" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="Money you spend every month on things like food, accommodation, transport, education, doctors and hospital fees, maintenance, water and electricity." data-bind="onRender:function () {$('[data-toggle=popover]').popover();}">
+                          <small>What's this?</small>
+                          <i class="fa fa-question-circle fa-lg"></i>
+                        </a>
+                        <input type="tel" maxlength="10" data-bind="value: totalLivingExpenses, event:{keyup:validateExpensesValue}" onkeyup="this.value=this.value.replace(/[^\d]+/,'')" class="form-control" id="totalLivingExpenses" placeholder="0" pattern="[0-9]+" />
+                        <span data-bind="visible: livingExpenseInvalid()" class="text-danger">
+                          <i class="fa fa-exclamation-triangle"></i> Please enter your monthly expenses.
+                        </span>
+                        <span data-bind="visible: livingExpenseExceedNetIncome()" class="text-danger">
+                          <i class="fa fa-exclamation-triangle"></i> Your monthly expenses cannot exceed your net monthly income.
+                        </span>
+                        <span data-bind="visible: livingExpenseLessThanZero()" class="text-danger">
+                          <i class="fa fa-exclamation-triangle"></i> Your monthly expenses must be greater than zero.
+                        </span>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <button class="btn cc-button-primary" type="submit" style="width:100%">Continue</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--  <div class="row" data-bind="css: { 'hide': !hasScreenValidations() }">-->
+          <!--  <div class="col-md-6 col-sm-12">-->
+          <!--    <div class="text-danger" data-bind="css: { 'hide': !employmentValidation() }">-->
+          <!--      <i class="fa fa-exclamation-triangle"></i>-->
+          <!--      <span data-bind="text: employmentValidation"></span>-->
+          <!--    </div>-->
+          <!--    <div class="alert alert-danger" role="alert">-->
+          <!--      <strong>Dang it Carl!</strong> Start paying attention, and fixed the issues we've highlighted for you.-->
+          <!--    </div>-->
+          <!--  </div>-->
+          <!--</div>-->
+
+          <div class="col-md-5 hidden-xs hidden-sm">
+            <div class="profile-registration--help-tout">
+              <h6 style="font-family: Roboto;font-size: 18px;font-weight: bold;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;text-align: center;color: #ed2282;margin-top: -32px;">Need Help with your Registration?</h6>
+              <div class="profile-registration--help-tout--contact">
+                <ul>
+                  <li>
+                    <div>
+                      <a href="tel:+1234567890" class="profile-registration--help-tout--item profile-registration--help-tout--item__phone">
+                        <span>Call us</span>
+                        <span>086 199 9635</span>
+                        <span>Outside SA: +27 21 680 1300</span>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="mailto:contact@homechoice.co.za" class="profile-registration--help-tout--item profile-registration--help-tout--item__email">
+                        <span>Email us</span>
+                        <span>contact@homechoice.co.za</span>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- /ko -->

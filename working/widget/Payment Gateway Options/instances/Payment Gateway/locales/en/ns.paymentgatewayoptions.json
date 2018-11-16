@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "payByCashText": "Pay by cash",
+    "purchaseOrderNumberMsg": "Purchase Order Number",
+    "paymentDeclinedMsg": "Payment has been Declined. Please try again.",
+    "paymentMethodNotAvilable": "(This payment option cannot be used for scheduled orders.)",
+    "checkoutErrorMsg": "Error occurred during gateway processing the payment. Please try again.",
+    "paymentErrorMsg": "Error processing payment. Please try again.",
+    "paymentExpiredMsg": "Payment has been Expired. Please try again.",
+    "invoicePaymentMsg": "Request an Invoice"
+  }
+}

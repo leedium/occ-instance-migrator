@@ -1,0 +1,11 @@
+<div id="CC-breadcrumb-details" data-oc-id="CC-breadcrumb-details">
+  <!-- oc layout: panels -->
+    <div class="row">
+	  <div class="oc-panel col-md-12 col-xs-12" data-oc-id="breadcrumb-panel-1">
+	  	<!-- oc section: breadcrumb-links -->
+          <div data-bind="element: 'breadcrumb-links'"></div>
+        <!-- /oc -->
+      </div>
+    </div>
+  <!-- /oc -->
+</div>

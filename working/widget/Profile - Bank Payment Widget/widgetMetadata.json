@@ -1,0 +1,19 @@
+{
+  "imports": [
+    "order",
+    "payment"
+  ],
+  "translations": [
+    {
+      "name": "Profile - Bank Payment Widget",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "pageTypes": [
+    "checkout"
+  ],
+  "config": {}
+}

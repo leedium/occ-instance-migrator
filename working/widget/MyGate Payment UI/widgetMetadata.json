@@ -1,0 +1,21 @@
+{
+  "imports": [
+    "product",
+    "category",
+    "home",
+    "order",
+    "payment",
+    "confirmation",
+    "orderDetails"
+  ],
+  "translations": [
+    {
+      "name": "MyGate Payment UI",
+      "language": "en_US"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

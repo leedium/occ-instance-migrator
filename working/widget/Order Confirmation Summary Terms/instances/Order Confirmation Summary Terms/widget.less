@@ -1,0 +1,62 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+#confirmationSummary_v2-confirmationSummaryInst_v2 {
+/* -------------------------------------------------- */
+/*  Confirmation Summary
+/* -------------------------------------------------- */
+#confirmation-summary {
+
+  .confirmation-summary {
+    min-height: 20px;
+    padding: 12px;
+    margin-bottom: 20px;
+    //background-color: @grayLightest;
+    //border: 1px solid @grayLighter;
+    //-webkit-border-radius: @baseBorderRadius;
+       //-moz-border-radius: @baseBorderRadius;
+            //border-radius: @baseBorderRadius;
+    //-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+       //-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+            //box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    
+    h3 {
+      font-size: @fontSizeLarge;
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+
+  .confirmation-total {
+      padding-top: 15px;
+     border-top: 1px solid #ebebeb;
+     font-size: 18px;
+     font-weight: bold;
+    margin-top: 15px;
+    .confirmation-total-ex-tax, .includingtaxtext {
+      font-size: @baseFontSize;
+      padding-bottom: 10px;
+    }
+  }
+
+  .confirmation-sales-tax {
+    margin-top: 12px;
+  }
+
+  .confirmation-gift-cards {
+    margin-top: 5px;
+  }
+  
+  /* FF makes continue shopping button too big without this */
+  .confirmation-continue-shopping {
+    a {
+      .btn-lg;
+      border-radius: @ButtonSecondaryBorderRadius;
+      min-height: 20px;
+    }
+  }
+
+  #confirmationSummary-continueShopping {
+    white-space: normal;
+  }
+}
+}
+}

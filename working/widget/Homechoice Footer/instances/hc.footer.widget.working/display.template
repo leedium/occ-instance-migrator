@@ -1,0 +1,328 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1300007": {
+    "id": "1300007",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m140017')}",
+      "sourceMedia": "m140017"
+    }
+  },
+  "1300008": {
+    "id": "1300008",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m140019')}",
+      "sourceMedia": "m140019"
+    }
+  },
+  "1300009": {
+    "id": "1300009",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m140021')}",
+      "sourceMedia": "m140021"
+    }
+  },
+  "1400103": {"id": "1400103"},
+  "500024": {
+    "id": "500024",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50022')}",
+      "sourceMedia": "m50022"
+    }
+  },
+  "500025": {
+    "id": "500025",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50024')}",
+      "sourceMedia": "m50024"
+    }
+  },
+  "500026": {
+    "id": "500026",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50026')}",
+      "sourceMedia": "m50026"
+    }
+  },
+  "500027": {
+    "id": "500027",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50028')}",
+      "sourceMedia": "m50028"
+    }
+  },
+  "500028": {
+    "id": "500028",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50030')}",
+      "sourceMedia": "m50030"
+    }
+  },
+  "500029": {
+    "id": "500029",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50032')}",
+      "sourceMedia": "m50032"
+    }
+  },
+  "500030": {
+    "id": "500030",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50034')}",
+      "sourceMedia": "m50034"
+    }
+  },
+  "500162": {
+    "id": "500162",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m50183')}",
+      "sourceMedia": "m50183"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1800001": {
+    "id": "1800001",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m200011')}",
+      "sourceMedia": "m200011"
+    }
+  },
+  "1800002": {
+    "id": "1800002",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m200012')}",
+      "sourceMedia": "m200012"
+    }
+  },
+  "1800003": {
+    "id": "1800003",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m200013')}",
+      "sourceMedia": "m200013"
+    }
+  },
+  "1800004": {
+    "id": "1800004",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m200014')}",
+      "sourceMedia": "m200014"
+    }
+  },
+  "1800005": {
+    "id": "1800005",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m200015')}",
+      "sourceMedia": "m200015"
+    }
+  },
+  "1800006": {
+    "id": "1800006",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m200016')}",
+      "sourceMedia": "m200016"
+    }
+  },
+  "1800007": {
+    "id": "1800007",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m200017')}",
+      "sourceMedia": "m200017"
+    }
+  },
+  "1800008": {
+    "id": "1800008",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m200018')}",
+      "sourceMedia": "m200018"
+    }
+  }
+}} --><!-- /ko -->
+
+
+
+<div class="hc-footer">
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-7" data-oc-id="panel-1-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1800001'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-5" data-oc-id="panel-1-1">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1800002'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-2-0">
+
+      <!-- oc section: footer-links-element --><div data-bind="element: 'footer-links-element'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-3-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1800007'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-4-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1800008'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>

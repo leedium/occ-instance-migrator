@@ -1,0 +1,72 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1000047": {
+    "id": "1000047",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m110026')}",
+      "sourceMedia": "m110026"
+    }
+  },
+  "1000048": {
+    "id": "1000048",
+    "image": {
+      "isProductImage": false,
+      "link": "/storefront-navigation/women",
+      "src": "/file/v6929073791558416679/general/women-fashion.png",
+      "zoomEnabled": false
+    }
+  },
+  "1000091": {
+    "id": "1000091",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m110045')}",
+      "sourceMedia": "m110045"
+    }
+  },
+  "1000125": {
+    "id": "1000125",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m110063')}",
+      "sourceMedia": "m110063"
+    }
+  }
+}} --><!-- /ko -->
+
+<div data-bind="css: cssClasses()" class="hc-content-block popularCat hc-content-block__1-row" data-oc-id="hc-content-block">
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: contentBlockImage -->
+<div data-bind="element: 'contentBlockImage',id: '1000048'"></div>
+
+      <!-- /oc -->
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1000125'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>

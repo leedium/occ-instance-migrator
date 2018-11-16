@@ -1,0 +1,90 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "1000131": {
+    "font": {"styles": {
+      "display": "block",
+      "text-align": "center"
+    }},
+    "id": "1000131",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000132": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "1000132",
+    "image": {
+      "isProductImage": false,
+      "link": "http://www.google.co.za",
+      "src": "/file/v406456117021908482/general/dummy-block-image.jpg",
+      "titleText": "Image Test",
+      "titleTextId": "1100099",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "1000133": {
+    "id": "1000133",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m110070')}",
+      "sourceMedia": "m110070"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: generic-text -->
+<h1 data-bind="element: 'generic-text',id: '1000131'"></h1>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-4" data-oc-id="panel-1-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '1000132'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-8" data-oc-id="panel-1-1">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '1000133'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
