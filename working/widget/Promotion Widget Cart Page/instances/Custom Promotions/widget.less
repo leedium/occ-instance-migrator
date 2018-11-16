@@ -1,0 +1,60 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+  margin-top: 10px;
+  
+  .input-group-btn {
+      a {
+        padding: 8px 20px;
+      }
+  }
+  
+  [data-toggle="popover"] {
+      padding: 0;
+   }
+  
+  .input-inline {
+    display: inline-block;
+    padding: 6px 12px;
+    
+    @media screen and (min-width: 210px) {
+        max-width: 58%;
+    }
+    
+    @media screen and (max-width: 292px) {
+        max-width: 58%;
+    }
+    
+    @media screen and (min-width: 293px) {
+        max-width: 70%;
+    }
+  }
+  
+  fieldset > .row {
+    padding-left:0;
+    padding-bottom:20px;
+  }
+  
+  .control span {
+    line-height:34px  
+  }
+  
+    label {
+      font-size: 12px;
+      font-weight: normal;
+  }
+  
+  label[data-bind="widgetLocaleText: 'promotionLabelText'"] {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  border-top : 1px solid #eee;
+  border-bottom : 1px solid #eee;
+  padding-top : 15px;
+}
+#CC-promotionDetails:after{
+    border-bottom:none !important;
+}
+input#CC-promotionDetails-promoCode {
+    height: 40px !important;
+}

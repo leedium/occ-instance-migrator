@@ -1,0 +1,112 @@
+<div class="accordion">
+    <!-- How do I open an account with homechoice? -->
+    <h3>How do I open an account with <strong>homechoice</strong>?</h3>
+    <div>
+        <p>
+            <strong>2 easy ways to open an account with homechoice:</strong>
+        </p>
+
+        <ol>
+            <li>Register at homechoice.co.za
+                <ul>
+                    <li>Click on
+                        <a href="https://www.homechoice.co.za/encrypt/loginregister.aspx">Register</a>
+                        at the top of the screen.
+                    </li>
+                    <li>Enter your ID number. It is simply to check if you have an existing account with us.
+                    </li>
+                    <li>Fill in your personal details and create your password. Please select a password that you will remember and always keep it safe.
+                    </li>
+                    <li>Click on complete registration, and you're done.
+                    </li>
+                </ul>
+
+                <p>
+                    Don't worry, this process is extremely safe and secure and you only have to register once. Thereafter, it will only take 3 clicks to
+                    <a href="https://www.homechoice.co.za/home.aspx">shop online</a>.
+                </p>
+            </li>
+
+            <li>Contact our call centre on 0861466324 (South Africa) or +27216801300 (Outside South Africa)
+                <p class="no-padding-bottom">You will need to have the following information ready:</p>
+
+                <ul>
+                    <li>Your ID number</li>
+                    <li>Address and contact details</li>
+                    <li>Employment details</li>
+                    <li>Monthly income and expenses details</li>
+                </ul>
+
+                <p>
+                    Once we have received all of your information a credit bureau check is done to determine whether you qualify for a <strong>homechoice</strong> credit facility account. If you do, we will require more personal information such as your income and expenses details. As a responsible credit provider, we aim to protect you from over-indebtness and give you the credit you deserve.
+                </p>
+            </li>
+        </ol>
+    </div>
+
+    <!-- How do I place an order? -->
+    <h3>How do I place an order?</h3>
+    <div>
+        <p>
+            <strong>Learn how to shop with us using your cellphone</strong>
+        </p>
+
+        <video controls="controls" width="400" height="250" preload="none" poster="videos/how-to-shop.png">
+            <source src="videos/hc-how-to-shop.mp4" type="video/mp4" />
+        </video>
+
+        <p>
+            <strong>4 ways to place your order:</strong>
+        </p>
+
+        <ol>
+            <li>Visit homechoice.co.za on your cellphone, tablet, laptop or computer
+                <p class="no-padding-bottom">
+                    To shop at <a href="https://www.homechoice.co.za/home.aspx">homechoice.co.za</a>, you will first have to <a href="https://www.homechoice.co.za/encrypt/loginregister.aspx">sign in or register</a> for an online account.
+                    <a href="#how-to-shop" data-activate="3">Click here</a> for more information on how to register online.
+                    <br>
+                    Once you've registered online, it will only take 3 clicks to place your order! Here's how:
+                </p>
+
+                <ul>
+                    <li>Browse our full range and choose your products</li>
+                    <li>Select your size, colour, quantity and payment option</li>
+                    <li>Click on add to basket</li>
+                    <li>Check that your order is correct and select secure checkout</li>
+                </ul>
+
+                <p>
+                    Alternatively, you can click on <a href="https://www.homechoice.co.za/encrypt/quickorder.aspx">Quick Order</a>. Quick Order is the fastest way to order online if you already know the product code of the item you would like to buy.
+                </p>
+            </li>
+
+            <li>Dial *120*466324# from your cellphone
+                <p class="no-padding-bottom">
+                    It's a fast and affordable way to order 24/7 if you are an existing South African <strong>homechoice</strong> account holder. Here's how:
+                </p>
+
+                <ul class="sm-padding-bottom">
+                    <li>Dial *120*466324# from your cellphone</li>
+                    <li>Select option 1. Shop</li>
+                    <li>Enter your ID number</li>
+                    <li>Enter the product code of the item you would like to order</li>
+                    <li>Select your size, colour and quantity</li>
+                    <li>Select your payment option and you're done</li>
+                </ul>
+            </li>
+
+            <li class="sm-padding-bottom">Contact our call centre on 0861466324 (South Africa) or +27216801300 (Outside South Africa)
+            </li>
+
+            <li class="no-padding-bottom">Visit our Showroom on 78 Main Road, Wynberg, Cape Town</li>
+
+            <p class="align-to-list no-padding-top">
+                Everything available in the catalogue is displayed in-store for you to experience as you would in your home. If you live in the Cape Town area, you can order in-store from the sales staff or contact 0861466324 (South Africa) to place your order with an agent and collect your parcel in-store the next day.
+            </p>
+
+            <p class="align-to-list">
+                Note: as a responsible credit provider, we aim to protect you against over-indebtness and give you the credit you deserve. If you are new to <strong>homechoice</strong> or haven't shopped with us for a while, you will need to answer some questions about your income and expenses, and provide us with proof of income.
+            </p>
+        </ol>
+    </div>
+</div>

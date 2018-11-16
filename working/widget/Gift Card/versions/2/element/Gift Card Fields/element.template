@@ -1,0 +1,155 @@
+
+<div id="giftCardElement" data-oc-id="panel-giftCardFeilds" class="oc-panel col-md-12">
+  <!-- ko if : $.inArray("physicalGiftCard", $data.order().paymentDetails().enabledTypes) > -1 -->
+  <!-- ko if: (order().showSchedule() && !order().paymentDetails().isGiftCardEnabledForScheduledOrder()) -->
+    <span id="CC-giftCardDetails-paymentAvailablability" data-bind="widgetLocaleText: 'paymentMethodNotAvilable'"></span><br>
+  <!-- /ko -->
+
+  <div id="CC-giftCardDetails-checkboxFileds" class="row">
+    <div class="form-group col-sm-12"
+      id="CC-giftCardDetails-checkboxFileds-conatiner">
+      <div class=" checkbox">
+        <label for="CC-giftCard-displayGiftCardDetails"> <input
+          type="checkbox" name="displayGiftCardDetails"
+          data-bind="checked: isDisplayGiftCardDetails, 
+          disable: order().isGiftCardDisabled"
+          id="CC-giftCard-displayGiftCardDetails" class="checkbox">
+          <span data-bind="widgetLocaleText:'displayGiftCardDetailsText'"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+	<div id="CC-GiftCardDetails-GiftCardApply-error-container">
+        <!-- ko if: giftCardErrorMessage() -->
+        <p class="text-danger" id="CC-GiftCardDetails-GiftCardApply-error"
+          data-bind="text : giftCardErrorMessage()" role="alert"></p>
+        <!-- /ko -->
+    </div>
+
+  <div id="CC-giftCardDetails-Feilds"
+    data-bind="visible: (isDisplayGiftCardDetails())">
+
+    <h2 id="CC-GiftCardDetails-header" class="a11y"
+      data-bind="widgetLocaleText: 'giftCardLabelText'"></h2>
+    <fieldset>
+
+      <legend id="CC-GiftCardDetails-legend"
+        data-bind="widgetLocaleText: 'giftCardLabelText'"></legend>
+
+
+      <div id="CC-paymentDetails-giftcardNumber-container" class="row">
+        <!--  ko with: giftCardViewModel -->
+        <div class="form-group col-sm-4">
+          <div class="control">
+            <input type="text" class="col-md-12 form-control"
+              name="giftCardNumber" id="CC-paymentDetails-giftcardNumber"
+              data-bind="validatableValue: giftCardNumber, widgetLocaleText : {value:'giftCardNumberText', attr:'placeholder'}">
+          </div>
+        </div>
+
+        <div class="col-sm-offset-4 col-sm-4"
+          id="CC-paymentDetails-giftcardNumber-error-container">
+          <p class="text-danger" id="CC-paymentDetails-giftcardNumber-error"
+            data-bind="validationMessage:giftCardNumber" role="alert"></p>
+
+        </div>
+        <!-- /ko -->
+      </div>
+
+
+
+
+      <div class="row">
+        <!--  ko with: $data.giftCardViewModel -->
+        <div class="form-group col-sm-4">
+          <div class="control">
+
+            <input type="password" class="col-md-12 form-control"
+              name="giftCardPin" id="CC-paymentDetails-giftcardPin"
+              data-bind="validatableValue: giftCardPin,widgetLocaleText : {value:'giftCardPinText', attr:'placeholder'}">
+
+          </div>
+        </div>
+
+        <div class="col-sm-offset-4 col-sm-4">
+          <p class="text-danger" id="CC-paymentDetails-giftcardPin-error"
+            data-bind="validationMessage:giftCardPin" role="alert"></p>
+        </div>
+
+        <!-- /ko -->
+      </div>
+
+
+
+      <div id="CC-giftCard-applyCard-conatiner" class="row">
+        <div class="form-group col-sm-4">
+          <a href="#" id="CC-giftCard-applyCard"
+            class="cc-button-secondary col-xs-12"
+            data-bind="disabled: {condition: giftCardViewModel().isApplyGiftCardClicked, click: handleApplyGiftCard}, inTabFlow: cart().items().length != 0">
+            <!-- ko if: giftCardViewModel().isApplyGiftCardClicked() --> <span
+            id="CC-giftCard-applyCardButton"
+            data-bind="widgetLocaleText:'giftCardApplyingText'"></span> <!-- /ko -->
+            <!-- ko ifnot: giftCardViewModel().isApplyGiftCardClicked() --> <span
+            id="CC-giftCard-applyCardButton"
+            data-bind="widgetLocaleText:'giftCardApplyText'"></span> <!-- /ko -->
+          </a>
+        </div>
+      </div>
+
+    </fieldset>
+  </div>
+
+  <!-- ko if: isDispalyErrorPins() -->
+  <div id="expiredGiftCards">
+    <fieldset>
+      <!--  ko foreach: cart().giftCards() -->
+      <!-- ko if: $data.isPinCleared() -->
+      <div class="row"
+        data-bind="attr:{id:'CC-giftCard-payment-'+$index()+'-container'}">
+        <div class="form-group col-sm-3">
+          <div class="control">
+            <span
+              data-bind="attr:{id:'CC-giftCard-payment-'+$index()+'-label' , for:'CC-giftCard-payment-'+$index() }, text:$data.maskedGiftCardNumber"></span>
+          </div>
+        </div>
+
+        <div class="form-group col-sm-3"
+          data-bind="attr:{id:'CC-giftCard-payment-pin-'+$index()+'-container'}">
+          <div class="control">
+            <input type="password" class="col-md-4 form-control"
+              data-bind="validatableValue: $data.giftCardPin, attr:{id:'CC-giftCard-payment-pin-'+$index()}, widgetLocaleText : {value:$parent.resources().giftCardPinText, attr:'placeholder'}" />
+          </div>
+        </div>
+
+        <div class="form-group col-sm-3"
+          data-bind="attr:{id:'CC-giftCard-payment-apply-'+$index()+'-container'}">
+          <a href="#" class="cc-button-secondary col-xs-12"
+            data-bind="disabled: {condition: $data.isApplyGiftCardClicked, click: $parent.handleReapplyPins}, attr:{id:'CC-giftCard-payment-apply-'+$index()}">
+            	<!-- ko if: $data.isApplyGiftCardClicked() -->
+					<span  data-bind="attr:{id:'CC-giftCard-payment-apply-'+$index()},
+            	 	widgetLocaleText: {value:$parent.resources().giftCardApplyingText,attr:'innerText'}"></span>
+				<!-- /ko -->
+				<!-- ko ifnot: $data.isApplyGiftCardClicked() --> 
+					<span  data-bind="attr:{id:'CC-giftCard-payment-apply-'+$index()},
+    	        	 widgetLocaleText: {value:$parent.resources().giftCardApplyText,attr:'innerText'}"></span>
+			 <!-- /ko -->
+          </a>
+        </div>
+
+        <div class="col-sm-3"
+          data-bind="attr:{id:'CC-giftCard-payment-apply-pins-error-'+$index()+'-container'}">
+          <p class="text-danger"
+            data-bind="validationMessage:giftCardPin, attr:{id:'CC-giftCard-payment-apply-pins-error-'+$index()}"></p>
+        </div>
+
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+    </fieldset>
+  </div>
+  <!-- /ko -->
+
+  <!-- /ko -->
+
+</div>

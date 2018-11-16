@@ -1,0 +1,32 @@
+<!-- ko if: ShowBlocking -->
+
+  <div class="blocking-overcommit" style="background: #EDC8C5;border: solid 1px #BE8180;border-radius: 5px;padding: 10px; margin-top:10px;color: #C03A36;">
+    <div class="row">
+        <div class="col-md-1 hidden-xs hidden-sm hidden-md">
+            <i class="fa fa-exclamation-circle fa-2x"></i>
+        </div>
+      <div class="col-md-11 blocking-overcommit-title">
+          <p data-bind="text: BlockingTitle" style="font-size: 14px;color: #C03A36;font-weight: bold;"></p>
+          <p data-bind="text: BlockingText" style="font-size: 14px;color: #C03A36;"></p>
+      </div>
+    </div>
+  </div>
+
+<!-- /ko -->
+
+<!-- ko if: paymentType() === 'mixed' -->
+    <div class="blocking-overcommit" style="background: #EDC8C5;border: solid 1px #BE8180;border-radius: 5px;padding: 10px; margin-top:30px;color: #C03A36;">
+        <div class="row">
+            <div class="col-md-1 hidden-xs hidden-sm hidden-md">
+                <i class="fa fa-exclamation-circle fa-2x"></i>
+            </div>
+          <div class="col-md-11 blocking-overcommit-title">
+              <p>
+                Please choose one payment method, cash or terms, for all the items in your basket. 
+                Alternatively, if you would like to use both payment methods, divide up your basket and complete two 
+                separate transactions.
+              </p>
+          </div>
+        </div>
+    </div>
+<!-- /ko -->

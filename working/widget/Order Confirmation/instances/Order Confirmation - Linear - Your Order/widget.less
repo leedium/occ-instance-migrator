@@ -1,0 +1,66 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+/* -------------------------------------------------- */
+
+/*  Checkout confirmation
+/* -------------------------------------------------- */
+
+#orderConfirmation {
+  .alignChild {
+    left: -14px;
+    position: relative;
+  }
+  #order-info {
+    th {
+      border: 0;
+    }
+    td {
+      border-top: 0;
+    }
+    .name {
+      color: @grayDark;
+      font-weight: bold;
+    }
+    & > thead {
+      >tr {
+        font-weight: bold;
+        border: 0;
+        background: #e2f5ff;
+      }
+    }
+    & > tbody {
+
+      border-bottom: 1px solid #eee;
+
+      & > tr.item {
+        border-top: 1px solid #eee;
+        vertical-align: top;
+        background: #FFF !important;
+      }
+
+      small {
+        color: @gray;
+        font-size: @fontSizeMini;
+        line-height: @smallLineHeight;
+      }
+    }
+  }
+
+  .summary-table {
+    margin-bottom: 25px;
+    
+    td {
+      vertical-align: top;
+    }
+  }
+  .summary-table-title {
+    width: 150px;
+    font-weight: bold;
+  }
+  
+  .CC-confirmation-displayShippingSurcharge {
+    font-weight: 600;
+    font-size: 11px;
+  }
+}
+
+}

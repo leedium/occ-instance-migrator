@@ -1,0 +1,130 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+
+  #CC-profileDeliveryAddress .text-danger {
+    color: #a94442 !important;
+    padding-top: 30px;
+}
+
+#checkoutAddressBook_v9-checkoutAddressBookInst_v9 {
+
+.DistrictResults{
+  background: white;
+  position: absolute;
+  top: 61px;
+  left: 15px;
+  z-index: 1;
+  border: solid 3px #ececec;
+  width: 100%;
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li{
+      cursor: pointer;
+      color: black;
+      padding: 10px;
+      background: #f3f3f3;
+      border-bottom:  solid 3px #ececec;
+    }
+    li:last-child{
+      border-bottom:none;
+    }
+    li:hover{
+      color: white;
+      background: #f01882;
+    }
+  }
+}
+
+
+
+/* -------------------------------------------------- */
+/*  Checkout Address Book
+/* -------------------------------------------------- */
+#CC-checkoutAddressBook {
+  
+  fieldset {
+    margin-bottom: 36px;
+  }
+  
+  legend {
+    color: inherit;
+    margin-bottom: 10px;
+  }
+  
+  .text-error {
+    margin-bottom: 2px;
+  }  
+  
+  .shipping-address-view {
+    .btn-xs;
+    
+    .address-field {
+      display: inline-block;
+    }
+    
+    padding: 8px 8px;
+    border: 1px solid gray;
+    
+    // Handle truncation on really narrow screens
+    overflow: auto;
+  }
+  
+  .row > span {
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  .default-address {
+    font-weight: bold;
+  }
+  
+  #CC-addressBook-picker .modal-body {
+    overflow-y: auto;
+  }
+}
+
+}
+
+
+.control-label{
+    left: 0 !important;
+    margin: 0 0 -8px 0px !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px;
+    color: #000000;
+    font-family: roboto;
+}
+
+.popover.bottom {
+    margin-left: -137px;
+}
+
+    @media (max-width: 767px){
+         .visible-xs {
+          display: inherit !important;
+          margin-top: -28px;
+          }
+
+          .popover.bottom {
+              margin-left: -51px;
+          }
+
+
+          #CC-profileDeliveryAddress span[data-bind="widgetLocaleText:'useBillingAddressText'"] {
+              font-size: 11px;
+          }
+
+
+          small, .small {
+        font-size: 78%;
+        }
+
+          .popover.bottom>.arrow {
+            left: 49%;
+        }
+    }
+
+
+}

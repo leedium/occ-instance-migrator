@@ -1,0 +1,5 @@
+<div  id="CC-prodDetails-addToCart" data-bind="inTabFlow:(validateAddToCart())" >
+  <button id="cc-prodDetailsAddToCart" data-bind="disabled: {condition: !validateAddToCart() || isAddToCartClicked, click: handleAddToCart}" class="cc-button-primary">
+    <span id="cc-prodDetails-addToCart" data-bind="widgetLocaleText:'addToCartText'"></span>
+  </button>
+</div>

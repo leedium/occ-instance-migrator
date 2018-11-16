@@ -1,0 +1,140 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "900185": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "center"},
+    "id": "900185",
+    "image": {
+      "altText": "Quality bedding",
+      "altTextId": "1000132",
+      "isProductImage": false,
+      "src": "/file/v4919298086936150690/general/USP_1.png",
+      "titleText": "Quality bedding",
+      "titleTextId": "1000133",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "900186": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "center"},
+    "id": "900186",
+    "image": {
+      "altText": "Credit",
+      "altTextId": "1000134",
+      "isProductImage": false,
+      "src": "/file/v7220769216023378567/general/USP_2.png",
+      "titleText": "Credit",
+      "titleTextId": "1000135",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "900187": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "center"},
+    "id": "900187",
+    "image": {
+      "altText": "Free Returns",
+      "altTextId": "1000136",
+      "isProductImage": false,
+      "src": "/file/v3440761936587819160/general/USP_3.png",
+      "titleText": "Free Returns",
+      "titleTextId": "1000137",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "900188": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "center"},
+    "id": "900188",
+    "image": {
+      "altText": "Request a catalog",
+      "altTextId": "1000138",
+      "isProductImage": false,
+      "src": "/file/v5908773019670601426/general/USP_4.png",
+      "titleText": "Request a catalog",
+      "titleTextId": "1000139",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '900185'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-1">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '900186'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-2">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '900187'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-3">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '900188'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->

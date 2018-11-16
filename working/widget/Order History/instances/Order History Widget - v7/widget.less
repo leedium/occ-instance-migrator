@@ -1,0 +1,128 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+/* -------------------------------------------------- */
+/*	Order History
+/* -------------------------------------------------- */	
+#CC-orderHistory {
+  #CC-backToMyAccounts {
+    text-decoration: underline;
+  }
+  .linkText {
+    text-decoration: underline;
+  }
+  #orders-info {
+    margin-bottom: 12px;
+    th {
+      font-weight: bold; 
+      border: 0;
+      background: @lightBlue;
+    }
+    td {
+      border-top: 0;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+      background: #FFF !important;
+    }
+    .image.span2 {
+      font-weight: bold; 
+      border: 0; 
+      background: @white; 
+      border-bottom: 1px solid #eee;
+    }
+    .input-qty {
+      width: 45px;
+      margin-bottom: 10px;
+      height: 30px;
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+    .image img {
+      max-width: 62px;
+    }
+    .price,
+    .total {
+      text-align: right;
+    }
+    .quantity {
+      white-space: nowrap;
+      a, input {
+        display: inline-block;
+      }
+    }
+    .notify {
+      text-align: left;
+      padding-left: -8px;
+    }
+    .name a {
+      color: @grayDark;
+      font-weight: bold;
+    }
+  }
+  
+  .cc-account-back-link {
+    top: 24px;
+  }
+  
+  .cc-copy-to-cart-button{
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 6px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #195d8e;
+    border: 1px solid #0e324d;
+    color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    border-radius: 4px;
+    }
+  
+  #CC-backToAccount-xs {
+    margin-bottom: 20px;
+  }
+  
+  #CC-orderHistoryFilter{
+    margin-bottom:10px;  
+    }
+  
+  #CC-orderList-statusFilter {
+    display:inline;
+    width : 75%;
+    padding : 2px 7px;
+    cursor: pointer;
+  }
+}
+
+#cc-placeOrder-ModalContainer {
+  @media (min-width: 768px) {
+    .modal-dialog {
+      width: 385px;
+    }
+  }
+  .modal-footer {
+    padding-top : 0px;
+    border-top: 0px;
+  }
+  .modal-body {
+    font-size: 1.25rem;
+  }
+  
+  #modal-copy-order-ok {
+    width: 70px;
+    float: right;
+    margin-left: 10px;
+  }
+}
+
+}

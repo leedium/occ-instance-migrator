@@ -1,0 +1,100 @@
+/******************************************************************************
+   CONTENT BLOCK STYLES
+   /******************************************************************************/
+   .hc-TopBrands {
+    
+    @media screen and (min-width: @screen-lg) {
+        margin: 0 -40px !important;
+    }
+    
+    >div{
+        padding: 15px;
+    }
+    
+    .carousel-inner{
+        background:#f6f2f3;
+        
+        .active, .next, .prev, .item {
+            padding:30px 30px;
+            width: 100%;
+            margin: 0;
+            
+            img{
+                cursor:pointer;
+            }
+            @media screen and (min-width: @screen-lg) {
+                padding: 30px 10px;
+            }
+        }
+    }
+    
+    .carousel-control.right {
+        background: #d8d8d8;
+        opacity: 1;
+        width: 30px;
+        height: 50px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -55px;
+    }
+    .carousel-control.left {
+        background: #d8d8d8;
+        opacity: 1;
+        width: 30px;
+        height: 50px;
+        position: absolute;
+        left: 0;
+        top: 50%; 
+        margin-top: -55px;
+    }
+    .carousel-control{
+        border-radius:5px;
+        .glyphicon{
+            float: none;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            height: 20px;
+            width: 14px;
+            font-size: 17px;
+            color: black;
+        }
+        .glyphicon-chevron:before{
+            top: 0;
+            float: none;
+            display: block;
+            height: 0;
+            position: absolute;
+            width: 0;
+            left: 0;
+            z-index: 2;
+        } 
+    }
+    
+    .carousel-indicators {
+    	position: relative;
+    	bottom: -16px;
+    	margin-bottom: 40px;
+    }
+    
+    
+}
+.theTemplateItems{
+    display:none;
+}
+
+@media screen and (max-width: 500px){
+    .hc-TopBrands {
+        
+        .carousel-inner{
+            
+            .active, .next, .prev, .item {
+                padding:10px;
+            }
+        }
+    }
+}

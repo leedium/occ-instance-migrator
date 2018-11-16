@@ -1,0 +1,31 @@
+{
+  "resources": {
+    "backOrderText": "Back Ordered ",
+    "orderConfirmationText": "Order Confirmation",
+    "cityStatePostalCode": "__city__, __state__. __postalCode__",
+    "orderDoesNotExist": "Order does not exist.",
+    "approvalPendingMsg": "You will receive an email when the order has been approved.",
+    "shippingMethodText": "Shipping Method:",
+    "cardNumberText": "Card Number:",
+    "itemText": "Item",
+    "shippingAddressAndMethodText": "Shipping Address and Method",
+    "loginFailureText": "Error: Your order has been processed but there was a problem creating your account. Please try again.",
+    "processingMsg": "This order is now being processed.",
+    "pendingMsg": "Thank you, your order request has been received and payment is pending. Once payment has been approved we will process the order.",
+    "emailMsg": "An order confirmation email has been sent to __emailAddress__ detailing the order below.",
+    "preOrderText": "Pre Ordered ",
+    "shipToText": "Ship to:",
+    "yourOrderText": "Your Order",
+    "thankyouMsg": "Thank you for your order on __orderDate__ at __orderTime__.",
+    "cardTypeText": "Card Type:",
+    "AfterapprovalPendingMsg": "After approval, you will need to provide payment information.",
+    "billingAddressText": "Billing Address:",
+    "cityPostalCode": "__city__. __postalCode__",
+    "fullName": "__firstName__ __lastName__",
+    "orderNumberMsg": "Your order number is __orderNumber__.",
+    "loginSuccessText": "Your account has been created. Thanks for registering.",
+    "paymentDetailsText": "Payment Details",
+    "itemTotalText": "Item Total",
+    "quantityText": "Quantity"
+  }
+}

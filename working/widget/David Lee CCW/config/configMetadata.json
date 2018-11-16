@@ -1,0 +1,46 @@
+{
+  "widgetDescriptorName": "davidleeccw",
+  "properties": [
+    {
+      "name": "exampleStringProperty",
+      "id": "exampleStringProperty",
+      "helpTextResourceId": "exampleStringPropertyHelpText",
+      "labelResourceId": "exampleStringPropertyLabel",
+      "type": "stringType",
+      "required": true
+    },
+    {
+      "defaultValue": "option1",
+      "name": "exampleOptionProperty",
+      "options": [
+        {
+          "id": "exampleOption1",
+          "labelResourceId": "exampleOption1Label",
+          "value": "exampleOption1"
+        },
+        {
+          "id": "exampleOption2",
+          "labelResourceId": "exampleOption2Label",
+          "value": "exampleOption2"
+        },
+        {
+          "id": "exampleOption3",
+          "labelResourceId": "exampleOption3Label",
+          "value": "exampleOption3"
+        }
+      ],
+      "id": "exampleOptionProperty",
+      "helpTextResourceId": "exampleOptionPropertyHelpText",
+      "labelResourceId": "exampleOptionPropertyLabel",
+      "type": "optionType"
+    },
+    {
+      "defaultValue": true,
+      "name": "exampleBooleanProperty",
+      "id": "exampleBooleanProperty",
+      "helpTextResourceId": "exampleBooleanPropertyHelpText",
+      "labelResourceId": "exampleBooleanPropertyLabel",
+      "type": "booleanType"
+    }
+  ]
+}

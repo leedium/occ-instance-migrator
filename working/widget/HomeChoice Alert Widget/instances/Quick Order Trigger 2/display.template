@@ -1,0 +1,10 @@
+
+<div class="hc alert alert-info alert-dismissible" role="alert">
+	<button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true">×</span></button>
+
+	<p>
+	    <a href="#" data-toggle="modal" data-bind="attr: {'data-target':$popupId}">Launch Popup - Quick Order</a>
+	</p>
+	
+</div>
+
