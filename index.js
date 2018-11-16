@@ -561,10 +561,10 @@ async function extensionsTransfer() {
     await checkoutBranch(BRANCH_TARGET);
     await mergeBranch(BRANCH_SOURCE);
     await getDiffs();
-    // await processDiffs();
-    // await makeTmpFolder();
+    await processDiffs();
+    await makeTmpFolder();
     // await deleteFilePath([WORKING_FOLDER]);
-    // await transferAll();
+    //await transferAll();
     // await clean();
     resolve();
   });

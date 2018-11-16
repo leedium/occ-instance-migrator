@@ -1,8 +1,0 @@
-{
-  "configuration": {
-    "fullWidth": true,
-    "interval": "400000",
-    "panelCount": "4"
-  },
-  "displayName": "hc.home.heroBannerCarousel"
-}
