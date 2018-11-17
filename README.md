@@ -21,29 +21,56 @@ todo:  parameterize the configuration
 
 ### Instructions
 Please follow the [installation instructions](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305downloadandinstallthedesigncodeu01.html "install Design and Code Utility") to set up the global DCU node application.
-* Currently the extensions process only works on unix based systems.
-// todo: port this to windows
 
 
 ### Installation
+Change directory to your downloaded folder and run:
 ```
-$ cd dcu-extensions-migrator
-$ npm i
+$ npm i - g
 ```
+
+### Options
+```
+$ oim -help
+
+Usage: oim [options] [command]
+
+Wrapper for DCU  to only deploy instances differences across tool.
+Dependencies:
+                git cli - https://git-scm.com/downloads
+                Oracle DCU -  https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedcutograbanduploadsourceco01.html
+
+Options:
+  -V, --version                      output the version number
+  -s --sourceserver <sourceserver>   Occ Admin url for source instance (from)
+  -t --sourcekey <sourcekey>         Occ Admin api key for source instance (from)
+  -u --targetserver <targetserver>   Occ Admin url for target instance (to)
+  -v --targetkey <targetkey>         Occ Admin api key for target instance (from)
+  -L, --includelayouts               Transfer All Layouts [true | false]
+  -t, --taskdelay                    Execution delay in milliseconds between tasks.   Defaults to 3000ms
+  -h, --help                         output usage information
+
+Commands:
+  oim, [sourceserver] [sourcekey] [targetserver] [targetkey]  Execute a dcu transferAll from source to target instance
+  help [cmd]                         display help for [cmd]
+```
+
 
 ### Transfer Extensions :
 ```
-$ npm run migrate -- --dcu
+$  oim -s {SOURCE_SERVER}
+       -t {SOURCE_KEY}
+       -u {TARGET_SERVER}
+       -v {TARGET_KEY}
+
 ```
 
 ### Transfer Page Layouts ([PLSU](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usetheplsuutility01.html "Page Layout Synchronization Utility")) to :
 ```
-$ npm run migrate -- --plsu [--all] // transfers all layouts
-$ npm run migrate -- --plsu [--layoutName {NAME}] // transfers specific layout
-```
-
-### Transfer Extensions and ([PLSU](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usetheplsuutility01.html "Page Layout Synchronization Utility")) to :
-```
-npm run migrate -- --full
+$  oim -s {SOURCE_SERVER}
+       -t {SOURCE_KEY}
+       -u {TARGET_SERVER}
+       -v {TARGET_KEY}
+       -L
 ```
 
