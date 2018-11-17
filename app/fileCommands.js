@@ -20,7 +20,7 @@ const readline = require("readline");
 const upath = require("upath");
 const rimraf = require("rimraf");
 
-const constants = require('./constants');
+const constants = require("./constants");
 
 const TASK_DELAY = require("./constants").TASK_DELAY;
 
@@ -38,7 +38,7 @@ const _processDiffs = () => new Promise((resolve) => {
   let cccRef = [];
   const transferPathArrayTemp = {};
 
-  const diffFile = (upath.join(__dirname, '../', constants.DIFF_TEXT_FILE));
+  const diffFile = (upath.join(__dirname, "../", constants.DIFF_TEXT_FILE));
 
 
   // reads line from whatchanged.txt
@@ -94,15 +94,15 @@ const _processDiffs = () => new Promise((resolve) => {
         const pSplit = path.split("/");
 
         // Keep track of any folder and store just the extension for later .ccc copy
-        if (pSplit.length >= 2){
-          const p =  pSplit.slice(0, 2).join("/");
-          if(cccRef.indexOf(p) < 0 ) {
+        if (pSplit.length >= 2) {
+          const p = pSplit.slice(0, 2).join("/");
+          if (cccRef.indexOf(p) < 0) {
             cccRef.push(p);
           }
         }
 
         // Dont include and paths that have one subfolder (extension)
-        if(pSplit.length === 2 && type === constants.ExtensionTypes.WIDGET) {
+        if (pSplit.length === 2 && type === constants.ExtensionTypes.WIDGET) {
           return ac;
         }
 
@@ -113,7 +113,7 @@ const _processDiffs = () => new Promise((resolve) => {
           const instancePath = pSplit.slice(0, 3).join("/");
 
 
-          widgetRef.push({ type, path: widgetPath})
+          widgetRef.push({ type, path: widgetPath });
           instanceRef.push({ type, path: instancePath });
 
           path = widgetPath;
@@ -129,7 +129,7 @@ const _processDiffs = () => new Promise((resolve) => {
     // console.log('Diff file processing widgetRef.', widgetRef);
     // console.log('Diff file processing instanceRef.', instanceRef);
     // console.log('Diff file processing instanceRef.', cccRef);
-    resolve({transferRef, instanceRef, widgetRef, cccRef});
+    resolve({ transferRef, instanceRef, widgetRef, cccRef });
   });
 });
 
@@ -141,7 +141,7 @@ const _processDiffs = () => new Promise((resolve) => {
  * @returns {Promise<any>}
  * @private
  */
-const _makeTmpFolder = async ({transferRef, instanceRef, widgetRef, cccRef}) => new Promise(async (resolve) => {
+const _makeTmpFolder = async ({ transferRef, instanceRef, widgetRef, cccRef }) => new Promise(async (resolve) => {
   //  create temp folder
   fs.ensureDirSync(upath.normalizeSafe(`./${constants.TEMP_FOLDER}`));
 
@@ -156,7 +156,7 @@ const _makeTmpFolder = async ({transferRef, instanceRef, widgetRef, cccRef}) => 
     try {
       fs.ensureDirSync(`${constants.TEMP_FOLDER}/${path}`);
       fs.copySync(path, `${constants.TEMP_FOLDER}/${path}`);
-    }catch (err) {
+    } catch (err) {
       console.log(err);
     }
   });
@@ -164,7 +164,7 @@ const _makeTmpFolder = async ({transferRef, instanceRef, widgetRef, cccRef}) => 
     try {
       fs.ensureDirSync(`${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
       fs.copySync(`${constants.DCUSubFolder.CCC}/${path}`, `${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
-    }catch (err) {
+    } catch (err) {
       console.log(err);
     }
   });
@@ -181,7 +181,7 @@ const _makeTmpFolder = async ({transferRef, instanceRef, widgetRef, cccRef}) => 
   instanceRef.map(({ type, path }) => {
     if (type === constants.ExtensionTypes.WIDGET) {
       fs.ensureDirSync(`${constants.TEMP_FOLDER}/${path}`);
-      fs.copySync(path,`${constants.TEMP_FOLDER}/${path}`);
+      fs.copySync(path, `${constants.TEMP_FOLDER}/${path}`);
     }
   });
   resolve();
@@ -195,9 +195,9 @@ const _deleteFilePath = async (pathsToBeRemoved) => new Promise(async (resolve) 
   console.log("Removing...", pathsToBeRemoved);
   let count = 0;
   pathsToBeRemoved.map((item) => {
-    rimraf(item, {}, ()=>{
+    rimraf(item, {}, () => {
       count += 1;
-      if(count >= pathsToBeRemoved.length){
+      if (count >= pathsToBeRemoved.length) {
         setTimeout(() => {
           resolve();
         }, TASK_DELAY);

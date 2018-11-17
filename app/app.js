@@ -67,7 +67,7 @@ exports.main = function(argv) {
     .parse(argv);
 
   //set defaults
-  if(typeof program.taskdelay === 'undefined' || Number.isNaN(program.taskdelay)){
+  if (typeof program.taskdelay === "undefined" || Number.isNaN(program.taskdelay)) {
     program.taskdelay = constants.TASK_DELAY;
   }
 
@@ -75,7 +75,7 @@ exports.main = function(argv) {
 
   async function clean() {
     return await deleteFilePath([
-       ".gitignore",
+      ".gitignore",
       `./${constants.TEMP_FOLDER}`,
       `./${constants.GIT_TRACKING_FOLDER}`,
       `./${constants.DCU_TRACKING_FOLDER}`,
@@ -106,12 +106,12 @@ exports.main = function(argv) {
       await initGitPath(program);
       await gitIgnore();
       await init();
-      await dcuGrab(program.targetserver,program.targetkey, 'test');
+      await dcuGrab(program.targetserver, program.targetkey, "test");
       await addAll();
       await commit();
       await createBranch(constants.BRANCH_TARGET);
       await createBranch(constants.BRANCH_SOURCE);
-      await dcuGrab(program.sourceserver, program.sourcekey, 'source');
+      await dcuGrab(program.sourceserver, program.sourcekey, "source");
       await addAll();
       await commit();
       await checkoutBranch(constants.BRANCH_TARGET);
@@ -120,7 +120,7 @@ exports.main = function(argv) {
       const fileRefs = await processDiffs();
       await makeTmpFolder(fileRefs);
       await transferAll(program);
-      if(program.cleanp){
+      if (program.cleanp) {
         await clean();
       }
       resolve();
@@ -136,6 +136,7 @@ exports.main = function(argv) {
       await extensionsTransfer(program);
       if (program.includelayouts) {
         await plsuTransferAll(program);
+        await analyzeLogs();
       }
     }
     catch (err) {

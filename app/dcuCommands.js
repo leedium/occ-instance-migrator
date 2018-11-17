@@ -20,10 +20,10 @@
  * @returns {Promise<any>}
  */
 
-const fs = require('fs-extra');
+const fs = require("fs-extra");
 const { spawn } = require("child_process");
 
-const constants = require('./constants');
+const constants = require("./constants");
 
 /**
  * Grabs the target(Source Copied From) dcu source
@@ -33,7 +33,7 @@ const constants = require('./constants');
  * @returns {Promise<any>}
  * @private
  */
-const _dcuGrab = async (server, key, id ='') => new Promise((resolve, reject) => {
+const _dcuGrab = async (server, key, id = "") => new Promise((resolve, reject) => {
   console.log(`GRABBING ${id} (currently deployed stable)`, process.cwd());
   const cmd = spawn("dcu", ["--grab", "--clean", "--node", server], {
     env: Object.assign({}, process.env, {
@@ -43,10 +43,10 @@ const _dcuGrab = async (server, key, id ='') => new Promise((resolve, reject) =>
   cmd.stdout.on("data", (chunk) => {
     const str = chunk.toString();
     process.stdout.write(`DCU ${str}`);
-    process.stdout.write(fs.appendFile(constants.LOGFILE, str ));
+    process.stdout.write(fs.appendFile(constants.LOGFILE, str));
   });
-  cmd.on('error', (err) => {
-    reject(err)
+  cmd.on("error", (err) => {
+    reject(err);
   });
   cmd.on("close", () => {
     console.log("...target branch download completed.");
@@ -63,7 +63,7 @@ const _dcuGrab = async (server, key, id ='') => new Promise((resolve, reject) =>
  * @returns {Promise<any>}
  * @private
  */
-const _putAll = (path,program) => {
+const _putAll = (path, program) => {
   return new Promise((resolve) => {
     console.log(`Putting all extensions start...`);
     const cmd = spawn(`dcu`, ["--putAll", `${path}`, "--base", constants.TEMP_FOLDER, "--node", program.targetserver, "-k", program.targetkey], {
@@ -101,12 +101,12 @@ const _transferAll = program => {
     cmd.stdout.on("data", (chunk) => {
       const str = chunk.toString();
       console.log(str);
-      process.stdout.write(fs.appendFile(constants.LOGFILE, str ));
+      process.stdout.write(fs.appendFile(constants.LOGFILE, str));
     });
     cmd.stderr.on("data", (chunk) => {
       const str = chunk.toString();
       console.log(str);
-      process.stdout.write(fs.appendFile(constants.LOGFILE, `Error:[${str}]` ));
+      process.stdout.write(fs.appendFile(constants.LOGFILE, `Error:[${str}]`));
     });
     cmd.on("close", () => {
       console.log(`... target updated`);
@@ -130,13 +130,13 @@ const _plsuTransferAll = async program => new Promise(resolve => {
   ]);
   plsuSpawn.stdout.on("data", (chunk) => {
     const str = chunk.toString();
-    process.stdout.write(fs.appendFile(constants.LOGFILE, str ));
-    console.log(str)
+    process.stdout.write(fs.appendFile(constants.LOGFILE, str));
+    console.log(str);
   });
   plsuSpawn.stderr.on("data", (chunk) => {
     const str = chunk.toString();
-    process.stdout.write(fs.appendFile(constants.LOGFILE, `Error:[${str}]` ));
-    console.log(str)
+    process.stdout.write(fs.appendFile(constants.LOGFILE, `Error:[${str}]`));
+    console.log(str);
   });
   plsuSpawn.on("close", () => {
     console.log("TransferAll page layouts complete.");
