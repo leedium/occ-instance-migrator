@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="629028e8-4611-4ccb-88fc-4f275ba346a3" name="Default Changelist" comment="update readme">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/fileCommands.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/fileCommands.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -82,10 +80,10 @@
           <entry key="etag" value="9" />
           <entry key="gitignore" value="5" />
           <entry key="html" value="1" />
-          <entry key="js" value="18" />
+          <entry key="js" value="20" />
           <entry key="json" value="25" />
           <entry key="less" value="2" />
-          <entry key="log" value="1" />
+          <entry key="log" value="2" />
           <entry key="md" value="2" />
           <entry key="template" value="1" />
           <entry key="ts" value="2" />
@@ -96,8 +94,9 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="JSON" value="25" />
-          <entry key="JavaScript" value="18" />
+          <entry key="JavaScript" value="20" />
           <entry key="Less" value="2" />
+          <entry key="Log" value="1" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="23" />
           <entry key="TypeScript" value="2" />
@@ -106,7 +105,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="31" />
-          <entry key="js" value="16814" />
+          <entry key="js" value="16880" />
           <entry key="json" value="149" />
           <entry key="md" value="322" />
           <entry key="ts" value="1" />
@@ -115,7 +114,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="149" />
-          <entry key="JavaScript" value="16814" />
+          <entry key="JavaScript" value="16880" />
           <entry key="Markdown" value="322" />
           <entry key="PLAIN_TEXT" value="31" />
           <entry key="TypeScript" value="1" />
@@ -138,10 +137,39 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="80" column="42" lean-forward="true" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+            <state relative-caret-position="235">
+              <caret line="101" column="5" lean-forward="true" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/dcuCommands.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="14">
+              <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/gitCommands.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="150" column="40" selection-start-line="150" selection-start-column="23" selection-end-line="150" selection-end-column="40" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/error.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -157,7 +185,7 @@
         <entry file="file://$PROJECT_DIR$/app/constants.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="148">
-              <caret line="22" column="17" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="17" />
+              <caret line="23" column="17" selection-start-line="22" selection-start-column="8" selection-end-line="23" selection-end-column="17" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -356,7 +384,7 @@
       <workItem from="1542194187504" duration="566000" />
       <workItem from="1542197441843" duration="137368000" />
       <workItem from="1542462074977" duration="2885000" />
-      <workItem from="1542466904195" duration="248000" />
+      <workItem from="1542466904195" duration="689000" />
     </task>
     <task id="LOCAL-00001" summary="update readme">
       <created>1542186242601</created>
@@ -369,13 +397,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230608000" />
+    <option name="totallyTimeSpent" value="231049000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="81" y="24" width="1772" height="1146" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2061679" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2061679" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -387,7 +415,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49941927" weight="0.32922202" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49883857" visible="true" weight="0.3557875" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49883857" visible="true" weight="0.3557875" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50116146" side_tool="true" weight="0.4886148" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
@@ -531,21 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/gitCommands.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="150" column="40" selection-start-line="150" selection-start-column="23" selection-end-line="150" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/error.log" />
-    <entry file="file://$PROJECT_DIR$/app/dcuCommands.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore" />
     <entry file="file://$USER_HOME$/dcu_git/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
@@ -553,7 +566,7 @@
     <entry file="file://$PROJECT_DIR$/app/constants.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="17" />
+          <caret line="23" column="17" selection-start-line="22" selection-start-column="8" selection-end-line="23" selection-end-column="17" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -567,10 +580,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/dcuCommands.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/gitCommands.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="150" column="40" selection-start-line="150" selection-start-column="23" selection-end-line="150" selection-end-column="40" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/error.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="80" column="42" lean-forward="true" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+        <state relative-caret-position="235">
+          <caret line="101" column="5" lean-forward="true" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
         </state>
       </provider>
     </entry>
