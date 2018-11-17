@@ -20,6 +20,7 @@ exports.DEFAULT_GIT_PATH = ".";
 
 exports.DIFF_TEXT_FILE = "./whatchanged.txt";
 exports.GIT_IGNORE_FILE = ".gitignore";
+exports.ERROR_LOG = "./error.log";
 exports.TASK_DELAY = 3000;
 
 exports.TEMP_FOLDER = ".tmp";

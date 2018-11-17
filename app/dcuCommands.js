@@ -20,6 +20,7 @@
  * @returns {Promise<any>}
  */
 
+const fs = require('fs-extra');
 const { spawn } = require("child_process");
 
 const constants = require('./constants');
@@ -40,7 +41,8 @@ const _dcuGrab = async (server, key, id ='') => new Promise((resolve, reject) =>
     })
   });
   cmd.stdout.on("data", (chunk) => {
-    process.stdout.write(`DCU ${chunk.toString("utf-8")}`);
+    const str = chunk.toString();
+    process.stdout.write(`DCU ${str}`);
   });
   cmd.on('error', (err) => {
     reject(err)
@@ -55,14 +57,15 @@ const _dcuGrab = async (server, key, id ='') => new Promise((resolve, reject) =>
 
 /**
  * Executes a DCU transferAll from source instance to target instance
+ * @param path
  * @param program
  * @returns {Promise<any>}
  * @private
  */
-const _transferAll = program => {
+const _putAll = (path,program) => {
   return new Promise((resolve) => {
-    console.log(`Transferring all extensions start...`);
-    const cmd = spawn(`dcu`, ["--transferAll", ".", "--base", constants.TEMP_FOLDER, "--node", program.targetserver, "-k", program.targetkey], {
+    console.log(`Putting all extensions start...`);
+    const cmd = spawn(`dcu`, ["--putAll", `${path}`, "--base", constants.TEMP_FOLDER, "--node", program.targetserver, "-k", program.targetkey], {
       env: Object.assign({}, process.env, {
         "CC_APPLICATION_KEY": program.targetkey
       })
@@ -81,6 +84,37 @@ const _transferAll = program => {
 };
 
 /**
+ * Executes a DCU transferAll from source instance to target instance
+ * @param program
+ * @returns {Promise<any>}
+ * @private
+ */
+const _transferAll = program => {
+  return new Promise((resolve) => {
+    console.log(`Transferring all extensions start...`);
+    const cmd = spawn(`dcu`, ["--transferAll", ".", "--base", constants.TEMP_FOLDER, "--node", program.targetserver, "-k", program.targetkey], {
+      env: Object.assign({}, process.env, {
+        "CC_APPLICATION_KEY": program.targetkey
+      })
+    });
+    cmd.stdout.on("data", (chunk) => {
+      const str = chunk.toString();
+      console.log(str);
+      process.stdout.write(fs.appendFile(constants.ERROR_LOG, str ));
+    });
+    cmd.stderr.on("data", (chunk) => {
+      const str = chunk.toString();
+      console.log(str);
+      process.stdout.write(fs.appendFile(constants.ERROR_LOG, `Error:[${str}]` ));
+    });
+    cmd.on("close", () => {
+      console.log(`... target updated`);
+      resolve();
+    });
+  });
+};
+
+/**
  * Transfers All Page Layouts from source to target instance
  */
 const _plsuTransferAll = async program => new Promise(resolve => {
@@ -89,15 +123,19 @@ const _plsuTransferAll = async program => new Promise(resolve => {
     "--transfer",
     "--node", program.sourceserver,
     "--applicationKey", program.sourcekey,
-    "--all",
+    "-s",
     "--destinationNode", program.targetserver,
     "--destinationApplicationKey", program.targetkey
   ]);
   plsuSpawn.stdout.on("data", (chunk) => {
-    console.log(chunk.toString("utf-8"));
+    const str = chunk.toString();
+    process.stdout.write(fs.appendFile(constants.ERROR_LOG, str ));
+    console.log(str)
   });
   plsuSpawn.stderr.on("data", (chunk) => {
-    console.log(chunk.toString("utf-8"));
+    const str = chunk.toString();
+    process.stdout.write(fs.appendFile(constants.ERROR_LOG, `Error:[${str}]` ));
+    console.log(str)
   });
   plsuSpawn.on("close", () => {
     console.log("TransferAll page layouts complete.");
@@ -110,5 +148,6 @@ const _plsuTransferAll = async program => new Promise(resolve => {
 
 //exports
 exports.dcuGrab = _dcuGrab;
+exports.putAll = _putAll;
 exports.transferAll = _transferAll;
 exports.plsuTransferAll = _plsuTransferAll;

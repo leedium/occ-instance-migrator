@@ -35,6 +35,7 @@ const _processDiffs = () => new Promise((resolve) => {
   const instanceRef = [];
   let transferRef = [];
   let widgetRef = [];
+  let cccRef = [];
   const transferPathArrayTemp = {};
 
   const diffFile = (upath.join(__dirname, '../', constants.DIFF_TEXT_FILE));
@@ -92,29 +93,31 @@ const _processDiffs = () => new Promise((resolve) => {
         let { type, path } = pathObj;
         const pSplit = path.split("/");
 
-        //  Grab Only Widgets root folders that are updated
-        //  This will be used for all the root level non /instance folders and files that are
-        //  required for the DCU transfer
-        if (type === constants.ExtensionTypes.WIDGET && pSplit[2] !== constants.DCUSubFolder.INSTANCES) {
-          widgetRef.push({ type, path });
-          path = pSplit.slice(0, 2).join("/");
+        // Keep track of any folder and store just the extension for later .ccc copy
+        if (pSplit.length >= 2){
+          const p =  pSplit.slice(0, 2).join("/");
+          if(cccRef.indexOf(p) < 0 ) {
+            cccRef.push(p);
+          }
+        }
+
+        // Dont include and paths that have one subfolder (extension)
+        if(pSplit.length === 2 && type === constants.ExtensionTypes.WIDGET) {
+          return ac;
         }
 
         //  If path is of type widget and includes an instance folder store value so that it
         //  will get added back after the instance folder removal
         else if (type === constants.ExtensionTypes.WIDGET && pSplit[2] === constants.DCUSubFolder.INSTANCES) {
-          path = pSplit.slice(0, 2).join("/");
-          instanceRef.push({ type, path });
-          return ac;
-        }
+          const widgetPath = pSplit.slice(0, 2).join("/");
+          const instancePath = pSplit.slice(0, 3).join("/");
 
-        // If path is of typ stack store the re
-        // else if (pSplit[2] === ExtensionTypes.STACK) {
-        //   stackRef.push({
-        //     type,
-        //     path: pSplit.slice(0, 3).join("/")
-        //   });
-        // }
+
+          widgetRef.push({ type, path: widgetPath})
+          instanceRef.push({ type, path: instancePath });
+
+          path = widgetPath;
+        }
 
         if (!filteredSearched[path]) {
           filteredSearched[path] = true;
@@ -125,7 +128,8 @@ const _processDiffs = () => new Promise((resolve) => {
     // console.log('Diff file processing transferRef.', transferRef);
     // console.log('Diff file processing widgetRef.', widgetRef);
     // console.log('Diff file processing instanceRef.', instanceRef);
-    resolve({transferRef, instanceRef, widgetRef});
+    // console.log('Diff file processing instanceRef.', cccRef);
+    resolve({transferRef, instanceRef, widgetRef, cccRef});
   });
 });
 
@@ -137,12 +141,12 @@ const _processDiffs = () => new Promise((resolve) => {
  * @returns {Promise<any>}
  * @private
  */
-const _makeTmpFolder = async ({transferRef, instanceRef, widgetRef}) => new Promise(async (resolve) => {
+const _makeTmpFolder = async ({transferRef, instanceRef, widgetRef, cccRef}) => new Promise(async (resolve) => {
   //  create temp folder
   fs.ensureDirSync(upath.normalizeSafe(`./${constants.TEMP_FOLDER}`));
 
   // create .ccc tracking folder
-  fs.ensureDirSync(`${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}`);
+  fs.ensureDirSync(`./${upath.normalizeSafe(constants.TEMP_FOLDER)}/${constants.DCUSubFolder.CCC}`);
 
   // copy root .ccc/config.json
   fs.copySync(`${constants.DCUSubFolder.CCC}/config.json`, `${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/config.json`);
@@ -151,8 +155,14 @@ const _makeTmpFolder = async ({transferRef, instanceRef, widgetRef}) => new Prom
   transferRef.map(({ type, path }) => {
     try {
       fs.ensureDirSync(`${constants.TEMP_FOLDER}/${path}`);
-      fs.ensureDirSync(`${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
       fs.copySync(path, `${constants.TEMP_FOLDER}/${path}`);
+    }catch (err) {
+      console.log(err);
+    }
+  });
+  cccRef.map((path) => {
+    try {
+      fs.ensureDirSync(`${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
       fs.copySync(`${constants.DCUSubFolder.CCC}/${path}`, `${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
     }catch (err) {
       console.log(err);
@@ -164,7 +174,6 @@ const _makeTmpFolder = async ({transferRef, instanceRef, widgetRef}) => new Prom
   widgetRef.map(({ type, path }) => {
     if (type === constants.ExtensionTypes.WIDGET) {
       fs.removeSync(`${constants.TEMP_FOLDER}/${path}/${constants.DCUSubFolder.INSTANCES}`);
-      fs.removeSync(`${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}/${constants.DCUSubFolder.INSTANCES}`);
     }
   });
 
@@ -172,9 +181,7 @@ const _makeTmpFolder = async ({transferRef, instanceRef, widgetRef}) => new Prom
   instanceRef.map(({ type, path }) => {
     if (type === constants.ExtensionTypes.WIDGET) {
       fs.ensureDirSync(`${constants.TEMP_FOLDER}/${path}`);
-      fs.ensureDirSync(`${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
       fs.copySync(path,`${constants.TEMP_FOLDER}/${path}`);
-      fs.copySync(`${constants.DCUSubFolder.CCC}/${path}`, `${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
     }
   });
   resolve();
@@ -195,7 +202,6 @@ const _deleteFilePath = async (pathsToBeRemoved) => new Promise(async (resolve) 
           resolve();
         }, TASK_DELAY);
       }
-
     });
   });
 });

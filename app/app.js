@@ -31,10 +31,12 @@ const createBranch = require("./gitCommands").createBranch;
 const checkoutBranch = require("./gitCommands").checkoutBranch;
 const getDiffs = require("./gitCommands").getDiffs;
 const gitIgnore = require("./gitCommands").gitIgnore;
-
 const mergeBranch = require("./gitCommands").mergeBranch;
+
 const dcuGrab = require("./dcuCommands").dcuGrab;
+const putAll = require("./dcuCommands").putAll;
 const transferAll = require("./dcuCommands").transferAll;
+const plsuTransferAll = require("./dcuCommands").plsuTransferAll;
 
 const deleteFilePath = require("./fileCommands").deleteFilePath;
 const makeTmpFolder = require("./fileCommands").makeTmpFolder;
@@ -55,29 +57,28 @@ exports.main = function(argv) {
 
     .command("oim, -s [sourceserver] -t [sourcekey] -u [targetserver] -v [targetkey]", "Execute a dcu transferAll from source to target instance")
     //
-    // .option("-g, --gitpath <gitpath>", "Target git repository containing target DCU folders (grab)")
     .option("-s --sourceserver <sourceserver> ", "Occ Admin url for source instance (from)")
     .option("-t --sourcekey <sourcekey>", "Occ Admin api key for source instance (from)")
     .option("-u --targetserver <targetserver>", "Occ Admin url for target instance (to)")
     .option("-v --targetkey <targetkey>", "Occ Admin api key for target instance (from)")
-    .option("-L, --includelayouts", "Transfer All Layouts [true | false]")
-    .option("-t, --taskdelay", "Execution delay in milliseconds between tasks.   Defaults to 3000ms")
+    .option("-L, --includelayouts [optional]", "Transfer All Layouts [true | false]")
+    .option("-w, --taskdelay <n>", "Execution delay in milliseconds between tasks.   Defaults to 3000ms", parseInt)
+    .option("-x, --cleanup", "Removes all DCU generated and temporary fies after completion.   Defaults to false")
     .parse(argv);
+
+  //set defaults
+  if(typeof program.taskdelay === 'undefined' || Number.isNaN(program.taskdelay)){
+    program.taskdelay = constants.TASK_DELAY;
+  }
 
   start();
 
   async function clean() {
     return await deleteFilePath([
-      upath
-        .normalizeSafe("./*"),
-      upath
-        .normalizeSafe(upath.normalizeSafe("./.gitignore")),
-      upath
-        .normalizeSafe(upath.normalizeSafe(`./${constants.TEMP_FOLDER}`)),
-      upath
-        .normalizeSafe(upath.normalizeSafe(`./${constants.GIT_TRACKING_FOLDER}`)),
-      upath
-        .normalizeSafe(upath.normalizeSafe(`./${constants.DCU_TRACKING_FOLDER}`)),
+      ".gitignore",
+      `./${constants.TEMP_FOLDER}`,
+      `./${constants.GIT_TRACKING_FOLDER}`,
+      `./${constants.DCU_TRACKING_FOLDER}`,
     ]);
   }
 
@@ -111,11 +112,13 @@ exports.main = function(argv) {
       // await checkoutBranch(constants.BRANCH_TARGET);
       // await mergeBranch(constants.BRANCH_SOURCE);
       // await getDiffs();
-      // const fileRefs = await processDiffs();
-      // await makeTmpFolder(fileRefs);
+      const fileRefs = await processDiffs();
+      await makeTmpFolder(fileRefs);
       await transferAll(program);
-      //await clean();
-      console.log('...done.');
+      // await putAll(`${constants.DCUSubFolder.CCC}/widget`, program);
+      if(program.cleanp){
+        await clean();
+      }
       resolve();
     });
   }
