@@ -21,19 +21,21 @@ todo:  parameterize the configuration
 
 ### Instructions
 Please follow the [installation instructions](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305downloadandinstallthedesigncodeu01.html "install Design and Code Utility") to set up the global DCU node application.
-* Currently the extensions process only works on unix based systems.
-// todo: port this to windows
 
 
 ### Installation
 ```
 $ cd dcu-extensions-migrator
-$ npm i
+$ npm i - g
 ```
 
 ### Transfer Extensions :
 ```
-$ npm run migrate -- --dcu
+$  oim -s {SOURCE_SERVER}
+       -t {SOURCE_KEY}
+       -u {TARGET_SERVER}
+       -v {TARGET_KEY}
+
 ```
 
 ### Transfer Page Layouts ([PLSU](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usetheplsuutility01.html "Page Layout Synchronization Utility")) to :

@@ -24,7 +24,7 @@ const { spawn } = require("child_process");
 
 const constants = require('./constants');
 
-const _transferAll = function transferAll(program) {
+const _transferAll = program => {
   const workingTransfer = constants.WORKING_FOLDER.split("/")[1];
   process.chdir(`${constants.TEMP_FOLDER}/${workingTransfer}`);
   return new Promise((resolve) => {
@@ -50,87 +50,81 @@ const _transferAll = function transferAll(program) {
 /**
  * Transfers All Page Layouts from source to target instance
  */
-const _plsuTransferAll = async function (program) {
-  return new Promise(resolve => {
-    console.log("TransferAll page layouts start...");
-    const plsuSpawn = spawn("plsu", [
-      "--transfer",
-      "--node", program.sourceserver,
-      "--applicationKey", program.sourcekey,
-      "--all",
-      "--destinationNode", program.targetserver,
-      "--destinationApplicationKey", program.targetkey
-    ]);
-    plsuSpawn.stdout.on("data", (chunk) => {
-      console.log(chunk.toString("utf-8"));
-    });
-    plsuSpawn.stderr.on("data", (chunk) => {
-      console.log(chunk.toString("utf-8"));
-    });
-    plsuSpawn.on("close", () => {
-      console.log("TransferAll page layouts complete.");
-      setTimeout(() => {
-        resolve();
-      }, program.taskdelay);
-    });
-    resolve();
+const _plsuTransferAll = async program => new Promise(resolve => {
+  console.log("TransferAll page layouts start...");
+  const plsuSpawn = spawn("plsu", [
+    "--transfer",
+    "--node", program.sourceserver,
+    "--applicationKey", program.sourcekey,
+    "--all",
+    "--destinationNode", program.targetserver,
+    "--destinationApplicationKey", program.targetkey
+  ]);
+  plsuSpawn.stdout.on("data", (chunk) => {
+    console.log(chunk.toString("utf-8"));
   });
-}
+  plsuSpawn.stderr.on("data", (chunk) => {
+    console.log(chunk.toString("utf-8"));
+  });
+  plsuSpawn.on("close", () => {
+    console.log("TransferAll page layouts complete.");
+    setTimeout(() => {
+      resolve();
+    }, constants.TASK_DELAY);
+  });
+  resolve();
+})
 
 
 /**
  * Grabs the target(Source Copied From) dcu source
  * @returns {Promise<any>}
  */
-const _grabTarget = async function(program) {
-  return new Promise((resolve, reject) => {
-    console.log("GRABBING TARGET (currently deployed stable)", process.cwd());
-    const cmd = spawn("dcu", ["--grab", "--clean", "--node", program.targetserver], {
-      env: Object.assign({}, process.env, {
-        "CC_APPLICATION_KEY": program.targetkey
-      })
-    });
-    cmd.stdout.on("data", (chunk) => {
-      console.log(chunk.toString("utf-8"));
-    });
-    cmd.on('error',(err) => {
-      reject(err)
-    });
-    cmd.on("close", () => {
-      console.log("...target branch download completed.");
-      setTimeout(() => {
-        resolve();
-      }, program.taskdelay);
-    });
+const _grabTarget = async program => new Promise((resolve, reject) => {
+  console.log("GRABBING TARGET (currently deployed stable)", process.cwd());
+  const cmd = spawn("dcu", ["--grab", "--clean", "--node", program.targetserver], {
+    env: Object.assign({}, process.env, {
+      "CC_APPLICATION_KEY": program.targetkey
+    })
   });
-}
+  cmd.stdout.on("data", (chunk) => {
+    console.log(chunk.toString("utf-8"));
+  });
+  cmd.on('error', (err) => {
+    reject(err)
+  });
+  cmd.on("close", () => {
+    console.log("...target branch download completed.");
+    setTimeout(() => {
+      resolve();
+    }, constants.TASK_DELAY);
+  });
+})
 
 /**
  * Grabs the Source(Source Copied To) dcu source
  * @returns {Promise<any>}
  */
-const _grabSource = async function (program) {
-  return new Promise((resolve, reject) => {
-    console.log("GRABBING SOURCE (latest changes)", process.cwd());
-    const cmd = spawn("dcu", ["--grab", "--clean", "--node", program.sourceserver], {
-      env: Object.assign({}, process.env, {
-        "CC_APPLICATION_KEY": program.sourcekey
-      })
-    });
-    cmd.stdout.on("data", (chunk) => {
-      console.log(chunk.toString("utf-8"));
-    });
-    cmd.on('error',(err) => {
-      reject(err)
-    });
-    cmd.on("close", () => {
-      console.log("...source branch download completed");
-      setTimeout(() => {
-        resolve();
-      }, program.taskdelay);
-    });
+const _grabSource = async program => new Promise((resolve, reject) => {
+  console.log("GRABBING SOURCE (latest changes)", process.cwd());
+  const cmd = spawn("dcu", ["--grab", "--clean", "--node", program.sourceserver], {
+    env: Object.assign({}, process.env, {
+      "CC_APPLICATION_KEY": program.sourcekey
+    })
   });
-};
+  cmd.stdout.on("data", (chunk) => {
+    console.log(chunk.toString("utf-8"));
+  });
+  cmd.on('error', (err) => {
+    reject(err)
+  });
+  cmd.on("close", () => {
+    console.log("...source branch download completed");
+    setTimeout(() => {
+      resolve();
+    }, constants.TASK_DELAY);
+  });
+});
 
 //exports
 exports.grabTarget = _grabTarget;

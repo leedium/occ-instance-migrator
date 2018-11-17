@@ -17,23 +17,28 @@
  **/
 
 const program = require("commander");
+const upath = require("upath");
 
-const constants = require('./constants');
+const constants = require("./constants");
 
 const packageJson = require("../package");
 
-const addAll = require('./gitCommands').addAll;
-const commit = require('./gitCommands').commit;
-const createBranch = require('./gitCommands').createBranch;
-const checkoutBranch = require('./gitCommands').checkoutBranch;
+const initGitPath = require("./gitCommands").initGitPath;
+const addAll = require("./gitCommands").addAll;
+const commit = require("./gitCommands").commit;
+const deleteBranch = require("./gitCommands").deleteBranch;
+const createBranch = require("./gitCommands").createBranch;
+const checkoutBranch = require("./gitCommands").checkoutBranch;
+const getDiffs = require("./gitCommands").getDiffs;
+const gitIgnore = require("./gitCommands").gitIgnore;
 
-const mergeBranch = require('./gitCommands').mergeBranch;
-const grabTarget = require('./dcuCommands').grabTarget;
-const grabSource = require('./dcuCommands').grabSource;
+const mergeBranch = require("./gitCommands").mergeBranch;
+const grabTarget = require("./dcuCommands").grabTarget;
+const grabSource = require("./dcuCommands").grabSource;
 
-const deleteFilePath = require('./fileCommands').deleteFilePath;
-const makeTmpFolder = require('./fileCommands').makeTmpFolder;
-const processDiffs = require('./fileCommands').processDiffs;
+const deleteFilePath = require("./fileCommands").deleteFilePath;
+const makeTmpFolder = require("./fileCommands").makeTmpFolder;
+const processDiffs = require("./fileCommands").processDiffs;
 
 /**
  * export.main Required for the bin (global) module export
@@ -48,24 +53,30 @@ exports.main = function(argv) {
                 git cli - https://git-scm.com/downloads
                 Oracle DCU -  https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedcutograbanduploadsourceco01.html `)
 
-    // .command("-d, --dcu", "Execute a dcu transferAll from source to target instance")
-
+    .command("-d, --dcu", "Execute a dcu transferAll from source to target instance")
+    //
     // .option("-g, --gitpath <gitpath>", "Target git repository containing target DCU folders (grab)")
-    // .option("-s --sourceserver <sourceserver> ", "Occ Admin url for source instance (from)")
-    // .option("-t --sourcekey <sourcekey>", "Occ Admin api key for source instance (from)")
-    // .option("-u --targetserver <targetserver>", "Occ Admin url for target instance (to)")
-    // .option("-w --targetkey <targetkey>", "Occ Admin api key for target instance (from)")
-    // .option("-L, --includelayouts", "Transfer All Layouts [true | false]")
-    // .option("-t, --taskdelay", "Execution delay in milliseconds between tasks.   Defaults to 3000ms")
+    .option("-s --sourceserver <sourceserver> ", "Occ Admin url for source instance (from)")
+    .option("-t --sourcekey <sourcekey>", "Occ Admin api key for source instance (from)")
+    .option("-u --targetserver <targetserver>", "Occ Admin url for target instance (to)")
+    .option("-v --targetkey <targetkey>", "Occ Admin api key for target instance (from)")
+    .option("-L, --includelayouts", "Transfer All Layouts [true | false]")
+    .option("-t, --taskdelay", "Execution delay in milliseconds between tasks.   Defaults to 3000ms")
     .parse(argv);
 
   start();
 
-  async function init() {
-    await deleteFilePath([
-      constants.TEMP_FOLDER
+  async function clean() {
+    return await deleteFilePath([
+      upath
+        .resolve(__dirname, "../", constants.TEMP_FOLDER),
+      "./*"
     ]);
+  }
+
+  async function init() {
     await checkoutBranch(constants.BRANCH_MASTER);
+    await gitIgnore();
     await addAll();
     await commit();
     await deleteBranch(constants.BRANCH_SOURCE);
@@ -78,7 +89,9 @@ exports.main = function(argv) {
    */
   async function extensionsTransfer() {
     return new Promise(async (resolve) => {
-      // await initGitPath();
+      // await clean();
+      // await initGitPath(program);
+      await gitIgnore();
       // await init();
       // await grabTarget(program);
       // await addAll();
@@ -91,10 +104,9 @@ exports.main = function(argv) {
       // await checkoutBranch(constants.BRANCH_TARGET);
       // await mergeBranch(constants.BRANCH_SOURCE);
       // await getDiffs();
-
-      const diffs = await processDiffs();
-      await makeTmpFolder(diffs);
-      await transferAll();
+      // const diffs = await processDiffs();
+      // await makeTmpFolder(diffs);
+      // await transferAll();
       // await deleteFilePath([constants.TEMP_FOLDER]);
       // await checkoutBranch(constants.BRANCH_MASTER);
       // console.log('..complete');

@@ -16,8 +16,11 @@
  */
 
 exports.APP_ID = __dirname.split("/").pop();
+exports.DEFAULT_GIT_PATH = ".";
 
 exports.DIFF_TEXT_FILE = "./whatchanged.txt";
+exports.GIT_IGNORE_FILE = ".gitignore";
+exports.TASK_DELAY = 3000;
 
 exports.WORKING_FOLDER = "./working";
 exports.TEMP_FOLDER = "./tmp";
