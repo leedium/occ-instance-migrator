@@ -24,12 +24,45 @@ const { spawn } = require("child_process");
 
 const constants = require('./constants');
 
+/**
+ * Grabs the target(Source Copied From) dcu source
+ * @param server
+ * @param key
+ * @param id
+ * @returns {Promise<any>}
+ * @private
+ */
+const _dcuGrab = async (server, key, id ='') => new Promise((resolve, reject) => {
+  console.log(`GRABBING ${id} (currently deployed stable)`, process.cwd());
+  const cmd = spawn("dcu", ["--grab", "--clean", "--node", server], {
+    env: Object.assign({}, process.env, {
+      "CC_APPLICATION_KEY": key
+    })
+  });
+  cmd.stdout.on("data", (chunk) => {
+    process.stdout.write(`DCU ${chunk.toString("utf-8")}`);
+  });
+  cmd.on('error', (err) => {
+    reject(err)
+  });
+  cmd.on("close", () => {
+    console.log("...target branch download completed.");
+    setTimeout(() => {
+      resolve();
+    }, constants.TASK_DELAY);
+  });
+});
+
+/**
+ * Executes a DCU transferAll from source instance to target instance
+ * @param program
+ * @returns {Promise<any>}
+ * @private
+ */
 const _transferAll = program => {
-  const workingTransfer = constants.WORKING_FOLDER.split("/")[1];
-  process.chdir(`${constants.TEMP_FOLDER}/${workingTransfer}`);
   return new Promise((resolve) => {
     console.log(`Transferring all extensions start...`);
-    const cmd = spawn(`dcu`, ["--transferAll", ".", "--node", program.targetserver, "-k", program.targetkey], {
+    const cmd = spawn(`dcu`, ["--transferAll", ".", "--base", constants.TEMP_FOLDER, "--node", program.targetserver, "-k", program.targetkey], {
       env: Object.assign({}, process.env, {
         "CC_APPLICATION_KEY": program.targetkey
       })
@@ -73,61 +106,9 @@ const _plsuTransferAll = async program => new Promise(resolve => {
     }, constants.TASK_DELAY);
   });
   resolve();
-})
-
-
-/**
- * Grabs the target(Source Copied From) dcu source
- * @returns {Promise<any>}
- */
-const _grabTarget = async program => new Promise((resolve, reject) => {
-  console.log("GRABBING TARGET (currently deployed stable)", process.cwd());
-  const cmd = spawn("dcu", ["--grab", "--clean", "--node", program.targetserver], {
-    env: Object.assign({}, process.env, {
-      "CC_APPLICATION_KEY": program.targetkey
-    })
-  });
-  cmd.stdout.on("data", (chunk) => {
-    console.log(chunk.toString("utf-8"));
-  });
-  cmd.on('error', (err) => {
-    reject(err)
-  });
-  cmd.on("close", () => {
-    console.log("...target branch download completed.");
-    setTimeout(() => {
-      resolve();
-    }, constants.TASK_DELAY);
-  });
-})
-
-/**
- * Grabs the Source(Source Copied To) dcu source
- * @returns {Promise<any>}
- */
-const _grabSource = async program => new Promise((resolve, reject) => {
-  console.log("GRABBING SOURCE (latest changes)", process.cwd());
-  const cmd = spawn("dcu", ["--grab", "--clean", "--node", program.sourceserver], {
-    env: Object.assign({}, process.env, {
-      "CC_APPLICATION_KEY": program.sourcekey
-    })
-  });
-  cmd.stdout.on("data", (chunk) => {
-    console.log(chunk.toString("utf-8"));
-  });
-  cmd.on('error', (err) => {
-    reject(err)
-  });
-  cmd.on("close", () => {
-    console.log("...source branch download completed");
-    setTimeout(() => {
-      resolve();
-    }, constants.TASK_DELAY);
-  });
 });
 
 //exports
-exports.grabTarget = _grabTarget;
-exports.grabSource = _grabSource;
+exports.dcuGrab = _dcuGrab;
 exports.transferAll = _transferAll;
 exports.plsuTransferAll = _plsuTransferAll;

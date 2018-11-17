@@ -22,8 +22,9 @@ exports.DIFF_TEXT_FILE = "./whatchanged.txt";
 exports.GIT_IGNORE_FILE = ".gitignore";
 exports.TASK_DELAY = 3000;
 
-exports.WORKING_FOLDER = "./working";
-exports.TEMP_FOLDER = "./tmp";
+exports.TEMP_FOLDER = ".tmp";
+exports.DCU_TRACKING_FOLDER = ".ccc";
+exports.GIT_TRACKING_FOLDER = ".git";
 
 exports.BRANCH_MASTER = "master";
 exports.BRANCH_SOURCE = "source";

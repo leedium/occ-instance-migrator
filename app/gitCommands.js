@@ -35,8 +35,10 @@ const GIT_IGNORE_PATH = require("./constants").GIT_IGNORE_FILE;
 
 /**
  * Iniitalizes a git path for processing
+ * @returns {Promise<any>}
+ * @private
  */
-const _initGitPath = async program => new Promise((resolve, reject) => {
+const _initGitPath = async () => new Promise((resolve, reject) => {
   const cmd = spawn("git", ["init", DEFAULT_GIT_PATH], {
     shell: true
   });
@@ -47,15 +49,14 @@ const _initGitPath = async program => new Promise((resolve, reject) => {
     reject(err);
   });
   cmd.on("close", () => {
-    console.log('c');
     resolve();
   });
 });
 
 const _checkoutBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
-  console.log(`checkoutBranch:${name}`);
   git(gitPath).raw(["checkout", name], () => {
     setTimeout(() => {
+      console.log(`\nChecked out "${name}".`);
       resolve();
     }, taskDelay);
   });
@@ -68,9 +69,9 @@ const _checkoutBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TAS
  * @returns {Promise<any>}
  */
 const _mergeBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
-  console.log(`mergeBranch:${name} into target`);
   git(gitPath).raw(["merge", name, "-Xtheirs"], () => {
     setTimeout(() => {
+      console.log(`\nMerged "${name}".`);
       resolve();
     }, taskDelay);
   });
@@ -82,9 +83,9 @@ const _mergeBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_D
  * @returns {Promise<any>}
  */
 const _addAll = async (gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
-  console.log("addAll...");
   git(gitPath).raw(["add", "."], () => {
     setTimeout(() => {
+      console.log("\nFiles added.");
       resolve();
     }, taskDelay);
   });
@@ -96,9 +97,9 @@ const _addAll = async (gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => ne
  * @returns {Promise<any>}
  */
 const _commit = async (gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
-  console.log("commit...");
   git(gitPath).raw(["commit", "-m", "committing latest changes"], () => {
     setTimeout(() => {
+      console.log("\nFiles committed.");
       resolve();
     }, taskDelay);
   });
@@ -111,9 +112,9 @@ const _commit = async (gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => ne
  * @returns {Promise<any>}
  */
 const _deleteBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
-  console.log(`deleteLocalBranch:${name}`);
   git(gitPath).raw(["branch", "-D", name], () => {
     setTimeout(() => {
+      console.log(`\nDeleted "${name}" branch .`);
       resolve();
     }, taskDelay);
   });
@@ -122,13 +123,15 @@ const _deleteBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_
 /**
  * Creates a git branch, if it preexits then it is reset -B
  * @param name
- * @param callback
+ * @param gitPath
+ * @param taskDelay
  * @returns {Promise<any>}
+ * @private
  */
 const _createBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
-  console.log(`createBranch:${name}`);
   git(gitPath).raw(["checkout", "-B", name], () => {
     setTimeout(() => {
+      console.log(`\nBranch: "${name}" created.`);
       resolve();
     }, taskDelay);
   });
@@ -141,14 +144,13 @@ const _createBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_
  */
 const _getDiffs = async (taskDelay = TASK_DELAY) => {
   return new Promise((resolve) => {
-    console.log("getDiffs");
-    const diffFile = (upath.join(__dirname,'../',DIFF_TEXT_FILE))
+    const diffFile = (upath.join(__dirname,'../',DIFF_TEXT_FILE));
     const cmd = spawn("git", ["whatchanged", "-1", "--pretty=\"\""], {
       shell: true
     });
     cmd.stdout.pipe(fs.createWriteStream(diffFile));
     cmd.on("close", () => {
-      console.log("...created diff file...");
+      console.log("\nDiff file created.");
       setTimeout(() => {
         resolve();
       }, taskDelay);
@@ -157,7 +159,7 @@ const _getDiffs = async (taskDelay = TASK_DELAY) => {
 };
 
 const _gitIgnore = async  () => {
-  return new Promise ((resolve,reject) => fs.outputFile(upath.join(GIT_IGNORE_PATH), 'hello')
+  return new Promise ((resolve,reject) => fs.outputFile(upath.join(GIT_IGNORE_PATH), '.ccc/\ntmp/\nnode_modules/')
     .then(resolve)
     .catch(reject)
   );

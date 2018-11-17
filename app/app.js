@@ -33,8 +33,8 @@ const getDiffs = require("./gitCommands").getDiffs;
 const gitIgnore = require("./gitCommands").gitIgnore;
 
 const mergeBranch = require("./gitCommands").mergeBranch;
-const grabTarget = require("./dcuCommands").grabTarget;
-const grabSource = require("./dcuCommands").grabSource;
+const dcuGrab = require("./dcuCommands").dcuGrab;
+const transferAll = require("./dcuCommands").transferAll;
 
 const deleteFilePath = require("./fileCommands").deleteFilePath;
 const makeTmpFolder = require("./fileCommands").makeTmpFolder;
@@ -53,7 +53,7 @@ exports.main = function(argv) {
                 git cli - https://git-scm.com/downloads
                 Oracle DCU -  https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedcutograbanduploadsourceco01.html `)
 
-    .command("-d, --dcu", "Execute a dcu transferAll from source to target instance")
+    .command("oim, -s [sourceserver] -t [sourcekey] -u [targetserver] -v [targetkey]", "Execute a dcu transferAll from source to target instance")
     //
     // .option("-g, --gitpath <gitpath>", "Target git repository containing target DCU folders (grab)")
     .option("-s --sourceserver <sourceserver> ", "Occ Admin url for source instance (from)")
@@ -69,8 +69,15 @@ exports.main = function(argv) {
   async function clean() {
     return await deleteFilePath([
       upath
-        .resolve(__dirname, "../", constants.TEMP_FOLDER),
-      "./*"
+        .normalizeSafe("./*"),
+      upath
+        .normalizeSafe(upath.normalizeSafe("./.gitignore")),
+      upath
+        .normalizeSafe(upath.normalizeSafe(`./${constants.TEMP_FOLDER}`)),
+      upath
+        .normalizeSafe(upath.normalizeSafe(`./${constants.GIT_TRACKING_FOLDER}`)),
+      upath
+        .normalizeSafe(upath.normalizeSafe(`./${constants.DCU_TRACKING_FOLDER}`)),
     ]);
   }
 
@@ -91,25 +98,24 @@ exports.main = function(argv) {
     return new Promise(async (resolve) => {
       // await clean();
       // await initGitPath(program);
-      await gitIgnore();
+      // await gitIgnore();
       // await init();
-      // await grabTarget(program);
+      // await dcuGrab(program.targetserver,program.targetkey, 'test');
       // await addAll();
       // await commit();
       // await createBranch(constants.BRANCH_TARGET);
       // await createBranch(constants.BRANCH_SOURCE);
-      // await grabSource(program);
+      // await dcuGrab(program.sourceserver, program.sourcekey, 'source');
       // await addAll();
       // await commit();
       // await checkoutBranch(constants.BRANCH_TARGET);
       // await mergeBranch(constants.BRANCH_SOURCE);
       // await getDiffs();
-      // const diffs = await processDiffs();
-      // await makeTmpFolder(diffs);
-      // await transferAll();
-      // await deleteFilePath([constants.TEMP_FOLDER]);
-      // await checkoutBranch(constants.BRANCH_MASTER);
-      // console.log('..complete');
+      // const fileRefs = await processDiffs();
+      // await makeTmpFolder(fileRefs);
+      await transferAll(program);
+      //await clean();
+      console.log('...done.');
       resolve();
     });
   }
