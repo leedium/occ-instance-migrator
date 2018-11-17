@@ -51,23 +51,53 @@ exports.main = function(argv) {
 
   program
     .version(packageJson.version)
-    .description(`Wrapper for DCU  to only deploy instances differences across tool.\nDependencies:
+    .description(
+      `Wrapper for DCU  to only deploy instances differences across tool.\nDependencies:
                 git cli - https://git-scm.com/downloads
-                Oracle DCU -  https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedcutograbanduploadsourceco01.html `)
+                Oracle DCU -  https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedcutograbanduploadsourceco01.html `
+    )
 
-    .command("oim, -s [sourceserver] -t [sourcekey] -u [targetserver] -v [targetkey]", "Execute a dcu transferAll from source to target instance")
+    .command(
+      "oim, -s [sourceserver] -t [sourcekey] -u [targetserver] -v [targetkey]",
+      "Execute a dcu transferAll from source to target instance"
+    )
     //
-    .option("-s --sourceserver <sourceserver> ", "Occ Admin url for source instance (from)")
-    .option("-t --sourcekey <sourcekey>", "Occ Admin api key for source instance (from)")
-    .option("-u --targetserver <targetserver>", "Occ Admin url for target instance (to)")
-    .option("-v --targetkey <targetkey>", "Occ Admin api key for target instance (from)")
-    .option("-L, --includelayouts [optional]", "Transfer All Layouts [true | false]")
-    .option("-w, --taskdelay <n>", "Execution delay in milliseconds between tasks.   Defaults to 3000ms", parseInt)
-    .option("-x, --cleanup", "Removes all DCU generated and temporary fies after completion.   Defaults to false")
+    .option(
+      "-s --sourceserver <sourceserver> ",
+      "Occ Admin url for source instance (from)"
+    )
+    .option(
+      "-t --sourcekey <sourcekey>",
+      "Occ Admin api key for source instance (from)"
+    )
+    .option(
+      "-u --targetserver <targetserver>",
+      "Occ Admin url for target instance (to)"
+    )
+    .option(
+      "-v --targetkey <targetkey>",
+      "Occ Admin api key for target instance (from)"
+    )
+    .option(
+      "-L, --includelayouts [optional]",
+      "Transfer All Layouts [true | false]"
+    )
+    .option(
+      "-w, --taskdelay <n>",
+      "Execution delay in milliseconds between tasks.   Defaults to 3000ms",
+      parseInt
+    )
+    .option(
+      "-x, --cleanup",
+      "Removes all DCU generated and temporary fies after completion.   Defaults to false"
+    )
     .parse(argv);
 
   //set defaults
-  if (typeof program.taskdelay === "undefined" || Number.isNaN(program.taskdelay)) {
+  if (
+    typeof program.taskdelay === "undefined" ||
+    Number.isNaN(program.taskdelay)
+  ) {
     program.taskdelay = constants.TASK_DELAY;
   }
 
@@ -101,27 +131,27 @@ exports.main = function(argv) {
    * @returns {Promise<void>}
    */
   async function extensionsTransfer() {
-    return new Promise(async (resolve) => {
-      await clean();
-      await initGitPath(program);
-      await gitIgnore();
-      await init();
-      await dcuGrab(program.targetserver, program.targetkey, "test");
-      await addAll();
-      await commit();
-      await createBranch(constants.BRANCH_TARGET);
-      await createBranch(constants.BRANCH_SOURCE);
-      await dcuGrab(program.sourceserver, program.sourcekey, "source");
-      await addAll();
-      await commit();
-      await checkoutBranch(constants.BRANCH_TARGET);
-      await mergeBranch(constants.BRANCH_SOURCE);
-      await getDiffs();
-      const fileRefs = await processDiffs();
-      await makeTmpFolder(fileRefs);
-      await transferAll(program);
+    return new Promise(async resolve => {
+      // await clean();
+      // await initGitPath(program);
+      // await gitIgnore();
+      // await init();
+      // await dcuGrab(program.targetserver, program.targetkey, "test");
+      // await addAll();
+      // await commit();
+      // await createBranch(constants.BRANCH_TARGET);
+      // await createBranch(constants.BRANCH_SOURCE);
+      // await dcuGrab(program.sourceserver, program.sourcekey, "source");
+      // await addAll();
+      // await commit();
+      // await checkoutBranch(constants.BRANCH_TARGET);
+      // await mergeBranch(constants.BRANCH_SOURCE);
+      // await getDiffs();
+      // const fileRefs = await processDiffs();
+      // await makeTmpFolder(fileRefs);
+      // await transferAll(program);
       if (program.cleanp) {
-        await clean();
+        // await clean();
       }
       resolve();
     });
@@ -138,8 +168,7 @@ exports.main = function(argv) {
         await plsuTransferAll(program);
         await analyzeLogs();
       }
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
     }
   }

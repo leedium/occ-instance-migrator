@@ -19,6 +19,4 @@
 
 const fs = require("fs-extra");
 
-exports.analyzeLogs = () => new Pcd dc  romise(resolve => {
-
-});
+exports.analyzeLogs = () => new Promise(resolve => {});

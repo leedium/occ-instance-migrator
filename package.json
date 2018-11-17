@@ -30,7 +30,5 @@
     "upath": "^1.1.0",
     "yargs": "^12.0.2"
   },
-  "devDependencies": {
-    "prettier": "^1.14.3"
-  }
+  "devDependencies": {}
 }
