@@ -43,6 +43,7 @@ const _dcuGrab = async (server, key, id ='') => new Promise((resolve, reject) =>
   cmd.stdout.on("data", (chunk) => {
     const str = chunk.toString();
     process.stdout.write(`DCU ${str}`);
+    process.stdout.write(fs.appendFile(constants.LOGFILE, str ));
   });
   cmd.on('error', (err) => {
     reject(err)
@@ -100,12 +101,12 @@ const _transferAll = program => {
     cmd.stdout.on("data", (chunk) => {
       const str = chunk.toString();
       console.log(str);
-      process.stdout.write(fs.appendFile(constants.ERROR_LOG, str ));
+      process.stdout.write(fs.appendFile(constants.LOGFILE, str ));
     });
     cmd.stderr.on("data", (chunk) => {
       const str = chunk.toString();
       console.log(str);
-      process.stdout.write(fs.appendFile(constants.ERROR_LOG, `Error:[${str}]` ));
+      process.stdout.write(fs.appendFile(constants.LOGFILE, `Error:[${str}]` ));
     });
     cmd.on("close", () => {
       console.log(`... target updated`);
@@ -129,12 +130,12 @@ const _plsuTransferAll = async program => new Promise(resolve => {
   ]);
   plsuSpawn.stdout.on("data", (chunk) => {
     const str = chunk.toString();
-    process.stdout.write(fs.appendFile(constants.ERROR_LOG, str ));
+    process.stdout.write(fs.appendFile(constants.LOGFILE, str ));
     console.log(str)
   });
   plsuSpawn.stderr.on("data", (chunk) => {
     const str = chunk.toString();
-    process.stdout.write(fs.appendFile(constants.ERROR_LOG, `Error:[${str}]` ));
+    process.stdout.write(fs.appendFile(constants.LOGFILE, `Error:[${str}]` ));
     console.log(str)
   });
   plsuSpawn.on("close", () => {
