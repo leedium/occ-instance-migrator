@@ -19,4 +19,23 @@
 
 const fs = require("fs-extra");
 
-exports.analyzeLogs = () => new Promise(resolve => {});
+const constants = require("./constants");
+
+const processLog = () => new Promise(resolve => {
+  const file = fs.readFileSync(constants.LOGFILE).toString();
+
+  //  find files with errors.
+  //  errors are signed by special text
+  const r = /1m(.*?)\u001b/g;
+
+  const problemExtensions = file.toString().match(r).map((val)=>{
+      return val.replace('1m','').replace('\u001b','').split('/');
+  });
+
+  console.log(problemExtensions)
+
+});
+
+exports.analyzeLogs = () => new Promise( async (resolve) => {
+  await processLog();
+});

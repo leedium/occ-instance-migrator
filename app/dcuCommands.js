@@ -43,7 +43,7 @@ const _dcuGrab = async (server, key, id = "") => new Promise((resolve, reject) =
   cmd.stdout.on("data", (chunk) => {
     const str = chunk.toString();
     process.stdout.write(`DCU ${str}`);
-    process.stdout.write(fs.appendFile(constants.LOGFILE, str));
+    // process.stdout.write(fs.appendFile(constants.LOGFILE, str));
   });
   cmd.on("error", (err) => {
     reject(err);
@@ -106,7 +106,7 @@ const _transferAll = program => {
     cmd.stderr.on("data", (chunk) => {
       const str = chunk.toString();
       console.log(str);
-      process.stdout.write(fs.appendFile(constants.LOGFILE, `Error:[${str}]`));
+      // process.stdout.write(fs.appendFile(constants.LOGFILE, `Error:[${str}]`));
     });
     cmd.on("close", () => {
       console.log(`... target updated`);

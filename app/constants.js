@@ -31,6 +31,8 @@ exports.BRANCH_MASTER = "master";
 exports.BRANCH_SOURCE = "source";
 exports.BRANCH_TARGET = "target";
 
+exports.LOGFILE_SEPARATOR = "[35m[1m";
+
 exports.ExtensionTypes = {
   WIDGET: "widget",
   ELEMENT: "element",

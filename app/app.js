@@ -42,6 +42,8 @@ const deleteFilePath = require("./fileCommands").deleteFilePath;
 const makeTmpFolder = require("./fileCommands").makeTmpFolder;
 const processDiffs = require("./fileCommands").processDiffs;
 
+const analyzeLogs = require('./extCommands').analyzeLogs;
+
 /**
  * export.main Required for the bin (global) module export
  * @param argv
@@ -110,6 +112,7 @@ exports.main = function(argv) {
       `./${constants.GIT_TRACKING_FOLDER}`,
       `./${constants.DCU_TRACKING_FOLDER}`,
       `./widget`,
+      `./global`,
       `./stack`,
       `./element`,
       `./theme`,
@@ -151,7 +154,7 @@ exports.main = function(argv) {
       // await makeTmpFolder(fileRefs);
       // await transferAll(program);
       if (program.cleanp) {
-        // await clean();
+        await clean();
       }
       resolve();
     });
@@ -164,9 +167,9 @@ exports.main = function(argv) {
   async function start() {
     try {
       await extensionsTransfer(program);
+      await analyzeLogs();
       if (program.includelayouts) {
         await plsuTransferAll(program);
-        await analyzeLogs();
       }
     } catch (err) {
       console.log(err);
