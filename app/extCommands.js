@@ -21,9 +21,12 @@ const fs = require("fs-extra");
 
 const constants = require("./constants");
 
+/**
+ * Parses the logfle for errors and if extensions need to be installed
+ * @returns {Promise<any>}
+ */
 const processLog = () => new Promise(resolve => {
   const file = fs.readFileSync(constants.LOGFILE).toString();
-
   //  find files with errors.
   //  errors are signed by special text
   const r = /1m(.*?)\u001b/g;
@@ -38,10 +41,32 @@ const processLog = () => new Promise(resolve => {
     }
     return ac;
   }, []);
-console.log(problemExtensions);
-
+  resolve(problemExtensions)
 });
 
+/**
+ * This method converts the error responses to promises that
+ * will handle any loads
+ * @returns {Promise<any>}
+ */
+const transfomErrorsToRequests = (widgetArray) => new Promise(resolve => {
+  console.log(widgetArray)
+  const tmpObj ={}
+  widgetArray.map( widget => {
+
+  });
+  resolve();
+});
+
+/**
+ * Entry method to begin processing of errors
+ * @returns {Promise<any>}
+ */
 exports.analyzeLogs = () => new Promise( async (resolve) => {
-  await processLog();
+  const errors = await processLog();
+  if(errors.length){
+    await transfomErrorsToRequests(errors);
+  }else{
+    resolve();
+  }
 });
