@@ -29,10 +29,16 @@ const processLog = () => new Promise(resolve => {
   const r = /1m(.*?)\u001b/g;
 
   const problemExtensions = file.toString().match(r).map((val)=>{
-      return val.replace('1m','').replace('\u001b','').split('/');
-  });
-
-  console.log(problemExtensions)
+      const pathArray = val.replace('1m','').replace('\u001b','').split('/');
+      let x;
+      return pathArray.slice(x = pathArray.indexOf('widget'),x + 2)[1];
+  }).reduce( (ac, item) => {
+    if(ac.indexOf(item) < 0 && typeof item !== 'undefined') {
+      ac.push(item)
+    }
+    return ac;
+  }, []);
+console.log(problemExtensions);
 
 });
 
