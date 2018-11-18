@@ -135,24 +135,24 @@ exports.main = function(argv) {
    */
   async function extensionsTransfer() {
     return new Promise(async resolve => {
-      // await clean();
-      // await initGitPath(program);
-      // await gitIgnore();
-      // await init();
-      // await dcuGrab(program.targetserver, program.targetkey, "test");
-      // await addAll();
-      // await commit();
-      // await createBranch(constants.BRANCH_TARGET);
-      // await createBranch(constants.BRANCH_SOURCE);
-      // await dcuGrab(program.sourceserver, program.sourcekey, "source");
-      // await addAll();
-      // await commit();
-      // await checkoutBranch(constants.BRANCH_TARGET);
-      // await mergeBranch(constants.BRANCH_SOURCE);
-      // await getDiffs();
-      // const fileRefs = await processDiffs();
-      // await makeTmpFolder(fileRefs);
-      // await transferAll(program);
+      await clean();
+      await initGitPath(program);
+      await gitIgnore();
+      await init();
+      await dcuGrab(program.targetserver, program.targetkey, "test");
+      await addAll();
+      await commit();
+      await createBranch(constants.BRANCH_TARGET);
+      await createBranch(constants.BRANCH_SOURCE);
+      await dcuGrab(program.sourceserver, program.sourcekey, "source");
+      await addAll();
+      await commit();
+      await checkoutBranch(constants.BRANCH_TARGET);
+      await mergeBranch(constants.BRANCH_SOURCE);
+      await getDiffs();
+      const fileRefs = await processDiffs();
+      await makeTmpFolder(fileRefs);
+      await transferAll(program);
       if (program.cleanp) {
         await clean();
       }
