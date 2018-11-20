@@ -20,6 +20,7 @@
 const fs = require("fs-extra");
 
 const constants = require("./constants");
+const restObj = require("./restObj");
 
 /**
  * Parses the logfle for errors and if extensions need to be installed
@@ -31,6 +32,8 @@ const processLog = () => new Promise(resolve => {
   //  errors are signed by special text
   const r = /1m(.*?)\u001b/g;
 
+  // console.log(file.toString());
+
   const problemExtensions = file.toString().match(r).map((val)=>{
       const pathArray = val.replace('1m','').replace('\u001b','').split('/');
       let x;
@@ -41,7 +44,9 @@ const processLog = () => new Promise(resolve => {
     }
     return ac;
   }, []);
+
   resolve(problemExtensions)
+  resolve()
 });
 
 /**
@@ -49,11 +54,11 @@ const processLog = () => new Promise(resolve => {
  * will handle any loads
  * @returns {Promise<any>}
  */
-const transfomErrorsToRequests = (widgetArray) => new Promise(resolve => {
+const transfomErrorsToRequests = (widgetArray, program) => new Promise(resolve => {
   console.log(widgetArray)
   const tmpObj ={}
   widgetArray.map( widget => {
-
+        return restObj()
   });
   resolve();
 });
@@ -62,9 +67,10 @@ const transfomErrorsToRequests = (widgetArray) => new Promise(resolve => {
  * Entry method to begin processing of errors
  * @returns {Promise<any>}
  */
-exports.analyzeLogs = () => new Promise( async (resolve) => {
-  const errors = await processLog();
+exports.analyzeLogs = program => new Promise( async (resolve) => {
+  const errors = await processLog(program);
   if(errors.length){
+    const widgetDescriptors = await restObj.apiCall('GET','/widgetDescriptors',null);
     await transfomErrorsToRequests(errors);
   }else{
     resolve();

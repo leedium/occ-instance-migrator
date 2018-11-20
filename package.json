@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/leedium/occ-instance-migrator#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "commander": "^2.19.0",
     "fs-extra": "^7.0.0",
     "node-zip": "^1.1.1",

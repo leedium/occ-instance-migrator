@@ -5,5 +5,20 @@
  * source code package.
  */
 
+const occTokenGenerator = require('./occ-token-generator');
+const axios = require("axios");
 
-// module.expor
+const restObj = (program) => {
+  //generateToken
+  occTokenGenerator.generateToken(program.targetserver, program.targetkey, 119000, true)
+  return {
+    apiCall(){
+
+    },
+    restify(){
+      return axios
+    }
+  }
+}
+
+module.exports = restObj
