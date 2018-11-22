@@ -167,11 +167,12 @@ exports.main = function(argv) {
    */
   async function start() {
 
-    console.log(program.sourceserver)
-
     try {
       await extensionsTransfer(program);
-      await analyzeLogs();
+
+      // console.log(program.sourceserver)
+
+      await analyzeLogs(program);
       if (program.includelayouts) {
         await plsuTransferAll(program);
       }

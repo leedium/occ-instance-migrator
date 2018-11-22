@@ -19,9 +19,10 @@ const program = require("commander");
 const axios = require("axios");
 
 const HTTPS_PREFIX = "https://";
-const DEFAULT_TIMEOUT = 119000;
+const DEFAULT_TIMEOUT = 3000;
 
-let token;
+let mainToken;
+let inited = false;
 
 
 if (typeof program.timeout === "undefined" || isNaN(program.timeout)) {
@@ -35,18 +36,20 @@ if (typeof program.timeout === "undefined" || isNaN(program.timeout)) {
  * @param refresh
  * @returns {*}
  */
-const loginToOCC = (adminServer, token, refresh = false) => axios({
-  method: "post",
-  url: refresh ? `${adminServer}/ccadmin/v1/refresh` : `${adminServer}/ccadmin/v1/login`,
-  responseType: "json",
-  params: {
-    "grant_type": "client_credentials"
-  },
-  headers: {
-    "Authorization": `Bearer ${token}`,
-    "content-type": "application/x-www-form-urlencoded"
-  }
-});
+const loginToOCC = (adminServer, token) => {
+  return axios({
+    method: "POST",
+    url: `${adminServer}/ccadmin/v1/login`,
+    responseType: "json",
+    params: {
+      "grant_type": "client_credentials"
+    },
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      "content-type": "application/x-www-form-urlencoded"
+    }
+  });
+};
 
 
 /**
@@ -55,33 +58,38 @@ const loginToOCC = (adminServer, token, refresh = false) => axios({
  * @param token
  * @param refresh
  */
-const generateToken = (server, token, repeat = false, timeout = DEFAULT_TIMEOUT) => {
-  server = server.indexOf(HTTPS_PREFIX) !== 0 ? `${HTTPS_PREFIX}${server}` : server;
-  loginToOCC(server, token, repeat)
-    .then(({ data }) => {
-      console.log(`old Token`, token);
+const generateToken = async (server, token, repeat, timeout) => {
+  return new Promise((resolve, reject) => {
+    server.indexOf(HTTPS_PREFIX) !== 0 ? `${HTTPS_PREFIX}${server}` : server;
+
+    const req = function ({ data }){
       console.log(`\n\nBearer ${data.access_token}`);
-      token = data.access_token;
-      setTimeout(() => {
-        generateToken(server, data.access_token, true, program.timeout);
-      }, timeout || DEFAULT_TIMEOUT);
-    })
-    .catch(err => {
-      console.log(Error(err));
-    });
+      mainToken = data.access_token;
+      // setTimeout(
+      //   () => {
+      //     generateToken(server, token, timeout);
+      //   },
+      //   DEFAULT_TIMEOUT
+      // );
+      // console.log("timeout", timeout);
+      resolve(data.access_token);
+    };
+    loginToOCC(server, token, inited)
+      .then((res) => {
+        req(res);
+      })
+      .catch(reject);
+  });
 };
 
 /**
  * Returns the currently saved token
  * @returns {*}
  */
-const getCurrentToken = () => token;
+const getCurrentToken = () => mainToken;
 
 //  Run if exectured from the command line
-if (require.main === module) {
-  generateToken(program.server, program.key, program.timeout);
-  return;
-}
+
 module.exports = {
   generateToken,
   getCurrentToken
