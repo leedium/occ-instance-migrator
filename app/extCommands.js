@@ -70,7 +70,6 @@ const transfomErrorsToRequests = (widgetArray, program) => new Promise(resolve =
  * @returns {Promise<any>}
  */
 const downloadAndRepackageWidgets = (items, errors, r, program) => new Promise((resolve, reject) => {
-  console.log("Downloading missing widgets.");
   const widgetsToDownload = items.filter(item => {
     return errors.indexOf(item.displayName) >= 0;
   }).reduce((a, { displayName, instances }) => {
@@ -89,7 +88,7 @@ const downloadAndRepackageWidgets = (items, errors, r, program) => new Promise((
           const extData = await this.createApplicationId(unzippedData);
           const updatedZipData = await this.updateExtJSON(extData, unzippedData);
         }catch(err){
-          console.log(err);
+          // console.log(err);
         }
 
 
@@ -97,7 +96,7 @@ const downloadAndRepackageWidgets = (items, errors, r, program) => new Promise((
       //  Retrieves the asset package from OCC
       getAssetPackage:  function() {
         return new Promise(async (resolve, reject) => {
-          console.log(1)
+          console.log(`Downloading missing widgets: ${this.displayName} ...`);
           try {
             const data = await r.apiCall(constants.HTTP_METHOD_GET, `/assetPackages/${instances[0].repositoryId}?type=widget&wrap=true`, null, "arraybuffer");
             resolve(data);
@@ -108,6 +107,7 @@ const downloadAndRepackageWidgets = (items, errors, r, program) => new Promise((
       },
       //  Unzips the package
       unzipAssetPackage: function(zipBuffer) {
+        console.log(`Unzipping  ${this.displayName}...`);
         // console.log(zipBuffer)
         return new Promise( resolve => {
           const zipJSON = new nodeZip(zipBuffer, { base64: false, checkCRC32: true });
@@ -122,12 +122,16 @@ const downloadAndRepackageWidgets = (items, errors, r, program) => new Promise((
 
       //  create a new ApplicationID(extensionId) to be used
       createApplicationId: function() {
+        console.log(`Create Widget Application Id ...`);
         const self = this;
         const dateTime = new Date();
         return new Promise(async resolve => {
-          const extData = await r.apiCall(constants.HTTP_METHOD_POST, `/applicationIds`, {
+          const extData = await r.apiCall(constants.HTTP_METHOD_POST, `/extensions/id`, {
             name: `Extension ID for ${self.displayName} extension requested by ccw on ${dateTime.toLocaleDateString()} at ${dateTime.toLocaleTimeString()}.`,
             type: `extension`
+          },"json",{
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "X-CCProfileType": "applicationAccess"
           });
           resolve(extData);
 

@@ -19,7 +19,7 @@ const program = require("commander");
 const axios = require("axios");
 
 const HTTPS_PREFIX = "https://";
-const DEFAULT_TIMEOUT = 3000;
+const DEFAULT_TIMEOUT = 240000;
 
 let mainToken;
 let inited = false;
