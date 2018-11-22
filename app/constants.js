@@ -58,3 +58,5 @@ exports.HTTP_METHOD_GET = "GET";
 exports.HTTP_METHOD_POST = "POST";
 exports.HTTP_METHOD_PUT = "PUT";
 
+exports.WIDGET_EXTENSION_JSON = "ext.json";
+
