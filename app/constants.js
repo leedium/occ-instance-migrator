@@ -54,3 +54,7 @@ exports.DCUSubFolder = {
   CCC: ".ccc"
 };
 
+exports.HTTP_METHOD_GET = "GET";
+exports.HTTP_METHOD_POST = "POST";
+exports.HTTP_METHOD_PUT = "PUT";
+

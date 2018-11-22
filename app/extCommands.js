@@ -18,6 +18,7 @@
  */
 
 const fs = require("fs-extra");
+const nodeZip = require("node-zip");
 
 const constants = require("./constants");
 const restObj = require("./restObj");
@@ -63,36 +64,71 @@ const transfomErrorsToRequests = (widgetArray, program) => new Promise(resolve =
 });
 
 /**
+ * Download the widgets that had issues in the transferAll, and unzips them to
+ * memory
+ * @param items
+ * @returns {Promise<any>}
+ */
+const downloadAndRepackageWidgets = (items, errors, r, program) => new Promise((resolve, reject) => {
+  console.log('Downloading missing widgets.');
+  const widgetsToDownload = items.filter(item => {
+    return errors.indexOf(item.displayName) >= 0;
+  }).reduce((a, { displayName, instances }) => {
+    a.push({
+      displayName,
+      repositoryId: instances[0].repositoryId,
+      getAssetPackage: function() {
+        return new Promise(async (resolve, reject) => {
+          try {
+            const data = await r.apiCall(constants.HTTP_METHOD_GET, `/assetPackages/${instances[0].repositoryId}?type=widget&wrap=true`, null, "arraybuffer");
+            const zip = new nodeZip(data, {base64: false, checkCRC32: true});
+            this.unzipAssetPackage({
+              displayName,
+              repositoryId: instances[0].repositoryId,
+              zip
+            })
+          } catch (err) {
+            reject(err);
+          }
+        });
+      },
+      unzipAssetPackage: function(zipInfo) {
+        resolve(this);
+      }
+    });
+    return a;
+  }, []);
+  // Promise.all(
+  //   widgetsToDownload.map(widget => widget.getAssetPackage())
+  // )
+  //   .then(res => {
+  //     console.log('Download complete.', );
+  //     resolve(res);
+  //   })
+  //   .catch(reject);
+});
+
+/**
+ * Unzips the listed zipfiles
+ * @param widgets
+ */
+const updateExtJSON = (widgets) => {
+  console.log('Unzipping missing widgets.');
+  console.log(widgets);
+};
+
+/**
  * Entry method to begin processing of errors
  * @param program
  * @returns {Promise<any>}
  */
 exports.analyzeLogs = program => new Promise(async (resolve) => {
-  const errors = await processLog(program);
-  if (errors.length) {
+  const errorWidgets = await processLog(program);
+  if (errorWidgets.length) {
     const r = restObj(program);
-    const { items } = await r.apiCall("GET", `${program.sourceserver}/ccadmin/v1/widgetDescriptors/instances?fields=instances,displayName`, null);
-    const widgetsToDownload = items.filter(item => {
-      return errors.indexOf(item.displayName) >= 0;
-    }).reduce((a, { displayName, instances }) => {
-      a.push({
-        displayName,
-        repositoryId: instances[0].repositoryId,
-        getAssetPackage: () => {
-          return new Promise(async (resolve, reject) => {
-            try {
-              const data = await r.apiCall("GET", `${program.sourceserver}/ccadmin/v1/assetPackages/${instances[0].repositoryId}?type=widget&wrap=true`, null, "arraybuffer");
-              console.log(data);
-              fs.writeFile(`${instances[0].repositoryId}.zip`, data, resolve);
-            }catch(err){
-              reject(err);
-            }
-          });
-        }
-      });
-      return a;
-    }, []);
-    widgetsToDownload
+    const { items } = await r.apiCall(constants.HTTP_METHOD_GET, `/widgetDescriptors/instances?fields=instances,displayName`, null);
+    const widgets = await downloadAndRepackageWidgets(items, errorWidgets, r, program);
+    // await updateExtJSON(widgets)
   } else {
     resolve();
   }
