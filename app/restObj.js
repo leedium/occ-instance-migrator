@@ -20,19 +20,21 @@ const axios = require("axios");
 
 const restObj = (program) => {
   return {
-    apiCall: (method, apiPath, data, responseType = "json", additionalHeaders) => {
+    apiCall: (server, key, method, apiPath, data, responseType = "json", additionalHeaders) => {
       return new Promise(async resolve => {
-
-        axios({
+        const reqObj = {
           method,
           data,
-          url: `${program.sourceserver}/ccadmin/v1${apiPath}`,
+          url: `${server}/ccadmin/v1${apiPath}`,
           responseType,
           headers: Object.assign({}, {
-            Authorization: `Bearer ${occTokenGenerator.getCurrentToken() || await occTokenGenerator.generateToken(program.sourceserver, program.sourcekey, false, 119000)}`,
+            Authorization: `Bearer ${occTokenGenerator.getCurrentToken() || 
+            await occTokenGenerator.generateToken(server, key)}`,
             "X-CCAsset-Language": "en"
           }, additionalHeaders)
-        })
+        };
+        // console.log(JSON.stringify(reqObj,null,2));
+        axios(reqObj)
           .then(res => {
             resolve(res.data);
           })

@@ -21,7 +21,7 @@ const axios = require("axios");
 const HTTPS_PREFIX = "https://";
 const DEFAULT_TIMEOUT = 240000;
 
-let mainToken;
+let tokens = {};
 let inited = false;
 
 
@@ -51,27 +51,18 @@ const loginToOCC = (adminServer, token) => {
   });
 };
 
-
 /**
  * Starts the tire to generate an access token
  * @param server
  * @param token
  * @param refresh
  */
-const generateToken = async (server, token, repeat, timeout) => {
+const generateToken = async (server, token) => {
   return new Promise((resolve, reject) => {
     server.indexOf(HTTPS_PREFIX) !== 0 ? `${HTTPS_PREFIX}${server}` : server;
-
     const req = function ({ data }){
-      console.log(`\n\nBearer ${data.access_token}`);
-      mainToken = data.access_token;
-      // setTimeout(
-      //   () => {
-      //     generateToken(server, token, timeout);
-      //   },
-      //   DEFAULT_TIMEOUT
-      // );
-      // console.log("timeout", timeout);
+      //  store the token(s) in a hash
+      tokens[server] = data.access_token;
       resolve(data.access_token);
     };
     loginToOCC(server, token, inited)
@@ -86,10 +77,7 @@ const generateToken = async (server, token, repeat, timeout) => {
  * Returns the currently saved token
  * @returns {*}
  */
-const getCurrentToken = () => mainToken;
-
-//  Run if exectured from the command line
-
+const getCurrentToken = (server) => tokens[server];
 module.exports = {
   generateToken,
   getCurrentToken

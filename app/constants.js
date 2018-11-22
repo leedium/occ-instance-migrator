@@ -57,6 +57,9 @@ exports.DCUSubFolder = {
 exports.HTTP_METHOD_GET = "GET";
 exports.HTTP_METHOD_POST = "POST";
 exports.HTTP_METHOD_PUT = "PUT";
+exports.HTTP_CONTENT_TYPE_JSON = "json";
 
 exports.WIDGET_EXTENSION_JSON = "ext.json";
+
+
 

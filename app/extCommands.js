@@ -57,9 +57,6 @@ const processLog = () => new Promise(resolve => {
  */
 const transfomErrorsToRequests = (widgetArray, program) => new Promise(resolve => {
   console.log(widgetArray);
-  const tmpObj = {};
-  widgetArray.map(widget => {
-  });
   resolve();
 });
 
@@ -76,81 +73,97 @@ const downloadAndRepackageWidgets = (items, errors, r, program) => new Promise((
 
     // make each widget an self contained generator to run the download
     // tasks independently.
-
-    a.push({
+    const widget = {
       displayName,
       repositoryId: instances[0].repositoryId,
       start: async function() {
         try {
-          const self = this;
-          const bufferData = await this.getAssetPackage();
-          const unzippedData =  this.unzipAssetPackage(bufferData);
-          const extData = await this.createApplicationId(unzippedData);
-          const updatedZipData = await this.updateExtJSON(extData, unzippedData);
-        }catch(err){
-          // console.log(err);
+          const getAssetPackageRes = await this.getAssetPackage();
+          const unzipAssetPackageRes = this.unzipAssetPackage(getAssetPackageRes);
+          const createApplicationIdRes = await this.createApplicationId(unzipAssetPackageRes);
+          const updateExtJSON = await this.updateExtJSON(createApplicationIdRes, unzipAssetPackageRes);
+          const rezipAndUploadToOCCRes = await this.uploadToOcc(updateExtJSON);
+        } catch (err) {
+          console.log(err);
         }
-
-
       },
+
       //  Retrieves the asset package from OCC
-      getAssetPackage:  function() {
-        return new Promise(async (resolve, reject) => {
+      getAssetPackage: function() {
+        return new Promise((resolve, reject) => {
           console.log(`Downloading missing widgets: ${this.displayName} ...`);
           try {
-            const data = await r.apiCall(constants.HTTP_METHOD_GET, `/assetPackages/${instances[0].repositoryId}?type=widget&wrap=true`, null, "arraybuffer");
-            resolve(data);
+            r.apiCall(
+              program.sourceserver,
+              program.sourcekey,
+              constants.HTTP_METHOD_GET,
+              `/assetPackages/${instances[0].repositoryId}?type=widget&wrap=true`,
+              null,
+              "arraybuffer"
+            )
+              .then(resolve);
+
           } catch (err) {
             reject(err);
           }
         });
       },
+
       //  Unzips the package
       unzipAssetPackage: function(zipBuffer) {
         console.log(`Unzipping  ${this.displayName}...`);
-        // console.log(zipBuffer)
-        return new Promise( resolve => {
-          const zipJSON = new nodeZip(zipBuffer, { base64: false, checkCRC32: true });
-          resolve(
-            {
-              displayName,
-              repositoryId: instances[0].repositoryId,
-              zipJSON
-            });
-        })
+        const zipJSON = new nodeZip(zipBuffer, { base64: false, checkCRC32: true });
+        return {
+          displayName,
+          repositoryId: instances[0].repositoryId,
+          zipJSON
+        };
       },
 
       //  create a new ApplicationID(extensionId) to be used
       createApplicationId: function() {
         console.log(`Create Widget Application Id ...`);
-        const self = this;
-        const dateTime = new Date();
-        return new Promise(async resolve => {
-          const extData = await r.apiCall(constants.HTTP_METHOD_POST, `/extensions/id`, {
-            name: `Extension ID for ${self.displayName} extension requested by ccw on ${dateTime.toLocaleDateString()} at ${dateTime.toLocaleTimeString()}.`,
-            type: `extension`
-          },"json",{
-            "Accept": "application/json, text/javascript, */*; q=0.01",
-            "X-CCProfileType": "applicationAccess"
-          });
-          resolve(extData);
-
+        return new Promise((resolve, reject) => {
+          const self = this;
+          const dateTime = new Date();
+          r.apiCall(
+            program.targetserver,
+            program.targetkey,
+            constants.HTTP_METHOD_POST,
+            `/extensions/id`, {
+              name: `Extension ID for ${self.displayName} extension requested by ccw on ${dateTime.toLocaleDateString()} at ${dateTime.toLocaleTimeString()}.`,
+              type: `extension`
+            }, constants.HTTP_CONTENT_TYPE_JSON, {
+              "Accept": "application/json, text/javascript, */*; q=0.01",
+              "X-CCProfileType": "applicationAccess"
+            })
+            .then(resolve);
         });
       },
 
       // updates ext.JSON with the required data for uploading
       updateExtJSON: function(extData, unzippedData) {
-        console.log("`xtData", extData);
-        console.log("unzippedData", unzippedData);
-        return Promise.resolve("dummy");
-      }
+        unzippedData.zipJSON.files["ext.json"]._data = unzippedData.zipJSON.files["ext.json"]._data
+          .replace("[Insert Created By here]", extData.createdById)
+          .replace("[Insert Description here]", extData.name)
+          .replace("[Insert Developer ID here]", "injected via occ-instance-migrator")
+          .replace("[Insert Extension ID here]", extData.id)
+          .replace("[Insert name here]", this.displayName)
+          .replace("[Insert Time Created here]", new Date().toLocaleString());
+        return unzippedData;
+      },
 
-    });
+      //  Rezips the in memory expanded zip and then uploads to the target OCCS instance
+      uploadToOcc: function() {
+
+      }
+    }
+
+    a.push(widget);
     return a;
   }, []);
   Promise.all(
-    widgetsToDownload.slice(0, 1).map(widget => widget.start())
-    // widgetsToDownload.map(widget => widget.getAssetPackage())
+    widgetsToDownload.map(widget => widget.start())
   )
     .then(res => {
       console.log("Download complete.");
@@ -168,7 +181,13 @@ exports.analyzeLogs = program => new Promise(async (resolve) => {
   const errorWidgets = await processLog(program);
   if (errorWidgets.length) {
     const r = restObj(program);
-    const { items } = await r.apiCall(constants.HTTP_METHOD_GET, `/widgetDescriptors/instances?fields=instances,displayName`, null);
+    const { items } = await r.apiCall(
+      program.sourceserver,
+      program.sourcekey,
+      constants.HTTP_METHOD_GET,
+      `/widgetDescriptors/instances?fields=instances,displayName`
+      , null
+    );
     const widgets = await downloadAndRepackageWidgets(items, errorWidgets, r, program);
   } else {
     resolve();
