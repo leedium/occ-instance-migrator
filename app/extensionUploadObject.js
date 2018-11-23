@@ -55,11 +55,13 @@ const extensionUploadObject = (program, displayName, instances) =>
       });
     },
 
+    // Get the ist of extensions from the source server
+    // getSourceExtensionList: function(){},
+
     //  Retrieves the asset package from OCC
     getAssetPackage: function() {
-      const self = this;
+      console.log(`Downloading missing widgets: ${this.displayName} ...`);
       return new Promise((resolve, reject) => {
-        console.log(`Downloading missing widgets: ${self.displayName} ...`);
         try {
           restObj.apiCall(
             program.sourceserver,
@@ -99,36 +101,32 @@ const extensionUploadObject = (program, displayName, instances) =>
           // File is created.
           // Read the ext.json and swap the values for the stored values.
           // the ext.json already has predefined structure so it's just a matter of updating them
-          const today =  new Date();
-          const json = await fs.readJSON(extensionJSONName);
-          json.createdBy = appRes.createdById;
-          json.description = appRes.name;
-          json.developerID = "injected via occ-instance-migrator";
-          json.extensionID = appRes.id;
-          json.name = self.displayName;
-          json.timeCreated = formatDateForExtenstion(new Date());
+          const json = fs.readJSON(extensionJSONName)
+            .then(resJSON => {
+              resJSON.createdBy = appRes.createdById;
+              resJSON.description = appRes.name;
+              resJSON.developerID = "injected via occ-instance-migrator";
+              resJSON.extensionID = appRes.id;
+              resJSON.name = self.displayName;
+              resJSON.timeCreated = formatDateForExtenstion(new Date());
+              fs.writeJSONSync(normalizePath(extensionJSONName), resJSON);
 
-          console.log(json)
+              const newZip = new zip();
 
-          //this will be used for another flwo
-          await fs.writeJSONSync(normalizePath(extensionJSONName), json);
-
-          const newZip = new zip();
-
-          // rezip and retun for processing
-          process.chdir(normalizePath(extractFilePath));
-          walker(normalizePath('.'))
-            .on("file", function(file) {
-              // console.log(file)
-              newZip.file(file, fs.readFileSync(normalizePath(file), "utf-8"));
-            }).on("end", function() {
-            // process.chdir(normalizePath('../../'));
-            // console.log(process.cwd());
-            // console.log(newZip)
-            resolve(newZip);
-            // After all files traversed, generate and resolve the new zip
-          });
-
+              // rezip and retun for processing
+              process.chdir(normalizePath(extractFilePath));
+              walker(normalizePath('.'))
+                .on("file", function(file) {
+                  // console.log(file)
+                  newZip.file(file, fs.readFileSync(normalizePath(file), "utf-8"));
+                }).on("end", function() {
+                // process.chdir(normalizePath('../../'));
+                // console.log(process.cwd());
+                // console.log(newZip)
+                resolve(newZip);
+                // After all files traversed, generate and resolve the new zip
+              });
+            })
         });
       });
     },
@@ -136,7 +134,6 @@ const extensionUploadObject = (program, displayName, instances) =>
     //  create a new ApplicationID(extensionId) to be used
     createApplicationId: function() {
       const self = this;
-      console.log(`Create Widget Application Id ...`);
       return new Promise((resolve) => {
         const dateTime = new Date();
         restObj.apiCall(
@@ -153,7 +150,6 @@ const extensionUploadObject = (program, displayName, instances) =>
           .then(resolve);
       });
     },
-
 
     //  Rezips the in memory expanded zip and then uploads to the target OCCS instance
     uploadToOcc: function({repositoryId }, updatedZip) {
@@ -178,16 +174,12 @@ const extensionUploadObject = (program, displayName, instances) =>
             "json"
           );
 
-
-          // console.log('token', token);
           // payload for doFileSegmentUpload
           const payloadUpload = {
             filename: payloadInit.filename,
             file: updatedZip.generate({ base64: true }),
             index: 0
           };
-
-          // console.log('payloadUpload', payloadUpload)
 
           // doFileSegmentUpload
           const uploadedFiles = await restObj.apiCall(
@@ -198,7 +190,6 @@ const extensionUploadObject = (program, displayName, instances) =>
             payloadUpload
           );
 
-          // console.log('uploadedFiles', uploadedFiles);
           // create extension
           await restObj.apiCall(
             program.targetserver,

@@ -20,7 +20,7 @@
 const fs = require("fs-extra");
 
 const constants = require("./constants");
-const extensionUploadObject = require('./extensionUploadObject')
+const extensionUploadObject = require("./extensionUploadObject");
 const restObj = require("./restObj");
 
 /**
@@ -68,18 +68,20 @@ const transfomErrorsToRequests = (widgetArray, program) => new Promise(resolve =
  * @returns {Promise<any>}
  */
 const downloadAndRepackageWidgets = (items, errors, program) => new Promise((resolve, reject) => {
-  const widgetsToDownload = items.filter(item => {
-    return errors.indexOf(item.displayName) >= 0;
-  }).reduce((a, { displayName, instances }) => {
-
-    // make each widget an self contained generator to run the download
-    // tasks independently.
-    const widget = extensionUploadObject(program,displayName,instances);
-    a.push(widget);
-    return a;
-  }, []);
+  const widgetsToDownload =
+    items
+      .filter(item => {
+        return errors.indexOf(item.displayName) >= 0;
+      })
+      .reduce((a, { displayName, instances }) => {
+        // make each widget an self contained generator to run the download
+        // tasks independently.
+        const widget = extensionUploadObject(program, displayName, instances);
+        a.push(widget);
+        return a;
+      }, []);
   Promise.all(
-    widgetsToDownload.slice(0, 1).map(widget => widget.start())
+    widgetsToDownload.slice(1).map(widget => widget.start())
   )
     .then(() => {
       console.log("Download complete.");
@@ -105,7 +107,7 @@ exports.analyzeLogs = program => new Promise(async (resolve) => {
       `/widgetDescriptors/instances?fields=instances,displayName`
       , null
     );
-    const widgets = await downloadAndRepackageWidgets(items, errorWidgets, program);
+    await downloadAndRepackageWidgets(items, errorWidgets, program);
   } else {
     resolve();
   }
