@@ -22,7 +22,7 @@
  * @returns {Promise<any>}
  */
 
-const {spawn} = require('child_process');
+const { spawn } = require("child_process");
 const git = require("simple-git");
 const upath = require("upath");
 const fs = require("fs-extra");
@@ -144,7 +144,7 @@ const _createBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_
  */
 const _getDiffs = async (taskDelay = TASK_DELAY) => {
   return new Promise((resolve) => {
-    const diffFile = (upath.join(__dirname,'../',DIFF_TEXT_FILE));
+    const diffFile = (upath.join(__dirname, "../", DIFF_TEXT_FILE));
     const cmd = spawn("git", ["whatchanged", "-1", "--pretty=\"\""], {
       shell: true
     });
@@ -158,8 +158,8 @@ const _getDiffs = async (taskDelay = TASK_DELAY) => {
   });
 };
 
-const _gitIgnore = async  () => {
-  return new Promise ((resolve,reject) => fs.outputFile(upath.join(GIT_IGNORE_PATH), '.ccc/\ntmp/\nnode_modules/')
+const _gitIgnore = async () => {
+  return new Promise((resolve, reject) => fs.outputFile(upath.join(GIT_IGNORE_PATH), ".ccc/\ntmp/\nnode_modules/")
     .then(resolve)
     .catch(reject)
   );

@@ -1,0 +1,108 @@
+:000000 100644 0000000 48af8da A	element/Footer Links cc-link/element.js
+:000000 100644 0000000 662c314 A	element/Footer Links cc-link/element.template
+:000000 100644 0000000 ad5e091 A	element/Product Delivery Restrictions/element.js
+:000000 100644 0000000 e3dbce6 A	element/Product Delivery Restrictions/element.template
+:100644 100644 079fabb d935055 M	stack/Accordion/instances/Accordion/stack-variables.less
+:100644 100644 911b050 7077430 M	stack/Accordion/instances/Accordion/stack.less
+:100644 100644 db80131 0cb2005 M	stack/Popup Stack/instances/Popup Stack/stack.less
+:100644 000000 554ad03 0000000 D	widget/Breadcrumb/instances/Product Listing Breadcrumb v3/display.template
+:100644 000000 59673a8 0000000 D	widget/Breadcrumb/instances/Product Listing Breadcrumb v3/locales/en/ns.breadcrumb.json
+:100644 000000 b9e34e3 0000000 D	widget/Breadcrumb/instances/Product Listing Breadcrumb v3/widget.less
+:100644 000000 74f609d 0000000 D	widget/Breadcrumb/instances/Product Listing Breadcrumb v3/widgetInstanceMetadata.json
+:100644 000000 554ad03 0000000 D	widget/Breadcrumb/instances/Search Results Breadcrumb v3/display.template
+:100644 000000 59673a8 0000000 D	widget/Breadcrumb/instances/Search Results Breadcrumb v3/locales/en/ns.breadcrumb.json
+:100644 000000 b9e34e3 0000000 D	widget/Breadcrumb/instances/Search Results Breadcrumb v3/widget.less
+:100644 000000 3972782 0000000 D	widget/Breadcrumb/instances/Search Results Breadcrumb v3/widgetInstanceMetadata.json
+:000000 100644 0000000 f2af75f A	widget/Breadcrumb/module/js/extendbreadcrumb_v3.js
+:000000 100644 0000000 13af172 A	widget/Breadcrumb/module/js/extendbreadcrumb_v4.js
+:100644 100644 11ce9fc 3fdeb11 M	widget/Checkout Cart Order Summary - Terms/config/configMetadata.json
+:100644 100644 8e7b58e d173bfe M	widget/Child Collection List Widget/config/configMetadata.json
+:100644 100644 b483b7f 03de9aa M	widget/David Lee CCW/config/configMetadata.json
+:100644 100644 634c4a0 93a70fa M	widget/Header/instances/Header - Basic Minimal/display.template
+:100644 100644 a2fefd6 399c30c M	widget/Header/instances/Header - Basic Widget/display.template
+:100644 100644 ffee6aa 478e1d6 M	widget/Header/instances/Header Widget SSO/display.template
+:100644 100644 106e830 4e1ed43 M	widget/Header/instances/Header Widget v10/display.template
+:100644 100644 10ebc16 c2016df M	widget/Header/instances/Header Widget/display.template
+:100644 100644 355a72d b93c397 M	widget/Header/instances/OOTB Login Register Links/display.template
+:100644 100644 66c08bb a539d2c M	widget/HomeChoice Email Sign Up Widget/config/configMetadata.json
+:100644 100644 5df1716 7ab4278 M	widget/HomeChoice Sign Up Widget/config/configMetadata.json
+:000000 100644 0000000 d6aa6e6 A	widget/Homechoice - Contact Us/display.template
+:000000 100644 0000000 0ddf66e A	widget/Homechoice - Contact Us/instances/Contact Us/display.template
+:000000 100644 0000000 7283ab9 A	widget/Homechoice - Contact Us/instances/Contact Us/locales/en/ns.hccontactus.json
+:000000 100644 0000000 456dac7 A	widget/Homechoice - Contact Us/instances/Contact Us/widget.less
+:000000 100644 0000000 a6f1808 A	widget/Homechoice - Contact Us/instances/Contact Us/widgetInstanceMetadata.json
+:000000 100644 0000000 70becef A	widget/Homechoice - Contact Us/js/hcContactUs.js
+:000000 100644 0000000 7283ab9 A	widget/Homechoice - Contact Us/locales/en/ns.hccontactus.json
+:000000 100644 0000000 6ca9df8 A	widget/Homechoice - Contact Us/widget.less
+:000000 100644 0000000 7e59280 A	widget/Homechoice - Contact Us/widgetMetadata.json
+:100644 100644 4d1468e 10b38ac M	widget/Homechoice - Hero Banner Carousel/config/configMetadata.json
+:100644 100644 ac3283f e48001e M	widget/Homechoice - Single Static Hero Banner/config/configMetadata.json
+:100644 100644 4d1468e 10b38ac M	widget/Homechoice - Top Brands/config/configMetadata.json
+:100644 100644 127ba6b 7245e2e M	widget/Homechoice Collection Navigation (Mobile Enhanced)/config/configMetadata.json
+:100644 100644 184e13c f150616 M	widget/Homechoice Collections Carousel/config/configMetadata.json
+:100644 100644 f7cf51b 4360705 M	widget/Homechoice Footer/config/configMetadata.json
+:100644 100644 d4ddcc0 a644568 M	widget/Product Listing Widget v9/config/configMetadata.json
+:100644 000000 9dcf442 0000000 D	widget/Product Listing/instances/Product Listing 18A/display.template
+:100644 000000 4d329e9 0000000 D	widget/Product Listing/instances/Product Listing 18A/locales/en/ns.productlisting.json
+:100644 000000 25ac475 0000000 D	widget/Product Listing/instances/Product Listing 18A/widget.less
+:100644 000000 710fab8 0000000 D	widget/Product Listing/instances/Product Listing 18A/widgetInstanceMetadata.json
+:000000 100644 0000000 486b013 A	widget/Request a Catalogue Form/display.template
+:000000 100644 0000000 e4c7bf8 A	widget/Request a Catalogue Form/instances/Request a Catalogue - Form/display.template
+:000000 100644 0000000 2dd7b38 A	widget/Request a Catalogue Form/instances/Request a Catalogue - Form/locales/en/ns.requestcatalogueform.json
+:000000 100644 0000000 f5474b4 A	widget/Request a Catalogue Form/instances/Request a Catalogue - Form/widget.less
+:000000 100644 0000000 057470f A	widget/Request a Catalogue Form/instances/Request a Catalogue - Form/widgetInstanceMetadata.json
+:000000 100644 0000000 b7c6490 A	widget/Request a Catalogue Form/js/requestCatalogueForm.js
+:000000 100644 0000000 a3fff6a A	widget/Request a Catalogue Form/locales/en/ns.requestcatalogueform.json
+:000000 100644 0000000 13a6983 A	widget/Request a Catalogue Form/widget.less
+:000000 100644 0000000 f4da798 A	widget/Request a Catalogue Form/widgetMetadata.json
+:100644 100644 9a9eeb6 c32affd M	widget/Search Results One Item Redirect/config/configMetadata.json
+:100644 100644 c12cddb 3b8fbe6 M	widget/Web Content/instances/404 Custom text/display.template
+:100644 100644 8ba3023 29eea0d M	widget/Web Content/instances/7ways to pay/display.template
+:100644 100644 1978206 ce8c5c2 M	widget/Web Content/instances/7ways/display.template
+:100644 100644 046cdb8 f4edd40 M	widget/Web Content/instances/ATM Text/display.template
+:100644 100644 5f7a648 ad95785 M	widget/Web Content/instances/Account Online/display.template
+:100644 100644 2cb495d 06404f6 M	widget/Web Content/instances/BOTSWANA/display.template
+:100644 100644 82151c4 61f3eb9 M	widget/Web Content/instances/Bank Text/display.template
+:100644 100644 6e2bf00 bd70925 M	widget/Web Content/instances/Become a Affiliate/display.template
+:100644 100644 611ce27 4b77990 M	widget/Web Content/instances/Card Text/display.template
+:100644 100644 ce4fc5a ef806d4 M	widget/Web Content/instances/CheckOut Important Information/display.template
+:100644 000000 91e2ff1 0000000 D	widget/Web Content/instances/Childrens bedding - shop by room/display.template
+:100644 000000 b03a77b 0000000 D	widget/Web Content/instances/Childrens bedding - shop by room/widget.less
+:100644 000000 5666a98 0000000 D	widget/Web Content/instances/Childrens bedding - shop by room/widgetInstanceMetadata.json
+:100644 100644 dbb5d81 08db3fd M	widget/Web Content/instances/Contact Info/display.template
+:100644 100644 e8e10fc b71fc5d M	widget/Web Content/instances/Contact Me Options/display.template
+:100644 100644 453c160 1a6643d M	widget/Web Content/instances/Credit ImgText/display.template
+:100644 100644 f025de1 f95e247 M	widget/Web Content/instances/Credit Text/display.template
+:100644 100644 d8f0624 7208b1a M	widget/Web Content/instances/Earn at HC/display.template
+:100644 100644 2d0178a 6e4720e M	widget/Web Content/instances/Easy Pay Credit/display.template
+:100644 100644 795549b 4efe842 M	widget/Web Content/instances/Easy Terms Page/display.template
+:100644 100644 d760885 f6c4e25 M	widget/Web Content/instances/FAQ Banner/display.template
+:100644 100644 d0784a0 4a19bcd M	widget/Web Content/instances/Footer - Minimal/display.template
+:100644 100644 8445e5a f0a30d2 M	widget/Web Content/instances/Free Delivery - Skinny Banner/display.template
+:100644 100644 e92c93f 363b01e M	widget/Web Content/instances/Get it on credit/display.template
+:100644 100644 b5adf69 83b669d M	widget/Web Content/instances/Help You/display.template
+:100644 100644 9a56683 beb85d3 M	widget/Web Content/instances/How to pay/display.template
+:100644 100644 af267d6 492088e M	widget/Web Content/instances/Login Register Note/display.template
+:100644 100644 b3311c0 a28207d M	widget/Web Content/instances/Manage account/display.template
+:100644 100644 a70efc5 29d0100 M	widget/Web Content/instances/NAMIBIA/display.template
+:100644 100644 74d144f 3737c02 M	widget/Web Content/instances/Online Shopping/display.template
+:100644 100644 1561e28 c4dda14 M	widget/Web Content/instances/Online Text/display.template
+:100644 100644 f2e4bf4 783a9a9 M	widget/Web Content/instances/Payment Tips/display.template
+:100644 100644 e42b737 4677121 M	widget/Web Content/instances/Payment types/display.template
+:100644 100644 4d3c9ad 9a8319c M	widget/Web Content/instances/Post text/display.template
+:100644 100644 253159f 4a57cef M	widget/Web Content/instances/Ryan_Top_Category_Title/display.template
+:100644 100644 9424549 7a5449c M	widget/Web Content/instances/SOUTH AFRICA/display.template
+:100644 100644 b5a3c91 428ef03 M	widget/Web Content/instances/Secondary header/display.template
+:100644 100644 62f562a 49f7986 M	widget/Web Content/instances/Shop Online/display.template
+:100644 000000 282280a 0000000 D	widget/Web Content/instances/contact us/display.template
+:100644 000000 b03a77b 0000000 D	widget/Web Content/instances/contact us/widget.less
+:100644 000000 aa13824 0000000 D	widget/Web Content/instances/contact us/widgetInstanceMetadata.json
+:100644 000000 7110404 0000000 D	widget/Web Content/instances/request-catalogue/display.template
+:100644 000000 b03a77b 0000000 D	widget/Web Content/instances/request-catalogue/widget.less
+:100644 000000 6aaf038 0000000 D	widget/Web Content/instances/request-catalogue/widgetInstanceMetadata.json
+:100644 000000 89e9632 0000000 D	widget/Web Content/instances/shop by room - content seperator/display.template
+:100644 000000 b03a77b 0000000 D	widget/Web Content/instances/shop by room - content seperator/widget.less
+:100644 000000 3ad7217 0000000 D	widget/Web Content/instances/shop by room - content seperator/widgetInstanceMetadata.json
+:100644 000000 d181c0f 0000000 D	widget/Web Content/instances/shop-by-room/display.template
+:100644 000000 b03a77b 0000000 D	widget/Web Content/instances/shop-by-room/widget.less
+:100644 000000 9ab9caf 0000000 D	widget/Web Content/instances/shop-by-room/widgetInstanceMetadata.json

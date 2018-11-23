@@ -31,6 +31,8 @@ exports.BRANCH_MASTER = "master";
 exports.BRANCH_SOURCE = "source";
 exports.BRANCH_TARGET = "target";
 
+exports.LOGFILE_SEPARATOR = "[35m[1m";
+
 exports.ExtensionTypes = {
   WIDGET: "widget",
   ELEMENT: "element",
@@ -51,4 +53,13 @@ exports.DCUSubFolder = {
   INSTANCES: "instances",
   CCC: ".ccc"
 };
+
+exports.HTTP_METHOD_GET = "GET";
+exports.HTTP_METHOD_POST = "POST";
+exports.HTTP_METHOD_PUT = "PUT";
+exports.HTTP_CONTENT_TYPE_JSON = "json";
+
+exports.WIDGET_EXTENSION_JSON = "ext.json";
+
+
 
