@@ -85,7 +85,9 @@ const downloadAndRepackageWidgets = (items, errors, program) => new Promise((res
       console.log("Download complete.");
       resolve();
     })
-    .catch(reject);
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 /**
