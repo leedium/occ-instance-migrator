@@ -42,7 +42,7 @@ const deleteFilePath = require("./fileCommands").deleteFilePath;
 const makeTmpFolder = require("./fileCommands").makeTmpFolder;
 const processDiffs = require("./fileCommands").processDiffs;
 
-const analyzeLogs = require('./extCommands').analyzeLogs;
+const analyzeLogs = require('./extensionCommands').analyzeLogs;
 
 /**
  * export.main Required for the bin (global) module export
