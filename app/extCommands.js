@@ -70,7 +70,7 @@ const downloadAndRepackageWidgets = (items, errors, r, program) => new Promise((
   const widgetsToDownload = items.filter(item => {
     return errors.indexOf(item.displayName) >= 0;
   }).reduce((a, { displayName, instances }) => {
-
+    const self = this;
     // make each widget an self contained generator to run the download
     // tasks independently.
     const widget = {
@@ -83,6 +83,7 @@ const downloadAndRepackageWidgets = (items, errors, r, program) => new Promise((
           const createApplicationIdRes = await this.createApplicationId(unzipAssetPackageRes);
           const updateExtJSON = await this.updateExtJSON(createApplicationIdRes, unzipAssetPackageRes);
           const rezipAndUploadToOCCRes = await this.uploadToOcc(updateExtJSON);
+          const uploadToOccRes = await this.uploadToOcc(createApplicationIdRes,getAssetPackageRes);
         } catch (err) {
           console.log(err);
         }
@@ -154,16 +155,36 @@ const downloadAndRepackageWidgets = (items, errors, r, program) => new Promise((
       },
 
       //  Rezips the in memory expanded zip and then uploads to the target OCCS instance
-      uploadToOcc: function() {
+      uploadToOcc: function({displayName, repositoryId, zipJSON}) {
+        return new Promise(async (resolve, reject) => {
+          const newZip = zipJSON.generate({base64:false,compression:'DEFLATE'});
 
+          const payload = {
+            "filename": `/extensions/oim_${repositoryId}.zip`,
+            "segments": 1
+          };
+
+          const startFileUpload = await r.apiCall(
+            program.sourceserver,
+            program.sourcekey,
+            constants.HTTP_METHOD_PUT,
+            `/files`,
+            payload,
+            "json"
+          );
+
+          console.log(startFileUpload)
+
+
+        })
       }
-    }
+    };
 
     a.push(widget);
     return a;
   }, []);
   Promise.all(
-    widgetsToDownload.map(widget => widget.start())
+    widgetsToDownload.slice(0,1).map(widget => widget.start())
   )
     .then(res => {
       console.log("Download complete.");
