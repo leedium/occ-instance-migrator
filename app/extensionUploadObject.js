@@ -55,14 +55,10 @@ const extensionUploadObject = (program, displayName, instances) =>
       });
     },
 
-    // Get the ist of extensions from the source server
-    // getSourceExtensionList: function(){},
-
     //  Retrieves the asset package from OCC
     getAssetPackage: function() {
       console.log(`Downloading missing widgets: ${this.displayName} ...`);
       return new Promise((resolve, reject) => {
-        try {
           restObj.apiCall(
             program.sourceserver,
             program.sourcekey,
@@ -72,10 +68,6 @@ const extensionUploadObject = (program, displayName, instances) =>
             "arraybuffer"
           )
             .then(resolve);
-
-        } catch (err) {
-          reject(err);
-        }
       });
     },
 

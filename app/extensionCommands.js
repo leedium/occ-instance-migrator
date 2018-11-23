@@ -100,6 +100,15 @@ const downloadAndRepackageWidgets = (items, errors, program) => new Promise((res
 exports.analyzeLogs = program => new Promise(async (resolve) => {
   const errorWidgets = await processLog(program);
   if (errorWidgets.length) {
+    // get a list of widget instance from the source server and filter them by name
+    await restObj.apiCall(
+      program.sourceserver,
+      program.sourcekey,
+      constants.HTTP_METHOD_GET,
+      `/assetPackages/${instances[0].repositoryId}?type=widget&wrap=true`,
+      null,
+      "arraybuffer"
+    );
     const { items } = await restObj.apiCall(
       program.sourceserver,
       program.sourcekey,
