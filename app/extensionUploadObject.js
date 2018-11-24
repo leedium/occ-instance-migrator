@@ -30,22 +30,22 @@ const restObj = require("./restObj");
 const extensionUploadObject = (program, { name, version, zipPath, developerId, description, creationTime }) =>
   ({
     // Starts the download and retrieval process
+    appRes: null,
+    updatedZip: null,
     start: function() {
+      const self = this;
       return new Promise(async (resolve, reject) => {
+        console.log(`Installing  ${name} `);
         try {
           const zipBuffer = await this.getAssetPackage();
-          console.log(`Downloading  ${name} complete.`, zipBuffer);
-          const appRes = await this.createApplicationId();
-          const updatedZip = await this.updateZipContents(zipBuffer, appRes);
-          await this.uploadToOcc(appRes, updatedZip)
-            .then(resolve);
+          self.appRes = await this.createApplicationId();
+          self.updatedZip = await this.updateZipContents(zipBuffer, self.appRes);
           resolve();
         } catch (err) {
           reject(err);
         }
       });
     },
-
     //  Retrieves the asset package from OCC
     getAssetPackage: function() {
       return new Promise((resolve, reject) => {
@@ -102,8 +102,10 @@ const extensionUploadObject = (program, { name, version, zipPath, developerId, d
     },
 
     //  Rezips the in memory expanded zip and then uploads to the target OCCS instance
-    uploadToOcc: function({ repositoryId }, updatedZip) {
+    uploadToOcc: function() {
       console.log(`Uploading ${name} to ${program.targetserver}.`);
+      const self = this;
+      const { repositoryId } = this.appRes;
       return new Promise(async (resolve) => {
         try {
           const filename = `oim_${repositoryId}.zip`;
@@ -127,7 +129,7 @@ const extensionUploadObject = (program, { name, version, zipPath, developerId, d
           // payload for doFileSegmentUpload
           const payloadUpload = {
             filename: payloadInit.filename,
-            file: updatedZip.generate({ base64: true }),
+            file: self.updatedZip.generate({ base64: true }),
             index: 0
           };
 
@@ -149,7 +151,7 @@ const extensionUploadObject = (program, { name, version, zipPath, developerId, d
             { name: filename }
           )
             .then(() => {
-              console.log(`Extension ${name} installed on ${program.targetserver}. \n`);
+              console.log(`Extension ${name} installed on ${program.targetserver}.`);
               resolve();
             });
         } catch (e) {
