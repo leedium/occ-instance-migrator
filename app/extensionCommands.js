@@ -48,18 +48,6 @@ const processLog = () => new Promise(resolve => {
 });
 
 /**
- * This method converts the error responses to promises that
- * will handle any loads
- * @param widgetArray
- * @param program
- * @returns {Promise<any>}
- */
-const transfomErrorsToRequests = (widgetArray, program) => new Promise(resolve => {
-  console.log(widgetArray);
-  resolve();
-});
-
-/**
  * Download the widgets that had issues in the transferAll, and unzips them to
  * memory
  * @param items
@@ -69,17 +57,12 @@ const transfomErrorsToRequests = (widgetArray, program) => new Promise(resolve =
  */
 const downloadAndRepackageWidgets = (errors, program) => new Promise((resolve, reject) => {
   const widgetsToDownload =
-    // items
-    //   .filter(item => {
-    //     return errors.indexOf(item.displayName) >= 0;
-    //   })
-    //   .reduce((a, { displayName, instances }) => {
     errors.reduce((a, widget) => {
-        // make each widget an self contained generator to run the download
-        // tasks independently.
-        a.push(extensionUploadObject(program, widget));
-        return a;
-      }, []);
+      // make each widget an self contained generator to run the download
+      // tasks independently.
+      a.push(extensionUploadObject(program, widget));
+      return a;
+    }, []);
   Promise.all(
     widgetsToDownload.map(widget => widget.start())
   )
@@ -116,39 +99,21 @@ exports.analyzeLogs = program => new Promise(async (resolve) => {
       , null
     );
 
-    var missingWidgets = sourceInstances.items.reduce((a, item) => {
-      const { displayName, version, latestVersion, id } = item;
-      // console.log(displayName, version, latestVersion, id);
+    const missingWidgets = sourceInstances.items.reduce((a, item) => {
       const doesExist = targetInstances.items.find((targetItem) => {
         return targetItem.displayName === item.displayName;
       });
       if (typeof doesExist === "undefined") {
-        const {displayName, instances} = item;
+        const { displayName, version, instances } = item;
         a.push({
           displayName,
+          version,
           instanceId: instances[0].id
         });
       }
       return a;
     }, []);
-
-    // console.log(errorWidgets);
-    // console.log(missingWidgets);
-
-    // console.log(sourceInstances,'\n\n\n\n')
-    // console.log(targetInstances)
-    //
-
-
-    //
-    // const { items } = await restObj.apiCall(
-    //   program.sourceserver,
-    //   program.sourcekey,
-    //   constants.HTTP_METHOD_GET,
-    //   `/widgetDescriptors/instances?fields=instances,displayName`
-    //   , null
-    // );
-    await downloadAndRepackageWidgets(missingWidgets, program);
+    await downloadAndRepackageWidgets(missingWidgets.slice(1, 2), program);
     resolve();
   } else {
     resolve();

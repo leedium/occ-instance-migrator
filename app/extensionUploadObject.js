@@ -25,9 +25,7 @@ const constants = require("./constants");
 const restObj = require("./restObj");
 const formatDateForExtenstion = require("./utils").formatDateForExtenstion;
 
-
 const normalizePath = path => upath.normalize(path);
-
 
 /**
  *
@@ -36,7 +34,7 @@ const normalizePath = path => upath.normalize(path);
  * @param instances
  * @returns {{displayName: *, repositoryId: *, start: (function(): Promise<any>), getAssetPackage: (function(): Promise<any>), unzipAssetPackage: unzipAssetPackage, createApplicationId: (function(): Promise<any>), uploadToOcc: (function({displayName?: *, repositoryId: *, zipJSON: *}): Promise<any>)}}
  */
-const extensionUploadObject = (program, { displayName, instanceId }) =>
+const extensionUploadObject = (program, { displayName, version, instanceId }) =>
   ({
     displayName,
     instanceId: instanceId,
@@ -46,12 +44,10 @@ const extensionUploadObject = (program, { displayName, instanceId }) =>
         try {
           const zipBuffer = await this.getAssetPackage();
           console.log(`Downloading  ${this.displayName} complete.`);
-          // console.log(displayName, instanceId)
           const appRes = await this.createApplicationId();
           const updatedZip = await this.unzipAssetPackage(zipBuffer, appRes);
-          resolve();
-          // await this.uploadToOcc(appRes, updatedZip)
-          //   .then(resolve)
+          await this.uploadToOcc(appRes, updatedZip)
+            .then(resolve)
         } catch (err) {
           reject(err);
         }
@@ -76,13 +72,12 @@ const extensionUploadObject = (program, { displayName, instanceId }) =>
 
     //  Unzips the package
     unzipAssetPackage: function(zipBuffer, appRes) {
-      const self = this;
       return new Promise(async function(resolve) {
         const zipRoot = `./.zip`;
         const extractRoot = `./.ext`;
-        const filename = `${self.displayName}.zip`;
+        const filename = `${displayName}.zip`;
         const zipFilePath = `${zipRoot}/${filename}`;
-        const extractFilePath = `${extractRoot}/${self.displayName}`;
+        const extractFilePath = `${extractRoot}/${displayName}`;
         const extensionJSONName = `${extractFilePath}/ext.json`;
         const data = new zip(zipBuffer).generate({ base64: false, compression: "DEFLATE" });
 
@@ -98,32 +93,30 @@ const extensionUploadObject = (program, { displayName, instanceId }) =>
           // the ext.json already has predefined structure so it's just a matter of updating them
           const json = fs.readJSON(extensionJSONName)
             .then(function(resJSON) {
+              console.log('DL:', version, displayName)
               resJSON.createdBy = appRes.createdById;
               resJSON.description = appRes.name;
               resJSON.developerID = "injected via occ-instance-migrator";
               resJSON.extensionID = appRes.id;
-              resJSON.name = self.displayName;
+              resJSON.name = displayName;
+              resJSON.version = version;
               resJSON.timeCreated = formatDateForExtenstion(new Date());
               fs.writeJSON(normalizePath(extensionJSONName), resJSON)
                 .then(function() {
-                  console.log(`Updated ${self.displayName}.`);
+                  console.log(`Updated ${displayName}.`);
                   const newZip = new zip();
                   // rezip and retun for processing
                   process.chdir(normalizePath(extractFilePath));
                   walker(normalizePath("."))
                     .on("file", function(file) {
-                      // console.log(file)
                       newZip.file(file, fs.readFileSync(normalizePath(file), "utf-8"));
                     }).on("end", function() {
-                    // process.chdir(normalizePath('../../'));
-                    // console.log(process.cwd());
-                    // console.log(newZip)
                     resolve(newZip);
                   });
                   // After all files traversed, generate and resolve the new zip
                 });
             }).catch(function(err) {
-              console.log(`${self.displayName}:${err.message}`);
+              console.log(`${displayName}:${err.message}`);
             });
         });
       });
@@ -131,7 +124,6 @@ const extensionUploadObject = (program, { displayName, instanceId }) =>
 
     //  create a new ApplicationID(extensionId) to be used
     createApplicationId: function() {
-      const self = this;
       return new Promise((resolve) => {
         const dateTime = new Date();
         restObj.apiCall(
@@ -139,7 +131,7 @@ const extensionUploadObject = (program, { displayName, instanceId }) =>
           program.targetkey,
           constants.HTTP_METHOD_POST,
           `/extensions/id`, {
-            name: `${self.displayName} by occ-instance-migrator on ${dateTime.toLocaleDateString()} at ${dateTime.toLocaleTimeString()}.`,
+            name: `${displayName} by occ-instance-migrator on ${dateTime.toLocaleDateString()} at ${dateTime.toLocaleTimeString()}.`,
             type: `extension`
           }, constants.HTTP_CONTENT_TYPE_JSON, {
             "Accept": "application/json, text/javascript, */*; q=0.01",
@@ -151,8 +143,7 @@ const extensionUploadObject = (program, { displayName, instanceId }) =>
 
     //  Rezips the in memory expanded zip and then uploads to the target OCCS instance
     uploadToOcc: function({ repositoryId }, updatedZip) {
-      const self = this;
-      console.log(`Uploading ${this.displayName} to ${program.targetserver}.`);
+      console.log(`Uploading ${displayName} to ${program.targetserver}.`);
       return new Promise(async (resolve) => {
         try {
           const filename = `oim_${repositoryId}.zip`;
@@ -197,7 +188,7 @@ const extensionUploadObject = (program, { displayName, instanceId }) =>
             { name: filename }
           )
             .then((res) => {
-              console.log(`Extension ${self.displayName} installed.\n\n\n\n`, res);
+              console.log(`Extension ${displayName} installed.\n\n\n\n`, res);
               resolve();
             });
         } catch (e) {
