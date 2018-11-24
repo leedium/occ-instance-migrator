@@ -24,7 +24,7 @@ const restObj = {
       const reqObj = {
         method,
         data,
-        url: `${server}/ccadmin/v1${apiPath}`,
+        url: `${server}${apiPath}`,
         responseType,
         headers: Object.assign({}, {
           Authorization: `Bearer ${occTokenGenerator.getCurrentToken() ||
@@ -40,9 +40,6 @@ const restObj = {
           console.log(err);
         });
     });
-  },
-  restify() {
-    return axios;
   }
 };
 

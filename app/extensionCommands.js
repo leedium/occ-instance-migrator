@@ -76,39 +76,44 @@ const downloadAndRepackageWidgets = (errors, program) => new Promise((resolve, r
 });
 
 /**
- * Entry method to begin processing of errors
+ * Entry method to begin processing of missing widgets and extensions
+ * This method boostraps the tasks to find installed extensions that do not
  * @param program
  * @returns {Promise<any>}
  */
 exports.analyzeLogs = program => new Promise(async (resolve) => {
   const errorWidgets = await processLog(program);
   if (errorWidgets.length) {
-    // get a list of widget instance from the source server and filter them by name
+    // get a list of extensions from the source server and filter them by name
     const sourceInstances = await restObj.apiCall(
       program.sourceserver,
       program.sourcekey,
       constants.HTTP_METHOD_GET,
-      `/widgetDescriptors/instances?fields=instances,displayName,version,latestVersion,id`
+      `/ccadmin/v1/extensions`
       , null
     );
+    // get a list of the extensions from the target server
     const targetInstances = await restObj.apiCall(
       program.targetserver,
       program.targetkey,
       constants.HTTP_METHOD_GET,
-      `/widgetDescriptors/instances?fields=displayName,version`
+      `/ccadmin/v1/extensions`
       , null
     );
 
-    const missingWidgets = sourceInstances.items.reduce((a, item) => {
+    const missingWidgets = sourceInstances.items.reduce((a, sourceItem) => {
       const doesExist = targetInstances.items.find((targetItem) => {
-        return targetItem.displayName === item.displayName;
+        return (targetItem.name === sourceItem.name && sourceItem.enabled ) ;
       });
       if (typeof doesExist === "undefined") {
-        const { displayName, version, instances } = item;
+        const { name, version, zipPath, developerId, description, creationTime } = sourceItem;
         a.push({
-          displayName,
+          name,
           version,
-          instanceId: instances[0].id
+          zipPath,
+          developerId,
+          description,
+          creationTime
         });
       }
       return a;
