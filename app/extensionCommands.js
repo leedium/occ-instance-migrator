@@ -67,21 +67,21 @@ const transfomErrorsToRequests = (widgetArray, program) => new Promise(resolve =
  * @param program
  * @returns {Promise<any>}
  */
-const downloadAndRepackageWidgets = (items, errors, program) => new Promise((resolve, reject) => {
+const downloadAndRepackageWidgets = (errors, program) => new Promise((resolve, reject) => {
   const widgetsToDownload =
-    items
-      .filter(item => {
-        return errors.indexOf(item.displayName) >= 0;
-      })
-      .reduce((a, { displayName, instances }) => {
+    // items
+    //   .filter(item => {
+    //     return errors.indexOf(item.displayName) >= 0;
+    //   })
+    //   .reduce((a, { displayName, instances }) => {
+    errors.reduce((a, widget) => {
         // make each widget an self contained generator to run the download
         // tasks independently.
-        const widget = extensionUploadObject(program, displayName, instances);
-        a.push(widget);
+        a.push(extensionUploadObject(program, widget));
         return a;
       }, []);
   Promise.all(
-    widgetsToDownload.slice(1).map(widget => widget.start())
+    widgetsToDownload.map(widget => widget.start())
   )
     .then(() => {
       console.log("Download complete.");
@@ -101,22 +101,55 @@ exports.analyzeLogs = program => new Promise(async (resolve) => {
   const errorWidgets = await processLog(program);
   if (errorWidgets.length) {
     // get a list of widget instance from the source server and filter them by name
-    await restObj.apiCall(
+    const sourceInstances = await restObj.apiCall(
       program.sourceserver,
       program.sourcekey,
       constants.HTTP_METHOD_GET,
-      `/assetPackages/${instances[0].repositoryId}?type=widget&wrap=true`,
-      null,
-      "arraybuffer"
-    );
-    const { items } = await restObj.apiCall(
-      program.sourceserver,
-      program.sourcekey,
-      constants.HTTP_METHOD_GET,
-      `/widgetDescriptors/instances?fields=instances,displayName`
+      `/widgetDescriptors/instances?fields=instances,displayName,version,latestVersion,id`
       , null
     );
-    await downloadAndRepackageWidgets(items, errorWidgets, program);
+    const targetInstances = await restObj.apiCall(
+      program.targetserver,
+      program.targetkey,
+      constants.HTTP_METHOD_GET,
+      `/widgetDescriptors/instances?fields=displayName,version`
+      , null
+    );
+
+    var missingWidgets = sourceInstances.items.reduce((a, item) => {
+      const { displayName, version, latestVersion, id } = item;
+      // console.log(displayName, version, latestVersion, id);
+      const doesExist = targetInstances.items.find((targetItem) => {
+        return targetItem.displayName === item.displayName;
+      });
+      if (typeof doesExist === "undefined") {
+        const {displayName, instances} = item;
+        a.push({
+          displayName,
+          instanceId: instances[0].id
+        });
+      }
+      return a;
+    }, []);
+
+    // console.log(errorWidgets);
+    // console.log(missingWidgets);
+
+    // console.log(sourceInstances,'\n\n\n\n')
+    // console.log(targetInstances)
+    //
+
+
+    //
+    // const { items } = await restObj.apiCall(
+    //   program.sourceserver,
+    //   program.sourcekey,
+    //   constants.HTTP_METHOD_GET,
+    //   `/widgetDescriptors/instances?fields=instances,displayName`
+    //   , null
+    // );
+    await downloadAndRepackageWidgets(missingWidgets, program);
+    resolve();
   } else {
     resolve();
   }
