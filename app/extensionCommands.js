@@ -17,36 +17,10 @@
  *              in the previous transfer attempt.
  */
 
-const fs = require("fs-extra");
-
 const constants = require("./constants");
 const extensionUploadObject = require("./extensionUploadObject");
 const restObj = require("./restObj");
 const utils = require("./utils");
-
-/**
- * Parses the logfle for errors and if extensions need to be installed
- * @returns {Promise<any>}
- */
-const processLog = () => new Promise(resolve => {
-  const file = fs.readFileSync(constants.LOGFILE).toString();
-  //  find files with errors.
-  //  errors are signed by special text
-  const r = /1m(.*?)\u001b/g;
-  const problemExtensions = file.toString().match(r).map((val) => {
-    const pathArray = val.replace("1m", "").replace("\u001b", "").split("/");
-    let x;
-    return pathArray.slice(x = pathArray.indexOf("widget"), x + 2)[1];
-  }).reduce((ac, item) => {
-    if (ac.indexOf(item) < 0 && typeof item !== "undefined") {
-      ac.push(item);
-    }
-    return ac;
-  }, []);
-
-  resolve(problemExtensions);
-  resolve();
-});
 
 /**
  * Download the widgets that had issues in the transferAll, and unzips them to
@@ -57,31 +31,30 @@ const processLog = () => new Promise(resolve => {
  * @returns {Promise<any>}
  */
 const downloadAndRepackageWidgets = (errors, program) => new Promise((resolve, reject) => {
-
   const widgetsToDownload =
     errors.reduce((a, widget) => {
-      // make each widget an self contained generator to run the download
-      // tasks independently.
+      // make each widget an self contained generator to run the download tasks
+      // independently.
       a.push(extensionUploadObject(program, widget));
       return a;
     }, []);
 
-  // Handle the zipfile processing in paraller
+  // Handle the zipfile processing in parallel
   Promise.all(
     widgetsToDownload.map(widget => widget.start())
   )
     .then(() => {
-      // console.log(`Upate of extensions from ${program.sourceserver} complete.`);
-      //  Start the Sequence in serial... only because OCCS bonks out with multiple requests.
-
+      //  Start the Sequence in serial... only because OCCS bonks out with
+      // multiple requests.
       Promise.each(widgetsToDownload, (widget) => {
         return widget.uploadToOcc();
       }).then(() => {
-        console.log(`file processing complete, uploading files to ${program.targetserver}`);
+        console.log(`\nFile processing complete, uploading files to ${program.targetserver}.\n`);
+        resolve();
       });
     })
     .catch((err) => {
-      console.log(err);
+     reject(err);
     });
 });
 
@@ -92,8 +65,7 @@ const downloadAndRepackageWidgets = (errors, program) => new Promise((resolve, r
  * @returns {Promise<any>}
  */
 exports.analyzeLogs = program => new Promise(async (resolve) => {
-  console.log(`Calculating widgets to be installed.`);
-  // const errorWidgets = await processLog(program);
+  console.log(`Calculating widgets to be installed.\n`);
   // get a list of extensions from the source server and filter them by name
   const sourceInstances = await restObj.apiCall(
     program.sourceserver,
@@ -130,10 +102,10 @@ exports.analyzeLogs = program => new Promise(async (resolve) => {
   }, []);
   if (missingWidgets.length) {
     console.log("Missing widgets exist:");
-    missingWidgets.map(({ name }) => console.log(`- ${name}`));
+    missingWidgets.map(({ name }) => console.log(`- "${name}"`));
+    console.log("======================\n");
     await downloadAndRepackageWidgets(missingWidgets.slice(2, 4), program);
     resolve();
-
   } else {
     resolve();
   }

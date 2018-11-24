@@ -21,13 +21,21 @@ const constants = require("./constants");
 const restObj = require("./restObj");
 
 /**
- *
+ * Return a self contained object to handle the zip download and reupload process
  * @param program
  * @param name
- * @param instances
- * @returns {{name: *, repositoryId: *, start: (function(): Promise<any>), getAssetPackage: (function(): Promise<any>), unzipAssetPackage: unzipAssetPackage, createApplicationId: (function(): Promise<any>), uploadToOcc: (function({name?: *, repositoryId: *, zipJSON: *}): Promise<any>)}}
+ * @param version
+ * @param zipPath
+ * @returns {
+ * {appRes: null,
+ * updatedZip: null,
+ * start: (function(): Promise<any>),
+ * getAssetPackage: (function(): Promise<any>),
+ * updateZipContents: (function(*=, *): Promise<any>),
+ * createApplicationId: (function(): Promise<any>),
+ * uploadToOcc: (function(): Promise<any>)}}
  */
-const extensionUploadObject = (program, { name, version, zipPath, developerId, description, creationTime }) =>
+const extensionUploadObject = (program, { name, version, zipPath}) =>
   ({
     // Starts the download and retrieval process
     appRes: null,
@@ -103,7 +111,7 @@ const extensionUploadObject = (program, { name, version, zipPath, developerId, d
 
     //  Rezips the in memory expanded zip and then uploads to the target OCCS instance
     uploadToOcc: function() {
-      console.log(`Uploading ${name} to ${program.targetserver}.`);
+      console.log(`Uploading ${name}...`);
       const self = this;
       const { repositoryId } = this.appRes;
       return new Promise(async (resolve) => {
@@ -151,7 +159,7 @@ const extensionUploadObject = (program, { name, version, zipPath, developerId, d
             { name: filename }
           )
             .then(() => {
-              console.log(`Extension ${name} installed on ${program.targetserver}.`);
+              console.log(`Extension ${name} installed. (${program.targetserver})`);
               resolve();
             });
         } catch (e) {
@@ -161,5 +169,4 @@ const extensionUploadObject = (program, { name, version, zipPath, developerId, d
       });
     }
   });
-
 module.exports = extensionUploadObject;
