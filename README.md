@@ -2,6 +2,7 @@
 
 This tool will copy just the changes from a source instance to a target instance
 using [Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud") [DCU](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.htm "Use the Design Code Utility").
+A check is made first to see if the target instance is missing extensions installed in the source. If extensions are missing then only the deltas are copied prior to the DCU transferAll executing.
 
 Web Content data is currently not supported and coming in a later OCC release. (Dec 2018)
 
@@ -9,7 +10,7 @@ Web Content data is currently not supported and coming in a later OCC release. (
 ~todo:  check if batch can be performed~    
 ~todo:  convert to global node module~     
 ~todo:  parameterize the configuration~      
-todo: check if a widget exists and install it before the transfer so that the instances can be populated. (in progress)  
+~todo: check if a widget exists and install it before the transfer so that the instances can be populated.~  
 todo: remove git dependency, replace with [nodegit](https://www.nodegit.org/ "nodegit")
 
 ### Prerequisites

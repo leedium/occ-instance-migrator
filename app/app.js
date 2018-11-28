@@ -17,12 +17,9 @@
  **/
 
 const program = require("commander");
-const upath = require("upath");
 
 const constants = require("./constants");
-
 const packageJson = require("../package");
-
 const initGitPath = require("./gitCommands").initGitPath;
 const addAll = require("./gitCommands").addAll;
 const commit = require("./gitCommands").commit;
@@ -32,17 +29,14 @@ const checkoutBranch = require("./gitCommands").checkoutBranch;
 const getDiffs = require("./gitCommands").getDiffs;
 const gitIgnore = require("./gitCommands").gitIgnore;
 const mergeBranch = require("./gitCommands").mergeBranch;
-
 const dcuGrab = require("./dcuCommands").dcuGrab;
-const putAll = require("./dcuCommands").putAll;
 const transferAll = require("./dcuCommands").transferAll;
 const plsuTransferAll = require("./dcuCommands").plsuTransferAll;
-
 const deleteFilePath = require("./fileCommands").deleteFilePath;
 const makeTmpFolder = require("./fileCommands").makeTmpFolder;
 const processDiffs = require("./fileCommands").processDiffs;
 
-const analyzeLogs = require('./extensionCommands').analyzeLogs;
+const analyzeInstalledExtensions = require('./extensionCommands').analyzeInstalledExtensions;
 
 /**
  * export.main Required for the bin (global) module export
@@ -103,6 +97,10 @@ exports.main = function(argv) {
 
   start();
 
+  /**
+   * Task to clean the working folder before DCU grab executes
+   * @returns {Promise<*>}
+   */
   async function clean() {
     return await deleteFilePath([
       ".gitignore",
@@ -119,6 +117,10 @@ exports.main = function(argv) {
     ]);
   }
 
+  /**
+   * Initializes the temp git repo for diff checking
+   * @returns {Promise<void>}
+   */
   async function init() {
     await checkoutBranch(constants.BRANCH_MASTER);
     await gitIgnore();
@@ -134,24 +136,25 @@ exports.main = function(argv) {
    */
   async function extensionsTransfer() {
     return new Promise(async resolve => {
-      // await clean();
-      // await initGitPath(program);
-      // await gitIgnore();
-      // await init();
-      // await dcuGrab(program.targetserver, program.targetkey, "test");
-      // await addAll();
-      // await commit();
-      // await createBranch(constants.BRANCH_TARGET);
-      // await createBranch(constants.BRANCH_SOURCE);
-      // await dcuGrab(program.sourceserver, program.sourcekey, "source");
-      // await addAll();
-      // await commit();
-      // await checkoutBranch(constants.BRANCH_TARGET);
-      // await mergeBranch(constants.BRANCH_SOURCE);
-      // await getDiffs();
-      // const fileRefs = await processDiffs();
-      // await makeTmpFolder(fileRefs);
-      // await transferAll(program);
+      await analyzeInstalledExtensions(program);
+      await clean();
+      await initGitPath(program);
+      await gitIgnore();
+      await init();
+      await dcuGrab(program.targetserver, program.targetkey, "test");
+      await addAll();
+      await commit();
+      await createBranch(constants.BRANCH_TARGET);
+      await createBranch(constants.BRANCH_SOURCE);
+      await dcuGrab(program.sourceserver, program.sourcekey, "source");
+      await addAll();
+      await commit();
+      await checkoutBranch(constants.BRANCH_TARGET);
+      await mergeBranch(constants.BRANCH_SOURCE);
+      await getDiffs();
+      const fileRefs = await processDiffs();
+      await makeTmpFolder(fileRefs);
+      await transferAll(program);
       if (program.cleanp) {
         await clean();
       }
@@ -164,13 +167,8 @@ exports.main = function(argv) {
    * @returns {Promise<void>}
    */
   async function start() {
-
     try {
-      await extensionsTransfer(program);
-
-      // console.log(program.sourceserver)
-
-      await analyzeLogs(program);
+      await extensionsTransfer();
       if (program.includelayouts) {
         await plsuTransferAll(program);
       }

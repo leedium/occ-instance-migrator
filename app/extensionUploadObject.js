@@ -16,132 +16,90 @@
  */
 
 const zip = require("node-zip");
-const unzip = require("unzip");
-const fs = require("fs-extra");
-const upath = require("upath");
-const walker = require("walker");
 
 const constants = require("./constants");
 const restObj = require("./restObj");
-const formatDateForExtenstion = require('./utils').formatDateForExtenstion;
-
-
-const normalizePath = path => upath.normalize(path);
-
 
 /**
- *
+ * Return a self contained object to handle the zip download and reupload process
  * @param program
- * @param displayName
- * @param instances
- * @returns {{displayName: *, repositoryId: *, start: (function(): Promise<any>), getAssetPackage: (function(): Promise<any>), unzipAssetPackage: unzipAssetPackage, createApplicationId: (function(): Promise<any>), uploadToOcc: (function({displayName?: *, repositoryId: *, zipJSON: *}): Promise<any>)}}
+ * @param name
+ * @param version
+ * @param zipPath
+ * @returns {
+ * {appRes: null,
+ * updatedZip: null,
+ * start: (function(): Promise<any>),
+ * getAssetPackage: (function(): Promise<any>),
+ * updateZipContents: (function(*=, *): Promise<any>),
+ * createApplicationId: (function(): Promise<any>),
+ * uploadToOcc: (function(): Promise<any>)}}
  */
-const extensionUploadObject = (program, displayName, instances) =>
+const extensionUploadObject = (program, { name, version, zipPath}) =>
   ({
-    displayName,
-    repositoryId: instances[0].repositoryId,
     // Starts the download and retrieval process
+    appRes: null,
+    updatedZip: null,
     start: function() {
+      const self = this;
       return new Promise(async (resolve, reject) => {
+        console.log(`Installing  ${name} `);
         try {
           const zipBuffer = await this.getAssetPackage();
-          const appRes = await this.createApplicationId();
-          const updatedZip = await this.unzipAssetPackage(zipBuffer, appRes);
-          await this.uploadToOcc(appRes, updatedZip)
-            .then(resolve)
+          self.appRes = await this.createApplicationId();
+          self.updatedZip = await this.updateZipContents(zipBuffer, self.appRes);
+          resolve();
         } catch (err) {
           reject(err);
         }
       });
     },
-
-    // Get the ist of extensions from the source server
-    // getSourceExtensionList: function(){},
-
     //  Retrieves the asset package from OCC
     getAssetPackage: function() {
-      console.log(`Downloading missing widgets: ${this.displayName} ...`);
       return new Promise((resolve, reject) => {
-        try {
-          restObj.apiCall(
-            program.sourceserver,
-            program.sourcekey,
-            constants.HTTP_METHOD_GET,
-            `/assetPackages/${instances[0].repositoryId}?type=widget&wrap=true`,
-            null,
-            "arraybuffer"
-          )
-            .then(resolve);
-
-        } catch (err) {
-          reject(err);
-        }
+        restObj.apiCall(
+          program.sourceserver,
+          program.sourcekey,
+          constants.HTTP_METHOD_GET,
+          `/file/${zipPath}`,
+          null,
+          "arraybuffer"
+        )
+          .then(resolve)
+          .catch(reject);
       });
     },
 
-    //  Unzips the package
-    unzipAssetPackage: function(zipBuffer, appRes) {
-      const self = this;
+    /**;
+     * Updates the in memory zip with the recently created ExtensionId preserving
+     * the previous configuration settings.
+     * @param zipBuffer
+     * @param appRes
+     */
+    updateZipContents: function(zipBuffer, appRes) {
       return new Promise(resolve => {
-        const zipRoot = `./.zip`;
-        const extractRoot = `./.ext`;
-        const filename = `${self.displayName}.zip`;
-        const zipFilePath = `${zipRoot}/${filename}`;
-        const extractFilePath = `${extractRoot}/${self.displayName}`;
-        const extensionJSONName = `${extractFilePath}/ext.json`;
-        const data = new zip(zipBuffer).generate({ base64: false, compression: "DEFLATE" });
-
-        // Write the zipfile to a temp folder and extract it to another tmp folder
-        fs.ensureDir(zipRoot);
-        fs.ensureDir(extractFilePath);
-        fs.writeFile(normalizePath(`${zipRoot}/${filename}`), data, "binary");
-        const zipStream = fs.createReadStream(normalizePath(zipFilePath))
-          .pipe(unzip.Extract({ path: normalizePath(extractFilePath) }));
-        zipStream.on("close", async function() {
-          // File is created.
-          // Read the ext.json and swap the values for the stored values.
-          // the ext.json already has predefined structure so it's just a matter of updating them
-          const json = fs.readJSON(extensionJSONName)
-            .then(resJSON => {
-              resJSON.createdBy = appRes.createdById;
-              resJSON.description = appRes.name;
-              resJSON.developerID = "injected via occ-instance-migrator";
-              resJSON.extensionID = appRes.id;
-              resJSON.name = self.displayName;
-              resJSON.timeCreated = formatDateForExtenstion(new Date());
-              fs.writeJSONSync(normalizePath(extensionJSONName), resJSON);
-
-              const newZip = new zip();
-
-              // rezip and retun for processing
-              process.chdir(normalizePath(extractFilePath));
-              walker(normalizePath('.'))
-                .on("file", function(file) {
-                  // console.log(file)
-                  newZip.file(file, fs.readFileSync(normalizePath(file), "utf-8"));
-                }).on("end", function() {
-                // process.chdir(normalizePath('../../'));
-                // console.log(process.cwd());
-                // console.log(newZip)
-                resolve(newZip);
-                // After all files traversed, generate and resolve the new zip
-              });
-            })
-        });
+        const unzipped = new zip(zipBuffer, { base64: false, checkCRC32: true });
+        const extJSON = JSON.parse(unzipped.files["ext.json"]._data);
+        extJSON.extensionID = appRes.id;
+        unzipped.files["ext.json"]._data = JSON.stringify(extJSON);
+        const updatedZip = new zip();
+        updatedZip.files = unzipped.files;
+        updatedZip.generate({ base64: true });
+        resolve(updatedZip);
+        resolve(updatedZip);
       });
     },
 
     //  create a new ApplicationID(extensionId) to be used
     createApplicationId: function() {
-      const self = this;
       return new Promise((resolve) => {
         const dateTime = new Date();
         restObj.apiCall(
           program.targetserver,
           program.targetkey,
           constants.HTTP_METHOD_POST,
-          `/extensions/id`, {
-            name: `${self.displayName} by occ-instance-migrator on ${dateTime.toLocaleDateString()} at ${dateTime.toLocaleTimeString()}.`,
+          `/ccadmin/v1/extensions/id`, {
+            name: `${name} by occ-instance-migrator on ${dateTime.toLocaleDateString()} at ${dateTime.toLocaleTimeString()}.`,
             type: `extension`
           }, constants.HTTP_CONTENT_TYPE_JSON, {
             "Accept": "application/json, text/javascript, */*; q=0.01",
@@ -152,9 +110,10 @@ const extensionUploadObject = (program, displayName, instances) =>
     },
 
     //  Rezips the in memory expanded zip and then uploads to the target OCCS instance
-    uploadToOcc: function({repositoryId }, updatedZip) {
+    uploadToOcc: function() {
+      console.log(`Uploading ${name}...`);
       const self = this;
-      console.log(`Uploading ${this.displayName} to ${program.targetserver}.`);
+      const { repositoryId } = this.appRes;
       return new Promise(async (resolve) => {
         try {
           const filename = `oim_${repositoryId}.zip`;
@@ -164,12 +123,13 @@ const extensionUploadObject = (program, displayName, instances) =>
             "filename": `/extensions/${filename}`,
             "segments": 1
           };
+
           // doFileUpload init
           const { token } = await restObj.apiCall(
             program.targetserver,
             program.targetkey,
             constants.HTTP_METHOD_PUT,
-            `/files`,
+            `/ccadmin/v1/files`,
             payloadInit,
             "json"
           );
@@ -177,7 +137,7 @@ const extensionUploadObject = (program, displayName, instances) =>
           // payload for doFileSegmentUpload
           const payloadUpload = {
             filename: payloadInit.filename,
-            file: updatedZip.generate({ base64: true }),
+            file: self.updatedZip.generate({ base64: true }),
             index: 0
           };
 
@@ -186,7 +146,7 @@ const extensionUploadObject = (program, displayName, instances) =>
             program.targetserver,
             program.targetkey,
             constants.HTTP_METHOD_POST,
-            `/files/${token}?changeContext=designStudio`,
+            `/ccadmin/v1/files/${token}?changeContext=designStudio`,
             payloadUpload
           );
 
@@ -195,19 +155,18 @@ const extensionUploadObject = (program, displayName, instances) =>
             program.targetserver,
             program.targetkey,
             constants.HTTP_METHOD_POST,
-            `/extensions`,
+            `/ccadmin/v1/extensions`,
             { name: filename }
           )
-            .then((res) => {
-              console.log(`Extension ${self.displayName} installed.\n\n\n\n`, res);
+            .then(() => {
+              console.log(`Extension ${name} installed. (${program.targetserver})`);
               resolve();
-            })
-        }catch(e){
+            });
+        } catch (e) {
           console.log(e);
           reject(e);
         }
       });
     }
   });
-
 module.exports = extensionUploadObject;

@@ -17,47 +17,10 @@
  *              in the previous transfer attempt.
  */
 
-const fs = require("fs-extra");
-
 const constants = require("./constants");
 const extensionUploadObject = require("./extensionUploadObject");
 const restObj = require("./restObj");
-
-/**
- * Parses the logfle for errors and if extensions need to be installed
- * @returns {Promise<any>}
- */
-const processLog = () => new Promise(resolve => {
-  const file = fs.readFileSync(constants.LOGFILE).toString();
-  //  find files with errors.
-  //  errors are signed by special text
-  const r = /1m(.*?)\u001b/g;
-  const problemExtensions = file.toString().match(r).map((val) => {
-    const pathArray = val.replace("1m", "").replace("\u001b", "").split("/");
-    let x;
-    return pathArray.slice(x = pathArray.indexOf("widget"), x + 2)[1];
-  }).reduce((ac, item) => {
-    if (ac.indexOf(item) < 0 && typeof item !== "undefined") {
-      ac.push(item);
-    }
-    return ac;
-  }, []);
-
-  resolve(problemExtensions);
-  resolve();
-});
-
-/**
- * This method converts the error responses to promises that
- * will handle any loads
- * @param widgetArray
- * @param program
- * @returns {Promise<any>}
- */
-const transfomErrorsToRequests = (widgetArray, program) => new Promise(resolve => {
-  console.log(widgetArray);
-  resolve();
-});
+const utils = require("./utils");
 
 /**
  * Download the widgets that had issues in the transferAll, and unzips them to
@@ -67,48 +30,85 @@ const transfomErrorsToRequests = (widgetArray, program) => new Promise(resolve =
  * @param program
  * @returns {Promise<any>}
  */
-const downloadAndRepackageWidgets = (items, errors, program) => new Promise((resolve, reject) => {
+const downloadAndRepackageWidgets = (errors, program) => new Promise((resolve, reject) => {
   const widgetsToDownload =
-    items
-      .filter(item => {
-        return errors.indexOf(item.displayName) >= 0;
-      })
-      .reduce((a, { displayName, instances }) => {
-        // make each widget an self contained generator to run the download
-        // tasks independently.
-        const widget = extensionUploadObject(program, displayName, instances);
-        a.push(widget);
-        return a;
-      }, []);
+    errors.reduce((a, widget) => {
+      // make each widget an self contained generator to run the download tasks
+      // independently.
+      a.push(extensionUploadObject(program, widget));
+      return a;
+    }, []);
+
+  // Handle the zipfile processing in parallel
   Promise.all(
-    widgetsToDownload.slice(1).map(widget => widget.start())
+    widgetsToDownload.map(widget => widget.start())
   )
     .then(() => {
-      console.log("Download complete.");
-      resolve();
+      //  Start the Sequence in serial... only because OCCS bonks out with
+      // multiple requests.
+      Promise.each(widgetsToDownload, (widget) => {
+        return widget.uploadToOcc();
+      }).then(() => {
+        console.log(`\nFile processing complete, uploading files to ${program.targetserver}.\n`);
+        resolve();
+      });
     })
     .catch((err) => {
-      console.log(err);
+     reject(err);
     });
 });
 
 /**
- * Entry method to begin processing of errors
+ * Entry method to begin processing of missing widgets and extensions
+ * This method boostraps the tasks to find installed extensions that do not
  * @param program
  * @returns {Promise<any>}
  */
-exports.analyzeLogs = program => new Promise(async (resolve) => {
-  const errorWidgets = await processLog(program);
-  if (errorWidgets.length) {
-    const { items } = await restObj.apiCall(
-      program.sourceserver,
-      program.sourcekey,
-      constants.HTTP_METHOD_GET,
-      `/widgetDescriptors/instances?fields=instances,displayName`
-      , null
-    );
-    await downloadAndRepackageWidgets(items, errorWidgets, program);
+exports.analyzeInstalledExtensions = program => new Promise(async (resolve) => {
+  console.log(`Calculating widgets to be installed.\n`);
+  // get a list of extensions from the source server and filter them by name
+  const sourceInstances = await restObj.apiCall(
+    program.sourceserver,
+    program.sourcekey,
+    constants.HTTP_METHOD_GET,
+    `/ccadmin/v1/extensions`
+    , null
+  );
+  // get a list of the extensions from the target server
+  const targetInstances = await restObj.apiCall(
+    program.targetserver,
+    program.targetkey,
+    constants.HTTP_METHOD_GET,
+    `/ccadmin/v1/extensions`
+    , null
+  );
+
+  const missingWidgets = sourceInstances.items.reduce((a, sourceItem) => {
+    const doesExist = targetInstances.items.find((targetItem) => {
+      return (targetItem.name === sourceItem.name && sourceItem.enabled);
+    });
+    if (typeof doesExist === "undefined") {
+      const { name, version, zipPath, developerId, description, creationTime } = sourceItem;
+      a.push({
+        name,
+        version,
+        zipPath,
+        developerId,
+        description,
+        creationTime
+      });
+    }
+    return a;
+  }, []);
+  if (missingWidgets.length) {
+    console.log("Missing widgets exist:");
+    missingWidgets.map(({ name }) => console.log(`- "${name}"`));
+    console.log("======================\n");
+    await downloadAndRepackageWidgets(missingWidgets, program);
+    console.log(`Widgets transferred from ${program.sourceserver} complete.`);
+    resolve();
   } else {
+    console.log("No missing widgets");
     resolve();
   }
 });
