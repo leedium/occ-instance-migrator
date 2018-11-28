@@ -64,7 +64,7 @@ const downloadAndRepackageWidgets = (errors, program) => new Promise((resolve, r
  * @param program
  * @returns {Promise<any>}
  */
-exports.analyzeLogs = program => new Promise(async (resolve) => {
+exports.analyzeInstalledExtensions = program => new Promise(async (resolve) => {
   console.log(`Calculating widgets to be installed.\n`);
   // get a list of extensions from the source server and filter them by name
   const sourceInstances = await restObj.apiCall(
@@ -104,9 +104,11 @@ exports.analyzeLogs = program => new Promise(async (resolve) => {
     console.log("Missing widgets exist:");
     missingWidgets.map(({ name }) => console.log(`- "${name}"`));
     console.log("======================\n");
-    await downloadAndRepackageWidgets(missingWidgets.slice(2, 4), program);
+    await downloadAndRepackageWidgets(missingWidgets, program);
+    console.log(`Widgets transferred from ${program.sourceserver} complete.`);
     resolve();
   } else {
+    console.log("No missing widgets");
     resolve();
   }
 });
