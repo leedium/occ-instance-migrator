@@ -26,7 +26,7 @@ Please follow the [installation instructions](https://docs.oracle.com/cd/E97801_
 ### Installation
 Change directory to your downloaded folder and run:
 ```
-$ npm i - g
+$ npm i -g
 ```
 
 ### Options

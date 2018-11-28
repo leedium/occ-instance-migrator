@@ -90,10 +90,8 @@ exports.main = function(argv) {
     .parse(argv);
 
   //set defaults
-  if (
-    typeof program.taskdelay === "undefined" ||
-    Number.isNaN(program.taskdelay)
-  ) {
+
+  if(typeof program.taskdelay === 'undefined' || isNaN(program.taskdelay)){
     program.taskdelay = constants.TASK_DELAY;
   }
 
