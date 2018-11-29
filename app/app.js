@@ -17,7 +17,8 @@
  **/
 
 const program = require("commander");
-const Git = require("nodegit");
+const GitKit = require("nodegit-kit");
+const NodeGit = require("nodegit");
 
 const constants = require("./constants");
 const packageJson = require("../package");
@@ -144,64 +145,52 @@ exports.main = function(argv) {
    */
   async function extensionsTransfer() {
     return new Promise(async resolve => {
-      // await analyzeInstalledExtensions(program);
-      // await clean();
       try {
-        let index, head, oid, parent, sourceOid, targetOid, oidMaster, sourceHead;
+        // await analyzeInstalledExtensions(program);
+
+
+        // await clean();
+        // let index, head, oid, parent, sourceOid, targetOid, oidMaster, sourceHead;
         // await gitIgnore();
         // // 1 Init Master Branch with the latest fiels from the target
-        // const repo = await Git.Repository.init(constants.DEFAULT_GIT_PATH, 0);
+        // const repo = await NodeGit.Repository.init(constants.DEFAULT_GIT_PATH, 0);
         // index = await repo.refreshIndex();
         // await index.addAll(constants.DEFAULT_GIT_PATH);
         // await index.write();
         // oidMaster = await index.writeTree();
         // await repo.createCommit("HEAD", createSignature(60), createSignature(90), "initial master commit ", oidMaster, []);
-        //
-        // // add target
+        // //
+        // // // add target
         // index = await repo.refreshIndex();
-        // // await dcuGrab(program.targetserver, program.targetkey, "target");
+        // await dcuGrab(program.targetserver, program.targetkey, "target");
         // await index.addAll(constants.DEFAULT_GIT_PATH);
         // await index.write();
         // targetOid = await index.writeTree();
-        // head = await Git.Reference.nameToId(repo, "HEAD");
+        // head = await NodeGit.Reference.nameToId(repo, "HEAD");
         // parent = await repo.getCommit(head);
         // await repo.createCommit("HEAD", createSignature(60), createSignature(90), "base source repo commit", targetOid, [parent]);
-        // //
-        // // Create branches
-        // let headCommit = await repo.getHeadCommit();
-        // let sourceBranch = await repo.createBranch(constants.BRANCH_SOURCE, headCommit, 1);
-        // let targetBranch = await repo.createBranch(constants.BRANCH_TARGET, headCommit, 1);
+        //
 
         // // 2 -- Checkout The Source Branch and grab and commit latest
-        let repo = await Git.Repository.open(constants.DEFAULT_GIT_PATH);
+        let repo = await NodeGit.Repository.open(constants.DEFAULT_GIT_PATH);
+       //
+       //  repo.checkoutBranch(constants.BRANCH_SOURCE);
+       //  let sourceCommit = await repo.getHeadCommit();
 
-        let com = await Git.Commit.lookup(repo,'f25739b8f3738094687fca56f7bffa8943a204a9');
-
-        console.log(com);
-        // repo.checkoutBranch(constants.BRANCH_SOURCE);
-        // index = await repo.refreshIndex();
+        //  index = await repo.refreshIndex();
         // await dcuGrab(program.sourceserver, program.sourcekey, "source");
-        // await index.addAll(constants.DEFAULT_GIT_PATH);
-        // await index.write();
-        // sourceOid = await index.writeTree();
-        // sourceHead = await Git.Reference.nameToId(repo, "HEAD");
-        // parent = await repo.getCommit(sourceHead);
-        // await repo.createCommit("HEAD", createSignature(60), createSignature(90), "commit", sourceOid, [parent]);
-        //
-       // //3  - Merge Source into Target
-       // repo.mergeBranches(
-       //   constants.BRANCH_TARGET,
-       //   constants.BRANCH_SOURCE,
-       //   createSignature(60),
-       //   Git.Merge.PREFERENCE.FASTFORWARD_ONLY,
-       //   {
-       //     fileFavor: Git.Merge.FILE_FAVOR.THEIRS
-       //   });
 
-        // 4  get diffs
+        // console.log(history)
+        // get the diffs
+        const diffs = await GitKit.diff(repo);
 
+        const fileRefs = await processDiffs(diffs);
 
+        await makeTmpFolder(fileRefs);
 
+        // console.log(fileRefs)
+
+        await transferAll(program);
 
 
       } catch (e) {

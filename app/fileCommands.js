@@ -30,51 +30,50 @@ const TASK_DELAY = require("./constants").TASK_DELAY;
  * have been updated and added.
  * @returns {Promise<any>}
  */
-const _processDiffs = () => new Promise((resolve) => {
+const _processDiffs = (diffs) => new Promise((resolve) => {
   //  stores
   const instanceRef = [];
   let transferRef = [];
   let widgetRef = [];
   let cccRef = [];
   const transferPathArrayTemp = {};
+  const pathListSearched = {};
+  const filteredSearched = {};
 
-  const diffFile = (upath.join(__dirname, "../", constants.DIFF_TEXT_FILE));
+  // const diffFile = (upath.join(__dirname, "../", constants.DIFF_TEXT_FILE));
 
 
   // reads line from whatchanged.txt
-  const rl = readline.createInterface({
-    input: fs.createReadStream(diffFile)
-  });
-  rl.on("line", (line) => {
-    const infoArray = line.split("\t");
-    const pathString = infoArray[1];
-    const modType = infoArray[0].split(" ")[4];
-    const pathArray = pathString.split("/");
-    let path;
-    path = pathArray.slice(0, pathArray.length - 1).join("/");
+  // const rl = readline.createInterface({
+  //   input: fs.createReadStream(diffFile)
+  // });
+  diffs.forEach( ({status, path}) => {
+
+    // const infoArray = line.split("\t");
+    // const pathString = infoArray[1];
+    // const modType = infoArray[0].split(" ")[4];
+    // const pathArray = pathString.split("/");
+    // let path;
+    // path = pathArray.slice(0, pathArray.length - 1).join("/");
 
     // Checks if the difference is an addition or modification
     // Renames and deletions are ignored.
-    if (modType !== constants.GitMergeKeys.DELETED && modType.indexOf(constants.GitMergeKeys.RENAMED) < 0) {
+    if (status === constants.GitMergeKeys.MODIFIED || status === constants.GitMergeKeys.UNTRACKED) {
       if (!transferPathArrayTemp[path]) {
-        if (path.indexOf(constants.APP_ID) < 0) {
-          let sp = path.split("/");
-          transferRef.push({
-            path: sp.slice(0, 4).join("/"),
-            type: sp[0]
-          });
-          transferPathArrayTemp[`${path}`] = true;
-        }
+        let sp = path.split("/");
+        transferRef.push({
+          path: sp.slice(0, 4).join("/"),
+          type: sp[0]
+        });
+
+
+        transferPathArrayTemp[`${path}`] = true;
       }
     }
   });
 
-  //  When EOF and close, modify the paths best suited for OCC DCU structure
-  rl.on("close", () => {
-    // console.log("\n\n\nTransfer Paths");
+    // console.log(transferRef);
 
-    const pathListSearched = {};
-    const filteredSearched = {};
     transferRef = transferRef.reduce((a, pathObj) => {
       // Convert flat paths to object with extensionType and path
       const { type, path } = pathObj;
@@ -90,6 +89,10 @@ const _processDiffs = () => new Promise((resolve) => {
       // Convert paths to grab necessary files for OCC DCU folder structure
       // Keep track of widget instance folders
       (ac, pathObj) => {
+
+
+        // console.log(pathObj)
+
         let { type, path } = pathObj;
         const pSplit = path.split("/");
 
@@ -106,7 +109,12 @@ const _processDiffs = () => new Promise((resolve) => {
           return ac;
         }
 
-        //  If path is of type widget and includes an instance folder store value so that it
+        else if (type === constants.ExtensionTypes.THEME) {
+          path = pSplit.slice(0, 2).join("/");
+        }
+
+
+          //  If path is of type widget and includes an instance folder store value so that it
         //  will get added back after the instance folder removal
         else if (type === constants.ExtensionTypes.WIDGET && pSplit[2] === constants.DCUSubFolder.INSTANCES) {
           const widgetPath = pSplit.slice(0, 2).join("/");
@@ -119,18 +127,89 @@ const _processDiffs = () => new Promise((resolve) => {
           path = widgetPath;
         }
 
-        if (!filteredSearched[path]) {
+        // If path is of type widget and only config values have changed
+        else if (type === constants.ExtensionTypes.WIDGET && pSplit[2] === constants.DCUSubFolder.CONFIG) {
+          const widgetPath = pSplit.slice(0, 2).join("/");
+          widgetRef.push({ type, path: widgetPath });
+          path = widgetPath;
+        }
+
+
+          if (!filteredSearched[path]) {
           filteredSearched[path] = true;
           ac.push({ type, path });
         }
         return ac;
       }, []);
-    // console.log('Diff file processing transferRef.', transferRef);
-    // console.log('Diff file processing widgetRef.', widgetRef);
-    // console.log('Diff file processing instanceRef.', instanceRef);
-    // console.log('Diff file processing instanceRef.', cccRef);
+
     resolve({ transferRef, instanceRef, widgetRef, cccRef });
-  });
+
+
+
+  // });
+
+  //  When EOF and close, modify the paths best suited for OCC DCU structure
+  // rl.on("close", () => {
+  //   // console.log("\n\n\nTransfer Paths");
+  //
+  //   const pathListSearched = {};
+  //   const filteredSearched = {};
+  //   transferRef = transferRef.reduce((a, pathObj) => {
+  //     // Convert flat paths to object with extensionType and path
+  //     const { type, path } = pathObj;
+  //     if (!pathListSearched[pathObj.path]) {
+  //       pathListSearched[pathObj.path] = true;
+  //       a.push({
+  //         type,
+  //         path
+  //       });
+  //     }
+  //     return a;
+  //   }, []).reduce(
+  //     // Convert paths to grab necessary files for OCC DCU folder structure
+  //     // Keep track of widget instance folders
+  //     (ac, pathObj) => {
+  //       let { type, path } = pathObj;
+  //       const pSplit = path.split("/");
+  //
+  //       // Keep track of any folder and store just the extension for later .ccc copy
+  //       if (pSplit.length >= 2) {
+  //         const p = pSplit.slice(0, 2).join("/");
+  //         if (cccRef.indexOf(p) < 0) {
+  //           cccRef.push(p);
+  //         }
+  //       }
+  //
+  //       // Dont include and paths that have one subfolder (extension)
+  //       if (pSplit.length === 2 && type === constants.ExtensionTypes.WIDGET) {
+  //         return ac;
+  //       }
+  //
+  //       //  If path is of type widget and includes an instance folder store value so that it
+  //       //  will get added back after the instance folder removal
+  //       else if (type === constants.ExtensionTypes.WIDGET && pSplit[2] === constants.DCUSubFolder.INSTANCES) {
+  //         const widgetPath = pSplit.slice(0, 2).join("/");
+  //         const instancePath = pSplit.slice(0, 3).join("/");
+  //
+  //
+  //         widgetRef.push({ type, path: widgetPath });
+  //         instanceRef.push({ type, path: instancePath });
+  //
+  //         path = widgetPath;
+  //       }
+  //
+  //       if (!filteredSearched[path]) {
+  //         filteredSearched[path] = true;
+  //         ac.push({ type, path });
+  //       }
+  //       return ac;
+  //     }, []);
+  //   // console.log('Diff file processing transferRef.', transferRef);
+  //   // console.log('Diff file processing widgetRef.', widgetRef);
+  //   // console.log('Diff file processing instanceRef.', instanceRef);
+  //   // console.log('Diff file processing instanceRef.', cccRef);
+  //   resolve({ transferRef, instanceRef, widgetRef, cccRef });
+  // });
 });
 
 /**

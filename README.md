@@ -11,7 +11,8 @@ Web Content data is currently not supported and coming in a later OCC release. (
 ~todo:  convert to global node module~     
 ~todo:  parameterize the configuration~      
 ~todo: check if a widget exists and install it before the transfer so that the instances can be populated.~  
-todo: remove git dependency, replace with [nodegit](https://www.nodegit.org/ "nodegit")
+~todo: remove git dependency, replace with [nodegit](https://www.nodegit.org/ "nodegit")~
+todo: test with up and coming DCU 1.0.8 and 18D release
 
 ### Prerequisites
 [Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud") [DCU v1.0.7](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.html "Use the Design Code Utility")  

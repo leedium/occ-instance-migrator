@@ -43,14 +43,16 @@ exports.ExtensionTypes = {
 };
 
 exports.GitMergeKeys = {
-  MODIFIED: "M",
-  RENAMED: "R",
-  ADDED: "A",
-  DELETED: "D"
+  MODIFIED: "modified",
+  RENAMED: "renamed",
+  ADDED: "added",
+  DELETED: "deleted",
+  UNTRACKED: "untracked"
 };
 
 exports.DCUSubFolder = {
   INSTANCES: "instances",
+  CONFIG: "config",
   CCC: ".ccc"
 };
 
