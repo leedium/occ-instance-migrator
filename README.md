@@ -18,7 +18,6 @@ todo: test with up and coming DCU 1.0.8 and 18D(v16) release
 
 ### Prerequisites
 [Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud") [DCU v1.0.7](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.html "Use the Design Code Utility")  
-~[git](https://git-scm.com/downloads "download git") ~ 
 [node js](https://nodejs.org/en/ "Node JS")
 
 
