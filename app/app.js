@@ -13,22 +13,21 @@
  * @contact david@leedium.com
  * @dateCreated 12/11/2018
  * @description This tool helps transfer only changed files across instances
- *              using git and Oracle's DCU tools
+ *              using nodegit and Oracle's DCU tools
+ *
+ *              Extensions deltas are installed and then using nodegit, a diff check on
+ *              what's changed is used to transfer only those files.
+ *
  **/
 
 const program = require("commander");
+const GitKit = require("nodegit-kit");
+const NodeGit = require("nodegit");
 
 const constants = require("./constants");
 const packageJson = require("../package");
-const initGitPath = require("./gitCommands").initGitPath;
-const addAll = require("./gitCommands").addAll;
-const commit = require("./gitCommands").commit;
-const deleteBranch = require("./gitCommands").deleteBranch;
-const createBranch = require("./gitCommands").createBranch;
-const checkoutBranch = require("./gitCommands").checkoutBranch;
-const getDiffs = require("./gitCommands").getDiffs;
+const createSignature = require("./gitCommands").createSignature;
 const gitIgnore = require("./gitCommands").gitIgnore;
-const mergeBranch = require("./gitCommands").mergeBranch;
 const dcuGrab = require("./dcuCommands").dcuGrab;
 const transferAll = require("./dcuCommands").transferAll;
 const plsuTransferAll = require("./dcuCommands").plsuTransferAll;
@@ -36,7 +35,7 @@ const deleteFilePath = require("./fileCommands").deleteFilePath;
 const makeTmpFolder = require("./fileCommands").makeTmpFolder;
 const processDiffs = require("./fileCommands").processDiffs;
 
-const analyzeInstalledExtensions = require('./extensionCommands').analyzeInstalledExtensions;
+const analyzeInstalledExtensions = require("./extensionCommands").analyzeInstalledExtensions;
 
 /**
  * export.main Required for the bin (global) module export
@@ -44,7 +43,6 @@ const analyzeInstalledExtensions = require('./extensionCommands').analyzeInstall
  */
 exports.main = function(argv) {
   //  initialize the program
-
   program
     .version(packageJson.version)
     .description(
@@ -91,7 +89,7 @@ exports.main = function(argv) {
 
   //set defaults
 
-  if(typeof program.taskdelay === 'undefined' || isNaN(program.taskdelay)){
+  if (typeof program.taskdelay === "undefined" || isNaN(program.taskdelay)) {
     program.taskdelay = constants.TASK_DELAY;
   }
 
@@ -118,43 +116,61 @@ exports.main = function(argv) {
   }
 
   /**
-   * Initializes the temp git repo for diff checking
-   * @returns {Promise<void>}
-   */
-  async function init() {
-    await checkoutBranch(constants.BRANCH_MASTER);
-    await gitIgnore();
-    await addAll();
-    await commit();
-    await deleteBranch(constants.BRANCH_SOURCE);
-    await deleteBranch(constants.BRANCH_TARGET);
-  }
-
-  /**
    * Executes extesion tasks
    * @returns {Promise<void>}
    */
   async function extensionsTransfer() {
     return new Promise(async resolve => {
-      await analyzeInstalledExtensions(program);
-      await clean();
-      await initGitPath(program);
-      await gitIgnore();
-      await init();
-      await dcuGrab(program.targetserver, program.targetkey, "test");
-      await addAll();
-      await commit();
-      await createBranch(constants.BRANCH_TARGET);
-      await createBranch(constants.BRANCH_SOURCE);
-      await dcuGrab(program.sourceserver, program.sourcekey, "source");
-      await addAll();
-      await commit();
-      await checkoutBranch(constants.BRANCH_TARGET);
-      await mergeBranch(constants.BRANCH_SOURCE);
-      await getDiffs();
-      const fileRefs = await processDiffs();
-      await makeTmpFolder(fileRefs);
-      await transferAll(program);
+      try {
+        let index, head, parent, targetOid, oidMaster;
+
+        // clean the working folder
+        await clean();
+
+        // Check for and Extensions not installed on the target instance
+        await analyzeInstalledExtensions(program);
+
+        await gitIgnore();
+
+        // 1 Init Master Branch with the latest fiels from the target
+        const repo = await NodeGit.Repository.init(constants.DEFAULT_GIT_PATH, 0);
+        index = await repo.refreshIndex();
+        await index.addAll(constants.DEFAULT_GIT_PATH);
+        await index.write();
+        oidMaster = await index.writeTree();
+        await repo.createCommit("HEAD", createSignature(60), createSignature(90), "initial master commit ", oidMaster, []);
+
+        // add target
+        index = await repo.refreshIndex();
+        await dcuGrab(program.targetserver, program.targetkey, "target");
+        await index.addAll(constants.DEFAULT_GIT_PATH);
+        await index.write();
+        targetOid = await index.writeTree();
+        head = await NodeGit.Reference.nameToId(repo, "HEAD");
+        parent = await repo.getCommit(head);
+        await repo.createCommit("HEAD", createSignature(60), createSignature(90), "base source repo commit", targetOid, [parent]);
+
+        // Grab the Source branch(latest files) and measure the diffs
+        await dcuGrab(program.sourceserver, program.sourcekey, "source");
+        const diffs = await GitKit.diff(repo);
+
+        // if there are differences process them
+        if(diffs.length) {
+          const fileRefs = await processDiffs(diffs);
+
+          //  Create a custom dcu upload folder for only the changes.
+          await makeTmpFolder(fileRefs);
+
+          // DCU TransferAll assets to target server
+          await transferAll(program);
+        }else{
+          resolve();
+        }
+
+      } catch (e) {
+        console.log(e);
+        process.exit();
+      }
       if (program.cleanp) {
         await clean();
       }
