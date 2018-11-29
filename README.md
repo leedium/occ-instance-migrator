@@ -13,7 +13,7 @@ Web Content data is currently not supported and coming in a later OCC release. (
 ~todo:  convert to global node module~     
 ~todo:  parameterize the configuration~      
 ~todo: check if a widget exists and install it before the transfer so that the instances can be populated.~  
-~todo: remove git dependency, replace with [nodegit](https://www.nodegit.org/ "nodegit")~
+~todo: remove git dependency, replace with [nodegit](https://www.nodegit.org/ "nodegit")~ .  
 todo: test with up and coming DCU 1.0.8 and 18D(v16) release
 
 ### Prerequisites
