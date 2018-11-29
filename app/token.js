@@ -35,7 +35,6 @@ const refresh = token => {
     .then(({data}) => {
       console.log(`Bearer ${data.access_token}`);
       setTimeout(()=>{
-
       }, args.timeout || (1000 * 60 * 2));
       refresh(data.access_token);
 

@@ -26,6 +26,7 @@ const { spawn } = require("child_process");
 const git = require("simple-git");
 const upath = require("upath");
 const fs = require("fs-extra");
+const Git = require("nodegit");
 
 const TASK_DELAY = require("./constants").TASK_DELAY;
 const DIFF_TEXT_FILE = require("./constants").DIFF_TEXT_FILE;
@@ -38,29 +39,11 @@ const GIT_IGNORE_PATH = require("./constants").GIT_IGNORE_FILE;
  * @returns {Promise<any>}
  * @private
  */
-const _initGitPath = async () => new Promise((resolve, reject) => {
-  const cmd = spawn("git", ["init", DEFAULT_GIT_PATH], {
-    shell: true
-  });
-  cmd.stdout.on("data", (chunk) => {
-    console.log(chunk.toString("utf-8"));
-  });
-  cmd.on("error", (err) => {
-    reject(err);
-  });
-  cmd.on("close", () => {
-    resolve();
-  });
-});
+const _initGitPath = async () => Git.Repository.init(DEFAULT_GIT_PATH,0);
 
-const _checkoutBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
-  git(gitPath).raw(["checkout", name], () => {
-    setTimeout(() => {
-      console.log(`\nChecked out "${name}".`);
-      resolve();
-    }, taskDelay);
-  });
-});
+const _createSignature = (offset) => Git.Signature.create("leedium","info@leedium.com", new Date().valueOf(), offset);
+
+const _checkoutBranch = async (repo,name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => repo.checkoutBranch(name);
 
 /**
  * Performes a get merge and forces THEIRS if any conflicts arise
@@ -96,14 +79,19 @@ const _addAll = async (gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => ne
  * @param gitPath
  * @returns {Promise<any>}
  */
-const _commit = async (gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
-  git(gitPath).raw(["commit", "-m", "committing latest changes"], () => {
-    setTimeout(() => {
-      console.log("\nFiles committed.");
-      resolve();
-    }, taskDelay);
-  });
-});
+const _commit = async (repo, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) =>{
+  const sig = Git.Signature.create('occ-instance-migrator','info@leedium.com',new Date().valueOf(),1);
+  return Git.Commit.create(repo, null, sig, sig, null, 'updated.' );
+}
+  // new Promise((resolve) => {
+  // git(gitPath).raw(["commit", "-m", "committing latest changes"], () => {
+  //   setTimeout(() => {
+  //     console.log("\nFiles committed.");
+  //     resolve();
+  //   }, taskDelay);
+  // });
+// });
+
 
 /**
  * Deletes a git branch
@@ -128,15 +116,7 @@ const _deleteBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_
  * @returns {Promise<any>}
  * @private
  */
-const _createBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
-  git(gitPath).raw(["checkout", "-B", name], () => {
-    setTimeout(() => {
-      console.log(`\nBranch: "${name}" created.`);
-      resolve();
-    }, taskDelay);
-  });
-});
-
+const _createBranch = async (repo, name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => repo.createBranch(name, 'initial', true);
 /**
  * Creates list of files that have been modified.
  * Results are piped via writeStream to whatchanged.txt
@@ -174,4 +154,5 @@ exports.commit = _commit;
 exports.deleteBranch = _deleteBranch;
 exports.createBranch = _createBranch;
 exports.getDiffs = _getDiffs;
+exports.createSignature = _createSignature;
 exports.gitIgnore = _gitIgnore;

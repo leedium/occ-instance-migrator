@@ -17,6 +17,7 @@
  **/
 
 const program = require("commander");
+const Git = require("nodegit");
 
 const constants = require("./constants");
 const packageJson = require("../package");
@@ -28,6 +29,7 @@ const createBranch = require("./gitCommands").createBranch;
 const checkoutBranch = require("./gitCommands").checkoutBranch;
 const getDiffs = require("./gitCommands").getDiffs;
 const gitIgnore = require("./gitCommands").gitIgnore;
+const createSignature = require("./gitCommands").createSignature;
 const mergeBranch = require("./gitCommands").mergeBranch;
 const dcuGrab = require("./dcuCommands").dcuGrab;
 const transferAll = require("./dcuCommands").transferAll;
@@ -36,7 +38,7 @@ const deleteFilePath = require("./fileCommands").deleteFilePath;
 const makeTmpFolder = require("./fileCommands").makeTmpFolder;
 const processDiffs = require("./fileCommands").processDiffs;
 
-const analyzeInstalledExtensions = require('./extensionCommands').analyzeInstalledExtensions;
+const analyzeInstalledExtensions = require("./extensionCommands").analyzeInstalledExtensions;
 
 /**
  * export.main Required for the bin (global) module export
@@ -91,7 +93,7 @@ exports.main = function(argv) {
 
   //set defaults
 
-  if(typeof program.taskdelay === 'undefined' || isNaN(program.taskdelay)){
+  if (typeof program.taskdelay === "undefined" || isNaN(program.taskdelay)) {
     program.taskdelay = constants.TASK_DELAY;
   }
 
@@ -121,13 +123,19 @@ exports.main = function(argv) {
    * Initializes the temp git repo for diff checking
    * @returns {Promise<void>}
    */
-  async function init() {
-    await checkoutBranch(constants.BRANCH_MASTER);
-    await gitIgnore();
-    await addAll();
-    await commit();
-    await deleteBranch(constants.BRANCH_SOURCE);
-    await deleteBranch(constants.BRANCH_TARGET);
+  async function init(repo, index) {
+    try {
+      await commit(repo);
+      await createBranch(repo, constants.BRANCH_MASTER);
+      // await checkoutBranch(repo, constants.BRANCH_MASTER);
+      await gitIgnore();
+      // await addAll();
+      // await commit();
+      // await deleteBranch(constants.BRANCH_SOURCE);
+      // await deleteBranch(constants.BRANCH_TARGET);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   /**
@@ -136,25 +144,86 @@ exports.main = function(argv) {
    */
   async function extensionsTransfer() {
     return new Promise(async resolve => {
-      await analyzeInstalledExtensions(program);
-      await clean();
-      await initGitPath(program);
-      await gitIgnore();
-      await init();
-      await dcuGrab(program.targetserver, program.targetkey, "test");
-      await addAll();
-      await commit();
-      await createBranch(constants.BRANCH_TARGET);
-      await createBranch(constants.BRANCH_SOURCE);
-      await dcuGrab(program.sourceserver, program.sourcekey, "source");
-      await addAll();
-      await commit();
-      await checkoutBranch(constants.BRANCH_TARGET);
-      await mergeBranch(constants.BRANCH_SOURCE);
-      await getDiffs();
-      const fileRefs = await processDiffs();
-      await makeTmpFolder(fileRefs);
-      await transferAll(program);
+      // await analyzeInstalledExtensions(program);
+      // await clean();
+      try {
+        let index, head, oid, parent, sourceOid, targetOid, oidMaster, sourceHead;
+        // await gitIgnore();
+        // // 1 Init Master Branch with the latest fiels from the target
+        // const repo = await Git.Repository.init(constants.DEFAULT_GIT_PATH, 0);
+        // index = await repo.refreshIndex();
+        // await index.addAll(constants.DEFAULT_GIT_PATH);
+        // await index.write();
+        // oidMaster = await index.writeTree();
+        // await repo.createCommit("HEAD", createSignature(60), createSignature(90), "initial master commit ", oidMaster, []);
+        //
+        // // add target
+        // index = await repo.refreshIndex();
+        // // await dcuGrab(program.targetserver, program.targetkey, "target");
+        // await index.addAll(constants.DEFAULT_GIT_PATH);
+        // await index.write();
+        // targetOid = await index.writeTree();
+        // head = await Git.Reference.nameToId(repo, "HEAD");
+        // parent = await repo.getCommit(head);
+        // await repo.createCommit("HEAD", createSignature(60), createSignature(90), "base source repo commit", targetOid, [parent]);
+        // //
+        // // Create branches
+        // let headCommit = await repo.getHeadCommit();
+        // let sourceBranch = await repo.createBranch(constants.BRANCH_SOURCE, headCommit, 1);
+        // let targetBranch = await repo.createBranch(constants.BRANCH_TARGET, headCommit, 1);
+
+        // // 2 -- Checkout The Source Branch and grab and commit latest
+        let repo = await Git.Repository.open(constants.DEFAULT_GIT_PATH);
+
+        let com = await Git.Commit.lookup(repo,'f25739b8f3738094687fca56f7bffa8943a204a9');
+
+        console.log(com);
+        // repo.checkoutBranch(constants.BRANCH_SOURCE);
+        // index = await repo.refreshIndex();
+        // await dcuGrab(program.sourceserver, program.sourcekey, "source");
+        // await index.addAll(constants.DEFAULT_GIT_PATH);
+        // await index.write();
+        // sourceOid = await index.writeTree();
+        // sourceHead = await Git.Reference.nameToId(repo, "HEAD");
+        // parent = await repo.getCommit(sourceHead);
+        // await repo.createCommit("HEAD", createSignature(60), createSignature(90), "commit", sourceOid, [parent]);
+        //
+       // //3  - Merge Source into Target
+       // repo.mergeBranches(
+       //   constants.BRANCH_TARGET,
+       //   constants.BRANCH_SOURCE,
+       //   createSignature(60),
+       //   Git.Merge.PREFERENCE.FASTFORWARD_ONLY,
+       //   {
+       //     fileFavor: Git.Merge.FILE_FAVOR.THEIRS
+       //   });
+
+        // 4  get diffs
+
+
+
+
+
+      } catch (e) {
+        console.log(e);
+      }
+
+      // await gitIgnore();
+      // await init(repo);
+      // await dcuGrab(program.targetserver, program.targetkey, "test");
+      // await addAll();
+      // await commit();
+      // await createBranch(constants.BRANCH_TARGET);
+      // await createBranch(constants.BRANCH_SOURCE);
+      // await dcuGrab(program.sourceserver, program.sourcekey, "source");
+      // await addAll();
+      // await commit();
+      // await checkoutBranch(constants.BRANCH_TARGET);
+      // await mergeBranch(constants.BRANCH_SOURCE);
+      // await getDiffs();
+      // const fileRefs = await processDiffs();
+      // await makeTmpFolder(fileRefs);
+      // await transferAll(program);
       if (program.cleanp) {
         await clean();
       }
@@ -170,7 +239,7 @@ exports.main = function(argv) {
     try {
       await extensionsTransfer();
       if (program.includelayouts) {
-        await plsuTransferAll(program);
+        // await plsuTransferAll(program);
       }
     } catch (err) {
       console.log(err);
