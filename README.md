@@ -41,7 +41,6 @@ Usage: oim [options] [command]
 
 Wrapper for DCU  to only deploy instances differences across tool.
 Dependencies:
-                git cli - https://git-scm.com/downloads
                 Oracle DCU -  https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedcutograbanduploadsourceco01.html
 
 Options:
