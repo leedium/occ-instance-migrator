@@ -1,7 +1,7 @@
  # occ-instance-migrator
 
 This tool will copy just the changes from a source instance to a target instance
-using [Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud") [DCU](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.htm "Use the Design Code Utility").
+using [Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud") [DCU](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.html "Use the Design Code Utility").
 A check is made first to see if the target instance is missing extensions installed in the source. If extensions are missing then only the deltas are copied prior to the DCU transferAll executing.
 There is almost to 70% savings in time including the DCU and PLSU transfer processes.
 This is still a work in process but has saved me quite some time
