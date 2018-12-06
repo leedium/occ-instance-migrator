@@ -1,4 +1,4 @@
- # occ-extensions-migrator
+ # occ-instance-migrator
 
 This tool will copy just the changes from a source instance to a target instance
 using [Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud") [DCU](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.htm "Use the Design Code Utility").
