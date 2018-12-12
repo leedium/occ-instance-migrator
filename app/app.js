@@ -53,25 +53,25 @@ exports.main = function(argv) {
                 Oracle DCU -  https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedcutograbanduploadsourceco01.html `
     )
 
-    .command(
-      "oim, -s [sourceserver] -t [sourcekey] -u [targetserver] -v [targetkey]",
+    .usage(
+      "-s [sourceserver] -t [sourcekey] -u [targetserver] -v [targetkey]",
       "Execute a dcu transferAll from source to target instance"
     )
     //
     .option(
-      "-s --sourceserver <sourceserver> ",
+      "-s, --sourceserver <sourceserver> ",
       "Occ Admin url for source instance (from)"
     )
     .option(
-      "-t --sourcekey <sourcekey>",
+      "-t, --sourcekey <sourcekey>",
       "Occ Admin api key for source instance (from)"
     )
     .option(
-      "-u --targetserver <targetserver>",
+      "-u, --targetserver <targetserver>",
       "Occ Admin url for target instance (to)"
     )
     .option(
-      "-v --targetkey <targetkey>",
+      "-v, --targetkey <targetkey>",
       "Occ Admin api key for target instance (from)"
     )
     .option(
