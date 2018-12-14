@@ -130,6 +130,7 @@ exports.main = function(argv) {
         // Check for and Extensions not installed on the target instance
         await analyzeInstalledExtensions(program);
 
+        // copy over git ignore
         await gitIgnore();
 
         // 1 Init Master Branch with the latest fiels from the target
@@ -152,18 +153,19 @@ exports.main = function(argv) {
 
         // Grab the Source branch(latest files) and measure the diffs
         await dcuGrab(program.sourceserver, program.sourcekey, "source");
+
         const diffs = await GitKit.diff(repo);
 
         // if there are differences process them
         if(diffs.length) {
           const fileRefs = await processDiffs(diffs);
-
           //  Create a custom dcu upload folder for only the changes.
           await makeTmpFolder(fileRefs);
 
           // DCU TransferAll assets to target server
           await transferAll(program);
-        }else{
+        }
+          else{
           resolve();
         }
 
