@@ -74,12 +74,15 @@ const _processDiffs = (diffs) => new Promise((resolve) => {
       const pSplit = path.split("/");
 
       // Keep track of any folder and store just the extension for later .ccc copy
-      if (pSplit.length >= 2) {
-        const p = pSplit.slice(0, 2).join("/");
-        if (cccRef.indexOf(p) < 0) {
-          cccRef.push(p);
-        }
-      }
+      // if (pSplit.length >= 2 || pSplit[0] === 'global') {
+      //   const p = pSplit.slice(0, 1).join("/");
+      //   if (cccRef.indexOf(p) < 0) {
+      //     cccRef.push({
+      //       type,
+      //       path:p
+      //     });
+      //   }
+      // }
 
       // Dont include and paths that have one subfolder (extension)
       if (pSplit.length === 2 && type === constants.ExtensionTypes.WIDGET) {
@@ -104,7 +107,7 @@ const _processDiffs = (diffs) => new Promise((resolve) => {
       }
 
       // If path is of type widget and only config values have changed
-      else if (type === constants.ExtensionTypes.WIDGET && pSplit[2] === constants.DCUSubFolder.CONFIG) {
+      else if (type === constants.ExtensionTypes.WIDGET && (pSplit[2] === constants.DCUSubFolder.CONFIG || pSplit[2] === constants.DCUSubFolder.JS)) {
         const widgetPath = pSplit.slice(0, 2).join("/");
         widgetRef.push({ type, path: widgetPath });
         path = widgetPath;
@@ -141,20 +144,21 @@ const _makeTmpFolder = async ({ transferRef, instanceRef, widgetRef, cccRef }) =
   // copy dcu source and tracking file to temp
   transferRef.map(({ type, path }) => {
     try {
-      fs.ensureDirSync(`${constants.TEMP_FOLDER}/${path}`);
-      fs.copySync(path, `${constants.TEMP_FOLDER}/${path}`);
+      if (type !== constants.ExtensionTypes.GLOBAL) {
+        fs.ensureDirSync(`${constants.TEMP_FOLDER}/${path}`);
+        fs.copySync(path, `${constants.TEMP_FOLDER}/${path}`);
+      }else{
+        fs.ensureFileSync(`${constants.TEMP_FOLDER}/${path}`);
+        fs.copyFileSync(path, `${constants.TEMP_FOLDER}/${path}`);
+      }
     } catch (err) {
-      console.log(err);
+      console.log(1, err);
     }
   });
-  cccRef.map((path) => {
-    try {
-      fs.ensureDirSync(`${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
-      fs.copySync(`${constants.DCUSubFolder.CCC}/${path}`, `${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
-    } catch (err) {
-      console.log(err);
-    }
-  });
+
+  // To make it easy we copy all the reference files
+  fs.ensureDirSync(`${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}`);
+  fs.copySync(`${constants.DCUSubFolder.CCC}`, `${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}`);
 
   //  Blow away the instance folder.  We need to do this as we only want to
   //  include the instances we stored in instanceRef array

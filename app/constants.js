@@ -53,6 +53,7 @@ exports.GitMergeKeys = {
 exports.DCUSubFolder = {
   INSTANCES: "instances",
   CONFIG: "config",
+  JS: "js",
   CCC: ".ccc"
 };
 
