@@ -22,15 +22,24 @@ todo: add paymentGateway transfer
 [Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud") [DCU v1.0.7](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.html "Use the Design Code Utility")  
 [node js](https://nodejs.org/en/ "Node JS")
 
-
-### Instructions
-Please follow the [installation instructions](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305downloadandinstallthedesigncodeu01.html "install Design and Code Utility") to set up the global DCU node application.
-
-
 ### Installation
-Change directory to your downloaded folder and run:
+Change directory to your downloaded occ-instance-migrator folder and install the applicaton globally:
 ```
 $ npm i -g
+```
+
+### Instructions to run
+Please follow the [installation instructions](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305downloadandinstallthedesigncodeu01.html "install Design and Code Utility") to set up the global DCU node application.
+
+1. Create and "cd" to a folder that will be used for the tasks
+```
+$ mkdir a_folder
+$ cd a_folder
+```
+
+2. Run oim with the options referenced below.
+```
+$ oim [options]
 ```
 
 ### Options
