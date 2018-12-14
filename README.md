@@ -5,8 +5,11 @@ using [Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Ora
 A check is made first to see if the target instance is missing extensions installed in the source. If extensions are missing then only the deltas are copied prior to the DCU transferAll executing.
 There is almost to 70% savings in time including the DCU and PLSU transfer processes.
 This is still a work in process but has saved me quite some time
+*Web Content data is currently not supported and coming in a later OCC release. (Dec 2018)
 
-Web Content data is currently not supported and coming in a later OCC release. (Dec 2018)
+# ATTENTION
+REMEMBER, this will use DCU/PLUS transferALL from TARGET to SOURCE instance.  PLEASE KNOW WHAT YOU ARE DOING.
+
 
 ### status
 ~todo:  check if batch can be performed~    
