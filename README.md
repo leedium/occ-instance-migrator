@@ -7,6 +7,14 @@ There is almost to 70% savings in time including the DCU and PLSU transfer proce
 This is still a work in process but has saved me quite some time
 *Web Content data is currently not supported and coming in a later OCC release. (Dec 2018)
 
+### version 
+2.1.1
+- fixes issue with global files not copying
+
+2.1.0
+- remove os installed git for npm node git
+- other bug fixes
+
 # ATTENTION
 REMEMBER, this will use DCU/PLUS transferALL from TARGET to SOURCE instance.  PLEASE KNOW WHAT YOU ARE DOING.
 
