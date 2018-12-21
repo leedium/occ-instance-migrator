@@ -8,7 +8,7 @@ This is still a work in process but has saved me quite some time
 *Web Content data is currently not supported and coming in a later OCC release. (Dec 2018)
 
 ### version 
-2.1.1
+2.2.1
 - fixes issue with global files not copying
 
 2.1.0
