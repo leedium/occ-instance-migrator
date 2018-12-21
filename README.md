@@ -8,18 +8,18 @@ This is still a work in process but has saved me quite some time
 *Web Content data is currently not supported and coming in a later OCC release. (Dec 2018)
 
 ### current version
-2.2.1
+2.3.1
 
 
 #### change log
-2.2.1
+2.3.1
     - error handling for missing options/parameters
 
-2.1.1
+2.2.1
     - fixes issue with global files not copying
 
 2.1.0
-    - remove os-installed git for npm nodegit
+    - remove os-installed git dependency for npm nodegit
     - other bug fixes
 
 2.0.0
