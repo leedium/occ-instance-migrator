@@ -7,6 +7,10 @@ There is almost to 70% savings in time including the DCU and PLSU transfer proce
 This is still a work in process but has saved me quite some time
 *Web Content data is currently not supported and coming in a later OCC release. (Dec 2018)
 
+## \*\* There have been a few users who have reported issues with nodegit and getting the following error:
+`Error: Cannot find module '../build/Debug/nodegit.node'`  
+I can't simulate this issue. If I have time I can look further, but please try [version 2.0.0](https://github.com/leedium/occ-instance-migrator/tree/v2.0.0) as it uses the os installed version of git (which you need to have installed) so give that a try and let me know
+
 ### current version
 2.3.1
 
