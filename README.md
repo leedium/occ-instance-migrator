@@ -10,7 +10,6 @@ This is still a work in process but has saved me quite some time
 ### current version
 2.3.1
 
-
 #### change log
 2.3.1
     - error handling for missing options/parameters
