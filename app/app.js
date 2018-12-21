@@ -92,8 +92,33 @@ exports.main = function(argv) {
   if (typeof program.taskdelay === "undefined" || isNaN(program.taskdelay)) {
     program.taskdelay = constants.TASK_DELAY;
   }
+  let errs = [];
+  try{
+    if(typeof program.sourceserver === 'undefined'){
+      errs.push("sourceserver not defined")
+    }
+    if(typeof program.sourcekey === 'undefined'){
+      errs.push("sourcekey not defined")
+    }
+    if(typeof program.targetserver === 'undefined'){
+      errs.push("targetserver not defined")
+    }
+    if(typeof program.targetkey === 'undefined'){
+      errs.push("targetkey not defined")
+    }
 
-  start();
+    if(errs.length){
+      throw new Error(`Errors:\n${errs.join('\n')}`);
+    }
+
+    start();
+
+  }
+  catch(err){
+    console.log(`${err.message}`)
+  }
+
+
 
   /**
    * Task to clean the working folder before DCU grab executes
@@ -165,7 +190,7 @@ exports.main = function(argv) {
           // DCU TransferAll assets to target server
           await transferAll(program);
         }
-          else{
+        else{
           resolve();
         }
 
