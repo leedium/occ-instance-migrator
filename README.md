@@ -7,6 +7,8 @@ There is almost to 70% savings in time including the DCU and PLSU transfer proce
 This is still a work in process but has saved me quite some time
 *Web Content data is currently not supported and coming in a later OCC release. (Dec 2018)
 
+### 18D (18.6) Transfer issue
+There is an isssue with the --transferAll so if you are still on 18C Maintenance Pak (18.5.1) then this will still work for you.  In conversation with the support team as to what the issue might be.
 
 
 1. This installation is tested and working in node version `8.11.1`
