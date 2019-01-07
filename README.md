@@ -11,7 +11,7 @@ This is still a work in process but has saved me quite some time
 
 1. This installation is tested and working in node version `8.11.1`
 
-2. Ther was an issue with upgrading from High Sierra to MoJave was document here:
+2. There was an issue with upgrading from High Sierra to MoJave, document here:
 https://github.com/nodegit/nodegit/issues/1347#issuecomment-424397301
 
 Please reinstall libgcrypt
