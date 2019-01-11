@@ -123,50 +123,49 @@ exports.main = function(argv) {
       try {
         let index, head, parent, targetOid, oidMaster;
 
-        // clean the working folder
+        // // clean the working folder
         await clean();
-
-        // Check for and Extensions not installed on the target instance
+        //
+        // // Check for and Extensions not installed on the target instance
         await analyzeInstalledExtensions(program);
-
-        // copy over git ignore
+        //
+        // // copy over git ignore
         await gitIgnore();
-
-        // 1 Init Master Branch with the latest fiels from the target
-        const repo = await NodeGit.Repository.init(constants.DEFAULT_GIT_PATH, 0);
-        index = await repo.refreshIndex();
-        await index.addAll(constants.DEFAULT_GIT_PATH);
-        await index.write();
-        oidMaster = await index.writeTree();
-        await repo.createCommit("HEAD", createSignature(60), createSignature(90), "initial master commit ", oidMaster, []);
-
-        // add target
-        index = await repo.refreshIndex();
-        await dcuGrab(program.targetserver, program.targetkey, "target");
-        await index.addAll(constants.DEFAULT_GIT_PATH);
-        await index.write();
-        targetOid = await index.writeTree();
-        head = await NodeGit.Reference.nameToId(repo, "HEAD");
-        parent = await repo.getCommit(head);
-        await repo.createCommit("HEAD", createSignature(60), createSignature(90), "base source repo commit", targetOid, [parent]);
-
-        // Grab the Source branch(latest files) and measure the diffs
+        //
+        // // 1 Init Master Branch with the latest fiels from the target
+        // const repo = await NodeGit.Repository.init(constants.DEFAULT_GIT_PATH, 0);
+        // index = await repo.refreshIndex();
+        // await index.addAll(constants.DEFAULT_GIT_PATH);
+        // await index.write();
+        // oidMaster = await index.writeTree();
+        // await repo.createCommit("HEAD", createSignature(60), createSignature(90), "initial master commit ", oidMaster, []);
+        // //
+        // // add target
+        // index = await repo.refreshIndex();
+        // await dcuGrab(program.targetserver, program.targetkey, "target");
+        // await index.addAll(constants.DEFAULT_GIT_PATH);
+        // await index.write();
+        // targetOid = await index.writeTree();
+        // head = await NodeGit.Reference.nameToId(repo, "HEAD");
+        // parent = await repo.getCommit(head);
+        // await repo.createCommit("HEAD", createSignature(60), createSignature(90), "base source repo commit", targetOid, [parent]);
+        //
+        // // Grab the Source branch(latest files) and measure the diffs
         await dcuGrab(program.sourceserver, program.sourcekey, "source");
 
-        const diffs = await GitKit.diff(repo);
+        /*const diffs = await GitKit.diff(repo);
 
         // if there are differences process them
         if(diffs.length) {
           const fileRefs = await processDiffs(diffs);
           //  Create a custom dcu upload folder for only the changes.
           await makeTmpFolder(fileRefs);
-
           // DCU TransferAll assets to target server
           await transferAll(program);
         }
         else{
           resolve();
-        }
+        }*/
 
       } catch (e) {
         console.log(e);
@@ -187,7 +186,7 @@ exports.main = function(argv) {
     try {
       await extensionsTransfer();
       if (program.includelayouts) {
-        await plsuTransferAll(program);
+        // await plsuTransferAll(program);
       }
     } catch (err) {
       console.log(err);

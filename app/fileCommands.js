@@ -39,6 +39,8 @@ const _processDiffs = (diffs) => new Promise((resolve) => {
   const pathListSearched = {};
   const filteredSearched = {};
 
+
+
   diffs.forEach(({ status, path }) => {
     // Checks if the difference is an addition or modification
     // Renames and deletions are ignored.
@@ -99,7 +101,6 @@ const _processDiffs = (diffs) => new Promise((resolve) => {
         const widgetPath = pSplit.slice(0, 2).join("/");
         const instancePath = pSplit.slice(0, 3).join("/");
 
-
         widgetRef.push({ type, path: widgetPath });
         instanceRef.push({ type, path: instancePath });
 
@@ -107,7 +108,10 @@ const _processDiffs = (diffs) => new Promise((resolve) => {
       }
 
       // If path is of type widget and only config values have changed
-      else if (type === constants.ExtensionTypes.WIDGET && (pSplit[2] === constants.DCUSubFolder.CONFIG || pSplit[2] === constants.DCUSubFolder.JS)) {
+      else if (type === constants.ExtensionTypes.WIDGET && (pSplit[2] === constants.DCUSubFolder.CONFIG ||
+        pSplit[2] === constants.DCUSubFolder.JS ||
+        constants.widgetOrphanFiles.indexOf(pSplit[2]) >=0
+      )) {
         const widgetPath = pSplit.slice(0, 2).join("/");
         widgetRef.push({ type, path: widgetPath });
         path = widgetPath;
@@ -117,8 +121,13 @@ const _processDiffs = (diffs) => new Promise((resolve) => {
         filteredSearched[path] = true;
         ac.push({ type, path });
       }
+
+      // console.log(path)
+
       return ac;
     }, []);
+
+  transferRef.map(item => {console.log(item)})
 
   resolve({ transferRef, instanceRef, widgetRef, cccRef });
 });
@@ -142,6 +151,7 @@ const _makeTmpFolder = async ({ transferRef, instanceRef, widgetRef, cccRef }) =
   fs.copySync(`${constants.DCUSubFolder.CCC}/config.json`, `${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/config.json`);
 
   // copy dcu source and tracking file to temp
+  // console.log(`${transferRef}`);
   transferRef.map(({ type, path }) => {
     try {
       if (type !== constants.ExtensionTypes.GLOBAL) {
@@ -152,7 +162,7 @@ const _makeTmpFolder = async ({ transferRef, instanceRef, widgetRef, cccRef }) =
         fs.copyFileSync(path, `${constants.TEMP_FOLDER}/${path}`);
       }
     } catch (err) {
-      console.log(1, err);
+      console.log(err);
     }
   });
 

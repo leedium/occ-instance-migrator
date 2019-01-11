@@ -49,7 +49,7 @@ const _dcuGrab = async (server, key, id = "") => new Promise((resolve, reject) =
     reject(err);
   });
   cmd.on("close", () => {
-    console.log("...target branch download completed.");
+    console.log(`...${id} branch download completed.`);
     setTimeout(() => {
       resolve();
     }, constants.TASK_DELAY);
