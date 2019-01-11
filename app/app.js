@@ -50,6 +50,10 @@ exports.main = function(argv) {
                 git cli - https://git-scm.com/downloads
                 Oracle DCU -  https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedcutograbanduploadsourceco01.html `
     )
+    .command(
+      "oim, -s [sourceserver] -t [sourcekey] -u [targetserver] -v [targetkey]",
+      "Execute a dcu transferAll from source to target instance"
+    )
 
     .usage(
       "-s [sourceserver] -t [sourcekey] -u [targetserver] -v [targetkey]",
@@ -88,12 +92,7 @@ exports.main = function(argv) {
     .parse(argv);
 
   //set defaults
-
-  if (typeof program.taskdelay === "undefined" || isNaN(program.taskdelay)) {
-    program.taskdelay = constants.TASK_DELAY;
-  }
-
-  start();
+    start();
 
   /**
    * Task to clean the working folder before DCU grab executes
@@ -165,7 +164,7 @@ exports.main = function(argv) {
           // DCU TransferAll assets to target server
           await transferAll(program);
         }
-          else{
+        else{
           resolve();
         }
 
