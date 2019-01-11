@@ -59,7 +59,7 @@ const loginToOCC = (adminServer, token) => {
  */
 const generateToken = async (server, token) => {
   return new Promise((resolve, reject) => {
-    server.indexOf(HTTPS_PREFIX) !== 0 ? `${HTTPS_PREFIX}${server}` : server;
+    server = server.indexOf(HTTPS_PREFIX) !== 0 ? `${HTTPS_PREFIX}${server}` : server;
     const req = function ({ data }){
       //  store the token(s) in a hash
       tokens[server] = data.access_token;
