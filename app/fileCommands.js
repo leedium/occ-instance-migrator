@@ -38,18 +38,21 @@ const _processDiffs = (diffs) => new Promise((resolve) => {
   const transferPathArrayTemp = {};
   const pathListSearched = {};
   const filteredSearched = {};
-
+  let counter = 1;
   diffs.forEach(({ status, path }) => {
     // Checks if the difference is an addition or modification
     // Renames and deletions are ignored.
     if (status === constants.GitMergeKeys.MODIFIED || status === constants.GitMergeKeys.UNTRACKED) {
+
       if (!transferPathArrayTemp[path]) {
+        console.log(counter, 'path', path);
         let sp = path.split("/");
         transferRef.push({
           path: sp.slice(0, 4).join("/"),
           type: sp[0]
         });
         transferPathArrayTemp[`${path}`] = true;
+        counter += 1;
       }
     }
   });
@@ -98,8 +101,9 @@ const _processDiffs = (diffs) => new Promise((resolve) => {
       else if (type === constants.ExtensionTypes.WIDGET && pSplit[2] === constants.DCUSubFolder.INSTANCES) {
         const widgetPath = pSplit.slice(0, 2).join("/");
         const instancePath = pSplit.slice(0, 3).join("/");
+        const instancePath2 = pSplit.slice(0, 4).join("/");
 
-
+        // console.log(type, instancePath2)
         widgetRef.push({ type, path: widgetPath });
         instanceRef.push({ type, path: instancePath });
 
@@ -109,8 +113,10 @@ const _processDiffs = (diffs) => new Promise((resolve) => {
       // If path is of type widget and only config values have changed
       else if (type === constants.ExtensionTypes.WIDGET && (pSplit[2] === constants.DCUSubFolder.CONFIG || pSplit[2] === constants.DCUSubFolder.JS)) {
         const widgetPath = pSplit.slice(0, 2).join("/");
+        const widgetPath2 = pSplit.slice(0, 3).join("/");
         widgetRef.push({ type, path: widgetPath });
         path = widgetPath;
+        // console.log(type, widgetPath2)
       }
 
       if (!filteredSearched[path]) {
@@ -152,7 +158,7 @@ const _makeTmpFolder = async ({ transferRef, instanceRef, widgetRef, cccRef }) =
         fs.copyFileSync(path, `${constants.TEMP_FOLDER}/${path}`);
       }
     } catch (err) {
-      console.log(1, err);
+      // console.log(1, err);
     }
   });
 

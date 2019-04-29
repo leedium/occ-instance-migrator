@@ -23,6 +23,8 @@
 const program = require("commander");
 const GitKit = require("nodegit-kit");
 const NodeGit = require("nodegit");
+const path = require("path");
+const url = require("url");
 
 const constants = require("./constants");
 const packageJson = require("../package");
@@ -41,7 +43,7 @@ const analyzeInstalledExtensions = require("./extensionCommands").analyzeInstall
  * export.main Required for the bin (global) module export
  * @param argv
  */
-exports.main = function(argv) {
+exports.main = function (argv) {
   //  initialize the program
   program
     .version(packageJson.version)
@@ -61,7 +63,23 @@ exports.main = function(argv) {
     )
     //
     .option(
-      "-s, --sourceserver <sourceserver> ",
+      "-n, --deploybranch <deploybranch> ",
+      "DCU deploy branch to grab"
+    )
+    .option(
+      "-p, --gitrepo <gitrepo>",
+      "Git repo  url"
+    )
+    .option(
+      "-q, --gitusername <gitusername>",
+      "Git username"
+    )
+    .option(
+      "-r, --gitpassword <gitpassword>",
+      "Git password"
+    )
+    .option(
+      "-s, --sourceserver <sourceserver>",
       "Occ Admin url for source instance (from)"
     )
     .option(
@@ -92,19 +110,20 @@ exports.main = function(argv) {
     .parse(argv);
 
   //set defaults
-    start();
+  start();
 
   /**
    * Task to clean the working folder before DCU grab executes
    * @returns {Promise<*>}
    */
-  async function clean() {
+  async function clean () {
     return await deleteFilePath([
       ".gitignore",
       `./${constants.TEMP_FOLDER}`,
       `./${constants.GIT_TRACKING_FOLDER}`,
       `./${constants.DCU_TRACKING_FOLDER}`,
       `./${constants.LOGFILE}`,
+      `./dcu`,
       `./widget`,
       `./global`,
       `./stack`,
@@ -118,62 +137,112 @@ exports.main = function(argv) {
    * Executes extesion tasks
    * @returns {Promise<void>}
    */
-  async function extensionsTransfer() {
+  async function extensionsTransfer () {
     return new Promise(async resolve => {
       try {
         let index, head, parent, targetOid, oidMaster;
 
         // clean the working folder
         await clean();
+        //
+        console.log(process.cwd());
+        console.log(program.gitrepo);
+        console.log(program.gitusername);
+        console.log(program.gitpassword);
+        // //
+        NodeGit.Clone.clone(program.gitrepo, 'dcu', {
+          fetchOpts: {
+            certificateCheck: () => 1,
+            callbacks: {
+              credentials: () => NodeGit.Cred.userpassPlaintextNew(program.gitusername, program.gitpassword)
+            }
+          }
+        }).then(async function(repo){
 
-        // Check for and Extensions not installed on the target instance
-        await analyzeInstalledExtensions(program);
+          // console.log(repo);
+          //
+          // // repo.open('./dcu').then( async (repo) => {
+          //   const reference = await repo.getBranch(`refs/remotes/origin/${program.deploybranch}`);
+          //   repo.checkoutRef(reference);
+          //   await dcuGrab(program.sourceserver, program.sourcekey, "source",'./dcu');
+          //   const diffs = await GitKit.diff(repo);
+          //
+          //   if(diffs.length) {
+          //   const fileRefs = await processDiffs(diffs);
+          //   console.log(fileRefs);
+          //   //  Create a custom dcu upload folder for only the changes.
+          //   // await makeTmpFolder(fileRefs);
+          //
+          //   // DCU TransferAll assets to target server
+          //   // await transferAll(program);
+          //   }
+          //   else{
+          //     resolve();
+          //   }
 
-        // copy over git ignore
-        await gitIgnore();
+          // });
 
+        })
+
+
+
+
+
+        // // Check for and Extensions not installed on the target instance
+        // await analyzeInstalledExtensions(program);
+        //
+        // // copy over git ignore
+        // await gitIgnore();
+        //
         // 1 Init Master Branch with the latest fiels from the target
-        const repo = await NodeGit.Repository.init(constants.DEFAULT_GIT_PATH, 0);
-        index = await repo.refreshIndex();
-        await index.addAll(constants.DEFAULT_GIT_PATH);
-        await index.write();
-        oidMaster = await index.writeTree();
-        await repo.createCommit("HEAD", createSignature(60), createSignature(90), "initial master commit ", oidMaster, []);
+        // const repo = await NodeGit.Repository.init(constants.DEFAULT_GIT_PATH, 0);
+        // index = await repo.refreshIndex();
+        // await index.addAll(constants.DEFAULT_GIT_PATH);
+        // await index.write();
+        // oidMaster = await index.writeTree();
+        // await repo.createCommit("HEAD", createSignature(60), createSignature(90), "initial master commit ", oidMaster, []);
+        //
+        // // add target
+        // index = await repo.refreshIndex();
+        // await dcuGrab(program.targetserver, program.targetkey, "target");
+        // await index.addAll(constants.DEFAULT_GIT_PATH);
+        // await index.write();
+        // targetOid = await index.writeTree();
+        // head = await NodeGit.Reference.nameToId(repo, "HEAD");
+        // parent = await repo.getCommit(head);
+        // await repo.createCommit("HEAD", createSignature(60), createSignature(90), "base source repo commit", targetOid, [parent]);
+        //
 
-        // add target
-        index = await repo.refreshIndex();
-        await dcuGrab(program.targetserver, program.targetkey, "target");
-        await index.addAll(constants.DEFAULT_GIT_PATH);
-        await index.write();
-        targetOid = await index.writeTree();
-        head = await NodeGit.Reference.nameToId(repo, "HEAD");
-        parent = await repo.getCommit(head);
-        await repo.createCommit("HEAD", createSignature(60), createSignature(90), "base source repo commit", targetOid, [parent]);
+        // // Grab the Source branch(latest files) and measure the diffs
+        // await dcuGrab(program.sourceserver, program.sourcekey, "source");
+        //
+        // const diffs = await GitKit.diff(repo);
 
-        // Grab the Source branch(latest files) and measure the diffs
-        await dcuGrab(program.sourceserver, program.sourcekey, "source");
 
-        const diffs = await GitKit.diff(repo);
-
+        //
         // if there are differences process them
-        if(diffs.length) {
-          const fileRefs = await processDiffs(diffs);
-          //  Create a custom dcu upload folder for only the changes.
-          await makeTmpFolder(fileRefs);
+        // if(diffs.length) {
+        // const fileRefs = await processDiffs(diffs);
 
-          // DCU TransferAll assets to target server
-          await transferAll(program);
-        }
-        else{
-          resolve();
-        }
+
+        // console.log(fileRefs);
+
+        //  Create a custom dcu upload folder for only the changes.
+        // await makeTmpFolder(fileRefs);
+
+        // DCU TransferAll assets to target server
+        // await transferAll(program);
+        // }
+        // else{
+        //   resolve();
+        // }
 
       } catch (e) {
         console.log(e);
         process.exit();
       }
       if (program.cleanp) {
-        await clean();
+        // await clean();
       }
       resolve();
     });
@@ -183,11 +252,11 @@ exports.main = function(argv) {
    * Entry method to start the process
    * @returns {Promise<void>}
    */
-  async function start() {
+  async function start () {
     try {
       await extensionsTransfer();
       if (program.includelayouts) {
-        await plsuTransferAll(program);
+        // await plsuTransferAll(program);
       }
     } catch (err) {
       console.log(err);

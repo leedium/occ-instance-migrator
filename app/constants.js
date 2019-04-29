@@ -16,7 +16,7 @@
  */
 
 exports.APP_ID = __dirname.split("/").pop();
-exports.DEFAULT_GIT_PATH = ".";
+exports.DEFAULT_GIT_PATH = ".dcu";
 
 exports.DIFF_TEXT_FILE = "./whatchanged.txt";
 exports.GIT_IGNORE_FILE = ".gitignore";
@@ -54,7 +54,7 @@ exports.DCUSubFolder = {
   INSTANCES: "instances",
   CONFIG: "config",
   JS: "js",
-  CCC: ".ccc"
+  CCC: "dcu/.ccc"
 };
 
 exports.HTTP_METHOD_GET = "GET";

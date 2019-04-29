@@ -30,12 +30,13 @@ const constants = require("./constants");
  * @param server
  * @param key
  * @param id
+ * @param basePath
  * @returns {Promise<any>}
  * @private
  */
-const _dcuGrab = async (server, key, id = "") => new Promise((resolve, reject) => {
+const _dcuGrab = async (server, key, id = "", basePath = ".") => new Promise((resolve, reject) => {
   console.log(`GRABBING ${id} (currently deployed stable)`, process.cwd());
-  const cmd = spawn("dcu", ["--grab", "--clean", "--node", server], {
+  const cmd = spawn("dcu", ["--base", basePath, "--grab", "--clean", "--node", server], {
     env: Object.assign({}, process.env, {
       "CC_APPLICATION_KEY": key
     })
@@ -93,7 +94,7 @@ const _putAll = (path, program) => {
 const _transferAll = program => {
   return new Promise((resolve) => {
     console.log(`Transferring all extensions start...`);
-    const cmd = spawn(`dcu`, ["--transferAll", ".", "--base", constants.TEMP_FOLDER, "--node", program.targetserver, "-k", program.targetkey], {
+    const cmd = spawn(`dcu`, ["--transferAll", ".", "--base", constants.TEMP_FOLDER, "--node", program.targetserver, "-k", program.targetkey, "—noThemeCompile", ], {
       env: Object.assign({}, process.env, {
         "CC_APPLICATION_KEY": program.targetkey
       })
