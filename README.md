@@ -6,7 +6,11 @@ A check is made first to see if the target instance is missing extensions instal
 
 Web Content data is currently not supported and coming in a later OCC release. (Dec 2018)
 
+### version
+2.0.1.0
+
 ### status
+~todo:  selective transfer~  
 ~todo:  check if batch can be performed~    
 ~todo:  convert to global node module~     
 ~todo:  parameterize the configuration~      
@@ -14,7 +18,8 @@ Web Content data is currently not supported and coming in a later OCC release. (
 todo: remove git dependency, replace with [nodegit](https://www.nodegit.org/ "nodegit")
 
 ### Prerequisites
-[Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud") [DCU v1.0.7](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.html "Use the Design Code Utility")  
+[Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud")   
+[DCU v1.0.16](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.html "Use the Design Code Utility")  
 [git](https://git-scm.com/downloads "download git")  
 [node js](https://nodejs.org/en/ "Node JS")
 

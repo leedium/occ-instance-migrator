@@ -1,6 +1,6 @@
 {
   "name": "occ-instance-migrator",
-  "version": "2.0.0",
+  "version": "2.0.1.0",
   "description": "Tools to help with Oracle Commerce Cloud Solutions",
   "bin": {
     "oim": "./index.js"
