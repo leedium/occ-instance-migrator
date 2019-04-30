@@ -21,7 +21,7 @@ brew install libgcrypt
 
 ## \*\* There have been a few users who have reported issues with nodegit and getting the following error:
 `Error: Cannot find module '../build/Debug/nodegit.node'`  
-I can't simulate this issue. If I have time I can look further, but please try [version 2.0.0](https://github.com/leedium/occ-instance-migrator/tree/v2.0.0) as it uses the os installed version of git (which you need to have installed) so give that a try and let me know
+I can't simulate this issue. If I have time I can look further, but please try [version 2.0.1.0](https://github.com/leedium/occ-instance-migrator/tree/v2.0.1.0) as it uses the os installed version of git (which you need to have installed) so give that a try and let me know
 
 ### current version
 2.3.1
@@ -55,7 +55,8 @@ todo: add SSE transfer
 todo: add paymentGateway transfer
 
 ### Prerequisites
-[Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud") [DCU v1.0.7](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.html "Use the Design Code Utility")  
+[Oracle Commerce Cloud](https://cloud.oracle.com/en_US/commerce-cloud "Oracle Commerce Cloud")    
+[DCU v1.0.16](https://docs.oracle.com/cd/E97801_01/Cloud.18C/ExtendingCC/html/s4305usethedesigncodeutility01.html "Use the Design Code Utility")  
 [node js](https://nodejs.org/en/ "Node JS")
 
 ### Installation
