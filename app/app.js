@@ -21,6 +21,10 @@ const program = require("commander");
 const constants = require("./constants");
 const packageJson = require("../package");
 const initGitPath = require("./gitCommands").initGitPath;
+const cloneRepo = require("./gitCommands").cloneRepo;
+const addRemote = require("./gitCommands").addRemote;
+const addN = require("./gitCommands").addN;
+const pull = require("./gitCommands").pull;
 const addAll = require("./gitCommands").addAll;
 const commit = require("./gitCommands").commit;
 const deleteBranch = require("./gitCommands").deleteBranch;
@@ -57,21 +61,42 @@ exports.main = function(argv) {
       "oim, -s [sourceserver] -t [sourcekey] -u [targetserver] -v [targetkey]",
       "Execute a dcu transferAll from source to target instance"
     )
+
+    .usage(
+      "-s [sourceserver] -t [sourcekey] -u [targetserver] -v [targetkey]",
+      "Execute a dcu transferAll from source to target instance"
+    )
     //
     .option(
-      "-s --sourceserver <sourceserver> ",
+      "-n, --deploybranch <deploybranch> ",
+      "DCU deploy branch to grab"
+    )
+    .option(
+      "-p, --gitrepo <gitrepo>",
+      "Git repo  url"
+    )
+    .option(
+      "-q, --gitusername <gitusername>",
+      "Git username"
+    )
+    .option(
+      "-r, --gitpassword <gitpassword>",
+      "Git password"
+    )
+    .option(
+      "-s, --sourceserver <sourceserver>",
       "Occ Admin url for source instance (from)"
     )
     .option(
-      "-t --sourcekey <sourcekey>",
+      "-t, --sourcekey <sourcekey>",
       "Occ Admin api key for source instance (from)"
     )
     .option(
-      "-u --targetserver <targetserver>",
+      "-u, --targetserver <targetserver>",
       "Occ Admin url for target instance (to)"
     )
     .option(
-      "-v --targetkey <targetkey>",
+      "-v, --targetkey <targetkey>",
       "Occ Admin api key for target instance (from)"
     )
     .option(
@@ -108,6 +133,7 @@ exports.main = function(argv) {
       `./${constants.GIT_TRACKING_FOLDER}`,
       `./${constants.DCU_TRACKING_FOLDER}`,
       `./${constants.LOGFILE}`,
+      `./HC.OCC.DCU`,
       `./widget`,
       `./global`,
       `./stack`,
@@ -136,25 +162,18 @@ exports.main = function(argv) {
    */
   async function extensionsTransfer() {
     return new Promise(async resolve => {
-      await analyzeInstalledExtensions(program);
+      // await analyzeInstalledExtensions(program);
       await clean();
       await initGitPath(program);
-      await gitIgnore();
-      await init();
-      await dcuGrab(program.targetserver, program.targetkey, "test");
-      await addAll();
-      await commit();
-      await createBranch(constants.BRANCH_TARGET);
-      await createBranch(constants.BRANCH_SOURCE);
+      await addRemote(program.gitrepo);
+      await pull(program.deploybranch);
+
       await dcuGrab(program.sourceserver, program.sourcekey, "source");
-      await addAll();
-      await commit();
-      await checkoutBranch(constants.BRANCH_TARGET);
-      await mergeBranch(constants.BRANCH_SOURCE);
-      await getDiffs();
-      const fileRefs = await processDiffs();
-      await makeTmpFolder(fileRefs);
-      await transferAll(program);
+      await addN();
+
+      const diffs = await getDiffs();
+
+      await transferAll(diffs, program);
       if (program.cleanp) {
         await clean();
       }

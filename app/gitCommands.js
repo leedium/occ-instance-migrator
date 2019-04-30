@@ -53,6 +53,64 @@ const _initGitPath = async () => new Promise((resolve, reject) => {
   });
 });
 
+/**
+ * clones a repo
+ * @param program
+ * @returns {Promise<*>}
+ */
+const _cloneRepo = async (gitrepoUrl) => new Promise((resolve, reject) => {
+
+  const cmd = spawn("git", ["clone", gitrepoUrl], {
+    shell: true
+  });
+  cmd.stdout.on("data", (chunk) => {
+    console.log(chunk.toString("utf-8"));
+  });
+  cmd.on("error", (err) => {
+    reject(err);
+  });
+  cmd.on("close", () => {
+    resolve();
+  });
+});
+
+
+const _addRemote = async (gitrepoUrl) => new Promise((resolve, reject) => {
+
+  const cmd = spawn("git", ["remote", "add", "origin", gitrepoUrl], {
+    shell: true
+  });
+  cmd.stdout.on("data", (chunk) => {
+    console.log(chunk.toString("utf-8"));
+  });
+  cmd.on("error", (err) => {
+    reject(err);
+  });
+  cmd.on("close", () => {
+
+
+    resolve();
+  });
+});
+
+const _pull = async (branch) => new Promise((resolve, reject) => {
+
+  const cmd = spawn("git", ["pull", "origin", branch], {
+    shell: true
+  });
+  cmd.stdout.on("data", (chunk) => {
+    console.log(chunk.toString("utf-8"));
+  });
+  cmd.on("error", (err) => {
+    reject(err);
+  });
+  cmd.on("close", () => {
+
+
+    resolve();
+  });
+});
+
 const _checkoutBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
   git(gitPath).raw(["checkout", name], () => {
     setTimeout(() => {
@@ -86,6 +144,15 @@ const _addAll = async (gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => ne
   git(gitPath).raw(["add", "."], () => {
     setTimeout(() => {
       console.log("\nFiles added.");
+      resolve();
+    }, taskDelay);
+  });
+});
+
+const _addN = async (gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_DELAY) => new Promise((resolve) => {
+  git(gitPath).raw(["add", ".", "-N"], () => {
+    setTimeout(() => {
+      console.log("\ndummy untracked Files added.");
       resolve();
     }, taskDelay);
   });
@@ -143,16 +210,20 @@ const _createBranch = async (name, gitPath = DEFAULT_GIT_PATH, taskDelay = TASK_
  * @returns {Promise<any>}
  */
 const _getDiffs = async (taskDelay = TASK_DELAY) => {
+  let fileDiffArrayString = '';
   return new Promise((resolve) => {
-    const diffFile = (upath.join(__dirname, "../", DIFF_TEXT_FILE));
-    const cmd = spawn("git", ["whatchanged", "-1", "--pretty=\"\""], {
+    // const diffFile = (upath.join(__dirname, "../", DIFF_TEXT_FILE));
+    const cmd = spawn("git", ["diff", "--name-only"], {
       shell: true
     });
-    cmd.stdout.pipe(fs.createWriteStream(diffFile));
+    cmd.stdout.on("data", (chunk) => {
+      fileDiffArrayString += chunk.toString("utf-8");
+    });
+    // cmd.stdout.pipe(fs.createWriteStream(diffFile));
     cmd.on("close", () => {
-      console.log("\nDiff file created.");
+      // console.log("\nDiff file created.", fileDiffArray);
       setTimeout(() => {
-        resolve();
+        resolve(fileDiffArrayString.split('\n'));
       }, taskDelay);
     });
   });
@@ -175,3 +246,7 @@ exports.deleteBranch = _deleteBranch;
 exports.createBranch = _createBranch;
 exports.getDiffs = _getDiffs;
 exports.gitIgnore = _gitIgnore;
+exports.cloneRepo = _cloneRepo;
+exports.addRemote = _addRemote;
+exports.pull = _pull;
+exports.addN = _addN;

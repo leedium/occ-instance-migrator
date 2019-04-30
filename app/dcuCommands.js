@@ -90,29 +90,42 @@ const _putAll = (path, program) => {
  * @returns {Promise<any>}
  * @private
  */
-const _transferAll = program => {
+const _transferAll = (fileArray, program) => {
+  var counterComplete = 0;
+  console.log(`Transferring all extensions start...`);
+
   return new Promise((resolve) => {
-    console.log(`Transferring all extensions start...`);
-    const cmd = spawn(`dcu`, ["--transferAll", ".", "--base", constants.TEMP_FOLDER, "--node", program.targetserver, "-k", program.targetkey], {
-      env: Object.assign({}, process.env, {
-        "CC_APPLICATION_KEY": program.targetkey
-      })
-    });
-    cmd.stdout.on("data", (chunk) => {
-      const str = chunk.toString();
-      console.log(str);
-      process.stdout.write(fs.appendFile(constants.LOGFILE, str));
-    });
-    cmd.stderr.on("data", (chunk) => {
-      const str = chunk.toString();
-      console.log(str);
-      // process.stdout.write(fs.appendFile(constants.LOGFILE, `Error:[${str}]`));
-    });
-    cmd.on("close", () => {
-      console.log(`... target updated`);
-      resolve();
-    });
+
+    const transfer = function(index) {
+
+      const cmd = spawn(`dcu`, ["--transfer", fileArray[index], "--node", program.targetserver, "-k", program.targetkey, "--verbose"], {
+        env: Object.assign({}, process.env, {
+          "CC_APPLICATION_KEY": program.targetkey
+        })
+      });
+      cmd.stdout.on("data", (chunk) => {
+        const str = chunk.toString();
+        console.log(str);
+      });
+      cmd.stderr.on("data", (chunk) => {
+        const str = chunk.toString();
+        console.log(str);
+      });
+
+      cmd.on("close", () => {
+        counterComplete += 1;
+        if(counterComplete >= fileArray.length){
+          resolve();
+        }else {
+          transfer(counterComplete)
+        }
+      });
+    };
+
+    transfer(0);
+
   });
+
 };
 
 /**

@@ -16,7 +16,6 @@
  */
 
 const fs = require("fs-extra");
-const readline = require("readline");
 const upath = require("upath");
 const rimraf = require("rimraf");
 
@@ -30,107 +29,107 @@ const TASK_DELAY = require("./constants").TASK_DELAY;
  * have been updated and added.
  * @returns {Promise<any>}
  */
-const _processDiffs = () => new Promise((resolve) => {
+const _processDiffs = (diffs) => new Promise((resolve) => {
   //  stores
   const instanceRef = [];
   let transferRef = [];
   let widgetRef = [];
   let cccRef = [];
   const transferPathArrayTemp = {};
-
-  const diffFile = (upath.join(__dirname, "../", constants.DIFF_TEXT_FILE));
-
-
-  // reads line from whatchanged.txt
-  const rl = readline.createInterface({
-    input: fs.createReadStream(diffFile)
-  });
-  rl.on("line", (line) => {
-    const infoArray = line.split("\t");
-    const pathString = infoArray[1];
-    const modType = infoArray[0].split(" ")[4];
-    const pathArray = pathString.split("/");
-    let path;
-    path = pathArray.slice(0, pathArray.length - 1).join("/");
-
+  const pathListSearched = {};
+  const filteredSearched = {};
+  let counter = 1;
+  diffs.forEach(path => {
     // Checks if the difference is an addition or modification
     // Renames and deletions are ignored.
-    if (modType !== constants.GitMergeKeys.DELETED && modType.indexOf(constants.GitMergeKeys.RENAMED) < 0) {
+    // if (status === constants.GitMergeKeys.MODIFIED || status === constants.GitMergeKeys.UNTRACKED) {
+
       if (!transferPathArrayTemp[path]) {
-        if (path.indexOf(constants.APP_ID) < 0) {
-          let sp = path.split("/");
-          transferRef.push({
-            path: sp.slice(0, 4).join("/"),
-            type: sp[0]
-          });
-          transferPathArrayTemp[`${path}`] = true;
-        }
-      }
-    }
-  });
-
-  //  When EOF and close, modify the paths best suited for OCC DCU structure
-  rl.on("close", () => {
-    // console.log("\n\n\nTransfer Paths");
-
-    const pathListSearched = {};
-    const filteredSearched = {};
-    transferRef = transferRef.reduce((a, pathObj) => {
-      // Convert flat paths to object with extensionType and path
-      const { type, path } = pathObj;
-      if (!pathListSearched[pathObj.path]) {
-        pathListSearched[pathObj.path] = true;
-        a.push({
-          type,
-          path
+        let sp = path.split("/");
+        transferRef.push({
+          path: sp.slice(0, 4).join("/"),
+          type: sp[0]
         });
+        transferPathArrayTemp[`${path}`] = true;
+        counter += 1;
       }
-      return a;
-    }, []).reduce(
-      // Convert paths to grab necessary files for OCC DCU folder structure
-      // Keep track of widget instance folders
-      (ac, pathObj) => {
-        let { type, path } = pathObj;
-        const pSplit = path.split("/");
-
-        // Keep track of any folder and store just the extension for later .ccc copy
-        if (pSplit.length >= 2) {
-          const p = pSplit.slice(0, 2).join("/");
-          if (cccRef.indexOf(p) < 0) {
-            cccRef.push(p);
-          }
-        }
-
-        // Dont include and paths that have one subfolder (extension)
-        if (pSplit.length === 2 && type === constants.ExtensionTypes.WIDGET) {
-          return ac;
-        }
-
-        //  If path is of type widget and includes an instance folder store value so that it
-        //  will get added back after the instance folder removal
-        else if (type === constants.ExtensionTypes.WIDGET && pSplit[2] === constants.DCUSubFolder.INSTANCES) {
-          const widgetPath = pSplit.slice(0, 2).join("/");
-          const instancePath = pSplit.slice(0, 3).join("/");
-
-
-          widgetRef.push({ type, path: widgetPath });
-          instanceRef.push({ type, path: instancePath });
-
-          path = widgetPath;
-        }
-
-        if (!filteredSearched[path]) {
-          filteredSearched[path] = true;
-          ac.push({ type, path });
-        }
-        return ac;
-      }, []);
-    // console.log('Diff file processing transferRef.', transferRef);
-    // console.log('Diff file processing widgetRef.', widgetRef);
-    // console.log('Diff file processing instanceRef.', instanceRef);
-    // console.log('Diff file processing instanceRef.', cccRef);
-    resolve({ transferRef, instanceRef, widgetRef, cccRef });
+    // }
   });
+
+  transferRef = transferRef.reduce((a, pathObj) => {
+    // Convert flat paths to object with extensionType and path
+    const { type, path } = pathObj;
+    if (!pathListSearched[pathObj.path]) {
+      pathListSearched[pathObj.path] = true;
+      a.push({
+        type,
+        path
+      });
+    }
+    return a;
+  }, []).reduce(
+    // Convert paths to grab necessary files for OCC DCU folder structure
+    // Keep track of widget instance folders
+    (ac, pathObj) => {
+
+      let { type, path } = pathObj;
+      const pSplit = path.split("/");
+
+      // Keep track of any folder and store just the extension for later .ccc copy
+      // if (pSplit.length >= 2 || pSplit[0] === 'global') {
+      //   const p = pSplit.slice(0, 1).join("/");
+      //   if (cccRef.indexOf(p) < 0) {
+      //     cccRef.push({
+      //       type,
+      //       path:p
+      //     });
+      //   }
+      // }
+    console.log(type, path);
+      // Dont include and paths that have one subfolder (extension)
+      if (pSplit.length === 2 && type === constants.ExtensionTypes.WIDGET) {
+        return ac;
+      }
+
+      else if (type === constants.ExtensionTypes.THEME) {
+        path = pSplit.slice(0, 2).join("/");
+      }
+
+      else if (type === constants.ExtensionTypes.ELEMENT) {
+
+      }
+
+        //  If path is of type widget and includes an instance folder, and not webcontent store value so that it
+      //  will get added back after the instance folder removal
+      else if (type === constants.ExtensionTypes.WIDGET && pSplit[1] !== 'Web Content' && pSplit[2] === constants.DCUSubFolder.INSTANCES) {
+        const widgetPath = pSplit.slice(0, 2).join("/");
+        const instancePath = pSplit.slice(0, 3).join("/");
+        const instancePath2 = pSplit.slice(0, 4).join("/");
+
+        // console.log(type, instancePath2)
+        widgetRef.push({ type, path: widgetPath });
+        instanceRef.push({ type, path: instancePath });
+
+        path = widgetPath;
+      }
+
+      // If path is of type widget and only config values have changed
+      else if (type === constants.ExtensionTypes.WIDGET && (pSplit[2] === constants.DCUSubFolder.CONFIG || pSplit[2] === constants.DCUSubFolder.JS)) {
+        const widgetPath = pSplit.slice(0, 2).join("/");
+        const widgetPath2 = pSplit.slice(0, 3).join("/");
+        widgetRef.push({ type, path: widgetPath });
+        path = widgetPath;
+        // console.log(type, widgetPath2)
+      }
+
+      if (!filteredSearched[path]) {
+        filteredSearched[path] = true;
+        ac.push({ type, path });
+      }
+      return ac;
+    }, []);
+
+  resolve({ transferRef, instanceRef, widgetRef, cccRef });
 });
 
 /**
@@ -154,20 +153,21 @@ const _makeTmpFolder = async ({ transferRef, instanceRef, widgetRef, cccRef }) =
   // copy dcu source and tracking file to temp
   transferRef.map(({ type, path }) => {
     try {
-      fs.ensureDirSync(`${constants.TEMP_FOLDER}/${path}`);
-      fs.copySync(path, `${constants.TEMP_FOLDER}/${path}`);
+      if (type !== constants.ExtensionTypes.GLOBAL) {
+        fs.ensureDirSync(`${constants.TEMP_FOLDER}/${path}`);
+        fs.copySync(path, `${constants.TEMP_FOLDER}/${path}`);
+      }else{
+        fs.ensureFileSync(`${constants.TEMP_FOLDER}/${path}`);
+        fs.copyFileSync(path, `${constants.TEMP_FOLDER}/${path}`);
+      }
     } catch (err) {
-      console.log(err);
+      // console.log(1, err);
     }
   });
-  cccRef.map((path) => {
-    try {
-      fs.ensureDirSync(`${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
-      fs.copySync(`${constants.DCUSubFolder.CCC}/${path}`, `${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}/${path}`);
-    } catch (err) {
-      console.log(err);
-    }
-  });
+
+  // To make it easy we copy all the reference files
+  fs.ensureDirSync(`${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}`);
+  fs.copySync(`${constants.DCUSubFolder.CCC}`, `${constants.TEMP_FOLDER}/${constants.DCUSubFolder.CCC}`);
 
   //  Blow away the instance folder.  We need to do this as we only want to
   //  include the instances we stored in instanceRef array
